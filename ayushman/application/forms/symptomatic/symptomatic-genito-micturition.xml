@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1,6,11</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>16,17,20</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>Micturition</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>13,4</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+			
+		</answer>
+	</question>
+	<question>
+		<id>13</id>
+		<label>Painful</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>2,3</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Severity</label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Duration</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Frequent </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>2,3,5</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Time of day</label>
+		<type>DD</type>
+		<answer>
+			<label>Night Time </label>
+		</answer>
+		<answer>
+			<label>Day Time </label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>6</id>
+		<label>Urinary</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>14,9</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+			
+		</answer>
+	</question>
+	<question>
+		<id>14</id>
+		<label>Discharge </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>2,3,7</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>7</id>
+		<label>Color</label>
+		<type>DD</type>
+			<answer>
+				<label>White</label>
+			</answer>
+			<answer>
+				<label>Yellow</label>
+			</answer>
+			<answer>
+				<label>Other</label>
+				<follow>8</follow>
+			</answer>
+	</question>
+	<question>
+		<id>8</id>
+		<label>Other</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>9</id>
+		<label>Blood </label>
+		<type>DD</type>
+		<answer>
+				<label>Present</label>
+				<follow>2,3,10</follow>
+			</answer>
+			<answer>
+				<label>Absent</label>
+			</answer>
+			
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Pain</label>
+		<type>DD</type>
+		<answer>
+			<label>Before micturition</label>
+		</answer>
+		<answer>
+			<label>During micturition</label>
+		</answer>
+		<answer>
+			<label>After micturition</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>11</id>
+		<label>Itching/Rash</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>15,12</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>15</id>
+		<label>Periviaginal</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>12</id>
+		<label>Perianal</label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	<question>
+		<id>16</id>
+		<label>Incontinence</label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+			<follow>2,3</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Vaginal Discharge</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>14,9</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>	
+		<id>20</id>
+		<label>Others</label>
+		<type>text</type>
+	</question>
+
+</form>

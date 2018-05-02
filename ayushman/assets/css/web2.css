@@ -1,0 +1,62 @@
+/* CSS Document */
+
+/*body{
+	padding:0px;
+	margin:0px;
+	background-image:url(/ayushman/assets/images/1stPage_bg.png);
+	background-repeat:repeat-x;
+}*/
+.Box_bg{
+	background-image:url(/ayushman/assets/images/Body_BoxBg.png);
+	height:50px;
+	background-repeat:repeat-x;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:9pt;
+	line-height:12pt;
+	color:#666666;
+	text-align:justify;
+	padding-top:5px;	
+	margin-right: 15px;
+	margin-left: 10px;
+}
+.bodytext{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:9pt;
+	line-height:14pt;
+	color:#333333;
+	text-align:justify;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+.Footer_text {
+    color: #FFFFFF;
+    font-family: tahoma;
+    font-size: 11px;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-decoration: none;
+}
+.bodytext {
+    color: #333333;
+    font-family: tahoma;
+    font-size: 11px;
+    line-height: 14pt;
+    text-align: justify;
+}
+
+.copyright{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:8pt;
+	color:#FFFFFF;
+	background-color:#1f8dcd;
+	height:25px;
+	line-height:25px;
+	vertical-align:middle;
+	text-align:center;
+}
+.Photo Gallery{
+	background-image:url(/ayushman/assets/images/photoGallery.gif);
+	width:168px;
+	height:176px;
+}

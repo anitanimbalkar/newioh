@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,3,4</questions>
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>5,7,6</questions>
+		<layout>Vertical</layout>
+	</container>
+	<question>
+		<id>1</id>
+		<label>Thyromegaly</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>2</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Type</label>
+		<type>DD</type>
+		<answer>
+			<label>Nodular</label>
+		</answer>
+		<answer>
+			<label>Generalized</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Bruit</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>JVP</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Raised</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Lymphadenopathy</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>7</id>
+		<label>Carotid   </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Decreased</label>
+		</answer>
+		<answer>
+			<label>Bruit</label>
+			<follow>8</follow>
+		</answer>
+	</question>
+	<question>
+		<id>8</id>
+		<label>Bruit </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	<question>
+		<id>6</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+	
+</form>

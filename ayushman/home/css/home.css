@@ -1,0 +1,13 @@
+.text {
+	color:black;
+	font-size:16px;
+	text-align: left;
+	font-family:"Open Sans",sans-serif;
+}
+.h3font{
+	color: black;
+	font-size: 25px;
+}
+.h3fontmargin{
+	margin-top: 50px;
+}

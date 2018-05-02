@@ -1,0 +1,360 @@
+<?php defined('SYSPATH') or die('No direct script access.'); ?>
+
+2017-07-08 00:04:11 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: home/index.shtmlrobots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 00:04:11 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: home/index.shtmlrobots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 00:08:36 --- ERROR: HTTP_Exception_404 [ 404 ]: The requested URL apple-app-site-association was not found on this server. ~ SYSPATH/classes/kohana/request/client/internal.php [ 87 ]
+2017-07-08 00:08:36 --- STRACE: HTTP_Exception_404 [ 404 ]: The requested URL apple-app-site-association was not found on this server. ~ SYSPATH/classes/kohana/request/client/internal.php [ 87 ]
+--
+#0 /var/www/html/ayushman/system/classes/kohana/request/client.php(64): Kohana_Request_Client_Internal->execute_request(Object(Request))
+#1 /var/www/html/ayushman/system/classes/kohana/request.php(1142): Kohana_Request_Client->execute(Object(Request))
+#2 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#3 {main}
+2017-07-08 01:52:07 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 01:52:07 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 03:55:49 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 03:55:49 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 05:04:30 --- ERROR: Exception [ 0 ]: exception 'Exception' with message 'Error during submition of form' in /var/www/html/ayushman/application/classes/controller/cpasswordmanager.php:254
+Stack trace:
+#0 [internal function]: Controller_Cpasswordmanager->action_submitverifyuserquestionform()
+#1 /var/www/html/ayushman/system/classes/kohana/request/client/internal.php(118): ReflectionMethod->invoke(Object(Controller_Cpasswordmanager))
+#2 /var/www/html/ayushman/system/classes/kohana/request/client.php(64): Kohana_Request_Client_Internal->execute_request(Object(Request))
+#3 /var/www/html/ayushman/system/classes/kohana/request.php(1142): Kohana_Request_Client->execute(Object(Request))
+#4 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#5 {main} ~ APPPATH/classes/controller/cpasswordmanager.php [ 259 ]
+2017-07-08 05:04:30 --- STRACE: Exception [ 0 ]: exception 'Exception' with message 'Error during submition of form' in /var/www/html/ayushman/application/classes/controller/cpasswordmanager.php:254
+Stack trace:
+#0 [internal function]: Controller_Cpasswordmanager->action_submitverifyuserquestionform()
+#1 /var/www/html/ayushman/system/classes/kohana/request/client/internal.php(118): ReflectionMethod->invoke(Object(Controller_Cpasswordmanager))
+#2 /var/www/html/ayushman/system/classes/kohana/request/client.php(64): Kohana_Request_Client_Internal->execute_request(Object(Request))
+#3 /var/www/html/ayushman/system/classes/kohana/request.php(1142): Kohana_Request_Client->execute(Object(Request))
+#4 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#5 {main} ~ APPPATH/classes/controller/cpasswordmanager.php [ 259 ]
+--
+#0 [internal function]: Controller_Cpasswordmanager->action_submitverifyuserquestionform()
+#1 /var/www/html/ayushman/system/classes/kohana/request/client/internal.php(118): ReflectionMethod->invoke(Object(Controller_Cpasswordmanager))
+#2 /var/www/html/ayushman/system/classes/kohana/request/client.php(64): Kohana_Request_Client_Internal->execute_request(Object(Request))
+#3 /var/www/html/ayushman/system/classes/kohana/request.php(1142): Kohana_Request_Client->execute(Object(Request))
+#4 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#5 {main}
+2017-07-08 05:22:36 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 05:22:36 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 05:22:37 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: sitemap.xml ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 05:22:37 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: sitemap.xml ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 07:00:01 --- ERROR: ErrorException [ 2 ]: include_once(/ayushman/application/classes/helper/notificationsender.php): failed to open stream: No such file or directory ~ APPPATH/classes/controller/cprogrammanager.php [ 2 ]
+2017-07-08 07:00:01 --- STRACE: ErrorException [ 2 ]: include_once(/ayushman/application/classes/helper/notificationsender.php): failed to open stream: No such file or directory ~ APPPATH/classes/controller/cprogrammanager.php [ 2 ]
+--
+#0 /var/www/html/ayushman/application/classes/controller/cprogrammanager.php(2): Kohana_Core::error_handler(2, 'include_once(/a...', '/var/www/html/a...', 2, Array)
+#1 /var/www/html/ayushman/application/classes/controller/cprogrammanager.php(2): include_once()
+#2 /var/www/html/ayushman/system/classes/kohana/core.php(496): require('/var/www/html/a...')
+#3 [internal function]: Kohana_Core::auto_load('controller_cpro...')
+#4 [internal function]: spl_autoload_call('controller_cpro...')
+#5 /var/www/html/ayushman/system/classes/kohana/request/client/internal.php(85): class_exists('controller_cpro...')
+#6 /var/www/html/ayushman/system/classes/kohana/request/client.php(64): Kohana_Request_Client_Internal->execute_request(Object(Request))
+#7 /var/www/html/ayushman/system/classes/kohana/request.php(1142): Kohana_Request_Client->execute(Object(Request))
+#8 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#9 {main}
+2017-07-08 07:00:25 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 07:00:25 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 08:35:00 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: home/images/btn-close.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 08:35:00 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: home/images/btn-close.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 09:25:38 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 09:25:38 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 09:25:40 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 09:25:40 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 09:25:42 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 09:25:42 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 09:25:43 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 09:25:43 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 09:25:51 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 09:25:51 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 09:25:53 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 09:25:53 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 09:25:54 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 09:25:54 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 10:30:56 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 10:30:56 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 13:16:31 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 13:16:31 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 14:53:32 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 14:53:32 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 15:19:16 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 15:19:16 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 16:17:47 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 16:17:47 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 16:18:13 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cregistrar/Thanku.shtml ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 16:18:13 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cregistrar/Thanku.shtml ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 16:24:42 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 16:24:42 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 17:38:35 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 17:38:35 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 17:42:43 --- ERROR: Exception [ 0 ]: exception 'ErrorException' with message 'Undefined offset: 2' in /var/www/html/ayushman/application/classes/model/user.php:167
+Stack trace:
+#0 /var/www/html/ayushman/application/classes/model/user.php(167): Kohana_Core::error_handler(8, 'Undefined offse...', '/var/www/html/a...', 167, Array)
+#1 /var/www/html/ayushman/application/classes/model/doctoractiveclinic.php(11): Model_User->get_info('57')
+#2 /var/www/html/ayushman/application/classes/controller/cconsultation.php(297): Model_Doctoractiveclinic->get('57')
+#3 [internal function]: Controller_Cconsultation->action_getmyclinics()
+#4 /var/www/html/ayushman/system/classes/kohana/request/client/internal.php(118): ReflectionMethod->invoke(Object(Controller_Cconsultation))
+#5 /var/www/html/ayushman/system/classes/kohana/request/client.php(64): Kohana_Request_Client_Internal->execute_request(Object(Request))
+#6 /var/www/html/ayushman/system/classes/kohana/request.php(1142): Kohana_Request_Client->execute(Object(Request))
+#7 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#8 {main} ~ APPPATH/classes/model/doctoractiveclinic.php [ 32 ]
+2017-07-08 17:42:43 --- STRACE: Exception [ 0 ]: exception 'ErrorException' with message 'Undefined offset: 2' in /var/www/html/ayushman/application/classes/model/user.php:167
+Stack trace:
+#0 /var/www/html/ayushman/application/classes/model/user.php(167): Kohana_Core::error_handler(8, 'Undefined offse...', '/var/www/html/a...', 167, Array)
+#1 /var/www/html/ayushman/application/classes/model/doctoractiveclinic.php(11): Model_User->get_info('57')
+#2 /var/www/html/ayushman/application/classes/controller/cconsultation.php(297): Model_Doctoractiveclinic->get('57')
+#3 [internal function]: Controller_Cconsultation->action_getmyclinics()
+#4 /var/www/html/ayushman/system/classes/kohana/request/client/internal.php(118): ReflectionMethod->invoke(Object(Controller_Cconsultation))
+#5 /var/www/html/ayushman/system/classes/kohana/request/client.php(64): Kohana_Request_Client_Internal->execute_request(Object(Request))
+#6 /var/www/html/ayushman/system/classes/kohana/request.php(1142): Kohana_Request_Client->execute(Object(Request))
+#7 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#8 {main} ~ APPPATH/classes/model/doctoractiveclinic.php [ 32 ]
+--
+#0 /var/www/html/ayushman/application/classes/controller/cconsultation.php(297): Model_Doctoractiveclinic->get('57')
+#1 [internal function]: Controller_Cconsultation->action_getmyclinics()
+#2 /var/www/html/ayushman/system/classes/kohana/request/client/internal.php(118): ReflectionMethod->invoke(Object(Controller_Cconsultation))
+#3 /var/www/html/ayushman/system/classes/kohana/request/client.php(64): Kohana_Request_Client_Internal->execute_request(Object(Request))
+#4 /var/www/html/ayushman/system/classes/kohana/request.php(1142): Kohana_Request_Client->execute(Object(Request))
+#5 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#6 {main}
+2017-07-08 17:42:43 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/img/icon-edit-delete.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 17:42:43 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/img/icon-edit-delete.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 17:42:44 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/app/css/images/ui-bg_highlight-soft_100_eeeeee_1x100.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 17:42:44 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/app/css/images/ui-bg_highlight-soft_100_eeeeee_1x100.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 17:49:20 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].header}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 17:49:20 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].header}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 17:49:20 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{appointment_info.PatientPhoto}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 17:49:20 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{appointment_info.PatientPhoto}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 17:49:20 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].signature}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 17:49:20 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].signature}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 17:49:20 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].footer}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 17:49:20 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].footer}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 17:51:06 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/app/css/images/ui-icons_ffffff_256x240.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 17:51:06 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/app/css/images/ui-icons_ffffff_256x240.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 18:11:11 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/img/icon-edit-delete.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 18:11:11 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/img/icon-edit-delete.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 18:11:12 --- ERROR: Exception [ 0 ]: exception 'ErrorException' with message 'Undefined offset: 2' in /var/www/html/ayushman/application/classes/model/user.php:167
+Stack trace:
+#0 /var/www/html/ayushman/application/classes/model/user.php(167): Kohana_Core::error_handler(8, 'Undefined offse...', '/var/www/html/a...', 167, Array)
+#1 /var/www/html/ayushman/application/classes/model/doctoractiveclinic.php(11): Model_User->get_info('57')
+#2 /var/www/html/ayushman/application/classes/controller/cconsultation.php(297): Model_Doctoractiveclinic->get('57')
+#3 [internal function]: Controller_Cconsultation->action_getmyclinics()
+#4 /var/www/html/ayushman/system/classes/kohana/request/client/internal.php(118): ReflectionMethod->invoke(Object(Controller_Cconsultation))
+#5 /var/www/html/ayushman/system/classes/kohana/request/client.php(64): Kohana_Request_Client_Internal->execute_request(Object(Request))
+#6 /var/www/html/ayushman/system/classes/kohana/request.php(1142): Kohana_Request_Client->execute(Object(Request))
+#7 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#8 {main} ~ APPPATH/classes/model/doctoractiveclinic.php [ 32 ]
+2017-07-08 18:11:12 --- STRACE: Exception [ 0 ]: exception 'ErrorException' with message 'Undefined offset: 2' in /var/www/html/ayushman/application/classes/model/user.php:167
+Stack trace:
+#0 /var/www/html/ayushman/application/classes/model/user.php(167): Kohana_Core::error_handler(8, 'Undefined offse...', '/var/www/html/a...', 167, Array)
+#1 /var/www/html/ayushman/application/classes/model/doctoractiveclinic.php(11): Model_User->get_info('57')
+#2 /var/www/html/ayushman/application/classes/controller/cconsultation.php(297): Model_Doctoractiveclinic->get('57')
+#3 [internal function]: Controller_Cconsultation->action_getmyclinics()
+#4 /var/www/html/ayushman/system/classes/kohana/request/client/internal.php(118): ReflectionMethod->invoke(Object(Controller_Cconsultation))
+#5 /var/www/html/ayushman/system/classes/kohana/request/client.php(64): Kohana_Request_Client_Internal->execute_request(Object(Request))
+#6 /var/www/html/ayushman/system/classes/kohana/request.php(1142): Kohana_Request_Client->execute(Object(Request))
+#7 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#8 {main} ~ APPPATH/classes/model/doctoractiveclinic.php [ 32 ]
+--
+#0 /var/www/html/ayushman/application/classes/controller/cconsultation.php(297): Model_Doctoractiveclinic->get('57')
+#1 [internal function]: Controller_Cconsultation->action_getmyclinics()
+#2 /var/www/html/ayushman/system/classes/kohana/request/client/internal.php(118): ReflectionMethod->invoke(Object(Controller_Cconsultation))
+#3 /var/www/html/ayushman/system/classes/kohana/request/client.php(64): Kohana_Request_Client_Internal->execute_request(Object(Request))
+#4 /var/www/html/ayushman/system/classes/kohana/request.php(1142): Kohana_Request_Client->execute(Object(Request))
+#5 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#6 {main}
+2017-07-08 18:11:13 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/app/css/images/ui-bg_highlight-soft_100_eeeeee_1x100.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 18:11:13 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/app/css/images/ui-bg_highlight-soft_100_eeeeee_1x100.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 18:14:46 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/app/css/images/ui-bg_inset-hard_100_f5f8f9_1x100.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 18:14:46 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/app/css/images/ui-bg_inset-hard_100_f5f8f9_1x100.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 18:25:31 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].header}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 18:25:31 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].header}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 18:25:31 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{appointment_info.PatientPhoto}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 18:25:31 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{appointment_info.PatientPhoto}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 18:25:31 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].footer}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 18:25:31 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].footer}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 18:25:31 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].signature}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 18:25:31 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].signature}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 18:25:58 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/app/css/images/ui-icons_ffffff_256x240.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 18:25:58 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/app/css/images/ui-icons_ffffff_256x240.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 18:53:50 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 18:53:50 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: robots.txt ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 19:28:07 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/img/icon-edit-delete.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 19:28:07 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/img/icon-edit-delete.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 19:28:10 --- ERROR: Exception [ 0 ]: exception 'ErrorException' with message 'Undefined offset: 2' in /var/www/html/ayushman/application/classes/model/user.php:167
+Stack trace:
+#0 /var/www/html/ayushman/application/classes/model/user.php(167): Kohana_Core::error_handler(8, 'Undefined offse...', '/var/www/html/a...', 167, Array)
+#1 /var/www/html/ayushman/application/classes/model/doctoractiveclinic.php(11): Model_User->get_info('57')
+#2 /var/www/html/ayushman/application/classes/controller/cconsultation.php(297): Model_Doctoractiveclinic->get('57')
+#3 [internal function]: Controller_Cconsultation->action_getmyclinics()
+#4 /var/www/html/ayushman/system/classes/kohana/request/client/internal.php(118): ReflectionMethod->invoke(Object(Controller_Cconsultation))
+#5 /var/www/html/ayushman/system/classes/kohana/request/client.php(64): Kohana_Request_Client_Internal->execute_request(Object(Request))
+#6 /var/www/html/ayushman/system/classes/kohana/request.php(1142): Kohana_Request_Client->execute(Object(Request))
+#7 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#8 {main} ~ APPPATH/classes/model/doctoractiveclinic.php [ 32 ]
+2017-07-08 19:28:10 --- STRACE: Exception [ 0 ]: exception 'ErrorException' with message 'Undefined offset: 2' in /var/www/html/ayushman/application/classes/model/user.php:167
+Stack trace:
+#0 /var/www/html/ayushman/application/classes/model/user.php(167): Kohana_Core::error_handler(8, 'Undefined offse...', '/var/www/html/a...', 167, Array)
+#1 /var/www/html/ayushman/application/classes/model/doctoractiveclinic.php(11): Model_User->get_info('57')
+#2 /var/www/html/ayushman/application/classes/controller/cconsultation.php(297): Model_Doctoractiveclinic->get('57')
+#3 [internal function]: Controller_Cconsultation->action_getmyclinics()
+#4 /var/www/html/ayushman/system/classes/kohana/request/client/internal.php(118): ReflectionMethod->invoke(Object(Controller_Cconsultation))
+#5 /var/www/html/ayushman/system/classes/kohana/request/client.php(64): Kohana_Request_Client_Internal->execute_request(Object(Request))
+#6 /var/www/html/ayushman/system/classes/kohana/request.php(1142): Kohana_Request_Client->execute(Object(Request))
+#7 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#8 {main} ~ APPPATH/classes/model/doctoractiveclinic.php [ 32 ]
+--
+#0 /var/www/html/ayushman/application/classes/controller/cconsultation.php(297): Model_Doctoractiveclinic->get('57')
+#1 [internal function]: Controller_Cconsultation->action_getmyclinics()
+#2 /var/www/html/ayushman/system/classes/kohana/request/client/internal.php(118): ReflectionMethod->invoke(Object(Controller_Cconsultation))
+#3 /var/www/html/ayushman/system/classes/kohana/request/client.php(64): Kohana_Request_Client_Internal->execute_request(Object(Request))
+#4 /var/www/html/ayushman/system/classes/kohana/request.php(1142): Kohana_Request_Client->execute(Object(Request))
+#5 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#6 {main}
+2017-07-08 19:28:11 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/app/css/images/ui-bg_highlight-soft_100_eeeeee_1x100.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 19:28:11 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/app/css/images/ui-bg_highlight-soft_100_eeeeee_1x100.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 19:34:00 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].header}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 19:34:00 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].header}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 19:34:00 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{appointment_info.PatientPhoto}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 19:34:00 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{appointment_info.PatientPhoto}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 19:34:00 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].signature}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 19:34:00 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].signature}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 19:34:00 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].footer}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 19:34:00 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: cconsultation/{{myprofile['userinfo'].footer}} ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}
+2017-07-08 19:34:53 --- ERROR: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/app/css/images/ui-icons_ffffff_256x240.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+2017-07-08 19:34:53 --- STRACE: HTTP_Exception_404 [ 404 ]: Unable to find a route to match the URI: assets/app/css/images/ui-icons_ffffff_256x240.png ~ SYSPATH/classes/kohana/request.php [ 1130 ]
+--
+#0 /var/www/html/ayushman/index.php(109): Kohana_Request->execute()
+#1 {main}

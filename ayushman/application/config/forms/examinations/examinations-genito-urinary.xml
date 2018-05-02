@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>33,15,23</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>External genitalia</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>40,2,3,4,5</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>40</id>
+		<label>Discharge</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Clear</label>
+		</answer>
+		<answer>
+			<label>Purulent</label>
+		</answer>
+		<answer>
+			<label>Bloody</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Rash </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>9,31,32</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Discoloration</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>9,31,32</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+			
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Lumps </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>11,12,13,14</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Hydrocoele </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+
+	
+	<question>
+		<id>9</id>
+		<label>Color</label>
+		<type>text</type>
+	</question>
+	<question>
+	   <id>31</id>
+		<label>Severity </label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	<question>
+		<id>32</id>
+		<label>Other</label>
+		<type>text</type>
+	</question>
+
+	<question>
+		<id>33</id>
+		<label>Rectal </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>41,35,36,24,39</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>41</id>
+		<label>Anal</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>34</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>34</id>
+		<label>Number</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>35</id>
+		<label>Prolapse </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>36</id>
+		<label>Fissure </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>37,38</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>37</id>
+		<label>Number </label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>38</id>
+		<label>Degree</label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Mod</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	<question>
+		<id>39</id>
+		<label>Mass</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>51,52,42</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>51</id>
+		<label>Mobility </label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>52</id>
+		<label>Colour </label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>42</id>
+		<label>Bleeding on touch </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Location</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Size</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>color</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>consistency</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Per vaginal examination</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>43,19</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+			
+		</answer>
+	</question>
+	<question>
+		<id>16</id>
+		<label>Location</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>43</id>
+		<label>Polyps </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>16,17,18</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Size</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label>Bleeding</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>Lumps </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>20,21,22</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>Colour</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>21</id>
+		<label>Consistency</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>22</id>
+		<label>Bleeding on touch   </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>23</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+	  
+	<question>
+		<id>24</id>
+		<label>Haemorrhoids</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>25,26,27</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>25</id>
+		<label>Number</label>
+		<type>Text</type>
+	</question>	
+	
+	<question>
+		<id>26</id>
+		<label>Degree</label>
+		<type>Text</type>
+	</question>	
+	
+	<question>
+		<id>27</id>
+		<label>Bleeding </label>
+		<type>Text</type>
+	</question>	
+	
+	
+</form>

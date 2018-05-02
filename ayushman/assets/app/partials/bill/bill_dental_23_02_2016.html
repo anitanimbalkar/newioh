@@ -1,0 +1,252 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.action').hide();
+
+	});
+	function PrintElem(elem)
+    {
+        Popup($(elem).html());
+    }
+
+    function Popup(data) 
+    {
+        var mywindow = window.open('', 'print', 'height=400,width=600');
+        mywindow.document.write('<html><head><title>my div</title>');
+        /*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+</script>
+
+<div style="width:100%;">
+<input type="hidden" value="2" id="autocompletevalue" />
+<table >
+		<td width="100%">
+			<div ng-show="examination_data.display_savebutton" id="printprescription"  style="box-shadow:2px 7px 19px #888888;">
+			<style type="text/css">
+				@media only print
+				{	
+				
+				}
+				@page {
+					/* dimensions for the whole page */
+					size: A5;
+					margin: 10;
+				}
+				body {
+					/* A5 dimensions */
+					height: 210mm;
+					width: 158.5mm;
+					margin: 10;
+				}
+			</style>
+			<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+			<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+			<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+			<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+			<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+			<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+			<table width="100%" class="table_roundborder" padding="10px">
+				<tr>
+					<div id="name" style="height:auto;width:100%;">
+						<div style="border-bottom:1px solid;">
+							<div style="border-bottom:1px solid;">
+								<tr><font size="5" width="100%"color="1e90ff"style="float:centre;">&nbsp;&nbsp;{{myclinics['clinicinfo'][0].clinicname}}</font>&nbsp;</br>
+									<span class="bodytext_normal" style="float:left; font-size:15px;" >&nbsp;&nbsp;Dr. {{myprofile['userinfo'].name}} </span>
+									<span class="bodytext_normal" style="float:right;font-size:15px;" >Reg No : {{myprofile['userinfo'].regno}}&nbsp;&nbsp; </span>
+								</tr>	
+							</div>
+
+							<div style="border-bottom:1px solid;">
+								<tr style="font-size:9pt;font-family:arial;border-collapse: collapse;padding-top: 0.0em;padding-bottom: 1.5em;">
+								<span ></br></br>&nbsp;&nbsp;{{myclinics['clinicinfo'][0].line1}},{{myclinics['clinicinfo'][0].nearmark}},
+								</br>
+									&nbsp;&nbsp;{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},{{myclinics['clinicinfo'][0].state}}
+								</br>
+										&nbsp;&nbsp;Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}</span>
+								</tr>
+							</div>
+						
+							<div style="border-bottom:1px solid;">
+								<tr>
+								<label style="float:left;height:auto;width:30%;vertical-align:top">
+									&nbsp;&nbsp;No:&nbsp; &nbsp; <input id="billid"  name="billid" style=" width:50px;border:none;text-align:right; border-bottom:1px solid;font-weight:bold" ng-model="appointment_info.billid" value="{{appointment_info.billid}}"/>
+								</label>	
+								<label style="float:right;">
+									Date &nbsp;:&nbsp;&nbsp;<label>{{billdate}}&nbsp;&nbsp; </label>
+								</label>
+								</tr>
+								
+								<tr>
+									</br></br></br></br>
+									&nbsp;&nbsp;Received with thanks from Mr./Mrs./Mast./Miss. <input id="name" name="name" style=" width:51%;border:none; border-bottom:1px solid;font-weight:bold" ng-model="appointment_info.Patientname" value="{{appointment_info.Patientname}}"/>
+									</br></br>
+									&nbsp;&nbsp;The Sum of Rupees <input id="totalsum"  name="totalamt" style=" width:10%;border:none; border-bottom:1px solid;font-weight:bold" readonly value="{{appointment_info.totalsum}}" />(<input readonly value="{{appointment_info.amountinwords}}" id="amtinwords" style=" width:58%;border:none; border-bottom:1px solid;font-weight:bold" />)
+									</br></br>
+									&nbsp;&nbsp;towards following <input id="diagnosis"  name="diagnosis" style=" width:70%;border:none; border-bottom:1px solid;font-weight:bold" ng-model="examination_data.text_diagnosis" value ="{{examination_data.text_diagnosis}}"/>
+									</br></br>									
+								</tr>
+							</div>
+						</div>
+								<table cellpadding="10" style="width:100%"  frame="box">
+									<tr>
+									<td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Particulars </td>
+										<td> Amount </td>
+									</tr>
+								</table>
+								<div ng-app ="1" style="padding-bottom:5px;">
+								<table cellpadding="5" style="width:100%" frame="box">
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Consultation & X-Ray      :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="appointment_info.consultationfee" id="consultation" value="{{appointment_info.consultationfee}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Conservative Treatment  </td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Silver Filling     :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();"  id="charge_silverfilling" ng-model="billdetail.silverfilling" value="{{billdetail.silverfilling}}" style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Composite Filling  :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge_compositefilling" ng-model="billdetail.compositefilling" value="{{billdetail.compositefilling}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Root Canal Treatment      :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge_rootcanal" ng-model="billdetail.rootcanal" value="{{billdetail.rootcanal}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Periodental Treatment     :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge_periodental" ng-model="billdetail.periodental" value="{{billdetail.periodental}}" style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oral Surgery (Extraction) :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge_oralsurgery" ng-model="billdetail.oralsurgery" value="{{billdetail.oralsurgery}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Orthodentic Treatment     :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge_orthodentic" ng-model="billdetail.orthodentic" value="{{billdetail.orthodentic}}" style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Metal Capping             :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge_metalcapping" ng-model="billdetail.metalcapping" value="{{billdetail.metalcapping}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ceramic Crown             :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge_ceramiccrown" ng-model="billdetail.ceramiccrown" value="{{billdetail.ceramiccrown}}" style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ceramic Bridge            :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge_ceramicbridge" ng-model="billdetail.ceramicbridge" value="{{billdetail.ceramicbridge}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Metal Bridge              :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge_metalbridge" ng-model="billdetail.metalbridge" value="{{billdetail.metalbridge}}" style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Others                    :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge_misc" ng-model="billdetail.misc" value="{{billdetail.misc}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>								
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Rs.                 :</td><td><input ng-model="appointment_info.totalsum" id="totalbill" style="border:none;width:60;border-bottom:1px solid;" readonly ng-model="appointment_info.totalsum" value="{{appointment_info.totalsum}}"/></td></tr>
+								</table>
+								</div>
+					</div>
+				</tr>
+			</table>
+			</div>	
+			
+			<div ng-hide="examination_data.display_savebutton" id="printprescriptionbill"  style="box-shadow:2px 7px 19px #888888;">
+			<style type="text/css">
+				@media only print
+				{	
+				
+				}
+				@page {
+					/* dimensions for the whole page */
+					size: A5;
+					margin: 10;
+				}
+				body {
+					/* A5 dimensions */
+					height: 210mm;
+					width: 158.5mm;
+					margin: 10;
+				}
+			</style>
+			<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+			<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+			<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+			<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+			<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+			<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+			<table width="100%" class="table_roundborder" padding="10px">
+				<tr>
+					<div id="name" style="height:auto;width:100%;">
+						<div style="border-bottom:1px solid;">
+							<div style="border-bottom:1px solid;">
+								<tr><font size="5" width="100%"color="1e90ff"style="float:centre;">&nbsp;&nbsp;{{myclinics['clinicinfo'][0].clinicname}}</font>&nbsp;</br>
+									<span class="bodytext_normal" style="float:left; font-size:15px;" >&nbsp;&nbsp;Dr. {{myprofile['userinfo'].name}} </span>
+									<span class="bodytext_normal" style="float:right;font-size:15px;" >Reg No : {{myprofile['userinfo'].regno}}&nbsp;&nbsp; </span>
+								</tr>	
+							</div>
+
+							<div style="border-bottom:1px solid;">
+								<tr style="font-size:9pt;font-family:arial;border-collapse: collapse;padding-top: 0.0em;padding-bottom: 1.5em;">
+								<span ></br></br>&nbsp;&nbsp;{{myclinics['clinicinfo'][0].line1}},{{myclinics['clinicinfo'][0].nearmark}},
+								</br>
+									&nbsp;&nbsp;{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},{{myclinics['clinicinfo'][0].state}}
+								</br>
+										&nbsp;&nbsp;Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}</span>
+								</tr>
+							</div>
+						
+							<div style="border-bottom:1px solid;">
+								<tr>
+								<label style="float:left;height:auto;width:30%;vertical-align:top">
+									&nbsp;&nbsp;No:&nbsp; &nbsp; <input id="billid"  name="billid" style=" width:50px;border:none;text-align:right; border-bottom:1px solid;font-weight:bold" ng-model="appointment_info.billid" value="{{appointment_info.billid}}"/>
+								</label>	
+								<label style="float:right;">
+									Date &nbsp;:&nbsp;&nbsp;<label>{{billdate}}&nbsp;&nbsp; </label>
+								</label>
+								</tr>
+								
+								<tr>
+									</br></br></br></br>
+									&nbsp;&nbsp;Received with thanks from Mr./Mrs./Mast./Miss. <input id="name" name="name" style=" width:51%;border:none; border-bottom:1px solid;font-weight:bold" ng-model="appointment_info.Patientname" value="{{appointment_info.Patientname}}"/>
+									</br></br>
+									&nbsp;&nbsp;The Sum of Rupees <input id="totalsum"  name="totalamt" style=" width:10%;border:none; border-bottom:1px solid;font-weight:bold" readonly value="{{appointment_info.totalsum}}" />(<input readonly value="{{appointment_info.amountinwords}}" id="amtinwords" style=" width:58%;border:none; border-bottom:1px solid;font-weight:bold" />)
+									</br></br>
+									&nbsp;&nbsp;towards following <input id="diagnosis"  name="diagnosis" style=" width:70%;border:none; border-bottom:1px solid;font-weight:bold" ng-model="examination_data.text_diagnosis" value="{{examination_data.text_diagnosis}}"/>
+									</br></br>									
+								</tr>
+							</div>
+						</div>
+								<table cellpadding="10" style="width:100%"  frame="box">
+									<tr>
+									<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Particulars </td>
+										<td> Amount </td>
+									</tr>
+								</table>
+								<div ng-app ="2" style="padding-bottom:5px;">
+								<table cellpadding="5" style="width:100%" frame="box">
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Consultation & X-Ray      :</td><td><input class="textarea"  ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="appointment_info.consultationfee" id="consultation" value="{{appointment_info.consultationfee}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Conservative Treatment  </td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Silver Filling     :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.silverfilling" id="charge_silverfilling" value="{{billdetail.silverfilling}}" style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Composite Filling  :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.compositefilling"  id="charge_compositefilling" value="{{billdetail.compositefilling}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Root Canal Treatment      :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rootcanal"  id="charge_rootcanal" value="{{billdetail.rootcanal}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Periodental Treatment     :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.periodental"  id="charge_periodental" value="{{billdetail.periodental}}" style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oral Surgery (Extraction) :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.oralsurgery"  id="charge_oralsurgery" value="{{billdetail.oralsurgery}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Orthodentic Treatment     :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.orthodentic"  id="charge_orthodentic" value="{{billdetail.orthodentic}}" style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Metal Capping             :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.metalcapping"  id="charge_metalcapping" value="{{billdetail.metalcapping}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ceramic Crown             :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.ceramiccrown"  id="charge_ceramiccrown" value="{{billdetail.ceramiccrown}}" style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ceramic Bridge            :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.ceramicbridge"  id="charge_ceramicbridge" value="{{billdetail.ceramicbridge}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Metal Bridge              :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model= "billdetail.metalbridge"  id="charge_metalbridge" value="{{billdetail.metalbridge}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>						
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Others                    :</td><td><input class="textarea" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model= "billdetail.misc"  id="charge_misc" value="{{billdetail.misc}}"style="width:60;border:none;border-bottom:1px solid;"/></td></tr>	
+									<tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Rs.                 :</td><td><input ng-model="appointment_info.totalsum" id="totalbill" style="border:none;width:60;border-bottom:1px solid;" readonly value="{{appointment_info.totalsum}}"/></td></tr>
+								</table>
+								</div>
+					</div>
+				</tr>
+			</table>			
+			</div>
+		</td>
+		<td width="50px;" valign="top">
+			<form id="billform" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="billid" value="{{appointment_info.billid}}" >
+					<input type="hidden" name="totalamt" value="{{appointment_info.totalsum}}" >
+					<input type="hidden" name="diagnosis" value="{{examination_data.text_diagnosis}}" >
+					<input type="hidden" name="appid" value="{{appointment_info.appointment_id}}" >
+					<input type="hidden" name="extrabillfields" value="true">
+					<input type="hidden" name="charge_silverfilling" value="{{billdetail.silverfilling}}" >
+					<input type="hidden" name="charge_compositefilling" value="{{billdetail.compositefilling}}" >
+					<input type="hidden" name="charge_rootcanal" value="{{billdetail.rootcanal}}" >
+					<input type="hidden" name="charge_periodental" value="{{billdetail.periodental}}" >
+					<input type="hidden" name="charge_oralsurgery" value="{{billdetail.oralsurgery}}" >
+					<input type="hidden" name="charge_orthodentic" value="{{billdetail.orthodentic}}" >
+					<input type="hidden" name="charge_metalcapping" value="{{billdetail.metalcapping}}" >
+					<input type="hidden" name="charge_ceramiccrown" value="{{billdetail.ceramiccrown}}" >
+					<input type="hidden" name="charge_ceramicbridge" value="{{billdetail.ceramicbridge}}" >
+					<input type="hidden" name="charge_metalbridge" value="{{billdetail.metalbridge}}" >
+					<input type="hidden" name="charge_misc" value="{{billdetail.misc}}" >
+					<input type="hidden" name="patrelative" value="{{billdetail.patrelative}}" >
+					<input type="hidden" name="treatmentfrom" value="{{billdetail.treatmentfrom}}" >
+					<input type="hidden" name="treatmentto" value="{{billdetail.treatmentto}}" >
+
+			</form>
+			<div ng-if="examination_data.display_Rx!=false">
+			<input type="button" value="Rx" style="margin:5px;width:50px;" ng-click="$modalSuccess();" class="button" />
+			</div>
+			<input ng-show="examination_data.display_Rx!=false" type="button" value="Finish" ng-click="savebill();$modalCancel();" style="margin:5px;width:50px;" class="button" />
+			<input ng-show="examination_data.display_Rx==false && examination_data.display_savebutton==true" type="button" value="Save" ng-click="savebill();$modalCancel();" style="margin:5px;width:50px;" class="button" />
+			<input type="button" value="Print" style="margin:5px;width:50px;" ng-click="savebill();$modalCancel();" onclick="PrintElem('#printprescriptionbill');" class="button" />
+		</td>
+	</table>
+</div>

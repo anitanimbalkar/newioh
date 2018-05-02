@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>50,4,5,6,11</questions> 
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>14,19,23,55</questions>
+		<layout>Vertical</layout>
+	</container>	
+	<question>
+		<id>50</id>
+		<label>Para spinal spasm</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>2,3</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>			
+		</answer>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Location </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Severity </label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Scoliosis</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Loss of lumbar lordosis</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Lumps </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>7,8,9,10</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Colour </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Size </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>Consistency </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Mobility </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Tenderness</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>12,13</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Location </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Severity </label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Sensation</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>29,16,17,18</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>29</id>
+		<label>Touch</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Reduced</label>
+			<follow>2</follow>
+		</answer>
+		<answer>
+			<label>Increased</label>
+			<follow>15</follow>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>16</id>
+		<label> Pain </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Reduced</label>
+			<follow>2</follow>
+		</answer>
+		<answer>
+			<label>Increased</label>
+			<follow>15</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label> Pressure</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Reduced</label>
+			<follow>2</follow>
+		</answer>
+		<answer>
+			<label>Increased</label>
+			<follow>15</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label> Temperature</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Reduced</label>
+			<follow>2</follow>
+		</answer>
+		<answer>
+			<label>Increased</label>
+			<follow>15</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>Vibration sense</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>52,20</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>52</id>
+		<label>Left Leg</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Reduced </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>Right Leg </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Reduced </label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>21</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>23</id>
+		<label>Reflexes </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>53,54</follow>
+		</answer>
+		<answer>
+			<label>No </label>
+		</answer>
+	</question>
+	<question>
+		<id>53</id>
+		<label>Right Leg </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>26,27,28</follow>
+		</answer>
+		<answer>
+			<label>No </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>54</id>
+		<label>Left Leg </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>26,27,28</follow>
+		</answer>
+		<answer>
+			<label>No </label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>26</id>
+		<label> Knee</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Reduced </label>
+		</answer>
+		<answer>
+			<label>Increased</label>
+		</answer>
+	</question>
+	<question>
+		<id>27</id>
+		<label>Ankle</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Reduced </label>
+		</answer>
+		<answer>
+			<label>Increased</label>
+		</answer>
+	</question>
+	<question>
+		<id>28</id>
+		<label>Plantars</label>
+		<type>DD</type>
+		<answer>
+			<label>Flexor</label>
+		</answer>
+		<answer>
+			<label>Extensor</label>
+		</answer>
+	</question>
+	<question>
+		<id>15</id>
+		<label>Location</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>55</id>
+		<label>Other</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>100</id>
+		<type>Separator</type>
+	</question>
+	
+</form>

@@ -1,0 +1,367 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,3,4,5,6,7,8,9,10,11,101,102,12,13,14,500</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>15,16,106,103,201,202,203,204,205,17,18,19,20,21,501,500</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label> - Histoy</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label> - Examination</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label> - Complaint</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label> - Onset </label>
+		<type>DD</type>
+		<answer>
+			<label> - Sudden </label>
+		</answer>
+		<answer>
+			<label> - Gradual </label>
+		</answer>
+	</question>
+	<question>
+		<id>5</id>
+		<label> - Previous Episodes  </label>
+		<type>DD</type>
+		<answer>
+			<label> - Present </label>
+		</answer>
+		<answer>
+			<label> - Absent </label>
+		</answer>
+	</question>
+	<question>
+		<id>6</id>
+		<label> - Change </label>
+		<type>DD</type>
+		<answer>
+			<label> - Fluctuating  </label>
+		</answer>
+		<answer>
+			<label> - Persisting  </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label> - Location </label>
+		<type>DD</type>
+		<answer>
+			<label> - Skin  </label>
+		</answer>
+		<answer>
+			<label> - Mucous Membranes  </label>
+		</answer>
+		<answer>
+			<label> - Flexural Surfaces   </label>
+		</answer>
+		<answer>
+			<label> - Extensor Parts  </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label> - Distribution  </label>
+		<type>DD</type>
+		<answer>
+			<label> - Generalised  </label>
+		</answer>
+		<answer>
+			<label> - Localised  </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label> - Provoking</label>
+		<type>DD</type>
+		<answer>
+			<label> - Heat</label>
+		</answer>
+		<answer>
+			<label> - Cold </label>
+		</answer>
+		<answer>
+			<label> - Drug  </label>
+		</answer>
+	</question>
+	<question>
+		<id>10</id>
+		<label> - Relieving Factors</label>
+		<type>DD</type>
+		<answer>
+			<label> - Heat</label>
+		</answer>
+		<answer>
+			<label> - Cold </label>
+		</answer>
+		<answer>
+			<label> - Drug  </label>
+		</answer>
+	</question>
+	<question>
+		<id>11</id>
+		<label> - Associated symptoms</label>
+		<type>label</type>				
+	</question>
+
+	<question>
+		<id>101</id>
+		<label> - Itch </label>
+		<type>DD</type>
+		<answer>
+			<label> - Present</label>
+		</answer>
+		<answer>
+			<label> - Absent </label>
+		</answer>		
+	</question>
+	<question>
+		<id>102</id>
+		<label> - Tenderness </label>
+		<type>DD</type>
+		<answer>
+			<label> - Present</label>
+		</answer>
+		<answer>
+			<label> - Absent </label>
+		</answer>		
+	</question>
+	<question>
+		<id>103</id>
+		<label> - Discharge </label>
+		<type>DD</type>
+		<answer>
+			<label> - Present</label>
+		</answer>
+		<answer>
+			<label> - Absent </label>
+		</answer>		
+	</question>
+
+	
+	<question>
+		<id>201</id>
+		<label> - Systemic symptoms - Pyrexia</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>202</id>
+		<label> - Systemic symptoms - Malaise</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>203</id>
+		<label> - Systemic symptoms - Joint Pain</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>204</id>
+		<label> - Systemic symptoms - Swelling </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>205</id>
+		<label> - Systemic symptoms - Weight Loss</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>206</id>
+		<label> - Systemic symptoms - Other</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label> - Past Medical History</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label> - Family History</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label> - Occupation</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label> - Hobbies And Pasttime</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label> - Travel - India - Elaborate</label>
+		<type>text</type>
+	</question>
+	
+	
+	<question>
+		<id>106</id>
+		<label> - Travel - Abroad - Elaborate</label>
+		<type>text</type>
+	</question>	
+	
+	<question>
+		<id>17</id>
+		<label> - Drugs </label>
+		<type>multiDD</type>
+		<answer>
+			<label> - Steroids</label>
+		</answer>
+		<answer>
+			<label> - OTC Drugs</label>
+		</answer>
+		<answer>
+			<label> - Herbal Remedies</label>
+		</answer>
+		<answer>
+			<label> - Other</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	<question>
+		<id>18</id>
+		<label> - Smoking </label>
+		<type>DD</type>
+		<answer>
+			<label> - Present</label>
+			<follow>107</follow>
+		</answer>
+		<answer>
+			<label> - Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label> - Alcohol </label>
+		<type>DD</type>
+		<answer>
+			<label> - Present</label>
+			<follow>107</follow>
+		</answer>
+		<answer>
+			<label> - Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>107</id>
+		<label> - Duretion</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label> - Allergies Present</label>
+		<type>DD</type>
+		<answer>
+			<label> - Yes</label>
+			<follow>108,109,110</follow>
+		</answer>
+		<answer>
+			<label> - No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>108</id>
+		<label> - Nasal</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>109</id>
+		<label> - Respiratory</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>110</id>
+		<label> - Others</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>21</id>
+		<label> - Psychological And Social Triggers  </label>
+		<type>DD</type>
+		<answer>
+			<label> - Absent</label>
+		</answer>
+		<answer>
+			<label> - Anxiety</label>
+		</answer>
+		<answer>
+			<label> - Depression </label>
+		</answer>
+		<answer>
+			<label> - Social Isolation</label>
+		</answer>
+		
+		<answer>
+			<label> - Other </label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>300</id>
+		<label> - Elaborate</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>500</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>501</id>
+		<label> - Others</label>
+		<type>text</type>
+	</question>
+	
+</form>

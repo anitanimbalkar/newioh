@@ -1,0 +1,1515 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,2,3,4,5,7,8,9,10,11,12,13,14,15,400,500</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>16,17,500,18,500,19,500,20,500,21,500,22,500</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>History</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Pain In Throat</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Difficulty In Swallowing</label>
+		<type>DD</type>
+		<answer>
+			<label>Solid</label>
+		</answer>
+		<answer>
+			<label>Liquid</label>
+		</answer>
+		<answer>
+			<label>Both</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Fever</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Cough</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>101,102</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>101</id>
+		<label>Type</label>
+		<type>DD</type>
+		<answer>
+			<label>Dry</label>
+		</answer>
+		<answer>
+			<label>With Expectoration</label>
+		</answer>
+		<answer>
+			<label>Other </label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>102</id>
+		<label>Color</label>
+		<type>DD</type>
+		<answer>
+			<label>White</label>
+		</answer>
+		<answer>
+			<label>Yellow</label>
+		</answer>
+		<answer>
+			<label>Greenish</label>
+		</answer>
+		<answer>
+			<label>Other </label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+		
+	<!--<question>
+		<id>6</id>
+		<label>Epistaxis</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>103,104</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>-->
+	
+	<question>
+		<id>103</id>
+		<label>Posterior</label>
+		<type>DD</type>
+		<answer>
+			<label>Right</label>
+		</answer>
+		<answer>
+			<label>Left</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>104</id>
+		<label>Anterior</label>
+		<type>DD</type>
+		<answer>
+			<label>Right</label>
+		</answer>
+		<answer>
+			<label>Left</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Change In Voice</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Difficulty In Breathing</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>Sensation Of Lump In Throat </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Burning Sensation In Throat </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Dryness Of Mouth </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Ulceration In Oral Cavity</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Difficulty In Speaking</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Allergy To Food Ingredients</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Habit</label>
+		<type>MultiDD</type>
+		<answer>
+			<label>Tobbaco</label>
+		</answer>
+		<answer>
+			<label>Smoking</label>
+		</answer>
+		<answer>
+			<label>Alcohol Paan</label>
+		</answer>
+		<answer>
+			<label>Other </label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>Examination</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Oral Cavity</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>105,106,107,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>105</id>
+		<label>Lip</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>201,202,203,204,205,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>201</id>
+		<label>Color</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>202</id>
+		<label>Swelling</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>203</id>
+		<label>Angle Of Mouth</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>204</id>
+		<label>Gingio Labial Sulcus</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>205</id>
+		<label>Teeth </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>106</id>
+		<label>Tongue</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>206,207,208,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>206</id>
+		<label>Ulceration </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Ant</label>
+		</answer>
+		<answer>
+			<label>Post</label>
+		</answer>
+		<answer>
+			<label>Lateral Border</label>
+		</answer>
+		<answer>
+			<label>Other </label>
+			<follow>300</follow>
+		</answer>
+			
+	</question>
+	
+	<question>
+		<id>207</id>
+		<label>Growth </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Ant</label>
+		</answer>
+		<answer>
+			<label>Post</label>
+		</answer>
+		<answer>
+			<label>Lateral Border</label>
+		</answer>
+		<answer>
+			<label>Other </label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>208</id>
+		<label>Tongue Tie</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+			
+	<question>
+		<id>107</id>
+		<label>Floor Of Mouth</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>209,210,211,212,213,214,215,216</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>209</id>
+		<label>Opening Of Salivary Gland</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>301,302,303</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>301</id>
+		<label>Parotid </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>401,402</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>302</id>
+		<label>Sub Mandibular  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>401,402</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>303</id>
+		<label>Sub Lingual </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>401,402</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>401</id>
+		<label>Right </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>402</id>
+		<label>Left </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>210</id>
+		<label>Tenderness Salivary Glands</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>211</id>
+		<label>Swelling Of Salivary Glands</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>212</id>
+		<label>Opening Of Mouth</label>
+		<type>DD</type>
+		<answer>
+			<label>Restricted</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>213</id>
+		<label>Difficulty In Chewing Food</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>214</id>
+		<label>Hard Palate</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>215</id>
+		<label>Soft Palate</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>216</id>
+		<label>Cheek Mucosa </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>304,305</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>304</id>
+		<label>Growth  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>305</id>
+		<label>Ulcer</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label>Tonsils</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>108,109</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>108</id>
+		<label>Right</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>217,218,219,220,221,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>109</id>
+		<label>Left</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>217,218,219,220,221,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>217</id>
+		<label>Size</label>
+		<type>DD</type>
+		<answer>
+			<label>Enlarged</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>218</id>
+		<label>Congestion</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>219</id>
+		<label>Tenderness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>220</id>
+		<label>Ant. Pillar </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>221</id>
+		<label>Post. Pillar </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>Post. Pharyngeal Wall </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>Naso Pharynx </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>110,111,112,113,114,115,116,117,118,119,120</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>110</id>
+		<label>E.T. Opening</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>222,223</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>222</id>
+		<label>Right</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>223</id>
+		<label>Left </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>111</id>
+		<label>Posterior Pharyngeal Wall</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>112</id>
+		<label>Post. 1/3 Tongue</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>113</id>
+		<label>Vellacula</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>224,225</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>224</id>
+		<label>Right</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>225</id>
+		<label>Left </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>114</id>
+		<label>Epiglottis</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>115</id>
+		<label>Shape</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>116</id>
+		<label>Oedema</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>117</id>
+		<label>Pyriform</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>226,227</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>226</id>
+		<label>Right</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>227</id>
+		<label>Left </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>118</id>
+		<label>Pooling Of Saliva</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>119</id>
+		<label>Aretinoid</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>228,229</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>228</id>
+		<label>Right</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>229</id>
+		<label>Left </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>120</id>
+		<label>Growth</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>230,231,232</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>230</id>
+		<label>Size </label>
+		<type>Text</type>
+	</question>
+		
+	<question>
+		<id>231</id>
+		<label>Congestion</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>232</id>
+		<label>Movement</label>
+		<type>DD</type>
+		<answer>
+			<label>Moves</label>
+		</answer>
+		<answer>
+			<label>Fixed</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>21</id>
+		<label>Vocal Cord </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>121,122</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>121</id>
+		<label>Right</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>233,234,235,236</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>233</id>
+		<label>Movement</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>234</id>
+		<label>Growth</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+		
+	<question>
+		<id>235</id>
+		<label>Ulceration</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>236</id>
+		<label>Phonatary Gap</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>122</id>
+		<label>Left</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>237,238,239,240</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>237</id>
+		<label>Movement</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>238</id>
+		<label>Growth</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+		
+	<question>
+		<id>239</id>
+		<label>Ulceration</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>240</id>
+		<label>Phonatary Gap</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>22</id>
+		<label>Neck</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>123,124,125</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>123</id>
+		<label>Lymph Node</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>241,242</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>241</id>
+		<label>Right</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>306,307</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>242</id>
+		<label>Left</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>306,307</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>306</id>
+		<label>Superficial</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>403,404,405</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>307</id>
+		<label>Deep</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>403,404,405</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>403</id>
+		<label>Level 1</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>501,502</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>404</id>
+		<label>Level 2</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>501,502</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>405</id>
+		<label>Level 3</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>501,502</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>501</id>
+		<label>Size</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>502</id>
+		<label>No</label>
+		<type>Text</type>
+	</question>
+		
+	<question>
+		<id>124</id>
+		<label>Thyroid</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>243,244</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>243</id>
+		<label>Right</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>308,309,310,311,312,313,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>244</id>
+		<label>Left</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>308,309,310,311,312,313,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>308</id>
+		<label>Swelling</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>	
+	
+	<question>
+		<id>309</id>
+		<label>Consistency</label>
+		<type>DD</type>
+		<answer>
+			<label>Solid</label>
+		</answer>
+		<answer>
+			<label>Cystic</label>
+		</answer>
+		<answer>
+			<label>Firm</label>
+		</answer>
+		<answer>
+			<label>Hard</label>
+		</answer>
+	</question>	
+	
+	<question>
+		<id>310</id>
+		<label>Size</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>311</id>
+		<label>Tenderness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>312</id>
+		<label>Movement On Swallowing</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>313</id>
+		<label>Attachment To Skin/Underlying Tissue</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>125</id>
+		<label>Any Other Neck Swelling </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>245,246,247,248,249,250,251</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>245</id>
+		<label>Location </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>246</id>
+		<label>Origin </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>247</id>
+		<label>Size </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>248</id>
+		<label>Shape </label>
+		<type>text</type>
+	</question>
+	
+	
+	<question>
+		<id>249</id>
+		<label>Consistency </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>250</id>
+		<label>Tenderness </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>251</id>
+		<label>Movement On Swallowing </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>400</id>
+		<label>Other </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>500</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>300</id>
+		<label>Describe</label>
+		<type>text</type>
+	</question>
+</form>

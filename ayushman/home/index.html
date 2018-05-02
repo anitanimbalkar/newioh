@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en-US"><!--<![endif]-->
+<head>
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+
+    <!-- Title -->
+    <title>India Online Health</title>
+<script type='text/javascript' src='webapp/js/jquery-1.11.1.min.js'></script>
+    <!-- Define a view port to mobile devices to use - telling the browser to assume that
+    the page is as wide as the device (width=device-width)
+     and setting the initial page zoom level to be 1 (initial-scale=1.0) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon-new.png">
+
+    <!-- Google Web Font -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <!-- bootstrap Style Sheet (caution ! - Do not edit this stylesheet) -->
+
+    <!-- Flexslider stylesheet -->
+    <link rel="stylesheet" href="webapp/css/flexslider.css" type="text/css" media="all">
+    <!-- Animations stylesheet -->
+    <link rel="stylesheet" href="webapp/css/animations.css" type="text/css" media="all">
+    <!-- Awesome Font stylesheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Datepciker stylesheet -->
+    <link rel="stylesheet" href="webapp/css/datepicker.css" type="text/css" media="all">
+    <!-- Swipebox stylesheet -->
+    <link rel="stylesheet" href="webapp/css/swipebox.css" type="text/css" media="all">
+    <!-- meanmenu stylesheet -->
+    <link rel="stylesheet" href="webapp/css/meanmenu.css" type="text/css" media="all">
+    <!-- Include the site main stylesheet -->
+    <link rel="stylesheet" href="webapp/css/main.css" type="text/css" media="all">
+    <link rel="stylesheet" href="webapp/css/bootstrap.css" type="text/css" media="all">
+    <link rel="stylesheet" href="webapp/css/ioh.css" type="text/css" media="all">
+    <!-- Include the site responsive  stylesheet -->
+    <link rel="stylesheet" href="webapp/css/custom-responsive.css" type="text/css" media="all">
+    
+	<script type="text/javascript" src="/ayushman/assets/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <link href="/ayushman/assets/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" type="text/css">
+    <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+    <script type="text/javascript" src="/ayushman/assets/js/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <style>
+	 .danger{
+	   color:red;
+	 }
+	 .success{
+	  color:#00b100;
+	 }
+	</style>
+	
+	
+<script type="text/javascript">
+var $= jQuery.noConflict();
+function openDialog(url, width, height){
+				 $.fancybox({
+                    'width': width,
+                    'height': height,
+                    'autoScale': false,
+                    'transitionIn': 'fade',
+                    'transitionOut': 'fade',
+                    'type': 'iframe',
+                    'href': url,
+                    'showCloseButton': true,
+                    'afterClose' : function(){
+					//	if(obj != undefined){
+						//	if(obj.fancyboxclosed != undefined){
+						//		obj.fancyboxclosed(obj);
+					//		}
+					//	}
+					}
+            	});
+			}
+      
+  function openterms()
+		{
+			document.getElementById("termsread").value="1";
+			var role1 = document.getElementById("accounttype");
+			var role = role1.options[role1.selectedIndex].value;
+			var wWidth = $(window).width();
+			var dWidth = 1030;
+			var wHeight = $(window).height();
+			var dHeight = wHeight * 0.99;
+			wWidth = (wWidth - dWidth)/2;
+			switch(role)
+			{
+				case "patient": openDialog('/ayushman/home/termsAndcondition/pterms.html', 850, 600); break;
+				case "chemist":	openDialog('/ayushman/home/termsAndcondition/chemistterms.html', 850, 600);	break;
+				case "pathologist":	openDialog('/ayushman/home/termsAndcondition/pathologistterms.html', 850, 600);	break;
+				case "doctor": openDialog('/ayushman/home/termsAndcondition/doctorterms.html', 850, 600); break;
+			}
+		}
+	
+function focusonusername(){
+			var fname = document.getElementById("firstname").value;
+			var lname = document.getElementById("lastname").value;
+			if(fname != '' && lname != '') {
+			possibleusername();
+			document.getElementById("rowusernamepossiblecombination").style.display = "block";
+			}			
+		}
+function bluronusername(){
+			//alert("blur");
+			var uname = document.getElementById("username").value;
+			if(uname != '') {
+				checkUsername($("#username").val());
+			}						
+	}
+function reloadcaptcha() {
+  var obj = document.getElementById('captchasecurityimage');
+  var src = obj.src;
+  var date = new Date();
+  obj.src = src + '?v=' + date.getTime();
+}
+
+function selectedname(name){
+	var scope = angular.element($("#signupbox")).scope();
+	if(!scope.$$phase) {
+		scope.$apply(function(){
+			scope.username=name.innerHTML;
+		});
+	}
+	
+	 ///var e = $.Event('keyDown');
+    //$('#username').trigger(e);
+	checkUsername(name.innerHTML);
+}
+
+function  possibleusername(){
+	var name=document.getElementById("firstname").value+document.getElementById("lastname").value;
+	var isusernamespresent = document.getElementById("isusernamespresent").value;
+	var newusername, usernamestring,returnstring;
+	usernamestring="<span class='bodytext' style='font-size: 12px;font-weight: bold;'>Suggestions for Username.</span></br>";
+	if((name!="")&&(isusernamespresent == "false"))
+	{
+		$(".ui-dialog-titlebar").hide();
+		
+		var count =1;
+		var ischeck= 0;
+		while (count< 4)
+		{
+			switch(ischeck)
+			{
+				case 0:newusername = document.getElementById("firstname").value+document.getElementById("lastname").value;
+					break;
+				case 1:newusername = document.getElementById("lastname").value+document.getElementById("firstname").value;
+					break;
+				case 2:newusername = document.getElementById("firstname").value+"."+document.getElementById("lastname").value;
+					break;
+				case 3:newusername = document.getElementById("lastname").value+"."+document.getElementById("firstname").value;
+					break;
+				default:var randumNumber=Math.floor((Math.random()*100)+1);
+					newusername = document.getElementById("firstname").value+randumNumber+"."+document.getElementById("lastname").value;
+					break;
+			}
+			returnstring = findusername(newusername);
+			newusername = newusername.toLowerCase();
+			if (returnstring == "valid")
+			{
+				usernamestring = usernamestring+" <a onclick='selectedname(this)' style='cursor:pointer;color: #31708f;border-bottom: 1px solid #31708f;' >"+newusername+"</a></br>";
+				count ++;
+			}
+			ischeck++;
+		}
+		document.getElementById("isusernamespresent").value= "true";
+		$("#possiblenames").append(usernamestring);
+		
+	}
+}
+
+function findusername(newusername)
+{
+	var returnstring;
+	$.ajax({
+		url: "/ayushman/cregistrar/checkusernameavailability?username="+newusername,
+		async: false,
+		success: function(data) {
+			
+			if(data =="invalid"){
+				returnstring = "invalid";
+			}
+			else{
+				returnstring = "valid";
+			}
+		},
+		error : function(){
+			returnstring= "invalid";
+		}
+		});
+	return returnstring;
+}
+                 
+function checkUsername(username){
+	if(username != undefined){
+		$(".ui-dialog-titlebar").hide();
+		
+		$.ajax({
+			url: "/ayushman/cregistrar/checkusernameavailability?username="+username,
+			success: function(data) {
+				
+				if(data=="invalid"){
+					document.getElementById("usernameerror").style.display = "block";
+					document.getElementById("rowusernamepossiblecombination").style.display = "block";
+					document.getElementById("possiblenames").style.top = "75px";
+					alert("Done");
+					//document.getElementById("btn-register").disabled = true;
+				}
+				else{
+					document.getElementById("usernameerror").style.display = "none";
+					
+					if($('#username').val() != ''){
+						$('#password').focus();
+						document.getElementById("rowusernamepossiblecombination").style.display = "none";
+					}else{
+						document.getElementById("rowusernamepossiblecombination").style.display = "block";
+					}
+				}
+				
+			},
+			error : function(){
+				
+			}
+		});
+		
+//		$('#termsconditions').hover(function(){
+//			 $("p").css("text-color", "yellow");
+//		}
+	}else{
+		return true;
+	}	
+}
+
+</script>
+     <!--[if lt IE 9]>
+
+    <![endif]-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</head>
+<body ng-app="landingPage">
+<div ng-controller="landingPageController">
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="<php echo 'http://www.google.com/chromeframe/?redirect=true'; ?>">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+<!--
+	<div class="header-top clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 ">
+                <p>Welcome to MecialPress a Premium Medical Theme</p>
+            </div>
+            <!--opening hours--
+            <div class="col-md-7 text-right">
+                <p>
+                    Opening Hours : <span>Monday to Saturday - 8am to 9pm</span>
+                    <br class="visible-xs">Contact : <span>+1-800-654-3210</span>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+-->
+
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="navbar-brand" href="#page-top">
+                    <img src="webapp/img/iohlogo.png" class="logo" alt="India Online Health">
+                </a> </div>
+            
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="hidden"> <a href="#page-top"></a> </li>
+                    <li class="page_item page-scroll" ><a href="#whoareyou">WHO ARE YOU</a></li>
+                    <li class="page-scroll"><a href="#articles">MEDICAL RESOURCES</a></li>
+                    <li class="page-scroll"><a href="#about">ABOUT</a></li>
+                    <li><a href="" data-toggle="modal" ng-click="login_modal();" data-target="#myLogin">LOG IN</a> | <a href="" data-toggle="modal" ng-click="register_modal();" data-target="#myLogin">SIGN UP</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<!--slider-->
+<div class="home-slider clearfix">
+    <div class="flexslider">
+        <ul class="slides">
+            <!--slide start-->
+            <li class="flex-active-slide">
+                <img src="webapp/img/landing-page/sliderbg1.png" class="left-image" alt="Medical Services That You Can Trust" draggable="false">
+                <img src="webapp/img/landing-page/sliderbg2.png" class="right-image" alt="Medical Services That You Can Trust" draggable="false">
+                <div class="content-wrapper clearfix">
+                    <div class="container"><br><br>
+                        <div class="slide-content clearfix">
+                            <h1>Manage your health & wellness online.</h1>
+                            <p>An universal platform to track your wellness and of your family,  create and maintain your health records, online!</p>
+							<div class="page-scroll"><a href="#whoareyou" class="read-more banner-btn orange linked"> LEARN MORE </a></div>
+                            <!-- <a class="read-more orange" href="doctors-three-columns.html">Learn More</a> -->
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <!--slide end-->
+
+            <!--slide start-->
+            <!--<li>
+                <img src="img/temp-images/slide-two.jpg" alt="We Care for You" draggable="false">
+                <div class="content-wrapper clearfix">
+                    <div class="container">
+                        <div class="slide-content clearfix ">
+                            <h1>We <span>Care</span> for <span>You</span></h1>
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                            <a class="slider-button" href="doctors-three-columns.html">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </li>-->
+            <!--slide end-->
+        </ul>
+        <!--directional nav-->
+        <ul class="flex-direction-nav">
+            <li><a class="flex-prev" href="#">Previous</a></li>
+            <li><a class="flex-next" href="#">Next</a></li></ul>
+    </div>
+    <!--appointment form-->
+    <!-- <div class="appointment clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6  ">
+                    <span class="btn make-appoint">Make an Appointment <i class="fa fa-caret-down"></i></span>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="appointment-form clearfix animated">
+                    <form class="clearfix" id="appointment_form_one" action="appointment_form_handler.php" method="post" novalidate="novalidate">
+                        <div class="col-md-3 col-sm-6  common">
+                            <input type="text" name="name" id="app-name" class="required" placeholder="Name">
+                        </div>
+                        <div class="col-md-3 col-sm-6  common">
+                            <input type="text" name="number" id="app-number" class="required number" placeholder="Phone Number">
+                        </div>
+                        <div class="col-md-3 col-sm-6  common">
+                            <input type="email" name="email" id="app-email" class="required email" placeholder="Email Address">
+                        </div>
+                        <div class="col-md-3 col-sm-6  common">
+                            <input type="text" name="date" id="datepicker" class="required" placeholder="Appointment Date">
+                        </div>
+                        <div class="col-sm-11 common custom-col-form">
+                            <input type="text" name="message" id="app-message" class="required" placeholder="Message">
+                        </div>
+                        <div class="col-sm-1 common custom-col-button">
+                            <input type="submit" name="Submit" class="btn" value="SEND">
+                        </div>
+                        <div>
+
+                            <img src="images/white-loader.gif" id="appointment-loader" alt="Loading...">
+                            <div id="message-sent"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!--appointment form end-->
+</div>
+<!--start view part of services-->
+<div ng-view id="myview">
+
+</div>
+<!--end view part of services-->
+
+<!--blog posts section-->
+<div class="home-blog text-center clearfix" id="articles">
+    <div class="container">
+        <div class="slogan-section animated fadeInUp clearfix">
+            <h2>Health and Medical Resources</h2>
+        </div>
+		<!--
+        <div class="row">
+            <div class="col-md-4">
+                <article class="common-blog-post animated fadeInRight clearfix">
+                    <div class="text-content clearfix">
+                        <h5 class="text-center"><a href="blog-article.html">Articles</a></h5>
+                        <figure>
+                            <a href="#">
+                                <img src="webapp/img/landing-page/articles.jpg" class="tabs-thumb wp-post-image" alt="news-2" />
+                            </a>
+                        </figure>
+                        <div class="entry-meta text-center">
+                            <a href="https://www.indiaonlinehealth.com/wordpress/articles/ayushmanpatrika-june-2015" target="_blank">Read More</a>
+                        </div>
+                        <figure>
+                            <a href="#">
+                                <img src="webapp/img/landing-page/article1.jpg" class="tabs-thumb wp-post-image" alt="news-2" />
+                            </a>
+                        </figure>
+                        <div class="entry-meta text-center">
+                            <a href="https://www.indiaonlinehealth.com/wordpress/articles/ayushmanpatrika-may-2015" target="_blank">Read More</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="col-md-4">
+                <article class="common-blog-post animated fadeInRight clearfix">
+                    <div class="text-content clearfix">
+                        <h5 class="text-center"><a>Medical Resources</a></h5>
+                        <div class="entry-meta">
+                            <span><a>Stand out, be counted</a></span>
+                        </div>
+                        <div class="for-border"></div>
+                        <ul>
+						   <li>
+						    World over technology is helping save lives and keep people healthier.
+						   </li>
+						   <li>
+						      Be among the first breed of doctors using technology in India to improve the outcomes.
+						   </li>
+						   <li>
+						     Surprisingly it can also save you time and improve your revenue view – both for you and your doctor.
+						   </li>
+						</ul>
+                    </div>
+                    <div class="text-content clearfix">
+                        <div class="entry-meta">
+                            <span><a>Practice Management made easy</a></span>
+                        </div>
+                        <div class="for-border"></div>
+                         <ul>
+						   <li>
+						      Announce your presence by creating your profile.
+						   </li>
+						   <li>
+						     Track all your appointments.
+						   </li>
+						   <li>
+						     Manage time better through smart scheduling.
+						   </li>
+						   <li>
+						    Manage space better.
+						   </li>
+						</ul>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-md-4">
+                <article class="common-blog-post animated fadeInRight clearfix">
+                    <div class="text-content clearfix">
+                        <h5 class="text-center"><a href="gallery-post-format.html">Get Doctor's Help</a></h5><br>
+                        <div class="col-sm-6 read-more orange" style="width:150px;margin-left:80px;"> Ask a Doctor <i class="fa fa-stethoscope"></i></div>
+                    </div>
+                    <div class="text-content clearfix">
+                        <h5><a href="video-post-format.html">Medical feed of the day</a></h5>
+                        <div class="entry-meta">
+                            <span>20 Aug, 2015</span>, by <a href="#" title="Posts by John Doe">Josh Vedam</a>
+                        </div>
+                        <div class="for-border"></div>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat&hellip; </p>
+                    </div>
+                </article>
+            </div>
+        </div>-->
+		
+		<div class="row">
+            <div class="col-lg-4 col-sm-4">
+                <article class="common-blog-post">
+                    <figure>
+                            <img src="webapp/img/landing-page/article.jpeg"  alt="news-2" />
+                    </figure>
+                    <div class="text-content clearfix">
+                        <h5><a href="#/home">Ayushman Patrika June 2015</a></h5>
+                        <div class="for-border"></div>
+                        <p>It is June and with impending rains, there is hope in the air. And we at Ayushman are all geared up to send you the latest issue of AyushPatrika. Continuing our series on the Human body, in our main topic---we get to know how to take care of our eyes. We overwork our eyes and give them little rest.</p>
+                    </div>
+                </article>
+                <a class="read-more orange linked" target="_blank" href="https://indiaonlinehealth.com:8888/wordpress/articles/ayushmanpatrika-june-2015">Read More</a>
+            </div>
+			
+			<div class="col-lg-4 col-sm-4">
+                <article class="common-blog-post">
+                    <figure>
+                            <img src="webapp/img/landing-page/article.jpeg"  alt="news-2" />
+                    </figure>
+                    <div class="text-content clearfix">
+                        <h5><a href="#/home">Ayushman Patrika May 2015</a></h5>
+                        <div class="for-border"></div>
+                        <p>It is May and I am happy to inform you that this is our anniversary issue. Yes--- we have been together for 12 months now. It has been an enjoyable journey so far creating a health bulletin for you that carries some useful information, a bit of learning and a bit of fun too. Since this is our anniversary issue</p>
+                    </div>
+                </article>
+                <a class="read-more orange linked" target="_blank" href="https://indiaonlinehealth.com:8888/wordpress/articles/ayushmanpatrika-may-2015">Read More</a>
+            </div>
+			
+			<div class="col-lg-4 col-sm-4">
+                <article class="common-blog-post">
+                    <figure>
+                            <img src="webapp/img/landing-page/article.jpeg"  alt="news-2" />
+                    </figure>
+                    <div class="text-content clearfix">
+                        <h5><a href="#/home">COEP unfolds health plan</a></h5>
+                        <div class="for-border"></div>
+                        <p>The CoEP, which is the third oldest technical institution in the country with a history of more than 150 years, has joined hands with a private healthcare agency for developing an updated electronic medical record of all hostel students. This can be accessed over the web in a secure manner.</p>
+                    </div>
+                </article>
+                <a class="read-more orange linked" href="/ayushman/home/article-3.html" target="_blank">Read More</a> 
+            </div>
+        </div>
+    </div>
+</div>
+<!--blog posts section end-->
+
+<!--testimonials section
+<div class="doctors-posts doctors-page clearfix" id="about">
+    <div class="container text-center">
+       <br><br>
+        <h2 class="text-center"><span>User Speak !</span></h2><br>
+        <ul id="filters">
+		    <li class="active"><a href="#" data-filter=".cardiac-clinic">Doctors</a></li>
+		    <li><a href="#" data-filter=".gynaecological-clinic">Consumers</a></li>
+            <li><div style="color:#637bb5;text-decoration:none;">Corporates</div></li>
+        </ul>
+    </div>
+    <div class="container isotope-wrapper text-center">
+        <div class="row">
+            <div id="isotope-container" class="clearfix">
+                <div class="isotope-item cardiac-clinic primary-health-care col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10 text-center">
+                            <h5>What Consumers say about india online health</h5><br>
+                            <div class="flexslider-three ">
+                                <ul class="slides">
+                                    <li>
+                                        <img class="img-circle" src="webapp/img/temp-images/author-22-130x130.jpg" alt="author-22" />
+                                        <blockquote>
+                                            <p>Excellent, user-friendly clinic management software. Even computer non-savvy persons (like me) can use it.</p>
+                                        </blockquote>
+
+                                        <div class="testimonial-footer clearfix">
+                                            <h3>Dr. S.V. Dange (M.D., D.N.B)</h3>
+                                            <div class="for-border"></div>
+                                            <p><a target="_blank" href="#">Pune</a></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img class="img-circle" src="webapp/img/temp-images/author-11-130x130.jpg"  alt="author-11" />
+                                        <blockquote>
+                                            <p>This is an excellent site, quite useful. Complete data of each & every patient is saved & can be recollected any time. Having very good customer support for doctors as 
+well for the patients. I liked one unique thing from the company is about patient’s follow-up & reminder to them about the next appointment.</p>
+                                        </blockquote>
+
+                                        <div class="testimonial-footer clearfix">
+                                            <h3>Dr. Rajendra Chawat (D.M.&S., M.B.B.S (II))</h3>
+                                            <div class="for-border"></div>
+                                            <p><a target="_blank" href="#">Pune</a></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+                </div>
+
+                <div class="isotope-item gynaecological-clinic primary-health-care col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10 text-center">
+                            <h5>What Doctors say about india online health</h5><br>
+                            <div class="flexslider-three">
+							
+							  <ul class="slides">
+                                    <li>
+                                        <img class="img-circle" src="webapp/img/temp-images/author-22-130x130.jpg" alt="author-22" />
+                                        <blockquote>
+                                            <p>One of the best place where you can search and book appointment at one go, helps you to find clinics and doctors of different specialities in your nearby location.</p>
+                                        </blockquote>
+
+                                        <div class="testimonial-footer clearfix">
+                                            <h3>Rohini Patil</h3>
+                                            <div class="for-border"></div>
+                                            <p><a target="_blank" href="#">Pune</a></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img class="img-circle" src="webapp/img/temp-images/author-11-130x130.jpg"  alt="author-11" />
+                                        <blockquote>
+                                            <p>Helps to maintain and track data of yourself & your relatives, created an account for my mother now I can track her health regularly.</p>
+                                        </blockquote>
+
+                                        <div class="testimonial-footer clearfix">
+                                            <h3>Rahul Jha</h3>
+                                            <div class="for-border"></div>
+                                            <p><a target="_blank" href="#">Mumbai</a></p>
+                                        </div>
+                                    </li>
+                                </ul>
+							
+							
+							
+                                
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+                </div>
+                <div class="isotope-item pediatrics-clinic primary-health-care col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10 text-center">
+                            <h5>Corporates talk about india online health</h5><br>
+                            <div class="flexslider-three">
+                                <ul class="slides">
+                                    <li>
+                                        <img class="img-circle" src="webapp/img/temp-images/author-22-130x130.jpg" alt="author-22" />
+                                        <blockquote>
+                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam quis nostrud exerci tation.</p>
+                                        </blockquote>
+
+                                        <div class="testimonial-footer clearfix">
+                                            <h3>Marina Forrest</h3>
+                                            <div class="for-border"></div>
+                                            <p><a target="_blank" href="#">Autommatic</a></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img class="img-circle" src="webapp/img/temp-images/author-11-130x130.jpg"  alt="author-11" />
+                                        <blockquote>
+                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                                        </blockquote>
+
+                                        <div class="testimonial-footer clearfix">
+                                            <h3>Jaden Wayne</h3>
+                                            <div class="for-border"></div>
+                                            <p><a target="_blank" href="#">Themeforest</a></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+testimonials section end-->
+
+<div class="home-testimonial  clearfix" id="about">
+    <div class="container">
+        <div class="text-center">
+            <div class="slogan-section animated fadeInUp clearfix">
+                <h2>User Speak !</h2>
+                <p>Excellent, user-friendly clinic management software. Even computer non-savvy persons (like me) can use it.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10 text-center">
+                <div class="flexslider-three animated fadeInUp">
+                    <ul class="slides">
+                        <li>
+                            <img class="img-circle" src="webapp/img/temp-images/author-11-130x130.jpg" alt="author-22" />
+                            <blockquote>
+                                <p>One of the best place where you can search and book appointment at one go, helps you to find clinics and doctors of different specialities in your nearby location.</p>
+                            </blockquote>
+
+                            <div class="testimonial-footer clearfix">
+                                <h3>Rohini Patil</h3>
+                                <div class="for-border"></div>
+                                <p>Pune</p>
+                            </div>
+                        </li>
+                        <li>
+                            <img class="img-circle" src="webapp/img/temp-images/author-11-130x130.jpg"  alt="author-11" />
+                            <blockquote>
+                                <p>Helps to maintain and track data of yourself & your relatives, created an account for my mother now I can track her health regularly.</p>
+                            </blockquote>
+
+                            <div class="testimonial-footer clearfix">
+                                <h3>Rahul Jha</h3>
+                                <div class="for-border"></div>
+                                <p>Mumbai</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+</div>
+
+<!--page footer-->
+<footer id="main-footer" class="site-footer clearfix">
+    <div class="container">
+        <div class="row">
+            <!--about widget-->
+            <div class="col-md-4 col-sm-4">
+                <section  class="widget animated fadeInLeft">
+                    <h3 class="title">India Online Health</h3>
+                    <div class="textwidget">
+                        <p>India Online Health Portal and the Mobile App is intended to be a one stop shop for your and your families Wellness and Health needs.</p>
+                        <p>Its been an amazing journey for the last couple of years and we hope that you join the India Online Health family and experience India’s health revolution .. online!</p>
+                    </div>
+                </section>
+            </div>
+
+
+            <!--general services-->
+          <!--  <div class="col-md-3 col-sm-6  ">
+                <section class="widget animated fadeInLeft ae-animation-fadeInLeft">
+                    <h3 class="title"></h3>
+                    <!--<p>Tried @indiaonlinehealth for dental app. Found a great doctors nearby and experience was fantastic. Wouldn't have found otherwise.
+                        <a href="#"> http://indiaonlinehealth.com </a><br> 2 hours ago</p>
+                    <p>Hi @mkduja, That's a great suggestion. We do share costs of a visit to a Doctor currently and this surely sounds like a great add-on. <a href="#"> http://indiaonlinehealth.com </a><br> 3 hours ago</p>
+					
+                </section>
+            </div> --> 
+			
+            <!--recent posts-->
+            <div class="col-md-4 col-sm-4">
+                <section  class="widget animated fadeInLeft">
+                    <h3 class="title">Newsletter Signup</h3>
+                    <p>Subscribe to our free monthly newsletter for news, health related articles and new features released for you. </p>
+                    <form id="newsletter" name="newsletter" method="post" class="form-horizontal" role="form" ng-controller="validate" novalidate>
+					<div ng-bind="is_exists" ng-class="customStyle.colorClass"></div>
+                    <div class="input-group">
+                        <div class="input-group">
+                            <input type="email" name="newsemailid" id="newsemailid" ng-model="newsemailid" class="required input-field" autocomplete="off"  placeholder="email address" required/>
+                            <button type="submit" ng-click="newsletteradd();" ng-disabled="newsletter.$pristine || newsletter.$invalid" id="subs-form-submit" style="border-radius:0px;" class="btn ocolor" name="Submit" />Go</button>
+                        </div>                            
+                    </div>
+					<span style="color:red" ng-show="newsletter.newsemailid.$dirty && newsletter.newsemailid.$invalid">
+                            <span ng-show="newsletter.newsemailid.$error.required">Email is required.</span>
+                            </span>
+                            <span class="error" style="color:red" ng-show="newsletter.newsemailid.$error.email">Not valid Email</span>
+					</form>
+					
+                    <div class="col-sm-8">
+                        <a target="_blank" href="https://www.facebook.com/indiaonlinehealth"><i class="fa fa-facebook round"></i></a> &nbsp;
+                        <a target="_blank" href="https://www.linkedin.com/company/indiaonlinehealth"><i class="fa fa-linkedin round"></i></a>
+                    </div>
+                </section>
+            </div>
+            <!--subscription form-->
+            <div class="col-md-4 col-sm-4">
+                <section  class="widget animated fadeInLeft">
+                    <h3 class="title">Contact Us</h3>
+                    <p>Ayushman Pvt. Ltd. <br> 5-6/A, Ramyanagari, <br> Bibwewadi,Pune - 411037 <br>
+                        3 hours ago</p>
+                    <ul>
+                        <li>
+                            <a href="#">Tel.: +91 20 2422 5288</a>
+                        </li>
+                        <li>
+                            <a href="#">Email: info@indiaonlinehealth.com</a>
+                        </li>
+                    </ul>
+
+                </section>
+            </div>
+        </div>
+        <div class="footer-bottom animated fadeInDown clearfix">
+            <div class="row">
+                <div class="col-sm-5">
+                    <a href="mission.html" style="color:#7a7d86;text-decoration:none;"> Mission and Leadership</a>
+                </div>
+                <div class="col-sm-7 text-right">
+                    <a style="color:#7a7d86;text-decoration:none;" href="privacy-policy.html">Privacy Policies</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<div class="modal inmodal" id="myLogin" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div id="loginbox" style="margin-top:150px;" class="mainbox loginbox col-lg-3 col-md-4 col-xs-7 col-xs-offset-3 col-md-offset-4 col-sm-6 col-sm-offset-3">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Log In with your account <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>
+                </div>
+
+                <div style="padding-top:30px" class="panel-body" >
+
+                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                    <form id="loginform" name="loginform" method="post" class="form-horizontal" role="form" action="/ayushman/cuser/login" ng-controller="validate" novalidate>
+
+                        <div style="margin-bottom: 20px;" class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input id="login-username" type="text" class="form-control" ng-model="email" name="email" placeholder="Username" autocomplete="off" required>							
+                        </div>
+						<span style="color:red;position:relative;top:-20px;" ng-show="loginform.email.$dirty && loginform.email.$invalid">
+                            <span ng-show="loginform.email.$error.required">Username is required</span>
+                            </span>
+						
+
+                        <div style="margin-bottom: 20px;" class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-unlock-alt"></i></span>
+                            <input id="login-password" type="password" ng-model="password" class="form-control" name="password" placeholder="Password" required>
+                        </div>
+						<span style="color:red;position:relative;top:-20px;" ng-show="loginform.password.$dirty && loginform.password.$invalid">
+                            <span ng-show="loginform.password.$error.required">Password is required</span>
+                            </span>
+							
+
+                        <div style="margin-top:10px" class="form-group">
+                            <div class="col-sm-12 controls">
+                                <span class="pull-left"><a href="#/home" ng-click="forgetpassword_modal();">Forgot password ?</a></span>
+                                <input type="submit" id="btn-register" ng-disabled="loginform.$pristine || loginform.$invalid" class="btn read-more orange pull-right" value="Login">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12 control">
+                                <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                    Don't have an account?
+                                    <a href="#/home" ng-click="register_modal();">
+                                        Create One
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+		
+		 <div id="signupbox" style="margin-top:100px;overflow-x: hidden;" class="mainbox signupbox col-md-6 col-md-offset-3 col-sm-8">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">Get started with a free account <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>
+                </div>
+                <div class="modal-body">
+                    <form id="registerform" action="/ayushman/cregistrar/register" method="post" name="registerform" ng-controller="validate" class="form-horizontal" role="form" novalidate>
+
+                        <div id="signupalert" style="display:none" class="alert alert-danger">
+                            <p>Error:</p>
+                            <span></span>
+                        </div>
+
+                        <div class="form-group">
+						    
+							<div class="col-md-1 modal-form">
+                                <i class="fa fa-male form-icon" title="Account Type"></i>
+                            </div>
+							
+                            <div class="col-md-3-5 modal-form">
+                                <select onchange="OnAccounttypeChange(this.value);" ng-model="users.accounttype" title="Please select the Account Type" class="form-control regnformcontrol" id="accounttype" name="accounttype" required>
+                                    <option selected="" value="">Account Type</option>
+                                    <option value="chemist">Chemist</option>
+                                    <option value="patient">Consumer</option>
+                                    <option value="pathologist">Diagnostic center</option>
+                                    <option value="doctor">Doctor</option>
+                                </select>
+								 <span style="color:red" ng-show="registerform.accounttype.$dirty && registerform.accounttype.$invalid">
+                                <span ng-show="registerform.accounttype.$error.required">Select account type</span>
+                                </span>
+                            </div>
+
+                        </div><br>
+                        <!--<h5><i class="fa fa-user"></i> Personal Information </h5>-->
+                        <div class="form-group">
+	
+							<div class="col-md-1 modal-form">
+                                <i class="fa fa-user form-icon" title="Personal Information"></i>
+                            </div>
+							
+                            <div class="col-md-3-5 modal-form">
+                                <input type="text" class="form-control"  name="firstname" ng-model="firstname" autocomplete="on" id="firstname"  tabindex="1"  placeholder="First Name" required>
+								<span style="color:red" ng-show="registerform.firstname.$dirty && registerform.firstname.$invalid">
+                            <span ng-show="registerform.firstname.$error.required">First Name is required.</span>
+                            </span>
+                            </div>
+
+                            <div class="col-md-3-5 modal-form">
+                                <input type="text" class="form-control" name="middlename" id="middlename" value="" autocomplete="on" tabindex="2" placeholder="Middle Name(Optional)">
+
+                            </div>
+
+                            <div class="col-md-3-5 modal-form">
+                                <input type="text" class="form-control" name="lastname" id="lastname" ng-model="lastname" autocomplete="on" tabindex="3" placeholder="Last Name" required>
+								<span style="color:red" ng-show="registerform.lastname.$dirty && registerform.lastname.$invalid">
+                            <span ng-show="registerform.lastname.$error.required">Last Name is required.</span>
+                            </span>
+                            </div>
+                        </div><br>
+                        <!--<h5><i class="fa fa-phone"></i> Contact Details </h5>-->
+                        <div class="form-group">
+						
+						    <div class="col-md-1 modal-form">
+                                <i class="fa fa-phone form-icon" title="Contact Details"></i>
+                            </div>
+							
+                            <div class="col-md-3-5 modal-form">
+                                <input type="email" class="form-control" name="email" id="email" ng-model="users.email" ng-required="users.accounttype == 'chemist' || users.accounttype == 'pathologist' || users.accounttype == 'doctor'" maxlength="45" value="" autocomplete="off" tabindex="4" placeholder="Email ID">
+								<span class="error" style="color:red" ng-show="registerform.email.$error.email">Not valid Email</span>
+                                <div id="emailerror" style="color: red;font-style: italic;display:none" >&nbsp;&nbsp;&nbsp;Email must be unique. Please write other email ID.</div><div id="emailcheckerror" style="color: red;font-style: italic;display:none;" >&nbsp;&nbsp;&nbsp;Could not email availability, Please wait...</div>
+                            </div>
+
+                            <div class="col-md-3-5 modal-form">
+                                <select name="country_c" ng-model="country_c" id="country_c" tabindex="5" ng-change="changeisd();" title="Please select Country" class="form-control"  required>
+                                    <option selected="" value="">-Select Country-</option>
+                                    <option value="IN">India</option>
+                                    <option value="SG">Singapore</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3-5 modal-form">
+                                <div class="input-group input-group-md">
+                                    <span class="input-group-addon" ng-bind="isd">+91</span>
+                                    <input type="hidden" ng-model="isdphonehome" id="isdphonehome"  name="isdphonehome" value=""/>
+                                    <input type="text" class="form-control" ng-model="mobilenumber" tabindex="6"  maxlength="10" name="mobilenumber" placeholder="Mobile Number" required>
+									<span style="color:red" ng-show="registerform.isdphonehome.$dirty && registerform.isdphonehome.$invalid">
+                                    <span ng-show="registerform.isdphonehome.$error.required">Mobile Number is required.</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div><br>
+                        <!--<h5><i class="fa fa-sign-in"></i> Login Details </h5>--><!--ng-keypress="filterValue($event)"-->
+                        <div class="form-group">
+						
+						    <div class="col-md-1 modal-form">
+                                <i class="fa fa-sign-in form-icon" title="Login Details"></i>
+                            </div>
+							
+                            <div class="col-md-3-5 modal-form">
+                                <div id="rowusernamepossiblecombination" style="display:none;position:absolute;float:left;">
+                                    <input  id="isusernamespresent" style="display:none;" value="false"/>
+                                    <div id="possiblenames" style="top:34px;position:absolute;z-index:1;width:200px;height:121px ! important;overflow-y:auto;background-color: #FBF9F9;padding: 8px;" >
+                                        <img src="/ayushman/assets/images/Close_Icon.png" onclick="$('#rowusernamepossiblecombination').hide();" style="float:right;cursor:pointer;"/>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" name="username" ng-model="username" id="username" autocomplete="off" size="25" maxlength="45" onfocus="focusonusername();" onblur="bluronusername();" tabindex="7" placeholder="Username" required/>
+								<span style="color:red" ng-show="username.$dirty && username.$invalid">
+                                <span ng-show="registerform.username.$error.required">Username is required.</span>
+                                </span>
+								<div id="usernameerror" style="color:red;display:none;" >Username already exists.</div>
+                            </div>
+
+                            <div class="col-md-3-5 modal-form">
+                                <input type="password" class="form-control" name="password" ng-model="login.password" ng-minlength='{{validation.password.minlength}}' id="password" tabindex="8" placeholder="Password" required>
+                                <span style="color:red" ng-show="registerform.password.$dirty && registerform.password.$invalid">
+                                <span ng-show="registerform.password.$error.required">Password is required.</span>
+                                </span>
+								<span ng-show="registerform.password.$error.minlength">Minimum 8 characters required!</span>
+                            </div>
+
+                            <div class="col-md-3-5 modal-form">
+                                <input type="password" class="form-control" nx-equal="login.password" name="password_confirm" ng-model="password_confirm"  id="password_confirm" tabindex="9" placeholder="Confirm Password" required>
+                                <span ng-show="registerform.password_confirm.$error.nxEqual">Must be equal</span>
+                            </div>
+                            
+                        </div>
+				         <br>
+                        <!--<h5><i class="fa fa-unlock"></i> Security Details</h5>-->
+
+                        <div class="form-group">
+    
+	                      <div class="col-md-1 modal-form">
+                                <i class="fa fa-unlock form-icon" title="Security Details"></i>
+                            </div>
+			 
+                            <div class="col-md-3-5 modal-form">
+                                <select style="border: 1px solid #5cb1b6;" ng-model="securequestion" class="form-control gray" tabindex="10" id="securequestion" name="securequestion" required>
+                                    <option selected="" value="">Security Question</option>
+                                    <option value="8" "="" style="color: rgb(0, 0, 0);">What is your mother's name?</option>
+                                    <option value="9" "="" style="color: rgb(0, 0, 0);">What town was your father born in?</option>
+                                    <option value="10" "="" style="color: rgb(0, 0, 0);">What is the name of the hospital in which you were born?</option>
+                                    <option value="11" "="" style="color: rgb(0, 0, 0);">What is the first name of your best childhood friend?</option>
+                                    <option value="12" "="" style="color: rgb(0, 0, 0);">What was the name of your primary school?</option>
+                                    <option value="13" "="" style="color: rgb(0, 0, 0);">What town was your mother born in?</option>
+                                    <option value="14" "="" style="color: rgb(0, 0, 0);">What is the name of the first company / organization you worked for?</option>
+                                </select>
+                                 <span style="color:red" ng-show="registerform.securequestion.$dirty && registerform.securequestion.$invalid">
+                                <span ng-show="registerform.securequestion.$error.required">Select security question.</span>
+                                </span>
+                            </div>
+
+
+                            <div class="col-md-3-5 modal-form">
+                                <input type="text" class="form-control" name="secureanswer" ng-model="secureanswer" id="secureanswer" tabindex="11" autocomplete="off" placeholder="Your Answer" required>
+                                <span style="color:red" ng-show="registerform.secureanswer.$dirty && registerform.secureanswer.$invalid">
+                                <span ng-show="registerform.secureanswer.$error.required">Enter Answer</span>
+                                </span>
+                            </div>
+                        </div>
+                        <br>
+                        <!--<h5><i class="fa fa-eye"></i> Prove that you are not robot </h5>-->
+                        <div class="form-group">
+						   <div class="col-md-1 modal-form">
+                                <i class="fa fa-eye form-icon" title="Prove that you are not robot"></i>
+                            </div>
+
+                            <div class="col-md-3-5 modal-form">
+                                <img id="captchasecurityimage" src="/ayushman/ccreatecaptchasecurityimage/generate" />
+                                <button type="button" class="btn-xs blue" tabindex="12" value="Reload" onclick="reloadcaptcha();"/>Reload</button>
+                            </div>
+
+                            <div class="col-md-3-5 modal-form">
+                                <input type="text" class="form-control" name="verificationcode" ng-model="verificationcode" id="verificationcode" tabindex="13" placeholder="Enter Code" required>
+								<span style="color:red" ng-show="registerform.verificationcode.$dirty && registerform.verificationcode.$invalid">
+                                <span ng-show="registerform.verificationcode.$error.required">Enter Code</span>
+                                </span>
+                                <div class="bodytext_error">
+
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div class="col-md-12 control">
+                                <p style="margin-left:15px;"><input type="checkbox" name="acceptcheckbox" ng-model="acceptcheckbox" tabindex="14" id="acceptcheckbox" required>
+								<span style="color:red" ng-show="registerform.acceptcheckbox.$dirty && registerform.acceptcheckbox.$invalid">
+								<span ng-show="registerform.acceptcheckbox.$error.required">Please accept</span>
+								</span>
+                                    I have read <a href="" onclick="openterms();"> Terms & Conditions </a> completely and by checking the adjoining box I undertake to abide by them. I wish to register as a <span id="rolelable" name="rolelable">Consumer</span></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <!-- Button -->
+                            <div class="col-md-12">
+                                <Input type="submit"  id="btn-login" class="btn orange pull-left" ng-disabled="registerform.$pristine || registerform.$invalid" value="Register">
+                                <div class="col-md-5" style="margin-top: 9px;">
+                                    Already have an account?
+                                    <a href="#/home" ng-click="login_modal();">
+                                        Log In
+									</a>
+                                </div>
+
+                                <input type="hidden" name="phoneNumber" id="phoneNumber" size="25" />
+                                <input type="hidden" name="defaultCountry" id="defaultCountry" size="2" />
+                                <input type="hidden" name="carrierCode" id="carrierCode" size="2" />
+                                <input type="hidden" name="output" id="output"/>
+
+                                <ul id="errorMessageBox" ></ul>
+                                <div id="errordiv">
+                                    <?= Arr::get($errors, 'email'); ?>
+                                </div>
+                                <label id="savelbl" style="font-weight:bold;display:none; "> User details have been saved.</label>
+
+                                <input id="termsread" name="termsread" type = "hidden"/>
+
+                                <div style="display:none;">
+                                    <div class="bodytext_error" id="errorlistdiv">
+                                        <?= Arr::path($errors, 'verificationcode'); ?>
+                                        <?= Arr::path($errors, 'error'); ?>
+                                        <?= Arr::path($errors, 'masterdatanotfound'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="forgetbox" style="margin-top:150px;" class="mainbox col-lg-3 col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-3">
+            <div class="panel panel-info" >
+                <div class="panel-heading" style="background-color: #d9edf7;border-color: #bce8f1;">
+                    <div class="panel-title">Reset your password <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></div>
+                </div>
+
+                <div style="padding-top:30px" class="panel-body" >
+
+                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                    <form id="forgetpassform" method="post" action="/ayushman/cpasswordmanager/submitverifyuseremailform" name="forgetpassform" class="form-horizontal" role="form" novalidate>
+
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                            <input type="text" id="username" class="form-control" ng-model="username" name="username" placeholder="Enter Email" required>
+       
+                        </div>
+						
+                            <span style="color:red;position:relative;top:-20px;" ng-show="forgetpassform.username.$dirty && forgetpassform.username.$invalid">
+                            <span ng-show="forgetpassform.username.$error.required">Username is required</span>
+                            </span>
+
+                        <div style="margin-top:10px" class="form-group">
+                            <!-- Button -->
+
+                            <div class="col-sm-12 controls">
+    							<button type="submit" name="submitverifyuseremailform" ng-disabled="forgetpassform.$pristine || forgetpassform.$invalid" class="btn orange"> Retreve Password </button>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div class="col-md-12 control">
+                                <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                    <a href="#/home" ng-click="login_modal();">
+                                        <i class="fa fa-angle-double-left"></i> &nbsp; Back to login
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="#top" id="scroll-top"></a>
+<script type='text/javascript' id='quick-js'></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>-->
+<script type='text/javascript' src='webapp/app/js/angular-route.js'></script>
+<!--<script type='text/javascript' src='app/controllers/landingPageController.js'></script>-->
+<script type='text/javascript' src='webapp/app/app.js'></script>
+<script type='text/javascript' src='webapp/app/controllers/landingPageController.js'></script>
+<script type='text/javascript' id='quick-js'></script>
+<script type='text/javascript' src='webapp/js/jquery.flexslider-min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.swipebox.min.js'></script>
+<script type='text/javascript' src='webapp/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.isotope.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.appear.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.ui.core.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.ui.datepicker.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.validate.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.form.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.autosize.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.meanmenu.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.velocity.min.js'></script>
+<script type='text/javascript' src='webapp/js/respond.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery-migrate-1.2.1.min.js'></script>
+<script type='text/javascript' src="webapp/js/jquery.easing.min.js"></script>
+<script type='text/javascript' src='webapp/js/custom.js'></script>
+<script>
+ function OnAccounttypeChange(value)
+ {
+   switch(value)
+   {
+      case "chemist" : document.getElementById("rolelable").innerHTML = "<b>Chemist</b>"; break;
+      case "patient" : document.getElementById("rolelable").innerHTML = "<b>Consumer</b>"; break;
+      case "pathologist" : document.getElementById("rolelable").innerHTML = "<b>Diagnostic center</b>"; break;
+      case "doctor" : document.getElementById("rolelable").innerHTML = "<b>Doctor</b>"; break;	  
+   }
+ }
+
+jQuery(document).ready(function () {
+    // scroll-to-top animate
+    jQuery('#scroll-top').click(function () {
+        jQuery("html, body").animate({
+            scrollTop: 0
+        }, 900);
+        return false;
+    });
+});
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+.formbodytext_normal{
+	font-family: tahoma, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 0.8em;
+	color: #11587E;
+	margin-left: 10px;
+}
+.formtextarea{
+	background:transparent;
+	border:none;
+	height:2em;	 
+	border-bottom:1px solid #11587E;
+	font-family:tahoma,Helvetica,sans-serif;
+	font-size:70%;
+	font-color: #999999;
+	color:black;
+	margin-left: 5px;
+}
+.formmultiselect{
+	background:transparent;
+	border:none;
+	height:1.35em;	 
+	border-bottom:1px solid #11587E;
+	font-family:tahoma,Helvetica,sans-serif;
+	font-size:70%;
+	font-color: #999999;
+	color:#333333;
+	margin-left: 5px;
+}
+.formtarget{
+	border:1px solid #D6D5F4;
+	margin-bottom:3px;
+  margin-left: 67.5%;
+  min-height: 32em;
+  margin-top: 2em;
+	overflow-y:auto;
+  width: 32.0%;
+  position:fixed;
+  background-color: #ffffff;
+}
+
+.formContent{
+  height: auto;
+	padding-left:1em;
+  margin-left: 2px;
+	overflow-y:auto;
+	width:98%;
+}
+
+.selected{
+    height: 0.8em;
+    background-color: #f1fafc;
+    border: 1px solid #b5d5e3;
+    margin-right: 1em;
+    padding-right: 0.3em;
+    margin-bottom: 0.2em;
+    padding-left: 0.3em;
+    padding-bottom: 0;
+    padding-top: 0;
+    font-size: 0.8em;
+}
+.selected_label{
+    font-weight: bold;
+    display:inline-block;
+}
+.remove_selected{
+    padding-left: 0.1em;
+    cursor: pointer;
+}
+
+.FormHeading_BG{
+	background-color:#2D7A9E;
+	width:98.25%;
+	height:2em;
+	font-family:tahoma,Helvetica,sans-serif;
+	font-size:90%;
+	font-weight:bold;
+	color:#FFFFFF;
+	padding-left:1em;
+	padding-top:5px;
+	margin-left:2px;
+}
+.examform{
+  height: auto;
+}
+.formelement{
+	min-height:2em;
+	padding-top:5px;
+}
+.followelement{
+	background: url('../images/treeline.png') no-repeat;
+	padding-left:10px;
+	margin-top:3px;
+}
+.verticalContainer{
+	width:98%;
+}
+
+div.hr{
+	border-bottom:1px solid #D6D5F4;	
+	border-top:none;
+	height:10px;
+	width:100%;
+}
+
+.nodeelement{
+	padding-left:20px;
+}
+body
+{
+color: black;
+font-size: 1.2em ! important;
+line-height : 2;
+font-size:13px;
+}
+h2, .h2
+{
+font-family: tahoma, Helvetica, sans-serif;
+color: black;
+font-size: 18px !important;
+font-weight: bold;
+
+}
+.formbodytext_normal
+{
+	font-size: 0.9em ! important;
+}
+.regnformcontrol{
+	border: 1px solid #5cb1b6;
+	/*width:250px;*/
+	border-radius: 4px;
+}
+div.twocol
+{
+	float:left;
+	width:50%;
+	text-align: center;
+}
+div.formelements{
+
+  text-align: left;
+  margin-left: 0%;
+}

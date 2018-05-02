@@ -1,0 +1,502 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,2,3</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>4,5,6,7</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>History</label>
+		<type>MultiDD</type>
+		<answer>
+			<label>Food sticking between or inside teeth</label>
+		</answer>
+		<answer>
+			<label>Bleeding from gums or gaps in teeth</label>
+		</answer>
+		
+		<answer>
+			<label>Loose or shaky teeth</label>
+		</answer>
+		
+		<answer>
+			<label>Increase in gaps between teeth</label>
+		</answer>
+		<answer>
+			<label>Growing out or shifting of teeth</label>
+		</answer>
+		<answer>
+			<label>Cracks in teeth</label>
+		</answer>
+		
+		<answer>
+			<label>Sensitivity of teeth to cold, hot or sour food</label>
+		</answer>
+		
+		<answer>
+			<label>Chipping off of tooth</label>
+		</answer>
+		
+		<answer>
+			<label>Dull pain in jaw or face</label>
+		</answer>
+		
+		<answer>
+			<label>A sharp edge to teeth</label>
+		</answer>
+		
+		<answer>
+			<label>Burning sensation in teeth on eating spicy food</label>
+		</answer>
+		
+		<answer>
+			<label>Difficulty in eating from one side although there is no pain</label>
+		</answer>
+		
+		<answer>
+			<label>Others</label>
+			<follow>300</follow>
+		</answer>		
+		
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Examination of face</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<value>Examination of face</value>
+			<follow>101,102,103</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>101</id>
+		<label>Facial symmetry</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<value>skip</value>
+			<follow>201,202,203</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>201</id>
+		<label>Frontal</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+			<value>Frontal facial symetry is normal</value>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<value>Frontal facial symetry is abnormal</value>
+			<follow>300</follow>
+		</answer>
+	</question>
+	<question>
+		<id>202</id>
+		<label>Profile</label>
+		<type>DD</type>
+		<answer>
+			<label>Straight</label>
+			<value> is straight</value>
+		</answer>
+		<answer>
+			<label>Protrusion</label>
+			<follow>301</follow>
+		</answer>
+	</question>
+	<question>
+		<id>203</id>
+		<label>Retrusion </label>
+		<type>DD</type>
+		<answer>
+			<label>Midface</label>
+		</answer>
+		<answer>
+			<label>Lower Face</label>
+		</answer>
+	</question>
+	<question>
+		<id>301</id>
+		<label>Type</label>
+		<type>DD</type>
+		<answer>
+			<label>Midface</label>
+		</answer>
+		<answer>
+			<label>Lower Face</label>
+		</answer>
+	</question>
+	<question>
+		<id>102</id>
+		<label>Swellings</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Soft Tissue</label>
+		</answer>
+		<answer>
+			<label>Hard Tissue</label>
+		</answer>
+		<answer>
+			<label>Lymph Glands</label>
+		</answer>
+	</question>
+	<question>
+		<id>204</id>
+		<label>Soft Tissue</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absend</label>
+		</answer>
+	</question>
+	<question>
+		<id>205</id>
+		<label>Hard Tissue</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absend</label>
+		</answer>
+	</question>
+	<question>
+		<id>206</id>
+		<label>Lymph Glands </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absend</label>
+		</answer>
+	</question>
+	<question>
+		<id>103</id>
+		<label>Lips</label>
+		<type>DD</type>
+		<answer>
+			<label>Closed</label>
+		</answer>
+		<answer>
+			<label>Open</label>
+		</answer>
+	</question>
+	<question>
+		<id>3</id>
+		<label>Intra Oral Examination</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>104,105,106,107</follow>
+		</answer>
+		<answer>
+			<label>Absend</label>
+		</answer>
+	</question>
+	<question>
+		<id>104</id>
+		<label>Dental Arch</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	<question>
+		<id>105</id>
+		<label>Peri Odontal</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>207,208</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>207</id>
+		<label>Gingiva</label>
+		<type>DD</type>
+		<answer>
+			<label>Swollen</label>
+		</answer>
+		<answer>
+			<label>Red</label>
+		</answer>
+		<answer>
+			<label>Bleeding</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>208</id>
+		<label>Halitosis </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>106</id>
+		<label>Soft Tissue</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>209,210,211</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	<question>
+		<id>209</id>
+		<label>Buccal Mucosa </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	<question>
+		<id>210</id>
+		<label>Palate</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	<question>
+		<id>211</id>
+		<label>Alveolar </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	<question>
+		<id>107</id>
+		<label>Teeth</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>212,213,214,215,216,217,218</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	<question>
+		<id>212</id>
+		<label>Decayed</label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>213</id>
+		<label>Missing</label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>214</id>
+		<label>Filled</label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>215</id>
+		<label>Dental Bleeding</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	<question>
+		<id>216</id>
+		<label>Periodontal Bleeding</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	<question>
+		<id>217</id>
+		<label>Sublingual Salivary Glands</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Enlarged</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	<question>
+		<id>218</id>
+		<label>Saliva</label>
+		<type>MultiDD</type>
+		<answer>
+			<label>Freeflowing</label>
+		</answer>
+		<answer>
+			<label>Thick</label>
+		</answer>
+		<answer>
+			<label>Xerostomia</label>
+		</answer>
+	</question>
+	<question>
+		<id>4</id>
+		<label>Root Canal Treatment</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>5</id>
+		<label>Crown </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>6</id>
+		<label>Bone Implants  </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>7</id>
+		<label>Dentures </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>108,109</follow>
+		</answer>
+		<answer>
+			<label>Absent </label>
+			
+		</answer>
+	</question>
+	<question>
+		<id>108</id>
+		<label>Partial </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No </label>
+		</answer>
+	</question>
+	<question>
+		<id>109</id>
+		<label>Total</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>220,221</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>220</id>
+		<label>Total Removable</label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>221</id>
+		<label>Total Fixed</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>300</id>
+		<label>Describe</label>
+		<type>text</type>
+	</question>
+	
+	
+</form>

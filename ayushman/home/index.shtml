@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en-US"><!--<![endif]-->
+<head>
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+	 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    Title -->
+    <title>India Online Health</title>
+	<link href="/ayushman/assets/css/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="/ayushman/assets/cssF/footable.core.bootstrap.min.css" rel="stylesheet" type="text/css">
+	<script type='text/javascript' src='webapp/js/jquery-1.11.1.min.js'></script>
+    <!-- Define a view port to mobile devices to use - telling the browser to assume that
+    the page is as wide as the device (width=device-width)
+     and setting the initial page zoom level to be 1 (initial-scale=1.0) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon-new.png">
+
+    <!-- Google Web Font -->
+<!-- Removed   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>-->
+    <!-- bootstrap Style Sheet (caution ! - Do not edit this stylesheet) -->
+
+    <!-- Flexslider stylesheet -->
+    <link rel="stylesheet" href="webapp/css/flexslider.css" type="text/css" media="all">
+
+    <!-- Animations stylesheet -->
+    <link rel="stylesheet" href="webapp/css/animations.css" type="text/css" media="all">
+    
+	<!-- Awesome Font stylesheet -->
+<!-- Removed   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+    <!-- Datepciker stylesheet -->
+    <link rel="stylesheet" href="webapp/css/datepicker.css" type="text/css" media="all">
+    <!-- Swipebox stylesheet -->
+    <link rel="stylesheet" href="webapp/css/swipebox.css" type="text/css" media="all">
+    <!-- meanmenu stylesheet -->
+    <link rel="stylesheet" href="webapp/css/meanmenu.css" type="text/css" media="all">
+    <!-- Include the site main stylesheet -->
+    <link rel="stylesheet" href="webapp/css/main.css" type="text/css" media="all">
+	<link rel="stylesheet" href="webapp/css/signup.css" type="text/css" media="all">
+	<link rel="stylesheet" href="webapp/css/login.css" type="text/css" media="all">
+    <link rel="stylesheet" href="webapp/css/ioh.css" type="text/css" media="all">
+	<!-- CUSTOM CSS-->
+	
+    <!-- Include the site responsive  stylesheet -->
+    <link rel="stylesheet" href="webapp/css/custom-responsive.css" type="text/css" media="all">
+	<script type="text/javascript" src="/ayushman/assets/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <link href="/ayushman/assets/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" type="text/css">
+    <!--<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>-->
+    <script type="text/javascript" src="/ayushman/assets/js/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <style>
+		 	#filters > li > a:link {
+				color: black;
+			    text-decoration: none;				
+		}
+		/* mouse over link */
+			#filters > li > a:hover {
+			color: black;
+			background-color: #ffa13c;
+			text-decoration: none;
+		}
+
+	#panel4.panel {
+	position: absolute;
+	color:black;
+	top: 100px;
+	right: 0%;
+	display: none;
+	background: #fcfcfc;
+
+	
+	border:1px solid #04716e;
+	-moz-border-radius-topleft: 20px;
+	/*-webkit-border-top-left-radius: 20px;*/
+	-moz-border-radius-bottomleft: 20px;
+	/*-webkit-border-bottom-left-radius: 20px;*/
+
+	-moz-border-radius-topright: 20px;
+	/*-webkit-border-top-right-radius: 20px;*/
+	-moz-border-radius-bottomright: 20px;
+	/*-webkit-border-bottom-right-radius: 20px;*/
+
+	width: 300px;
+	height: 225px;
+	padding: 10px 10px 10px 10px;
+	filter: alpha(opacity=90);
+	opacity: 1;
+
+	font-family:"Open Sans",sans-serif;
+	font-size:13px;
+	
+}
+	
+body {
+    font-family: "Open Sans",sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 10px;
+}
+
+.sidenav a {
+    padding: 10px 10px 10px 0px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: -10px;
+    right: 2px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.formheader{
+	color:black;
+	font-size:18px;
+	height:20px;
+	text-align:center;
+}
+.form-group{
+	margin-top:15px;
+}
+
+.activenav{
+	    background-color: #ffa13c;
+		    border-radius: 5px;
+	}
+.sliderright{
+	color :black;
+	font-size: 30px; 
+	right: -20px; 
+	position: absolute;
+	top: 40%;z-index: 5; 
+	display: inline-block;
+}
+.sliderleft{
+	color :black;
+	font-size: 30px; 
+	left: -20px; 
+	position: absolute;
+	top: 40%;z-index: 5; 
+	display: inline-block;
+}
+
+</style>
+	
+	
+<script type="text/javascript">
+	// Added because of error "a.curCSS is not a function"
+	jQuery.curCSS = function(element, prop, val) {
+		return jQuery(element).css(prop, val);
+	};
+	function openPdf(param)
+	{
+		window.open(param,"",'width=700,height=600,top=60,left=300');
+	}
+	function closelogin(){
+		$("#panel4").toggle("slow");
+	}
+	
+	$(document).ready(function(){ 
+		//Stop carousels auto slide while scrolling 
+      if(window.screen.availWidth<=767){
+        $(".fp-viewing-home").addClass("fp-viewing-consumers-2");
+        $(".fp-viewing-home").removeClass("fp-viewing-home");
+        $("#section1").addClass("active");
+        $("#section0").hide();
+      }
+      window.onscroll = function (e) {
+        if (window.screen.availWidth <= 767) {
+          $(".fp-viewing-home").addClass("fp-viewing-consumers-2");
+          $(".fp-viewing-home").removeClass("fp-viewing-home");
+          $("#section1").addClass("active");
+        }
+      }
+
+      var page=document.URL.substring(document.URL.lastIndexOf("/")+1,document.URL.lastIndexOf("."));
+		$("#"+page).attr("class","active");
+		$("#"+page).find("a").css("color","#fff");
+		$(".login").click(function(){
+			$("#panel4").toggle("slow");
+			$('html,body').animate({
+                        scrollTop: 0
+            }, 10);
+			document.getElementById("email").focus();
+			return false;
+		});
+
+		$(document).click(function(e){
+			if ($(e.target).parents("#panel4").length == 0) 
+				$("#panel4").hide("slow");
+		});
+
+      $("#menuExpand").click(function(e) {
+        if($(".logoWrapper a").hasClass("expand-logo")){
+          $(".logoWrapper a").removeClass("expand-logo");
+        }else{
+          $(".logoWrapper a").addClass("expand-logo");
+        }
+      });
+
+      var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+		if(is_chrome)
+		{
+			if(document.getElementById('chromeabsent') != null)
+				document.getElementById('chromeabsent').innerHTML = "";
+		}
+		else
+		{
+			if(document.getElementById('chromeabsent') != null)
+				document.getElementById('chromeabsent').visible = true;
+		}
+	});
+var $= jQuery.noConflict();
+function openDialog(url, width, height){
+				 $.fancybox({
+                    'width': width,
+                    'height': height,
+                    'autoScale': false,
+                    'transitionIn': 'fade',
+                    'transitionOut': 'fade',
+                    'type': 'iframe',
+                    'href': url,
+                    'showCloseButton': true,
+                    'afterClose' : function(){
+					}
+            	});
+			}
+      
+function doc(){
+	$("#doc").show();
+	$("#con").hide();
+	//$("#cop").hide();
+}
+function con(){
+	$("#doc").hide();
+	$("#con").show();
+	//$("#cop").hide();
+}
+function cop(){
+	$("#doc").hide();
+	$("#con").hide();
+//	$("#cop").show();
+}
+
+</script>
+     <!--[if lt IE 9]>
+
+    <![endif]-->
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+function changebgcolor1(){
+	document.getElementById("adoctor").style.background = "#ffa13c";
+	document.getElementById("aconsumer").style.background = "transparent";
+}
+function changebgcolor2(){
+	document.getElementById("aconsumer").style.background = "#ffa13c";
+	document.getElementById("adoctor").style.background = "transparent";
+}
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+    $(function(){
+      $("#TopMenu").load("TopMenu.shtml"); 
+    });
+    $(function(){
+      $("#BottomBar").load("BottomBar.shtml"); 
+    });
+	function loginbox(){
+		/*$(".login").click(function(){
+			$("#panel4").toggle("slow");
+			$('html,body').animate({
+                        scrollTop: 0
+            }, 10);
+			document.getElementById("email").focus();
+			return false;
+		});	*/
+		closeNav();
+}	
+</script>
+
+</head>
+<!--<body onload="loginbox()" > ng-app="landingPage">-->
+<body onload="loginbox()" style="background-color: white; " > 
+<!--<div ng-controller="landingPageController">-->
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="<php echo 'http://www.google.com/chromeframe/?redirect=true'; ?>">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+<!--<div id="TopMenu" ></div>-->
+<!--slider-->
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar-header page-scroll">
+			<span   class="visible-xs" style="font-size:24px;cursor:pointer; margin-top: -10px;  float:left; background: none !important;width: 50px;padding: 16px 12px 9px;border: 0;" onclick="openNav()">&#9776; </span>
+				<div id="mySidenav" class="sidenav visible-xs" style="    position: fixed;top: 0;height: 100%;z-index: 9999; background: rgba(30, 190, 240,1)">
+				  <!--<a href="javascript:void(0)" class="closebtn" style="color:white;padding-bottom:20px" onclick="closeNav();">&times;</a>-->
+				  <ul style="color:white;list-style-type:none ">
+						  <li class="visible-xs"><a href="/ayushman/home/index.shtml" style="color: black; font-size: 14px;"> <img src="images/home.png" width="25px"/> <span style="color: black;"> <strong>Home</strong></span></a>
+						<a href="javascript:void(0)" class="closebtn" style="color:black;padding-bottom:20px" onclick="closeNav();">&times;</a>
+						  </li>
+						  <li class="visible-xs"><a href="/ayushman/home/programsmenu.html"  style="color: black;font-size: 14px;"><img src="images/consumer.png" width="25px" /> <span><strong>Consumers</strong></span></a></li>
+						  <li class="visible-xs"><a href="/ayushman/home/serviceproviders.html" style="color: black;font-size: 14px;"><img src="images/news1.png"  width="25px"/> <span><strong>Service Providers</strong></span></a></li>
+						  <li class="visible-xs"><a href="/ayushman/home/Contactus.shtml" style="color: black;font-size: 14px;"><img src="images/contact.png" /> <span><strong>Contact Us</strong></span></a>
+							  <ul>
+								  <li><a href="/ayushman/home/About.shtml"  style="color: black;font-size: 14px;"><div class="sub-links"></div><strong>About</strong></a></li>
+								  <li><a href="/ayushman/home/Mission.shtml"  style="color: black; font-size: 14px;"><div class="sub-links"></div><strong>Vision and Leadership</strong></a></li>
+								  <li><a href="/ayushman/home/TermsofUse.shtml"  style="color: black; font-size: 14px;"><div class="sub-links"></div><strong>Terms of Use</strong></a></li>
+								  <li><a href="/ayushman/home/Disclaimer.shtml" style="color: black; font-size: 14px;"><div class="sub-links"></div><strong>Disclaimer</strong></a></li>
+								  <li><a href="/ayushman/home/PrivacyPolicy.shtml"  style="color: black; font-size: 14px;"><div class="sub-links"></div><strong>Privacy Policy</strong></a></li>
+								  <li><a href="/ayushman/home/ReturnPolicy.shtml"  style="color: black; font-size: 14px;"><div class="sub-links"></div><strong>Return Policy</strong></a></li>
+								  <li><a href="/ayushman/home/Contactus.shtml"  style="color: black; font-size: 14px;"> <div class="sub-links"></div><strong> Enquiry</strong></a></li>
+							  </ul>
+						  </li>
+					</ul>
+				</div>	
+		
+			  <a class="navbar-brand" href="/ayushman/home/index.shtml">
+                    <img  class="img-responsive hidden-xs"src="webapp/img/LOGO.png" class="logo" style="margin-left:50px; height: 40px; " alt="India Online Health">
+					<img  class="img-responsive visible-xs"src="webapp/img/LOGO.png" class="logo" style=" margin-top: -5px; height: 30px;" alt="India Online Health">
+               
+			   </a>
+				<div style="float:right; margin-right: -15px;" class="visible-xs">
+						<a href="/ayushman/cregistrar/view" title="Signup" class="signup">
+						  <span>
+							<i class=""></i>
+							<img src="images/signup-green.png">
+						  </span>
+						</a>
+					
+					<a href="javascript:void(0);" title="Login" class="login">
+					  <span>
+						<img src="images/login-green.png">
+						<i class=""></i>
+					  </span></a>
+				  </div>
+		</div> 
+			<div class="collapse navbar-collapse navbar-ex1-collapse main-nav">              
+				<ul  class="nav navbar-nav" >	
+                    <li class="hidden"> <a href="#page-top"></a> </li>
+					<li ><a class="activenav" href="/ayushman/home/index.shtml" style=""><b>Home</b></a></li>
+                    <li ><a href="programsmenu.html"  style=""><b>Consumers</b></a></li>
+                    <li ><a href="serviceproviders.html"  style=""><b>Service Providers</b></a></li>
+         		</ul>
+				<ul  class="nav navbar-nav" style="float:right;">	
+                   <li class=" hidden-xs"><a href="/ayushman/cregistrar/view"  style= 'font-family:"Open Sans",sans-serif; font-size:16px;background-color:transparent;'><button class="btnsign" type="button"><b>SIGN UP</b></button></a></li>
+		  			<li class=" hidden-xs"><a href="javascript:void(0);" title="Login" class="login"  style= 'font-family:"Open Sans",sans-serif; font-size:16px; background-color:transparent;'><button class="btnsign " type="button"><b>LOG IN</b></button></a></li>
+		  		</ul>
+			</div>           
+    </nav>
+</div>
+<div class="home-slider clearfix">
+    <div class="flexslider">
+        <ul class="slides">
+            <!--slide start-->
+                <img src="webapp/img/landing-page/sliderbg1.png" style="opacity:0.7" class="left-image" alt="Medical Services That You Can Trust" draggable="false">
+            <li class="flex-active-slide" style="height:600px;">
+                <img src="webapp/img/landing-page/sliderbg2.png" class="right-image" alt="Medical Services That You Can Trust" draggable="false">
+                <div class="content-wrapper clearfix">
+                    <div class="container">
+						<div id="subNavigation" class="main-nav"> 
+							<div class="slide-content clearfix">
+								<a href="AyushCare.shtml">
+									<h1 style= 'font-family: "Open Sans"; color:rgb(0,54,173); margin-bottom:0px;font-weight: 400;'> Ayushcare </h1>
+								</a>
+								<p style='font-size:15pt;color:rgb(229,99,3); font-family:"Open Sans",sans-serif; margin-bottom:0px;margin-top:0px;padding-left:120px'> - We Care</p>
+								<h3 style="margin-top: 35px; font-size:20px;color:rgb(0,54,173);"><span class="fa fa-star-o" style="color:white"></span> Our flagship program</h3>
+								<a class="read-more orange linked" style="margin-left: 55px;margin-top: 15px;" href="AyushCare.shtml">Read More</a>
+            				</div>
+						</div>
+                    </div>
+                </div> 
+			</li> 
+		</ul>  	  
+	</div>
+</div>
+<div style="height:150px">
+</div>
+<!--blog posts section-->
+	<div class="home-blog text-center clearfix" id="articles" >
+    <div style=" " class="container">
+	<div class="row">
+     
+            <div class=" col-lg-11 col-sm-11">
+				<div class="row">
+					<div class=" col-lg-5 col-sm-5">				
+						<div id="myCarousel" class="carousel slide" data-ride="carousel">
+							<!-- Indicators -->
+							<ol class="carousel-indicators">
+							  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							  <li data-target="#myCarousel" data-slide-to="1"></li>
+							  <li data-target="#myCarousel" data-slide-to="2"></li>
+							  <li data-target="#myCarousel" data-slide-to="3"></li>
+							</ol>
+							<!-- Wrapper for slides -->
+														<br />
+													<div class="slogan-section animated fadeInUp clearfix">
+														<h2>ARTICLES</h2>
+													</div>
+							<div class="carousel-inner">
+								<div class="item active">        	
+											<article class="common-blog-post">
+												<div class="text-content clearfix">
+													<h5><a href="https://www.indiaonlinehealth.com/wordpress/1-2">Thyroid Gland - Our Body’s Thermostat</a></h5>
+													<div class="for-border"></div>
+														<p>We at Ayushman are all geared up to keep our promise of continuing to keep you healthy with Ayush Patrika. In this issue we are going to tell you about our body’s thermostat — the Thyroid gland.</p>
+												</div>
+											</article><br>
+										<a class="read-more orange linked" target="_blank" href="https://www.indiaonlinehealth.com/wordpress/1-2" >Read More</a>
+								</div> 
+								<div class="item">					
+											<article class="common-blog-post">
+												<div class="text-content clearfix">
+													<h5><a href="https://www.indiaonlinehealth.com/wordpress/2-2">Hypertension – A Silent Killer</a></h5>
+													<div class="for-border"></div>
+														<p>We at Ayushman are all geared up to keep our promise of continuing to keep you healthy with of Ayush Patrika. In this issue we are going to tell you about Hypertension since it has become very common even in the young.</p>
+												</div>
+											</article><br>
+										<a class="read-more orange linked" target="_blank" href="https://www.indiaonlinehealth.com/wordpress/2-2" >Read More</a>
+								</div>       
+								<div class="item">
+										<article class="common-blog-post">
+												<div class="text-content clearfix">
+													<h5><a href="https://www.indiaonlinehealth.com/wordpress/3-2">Vitamin-B12</a></h5>
+													<div class="for-border"></div>
+														<p> We at Ayushman are all geared up to keep our promise of continuing to keep you healthy with Ayush Patrika. In this issue we are going to tell you about Vitamin B-12.</p>
+												</div>
+											</article><br>
+										<a class="read-more orange linked" target="_blank" href="https://www.indiaonlinehealth.com/wordpress/3-2" >Read More</a>
+								</div>
+								<div class="item">
+										<article class="common-blog-post">
+												<div class="text-content clearfix">
+													<h5><a href="https://www.indiaonlinehealth.com/wordpress/4-3">Dangers Of Self Medication</a></h5>
+													<div class="for-border"></div>
+														<p>Hello friends, We at Ayushman are all geared up to keep our promise of continuing to keep you healthy with Ayush Patrika.
+														Due to increasing cost of consultations and time constraints, pill popping and self-medication are becoming common.
+														</p>
+												</div>
+											</article><br>
+										<a class="read-more orange linked" target="_blank" href="https://www.indiaonlinehealth.com/wordpress/4-3" >Read More</a>
+								</div>		
+							</div>
+
+							<!-- Left and right controls -->
+							<a style="background:transparent;" class="left carousel-control" href="#myCarousel" data-slide="prev">
+							  <span class="fa fa-chevron-left sliderleft"></span>
+							  <span class="sr-only">Previous</span>
+							</a>
+							<a style="background:transparent;" class="right carousel-control" href="#myCarousel" data-slide="next">
+							  <span class="fa fa-chevron-right sliderright"></span>
+							  <span class="sr-only">Next</span>
+							</a>
+					    </div>
+					</div>
+					<div class=" col-lg-2 col-sm-2">
+				    </div>
+					<div class="col-lg-5 col-sm-5">
+							<br />
+							<div class="slogan-section animated fadeInUp clearfix">
+								<h2>IN THE NEWS</h2>
+							</div>
+								<article class="common-blog-post">
+									<div class="text-content clearfix">
+										<h3><a href="">CIO Review - Top 10 Most Promising Healthcare Startups 2017</a></h3>
+										<div class="for-border"></div>
+										<p>IndiaOnlineHealth: A Platform that Connects Healthcare Stakeholders Seamlessly.</p>
+									</div>
+								</article><br>
+									<a class="read-more orange linked" target="_blank" onclick="openPdf('/ayushman/assets/pdf/CIOReviewIndiaMagazine.pdf')" >Read More</a>
+						</div>
+						
+				</div>
+			</div>
+		<!--	<div class="col-lg-4 col-sm-4">
+                <article class="common-blog-post">
+                    <div class="text-content clearfix">
+                        <h5><a href="">Ayushman Patrika May 2017</a></h5>
+                        <div class="for-border"></div>
+                        <p>It is May and I am happy to inform you that this is our anniversary issue. Yes--- we have been together for 12 months now. It has been an enjoyable journey so far creating a health bulletin for you that carries some useful information, a bit of learning and a bit of fun too. Since this is our anniversary issue</p>
+                    </div>
+                </article><br>
+                <a class="read-more orange linked" target="_blank" href="/wordpress/articles/ayushmanpatrika-may-2015" >Read More</a>
+            </div>
+			
+			<div class="col-lg-4 col-sm-4">
+                <article class="common-blog-post">
+                    <div class="text-content clearfix">
+                        <h5><a href="">Ayushman Patrika March 2017</a></h5>
+                        <div class="for-border"></div>
+                        <p>The CoEP, which is the third oldest technical institution in the country with a history of more than 150 years, has joined hands with a private healthcare agency for developing an updated electronic medical record of all hostel students. This can be accessed over the web in a secure manner.</p>
+                    </div>
+                </article><br>
+                <a class="read-more orange linked" href="http://articles.timesofindia.indiatimes.com/2013-05-18/pune/39353709_1_hostel-students-coep-anil-sahasrabudhe" target="_blank">Read More</a> 
+            </div> -->
+        </div>
+    </div>
+</div>
+<br> <br>
+<!--testimonials section-->
+<ul class="slides" >
+    <!--slide start-->
+<li class="flex-active-slide" style="height:100%">
+   
+<div class="doctors-posts doctors-page clearfix" id="about" style="background-image: url('webapp/img/landing-page/sliderbg1.png'); ">
+    <div class="container isotope-wrapper text-center">
+        <h2 class="text-center" style="margin-left:0%;"><span>Testimonials</span></h2>
+        <ul id="filters" class="doccon">
+		    <li ><a id="adoctor" style="padding-bottom: 10px;" onclick="changebgcolor1(), doc()" href="#" ><b>Doctors</b></a></li>
+		    <li><a id="aconsumer" style="padding-bottom: 10px;" onclick="changebgcolor2(), con()" href="#"><b>Consumers</b></a></li>
+        <!--    <li><a href="#" onclick="cop();"><b>Corporates</b></a></li> -->
+        </ul>
+    </div>
+     <div id="doc" class="container isotope-wrapper text-center">
+            <div id="isotope-container" class="clearfix">
+                <div class="isotope-item cardiac-clinic primary-health-care col-sm-12">                    
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10 text-center">
+                            <h4>What Doctors say about IndiaOnlineHealth</h4>
+                            <div class="flexslider-three ">
+                                <ul class="slides">
+                                    <li>
+                                        <img class="img-circle" src="webapp/img/temp-images/author-22-130x130.jpg" alt="author-22" />
+                                        <blockquote>
+                                            <p>Excellent, user-friendly clinic management software. Even computer non-savvy persons (like me) can use it.</p>
+                                        </blockquote>
+
+                                        <div class="testimonial-footer clearfix">
+                                            <h4>Dr. S.V. Dange (M.D., D.N.B)</h4>
+                                            <div class="for-border"></div>
+                                            <p>Pune</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img class="img-circle" src="webapp/img/temp-images/author-11-130x130.jpg"  alt="author-11" />
+                                        <blockquote>
+                                            <p>This is an excellent site, quite useful. Complete data of each & every patient is saved & can be recollected any time. Having very good customer support for doctors as well for the patients. I liked one unique thing from the company is about patient’s follow-up & reminder to them about the next appointment.</p>
+                                        </blockquote>
+                                        <div class="testimonial-footer clearfix">
+                                            <h4>Dr. Rajendra Chawat (D.M.&S., M.B.B.S (II))</h4>
+                                            <div class="for-border"></div>
+                                            <p>Pune</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+			</div>
+     </div>
+		<div id="con" class="isotope-item gynaecological-clinic primary-health-care col-sm-12" style="display:none">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10 text-center">
+                            <h4>What Consumers say about IndiaOnlineHealth</h4><br>
+                            <div class="flexslider-three">
+							  <ul class="slides">
+                                    <li>
+                                        <img class="img-circle" src="webapp/img/temp-images/author-22-130x130.jpg" alt="author-22" />
+                                        <blockquote>
+                                            <p>"Thank you for taking the trouble to introduce us to AyushCare. We decided to go ahead & register my 88 year old mother, who needs constant assistance being wheel chair bound, so can take advantage of regular home visits by Physician. Not only has this decision has been welcome by everyone in the family, I would like to inform you that visit by a senior Physician last week has not only been extremely beneficial but has given lot of confidence to me in providing good quality medical care for my mother at home."</p>
+                                        </blockquote>
+
+                                        <div class="testimonial-footer clearfix">
+                                            <h4>Mr. K Shankar</h4>
+                                            <div class="for-border"></div>
+                                            <p>Handewadi, Pune</p>
+                                        </div>
+                                    </li>
+									<li>
+                                        <img class="img-circle" src="webapp/img/temp-images/author-11-130x130.jpg"  alt="author-11" />
+                                        <blockquote>
+                                            <p>I am happy to have considered AyushCare services for my aged parents. While I have currently used the services for few of the medical support services, I have been impressed by the quick responses of the team for some of my requests.I wish the team all success and hope that you will continue to support senior citizens all the way. All the best!”.</p>
+                                        </blockquote>
+
+                                        <div class="testimonial-footer clearfix">
+                                            <h4>Mr Ajay N</h4>
+                                            <div class="for-border"></div>
+                                            <p>Wanawadi, Pune</p>
+                                        </div>
+                                    </li>
+                                </ul>                                
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+        </div>
+<!--		<div id="cop" class="isotope-item gynaecological-clinic primary-health-care col-sm-12" style="display:none">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-10 text-center">
+                            <h5>What Corporates say about IndiaOnlineHealth</h5><br>
+                            <div class="flexslider-three">
+							  <ul class="slides">
+                                    <li>
+                                        <img class="img-circle" src="webapp/img/temp-images/author-22-130x130.jpg" alt="author-22" />
+                                        <blockquote>
+                                            <p>One of the best place where you can search and book appointment at one go, helps you to find clinics and doctors of different specialities in your nearby location.</p>
+                                        </blockquote>
+
+                                        <div class="testimonial-footer clearfix">
+                                            <h3>Rohini Patil</h3>
+                                            <div class="for-border"></div>
+                                            <p><a target="_blank" href="#">Pune</a></p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img class="img-circle" src="webapp/img/temp-images/author-11-130x130.jpg"  alt="author-11" />
+                                        <blockquote>
+                                            <p>Helps to maintain and track data of yourself & your relatives, created an account for my mother now I can track her health regularly.</p>
+                                        </blockquote>
+
+                                        <div class="testimonial-footer clearfix">
+                                            <h3>Rahul Jha</h3>
+                                            <div class="for-border"></div>
+                                            <p><a target="_blank" href="#">Mumbai</a></p>
+                                        </div>
+                                    </li>
+                                </ul>                                
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+		</div> -->
+</div>
+</li></ul>
+<div class="hidden-sm hidden-xs footer-new" id="BottomBar" ></div>
+<!--page footer-->
+<a href="#top" id="scroll-top"></a>
+<script type='text/javascript' id='quick-js'></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>-->
+<!--<script type='text/javascript' src='webapp/app/js/angular-route.js'></script>-->
+<!--<script type='text/javascript' src='app/controllers/landingPageController.js'></script>-->
+<!--<script type='text/javascript' src='webapp/app/app.js'></script>
+<script type='text/javascript' src='webapp/app/controllers/landingPageController.js'></script>-->
+<script type='text/javascript' id='quick-js'></script>
+
+<script type='text/javascript' src='webapp/js/jquery.flexslider-min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.swipebox.min.js'></script>
+<script type='text/javascript' src='webapp/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.isotope.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.appear.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.ui.core.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.ui.datepicker.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.validate.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.form.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.autosize.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.meanmenu.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.velocity.min.js'></script>
+<script type='text/javascript' src='webapp/js/respond.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery-migrate-1.2.1.min.js'></script>
+<script type='text/javascript' src="webapp/js/jquery.easing.min.js"></script>
+<script type='text/javascript' src='webapp/js/custom.js'></script>
+<script>
+jQuery(document).ready(function () {
+document.getElementById("adoctor").style.background = "#ffa13c";
+    // scroll-to-top animate
+    jQuery('#scroll-top').click(function () {
+        jQuery("html, body").animate({
+            scrollTop: 0
+        }, 900);
+        return false;
+    });
+});
+</script>
+<div id="panel4" class="panel panel-default login-panal" style="z-index: 50000;margin-right:3%;" >
+	<div class="panel-body">
+	<div class="formheader">Secure Log In <!--<a class="formclose" href="#" onclick="closelogin()"></a>--></div>
+	<form id="loginformid" action="/ayushman/cuser/login"  role="form" method="post" accept-charset="utf-8">
+		<div class="form-group" >
+			<input type="text" class="form-control" id="email" name="email" required="required" placeholder="Username" autocomplete="on">
+		</div>
+		<div class="form-group" >
+			<input type="password" class="form-control" id="password" name="password" required="required" placeholder="Password">
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-info">LOG IN </button>
+            <a href="/ayushman/cpasswordmanager/view" style="color:black; margin-top:10px;">Forgot Password?</a>
+        </div>
+	</form>
+	</div>	
+</div> 
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+.sectionVisitBox {
+	width:100%;
+	position:relative;
+	background-color:#fff;
+	padding:10px;
+	margin-top:5px;
+	overflow:hidden;
+	display:block;
+}
+.visit {
+	width:100%;
+	position:relative;
+	border-bottom:1px solid #9cd4f9;
+	overflow:hidden;
+	padding-bottom: 5px;
+}
+.section{
+	float:left;
+	padding-left:10px;
+	
+}
+.sec_gen {
+	width:20%;
+}
+.sec_inv {
+	width:25%;
+}
+.sec_med {
+	width:35%;
+}
+.sec_fol {
+	width:15%;
+}
+.moreinfo{
+	background-color:#F8F8F8; 
+	padding-left:10%;
+	width:100%;
+	position:relative;
+	display:none;
+	border-top:1px solid #9cd4f9;
+	float:left;
+}
+.links{
+	width:100%;
+	text-align:center;
+	padding-right: 10px;
+}
+.actions{
+	float:left;
+	max-width:50%;
+}
+.actionlinks{
+	float:left;
+	padding-left:10px;
+	cursor:pointer;
+}
+div.clear{
+    clear: both;
+}
+
+.message{
+	width:100%;
+	clear:both;
+	text-align:left;
+	padding:10px;
+	border-top: 1px solid #9cd4f9;
+	background-color:#F8F8F8;
+	display:none;
+}
+.messagelist{
+	width:100%;
+	clear:both;
+	text-align:left;
+	padding:10px;
+	border-top: 1px solid #9cd4f9;
+	background-color:#F8F8F8;
+}
+
+.messageHeader{
+	width:23%;
+	min-width: 213px;
+	clear:both;
+	text-align:left;
+	float:left;
+	padding:10px;
+	background-color: rgb(232, 231, 231);
+}
+.messageBody{
+	width:73%;
+	min-width: 213px;
+	text-align:left;
+	float:left;
+	padding:10px;
+	padding-top: 0px;
+}
+.in_message{
+	width:95%;
+	text-align:left;
+	padding:10px;
+	margin:0 auto 0 auto;
+	border: 1px solid #ccc;
+	overflow: auto;
+	background-color: white;
+}
+.sendto{
+	width:100%;
+	margin:0 auto 0 auto;
+	padding:10px;
+	overflow:auto;
+}
+.text_message{
+	width:100%;
+	margin:0 auto 0 auto;
+	padding:10px;
+}

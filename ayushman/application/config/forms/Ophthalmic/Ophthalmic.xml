@@ -1,0 +1,1379 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,16,17,500,41,52,53,54,55,56,25,26,28,31</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>9,19,20,500,42,43,44,500,45,46,47,48,49,50,51</questions>
+		<layout>Vertical</layout>
+	</container>
+			
+	<question>
+		<id>1</id>
+		<label>History</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>Right Eye</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>2,3,4,5,6,7,8</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Left Eye</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>2,3,4,5,6,7,8</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>Right Eye</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>10,11,12,13,15,18,21,22,23,24</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>Left Eye</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>10,11,12,13,15,18,21,22,23,24</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Red eye</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Photophobia</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Headache</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Itching</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Diminished vision</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Floaters  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>     
+	
+	
+	<question>
+		<id>8</id>
+		<label>Reduced peripheral vision   </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>Anatomical Examination</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Lids </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>101,102,103,104,105,106,107,108,109</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>101</id>
+		<label>Ptosis </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>102</id>
+		<label>Swelling </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>103</id>
+		<label>Inflammation </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>104</id>
+		<label>Chalazion </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>105</id>
+		<label>Stye </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>106</id>
+		<label>Sebaceous cyst</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>107</id>
+		<label>Growths </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>108</id>
+		<label>Foreign bodies </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>109</id>
+		<label>Eyelashes </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Scanty</label>
+		</answer>
+		<answer>
+			<label>Other </label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Lacrimal System</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>201,202,203,204</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>201</id>
+		<label>Puncta</label>
+		<type>DD</type>
+		<answer>
+			<label>Entropion</label>
+		</answer>
+		<answer>
+			<label>Ectropion</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>202</id>
+		<label>Dacryocystitis</label>
+		<type>DD</type>
+		<answer>
+			<label>Presnet</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>203</id>
+		<label>Flourescein Stain And Cobalt Blue Light</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>204</id>
+		<label>Schirmer Test</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Conjunctiva</label>
+		<type>DD</type>
+		<answer>
+			<label>Presnet</label>
+			<follow>110,111,112,113,114,115</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>110</id>
+		<label>Colour</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>111</id>
+		<label>Cysts</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>112</id>
+		<label>Concretions</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>113</id>
+		<label>Ulcers </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>114</id>
+		<label>Embedded Foreign Bodies </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>115</id>
+		<label>Discharge </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Further Examination After Lid Eversion </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>116,117,118,119,120</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>116</id>
+		<label>Follicles </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>117</id>
+		<label>Papillae  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	 
+	<question>
+		<id>118</id>
+		<label>Foreign Bodies  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>119</id>
+		<label>Flourescein Staining</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>120</id>
+		<label>Conjunctival Abrasions</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Cornea</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>121,122,123,124,125</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>121</id>
+		<label>Contact Lenses</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>122</id>
+		<label>Haziness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>123</id>
+		<label>White Dots</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>124</id>
+		<label>Cotton Bud Test Tuch Test For Sensation</label>
+		<type>DD</type>
+		<answer>
+			<label>Negative</label>
+		</answer>
+		<answer>
+			<label>Positive</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>125</id>
+		<label>Contact lens swab if keratitis suspected</label>
+		<type>DD</type>
+		<answer>
+			<label>Taken</label>
+		</answer>
+		<answer>
+			<label>Not Taken</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label>Fluorescein Staining</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>126,127,128</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>126</id>
+		<label>Punctate Erosions</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>127</id>
+		<label>Ulcers</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>128</id>
+		<label>Seidel Test</label>
+		<type>DD</type>
+		<answer>
+			<label>Negative</label>
+		</answer>
+		<answer>
+			<label>Positive</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>21</id>
+		<label>Anterior Chamber</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>129,130,131</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>129</id>
+		<label>Hypopion</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>130</id>
+		<label>Hyphaema</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>131</id>
+		<label>Slit Lamp For Anterior Uveitis</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>22</id>
+		<label>Pupils</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>132,133</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>132</id>
+		<label>Anisocria</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>133</id>
+		<label>Adie’s Tonic Pupil </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>23</id>
+		<label>Lens </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>134</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>134</id>
+		<label> Red Reflex For Opascity </label>
+		<type>DD</type>
+		<answer>
+			<label>Positive</label>
+		</answer>
+		<answer>
+			<label>Negative</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>24</id>
+		<label>Fundus </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>135,136,137,138,139,140,141,142,143</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>135</id>
+		<label>Optic Atrophy </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>136</id>
+		<label>Papilloedema </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>137</id>
+		<label>Aneurysms</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>138</id>
+		<label>Exudates</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>139</id>
+		<label>Emboli</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>140</id>
+		<label>Arterial Haemorrhages  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>	
+	
+	<question>
+		<id>141</id>
+		<label>Venous Haemorrhages </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+
+	<question>
+		<id>142</id>
+		<label>Chorio-Retinitis</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>143</id>
+		<label>Macular Oedema</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>25</id>
+		<label>Optic Nerve Function</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>33,34</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>33</id>
+		<label>Lift Eye </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>144,145,146,147,148</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>34</id>
+		<label>Right</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>144,145,146,147,148</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	<question>
+		<id>144</id>
+		<label>Visual Acuity </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>145</id>
+		<label>RAPD </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>146</id>
+		<label>Dyschromatopsia </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>147</id>
+		<label> Brightness Sensitivity </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>148</id>
+		<label> Blind Spot </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>26</id>
+		<label>Macular Function</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>35,36</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>35</id>
+		<label> Left Eye</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>27</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>36</id>
+		<label> Right Eye </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>27</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>27</id>
+		<label> Amsler Grid  </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>28</id>
+		<label>Eyelids  Function</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>37,38</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>37</id>
+		<label>Left Eye</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>29,30</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>38</id>
+		<label>Right Eye</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>29,30</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>29</id>
+		<label> Ruler Test For Ptosis </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>30</id>
+		<label> Lagophthalmos </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>31</id>
+		<label>Pupillary   Function</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>39,40</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>39</id>
+		<label> Left Eye</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>32</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	<question>
+		<id>40</id>
+		<label> Right Eye</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>32</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>32</id>
+		<label> Horner’s syndrome</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>41</id>
+		<label>Examination Of Functions</label>
+		<type>label</type>
+	</question>
+
+	<question>
+		<id>42</id>
+		<label>Extraocular Muscles</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>43</id>
+		<label> Eye Alignment</label>
+		<type>DD</type>
+		<answer>
+			<label>Esotropia</label>
+		</answer>
+		<answer>
+			<label>Exotropia</label>
+		</answer>
+		<answer>
+			<label>Endophoria</label>
+		</answer>
+		<answer>
+			<label>Exophoria</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>44</id>
+		<label> Eye Movement</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>149,150,151</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>149</id>
+		<label> Nystagmus</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>150</id>
+		<label> Diplopia</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>151</id>
+		<label> Limitation Of Eyeball Movement</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>45</id>
+		<label>Other Tests (Carried Out In The Ophthalmology Dept ) </label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>46</id>
+		<label>Visual Field Assessment  </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>47</id>
+		<label>Ultrasound Scan - Lens, Vitreous And Retina</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>48</id>
+		<label>Exophthalmometer -  Proptosis </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>49</id>
+		<label>Keratometry  </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>50</id>
+		<label>Hess Chart - Extraocular Muscle Movement   </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>51</id>
+		<label>Fluorescein Angiography   </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>52</id>
+		<label>Visual Acuity With Snellen’s Chart---6/  </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>53</id>
+		<label>Visual Fields</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>54</id>
+		<label>Intraocular Pressure</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>	
+	</question>
+	
+	<question>
+		<id>55</id>
+		<label>Tonometry---IOP---mmHg</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>56</id>
+		<label>Pupillary Reactions</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>152,153,154</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>152</id>
+		<label>Direct Response To Light</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal Constriction</label>
+		</answer>
+		<answer>
+			<label>Afferent Pupillary Defect</label>
+		</answer>
+		<answer>
+			<label>Contralateral Pupil Reaction </label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>153</id>
+		<label>The Swinging Flashlight Test</label>
+		<type>DD</type>
+		<answer>
+			<label>Negative</label>
+		</answer>
+		<answer>
+			<label>Positive</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>154</id>
+		<label>Accomodation Reflex</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>500</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>300</id>
+		<label>Describe</label>
+		<type>text</type>
+	</question>
+</form>

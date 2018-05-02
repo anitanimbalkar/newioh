@@ -1,0 +1,67 @@
+<!-- Required: Aspire UI Version 1.1+ -->
+<rules theme="classic" css="text.css">
+	<BTabViewBar edge="2" prefs="spacing|-4" />
+	<BTabViewBarItem edge="4" slices="up,selected" prefs="displaceX|-1|displaceY|-1|focusPadding|1,2,3|padding|4,6,5" />
+	<BTabViewBarStepperDown clone="TabViewBarStepperDown" />
+	<BTabViewBarStepperUp clone="TabViewBarStepperUp" />
+	<BTabViewContent edge="2" prefs="padding|8" />
+	<Button slices="up,over,disabled,down,selected_up,selected_over,selected_down,selected_disabled,emphasized,emphasized_down" prefs="padding|3,6,4|focusPadding|4|displaceX|1|displaceY|1" />
+	<CheckBox slices="up,over,down,disabled,selected_up,selected_over,selected_down,selected_disabled" />
+	<CheckListBox clone="TextInput" />
+	<CheckListBoxItem clone="" prefs="background|color,0xffffff|textStyle|checklistitem" />
+	<ComboBox clone="TextInput" />
+	<ComboBoxButton midX="9" midY="7" slices="up,over,down,disabled" />
+	<ComboBoxList edge="1" prefs="padding|1" />
+	<ComboBoxListItem clone="ListBoxItem" />
+	<Dialog clone="Window" prefs="contentPadding|12" />
+	<DialogButton clone="Button" prefs="minWidth|60|padding|3,12,4" />
+	<DialogClose clone="WindowClose" />
+	<DialogTitleBar clone="WindowTitleBar" />
+	<FocusRect edge="1" repeat="xy" />
+	<Frame prefs="padding|8" />
+	<ImageButton clone="Button" />
+	<Link clone="" prefs="textStyle|link" />
+	<ListBox clone="TextInput" />
+	<ListBoxItem edge="0" slices="up,selected" prefs="textStyle|listitem" />
+	<LabelButton clone="Button" />
+	<Menu edge="2" prefs="padding|3" />
+	<MenuBar edge="2,0" prefs="padding|1,0,3" />
+	<MenuBarItem edge="1" slices="up,over,selected" prefs="padding|1,3|textStyle|menubaritem" />
+	<MenuBarStepperDown clone="TabViewBarStepperDown" />
+	<MenuBarStepperUp clone="TabViewBarStepperUp" />
+	<MenuAssets assets="MenuCheck,MenuRadio,MenuArrow" slices="up,selected,disabled,disabled_selected" />
+	<MenuItem edge="0" slices="up,selected" prefs="padding|1,3|textStyle|menuitem" />
+	<MenuSeparator edge="0" prefs="margin|4,0" />
+	<MenuStepper assets="MenuStepDown,MenuStepUp" edge="1" midX="5" midY="3" slices="up,over,down,disabled" />
+	<PushButton clone="Button" />
+	<RadioButton copy="CheckBox" />
+	<ScrollBarStepper assets="ScrollBarDown,ScrollBarUp" slices="up,over,down,disabled" />
+	<ScrollBarTrack edge="0" repeat="xy" slices="up,disabled,down" />
+	<ScrollBarTrackThumb slices="up,over,down,disabled" />
+	<Slider edge="0,2" midY="4" slices="up,disabled,down" />
+	<SliderThumb edge="2,2,5,2" repeat="xy" slices="up,down,disabled" />
+	<Stepper assets="StepperDown,StepperUp" edge="2" midX="4" midY="7" slices="up,over,down,disabled" />
+	<StepperInput clone="TextInput" />
+	<StepperInputStepDown clone="VStepperDown" />
+	<StepperInputStepUp clone="VStepperUp" />
+	<TabViewBar edge="1" prefs="spacing|-4" />
+	<TabViewBarItem edge="4" slices="up,selected" prefs="displaceX|-1|displaceY|-1|focusPadding|3,2,1|padding|5,6,3" />
+	<TabViewBarStepper assets="TabViewBarStepperDown,TabViewBarStepperUp" edge="2" midX="4" midY="7" slices="up,over,down,disabled" />
+	<TabViewContent edge="2" prefs="padding|8" />
+	<TextArea clone="TextInput" />
+	<TextInput slices="up,disabled" prefs="focusPadding|2|padding|2" />
+	<ToolTip clone="" prefs="background|border,0,color,0xFFFFE1,shadow,0|padding|0" />
+	<VScrollBarStepper assets="VScrollBarDown,VScrollBarUp" slices="up,over,down,disabled" />
+	<VScrollBarTrack clone="ScrollBarTrack" />
+	<VScrollBarTrackThumb clone="ScrollBarTrackThumb" />
+	<VSlider edge="2,0" midX="4" slices="up,disabled,down" />
+	<VSliderThumb edge="2,2,2,5" repeat="xy" slices="up,down,disabled" />
+	<VStepper assets="VStepperDown,VStepperUp" edge="2" midX="7" midY="4" slices="up,over,down,disabled" />
+	<Window edge="2" slices="up,out,up_maximized,out_maximized" prefs="padding|4" />
+	<WindowButtons assets="WindowClose,WindowMaximize,WindowMinimize,WindowRestore" slices="up,down" prefs="margin|2,0" />
+	<WindowClose clone="" slices="up,down" prefs="margin|2,0,2,2" />
+	<WindowDragBox edge="4" repeat="x,y" />
+	<WindowGrip />
+	<WindowStatusBar edge="1" prefs="padding|2|textStyle|windowstatus" />
+	<WindowTitleBar edge="" slices="up,out" prefs="padding|0,2|textStyle|windowtitle" />
+</rules>

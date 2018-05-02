@@ -1,0 +1,117 @@
+<head>
+
+
+<link href="/ayushman/assets/css/newformstyle.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/ayushman/assets/css/jquery-ui-1.8.16.redmond.css" >
+<style>
+	.ui-autocomplete 
+{  margin-top: 0px !important;
+					 top: 60px !important;
+}
+</style>
+</head>
+<body>
+<div id="Upload">
+<div class="twocol">
+<h2>Test Information</h2>
+
+<div class="formelements">
+<label for="Datetxt1">Test Date* :</label>
+<input id="Datetxt1" name="Datetxt" type="text" class="form-control regnformcontrol"   ng-model="tag.Date"  jqdatepicker required />
+</div>
+<div class="formelements"id="results" style="position:relative;" >
+<label for="testnametxt1">Test Name :</label>
+<input id="testnametxt1" name="testnametxt1" type="text" class="form-control regnformcontrol" ng-model="tag.testname" autocomplete />
+<input id="testid" name="testid" type="text" readonly class="formtextarea" ng-model="testid"/>
+<input id="visitidfield"  type="hidden" class="form-control regnformcontrol" ng-model="paramdata" value="{{paramdata}}"/>
+</div>
+</div>
+<div class="twocol">
+<h2>Visit Information</h2>
+<div class="formelements">
+<label for="visitcombo">Select Visit : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<select id="visitcombo" name="visitcombo"  class="form-control regnformcontrol"  align="left"   ng-options="v as v[0] for (k,v) in visit" ng-model="tag.visit" ng-change="fillrelated()" >
+						
+					</select>	
+					<input id="visitid" type="hidden" name="visitid"  class="form-group connectformcontrol" maxlength="40" value="{{tag.visit}}" ng-model="tag.visit"/>
+
+</div>
+<div id="result" class="formelements" style="position:relative;">
+<label for="drnametxt">Suggested By :&nbsp;&nbsp;&nbsp;&nbsp;</label>
+<input id="drnametxt" name="drnametxt" type="text" class="form-control regnformcontrol " ng-model="tag.Suggestedby" autocompletedoctor/>
+</div>
+<div class="formelements">
+<label for="incidentcombo">Select Incidence :</label>
+<select id="incidentcombo" name="incidentcombo" type="text" class="form-control regnformcontrol"  align="left"   ng-options="val.id as val.name for val in incidence" onclick="setincidence();" ng-model="tag.incident" >
+						<!--<option ng-repeat="item in incidence" value="">{{item.name}}</option>-->
+					</select>	
+					</br>
+					<input id="newincidence" placeholder="Enter Incidence" name="newincidence" type="hidden" class="form-group regnformcontrol" maxlength="50" value="{{tag.newincident}}" ng-model="tag.newincident"/>					
+					<input id="incidenceid" name="incidenceid" type="hidden" class="form-group connectformcontrol" maxlength="40" value="{{tag.incident}}" ng-model="tag.incident"/>
+</div>
+</div>
+<div id="content1" style="padding: 61px;padding-bottom:5px;padding-top:275px;" >
+
+									<table style='width: 100%'>
+										<tr  ng-repeat="parameter in paramdata">
+										<!--	<td COLSPAN="2" width='100%'><label for="{{parameter.id}}" style='width: 60%;'>{{parameter.parametername}}</label>-->
+										<td width='60%'><label for="{{parameter.id}}" style=''>{{parameter.parametername}}</label></td>
+										<td>
+										<!--<input id="{{parameter.id}}" name="{{parameter.id}}" value=" " type='text' ng-hide="parameter.type=='nonnumeric'" class='form-control regnformcontrol'  style='color: black; font-family: Verdana,Arial,Helvetica,sans-serif;' ng-init="parameterdata[parameter.id]=parameter.parametername" ng-model="parameter_ids[parameter.id]"  />
+											<select ng-init="parameterdata[parameter.id]=parameter.parametername" ng-show="parameter.type=='nonnumeric'" id="{{parameter.id}}" name="{{parameter.id}}"  class="form-control regnformcontrol" ng-model="parameter_ids[parameter.id]"> 
+													<option value="" selected="" >Select Value</option>
+													<option value="absent" selected="" >Absent</option>
+													<option value="present" selected="" >Present</option>
+										</select>-->
+										<input id="{{parameter.id}}" name="{{parameter.id}}" type='text' ng-hide="parameter.type=='nonnumeric'" class='form-control regnformcontrol'  ng-init="parameterdata[parameter.id]=parameter.parametername" ng-model="parameter_ids[parameter.id]"  />
+										<select class="form-control regnformcontrol" ng-init="parameterdata[parameter.id]=parameter.parametername" ng-show="parameter.type=='nonnumeric'" id="{{parameter.id}}" name="{{parameter.id}}"   ng-model="parameter_ids[parameter.id]"ng-options="value.valueid as value.valuename for value in parameter.paramvalues"> 
+											<option value="" selected="" >Select Value</option>
+										</select>
+										
+										</td>
+										<td></td>
+										<td><select class="form-control regnformcontrol" style="width:100px;" ng-hide="parameter.type=='nonnumeric'" id="{{parameter.id}}_unitscombo" name="{{parameter.id}}_unitscombo"  ng-model="parameter_units[parameter.id]" ng-options="unit.unitid as unit.unitname for unit in parameter.units" > 
+													<option value="" selected="" >Select Unit</option>
+										</select></td>
+										<td>
+										<input id="{{parameter.id}}_unitscombo1" name="{{parameter.id}}_unitscombo1" type="text" class="form-control regnformcontrol"  ng-model="otherunits[parameter.id]" ng-show="parameter_units[parameter.id] == '2'"/>
+											</td>
+										</tr>
+									</table>
+									
+								</div>
+
+<hr>
+
+<div style="width:100%;padding-bottom:30px;  height: 50px;">
+						<div style="float: right;margin-right: 9px;">
+						<button class="btn button-style btn-s"ng-click="setStep(3)" ng-disabled="!tag.Date"style="padding: 2px;">
+							Next&nbsp <span class="glyphicon glyphicon-arrow-right"></span> 
+						</button>
+						
+						</div>
+						<div style="float: left;margin-left: 9px;">
+						<button class="btn button-style btn-s"ng-click="setStep(1)" style="padding: 2px;">
+							<span class="glyphicon glyphicon-arrow-left"></span>&nbsp Back 
+						</button>
+						</div>
+</div>	
+</div>					
+</body>						
+<script>
+	$(document).ready(function() {
+	});
+		function setincidence()
+	{
+		if (document.getElementById("incidenceid").value == 0)
+		{
+			document.getElementById("newincidence").type = "text";
+			//alert("New incident selected");
+		}
+		else
+		{
+			document.getElementById("newincidence").type = "hidden";
+			//alert("Existing incidence");
+		}
+	}
+</script>

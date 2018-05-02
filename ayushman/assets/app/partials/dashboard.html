@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>India Online Health</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+	<script src="/ayushman/assets/app/js/extra/dashboard.js"></script>
+	<style type="text/css">
+		tr:hover {
+          background-color: #F8F8F8;
+        }
+	</style>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+  	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container body-content"> 
+      <!-- Example row of columns -->
+      <div class="row main-content">
+		<div class="col-lg-4 content-col" style="min-width:970px;margin-top:6px">
+			  <div class="sectionBox" style="height:auto;">
+				<h2 class="blue"><span class="icons iconEMR">Upcoming Appointments</span><a href="#/dashboard/docpastapp/" style="float:right;""><font color="blue">Past Appointments</font></a></h2>
+					<div style="overflow:auto;height:auto;padding-bottom:0px;">
+						<div custom-autofocus ng-repeat="appointment in appointments['apps']" style="position:relative;" >
+								<div ng-show="$index == 0" style="height:50px;">
+									&nbsp;
+								</div>
+								<div ng-show="appointment.description.length > 0 && $index == 0"  style="position:absolute;display:none;top:-3px;left:3px;z-index:100;max-width:300px;padding:10px;background-color:#F5F8FC;border:solid 1px #a0c7ff;-moz-border-radius:5px;-ie-border-radius:5px;-webkit-border-radius:5px;-o-border-radius:5px;border-radius:5px;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+									<p>{{appointment.description}}</p>
+									<div style="position:absolute;bottom:-8px;left:28px;width:0;height:0;border:solid 2px #fff;box-shadow:0 0 10px 1px #555;"></div>
+									<div style="position:absolute;bottom:-15px;left:27px;width:0;height:0;border-color:#a0c7ff transparent transparent transparent;border-style:solid;"></div>
+									<div style="position:absolute;bottom:-18px;left:20px;width:0;height:0;border-color:#f9f9f9 transparent transparent transparent;border-width:10px;border-style:solid;"></div>
+								</div>
+								<div ng-show="appointment.description.length > 0 && $index != 0"  style="position:absolute;display:none;top:-49px;left:3px;z-index:100;max-width:300px;padding:10px;background-color:#F5F8FC;border:solid 1px #a0c7ff;-moz-border-radius:5px;-ie-border-radius:5px;-webkit-border-radius:5px;-o-border-radius:5px;border-radius:5px;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+									<p>{{appointment.description}}</p>
+									<div style="position:absolute;bottom:-8px;left:28px;width:0;height:0;border:solid 2px #fff;box-shadow:0 0 10px 1px #555;"></div>
+									<div style="position:absolute;bottom:-15px;left:27px;width:0;height:0;border-color:#a0c7ff transparent transparent transparent;border-style:solid;"></div>
+									<div style="position:absolute;bottom:-18px;left:20px;width:0;height:0;border-color:#f9f9f9 transparent transparent transparent;border-width:10px;border-style:solid;"></div>
+								</div>
+							<table width="inherit" class='table_roundBorder' onmouseover="$(this).prev().show();$(this).prev().prev().show();" onmouseout="$(this).prev().hide();$(this).prev().prev().hide();"  style="max-height:100%;width:100%;" >
+								<tr style="border-bottom:1px solid #9cd4f9;">
+									<td width="5%" class="bodytext_bold" align="left" style="padding:5px;">
+										<img src="{{appointment.PatientPhoto}}" style="box-shadow:2px 7px 19px #888888;height:60px;width:50px;"/>
+									</td>
+									<td width="20%" class="bodytext_bold" align="left" style="padding-left:15px;">
+										{{appointment.Patientname}}</br>{{appointment.PatientGender}}&nbsp;&nbsp;{{appointment.age}}</br>{{appointment.PatientContactNumber}}
+										</br>
+										<input type="hidden" id="cancelappid" name="cancelappid" value=""/>
+									</td>
+									<td class="bodytext_bold" align="left">
+										{{appointment.DateAndTime}}&nbsp;({{appointment.type}})
+										</br>Incidence&nbsp;:&nbsp;{{appointment.incidentsname_c}}
+										</br>Mode&nbsp;:&nbsp;{{appointment.mode}}</br>
+									</td>
+									<td>
+										<a href="#/patientemr/{{appointment.refappfromid_c}}" ng-click="loading(true);"><font color="blue">View / Edit Emr</font></a></br>
+										<a ng-click="cancel_appointment(appointment.appointment_id)" href="javascript:void(0);"><font color="blue">Cancel Appointment</font></a>
+									</td>
+									<td width="40%" class="bodytext_bold" align="center" style="">
+										<input type="button" href="javascript:void(0);" ng-click="launch_consultation_app(appointment.appointment_id,1)" class="button" value="Quick Prescription"></input>&nbsp;&nbsp;
+										
+									<!--	<input type="button" ng-if="((appointment.isfollowup == 0) && ((myprofile['con_profile']).length > 0))" ng-click="toggle(appointment.appointment_id)" href="javascript:void(0);" class="button" value="Start Consultation"></input>-->
+										<input type="button" ng-if="((appointment.isfollowup == 0))" ng-click="launch_consultation_app(appointment.appointment_id,0)" href="javascript:void(0);" class="button" value="Start Consultation"></input>
+										
+										<input type="button" ng-if="(appointment.isfollowup == 1)" ng-click="launch_consultation_app(appointment.appointment_id,0)" href="javascript:void(0);" class="button" value="Start Consultation"></input>
+										
+										<div ng-mouseleave="toggle(appointment.appointment_id)" id="{{appointment.appointment_id}}"   style="box-shadow:2px 7px 19px #888888;background:white;display:none;width:150px;position:absolute;float:right;right:20px;z-index:1;">
+											<table width="inherit" class='table_roundBorder' style="max-height:100%;width:100%;" >
+												<tr ng-repeat="template in myprofile['con_profile']" style="border-bottom:1px solid #9cd4f9;cursor:pointer;" ng-click="launch_consultation_app(appointment.appointment_id,0,template[1])">
+													<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+														<span >{{template[0]}}</span>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="bodytext_bold" style="position:relative;text-align: center;" ng-show="appointments['apps'].length==0">
+						Upcoming Appointments are not available.
+					</div>
+
+			  </div>
+		</div>
+    </div>
+    <!-- /container --> 
+  </body>
+</html>

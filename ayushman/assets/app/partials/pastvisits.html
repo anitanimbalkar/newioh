@@ -1,0 +1,505 @@
+<script src="/ayushman/assets/app/js/extra/agecalculator.js"></script>
+<link href="/ayushman/assets/app/css/visits.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/ayushman/assets/app/css/bootstrap.min.css" />
+<script type="text/javascript">
+$(document).ready(function() {
+		$(function(){
+			$( "input[name=fromdatevalue]" ).datepicker({yearRange: "-120:+0",maxDate: '0',changeMonth: true,changeYear: true,  dateFormat: 'dd M yy'});
+		});
+		$(function(){
+			$( "input[name=todatevalue]" ).datepicker({yearRange: "-120:+0",maxDate: '0',changeMonth: true,changeYear: true,  dateFormat: 'dd M yy'});
+		});	
+});
+</script>
+	<div class="sectionVisitBox bodytext_bold" id="newdivprescription" >
+<!--	<div id="{{data.id}}record" class="visit" ng-repeat="data in pastAllData['page'] track by $index ">-->
+<div id="{{data.id}}record" class="visit" ng-repeat="data in pastAllData['page'] | filter: {recordstatus : 'completed', display : 'yes'} track by $index ">
+		<div ng-if="data.status == 'fromsystem'">
+			<div class="container">
+				<div class="row">			
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 hidden-xs">	
+						<div class="printPDF " ng-show="pdfFlag">
+							<input id="{{data.id}}check" name="{{data.id}}check" type="checkbox" checked/>		
+							<label style="font-size:14px;color:red">	Select for generating PDF </label>
+						</div>
+					</div>	
+					<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 ">	
+						<div class="  ">
+							<h5><u> Visit Info </u> </h5>
+							<p style="  white-space: pre-line;">{{data.date}}</p>
+							<p style="  white-space: pre-line;">{{data.drname}}</p>
+								<div class="visible-xs">
+										<h5> <u>Investigations</u></h5>
+										<p style="">{{data.investigation}}</p>
+								</div>
+								<div class="hidden-xs">	
+									<p style="  white-space: pre-line;"><u>Incidence </u>: {{data.incidentname}}</p>
+									<p style="  white-space: pre-line;"><u>Symptoms </u>: {{data.maincomplaint}}</p>
+									<p style="  white-space: pre-line;"><u>Diagnosis </u>: {{data.diagnosis}}</p>
+								</div>
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 hidden-xs">	
+						<div class="">
+							<h5> <u>Investigations</u></h5>
+							<p style="">{{data.investigation}}</p>
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 ">		
+						<div class=" ">
+							<h5><u>Medicines</u></h5>
+							<p style="  white-space: pre-line;">{{data.medicine}}</p>
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 hidden-xs">		
+						<div class=" " >
+							<h5><u>Other instructions </u></h5>
+							<p style="  white-space: pre-line;">{{data.followup}}</p><br/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+				<a class=" visible-xs more-less glyphicon glyphicon-plus" onclick="changesign(this);" style="color:blue;font-size:14px" data-toggle="collapse" data-parent="#accordion" data-target="#{{data.id}}" aria-expanded="true" aria-controls="{{data.id}}">
+				More info...
+				</a>
+			<div  id="{{data.id}}" class="collapse">					
+				</br>
+				<div class="container  visible-xs ">
+					<div class="row">
+							<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 visible-xs">	
+									<p style="  white-space: pre-line;"><u>Incidence </u>: {{data.incidentname}}</p>
+									<p style="  white-space: pre-line;"><u>Symptoms </u>: {{data.maincomplaint}}</p>
+									<p style="  white-space: pre-line;"><u>Diagnosis </u>: {{data.diagnosis}}</p>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 visible-xs">	
+								<h5><u>Vitals</u></h5>
+									<div ng-repeat="(keyExam,valExam) in data.examination" >
+										<div ng-repeat="(itemKey, itemVal) in keys(valExam)" >
+											<p style="white-space: nowrap;margin-bottom:2px">{{valExam[itemVal].q}} - {{valExam[itemVal].a}}</p>
+										</div>
+									</div>
+							</div>							
+							<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 visible-xs">	
+								<h5><u>Examination Summary</u></h5>
+								{{data.examinationsummary}}
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3  visible-xs">	
+								<h5><u>Test Reports</u></h5>	
+									<div ng-repeat="reportval in data.onlyparameter track by $index ">
+										<p title="Lab: {{data.onlylab[$index]}} , Date: {{data.onlydate[$index]}} , Ref : {{data.onlyrefrange[$index]}}" style="margin-bottom:0px;white-space: pre-wrap;">{{reportval}}</p>
+									</div>	
+							</div>
+						</div>
+							<div class="links clear">
+								<div class="actions">
+									<a class="actionlinks" style="color:blue" ng-if="data.status == 'notfromsystem' && data.prescription != 'Informationnotyetfilled' && data.showbilloption=='yes'" href="" ng-click="show_summary_nfs(data.id);" target="_blank">Print Prescription</a>
+									<a class="actionlinks" style="color:blue" ng-if="data.status == 'notfromsystem' && data.prescription == 'Informationnotyetfilled'" href="">No Summary</a>
+									<a class="actionlinks" style="color:blue" ng-if="data.status == 'fromsystem' && data.showbilloption=='yes'" href="" ng-click="show_summary_fs(data.id);">Print/Prescription</a> 
+									<label ng-show="emr_snapshot.user_role=='doctor' && data.showbilloption=='yes'">
+										<label past-bill></label>
+									</label>
+									<!--<a class="actionlinks" style="color:red;float:right" ng-if="data.status == 'notfromsystem' && data.user_role=='patient'" href="" ng-click="deleteRecord(data.id,$index);" target="_blank">Delete Record</a>-->
+								<!--	Link suppresed at the moment-->
+
+								</div>
+								<div ng-if="data.report != 'Informationnotyetfilled'" class="actions">
+									<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id);">View Report</a> 
+								</div>
+								<!--<div ng-if="data.examination || data.examinationsummary " class="actions">
+									<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id);" >more info ...</a>
+								</div>-->
+								<div ng-if="data.messages.length == 0" class="actions" style="float:right">
+									<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id+'message');" >Second Opinion</a>
+								</div>
+								<div ng-if="data.messages.length > 0" class="actions" style="float:right">
+									<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id+'messagelist');" >Show/Hide Messages</a>
+								</div>
+						</div>
+				</div>	
+			</div>
+				<div class=" hidden-xs ">
+						<table class="bodytext_bold" style="width:100%;">
+							<tr>
+								<th style="text-align:left;padding-left:10px;"><h5><u>Vitals</u></h5></th>				
+								<th style="text-align:left;padding-left:10px;"><h5><u>Examination Summary</u></h5></th>
+								<th style="text-align:left;padding-left:10px;"><h5><u>Test Reports</u></h5></th>					
+							</tr>
+							<tr>
+												
+								<td style="width:20%;vertical-align:top;padding-left:10px;">
+									<div ng-repeat="(keyExam,valExam) in data.examination" >
+										<div ng-repeat="(itemKey, itemVal) in keys(valExam)" >
+											<p style="white-space: nowrap;margin-bottom:2px">{{valExam[itemVal].q}} - {{valExam[itemVal].a}}</p>
+										</div>
+									</div>
+								</td>
+								<td style="width:25%;vertical-align:top;padding-left:10px;">
+									{{data.examinationsummary}}
+								</td>
+								<td style="width:60%;vertical-align:top;padding-left:10px;">
+									<div ng-repeat="reportval in data.onlyparameter track by $index ">
+										<p title="Lab: {{data.onlylab[$index]}} , Date: {{data.onlydate[$index]}} , Ref : {{data.onlyrefrange[$index]}}" style="margin-bottom:0px;white-space: pre-wrap;">{{reportval}}</p>
+									</div>
+								</td>				
+							</tr>
+						</table>
+				
+					<br>
+					<div class="links clear">
+						<div class="actions">
+							<a class="actionlinks" style="color:blue" ng-if="data.status == 'notfromsystem' && data.prescription != 'Informationnotyetfilled' && data.showbilloption=='yes'" href="" ng-click="show_summary_nfs(data.id);" target="_blank">Print Prescription</a>
+							<a class="actionlinks" style="color:blue" ng-if="data.status == 'notfromsystem' && data.prescription == 'Informationnotyetfilled'" href="">No Summary</a>
+							<a class="actionlinks" style="color:blue" ng-if="data.status == 'fromsystem' && data.showbilloption=='yes'" href="" ng-click="show_summary_fs(data.id);">Print/Prescription</a> 
+							<label ng-show="emr_snapshot.user_role=='doctor' && data.showbilloption=='yes'">
+								<label past-bill></label>
+							</label>
+							<!--<a class="actionlinks" style="color:red;float:right" ng-if="data.status == 'notfromsystem' && data.user_role=='patient'" href="" ng-click="deleteRecord(data.id,$index);" target="_blank">Delete Record</a>-->
+							<a class="actionlinks" style="color:red;float:right" ng-if="data.status == 'notfromsystem'" href="" ng-click="deleteRecord(data.id,$index);" target="_blank">Delete Record</a>
+							<a class="actionlinks" style="color:blue;float:right" href="" ng-click="editIncidence(data.id);" target="_blank">Edit Incidence</a>
+							<a class="actionlinks" style="color:blue;float:right" ng-if="data.status == 'notfromsystem'" href="" ng-click="editRecord(data.id);" target="_blank">Edit Record</a> 
+							<!--	Link suppresed at the moment-->
+
+						</div>
+						<div ng-if="data.report != 'Informationnotyetfilled'" class="actions">
+							<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id);">View Report</a> 
+						</div>
+						<!--<div ng-if="data.examination || data.examinationsummary " class="actions">
+							<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id);" >more info ...</a>
+						</div>-->
+						<div ng-if="data.messages.length == 0" class="actions" style="float:right">
+							<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id+'message');" >Second Opinion</a>
+						</div>
+						<div ng-if="data.messages.length > 0" class="actions" style="float:right">
+							<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id+'messagelist');" >Show/Hide Messages</a>
+						</div>
+					</div>
+				</div>
+					<div id ="INC{{data.id}}" class="moreinfo">
+						<table class="bodytext_bold"  style="width:100%">
+							<tr>
+								<td>
+									<input id="incident{{data.id}}" type ="text" class="formtextarea"  style="maxlength:50" value="{{data.incidentname}}"/>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input id="savebtn" type="button" class="button" style="width:99px" value="Save" ng-click="saveIncidentinPres(data.id,$index);" >
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div id="{{data.id}}messagelist"  class="messagelist" ng-if="data.messages.length > 0">
+						<div class="in_message" ng-repeat="message in data.messages track by $index" ng-if="$first && !$last">
+							<div class="messageHeader"><i class="fa fa-envelope-o"></i>&nbsp;{{message.datetime}}<br/><span style="width:50px">From :</span> <span style="padding-left:1em">{{message.name}}</span> <br/> <span style="width:50px">To&nbsp;&nbsp;&nbsp;:</span><span style="padding-left:2em">{{message.to}}</span>
+							</div>
+							<div class="messageBody">{{message.query}}</div>
+						</div>
+						<div class="in_message" ng-repeat="message in data.messages track by $index" ng-if="$middle">
+							<div class="messageHeader"><i class="fa fa-envelope-o"></i>&nbsp;{{message.datetime}}<br/><span style="width:50px">From :</span> <span style="padding-left:1em">{{message.name}}</span> <br/> <span style="width:50px">To&nbsp;&nbsp;&nbsp;:</span><span style="padding-left:2em">{{message.to}}</span>
+							</div>
+							<div class="messageBody">{{message.query}}</div>
+						</div>
+						<div class="in_message" ng-repeat="message in data.messages track by $index" ng-if="$last ">
+							<div class="messageHeader"><i class="fa fa-envelope-o"></i>&nbsp;{{message.datetime}}<br/><span style="width:50px">From :</span> <span style="padding-left:1em">{{message.name}}</span> <br/> <span style="width:50px">To&nbsp;&nbsp;&nbsp;:</span><span style="padding-left:2em">{{message.to}}</span>
+							</div>
+							<div class="messageBody">{{message.query}}</div>
+							<div class="actions" style="float:right">
+								<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id+'message',$index,message);" ><i class="fa fa-reply"></i>Continue..</a>
+							</div>
+						</div>
+					</div>
+					<div id="{{data.id}}message" class="message">
+						<div class="in_message">
+							<div class="messageHeader"><span style="width:50px">To&nbsp;&nbsp;&nbsp;:</span><span style="padding-left:2em">{{data.replyto}}</span>
+							<br/>
+							   <select ng-if="network" ng-model="selectnetwork" ng-options="selectnet.name group by selectnet.role for selectnet in network" ng-change="changeTofield(selectnetwork,$index)">
+								  <option value="">Select to Send msg</option>
+								</select>
+							</div>
+							
+							<div class="messageBody"><textarea rows="7" id="{{data.id}}messagetext" style="width: 100%;"/></div>
+							<div ng-if="network.length==0" class="sendto"><button class="button" style="float: right;width: 99px;" ng-click="sendMessage(data.id,data.replytoid)">Send</button></div>
+							<div ng-if="network.length!=0" class="sendto"><button class="button" style="float: right;width: 99px;" ng-click="sendMessage(data.id,selectnetwork.id)">Send</button></div>
+						</div>
+					</div>
+				</div>
+	<!--Two seperate divs for two different colors -->
+	<div ng-if="data.status == 'notfromsystem'" style="background-color:rgba(220, 220, 220, 0.50)" >
+		<div class="container">
+			<div class="row">			
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 hidden-xs">	
+						<div class="printPDF" ng-show="pdfFlag">
+							<input id="{{data.id}}check" name="{{data.id}}check" type="checkbox" checked/>		
+							<label style="font-size:14px;color:red">	Select for generating PDF </label>
+						</div>	
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 ">	
+						<div class="  ">
+							<h5><u> Visit Info </u> </h5>
+							<p style="  white-space: pre-line;">{{data.date}}</p>
+							<p style="  white-space: pre-line;">{{data.drname}}</p>
+								<div class="visible-xs">
+										<h5> <u>Investigations</u></h5>
+										<p style="">{{data.investigation}}</p>
+								</div>
+								<div class="hidden-xs">	
+									<p style="  white-space: pre-line;"><u>Incidence </u>: {{data.incidentname}}</p>
+									<p style="  white-space: pre-line;"><u>Symptoms </u>: {{data.maincomplaint}}</p>
+									<p style="  white-space: pre-line;"><u>Diagnosis </u>: {{data.diagnosis}}</p>
+								</div>
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 hidden-xs">	
+						<div class="">
+							<p style=" white-space: pre-line;">{{data.investigation}}</p>
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 ">		
+						<div class="  white-space: pre-line;">
+							<h5><u>Medicines</u></h5>
+							<p style="  white-space: pre-line;">{{data.medicine}}</p>
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 hidden-xs">		
+						<div class=" white-space: pre-line; " >
+							<h5><u>Other instructions </u></h5>
+							<p style="  white-space: pre-line;">{{data.followup}}</p><br/>
+						</div>
+					</div>
+			</div>
+		</div>
+ 		
+				<a class=" visible-xs more-less glyphicon glyphicon-plus" onclick="changesign(this);"style="color:blue;font-size:14px"data-toggle="collapse" data-parent="#accordion" data-target="#{{data.id}}" aria-expanded="true" aria-controls="{{data.id}}">
+					More info...
+				</a>
+		<div id="{{data.id}}" class="collapse">
+			</br>
+			<div class="container visible-xs">
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 visible-xs">	
+							<p style="  white-space: pre-line;"><u>Incidence </u>: {{data.incidentname}}</p>
+							<p style="  white-space: pre-line;"><u>Symptoms </u>: {{data.maincomplaint}}</p>
+							<p style="  white-space: pre-line;"><u>Diagnosis </u>: {{data.diagnosis}}</p>								
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 visible-xs">	
+						<h5><u>Vitals</u></h5>
+							<div ng-repeat="(keyExam,valExam) in data.examination" >
+								<div ng-repeat="(itemKey, itemVal) in keys(valExam)" >
+									<p style="white-space:nowrap;margin-bottom:2px;">{{valExam[itemVal].q}} - {{valExam[itemVal].a}}</p>
+								</div>
+							</div>
+					</div>				
+					<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 visible-xs">	
+						<h5><u>Examination Summary</u></h5>
+								{{data.examinationsummary}}
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 visible-xs">	
+						<h5><u>Test Reports</u></h5>
+						<div ng-repeat="reportval in data.onlyparameter track by $index ">
+								<p title="Lab: {{data.onlylab[$index]}} , Date: {{data.onlydate[$index]}} , Ref : {{data.onlyrefrange[$index]}}" style="margin-bottom:0px;white-space: pre-wrap;">{{reportval}}</p>
+						</div>
+					</div>
+				</div>
+					<div class="links clear">
+						<div class="actions">
+							<a class="actionlinks" style="color:blue" ng-if="data.status == 'notfromsystem' && data.prescription != 'Informationnotyetfilled' && data.showbilloption=='yes'" href="" ng-click="show_summary_nfs(data.id);" target="_blank">Print Prescription</a>
+							<a class="actionlinks" style="color:blue" ng-if="data.status == 'notfromsystem' && data.prescription == 'Informationnotyetfilled'" href="">No Summary</a>
+							<a class="actionlinks" style="color:blue" ng-if="data.status == 'fromsystem' && data.showbilloption=='yes'" href="" ng-click="show_summary_fs(data.id);">Print/Prescription</a> 
+							<label ng-show="emr_snapshot.user_role=='doctor' && data.showbilloption=='yes'">
+								<label past-bill></label>
+							</label>
+							<!--<a class="actionlinks" style="color:red;float:right" ng-if="data.status == 'notfromsystem' && data.user_role=='patient'" href="" ng-click="deleteRecord(data.id,$index);" target="_blank">Delete Record</a>-->
+						
+
+						</div>
+						<div ng-if="data.report != 'Informationnotyetfilled'" class="actions">
+							<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id);">View Report</a> 
+						</div>
+						<!--<div ng-if="data.examination || data.examinationsummary " class="actions">
+							<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id);" >more info ...</a>
+						</div>-->
+						<div ng-if="data.messages.length == 0" class="actions" style="float:right">
+							<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id+'message');" >Second Opinion</a>
+						</div>
+						<div ng-if="data.messages.length > 0" class="actions" style="float:right">
+							<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id+'messagelist');" >Show/Hide Messages</a>
+						</div>
+					</div>
+				</div>	
+			</div>
+	
+		<div class="hidden-xs">
+			<table class="bodytext_bold"  style="width:100%";>
+				<tr>
+					<!--<th ng-if="data.examination" style="padding-left:10px;"><h5>Vitals</h5></th>				
+					<th ng-if="data.examinationsummary" ><h5>Examination Summary</h5></th>
+					<th ng-if="data.report != 'Informationnotyetfilled'"><h5>Test Reports</h5></th>	-->					
+					<th style="text-align:left;padding-left:10px;"></u><h5><u>Vitals</h5></th>				
+					<th style="text-align:left;padding-left:10px;"><h5><u>Examination Summary</u></h5></th>
+					<th style="text-align:left;padding-left:10px;"><h5><u>Test Reports</u></h5></th>					
+				</tr>
+				<tr>
+					<td style="width:25%;vertical-align:top;padding-left:10px;">
+						<div ng-repeat="(keyExam,valExam) in data.examination" >
+							<div ng-repeat="(itemKey, itemVal) in keys(valExam)" >
+								<p style="white-space:nowrap;margin-bottom:2px;">{{valExam[itemVal].q}} - {{valExam[itemVal].a}}</p>
+							</div>
+						</div>
+					</td>
+					<td style="width:25%;vertical-align:top;padding-left:10px;">
+						{{data.examinationsummary}}
+					</td>
+					<td style="width:50%;vertical-align:top;padding-left:10px;">
+						<!--<p style="white-space:pre-wrap;">{{data.onlyparameter}}</p>	-->
+						<div ng-repeat="reportval in data.onlyparameter track by $index ">
+							<p title="Lab: {{data.onlylab[$index]}} , Date: {{data.onlydate[$index]}} , Ref : {{data.onlyrefrange[$index]}}" style="margin-bottom:0px;white-space: pre-wrap;">{{reportval}}</p>
+						</div>					
+					</td>				
+				</tr>
+			</table>
+		
+		<br>
+			<div class="links clear">
+				<div class="actions">
+					<a class="actionlinks" style="color:blue" ng-if="data.status == 'notfromsystem' && data.prescription != 'Informationnotyetfilled' && data.showbilloption=='yes'" href="" ng-click="show_summary_nfs(data.id);" target="_blank">Print Prescription</a>
+					<a class="actionlinks" style="color:blue" ng-if="data.status == 'notfromsystem' && data.prescription == 'Informationnotyetfilled'" href="">No Summary</a>
+					<a class="actionlinks" style="color:blue" ng-if="data.status == 'fromsystem' && data.showbilloption=='yes'" href="" ng-click="show_summary_fs(data.id);">Print/Prescription</a> 
+					<label ng-show="emr_snapshot.user_role=='doctor' && data.showbilloption=='yes'">
+						<label past-bill></label>
+					</label>
+					<!--<a class="actionlinks" style="color:red;float:right" ng-if="data.status == 'notfromsystem' && data.user_role=='patient'" href="" ng-click="deleteRecord(data.id,$index);" target="_blank">Delete Record</a>-->
+					<a class="actionlinks" style="color:red;float:right" ng-if="data.status == 'notfromsystem'" href="" ng-click="deleteRecord(data.id,$index);" target="_blank">Delete Record</a>
+					<a class="actionlinks" style="color:blue;float:right" href="" ng-if="data.status == 'fromsystem'" ng-click="editIncidence(data.id);" target="_blank">Edit Incidence</a>
+					<a class="actionlinks" style="color:blue;float:right" ng-if="data.status == 'notfromsystem'" href="" ng-click="editRecord(data.id);" target="_blank">Edit Record</a> 
+
+				</div>
+				<div ng-if="data.report != 'Informationnotyetfilled'" class="actions">
+					<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id);">View Report</a> 
+				</div>
+				<!--<div ng-if="data.examination || data.examinationsummary " class="actions">
+					<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id);" >more info ...</a>
+				</div>-->
+				<div ng-if="data.messages.length == 0" class="actions" style="float:right">
+					<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id+'message');" >Second Opinion</a>
+				</div>
+				<div ng-if="data.messages.length > 0" class="actions" style="float:right">
+					<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id+'messagelist');" >Show/Hide Messages</a>
+				</div>
+			</div>
+		</div>
+		<div id ="INC{{data.id}}" class="moreinfo">
+			<table class="bodytext_bold"  style="width:100%">
+				<tr>
+					<td>
+						<input id="incident{{data.id}}" type ="text" class="formtextarea"  style="maxlength:50" value="{{data.incidentname}}"/>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input id="savebtn" type="button" class="button" style="width:99px" value="Save" ng-click="saveIncidentinPres(data.id,$index);" >
+					</td>
+				</tr>
+			</table>
+		</div>
+		<!-- By Anita -->
+		<div id ="EDIT{{data.id}}" class="moreinfo" style="background-color:white">
+			<table class="bodytext_bold"  style="width:100%">
+				<tr></br></tr>
+				<tr>
+					<td>Incidence :<input id="inci{{data.id}}" type ="text" class="formtextarea"  style="maxlength:50" value="{{data.incidentname}}"/></td>
+					<td>Investigations&nbsp;:<input id="investigation{{data.id}}" type ="text" class="formtextarea"  style="maxlength:100; width:450px;height: 30px; resize: none;" autocomplete="off" value="{{data.investigation}}"/></td>
+				</tr>
+				<tr>
+					<td>Symptoms:<input id="symptoms{{data.id}}" type ="text" class="formtextarea" style="maxlength:50" value="{{data.maincomplaint}}"/></td>
+					<td>Medicines&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input id="medicines{{data.id}}" type ="text" name="medicine" autocomplete="off" class="formtextarea"  style="maxlength:100;width:450px; height: 30px; resize: none;" value="{{data.medicine}}"/></td>
+				</tr>
+				<tr>
+					<td>Diagnosis :<input id="diagnosis{{data.id}}" type ="text" class="formtextarea"  style="maxlength:50" autocomplete="off" value="{{data.diagnosis}}"/></td>
+					<td>Test Reports&nbsp;&nbsp;&nbsp;&nbsp;:<input id="text_reportparameter{{data.id}}" name="text_reportparameter" ng-click="SearchdiagnosisCtrl(data.id);"  type ="text" class="formtextarea"  style="maxlength:50;width:450px; height: 30px; resize: none;" autocomplete="off" value="{{data.onlyparameter}}"/></td>
+				</tr>
+				<tr>
+					<td>Follow up&nbsp;:<input id="followup{{data.id}}" type ="text" autocomplete="off" class="formtextarea"  style="maxlength:100" value="{{data.followup}}"/></td>
+					<td>Exam Summary:<input id="examinationsummary{{data.id}}" type ="text" class="formtextarea"  style="maxlength:50;width:450px; height: 30px; resize: none;" autocomplete="off" value="{{data.examinationsummary}}"/></td>
+				</tr>
+				<tr></br></tr>
+				<tr>
+					<td>
+					Vitals:
+						<div ng-repeat="(keyExam,valExam) in data.examination" >
+							<!--<div ng-repeat="(itemKey, itemVal) in keys(valExam)" >
+								<p style="padding-left:50px">{{valExam[itemVal].q}} -
+								<input id="{{valExam[itemVal].q}}{{data.id}}" type ="text" class="formtextarea"  style="maxlength:50;" autocomplete="off" value="{{valExam[itemVal].a}}"/></p>
+							</div>-->
+							<div ng-repeat="(itemKey, itemVal) in valExam">
+								<div ng-repeat="(Key,Val) in keys(itemVal)">
+								<p ng-if="Key == 0"style="padding-left:50px">{{itemVal.q}} -
+								<input id="{{itemKey}}{{data.id}}" type ="text" class="formtextarea"  style="maxlength:50;" autocomplete="off" value="{{itemVal.a}}"/></p>
+								</div>
+							</div>
+						</div>
+					</td>
+					<td>
+						<input id="savebtn2" sytle="padding-left:50px;" type="button" class="consultation_bluebtnaback" style="float:left;width:99px" value="Save" ng-click="saveEditedConsult(data.id,$index);" >
+					</td>
+					<td></td>
+				</tr>				
+			</table>
+		</div>
+	<!-- Done By Anita -->
+		<div id="{{data.id}}messagelist"  class="messagelist" ng-if="data.messages.length > 0">
+			<div class="in_message" ng-repeat="message in data.messages track by $index" ng-if="$first && !$last">
+				<div class="messageHeader"><i class="fa fa-envelope-o"></i>&nbsp;{{message.datetime}}<br/><span style="width:50px">From :</span> <span style="padding-left:1em">{{message.name}}</span> <br/> <span style="width:50px">To&nbsp;&nbsp;&nbsp;:</span><span style="padding-left:2em">{{message.to}}</span>
+				</div>
+				<div class="messageBody">{{message.query}}</div>
+			</div>
+			<div class="in_message" ng-repeat="message in data.messages track by $index" ng-if="$middle">
+				<div class="messageHeader"><i class="fa fa-envelope-o"></i>&nbsp;{{message.datetime}}<br/><span style="width:50px">From :</span> <span style="padding-left:1em">{{message.name}}</span> <br/> <span style="width:50px">To&nbsp;&nbsp;&nbsp;:</span><span style="padding-left:2em">{{message.to}}</span>
+				</div>
+				<div class="messageBody">{{message.query}}</div>
+			</div>
+			<div class="in_message" ng-repeat="message in data.messages track by $index" ng-if="$last ">
+				<div class="messageHeader"><i class="fa fa-envelope-o"></i>&nbsp;{{message.datetime}}<br/><span style="width:50px">From :</span> <span style="padding-left:1em">{{message.name}}</span> <br/> <span style="width:50px">To&nbsp;&nbsp;&nbsp;:</span><span style="padding-left:2em">{{message.to}}</span>
+				</div>
+				<div class="messageBody">{{message.query}}</div>
+				<div class="actions" style="float:right">
+					<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id+'message',$index,message);" ><i class="fa fa-reply"></i>Continue..</a>
+				</div>
+			</div>
+		</div>
+		<div id="{{data.id}}message" class="message">
+			<div class="in_message">
+				<div class="messageHeader"><span style="width:50px">To&nbsp;&nbsp;&nbsp;:</span><span style="padding-left:2em">{{data.replyto}}</span>
+				<br/>
+ 				   <select ng-if="network" ng-model="selectnetwork" ng-options="selectnet.name group by selectnet.role for selectnet in network" ng-change="changeTofield(selectnetwork,$index)">
+				      <option value="">Select to Send msg</option>
+				    </select>
+				</div>
+				
+				<div class="messageBody"><textarea rows="7" id="{{data.id}}messagetext" style="width: 100%;"/></div>
+				<div ng-if="network.length==0" class="sendto"><button class="button" style="float: right;width: 99px;" ng-click="sendMessage(data.id,data.replytoid)">Send</button></div>
+				<div ng-if="network.length!=0" class="sendto"><button class="button" style="float: right;width: 99px;" ng-click="sendMessage(data.id,selectnetwork.id)">Send</button></div>
+			</div>
+		</div>
+	</div>	
+</div>
+	<div class="bodytext_bold" style="position:relative;text-align: center;" ng-if="gotvisits == false">
+		Loading visits <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+	</div>
+	<div id ="visitnotfoundDiv" class="bodytext_bold" style="position:relative;text-align: center;" ng-show="pastAllData['data'].length == undefined &&  gotvisits == true">
+		Previous visits not found.
+	</div>
+	<div class="bodytext_bold links printPDF" ng-show="pastAllData['page'].length > 0">	
+		<a href="javascript:void(0);" ng-click="showMoreVisits();" ng-if="pastAllData['data'].length != pastAllData['page'].length" style="color:blue;align:center;">Show Next 5 Visits</a>
+		<a href="javascript:void(0);" ng-click="showAllVisits();" ng-if="pastAllData['data'].length != pastAllData['page'].length" style="color:blue;align:center;">/ Show All Visits</a>
+		<a href="javascript:void(0);" ng-click="showLessVisits();" ng-if="pastAllData['page'].length > 5" style="color:blue;align:center;">/ Show Only Latest 5 Visits</a>
+		<label class="bodytext_bold" ng-if="pastAllData['data'].length != 0" style="float:right;">Showing 1 - {{pastAllData['page'].length}} of {{pastAllData['data'].length}} records </label>
+	</div>
+</div>
+<script type="text/javascript">
+function changesign(item)
+{
+	if($(item).hasClass("glyphicon-plus"))
+	{
+		 $(item).removeClass("glyphicon-plus").addClass("glyphicon-minus");
+	}
+	else
+	{
+		 $(item).removeClass("glyphicon-minus").addClass("glyphicon-plus");
+	}	
+}
+</script>

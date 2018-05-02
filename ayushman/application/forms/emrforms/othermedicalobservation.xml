@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>1</columns>
+		<column>1</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1,2,3,4,5,6,7</questions>
+		<layout>vertical</layout>
+	</container>
+	<question>
+		<id>1</id>
+		<label>Any medical problem at present ? Describe with duration.</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>2</id>
+		<label>Do you see any doctor regularly ? If so, how often ?</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>3</id>
+		<label>Have you check your blood / serum / sputum before ? If so describe the findings.</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>4</id>
+		<label>Are you taking any medicine for certain medical problem ? If yes describe the problem, duration and present status.</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>5</id>
+		<label>Have you undergone full medical checkup before ? If yes please describe any abnormality and upload reports in you profile.</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>6</id>
+		<label>Do you wear spectacles If so no, for left and right eye ?</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>7</id>
+		<label>Any other findings?</label>
+		<type>Text</type>
+	</question>
+
+</form>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>	
+	<container>
+		<id>1</id>
+		<questions>2,3,501,500,20,4,5,501,502,500,6,7,501,502,500</questions>
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>8,10,11,501,500,12,13,14,15,16,19,17,18,501,500</questions>
+		<layout>Vertical</layout>
+	</container>
+	<question>
+		<id>1</id>
+		<label>History</label>
+		<type>label</type>			
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Antenatal History</label>
+		<type>label</type>			
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>Postnatal History</label>
+		<type>label</type>			
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Birth </label>
+		<type>DD</type>
+		<answer>
+			<label>NVD</label>
+		</answer>
+		<answer>
+			<label>LSCS</label>
+		</answer>
+		<answer>
+			<label>NICU Stay</label>
+		</answer>
+			<answer>
+			<label>Any Complication</label>
+			<follow>300</follow>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Feeding history </label>
+		<type>DD</type>
+		<answer>
+			<label>Breast </label>
+		</answer>
+		<answer>
+			<label>Bottle </label>
+		</answer>
+		<answer>
+			<label>Weaning </label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Developmental history </label>
+		<type>DD</type>
+		<answer>
+			<label>Social smile</label>
+		</answer>
+		<answer>
+			<label>Neck holding </label>
+		</answer>
+		<answer>
+			<label>Rolling over </label>
+		</answer>
+		<answer>
+			<label>Sitting</label>
+		</answer>
+		<answer>
+			<label>Crawling </label>
+		</answer>	
+		<answer>
+			<label>Standing with support</label>		
+		</answer>	
+		<answer>
+			<label>Standing without support</label>		
+		</answer>
+		<answer>
+			<label>Walking </label>
+		</answer>
+		<answer>
+			<label>Speaking </label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Family History</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Any Congenital Defect</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Examination </label>
+		<type>label</type>			
+	</question>
+	<question>
+		<id>9</id>
+		<label>Developmental history </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Any congenital defect </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Hearing and visual assessment</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Genaral Examination</label>
+		<type>label</type>
+	</question>
+	<question>
+		<id>13</id>
+		<label>Pallor  </label>
+		<type>DD</type>
+		<answer> <label>- Present </label></answer>
+		<answer> <label>- Absent </label></answer>		
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Icterus  </label>
+		<type>DD</type>
+		<answer> <label>- Present </label></answer>
+		<answer> <label>- Absent </label></answer>		
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Cyanosis  </label>
+		<type>DD</type>
+		<answer> <label>- Present </label></answer>
+		<answer> <label>- Absent </label></answer>		
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>Clubbing  </label>
+		<type>DD</type>
+		<answer> <label>- Present </label></answer>
+		<answer> <label>- Absent </label></answer>		
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Lymphadenopathy  </label>
+		<type>DD</type>
+		<answer> <label>- Present </label></answer>
+		<answer> <label>- Absent </label></answer>		
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label>Consciousness level  </label>
+		<type>DD</type>
+		<answer> <label>- Active </label></answer>
+		<answer> <label>- Drowsy </label></answer>	
+		<answer> <label>- Lethargic </label></answer>
+		<answer> <label>- Unconsciousness </label></answer>		
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>Hydration  </label>
+		<type>DD</type>
+		<answer> <label>- Normal </label></answer>
+		<answer> <label>- Dehydrated  </label><follow>20</follow></answer>	
+	</question>
+	<question>
+		<id>20</id>
+		<label>Severity  </label>
+		<type>DD</type>
+		<answer> <label>- Mild </label></answer>
+		<answer> <label>- Moderate  </label></answer>	
+		<answer> <label>- Severe </label></answer>
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label>Teeth and gum</label>
+		<type>text</type>	
+	</question>
+	
+	<question>
+		<id>500</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>501</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+
+	<question>
+		<id>502</id>
+		<label>.</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>300</id>
+		<label>Describe </label>
+		<type>text</type>			
+	</question>
+	
+</form>

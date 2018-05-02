@@ -1,0 +1,401 @@
+<html>
+<script type="text/javascript" src="/ayushman/assets/js/jquery.watermark.js"></script>
+<script type="text/javascript" src="/ayushman/assets/js/livevalidation_standalone.compressed.js"></script>
+<script type="text/javascript" src="/ayushman/assets/js/messagecomponent.js"></script>
+
+<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css" />
+<link href="/ayushman/assets/css/style2.css" rel="stylesheet" type="text/css" />
+<link href="/ayushman/assets/css/web2.css" rel="stylesheet" type="text/css" />
+<link href="/ayushman/assets/css/responsive.css" rel="stylesheet" type="text/css" />
+
+
+
+<script type="text/javascript" src="/ayushman/assets/js/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+<link rel="stylesheet" type="text/css" href="/ayushman/assets/js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+
+<script type="text/javascript">
+
+function  possibleusername(){
+	var name=document.getElementById("firstname").value+document.getElementById("lastname").value;
+	var isusernamespresent = document.getElementById("isusernamespresent").value;
+	var newusername, usernamestring,returnstring;
+	usernamestring="<span class='bodytext'>Here are some suggestions for Username.</span></br>";
+	if((name!="")&&(isusernamespresent == "false"))
+	{
+		$(".ui-dialog-titlebar").hide();
+		$( "#loading" ).dialog({ modal: false });
+		$('#loading').dialog('open');
+		var count =1;
+		var ischeck= 0;
+		while (count< 4)
+		{
+			switch(ischeck)
+			{
+				case 0:newusername = document.getElementById("firstname").value+document.getElementById("lastname").value;
+					break;
+				case 1:newusername = document.getElementById("lastname").value+document.getElementById("firstname").value;
+					break;
+				case 2:newusername = document.getElementById("firstname").value+"."+document.getElementById("lastname").value;
+					break;
+				case 3:newusername = document.getElementById("lastname").value+"."+document.getElementById("firstname").value;
+					break;
+				default:var randumNumber=Math.floor((Math.random()*100)+1);
+					newusername = document.getElementById("firstname").value+randumNumber+"."+document.getElementById("lastname").value;
+					break;
+			}
+			returnstring = findusername(newusername);
+			newusername = newusername.toLowerCase();
+			if (returnstring == "valid")
+			{
+				usernamestring = usernamestring+" <a onclick='selectedname(this)' style='cursor:pointer;color: #5cb1b6;border-bottom: 1px solid #5cb1b6;' >"+newusername+"</a></br>";
+				count ++;
+			}
+			ischeck++;
+		}
+		document.getElementById("isusernamespresent").value= "true";
+		$("#possiblenames").append(usernamestring);
+		$('#loading').dialog('close');
+	}
+}
+
+function findusername(newusername)
+{
+	var returnstring;
+	$.ajax({
+		url: "/ayushman/cregistrar/checkusernameavailability?username="+newusername,
+		async: false,
+		success: function(data) {
+			$('#loading').dialog('close');
+			if(data =="invalid"){
+				returnstring = "invalid";
+			}
+			else{
+				returnstring = "valid";
+			}
+		},
+		error : function(){
+			returnstring= "invalid";
+		}
+		});
+	return returnstring;
+}
+                 
+function checkUsername(username){
+	if(username != undefined){
+		$(".ui-dialog-titlebar").hide();
+		$( "#loading" ).dialog({ modal: false });
+		$('#loading').dialog('open');
+		$.ajax({
+			url: "/ayushman/cregistrar/checkusernameavailability?username="+username,
+			success: function(data) {
+				$('#loading').dialog('close');
+				if(data=="invalid"){
+					document.getElementById("usernameerror").style.display = "block";
+					document.getElementById("rowusernamepossiblecombination").style.display = "block";
+					document.getElementById("possiblenames").style.top = "75px";
+				}
+				else{
+					document.getElementById("usernameerror").style.display = "none";
+					
+					if($('#username').val() != ''){
+						$('#password').focus();
+						document.getElementById("rowusernamepossiblecombination").style.display = "none";
+					}else{
+						document.getElementById("rowusernamepossiblecombination").style.display = "block";
+					}
+				}
+				$( "#loading" ).dialog({ modal: true });
+			},
+			error : function(){
+				$('#loading').dialog('close');
+				$( "#loading" ).dialog({ modal: true });
+			}
+		});
+		$('#loading').dialog('close');
+		$( "#loading" ).dialog({ modal: true });
+//		$('#termsconditions').hover(function(){
+//			 $("p").css("text-color", "yellow");
+//		}
+	}else{
+		return true;
+	}	
+}
+
+	$(document).ready(function() {
+		
+		
+
+
+		$('#loading').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			modal: true,
+			height: "30",
+			resizable: false,
+			width: "100px"
+		});
+	
+		document.getElementById("emailerror").style.display= "none";
+		var inputs = document.getElementsByTagName('input');
+		for (var i = 0; i < inputs.length; ++i) {
+			var currentinputtag= inputs[i];
+			if(currentinputtag.required==true){
+				currentinputtag.style.borderColor='red';
+			}
+		}
+		$("#email").keypress(function() {
+		   document.getElementById("emailerror").style.display= "none";
+		});
+		$('#wrappertermforpat').dialog({
+			autoOpen: false,
+			hide: "fade",
+			width: 'auto',
+			modal: true,
+			resize: "auto",
+			position:[200,200],
+			resizable: false,
+			fluid:true,
+			maxWidth:800
+		});
+		$('#wrappertermsforchemist').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			width: 1000,
+			modal: false,
+			height: "auto",
+			resize: "auto",
+			resizable: false,	
+			fluid:true,
+			maxWidth:800
+		});	
+		$('#wrappertermsforpathologist').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			width: 1000,
+			modal: false,
+			height: "auto",
+			resize: "auto",
+			resizable: false,	
+			fluid:true,
+			maxWidth:800
+		});	
+		$('#wrappertermsfordoctor').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			width: 1000,
+			modal: false,
+			height: "auto",
+			resize: "auto",          
+			resizable: false,	
+			fluid:true,
+			maxWidth:800
+		});	
+		$(".ui-dialog-titlebar").hide();
+
+		
+
+
+	
+		var password = new LiveValidation('password',{onlyOnSubmit: true });
+		password.add( Validate.Length, { minimum: 8} );
+		password.add( Validate.Presence );
+		
+		var password_confirm = new LiveValidation('password_confirm', {onlyOnSubmit: true });
+		password_confirm.add( Validate.Confirmation, { match: 'password' } );
+		password_confirm.add( Validate.Length, { minimum: 8} );
+		password.add( Validate.Presence );
+		
+		var firstname = new LiveValidation('firstname', {onlyOnSubmit: true });
+		firstname.add( Validate.Presence );
+		firstname.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed"} );
+		
+		var lastname = new LiveValidation('lastname',{onlyOnSubmit: true });
+		lastname.add( Validate.Presence );
+		lastname.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed" } );
+		
+		var username = new LiveValidation('username',{onlyOnSubmit: true });
+		username.add( Validate.Presence );
+		username.add( Validate.Length, { minimum: 4 });
+		username.add( Validate.Format, { pattern: /^[a-zA-Z0-9.@_\-]+$/,failureMessage: "only alpha numeric and special charaters '., @, -, _' are allowed" } );
+		
+		$("#username").focus(function(){
+			possibleusername();
+			document.getElementById("rowusernamepossiblecombination").style.display = "block";
+		});
+		$("#username").blur(function(){
+	
+			checkUsername($("#username").val());
+			
+		});
+		var mobilenumber = new LiveValidation('mobilenumber', {onlyOnSubmit: true });
+		mobilenumber.add( Validate.Numericality, {onlyInteger: true } );
+		mobilenumber.add( Validate.Length, { is: 10 });
+		mobilenumber.add( Validate.Format, { pattern: /^[0-9]+$/,failureMessage: "only numeric values allowed"} );
+		
+		var email = new LiveValidation('email', {onlyOnSubmit: true });
+		email.add( Validate.Email );
+	
+		var country = new LiveValidation('country', {onlyOnSubmit: true });
+		country.add( Validate.Presence );
+		$("#country option:not([disabled])").css("color", "#000");
+		$("#country").change(function() {
+		    $(this).removeClass('gray');
+		});
+
+		
+		$('#country').trigger('change');
+		$("#firstname").focus();
+		if($.trim($('#errorlistdiv').html()) != "")
+			showMessage('250','50','Registration Page Errors',$.trim($('#errorlistdiv').html()),'error','errordialogboxid');
+	});
+	
+	function OnAccounttypeChange(){
+	$('#rolelable').html($("#accounttype option:selected").text());
+	var mobilenumber = new LiveValidation('mobilenumber', {onlyOnSubmit: true });
+	mobilenumber.add( Validate.Numericality, {onlyInteger: true } );
+	mobilenumber.add( Validate.Length, { is: 10 });
+	mobilenumber.add( Validate.Format, { pattern: /^[0-9]+$/,failureMessage: "only numeric values allowed"} );
+			
+	var email = new LiveValidation('email', {onlyOnSubmit: true });
+	email.add( Validate.Email );
+	var role1 = document.getElementById("accounttype");
+	var role = role1.options[role1.selectedIndex].value;
+	if(role != 'patient')
+	{
+		email.add( Validate.Presence );
+		mobilenumber.add( Validate.Presence );
+		document.getElementById("lblemail").innerHTML = "Email Id *";
+		document.getElementById("email").placeholder= "* e.g. xyz@domain.com";
+		document.getElementById("lblContactNumber").innerHTML ="Contact No *";
+		document.getElementById("mobilenumber").placeholder= "* e.g. 9890xxxxxx";
+	}
+	else
+	{
+		document.getElementById("lblemail").innerHTML = "Email Id";
+		document.getElementById("email").placeholder= "e.g. xyz@domain.com";
+		document.getElementById("lblContactNumber").innerHTML ="Contact No";
+		document.getElementById("mobilenumber").placeholder= "e.g. 9890xxxxxx";
+	}
+	return true;
+}
+	
+	
+	
+</script>
+
+<style type="text/css">
+	.gray {
+	    color:#ccc;
+	}
+</style>	
+<body>	
+	<div id="regnformdiv" class="panel regnformdiv">				
+		<div class="formHeader">India Online Health - Registration</div>
+				
+		<div id="registrationform" style="border:1px solid #eee;">
+			<form id="registrationform" enctype="multipart/form-data" class="form-horizontal" style="margin-left:20px;" method="post" action="/ayushman/cregistrarbyadmin/register">
+			<div class="col-lg-12 form-group" id="accounttypetr" align="left">	
+					<div class="row">	
+						<label for="accounttype">Account Type *</label>
+						<select  name="accounttype" id="accounttype"  class="form-control regnformcontrol" required="required" title="Please select the Account Type"  onchange='OnAccounttypeChange();' >
+							<option  >Select role...</option>
+							<option  value="ipdstaff">Cashier</option>
+							<option  value="chemist">Chemist</option>
+							<option  value="doctor">Doctor</option>
+							<option  value="pathologist">Pathology</option>
+							<option  value="radiologist">Radiologist</option> 
+							<option  value="staff">Receptionist</option>
+							<option  value="ipdward">Ward</option>							
+						</select>	
+					</div>
+				</div>
+				<div id="ayushcareUserInfo" >
+					
+					<div class="row">	
+						<div class="col-lg-4 form-group" style="margin-right:10px">					
+								<label for="firstname">First Name *</label>
+								<input id="firstname" name="firstname" type="text"  class="form-control regnformcontrol"  placeholder="* e.g. John"  autocomplete="on" tabindex="1" />
+								
+						</div>
+						<div class="col-lg-4 form-group" style="margin-right:10px">				
+								<label for"middlename">Middle Name</label>
+								<input id="middlename" name="middlename" type="text"  class="form-control regnformcontrol" placeholder="" autocomplete="on" tabindex="2"/>
+						</div>	
+						<div class="col-lg-4 form-group">													
+							<label for="lasname">Last Name *</label>
+							<input  id="lastname" name="lastname" type="text"  class="form-control regnformcontrol"  placeholder="* e.g Bass" autocomplete="on" tabindex="3" />
+						</div>							
+					</div>
+					<div class="row">						
+						<div class="col-lg-4 form-group"  style="margin-right:10px">
+							<label  for="email" id="lblemail">Email Id</label>
+							<input name="email" type="text" id="email"  tabindex="4"  class="form-control regnformcontrol"  placeholder="e.g. xyz@domain.com" autocomplete="off"   maxlength="45" /><div id="emailerror" style="color: red;font-style: italic;display:none" >&nbsp;&nbsp;&nbsp;Email must be unique. Please write other email ID.</div><div id="emailcheckerror" style="color: red;font-style: italic;display:none" >&nbsp;&nbsp;&nbsp;Could not email availability, Please wait...</div>
+						</div>		
+						<div class="col-lg-2 form-group" style="margin-right:115px">										
+							<label for="country_c">Country *</label>
+							<select name="country_c"  tabindex="6"  class="form-control regnformcontrol" style="width:200px" id="country"> 
+								<!--<option value="" >* select Country</option>-->
+								<option value="India" selected>India</option>
+
+							</select>
+						</div>							
+						<div class="col-lg-2 form-group" style="float:left;">
+							<label for="isdphonehome" id="lblContactNumber">Contact No</label>
+							<input id="isdphonehome" type="text"  class="form-control regnformcontrol gray" style="width:50px;" name="isdphonehome"  value="+91" maxlength="4" readonly="true"/>							
+						</div>
+						<div class="col-lg-4 regformcontactno" >
+							<input name="mobilenumber" type="text" id="mobilenumber" tabindex="6"  class="form-control " style="border: 1px solid #5cb1b6;margin-top: 15%;" size="14" maxlength="10" placeholder="e.g. 9890xxxxxx" autocomplete="off" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-4 form-group" style="margin-right:10px">						
+							<label for="username">Username *</label>
+								<div id="rowusernamepossiblecombination" style="display:none;position:absolute;float:left;">
+									<input  id="isusernamespresent" style="display:none;" value="false"/>
+									<div id="possiblenames" style="top:34px;position:absolute;z-index:1;height:121px ! important;overflow-y:auto;" class="regformusername" >
+										<img src="/ayushman/assets/images/Close_Icon.png" onclick="$('#rowusernamepossiblecombination').hide();" style="float:right;cursor:pointer;"/>
+									</div>
+								</div>
+							<input  id="username" name="username" type="text" class="form-control regnformcontrol" autocomplete="off" size="25" placeholder="* e.g john12bass" maxlength="45"  tabindex="7"  />
+						</div>
+										
+						<div class="col-lg-4 form-group" style="margin-right:10px">
+							<label for="password">Password *</label>
+							<input name="password" type="password" class="form-control regnformcontrol" tabindex="8" id="password"/>
+						</div>
+						<div class="col-lg-4 form-group">
+								<label for="password_confirm">Confirm Password *</label>
+								<input name="password_confirm" type="password" tabindex="9" class="form-control regnformcontrol" id="password_confirm" />
+							</div>
+						</div>
+							<div id="usernameerror" style="color:red;display:none;float:left;margin-left:-13px;font-style: italic;" >Username must be unique. Please write other Username.</div>
+					</div>
+				
+					<div class="row">
+						<div class="form-group">
+							<div class="col-lg-11" align="right" >
+								<button type="submit" class="regnbutton" id = "addButton" ng-click="showhospitalDoctors()" >REGISTER>></button>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" name="phoneNumber" id="phoneNumber" size="25" />
+					<input type="hidden" name="defaultCountry" id="defaultCountry" size="2" />
+					<input type="hidden" name="carrierCode" id="carrierCode" size="2" />
+					<input type="hidden" name="output" id="output"/>
+				</div>									
+			</form>
+		</div>
+<div id="loading" style="width:40px;height:30px;background-color:transparent;align:center;overflow-y:hidden;overflow-x:hidden;  padding-bottom: 5px;  padding-left: 5px;  padding-top: 5px;">
+	<img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+</div>
+
+	</div>
+</body>	
+<script type="text/javascript">
+</script>
+<html>

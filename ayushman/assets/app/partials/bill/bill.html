@@ -1,0 +1,900 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.action').hide();
+		$("img").load(function(){
+		alert("Image loaded.");
+		});
+		
+		document.getElementById("qty1").value = 1;
+		document.getElementById("qty4").value = 0;
+	});
+	$(function() {
+		$( "#chequedate_c" ).datepicker({ yearRange: "-70:+0",changeMonth: true,changeYear: true,  dateFormat: 'dd M yy', maxDate: 0});
+	});
+	
+	$(function() {
+		$( "#rcptdate_c" ).datepicker({ yearRange: "-70:+0",changeMonth: true,changeYear: true,  dateFormat: 'dd M yy', maxDate: 0});
+	});
+
+	function selectMode(s)
+	{
+    	//var select=document.getElementById("payment").value;
+    	var selectedOption=s[s.selectedIndex].value;
+		if(selectedOption==6)
+    	{
+    		$("#cheqDetail").show();
+    		$("#cardDetail").hide();
+    	}
+		else if(selectedOption==1)
+    	{
+    		$("#cardDetail").show();
+    		$("#cheqDetail").hide();
+		}
+    	else
+		{
+    		$("#cheqDetail").hide();
+    		$("#cardDetail").hide();
+    	}
+	}
+	function openPayment(){
+		/*$("#creditPatient").dialog({
+		modal: false,
+		draggable: true,
+		resizable: false,
+		position: ['center', 'center'],
+		title: ' Credit  --- ',
+		show: 'blind',
+		hide: 'blind',
+		width: 400,
+		dialogClass: 'ui-dialog-osx'
+		});*/
+		$("#creditPatient").show();
+		var modeofpayment=document.getElementById("refmodeofpayment_c").value
+			if(modeofpayment==1)
+			{
+				$("#cheqDetail").hide();
+				$("#cardDetail").show();
+			}
+			else if(modeofpayment==6)
+			{
+				$("#cheqDetail").show();
+				$("#cardDetail").hide();
+			}
+			else
+			{
+				$("#cheqDetail").hide();
+				$("#cardDetail").hide();
+			}
+	}
+	function saveRcpt()
+	{
+		var CAdate=document.getElementById("rcptdate_c").value;
+		var CAamount=document.getElementById("amount_c").value;
+		var CAdesc=document.getElementById("extradesc_c").value
+		var chequeNo=document.getElementById("chequeno_c").value;
+		var chequeDate=document.getElementById("chequedate_c").value;
+		var transrefno=document.getElementById("cardtrnxno_c").value
+		var modeofpayment=document.getElementById("refmodeofpayment_c").value
+	
+		var docId=document.getElementById("doctoruserid").value;
+		var patuserId =document.getElementById("patid").value;
+	
+		if(CAdate == "" || CAamount == "" )
+		{
+			window.alert("Please enter values");
+		}
+		else if (modeofpayment==1 && transrefno=="") 
+		{
+			return (window.alert('Please transaction number'));
+		}
+		else if(modeofpayment==6 && (chequeDate=="" || chequeNo==""))
+		{
+			return (window.alert('Please enter values'));
+		}
+		else if(modeofpayment==5 && (CAdate == "" || CAamount == "" ) ){
+			return (window.alert('Please enter values'));
+		}
+		else
+		{
+			document.getElementById("amount_c").value = CAamount;
+			document.getElementById("totalrcpt").text = CAamount;
+			$("#creditPatient").hide();
+			/*$.ajax({
+				type: 'GET',
+				url: "/ayushman/cbill/saveOpdRcpt/get?patuserid="+patuserId+"&docuserid="+docId+"&creditdate="+CAdate+"&creditamount="+CAamount+"&creditdesc="+CAdesc+"&cheqno="+chequeNo+"&cheqdate="+chequeDate+"&trxrefno="+transrefno,
+				success: function(data) {
+				window.alert("Account Credited");
+				
+				},
+			error: function (req, status, error) {}
+			}); */
+		}
+		
+	}
+	function addSum()
+	{
+		var scope = angular.element($('#printBill')).scope();
+		
+		if(document.getElementById("label1_c").value!="")
+			{document.getElementById("charge1_c").value = parseFloat(document.getElementById("rate1").value * document.getElementById("qty1").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge1= parseFloat(document.getElementById("rate1").value * document.getElementById("qty1").value).toFixed(2);
+				});
+				}	
+			}
+		/*if(document.getElementById("label2_c").value!="")
+			{document.getElementById("charge2_c").value = document.getElementById("rate2").value * document.getElementById("qty2").value;}
+		if(document.getElementById("label3_c").value!="")
+			{document.getElementById("charge3_c").value = document.getElementById("rate3").value * document.getElementById("qty3").value;}*/
+		if(document.getElementById("label4_c").value!="")
+			{
+				document.getElementById("charge4_c").value = parseFloat(document.getElementById("rate4").value * document.getElementById("qty4").value).toFixed(2);
+				if(!scope.$$phase) {
+				scope.$apply(function(){
+				scope.billdetail.charge4= parseFloat(document.getElementById("rate4").value * document.getElementById("qty4").value).toFixed(2);
+				});
+				}
+			}
+		if(document.getElementById("label5_c").value!="")
+			{
+				document.getElementById("charge5_c").value = parseFloat(document.getElementById("rate5").value * document.getElementById("qty5").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge5= parseFloat(document.getElementById("rate5").value * document.getElementById("qty5").value).toFixed(2);
+					});
+				}					
+			}
+		if(document.getElementById("label6_c").value!="")
+			{
+				document.getElementById("charge6_c").value = parseFloat(document.getElementById("rate6").value * document.getElementById("qty6").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge6= parseFloat(document.getElementById("rate6").value * document.getElementById("qty6").value).toFixed(2);
+					});
+				}					
+			}
+		if(document.getElementById("label7_c").value!="")
+			{
+				document.getElementById("charge7_c").value = parseFloat(document.getElementById("rate7").value * document.getElementById("qty7").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge7= parseFloat(document.getElementById("rate7").value * document.getElementById("qty7").value).toFixed(2);
+						});
+				}
+			}
+		if(document.getElementById("label8_c").value!="")
+			{
+				document.getElementById("charge8_c").value = parseFloat(document.getElementById("rate8").value * document.getElementById("qty8").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge8= parseFloat(document.getElementById("rate8").value * document.getElementById("qty8").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label9_c").value!="")
+			{
+				document.getElementById("charge9_c").value = parseFloat(document.getElementById("rate9").value * document.getElementById("qty9").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge9= parseFloat(document.getElementById("rate9").value * document.getElementById("qty9").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label10_c").value!="")
+			{
+				document.getElementById("charge10_c").value = parseFloat(document.getElementById("rate10").value * document.getElementById("qty10").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge10= parseFloat(document.getElementById("rate10").value * document.getElementById("qty10").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label11_c").value!="")
+			{
+				document.getElementById("charge11_c").value = parseFloat(document.getElementById("rate11").value * document.getElementById("qty11").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge11= parseFloat(document.getElementById("rate11").value * document.getElementById("qty11").value).toFixed(2);
+					});
+				}
+			}	
+		if(document.getElementById("label12_c").value!="")
+			{
+				document.getElementById("charge12_c").value = parseFloat(document.getElementById("rate12").value * document.getElementById("qty12").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge12= parseFloat(document.getElementById("rate12").value * document.getElementById("qty12").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label13_c").value!="")
+			{
+				document.getElementById("charge13_c").value = parseFloat(document.getElementById("rate13").value * document.getElementById("qty13").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge13= parseFloat(document.getElementById("rate13").value * document.getElementById("qty13").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label14_c").value!="")
+			{
+				document.getElementById("charge14_c").value = parseFloat(document.getElementById("rate14").value * document.getElementById("qty14").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge14= parseFloat(document.getElementById("rate14").value * document.getElementById("qty14").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label15_c").value!="")
+			{
+				document.getElementById("charge15_c").value = parseFloat(document.getElementById("rate15").value * document.getElementById("qty15").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge15= parseFloat(document.getElementById("rate15").value * document.getElementById("qty15").value).toFixed(2);
+						});
+				}
+			}
+		if(document.getElementById("label16_c").value!="")
+			{
+				document.getElementById("charge16_c").value = parseFloat(document.getElementById("rate16").value * document.getElementById("qty16").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge16= parseFloat(document.getElementById("rate16").value * document.getElementById("qty16").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label17_c").value!="")
+			{
+				document.getElementById("charge17_c").value = parseFloat(document.getElementById("rate17").value * document.getElementById("qty17").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge17= parseFloat(document.getElementById("rate17").value * document.getElementById("qty17").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label18_c").value!="")
+			{
+				document.getElementById("charge18_c").value = parseFloat(document.getElementById("rate18").value * document.getElementById("qty18").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge18= parseFloat(document.getElementById("rate18").value * document.getElementById("qty18").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label19_c").value!="")
+			{
+				document.getElementById("charge19_c").value = parseFloat(document.getElementById("rate19").value * document.getElementById("qty19").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge19= parseFloat(document.getElementById("rate19").value * document.getElementById("qty19").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label20_c").value!="")
+			{
+				document.getElementById("charge20_c").value = parseFloat(document.getElementById("rate20").value * document.getElementById("qty20").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge20= parseFloat(document.getElementById("rate20").value * document.getElementById("qty20").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label21_c").value!="")
+			{
+				document.getElementById("charge21_c").value = parseFloat(document.getElementById("rate21").value * document.getElementById("qty21").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge21= parseFloat(document.getElementById("rate21").value * document.getElementById("qty21").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label22_c").value!="")
+			{
+				document.getElementById("charge22_c").value = parseFloat(document.getElementById("rate22").value * document.getElementById("qty22").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge22= parseFloat(document.getElementById("rate22").value * document.getElementById("qty22").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label23_c").value!="")
+			{
+				document.getElementById("charge23_c").value = parseFloat(document.getElementById("rate23").value * document.getElementById("qty23").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge23= parseFloat(document.getElementById("rate23").value * document.getElementById("qty23").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label24_c").value!="")
+			{
+				document.getElementById("charge24_c").value = parseFloat(document.getElementById("rate24").value * document.getElementById("qty24").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge24= parseFloat(document.getElementById("rate24").value * document.getElementById("qty24").value).toFixed(2);
+					});
+				}
+			}
+		if(document.getElementById("label25_c").value!="")
+			{
+				document.getElementById("charge25_c").value = parseFloat(document.getElementById("rate25").value * document.getElementById("qty25").value).toFixed(2);
+				if(!scope.$$phase) {
+					scope.$apply(function(){
+					scope.billdetail.charge25= parseFloat(document.getElementById("rate25").value * document.getElementById("qty25").value).toFixed(2);
+					});
+				}
+			}		
+	}	
+	function PrintElem(elem)
+    {
+		if (document.getElementById("withoutsignChk").checked)
+		{
+			$("#signaturediv").hide();
+		}		
+		else
+		{
+			$("#signaturediv").show();
+		}
+		if (document.getElementById("withoutheaderChk").checked)
+		{
+			$("#systemheader1").hide();
+			$("#uploadedheader1").hide();	
+		}
+		else
+		{
+			if (document.getElementById("sysHFflag").value== 1)
+			{
+				$("#systemheader1").show();	
+				$("#uploadedheader1").hide();
+			}
+			else
+			{
+				$("#systemheader1").hide();
+				$("#uploadedheader1").show();
+			}			
+		}
+		if((document.getElementById("label1_c").value=="") || (document.getElementById("qty1").value==0))
+		{$("#divcharge1").hide();}
+		/*if(document.getElementById("label2_c").value=="")
+		{$("#divcharge2").hide();}
+		if(document.getElementById("label3_c").value=="")
+		{$("#divcharge3").hide();}*/
+		if(document.getElementById("label4_c").value==""|| (document.getElementById("qty4").value==0))
+		{$("#divcharge4").hide();}
+		if(document.getElementById("label5_c").value==""|| (document.getElementById("qty5").value==0))
+		{$("#divcharge5").hide();}
+		if(document.getElementById("label6_c").value==""|| (document.getElementById("qty6").value==0))
+		{$("#divcharge6").hide();}
+		if(document.getElementById("label7_c").value==""|| (document.getElementById("qty7").value==0))
+		{$("#divcharge7").hide();}
+		if(document.getElementById("label8_c").value==""|| (document.getElementById("qty8").value==0))
+		{$("#divcharge8").hide();}
+		if(document.getElementById("label9_c").value==""|| (document.getElementById("qty9").value==0))
+		{$("#divcharge9").hide();}
+		if(document.getElementById("label10_c").value==""|| (document.getElementById("qty10").value==0))
+		{$("#divcharge10").hide();}
+		if(document.getElementById("label11_c").value==""|| (document.getElementById("qty11").value==0))
+		{$("#divcharge11").hide();}
+		if(document.getElementById("label12_c").value==""|| (document.getElementById("qty12").value==0))
+		{$("#divcharge12").hide();}
+		if(document.getElementById("label13_c").value==""|| (document.getElementById("qty13").value==0))
+		{$("#divcharge13").hide();}
+		if(document.getElementById("label14_c").value==""|| (document.getElementById("qty14").value==0))
+		{$("#divcharge14").hide();}
+		if(document.getElementById("label15_c").value==""|| (document.getElementById("qty15").value==0))
+		{$("#divcharge15").hide();}
+		if(document.getElementById("label16_c").value==""|| (document.getElementById("qty16").value==0))
+		{$("#divcharge16").hide();}
+		if(document.getElementById("label17_c").value==""|| (document.getElementById("qty17").value==0))
+		{$("#divcharge17").hide();}
+		if(document.getElementById("label18_c").value==""|| (document.getElementById("qty18").value==0))
+		{$("#divcharge18").hide();}
+		if(document.getElementById("label19_c").value==""|| (document.getElementById("qty19").value==0))
+		{$("#divcharge19").hide();}
+		if(document.getElementById("label20_c").value==""|| (document.getElementById("qty20").value==0))
+		{$("#divcharge20").hide();}
+		if(document.getElementById("label21_c").value==""|| (document.getElementById("qty21").value==0))
+		{$("#divcharge21").hide();}
+		if(document.getElementById("label22_c").value==""|| (document.getElementById("qty22").value==0))
+		{$("#divcharge22").hide();}
+		if(document.getElementById("label23_c").value==""|| (document.getElementById("qty23").value==0))
+		{$("#divcharge23").hide();}
+		if(document.getElementById("label24_c").value==""|| (document.getElementById("qty24").value==0))
+		{$("#divcharge24").hide();}
+		if(document.getElementById("label25_c").value==""|| (document.getElementById("qty25").value==0))
+		{$("#divcharge25").hide();}
+				
+		console.log($(elem).html());
+		convertAndsavePDf();
+        Popup($(elem).html());
+    }
+
+    function Popup(data) 
+    {
+        var mywindow = window.open('', 'print', 'height=400,width=600');
+        mywindow.document.write('<html><head><title>my div</title>');
+		/*If .css is applied while printing then print preview
+			is blanked sometimes */
+        //mywindow.document.write('<link rel="stylesheet" href="/ayushman/assets/app/css/prescription.css">');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+	
+	function convertAndsavePDf(){
+	var cno=null;
+	var doctoruserid=document.getElementById("doctoruserid").value;
+	var billid=document.getElementById("billid").value;
+	var pid =document.getElementById("patid").value;
+		
+		console.log(pid);
+		elm = $("#printBill").clone();
+		document.getElementById("patientuseridPDF").value=pid;
+		document.getElementById("doctoruseridPDF").value=doctoruserid;
+		document.getElementById("caseno").value=cno;
+		document.getElementById("htmlfile").value=elm.html();
+		document.getElementById("billidPDF").value=billid;
+		
+		/*var htmlfile={htmlfile:elm.html(),patientuserid:pid,doctoruserid:doctoruserid,caseno:caseno,billid:billid};
+		$.ajax({
+				type: 'post',
+				data:htmlfile,
+				url: "/ayushman/cbill/saveBillPdf",
+				datatype: 'html', 
+				success: function (data) {
+					
+				},
+			error: function (req, status, error) {
+			}
+		});*/
+	}
+
+</script>
+<head>
+<style type="text/css">
+				.Ralign {
+					text-align:right;
+					margin-left:10%}
+				.signClass{
+					float:left;
+					min-height:40px;
+					width:100%;
+					text-align:right;
+					font-size:14px;
+					padding-right:60px;
+					padding-top: 20px;
+					}
+				.footerClass{
+					position:fixed;
+					bottom: 0;
+					width: 100%;
+					text-align:center;
+					}
+					
+				@media only print
+				{						
+				}
+				@page {
+					/* dimensions for the whole page */
+					size: A4;
+					margin: 10;
+				}
+				body {
+					/* A5 dimensions */
+					/*height: 210mm;
+					width: 158.5mm;*/
+					height: 210mm;
+					width: 100%;					
+					margin: 10;
+				}
+			</style>
+			<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+			<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+			<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+			<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+			<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+			<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />			
+			<link rel="stylesheet" href="/ayushman/assets/app/css/prescription.css">
+</head>
+<body>
+<div style="width:100%;">
+<input type="hidden" value="2" id="autocompletevalue" />
+<table width="100%">
+		<tr>
+		<td width="100%" valign="top">
+			<input type ="hidden" id = "patid" name="patid" value="{{appointment_info.refappfromid_c}}" />		
+			<input type ="hidden" id="sysHFflag" name="sysHFflag" value="{{myprofile['userinfo'].systemGenflag}}"/>
+			<input type ="hidden" id="doctoruserid" name="doctoruserid" value="{{appointment_info.doctorid}}"/>
+			<input type ="hidden" id="fileid" name="fileid" value="{{billdetail.fileid}}"/>
+			<div  id="printBill" width="100%">
+			<table width="100%" class="table_roundborder" padding="10px">
+				<tr>
+					<div style="height:auto;width:100%;border-bottom:1px solid;">
+							<div  class="uploadedheader1" id="uploadedheader1" ng-show = "(myprofile['userinfo'].systemGenflag == 0)">
+								<img ng-if="(myprofile['userinfo'].header) && (myprofile['userinfo'].systemGenflag == 0)" src="{{myprofile['userinfo'].header}}" width="100%">
+							</div>
+							<div  style="width:100%;" class="systemheader1" id="systemheader1" ng-show="(myprofile['userinfo'].systemGenflag == 1)">
+								<div class="doctorinfo">
+									<div class="doctorname"style="font-size:25px;">{{myclinics['clinicinfo'][0].clinicname}}</div>
+									<div class="doctorname">Dr. {{myprofile['userinfo'].name}}</div>
+									<div class="doctoreducation">{{myprofile['usereducation'].doctoreducation}}</div>
+									<div class="otherinfo">Regd No.:{{myprofile['userinfo'].regno}}</div>
+								</div>
+								<div class="doctorinfo">
+								<div class="doctoraddress">
+									<div class="otherinfo">
+										{{myclinics['clinicinfo'][0].line1}},
+										{{myclinics['clinicinfo'][0].nearmark}},
+										{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+										{{myclinics['clinicinfo'][0].state}}
+										</br>
+									Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}
+									</div>
+								</div>						
+								</div>						
+							</div>
+							<div style="border-top:1px solid;">
+								<tr>
+								<!--Below label printed for printing empty line -->
+								<label style="width:100%"></label>
+								<label style="float:left;height:auto;width:30%;vertical-align:top">
+									&nbsp;&nbsp;No:&nbsp; &nbsp; <input id="billid"  name="billid" readonly style=" width:50px;border:none;text-align:right; border-bottom:1px solid;font-weight:bold" ng-model="appointment_info.billid" value="{{appointment_info.billid}}"/>
+								</label>
+								<label style="float:centre">
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									Bill cum Receipt 
+								</label>
+								<label style="float:right;">
+									Date &nbsp;:&nbsp;&nbsp;<label>{{billdate}}&nbsp;&nbsp; </label>
+								</label>
+								</tr>
+							</div>
+						</div>
+						<table cellpadding="10" style="width:100%;border-bottom:1px solid;border-top:1px solid;">
+						<tr style="height:20px">
+							<td style="width:25%;border:none;border-bottom:1px solid;">Particulars</td>
+							<td style="width:25%;border:none;border-bottom:1px solid;text-align:center;margin-left:10%">Rate (Rs.)</td>
+							<td style="width:25%;border:none;border-bottom:1px solid;text-align:center;margin-left:10%">Quantity</td>
+							<td style="width:25%;border:none;border-bottom:1px solid;text-align:center;margin-left:10%">Amount (Rs.)</td>
+						</tr>
+						<!--<div style="padding-bottom:5px;">-->
+						<!--<table cellpadding="10" style="width:100%;border-bottom:1px solid;" >-->
+									<tr class= "divcharge1" id="divcharge1" ng-show ="billdetail.label1!=null" style="height:5px" >
+										<td><input class="textarea" readonly id="label1_c" value="{{billdetail.label1}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate1" name="rate1" value="{{billdetail.rate1}}" ng-model="billdetail.rate1" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+										<td><input type="number"  min="0" max="100" step="1"id="qty1" name="qty1"  value="{{billdetail.quantity1}}" ng-model="billdetail.quantity1" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.charge1"  value="{{billdetail.charge1}}" id="charge1_c" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/>	</td>							
+									</tr>
+									<tr class = "divcharge4"id = "divcharge4" ng-show ="billdetail.label4!=null" style="height:5px">
+										<td><input class="textarea" readonly id="label4_c" value="{{billdetail.label4}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate4" name="rate4" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate4" value="{{billdetail.rate4}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>			
+										<td><input type="number"  min="0" max="100" step="1"id="qty4" name="qty4" value="{{billdetail.quantity4}}" ng-model="billdetail.quantity4" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"  id="charge4_c" ng-model="billdetail.charge4" value="{{billdetail.charge4}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+									</tr>
+									<tr class = "divcharge5"id = "divcharge5" ng-show ="billdetail.label5!=null"style="height:5px">
+										<td><input class="textarea"readonly id="label5_c" value="{{billdetail.label5}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate5" name="rate5" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate5" value="{{billdetail.rate5}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>				
+										<td><input type="number"  min="0" max="100" step="1"id="qty5" name="qty5" value="{{billdetail.quantity5}}" ng-model="billdetail.quantity5" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge5_c" ng-model="billdetail.charge5" value="{{billdetail.charge5}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+									</tr>
+									<tr class = "divcharge6"id = "divcharge6" ng-show ="billdetail.label6!=null"style="height:5px">
+										<td><input  class="textarea"readonly id="label6_c" value="{{billdetail.label6}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input class=" Ralign" type="number" id="rate6" name="rate6" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate6" value="{{billdetail.rate6}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/>	</td>
+										<td><input type="number"   min="0" max="100" step="1"id="qty6" name="qty6" value="{{billdetail.quantity6}}" ng-model="billdetail.quantity6" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  class=" Ralign" readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge6_c" name="charge6_c" ng-model="billdetail.charge6" value="{{billdetail.charge6}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+									</tr>
+									<tr class = "divcharge7"id = "divcharge7" ng-show ="billdetail.label7!=null"style="height:5px">
+										<td><input  class="textarea" readonly id="label7_c" value="{{billdetail.label7}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate7" name="rate7" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate7" value="{{billdetail.rate7}}" style="  width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+										<td><input type="number"  min="0" max="100" step="1"id="qty7" name="qty7" value="{{billdetail.quantity7}}" ng-model="billdetail.quantity7" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input   readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge7_c" name="charge7_c" ng-model="billdetail.charge7" value="{{billdetail.charge7}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+									</tr>
+									<tr class = "divcharge8"id = "divcharge8" ng-show ="billdetail.label8!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label8_c" value="{{billdetail.label8}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate8" name="rate8" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate8" value="{{billdetail.rate8}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+										<td><input type="number"  min="0" max="100" step="1"id="qty8" name="qty8" value="{{billdetail.quantity8}}" ng-model="billdetail.quantity8" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge8_c"name="charge8_c" ng-model="billdetail.charge8" value="{{billdetail.charge8}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+									</tr>
+									<tr class = "divcharge9"id = "divcharge9" ng-show ="billdetail.label9!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label9_c" value="{{billdetail.label9}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate9" name="rate9" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate9" value="{{billdetail.rate9}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+										<td><input type="number"  min="0" max="100" step="1"id="qty9" name="qty9" value="{{billdetail.quantity9}}" ng-model="billdetail.quantity9" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge9_c" ng-model="billdetail.charge9" value="{{billdetail.charge9}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+									</tr>
+									<tr class = "divcharge10"id = "divcharge10" ng-show ="billdetail.label10!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label10_c" value="{{billdetail.label10}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate10" name="rate10" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate10" value="{{billdetail.rate10}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+										<td><input type="number"  min="0" max="100" step="1"id="qty10" name="qty10" value="{{billdetail.quantity10}}" ng-model="billdetail.quantity10" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge10_c" ng-model="billdetail.charge10" value="{{billdetail.charge10}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+									</tr>
+									<tr class = "divcharge11"id = "divcharge11" ng-show ="billdetail.label11!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label11_c" value="{{billdetail.label11}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate11" name="rate11" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate11"value="{{billdetail.rate11}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/>	</td>
+										<td><input type="number"  min="0" max="100" step="1"id="qty11" name="qty11" value="{{billdetail.quantity11}}" ng-model="billdetail.quantity11" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge11_c" ng-model="billdetail.charge11" value="{{billdetail.charge11}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+									</tr>
+									<tr class = "divcharge12"id = "divcharge12" ng-show ="billdetail.label12!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label12_c" value="{{billdetail.label12}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate12" name="rate12" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate12" value="{{billdetail.rate12}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+										<td><input type="number"  min="0" max="100" step="1"id="qty12" name="qty12" value="{{billdetail.quantity12}}" ng-model="billdetail.quantity12" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge12_c" ng-model="billdetail.charge12" value="{{billdetail.charge12}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>								
+									</tr>
+									<tr class = "divcharge13"id = "divcharge13" ng-show ="billdetail.label13!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label13_c" value="{{billdetail.label13}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate13" name="rate13" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate13" value="{{billdetail.rate13}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+										<td><input type="number"  min="0" max="100" step="1"id="qty13" name="qty13" value="{{billdetail.quantity13}}" ng-model="billdetail.quantity13" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge13_c" ng-model="billdetail.charge13" value="{{billdetail.charge13}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>						
+									</tr>
+									<tr class = "divcharge14"id = "divcharge14" ng-show ="billdetail.label14!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label14_c" value="{{billdetail.label14}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate14" name="rate14" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate14" value="{{billdetail.rate14}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+										<td><input type="number"  min="0" max="100" step="1"id="qty14" name="qty14" value="{{billdetail.quantity14}}" ng-model="billdetail.quantity14" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge14_c" ng-model="billdetail.charge14" value="{{billdetail.charge14}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+									</tr>
+									<tr class = "divcharge15" id = "divcharge15" ng-show ="billdetail.label15!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label15_c" value="{{billdetail.label15}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate15" name="rate15" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate15" value="{{billdetail.rate15}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>				
+										<td><input type="number"  min="0" max="100" step="1"id="qty15" name="qty15" value="{{billdetail.quantity15}}" ng-model="billdetail.quantity15" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge15_c" ng-model="billdetail.charge15" value="{{billdetail.charge15}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>								
+									</tr>
+									<tr class = "divcharge16" id = "divcharge16" ng-show ="billdetail.label16!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label16_c" value="{{billdetail.label16}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate16" name="rate16" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate16" value="{{billdetail.rate16}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+										<td><input type="number"  min="0" max="100" step="1"id="qty16" name="qty16" value="{{billdetail.quantity16}}" ng-model="billdetail.quantity16" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge16_c" ng-model="billdetail.charge16" value="{{billdetail.charge16}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>								
+									</tr>
+									<tr class = "divcharge17"id = "divcharge17" ng-show ="billdetail.label17!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label17_c" value="{{billdetail.label17}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate17" name="rate17" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate17" value="{{billdetail.rate17}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>				
+										<td><input type="number"  min="0" max="100" step="1"id="qty17" name="qty17" value="{{billdetail.quantity17}}" ng-model="billdetail.quantity17" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge17_c" ng-model="billdetail.charge17" value="{{billdetail.charge17}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>								
+									</tr>
+									<tr class = "divcharge18"id = "divcharge18" ng-show ="billdetail.label18!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label18_c" value="{{billdetail.label18}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate18" name="rate18" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate18" value="{{billdetail.rate18}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>				
+										<td><input type="number"  min="0" max="100" step="1"id="qty18" name="qty18" value="{{billdetail.quantity18}}" ng-model="billdetail.quantity18" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge18_c" ng-model="billdetail.charge18" value="{{billdetail.charge18}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>							
+									</tr>
+									<tr class = "divcharge19"id = "divcharge19" ng-show ="billdetail.label19!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label19_c" value="{{billdetail.label19}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate19" name="rate19" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate19" value="{{billdetail.rate19}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+										<td><input type="number"  min="0" max="100" step="1"id="qty19" name="qty19" value="{{billdetail.quantity19}}" ng-model="billdetail.quantity19" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge19_c" ng-model="billdetail.charge19" value="{{billdetail.charge19}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>								
+									</tr>
+									<tr class = "divcharge20"id = "divcharge20" ng-show ="billdetail.label20!=null"style="height:5px">
+										<td><input class="textarea " readonly id="label20_c" value="{{billdetail.label20}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate20" name="rate20" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate20" value="{{billdetail.rate20}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>				
+										<td><input type="number"  min="0" max="100" step="1"id="qty20" name="qty20" value="{{billdetail.quantity20}}" ng-model="billdetail.quantity20" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge20_c" ng-model="billdetail.charge20" value="{{billdetail.charge20}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>		
+									</tr>
+									<tr class = "divcharge21"id = "divcharge21" ng-show ="billdetail.label21!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label21_c" value="{{billdetail.label21}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate21" name="rate21" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate21" value="{{billdetail.rate21}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>				
+										<td><input type="number"  min="0" max="100" step="1"id="qty21" name="qty21" value="{{billdetail.quantity21}}" ng-model="billdetail.quantity21" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge21_c" ng-model="billdetail.charge21" value="{{billdetail.charge21}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>								
+									</tr>
+									<tr class = "divcharge22"id = "divcharge22" ng-show ="billdetail.label22!=null"style="height:5px">
+										<td><input class="textarea " readonly id="label22_c" value="{{billdetail.label22}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate22" name="rate22" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate22" value="{{billdetail.rate22}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>				
+										<td><input type="number"  min="0" max="100" step="1"id="qty22" name="qty22" value="{{billdetail.quantity22}}" ng-model="billdetail.quantity22" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge22_c" ng-model="billdetail.charge22" value="{{billdetail.charge22}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>		
+									</tr>
+									<tr class = "divcharge23"id = "divcharge23" ng-show ="billdetail.label23!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label23_c" value="{{billdetail.label23}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate23" name="rate23" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate23" value="{{billdetail.rate23}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>				
+										<td><input type="number"  min="0" max="100" step="1"id="qty23" name="qty23" value="{{billdetail.quantity23}}" ng-model="billdetail.quantity23" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge23_c" ng-model="billdetail.charge23" value="{{billdetail.charge23}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>								
+									</tr>
+									<tr class = "divcharge24"id = "divcharge24" ng-show ="billdetail.label24!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label24_c" value="{{billdetail.label24}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate24" name="rate24" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate24" value="{{billdetail.rate24}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>				
+										<td><input type="number"  min="0" max="100" step="1"id="qty24" name="qty24" value="{{billdetail.quantity24}}" ng-model="billdetail.quantity24" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input  readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge24_c" ng-model="billdetail.charge24" value="{{billdetail.charge24}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>								
+									</tr>
+									<tr class = "divcharge25"id = "divcharge25" ng-show ="billdetail.label25!=null"style="height:5px">
+										<td><input class="textarea" readonly id="label25_c" value="{{billdetail.label25}}" style="width:100;border:none;border-bottom:0px ;" /></td>
+										<td><input  type="number" id="rate25" name="rate25" onblur ="addSum();" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model="billdetail.rate25" value="{{billdetail.rate25}}" style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>				
+										<td><input type="number"  min="0" max="100" step="1"id="qty25" name="qty25" value="{{billdetail.quantity25}}" ng-model="billdetail.quantity25" onblur="addSum();"style="width:30;border:none;border-bottom:1px solid;text-align:right;margin-left:35%"/></td>
+										<td><input class="Ralign" readonly ng-focus="addtototalbill();" ng-blur="addtototalbill();"   id="charge25_c" ng-model="billdetail.charge25" value="{{billdetail.charge25}}"style="width:100;border:none;border-bottom:1px solid;text-align:right;margin-left:10%"/></td>
+									</tr>
+					</table>
+									<table cellpadding="10" style="width:100%;border-top:1px solid;">
+									<div>
+									<tr>
+										<th> Total Charges (Rs.)
+										<input class="Ralign" ng-model="appointment_info.totalsum" id="totalbill" style="border:none;width:10%;border-bottom:1px solid;font-weight:bold" readonly ng-model="appointment_info.totalsum" value="{{appointment_info.totalsum}}"/>
+					 					(<input readonly value="{{appointment_info.amountinwords}}" id="amtinwords" style=" width:40%;border:none; border-bottom:1px solid;font-weight:bold" />)</th>
+									</tr>
+									</div>
+									</table>
+									<div>
+										</br></br></br></br>
+										&nbsp;&nbsp;Received with thanks from Mr/Ms. <input id="name" name="name" style=" width:51%;border:none; border-bottom:1px solid;font-weight:bold" ng-model="appointment_info.Patientname" value="{{appointment_info.Patientname}}"/>
+										</br></br>
+										&nbsp;&nbsp;the sum of rupees <input id="totalrcpt"  name="totalrcpt" ng-model="billdetail.amount" value= "{{billdetail.amount}}"       style=" width:10%;border:none; border-bottom:1px solid;font-weight:bold" readonly />
+										(<input readonly ng-model= "billdetail.rcptamtinwords"  value="{{billdetail.rcptamtinwords}}" id="rcptamtinwords" style=" width:58%;border:none; border-bottom:1px solid;font-weight:bold" />)
+										</br></br>
+										&nbsp;&nbsp;towards above rendered services / <input id="diagnosis"  name="diagnosis" style=" width:70%;border:none; border-bottom:1px solid;font-weight:bold" ng-model="examination_data.text_diagnosis" value ="{{examination_data.text_diagnosis}}"/>
+										</br></br>	
+					<div id ="signaturediv" style="float:left;min-height:40px;width:100%;text-align:right;font-size:14px;padding-right:60px;padding-top: 20px;" >
+						<img ng-if="myprofile['userinfo'].signature" src="{{myprofile['userinfo'].signature}}"></br>							
+						<label>Signature</label>
+					</div>										
+<!--					<div id = "footerdiv" ng-hide="1" style="position:fixed;bottom: 0;width: 100%;text-align:center;">
+						<div  class="systemfooter" id="systemfooter"ng-show="myprofile['userinfo'].systemGenflag == 1">
+							Note : Prescription available online at www.indiaonlinehealth.com
+						</div>
+						<div  class="uploadedfooter" id="uploadedfooter" ng-show="myprofile['userinfo'].systemGenflag == 0">
+							<img ng-if="myprofile['userinfo'].footer" src="{{myprofile['userinfo'].footer}}" width=100%>
+						</div>
+					</div>		-->
+			</div>
+			</tr>
+			</table>
+								
+				
+			</tr>				
+			</table>
+			</div>
+			<div id="creditPatient" title="Accept Deposit" style="display:none;">
+			<form id="creditPatient" > 
+			<div style="margin-left: 23px;">
+				<p>
+				<br /><br />
+				<label >Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</label>
+				<input id="extradesc_c" name="extradesc_c" ng-model = "billdetail.extradesc"  value="{{billdetail.extradesc}}"style="margin-left:5px;width:200px;height:15pt;border-bottom:0.5px solid;font-size:9pt;line-height:14pt;" class="text">   			
+				</br></br>
+				<label >*Receipt Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+				<input id="rcptdate_c" name="rcptdate_c" ng-model = "billdetail.rcptdate"  value="{{billdetail.rcptdate}}"style="margin-left:5px;width:200px;height:15pt;border-bottom:0.5px solid;font-size:9pt;line-height:14pt;">
+				</br></br>
+				<label >*Amount &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+				<input type="number" id="amount_c" name="amount_c" ng-focus="addtototalbill();" ng-blur="addtototalbill();" ng-model = "billdetail.amount"  value="{{billdetail.amount}}" style="textalign:left;margin-left:5px;width:200px;height:15pt;border-bottom:0.5px solid;font-size:9pt;line-height:14pt;" class="Ralign">   
+				</br></br>
+				<label>Mode of Payment&nbsp;&nbsp;:</label>
+				<select name="refmodeofpayment_c"  class="text" id="refmodeofpayment_c" ng-model= "billdetail.refmodeofpayment" value=  "{{billdetail.refmodeofpayment}}"   onchange="selectMode(this);" style="margin-left:0px;width:200px;height:20pt;border-bottom:0.5px solid;font-size:9pt;line-height:14pt;">
+						<option value="5">Cash</option>
+						<option value="6">Cheque</option>
+						<option value="1">Card</option>
+										
+				</select></br></br>
+				<div id="cheqDetail">
+					<label >*Cheque No.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+					<input id="chequeno_c" name="chequeno_c" ng-model = "billdetail.chequeno"  value="{{billdetail.chequeno}}"style="margin-left:5px;width:200px;height:15pt;border-bottom:0.5px solid;font-size:9pt;line-height:14pt;" class="text">   		
+					</br></br>
+					<label >*Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+					<input type="text" id="chequedate_c" name="chequedate_c" ng-model = "billdetail.chequedate"  value="{{billdetail.chequedate}}" style="margin-left:5px;width:200px;height:15pt;border-bottom:0.5px solid;font-size:9pt;line-height:14pt;" class="text">   		
+				</div>
+				</br></br>
+				<div id="cardDetail">
+					<label >*Trx Ref No.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</label>
+					<input id="cardtrnxno_c" name="cardtrnxno_c" ng-model = "billdetail.cardtrnxno"  value="{{billdetail.cardtrnxno}}"style="margin-left:5px;width:200px;height:15pt;border-bottom:0.5px solid;font-size:9pt;line-height:14pt;" class="text">   		
+				</div>
+			</div>
+			</form>  
+			</div>
+		</td>
+		<td width="100%;" valign="top" align="right">
+			
+			<form id="billform" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="billid" value="{{appointment_info.billid}}" >
+					<input type="hidden" name="totalamt" value="{{appointment_info.totalsum}}" >
+					<input type="hidden" name="diagnosis" value="{{examination_data.text_diagnosis}}" >
+					<input type="hidden" name="appid" value="{{appointment_info.appointment_id}}" >
+					<input type="hidden" name="extrabillfields" value="true">
+					<input type="hidden" name="label1_c" value="{{billdetail.label1}}" >
+					<!--<input type="hidden" name="label2_c" value="{{billdetail.label2}}" >
+					<input type="hidden" name="label3_c" value="{{billdetail.label3}}" >-->
+					<input type="hidden" name="label4_c" value="{{billdetail.label4}}" >
+					<input type="hidden" name="label5_c" value="{{billdetail.label5}}" >
+					<input type="hidden" name="label6_c" value="{{billdetail.label6}}" >
+					<input type="hidden" name="label7_c" value="{{billdetail.label7}}" >
+					<input type="hidden" name="label8_c" value="{{billdetail.label8}}" >
+					<input type="hidden" name="label9_c" value="{{billdetail.label9}}" >
+					<input type="hidden" name="label10_c" value="{{billdetail.label10}}" >
+					<input type="hidden" name="label11_c" value="{{billdetail.label11}}" >
+					<input type="hidden" name="label12_c" value="{{billdetail.label12}}" >
+					<input type="hidden" name="label13_c" value="{{billdetail.label13}}" >
+					<input type="hidden" name="label14_c" value="{{billdetail.label14}}" >
+					<input type="hidden" name="label15_c" value="{{billdetail.label15}}" >
+					<input type="hidden" name="label16_c" value="{{billdetail.label16}}" >
+					<input type="hidden" name="label17_c" value="{{billdetail.label17}}" >
+					<input type="hidden" name="label18_c" value="{{billdetail.label18}}" >
+					<input type="hidden" name="label19_c" value="{{billdetail.label19}}" >
+					<input type="hidden" name="label20_c" value="{{billdetail.label20}}" >
+					<input type="hidden" name="label21_c" value="{{billdetail.label21}}" >
+					<input type="hidden" name="label22_c" value="{{billdetail.label22}}" >
+					<input type="hidden" name="label23_c" value="{{billdetail.label23}}" >
+					<input type="hidden" name="label24_c" value="{{billdetail.label24}}" >
+					<input type="hidden" name="label25_c" value="{{billdetail.label25}}" >
+					 
+					<input type="hidden" name="charge1_c" value="{{billdetail.charge1}}" >
+					<!--<input type="hidden" name="charge2_c" value="{{billdetail.charge2}}" >
+					<input type="hidden" name="charge3_c" value="{{billdetail.charge3}}" >-->
+					<input type="hidden" name="charge4_c" value="{{billdetail.charge4}}" >
+					<input type="hidden" name="charge5_c" value="{{billdetail.charge5}}" >
+					<input type="hidden" name="charge6_c" value="{{billdetail.charge6}}" >
+					<input type="hidden" name="charge7_c" value="{{billdetail.charge7}}" >
+					<input type="hidden" name="charge8_c" value="{{billdetail.charge8}}" >
+					<input type="hidden" name="charge9_c" value="{{billdetail.charge9}}" >
+					<input type="hidden" name="charge10_c" value="{{billdetail.charge10}}" >
+					<input type="hidden" name="charge11_c" value="{{billdetail.charge11}}" >
+					<input type="hidden" name="charge12_c" value="{{billdetail.charge12}}" >
+					<input type="hidden" name="charge13_c" value="{{billdetail.charge13}}" >
+					<input type="hidden" name="charge14_c" value="{{billdetail.charge14}}" >
+					<input type="hidden" name="charge15_c" value="{{billdetail.charge15}}" >
+					<input type="hidden" name="charge16_c" value="{{billdetail.charge16}}" >
+					<input type="hidden" name="charge17_c" value="{{billdetail.charge17}}" >
+					<input type="hidden" name="charge18_c" value="{{billdetail.charge18}}" >
+					<input type="hidden" name="charge19_c" value="{{billdetail.charge19}}" >
+					<input type="hidden" name="charge20_c" value="{{billdetail.charge20}}" >
+					<input type="hidden" name="charge21_c" value="{{billdetail.charge21}}" >
+					<input type="hidden" name="charge22_c" value="{{billdetail.charge22}}" >
+					<input type="hidden" name="charge23_c" value="{{billdetail.charge23}}" >
+					<input type="hidden" name="charge24_c" value="{{billdetail.charge24}}" >
+					<input type="hidden" name="charge25_c" value="{{billdetail.charge25}}" >
+					
+						<input type="hidden" name="quantity1_c" value="{{billdetail.quantity1}}" >
+					<!--<input type="hidden" name="quantity2_c" value="{{billdetail.quantity2}}" >
+					<input type="hidden" name="quantity3_c" value="{{billdetail.quantity3}}" >-->
+					<input type="hidden" name="quantity4_c" value="{{billdetail.quantity4}}" >
+					<input type="hidden" name="quantity5_c" value="{{billdetail.quantity5}}" >
+					<input type="hidden" name="quantity6_c" value="{{billdetail.quantity6}}" >
+					<input type="hidden" name="quantity7_c" value="{{billdetail.quantity7}}" >
+					<input type="hidden" name="quantity8_c" value="{{billdetail.quantity8}}" >
+					<input type="hidden" name="quantity9_c" value="{{billdetail.quantity9}}" >
+					<input type="hidden" name="quantity10_c" value="{{billdetail.quantity10}}" >
+					<input type="hidden" name="quantity11_c" value="{{billdetail.quantity11}}" >
+					<input type="hidden" name="quantity12_c" value="{{billdetail.quantity12}}" >
+					<input type="hidden" name="quantity13_c" value="{{billdetail.quantity13}}" >
+					<input type="hidden" name="quantity14_c" value="{{billdetail.quantity14}}" >
+					<input type="hidden" name="quantity15_c" value="{{billdetail.quantity15}}" >
+					<input type="hidden" name="quantity16_c" value="{{billdetail.quantity16}}" >
+					<input type="hidden" name="quantity17_c" value="{{billdetail.quantity17}}" >
+					<input type="hidden" name="quantity18_c" value="{{billdetail.quantity18}}" >
+					<input type="hidden" name="quantity19_c" value="{{billdetail.quantity19}}" >
+					<input type="hidden" name="quantity20_c" value="{{billdetail.quantity20}}" >
+					<input type="hidden" name="quantity21_c" value="{{billdetail.quantity21}}" >
+					<input type="hidden" name="quantity22_c" value="{{billdetail.quantity22}}" >
+					<input type="hidden" name="quantity23_c" value="{{billdetail.quantity23}}" >
+					<input type="hidden" name="quantity24_c" value="{{billdetail.quantity24}}" >
+					<input type="hidden" name="quantity25_c" value="{{billdetail.quantity25}}" >
+				
+					
+					<input type="hidden" name="patrelative" value="{{billdetail.patrelative}}" >
+					<input type="hidden" name="treatmentfrom" value="{{billdetail.treatmentfrom}}" >
+					<input type="hidden" name="treatmentto" value="{{billdetail.treatmentto}}" >
+					
+					<input type="hidden" name="refmodeofpayment_c" value="{{billdetail.refmodeofpayment}}" >
+					<input type="hidden" name="amount_c" value="{{billdetail.amount}}" >
+					<input type="hidden" name="extradesc_c" value="{{billdetail.extradesc}}" >
+					<input type="hidden" name="chequedate_c" value="{{billdetail.chequedate}}" >
+					<input type="hidden" name="chequeno_c" value="{{billdetail.chequeno}}" >
+					<input type="hidden" name="cardtrnxno_c" value="{{billdetail.cardtrnxno}}" >
+					
+					<!-- Values for Saving PDF -->
+					<input type="hidden" name="patientuseridPDF" id ="patientuseridPDF" >
+					<input type="hidden" name="doctoruseridPDF" id ="doctoruseridPDF">
+					<input type="hidden" name="caseno" id ="caseno">
+					<input type="hidden" name="htmlfile" id ="htmlfile">
+					<input type="hidden" name="billidPDF" id ="billidPDF">										
+			</form>
+			
+			<input type="checkbox" style="font-size:20px;" id="withoutheaderChk" /><label style="font-size:16px;" >Print Without Header</label>
+			<input type="checkbox" style="font-size:20px;" id="withoutsignChk" /><label style="font-size:16px;" >Print Without Signature</label>
+			<!--<input ng-show="examination_data.display_Rx!=false" type="button" value="Finish" ng-click="savebill();$modalCancel();" style="margin:5px;width:50px;" class="button" />-->
+			<!--<input ng-show="examination_data.display_Rx==false && examination_data.display_savebutton==true" type="button" value="Save" ng-click="savebill();$modalCancel();" style="margin:5px;width:50px;" class="button" />-->
+			<input type="button" value="Save" ng-click="savebill();$modalCancel();" style="margin:5px;width:50px;" class="button" />
+			<input type="button" value="Finalize & Print" style="margin:5px;width:110px;" ng-click="finalizebill();$modalCancel();" onclick="PrintElem('#printBill');" class="button" />
+			<input ng-show ="examination_data.display_Rx!=false" type="button" value="Rx" style="margin:5px;width:50px;" ng-click="$modalSuccess();" class="button" />			
+			<input type="button" value="Payment" style="margin:5px;width:70px;"  onclick="openPayment();" class="button" />						
+		</td>
+		</tr>
+	</table>
+</div>
+</body>

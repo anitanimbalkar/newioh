@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en-US"><!--<![endif]-->
+<head>
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+
+    <!-- Title -->
+    <title>India Online Health</title>
+	<script type='text/javascript' src='webapp/js/jquery-1.11.1.min.js'></script>
+    <!-- Define a view port to mobile devices to use - telling the browser to assume that
+    the page is as wide as the device (width=device-width)
+     and setting the initial page zoom level to be 1 (initial-scale=1.0) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon-new.png">
+
+    <!-- Google Web Font -->
+<!-- Removed   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>-->
+    <!-- bootstrap Style Sheet (caution ! - Do not edit this stylesheet) -->
+
+    <!-- Flexslider stylesheet -->
+    <link rel="stylesheet" href="webapp/css/flexslider.css" type="text/css" media="all">
+
+    <!-- Animations stylesheet -->
+    <link rel="stylesheet" href="webapp/css/animations.css" type="text/css" media="all">
+    
+	<!-- Awesome Font stylesheet -->
+<!-- Removed   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+    <!-- Datepciker stylesheet -->
+    <link rel="stylesheet" href="webapp/css/datepicker.css" type="text/css" media="all">
+    <!-- Swipebox stylesheet -->
+    <link rel="stylesheet" href="webapp/css/swipebox.css" type="text/css" media="all">
+    <!-- meanmenu stylesheet -->
+    <link rel="stylesheet" href="webapp/css/meanmenu.css" type="text/css" media="all">
+    <!-- Include the site main stylesheet -->
+    <link rel="stylesheet" href="webapp/css/main.css" type="text/css" media="all">
+	<link rel="stylesheet" href="webapp/css/signup.css" type="text/css" media="all">
+	<link rel="stylesheet" href="webapp/css/login.css" type="text/css" media="all">
+    <link rel="stylesheet" href="webapp/css/ioh.css" type="text/css" media="all">
+	<!-- CUSTOM CSS-->
+	<link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <!-- Include the site responsive  stylesheet -->
+    <link rel="stylesheet" href="webapp/css/custom-responsive.css" type="text/css" media="all">
+	<script type="text/javascript" src="/ayushman/assets/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <link href="/ayushman/assets/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" type="text/css">
+    <!--<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>-->
+    <script type="text/javascript" src="/ayushman/assets/js/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <style>
+	#panel4.panel {
+	position: absolute;
+	color:#ccc;
+	top: 100px;
+	right: -1%;
+	display: none;
+	background: #fcfcfc;
+	
+	border:1px solid #04716e;
+	-moz-border-radius-topleft: 20px;
+	/*-webkit-border-top-left-radius: 20px;*/
+	-moz-border-radius-bottomleft: 20px;
+	/*-webkit-border-bottom-left-radius: 20px;*/
+
+	-moz-border-radius-topright: 20px;
+	/*-webkit-border-top-right-radius: 20px;*/
+	-moz-border-radius-bottomright: 20px;
+	/*-webkit-border-bottom-right-radius: 20px;*/
+
+	width: 300px;
+	height: 225px;
+	padding: 10px 10px 10px 10px;
+	filter: alpha(opacity=90);
+	opacity: 1;
+
+	font-family:tahoma, Helvetica, sans-serif;
+	font-size:13px;
+	
+}
+	 .danger{
+	   color:red;
+	 }
+	 .success{
+	  color:#00b100;
+	 }
+	 .dropbtn {
+			background-color: #fff;
+			color: black;
+			padding: 16px;
+			font-family: open sans;
+			font-size: 16px;
+			border: none;
+			cursor: pointer;
+			margin-top: -8px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 10px;
+}
+
+.sidenav a {
+    padding: 10px 10px 10px 0px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: -10px;
+    right: 2px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {color: red;}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+   color:red ;
+}
+.formheader{
+	color:#04706d;
+	font-size:18px;
+	height:20px;
+	text-align:center;
+}
+.form-group{
+	margin-top:15px;
+}
+	
+</style>
+	
+	
+<script type="text/javascript">
+// Added because of error "a.curCSS is not a function"
+	jQuery.curCSS = function(element, prop, val) {
+		return jQuery(element).css(prop, val);
+	};
+	function closelogin(){
+		$("#panel4").toggle("slow");
+	}
+	
+	$(document).ready(function(){ 
+	closeNav();
+		//Stop carousels auto slide while scrolling 
+      if(window.screen.availWidth<=767){
+        $(".fp-viewing-home").addClass("fp-viewing-consumers-2");
+        $(".fp-viewing-home").removeClass("fp-viewing-home");
+        $("#section1").addClass("active");
+        $("#section0").hide();
+      }
+      window.onscroll = function (e) {
+        if (window.screen.availWidth <= 767) {
+          $(".fp-viewing-home").addClass("fp-viewing-consumers-2");
+          $(".fp-viewing-home").removeClass("fp-viewing-home");
+          $("#section1").addClass("active");
+        }
+      }
+
+      var page=document.URL.substring(document.URL.lastIndexOf("/")+1,document.URL.lastIndexOf("."));
+		$("#"+page).attr("class","active");
+		$("#"+page).find("a").css("color","#fff");
+		$(".login").click(function(){
+			$("#panel4").toggle("slow");
+			$('html,body').animate({
+                        scrollTop: 0
+            }, 10);
+			document.getElementById("email").focus();
+			return false;
+		});
+
+		$(document).click(function(e){
+			if ($(e.target).parents("#panel4").length == 0) 
+				$("#panel4").hide("slow");
+		});
+
+      $("#menuExpand").click(function(e) {
+        if($(".logoWrapper a").hasClass("expand-logo")){
+          $(".logoWrapper a").removeClass("expand-logo");
+        }else{
+          $(".logoWrapper a").addClass("expand-logo");
+        }
+      });
+
+      var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+		if(is_chrome)
+		{
+			if(document.getElementById('chromeabsent') != null)
+				document.getElementById('chromeabsent').innerHTML = "";
+		}
+		else
+		{
+			if(document.getElementById('chromeabsent') != null)
+				document.getElementById('chromeabsent').visible = true;
+		}
+	});
+var $= jQuery.noConflict();
+function openDialog(url, width, height){
+				 $.fancybox({
+                    'width': width,
+                    'height': height,
+                    'autoScale': false,
+                    'transitionIn': 'fade',
+                    'transitionOut': 'fade',
+                    'type': 'iframe',
+                    'href': url,
+                    'showCloseButton': true,
+                    'afterClose' : function(){
+					}
+            	});
+			}
+      
+function doc(){
+	$("#doc").show();
+	$("#con").hide();
+	$("#cop").hide();
+}
+function con(){
+	$("#doc").hide();
+	$("#con").show();
+	$("#cop").hide();
+}
+function cop(){
+	$("#doc").hide();
+	$("#con").hide();
+	$("#cop").show();
+}
+</script>
+     <!--[if lt IE 9]>
+
+    <![endif]-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</head>
+<body > <!--ng-app="landingPage">-->
+<!--<div ng-controller="landingPageController">-->
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="<php echo 'http://www.google.com/chromeframe/?redirect=true'; ?>">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script> 
+	<!--#include file="TopMenu.shtml"-->
+
+<!-- Top Menu bar -->
+
+ <div class="home-slider clearfix">
+    <div class="flexslider">
+    <ul class="slides">
+            <!--slide start-->
+    <li class="flex-active-slide" style="height:100%">
+                <img src="webapp/img/landing-page/sliderbg1.png" style="height:100%"class="left-image" alt="Medical Services That You Can Trust" draggable="false">
+	<div style="padding-left:0px;padding-right:0px;padding-top:50px" class="container">
+		<div id="mission" style="width:100%; " class="col-lg-12">
+			<h3>Vision</h3>
+			<p style="text-align:justify;font-size:18px;"><em>&ldquo;Our Vision is to be the Single Point of contact for Comprehensive,Continuous, Quality and Affordable Health Care Services for all.&ldquo;</em></p>
+		</div>
+		<div>		
+			<span class="bodytext"><p style="text-align:justify;border-bottom: 1px solid #eee;padding-bottom:10px;box-shadow: 1px -7px 5px -6px #ccc inset;">
+			</span>
+		</div>
+		<div id="mission" style="width:100%;padding-top:20px;padding-bottom:20px; " class="col-lg-12">
+			<h3>Leadership</h3>
+		</div>
+		<div id="leadership" >		
+			<div class="row">
+				<div class="col-lg-2">
+					<div class="thumbnail">
+					<img style="width:150px;height:150px" class="center-block img-rounded" src="/ayushman/assets/images/Dr. Sundarararajan.jpg" />
+					<div class="caption" align="center" style="color:black">
+						Dr Sundararajan
+						&nbsp;
+						Co-Founder and Director
+					</div>
+					</div>
+				</div>
+				<div class="col-lg-10" style="padding-left:4%;align:left;">
+					<span class="bodytext"> <p style="text-align:justify">
+						Dr. Sundararajan has a M.S., and Ph.D., in Electrical Engineering with specialization in Computer Applications in “Real Time Enterprise” from The Ohio State University.
+						<br/><br/>In a career spanning over three decades,  he has major contributions to his credit in successfully launching  several&nbsp; products in the market place covering diverse application such as Industrial and Electro-Medical  Instrumentation, Messaging, and IT based Customer facing Enterprise solutions, Manufacturing focused ERP implementation etc.			
+					  His original contributions to the IT based Control &amp; Instrumentation solution space have resulted in several recognitions from corporate bodies and academic community. 
+					  He has held senior positions in several companies including DCM Data products, and Selectica, San Jose. He is on the Board of Directors of AccelTree Technologies which is into Mobile Enterprise Solutions. He is a charter member of TiE Pune and is involved in its mentorship programs.
+					  <br/>
+					  He has been involved in Pune academic circle activities for over two decades. Dr. Sundararajan has presented several papers in National and International seminars.					  
+					  <br/>
+					  He was recognized by Department of Small Scale Industries, Government of India in the year 1993 for design of a Tamper proof, 3-phase energy meter.					
+					  </br>
+					  </br>
+					  </p></span>		  
+				</div>
+				<div>
+					<span class="bodytext"><p style="text-align:justify;border-bottom: 1px solid #eee;padding-bottom:10px;box-shadow: 1px -7px 5px -6px #ccc inset;">
+					</span>
+				</div>
+			</div>
+			</br>
+			<div class="row">
+				<div class="col-lg-2">
+					<div class="thumbnail">
+					<img style="width:150px;height:150px" class="center-block img-rounded" src="/ayushman/assets/images/Pankaj Saxena.jpg"/>
+					<div class="caption" align="center" style="color:black">
+						Pankaj Saxena
+						&nbsp;
+						Co-Founder and Director
+					</div>
+					</div>
+				</div>
+				<div class="col-lg-10" style="padding-left:4%;align:left;">
+					<span class="bodytext"><p style="text-align:justify;">
+						 Pankaj Saxena is an Electrical Engineer from Indian Institute of Science, Bangalore and has over three decades of industry experience in product development, application development and profit center management. His industry experience spans from Industrial Control systems to Messaging technology, Storage Software to Interactive Selling Solutions for large enterprises.
+						 </br>
+						 </br>
+						 Since mid-nineties, Pankaj has assumed leadership roles in Indian as well as large multinational companies. 
+						 In early nineties, he set up and managed complete operations of one of country’s first X-400 based Messaging service for Data pro. In early 2000, he joined Selectica Inc, responsible for building Enterprise Applications for selling complex configurable products and services for large clients in Asia pacific region. In 2004, he joined IBM to build Storage Software lab in India for developing Storage Virtualization solutions.
+						 Currently he is stationed in Singapore.
+						 </br>
+						 </br>
+						 </p>
+					</span>
+				</div>
+				<div>
+					<span class="bodytext"><p style="text-align:justify;border-bottom: 1px solid #eee;padding-bottom:10px;box-shadow: 1px -7px 5px -6px #ccc inset;">
+					</span>
+				</div>
+				</br>
+				</br>
+			</div>
+			<div class="row">
+				<div class="col-lg-2">
+					<div class="thumbnail">
+					<img style="width:150px;height:150px" class="center-block img-rounded" src="/ayushman/assets/images/ShashankJauhri.jpg"/>
+					<div class="caption" align="center" style="color:black">
+						Shashank Jauhri
+					</div>
+					</div>
+				</div>
+				<div class="col-lg-10" style="padding-left:4%;align:left;">
+					<span class="bodytext"><p style="text-align:justify;">
+						Shashank Jauhri is a Director responsible for investor relations and financial management.
+						</br>
+						</br>
+						An 1981 Electrical Engineer from IIT, BHU with over three decades in key roles with Indian and global cos - last at Vallourec as MD of their Indian subsidiary. 
+						His focus areas have been launching new projects, and building competent, cost effective & result oriented organization.
+						 </br>
+						 </br>
+						 </br>
+						 </br>
+						</p>
+					</span>
+				</div>
+				<div>
+					<span class="bodytext"><p style="text-align:justify;border-bottom: 1px solid #eee;padding-bottom:10px;box-shadow: 1px -7px 5px -6px #ccc inset;">
+					</span>
+				</div>
+				</br>
+			</div>	
+			<div class="row">
+					</br>
+			</div>
+			<div class="row">
+				<div class="col-lg-2">
+					<div class="thumbnail">
+					<img style="width:150px;height:150px" class="center-block img-rounded" src="/ayushman/assets/images/AbhijeetSicchi.jpg"/>
+					<div class="caption" align="center" style="color:black">
+						Abhijeet Sikcchi
+					</div>
+					</div>
+				</div>
+				<div class="col-lg-10" style="padding-left:4%;align:left;">
+					<span class="bodytext"><p style="text-align:justify;">
+						 Abhijeet Sikcchi, is the Chief Sales and Marketing Officer of the company.
+						 He holds a Bachelor degree in computer engineering from Pune University and 
+						 has over 15 years of Industry experience with Multinational IT Companies, Selectica 
+						 and IBM, across the globe and across multiple sectors including Telecom, Healthcare, 
+						 amongst others. 
+						 </br>
+						 </br>
+						 With his ability to look at a problem and put an end-to-end business solution,
+						 Abhijeet has structured and closed multi-million dollar deals with multiple enterprise customers.
+						 Abhijeet has won several Asia Pacific level awards in his previous organizations and accolades 
+						 from several customers for putting together outstanding solutions.
+						 </br>
+						 </br>
+						 </br>
+						 </p>
+					</span>
+				</div>
+				<div>
+					<span class="bodytext"><p style="text-align:justify;border-bottom: 1px solid #eee;padding-bottom:10px;box-shadow: 1px -7px 5px -6px #ccc inset;">
+					</span>
+				</div>
+			</div>	
+	</div>	
+	
+	<div id="mission" style="width:100%;padding-top:20px;padding-bottom:20px; " class="col-lg-12">
+		<h3>Medical Advisory Board</h3>
+	</div>
+
+	<div id="advisory">
+			<div class="row">
+				<div class="col-lg-2">
+					<div class="thumbnail">
+					<img style="width:150px;height:150px" class="center-block img-rounded" src="/ayushman/assets/images/DrGeetaPic.png"/>
+					<div class="caption" align="center" style="color:black">
+						Dr. Geeta Sundar
+					</div>
+					</div>
+				</div>
+				<div class="col-lg-10" style="padding-left:4%;align:left;">
+					<span class="bodytext">
+						 <p text-align="justify">Dr. Geeta Sundar is a thought leader on ‘Healthy Ageing’ and ‘Connected Health’ paradigms. 
+							She conducts corporate wellness programs to spread the message of Lifestyle changes in Preventive health.
+							<br/><br/> 
+							She also writes on Wellness and Health in major newspapers and periodicals and is a frequent contributor to the Times Wellness section in 'Times of India’ besides being a content provider for MSN India. 
+							She has authored several books on Health. Her 'Health after Forty’ has been on the best seller list of Macmillan.
+							Her latest book is on ‘Self Manage And Reverse Your Diabetes.’				
+					  <br/>
+					  She served as senior resident medical officer for over six years at National Institute of Banking Management Pune, where she focused on preventive Health care and Lifestyle management for senior Bank professionals. 
+					  This resulted in her acquiring deep knowledge of genetic disposition and life style profiles of people from across India. 
+					  She was able to achieve impressive reventive results, and this laid the foundation to  her interest in the forty plus age group.
+					  <br/> <br/> 
+					  Her association for over three decades as an Expert Medical Advisor to Life Insurance and Mediclaim industry has added to er a deep understanding of chronic diseases and their prevention.
+					  <br/> <br/> Dr. Geeta Sundar believes in a holistic approach to health and to that end has completed formal courses in Homeopathy and Ayurveda, although she does not practice these sciences.
+					  She has also completed a course in Medico Legal law.
+					  <br/><br/>
+					  Dr.Geeta Sundar completed her M.B.B.S. and M.D. (Internal Medicine) from Netaji Subhash Chandra Bose medical college Jabalpur in 1979.
+					  <br/><br/> 
+					  After graduation, she joined Dr. BL Kapoor memorial hospital in Delhi and served as an honorary there for several years.
+					  <br/><br/> 
+					  From 1992 she has been practicing internal medicine consultation at her own clinic at Bibvewadi Pune. 
+					  Her areas of proficiency are Chronic Disease Management, especially related to Cardiology and Diabetes. 
+					  She is a member of ---IMA, API and CSI.
+					  <br/><br/>
+					  In her spare time she writes Crime fiction, and her book ‘The Premier Murder League’ set in IPL background has been published by Penguin. 
+					  She is also the winner of MSN-Random House short story competition in 2012.
+					  <br/> <br/> 
+					  Dr.Geeta Sundar's long and distinguished career in Health Care and Chronic Disease Management will be the focus area for India Online Health 
+					  and is expected to set the direction for India online Health offerings as Ayushman's Chief Medical advisor.</p>
+				  </span>
+				</div>
+				<div>
+					</br>
+					<span class="bodytext"><p style="text-align:justify;border-bottom: 1px solid #eee;padding-bottom:10px;box-shadow: 1px -7px 5px -6px #ccc inset;">
+					</span>
+					</br>
+				</div>
+		    </div>
+			<br>
+			<div class="row">
+				<div class="col-lg-2">
+					<div class="thumbnail">
+					<img style="width:150px;height:150px" class="center-block img-rounded" src="/ayushman/assets/images/Dr.Sanjeev_Gokhale.png"/>
+					<div class="caption" align="center" style="color:black">
+						Dr. Sanjeev S. Gokhale
+					</div>
+					</div>
+				</div>
+				<div class="col-lg-10" style="padding-left:4%;align:left;">
+					<span class="bodytext">
+						 <p text-align="justify">Dr. Sanjeev S. Gokhale is on the Board of the advisors is a  Consulting Orthopedic Surgeon. 
+						 He&nbsp;established his hospital in Pune over 30 years back. 
+						 He is on the panel  of Deenanath Mangeshkar hospital, Poona Hospital, Joshi Hospital, Ratna Hospital and Ruby Hall Clinic. 
+						 He is on the panel of  university of Pune&rsquo;s committee for longevity. 
+						 <br/><br/>
+						 Dr. Gokhale graduated from  Mumbai with M.S. (ORTH), D.ORTH in 1982. He has presented several prize  winning papers in 
+						 national and international seminars: Arthroscopy- early results of first one hundred cases presented to Indian Medical Association, 
+						 High Tibial Osteotomy yearly workshop of IMA, High.
+					  </br>
+					  Tibial Osteotomy paper read at International Federation of Ageing Global Conference in Durban, South Africa in 1997.
+					  <br/> <br/>
+					  He has authored several books in Marathi: Kambardukhi  (relating to backache) and Gudaghedukhi (relating to knee problems). 
+					  More than 100,000  copies of these books have been sold. Besides he has written numerous articles in newspapers about common orthopedic problems and given talks on TV. 
+					  He established Laxmi-Raghunath a Charitable foundation in the memory of his grandparents.
+					  </p>
+				  </span>
+				</div>
+		    </div>
+			</br>
+			<div>
+				<span class="bodytext"><p style="text-align:justify;border-bottom: 1px solid #eee;padding-bottom:10px;box-shadow: 1px -7px 5px -6px #ccc inset;">
+				</span>
+			</div>				
+			</br>
+			<div class="row">
+				<div class="col-lg-2">
+					<div class="thumbnail">
+					<img style="width:150px;height:150px" class="center-block img-rounded" src="/ayushman/assets/images/DrNeelaDesai.png"/>
+					<div class="caption" align="center" style="color:black">
+						Dr. Neela Desai
+					</div>
+					</div>
+				</div>
+				<div class="col-lg-10" style="padding-left:4%;align:left;">
+					<span class="bodytext">
+						 <p text-align="justify">Dr. Neela Desai is on the Board of the advisors is a reputed senior  Gynecologist &amp; Obstetrician practicing in the city of Pune for the past 30  years. 
+						 She finished her MBBS and MS (Ob/Gyn) with distinction from MGM Medical  College/MY Hospital, a premier teaching hospital in the city of Indore. 
+						 <br /><br />She then proceeded to go to UK in 1977 after obtaining full registration  with General Medical Council UK. She gained vast experience in modern practice  &amp; techniques in Ob/Gyn for four years. She attended in various workshops &amp; seminars of Royal College of  London. She completed her DRCOG from  Royal College of Obstetrics &amp; Gynecologists in 1979.
+					  <br/>Upon her return to India  1982 settled in Pune, an educational hub of India. 
+					  She has been practicing  Ob/Gyn in her own clinic in Vijayanagar Pune since then. 
+					  She is a Consultant  Gynecologist &amp; Obstetrician at Poona Hospital &amp; Research center, a post  graduate teaching institute. 
+					  <br /><br />She has been practicing Gynec  Endoscopic surgeries since 1997. She has attended many workshops &amp; symposia  including AAGL at San Francisco in 2004.  She undertook an advanced training course at  Tagesclinik Hamburg Germany, in endoscopic surgery. Recently she presented 2  papers in FIGO World Congress 2012 in Rome.<br /><br />She has performed large  number of Endoscopic surgeries such as, Lap Hysterectomy, Myomectomy, for  Endometriosis, operative hysteroscopy like septum resection, submucous myoma  resection.<br /><br />
+					  Dr. Neela Desai is a devoted  Obstetrician and is renowned for her work with successful management of  challenging high risk pregnancies.</p>
+				  </span>
+				</div>
+		    </div>
+			</br>
+			<div>
+				<span class="bodytext"><p style="text-align:justify;border-bottom: 1px solid #eee;padding-bottom:10px;box-shadow: 1px -7px 5px -6px #ccc inset;">
+				</span>
+			</div>				
+			</br>
+	</div>	
+	</div>
+	</li>
+	</ul>
+</div>	
+</div>
+<div style="height:90px">
+	</br>
+</div>
+<!--page footer-->
+	<!--#include file="BottomBar.shtml"-->
+
+<a href="#top" id="scroll-top"></a>
+<script type='text/javascript' id='quick-js'></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>-->
+<!--<script type='text/javascript' src='webapp/app/js/angular-route.js'></script>-->
+<!--<script type='text/javascript' src='app/controllers/landingPageController.js'></script>-->
+<!--<script type='text/javascript' src='webapp/app/app.js'></script>
+<script type='text/javascript' src='webapp/app/controllers/landingPageController.js'></script>-->
+<script type='text/javascript' id='quick-js'></script>
+<script type='text/javascript' src='webapp/js/jquery.flexslider-min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.swipebox.min.js'></script>
+<script type='text/javascript' src='webapp/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.isotope.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.appear.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.ui.core.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.ui.datepicker.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.validate.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.form.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.autosize.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.meanmenu.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.velocity.min.js'></script>
+<script type='text/javascript' src='webapp/js/respond.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery-migrate-1.2.1.min.js'></script>
+<script type='text/javascript' src="webapp/js/jquery.easing.min.js"></script>
+<script type='text/javascript' src='webapp/js/custom.js'></script>
+<script>
+jQuery(document).ready(function () {
+    // scroll-to-top animate
+    jQuery('#scroll-top').click(function () {
+        jQuery("html, body").animate({
+            scrollTop: 0
+        }, 900);
+        return false;
+    });
+	
+});
+</script>
+</div>
+<div id="panel4" class="panel panel-default login-panal" style="z-index: 50000;margin-right:3%;" >
+	<div class="panel-body">
+	<div class="formheader">Secure Log In <!--<a class="formclose" href="#" onclick="closelogin()"></a>--></div>
+	<form id="loginformid" action="/ayushman/cuser/login"  role="form" method="post" accept-charset="utf-8">
+		<div class="form-group" >
+			<input type="text" class="form-control" id="email" name="email" required="required" placeholder="Username" autocomplete="on">
+		</div>
+		<div class="form-group" >
+			<input type="password" class="form-control" id="password" name="password" required="required" placeholder="Password">
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-info">LOG IN </button>
+            <a href="/ayushman/cpasswordmanager/view" style="color:#04706d; margin-top:10px;">Forgot Password?</a>
+        </div>
+	</form>
+	</div>	
+</div> 
+</body>
+</html>

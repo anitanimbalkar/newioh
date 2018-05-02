@@ -1,0 +1,1006 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,2,500,15,500,3,4,5,500</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>6,7,8,9,10,500,11,12,13,16,14</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>Examination</label>
+		<type>label</type>
+	</question>
+	
+	
+	<question>
+		<id>2</id>
+		<label>General Appearance</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>101,102,103,104,105,106,107,108,109,110,111,112,114,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>101</id>
+		<label>Pallor</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>102</id>
+		<label>Jaundice</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>103</id>
+		<label>Smoke-Stained Fingers</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>104</id>
+		<label>Black Lips</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>105</id>
+		<label>Obesity</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>106</id>
+		<label>Extreme Thinness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>107</id>
+		<label>Pallor</label>
+		<type>DD</type>
+		<answer>
+			<label>Swollen Abdomen</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>108</id>
+		<label>Ankel Swelling </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>109</id>
+		<label>Pyrexia</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>110</id>
+		<label>Swelling </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>111</id>
+		<label>Distended Veins </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>112</id>
+		<label>Blood Pressure mmHg</label>
+		<type>text</type>
+	</question>
+
+	
+	<question>
+		<id>114</id>
+		<label>Abdomen palpation   </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>201,202,203,204,205,206,207,208,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>201</id>
+		<label>Peritonitis</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>202</id>
+		<label>Enlarged Uterus</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+		
+	<question>
+		<id>203</id>
+		<label>Enlarged Liver</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>204</id>
+		<label>Enlarged Spleen</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>205</id>
+		<label>Enlarged Nodes In The </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>206</id>
+		<label>Ascites</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+			
+	<question>
+		<id>207</id>
+		<label>Percussion Of Bladder</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+			
+	<question>
+		<id>208</id>
+		<label>Umbilicus</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Vaginal Examination</label>
+		<type>label</type>
+	</question>
+				
+	<question>
+		<id>4</id>
+		<label>Vulva</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>115,116,117,118,119,120,121,122,123,124,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>115</id>
+		<label>Skin Texture</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>116</id>
+		<label>Lumps</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+			
+	<question>
+		<id>117</id>
+		<label>Excoriation</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+			
+	<question>
+		<id>118</id>
+		<label>Lichenification    </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+			
+	<question>
+		<id>119</id>
+		<label>Whitening</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+				
+	<question>
+		<id>120</id>
+		<label>Vaginal Mucosa</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+				
+	<question>
+		<id>121</id>
+		<label>Any Retained Tampon</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+					
+	<question>
+		<id>122</id>
+		<label>Warts</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+						
+	<question>
+		<id>123</id>
+		<label>Herpes</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+						
+	<question>
+		<id>124</id>
+		<label>Vaginal Swab</label>
+		<type>DD</type>
+		<answer>
+			<label>Taken</label>
+		</answer>
+		<answer>
+			<label>Not Taken</label>
+		</answer>
+	</question>
+				
+	<question>
+		<id>5</id>
+		<label>Cervix</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>125,126,127,128,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>125</id>
+		<label>Erosions</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>126</id>
+		<label>Bleeding</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>127</id>
+		<label>Polyps</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>128</id>
+		<label>Growths</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>6</id>
+		<label>Bimanual  Examination</label>
+		<type>label</type>
+	</question>
+					
+	<question>
+		<id>7</id>
+		<label>Vagina</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>129,130,131,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+		
+	<question>
+		<id>129</id>
+		<label>Polyps</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>130</id>
+		<label>Growths</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>131</id>
+		<label>Discharge</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>	
+					
+	<question>
+		<id>8</id>
+		<label>Cervix</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>132,133,134,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+		
+	<question>
+		<id>132</id>
+		<label>Roughness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>133</id>
+		<label>Hardness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>134</id>
+		<label>Lumps</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>Uterus </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>149,150,135,136,137,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>149</id>
+		<label>Size</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>150</id>
+		<label>Descent</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>209,210,211</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>209</id>
+		<label>Cystocoele  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>210</id>
+		<label>Rectocoele  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>211</id>
+		<label>Cervical Descent  </label>
+		<type>DD</type>
+		<answer>
+			<label>I</label>
+		</answer>
+		<answer>
+			<label>II</label>
+		</answer>
+		<answer>
+			<label>III</label>
+		</answer>
+		<answer>
+			<label>IV</label>
+		</answer>
+	</question>
+	
+	
+		
+	<question>
+		<id>135</id>
+		<label>Mobility</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>136</id>
+		<label>Lumpiness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>137</id>
+		<label>Tenderness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Adnexae  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>138,139,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+		
+	<question>
+		<id>138</id>
+		<label>Lump</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>139</id>
+		<label>Tenderness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Uterine Size  </label>
+		<type>MultiDD</type>
+		<answer>
+			<label>Within The Pelvis --8 Weeks</label>
+		</answer>
+		<answer>
+			<label>Suprapubic = 12 Weeks</label>
+		</answer>
+		<answer>
+			<label>Mid-Suprapubic Umbilicus = 16 Weeks</label>
+		</answer>
+		<answer>
+			<label>To Umbilicus = 20 Weeks</label>
+		</answer>
+		<answer>
+			<label>To Xiphisternum = 36 Weeks</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Vaginal Smear</label>
+		<type>DD</type>
+		<answer>
+			<label>Not Taken</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Taken</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>13</id>
+		<label>PAP Smear</label>
+		<type>DD</type>
+		<answer>
+			<label>Not Done</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Done</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>HPV Smear</label>
+		<type>DD</type>
+		<answer>
+			<label>Not Done</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Done</label>
+		</answer>
+	</question>
+	
+		
+	<question>
+		<id>14</id>
+		<label>Colposcopy</label>
+		<type>DD</type>
+		<answer>
+			<label>Not Done</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Done</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Breast Examination</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>140,141,142,143,144,145,146,147,148,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+		
+	<question>
+		<id>140</id>
+		<label>Peritonitis</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+		
+	<question>
+		<id>141</id>
+		<label>Palpable Uterus</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>142</id>
+		<label>Palpable Liver</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+		
+	<question>
+		<id>143</id>
+		<label>Palpable Spleen</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+			
+	<question>
+		<id>144</id>
+		<label>Palpable Inguinal Nodes</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	<question>
+		<id>145</id>
+		<label>Bladder</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>146</id>
+		<label>Ascitis</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>147</id>
+		<label>Umbilicus</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>148</id>
+		<label>Hernia</label>
+		<type>DD</type>
+		<answer>
+			<label>Umbilical</label>
+		</answer>
+		<answer>
+			<label>Inguinal</label>
+		</answer>
+		<answer>
+			<label>Femoral</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>300</id>
+		<label>Describe</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>400</id>
+		<label>Other </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>500</id>
+		<type>Separator</type>
+	</question>
+
+	
+	
+	
+</form>	

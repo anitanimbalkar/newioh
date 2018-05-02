@@ -1,0 +1,686 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,2,3,4,500,5,6,7,8,500,9,10,11,12</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>13,14,15,16,500,17,18,19,20,21,22,500</questions>
+		<layout>Vertical</layout>
+	</container>
+
+	<question>
+		<id>1</id>
+		<label>Presenting Complaint </label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Pain </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>101,102,103</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	
+	<question>
+		<id>3</id>
+		<label>Fever </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+		
+	<question>
+		<id>4</id>
+		<label>Loss Of weight </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Past History </label>
+		<type>Label</type>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>H/O Of Koch's</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>H/O Of Fractures</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>H/O Of Trauma </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+
+	<question>
+		<id>9</id>
+		<label>General Observation</label>
+		<type>Label</type>
+	</question>
+		
+	<question>
+		<id>10</id>
+		<label>Obese</label>
+		<type>DD</type>
+		<answer>
+			<label>Underweight</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Gait</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Use Of Aid</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>		
+	</question>
+	<question>
+		<id>13</id>
+		<label>Local Examination </label>
+		<type>Label</type>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Back</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>104,105,106,107,108,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Neck</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>104,105,106,107,108,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>Joints</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>214,215,216,217,218,221</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Investigation </label>
+		<type>label</type>
+				
+	</question>
+	
+	<question>
+		<id>101</id>
+		<label>Back</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>201,202,203,204,205,206</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>102</id>
+		<label>Neck</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>201,202,203,204,205,206</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>103</id>
+		<label>Joints </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>207,208,209,210,211</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>201</id>
+		<label>Duration</label>
+		<type>text</type>
+	</question>	
+		
+	<question>
+		<id>202</id>
+		<label>Severity </label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>203</id>
+		<label>Location</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>204</id>
+		<label>Radiation</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>205</id>
+		<label>Relieved By</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>206</id>
+		<label>Other</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>207</id>
+		<label>Shoulder </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>301,302</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>208</id>
+		<label>Hip </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>301,302</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>209</id>
+		<label>Knee </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>301,302</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>210</id>
+		<label>Ankle </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>301,302</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>211</id>
+		<label>Elbow </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>301,302</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>301</id>
+		<label>Left </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>201,202,203,204,205,206</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>302</id>
+		<label>Right </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>201,202,203,204,205,206</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>104</id>
+		<label>Tenderness </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>105</id>
+		<label>Range Of Motion </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Restricted</label>
+			<follow>300</follow>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>106</id>
+		<label>Neurovascular Deficit </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>107</id>
+		<label>Swelling </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>212,213</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>	
+	
+	<question>
+		<id>212</id>
+		<label>Color </label>
+		<type>text</type>
+	</question>	
+	
+	<question>
+		<id>213</id>
+		<label>Temp </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>108</id>
+		<label>SLR </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>		
+	</question>	
+	
+	<question>
+		<id>109</id>
+		<label>Crepitus </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>	
+	
+	<question>
+		<id>214</id>
+		<label>Shoulder </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>303,304</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+		
+	<question>
+		<id>215</id>
+		<label>Hip </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>303,304</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>216</id>
+		<label>Knee </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>303,304</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>217</id>
+		<label>Ankle </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>303,304</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>218</id>
+		<label>Elbow </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>303,304</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>221</id>
+		<label>Other </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>305,303,304</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>305</id>
+		<label>Name Of Joints</label>
+		<type>text</type>
+	</question>
+		
+	<question>
+		<id>18</id>
+		<label>X-Ray </label>
+		<type>DD</type>
+		<answer>
+			<label>Done</label>
+			<follow>219</follow>
+		</answer>
+		<answer>
+			<label>Not Done</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>CT Scan</label>
+		<type>DD</type>
+		<answer>
+			<label>Done</label>
+			<follow>219</follow>
+		</answer>
+		<answer>
+			<label>Not Done</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>MRI</label>
+		<type>DD</type>
+		<answer>
+			<label>Done</label>
+			<follow>219</follow>
+		</answer>
+		<answer>
+			<label>Not Done</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>21</id>
+		<label>BMD</label>
+		<type>DD</type>
+		<answer>
+			<label>Done</label>
+			<follow>219</follow>
+		</answer>
+		<answer>
+			<label>Not Done</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>22</id>
+		<label>Other</label>
+		<type>DD</type>
+		<answer>
+			<label>Done</label>
+			<follow>220,219</follow>
+		</answer>
+		<answer>
+			<label>Not Done</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>220</id>
+		<label>Test Name </label>
+		<type>text</type>
+	</question>
+	
+		
+	<question>
+		<id>219</id>
+		<label>Result </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>303</id>
+		<label>Left </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>104,105,106,107,108,109,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>304</id>
+		<label>Right </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>104,105,106,107,108,109,400</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>		
+	</question>
+	
+	
+	
+	<question>
+		<id>300</id>
+		<label>Elaborate</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>400</id>
+		<label>Other</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>500</id>
+		<type>Separator</type>
+	</question>
+	
+</form>

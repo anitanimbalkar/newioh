@@ -1,0 +1,92 @@
+.formbodytext_normal{
+	font-family: tahoma, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 70%;
+	color: #11587E;
+	margin-left: 10px;
+}
+.formtextarea{
+	background:transparent;
+	border:none;
+	height:1.35em;	 
+	border-bottom:1px solid #11587E;
+	font-family:tahoma,Helvetica,sans-serif;
+	font-size:70%;
+	font-color: #999999;
+	color:black;
+	margin-left: 5px;
+}
+.formmultiselect{
+	background:transparent;
+	border:none;
+	height:1.35em;	 
+	border-bottom:1px solid #11587E;
+	font-family:tahoma,Helvetica,sans-serif;
+	font-size:70%;
+	font-color: #999999;
+	color:#333333;
+	margin-left: 5px;
+}
+.formtarget{
+	height:10em;
+	border:1px solid #D6D5F4;
+	margin-bottom:3px;
+	overflow-y:auto;
+	-moz-border-radius-topright: 0.5em;
+	-moz-border-radius-topleft: 0.5em;;
+	-webkit-border-top-right-radius: 4px;
+	-webkit-border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-top-left-radius: 4px;
+	-webkit-border-bottom-right-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+.formContent{
+	padding-left:0.5em;
+	overflow-y:auto;
+	height:125px;
+	width:98.25%;
+}
+
+.FormHeading_BG{
+	background-color:#2D7A9E;
+	width:98.25%;
+	height:2em;
+	font-family:tahoma,Helvetica,sans-serif;
+	font-size:60%;
+	font-weight:bold;
+	color:#FFFFFF;
+	padding-left:1em;
+	padding-top:5px;
+	margin-left:2px;
+	border-radius:4px;
+}
+.examform{
+	height: 10em;
+}
+.formelement{
+	height:auto;
+	margin-top:5px;
+}
+.followelement{
+	background: url(/ayushman/assets/images/treeline.png) no-repeat;
+	padding-left:10px;
+	margin-top:3px;
+}
+.verticalContainer{
+	width:98%;
+}
+
+div.hr{
+	border-bottom:1px solid #D6D5F4;	
+	border-top:none;
+	height:10px;
+	width:100%;
+}
+
+.nodeelement{
+	padding-left:20px;
+}

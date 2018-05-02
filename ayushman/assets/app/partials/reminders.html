@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Tracker | India Online Health</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		
+		<link rel="stylesheet" href="/ayushman/assets/app/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/ayushman/assets/app/css/bootstrap.min.css" />
+		<script src="/ayushman/assets/app/js/controllers/notesandremindersctrl.js"></script>
+		
+		<style>
+			.btnstyle {
+				font-weight: bold;
+				width: 15%;
+				height: 100%;
+				float:right;
+				padding: 1px;
+				background-color: rgba(30, 190, 240,.4);
+				border-radius: 7px;
+				font-size: 15px;
+			}
+			.btnstyle1 {
+				font-weight: bold;
+				width: 100%;
+				height: 100%;
+				padding: 1px;
+				background-color: rgba(30, 190, 240,.4);
+				border-radius: 7px;
+				font-size: 15px;
+			}
+		</style>
+	</head>
+	<body>
+	<div id="reminderDiv" class="sectionBox"  style="top:10px; z-index:100;">		
+		<div style=" padding-right: 0px; padding-left: 0px; " >	
+			<div id="allreminders" >
+				<div class="notesComments contentDetails smallContent" style='border:1px solid black; resize: none;height:450px;width:100%;'  >
+					<div ng-repeat = "item in allreminders | filter: {status : 1} track by $index ">
+						<div class="row">
+							<div  class="notesdata col-md-8 col-lg-8 col-sm-8 col-xs-8" >								
+								<label title="{{item.description}}" style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.createduserid == item.foruserid">{{item.startdate}} : {{item.templatesubject}} :  - executed {{item.frequency}} - last executed on {{item.lastdate}}</label></td>
+							</div>	
+							<div  class="notesdata col-md-4 col-lg-4 col-sm-4 col-xs-4" >								
+								<a data-toggle="collapse" style="" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed">
+										<span ng-show= "((item.createduserid == item.foruserid) && (item.createduserid == item.loggeduserid))" ng-click="deletereminder(item.id,$index)" class="iconDelete ng-scope">
+										</span>
+									</a>
+								<a data-toggle="collapse" style="" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed">
+										<span ng-show= "((item.createduserid == item.foruserid) && (item.createduserid == item.loggeduserid))" ng-click="editreminder(item.id,$index)" class="iconEdit ng-scope">
+										</span>	
+								</a>
+							</div>
+						</div>
+						<div class="row">
+							<div  class="notesdata col-md-8 col-lg-8 col-sm-8 col-xs-8" >								
+								<label title="{{item.description}}" style="font-size:14px" ng-show= "item.createduserid != item.foruserid">{{item.startdate}} : {{item.templatesubject}} : - executed {{item.frequency}} - last executed on {{item.lastdate}}</label></td>
+							</div>	
+							<div  class="notesdata col-md-4 col-lg-4 col-sm-4 col-xs-4" >								
+									<a data-toggle="collapse" style="" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed">
+										<span ng-show= "((item.createduserid != item.foruserid) && (item.createduserid == item.loggeduserid))" ng-click="deletereminder(item.id,$index)" class="iconDelete ng-scope">
+										</span>
+									</a>								
+									<a data-toggle="collapse" style="" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed">
+										<span ng-show= "((item.createduserid != item.foruserid) && (item.createduserid == item.loggeduserid))" ng-click="editreminder(item.id,$index)" class="iconEdit ng-scope"></span>
+									</a>							
+							</div>
+						</div>
+						<hr />
+					</div>
+				</div>
+				<div class="row">
+					<div style="padding-right: 1px; padding-left: 1px;" class="notesdata col-md-12 col-lg-12 col-sm-12 col-xs-12" >								
+						<div class="">
+							<a data-toggle="collapse" style="" ng-click="setsmsflag();" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed">
+									<button class="btnstyle" id="addreminder" value="BookTest" style="margin: 10px;">Add reminder</button>
+								<!--	<span style="color:white;">Add reminder</span> -->
+							</a> 
+						</div>
+					</div>
+				</div>
+				<div id="collapseTwo" class="panel-collapse collapse" style=" border:1px solid black; position: fixed; top: 0px; float: left; left: 0px; width: 1068px;">
+					<div class="notesComments contentDetails smallContent" style='resize: none;height:485px;background:white' >
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+								<input type="checkbox" id="smsflag" ng-checked="smsflag==1" ng-click ="setsmsflag()" checked /><label style="padding-left:5px;">Send SMS</label>
+							</div>	
+							<div class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
+								<input type="checkbox" id="emailflag" ng-checked="emailflag==1" ng-click ="setemailflag()"  checked /><label style="padding-left:5px;">Send email</label>
+							</div>	
+							<div class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
+								<input type="checkbox" id="dbflag" ng-checked="dbflag==1" ng-click ="setdbflag()" /><label style="padding-left:5px;">Message on dashboard</label>
+							</div>	
+							<div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+								<!--	<label>Date of reminder:</label>
+										<input futuredatepicker readonly ="readonly" style="border-bottom:1px solid black; width:150px" id="startdate" type='text' class="textarea"  value= "" ng-model='reminderstartdate' />
+							--></div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1">
+								<label>Template:</label>
+							</div>			
+							<div class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
+								<select id="templatecode" ng-change="settemplatedata(this.value)" name="templatecode" style=" width:150px color: black;font-family: Verdana,Arial,Helvetica,sans-serif;font-size: 10px; align=left"  ng-model="templatecode" ng-options="value.code as value.subject for value in remindertemplates"> 
+									<option value="" selected="" >Select Value</option>
+								</select>
+							</div>			
+							<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1">
+								<label>Variables:</label>
+							</div>	
+							<div class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
+								<label style="font-family:serif;font-size:12px;">{{templatevariables}}</label>
+							</div>
+							<div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+									<label>Date of reminder:</label>
+										<input futuredatepicker readonly ="readonly" style="border-bottom:1px solid black; width:150px" id="startdate" type='text' class="textarea"  value= "" ng-model='reminderstartdate' />
+							</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+								<div id="mailbodyeditable1" class="col-md-2 col-lg-2 col-sm-2 col-xs-2" >
+									<label>Mail body:</label>
+								</div>
+								<div id="mailbodyeditable" class="col-md-10 col-lg-10 col-sm-10 col-xs-10" >
+									<textarea id="mailbody"class="notesComments contentDetails smallContent" placeholder="Write message here" ng-model="templatemailbody" style='resize: none;height:50px;width:100%;'></textarea>
+								</div>
+								<div id="mailbodyreadonly1"  class="col-md-2 col-lg-2 col-sm-2 col-xs-2" >
+									<label>Mail body:</label>
+								</div>
+								<div  id="mailbodyreadonly" class="col-md-10 col-lg-10 col-sm-10 col-xs-10" >
+									<textarea id="mailbody" readonly class="notesComments contentDetails smallContent" placeholder="Write message here" ng-model="templatemailbody" style='resize: none;height:50px;width:100%;'></textarea>
+										<!--<label style="font-family:serif;font-size:12px;">{{templatemailbody}}</label>-->
+								</div>
+						</div>
+						<div class="row" style="margin-top: 10px;">
+							<div  class="col-md-2 col-lg-2 col-sm-2 col-xs-2" >
+								<label>Variable data:</label>
+							</div>
+							<div class="col-md-6 col-lg-6 col-sm-6 col-xs-6" >
+									<input id="variabledata" style=" width:400px;border-bottom:1px solid black;" type='text' class="textarea"  ng-model='variabledata' placeholder="Enter comma ',' seperated values for variables" />					
+							</div>		
+							<div class="col-md-4 col-lg-4 col-sm-4 col-xs-4" >
+								<label style="padding-left:20px;">Frequency:</label>
+									<select id="frequency" name="frequency" style=" width:150px color: black;font-family: Verdana,Arial,Helvetica,sans-serif;font-size: 10px; align=left"  ng-model="frequency" > 
+											<option value="" >Select</option>						
+											<option value=0  >Once</option>
+											<option value=1 >Every day</option>
+											<option value=7 >Every week</option>
+											<option value=30>Every month</option>						
+											<option value=92>Every quarter</option>						
+											<option value=183>Every half year</option>						
+											<option value=365>Every year</option>															
+											<option value=2 >Every alternate day</option>
+											<option value=14 >Every alternate week</option>
+											<option value=61>Every alternate month</option>						
+											<option value=183>Every alternate quarter</option>						
+											<option value=365>Every alternate half year</option>						
+											<option value=730>Every alternate year</option>															
+										</select>
+										<!--</br>
+										<label>Description &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</label>
+										<input id="templatedesc" style=" width:400px;border-bottom:1px solid black;" type='text' class="textarea"  ng-model='templatedesc' />-->
+							</div>
+						</div>	
+							<div class="row" style="margin-top: 150px;">							
+									<div >
+										<div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+										</div>
+										<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+											<a data-toggle="collapse" ng-click="savereminder();" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed" >
+												<button class="btnstyle1" id="setreminder" value="BookTest" style="margin: 10px;">Set reminder</button>
+											</a> 
+										</div>
+										<div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+											<a data-toggle="collapse" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed">
+												<button class="btnstyle1" id="removereminder" value="BookTest" style="margin: 10px;">Cancel</button>
+											</a> 										
+											
+										</div>
+									</div>	
+							</div>							
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>

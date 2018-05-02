@@ -1,0 +1,431 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>1</columns>
+		<column>1</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1,21,41,61,1000,2,22,42,62,1000,3,23,43,63,1000,4,24,44,64,1000,5,25,45,65,1000,6,26,46,66,1000,7,27,47,67,1000,8,28,48,68,1000,9,29,49,69,1000,10,30,50,70,1000,11,31,51,71</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+<question>
+		<id>1</id>
+		<label>Father </label>
+		<type>label</type>
+</question>
+<question>
+		<id>1000</id>
+		<type>separator</type>
+</question>
+<question>
+		<id>2</id>
+		<label>Mother </label>
+		<type>label</type>
+</question>
+<question>
+		<id>3</id>
+		<label>Brother </label>
+		<type>label</type>
+</question>
+<question>
+		<id>4</id>
+		<label>Sister </label>
+		<type>label</type>
+</question>
+<question>
+		<id>5</id>
+		<label>Son </label>
+		<type>label</type>
+</question>
+<question>
+		<id>6</id>
+		<label>Daughter </label>
+		<type>label</type>
+</question>
+<question>
+		<id>7</id>
+		<label>Uncle </label>
+		<type>label</type>
+</question>
+<question>
+		<id>8</id>
+		<label>Aunt </label>
+		<type>label</type>
+</question>
+<question>
+		<id>9</id>
+		<label>Friend </label>
+		<type>label</type>
+</question>
+<question>
+		<id>10</id>
+		<label>Grand Father </label>
+		<type>label</type>
+</question>
+<question>
+		<id>11</id>
+		<label>Grand Mother</label>
+		<type>label</type>
+</question>
+
+
+
+<question>
+		<id>21</id>
+		<label>Year of Birth</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>22</id>
+		<label>Year of Birth</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>23</id>
+		<label>Year of Birth</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>24</id>
+		<label>Year of Birth</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>25</id>
+		<label>Year of Birth</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>26</id>
+		<label>Year of Birth</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>27</id>
+		<label>Year of Birth</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>28</id>
+		<label>Year of Birth</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>29</id>
+		<label>Year of Birth</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>30</id>
+		<label>Year of Birth</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>31</id>
+		<label>Year of Birth</label>
+		<type>Text</type>
+</question>
+
+<question>
+		<id>41</id>
+		<label>Known Medical History</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>42</id>
+		<label>Known Medical History</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>43</id>
+		<label>Known Medical History</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>44</id>
+		<label>Known Medical History</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>45</id>
+		<label>Known Medical History</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>46</id>
+		<label>Known Medical History</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>47</id>
+		<label>Known Medical History</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>48</id>
+		<label>Known Medical History</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>49</id>
+		<label>Known Medical History</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>50</id>
+		<label>Known Medical History</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>51</id>
+		<label>Known Medical History</label>
+		<type>Text</type>
+</question>
+
+<question>
+		<id>61</id>
+		<label>Is alive</label>
+		<type>DD</type>
+		<answer>
+			<label>No</label>
+				<follow>81,101</follow>
+		</answer>
+		<answer>
+			<label>Yes</label>
+		</answer>
+</question>
+<question>
+		<id>62</id>
+		<label>Is alive</label>
+		<type>DD</type>
+		<answer>
+			<label>No</label>
+				<follow>82,102</follow>
+		</answer>
+		<answer>
+			<label>Yes</label>
+		</answer>
+</question>
+<question>
+		<id>63</id>
+		<label>Is alive</label>
+		<type>DD</type>
+		<answer>
+			<label>No</label>
+				<follow>83,103</follow>
+		</answer>
+		<answer>
+			<label>Yes</label>
+		</answer>
+</question>
+<question>
+		<id>64</id>
+		<label>Is alive</label>
+		<type>DD</type>
+		<answer>
+			<label>No</label>
+				<follow>84,104</follow>
+		</answer>
+		<answer>
+			<label>Yes</label>
+		</answer>
+</question>
+<question>
+		<id>65</id>
+		<label>Is alive</label>
+		<type>DD</type>
+		<answer>
+			<label>No</label>
+				<follow>85,105</follow>
+		</answer>
+		<answer>
+			<label>Yes</label>
+		</answer>
+</question>
+<question>
+		<id>66</id>
+		<label>Is alive</label>
+		<type>DD</type>
+		<answer>
+			<label>No</label>
+				<follow>86,106</follow>
+		</answer>
+		<answer>
+			<label>Yes</label>
+		</answer>
+</question>
+<question>
+		<id>67</id>
+		<label>Is alive</label>
+		<type>DD</type>
+		<answer>
+			<label>No</label>
+				<follow>87,107</follow>
+		</answer>
+		<answer>
+			<label>Yes</label>
+		</answer>
+</question>
+<question>
+		<id>68</id>
+		<label>Is alive</label>
+		<type>DD</type>
+		<answer>
+			<label>No</label>
+				<follow>88,108</follow>
+		</answer>
+		<answer>
+			<label>Yes</label>
+		</answer>
+</question>
+<question>
+		<id>69</id>
+		<label>Is alive</label>
+		<type>DD</type>
+		<answer>
+			<label>No</label>
+				<follow>89,109</follow>
+		</answer>
+		<answer>
+			<label>Yes</label>
+		</answer>
+</question>
+<question>
+		<id>70</id>
+		<label>Is alive</label>
+		<type>DD</type>
+		<answer>
+			<label>No</label>
+				<follow>90,110</follow>
+		</answer>
+		<answer>
+			<label>Yes</label>
+		</answer>
+</question>
+<question>
+		<id>71</id>
+		<label>Is alive</label>
+		<type>DD</type>
+		<answer>
+			<label>No</label>
+				<follow>91,111</follow>
+		</answer>
+		<answer>
+			<label>Yes</label>
+		</answer>
+</question>
+
+<question>
+		<id>81</id>
+		<label>Age in Years</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>101</id>
+		<label>Cause of death</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>82</id>
+		<label>Age in Years</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>102</id>
+		<label>Cause of death</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>83</id>
+		<label>Age in Years</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>103</id>
+		<label>Cause of death</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>84</id>
+		<label>Age in Years</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>104</id>
+		<label>Cause of death</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>85</id>
+		<label>Age in Years</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>105</id>
+		<label>Cause of death</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>86</id>
+		<label>Age in Years</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>106</id>
+		<label>Cause of death</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>87</id>
+		<label>Age in Years</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>107</id>
+		<label>Cause of death</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>88</id>
+		<label>Age in Years</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>108</id>
+		<label>Cause of death</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>89</id>
+		<label>Age in Years</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>109</id>
+		<label>Cause of death</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>90</id>
+		<label>Age in Years</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>110</id>
+		<label>Cause of death</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>91</id>
+		<label>Age in Years</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>111</id>
+		<label>Cause of death</label>
+		<type>Text</type>
+</question>
+
+</form>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Tracker | India Online Health</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		
+		<link rel="stylesheet" href="/ayushman/assets/app/css/bootstrap.min.css" />
+		<script src="/ayushman/assets/app/js/controllers/notesandremindersctrl.js"></script>
+		<link href="/ayushman/assets/app/css/main1.css" rel="stylesheet" type="text/css" />	
+		
+		<style>
+			.notesdata{
+				font-style:italic;
+				font-family:serif;
+				font-size:14px;
+			}
+	
+			.displaycounttext{ 
+				border:none;
+				color:black;
+				float:left;
+				font-size:14px; 
+				width: 40px;
+			}
+			.displaycountp{
+				border:none;color:black;
+				float:left; font-size:14px; 
+			}
+			.btnstyle {
+				font-weight: bold;
+				width: 15%;
+				height: 100%;
+				float:right;
+				padding: 1px;
+				background-color: rgba(30, 190, 240,.4);
+				border-radius: 7px;
+				font-size: 15px;
+			}
+		</style>
+		<script type="text/javascript">
+			/*$(document).ready(function(){
+					$('notesmsg').keyup(countword);
+			})*/
+				function countword(){
+					var words = document.getElementById('notesmsg');
+					console.log(words);
+					//var cs = $(this).val().length;
+					  var chars = words.value.length;
+					var remaincount = 2000 - chars;
+					console.log(remaincount);
+					document.getElementById('displayremainingchar').value = remaincount;
+				}
+		</script>
+	</head>
+	<body >
+	<div id="notesDiv" class="sectionBox"  style="border:1px solid black; position:fixed;top:0px;z-index:100;float:left;left:0px;">
+		<div class="container">				
+			<div id="allnotes">
+				<div  class="notesComments contentDetails smallContent" style='resize: none;height:350px;width:100%;'  >					
+					<div ng-repeat = "item in allnotes | filter: {status : 1} track by $index ">
+						<div class="row">
+							<div  class="notesdata col-md-8 col-lg-8 col-sm-8 col-xs-8" >
+								<label class="notesdata" >
+									{{item.date}} : 
+								</label>
+								<label class="notesdata" >
+									{{item.desc1}}
+								</label>
+									<a ng-show="item.link1!=''" target="_blank" href="{{item.link1}}">
+										<span style="color:blue;">{{item.link1}}</span>
+									</a>
+								<label class="notesdata" ng-show= "item.desc2 !=''">
+									{{item.desc2}}
+								</label>
+									<a ng-show="item.link2!=''"  target="_blank"  href="{{item.link2}}">
+										<span style="color:blue;">{{item.link2}}</span>
+									</a>
+								<label class="notesdata" ng-show= "item.desc3 !=''">
+									{{item.desc3}}
+								</label>
+									<a ng-show="item.link3!=''"  target="_blank" href="{{item.link3}}">
+										<span style="color:blue;">{{item.link3}}</span>
+									</a>
+								<label class="notesdata" ng-show= "item.desc4 !=''">
+									{{item.desc4}}
+								</label>
+									<a ng-show="item.link4!=''"  target="_blank" href="{{item.link4}}">
+										<span style="color:blue;">{{item.link4}}</span>
+									</a>
+								<label class="notesdata" ng-show= "item.desc5 !=''">
+									{{item.desc5}}
+								</label>
+									<a ng-show="item.link5!=''"  target="_blank" href="{{item.link5}}">
+										<span style="color:blue;">{{item.link5}}</span>
+									</a>
+								<label class="notesdata" ng-show= "item.desc6 !=''">
+									{{item.desc6}}
+								</label>
+									<a ng-show="item.link6!=''"  target="_blank" href="{{item.link6}}">
+										<span style="color:blue;">{{item.link6}}</span>
+									</a>
+								<label class="notesdata" ng-show= "item.desc7 !=''">
+									{{item.desc7}}
+								</label>
+									<a ng-show="item.link7!=''"  target="_blank" href="{{item.link7}}">
+										<span style="color:blue;">{{item.link7}}</span>
+									</a>
+								<label class="notesdata" ng-show= "item.desc8 !=''">
+									{{item.desc8}}
+								</label>
+									<a ng-show="item.link8!=''"  target="_blank" href="{{item.link8}}">
+										<span style="color:blue;">{{item.link8}}</span>
+									</a>
+								<label class="notesdata" ng-show= "item.desc9 !=''">
+									{{item.desc9}}
+								</label>
+									<a ng-show="item.link9!=''"  target="_blank" href="{{item.link9}}">
+										<span style="color:blue;">{{item.link9}}</span>
+									</a>
+								<label class="notesdata" ng-show= "item.desc10 !=''">
+									{{item.desc10}}
+								</label>
+									<a ng-show="item.link10!=''"  target="_blank" href="{{item.link10}}">
+										<span style="color:blue;">{{item.link10}}</span>
+									</a>
+									
+							</div>
+							<div class="notesdata col-md-4 col-lg-4 col-sm-4 col-xs-4" >	
+								<span style="float:right;" ng-show= "((item.writtenbyuserid == item.foruserid) && (item.writtenbyuserid == item.loggeduserid))" ng-click="deletenote(item.id,$index)" class="iconDelete ng-scope"></span></td>
+									<a data-toggle="collapse" style="" onclick="" data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+										<span  style="float:right;"  ng-show= "((item.writtenbyuserid == item.foruserid) && (item.writtenbyuserid == item.loggeduserid))" ng-click="editnote(item.id,item.notedesc)" class="iconEdit ng-scope"></span>						
+									</a>
+							</div>
+							<hr />	
+						</div>
+							<div class="row" ng-show= "item.writtenbyuserid != item.foruserid">
+								<div class="col-md-8 col-lg-8 col-sm-8 col-xs-8" style="font-size:14px" ng-show= "item.writtenbyuserid != item.foruserid">									
+										
+										<label style="font-size:14px" ng-show= "item.writtenbyuserid != item.foruserid">
+											{{item.date}}: 
+										</label>
+										<label style="font-size:14px" ng-show= "item.writtenbyuserid != item.foruserid">
+											{{item.writtenby}}: 
+										</label>
+										<label style="font-size:14px" ng-show= "item.desc1 !=''">
+											{{item.desc1}}
+										</label>
+										<a ng-show="item.link1!=''" target="_blank" href="{{item.link1}}">
+											<span style="color:blue;">{{item.link1}}</span>
+										</a>
+										<label style="font-size:14px" ng-show= "item.desc2 !=''">
+											{{item.desc2}}
+										</label>
+										<a ng-show="item.link2!=''"  target="_blank"  href="{{item.link2}}">
+											<span style="color:blue;">{{item.link2}}</span>
+										</a>
+										<label style="font-size:14px" ng-show= "item.desc3 !=''">
+											{{item.desc3}}
+										</label>
+										<a ng-show="item.link3!=''"  target="_blank" href="{{item.link3}}">
+											<span style="color:blue;">{{item.link3}}</span>
+										</a>
+										<label style="font-size:14px" ng-show= "item.desc4 !=''">
+											{{item.desc4}}
+										</label>
+										<a ng-show="item.link4!=''"  target="_blank" href="{{item.link4}}">
+											<span style="color:blue;">{{item.link4}}</span>
+										</a>
+										<label style="font-size:14px" ng-show= "item.desc5 !=''">
+											{{item.desc5}}
+										</label>
+										<a ng-show="item.link5!=''"  target="_blank" href="{{item.link5}}">
+											<span style="color:blue;">{{item.link5}}</span>
+										</a>
+										<label style="font-size:14px" ng-show= "item.desc6 !=''">
+											{{item.desc6}}
+										</label>
+										<a ng-show="item.link6!=''"  target="_blank" href="{{item.link6}}">
+											<span style="color:blue;">{{item.link6}}</span>
+										</a>
+										<label style="font-size:14px" ng-show= "item.desc7 !=''">
+											{{item.desc7}}
+										</label>
+										<a ng-show="item.link7!=''"  target="_blank" href="{{item.link7}}">
+											<span style="color:blue;">{{item.link7}}</span>
+										</a>
+										<label style="font-size:14px" ng-show= "item.desc8 !=''">
+											{{item.desc8}}
+										</label>
+										<a ng-show="item.link8!=''"  target="_blank" href="{{item.link8}}">
+											<span style="color:blue;">{{item.link8}}</span>
+										</a>
+										<label style="font-size:14px" ng-show= "item.desc9 !=''">
+											{{item.desc9}}
+										</label>
+										<a ng-show="item.link9!=''"  target="_blank" href="{{item.link9}}">
+											<span style="color:blue;">{{item.link9}}</span>
+										</a>
+										<label style="font-size:14px" ng-show= "item.desc10 !=''">
+											{{item.desc10}}
+										</label>
+										<a ng-show="item.link10!=''"  target="_blank" href="{{item.link10}}">
+											<span style="color:blue;">{{item.link10}}</span>
+										</a>										
+									</div>
+								
+								<div class="notesdata col-md-4 col-lg-4 col-sm-4 col-xs-4" >	
+									<span  style="float:right;"  ng-show= "((item.writtenbyuserid != item.foruserid) && (item.writtenbyuserid == item.loggeduserid))" ng-click="deletenote(item.id,$index)" class="iconDelete ng-scope"></span></td>
+									<a data-toggle="collapse" style=""  data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+										<span ng-show= "((item.writtenbyuserid != item.foruserid) && (item.writtenbyuserid == item.loggeduserid))" ng-click="editnote(item.id,item.notedesc)" class="iconEdit ng-scope"></span>
+									</a>
+									
+								</div>	
+							<hr />
+						</div>
+						
+					</div>
+				</div>
+				
+					<!--	<div class="detailsLink green">
+							<a data-toggle="collapse" style="" ng-click="addnote()" data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+								<span style="color:white;">Add Notes</span>
+							</a> 
+						</div>-->
+				</div>
+				<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" >	
+						<textarea id="notesmsg" class="notesComments contentDetails smallContent" onkeyup="countword();" placeholder="Write notes here (maximum 2000 characters)" ng-model="notes" maxlength="2000" title="Write notes here (maximum 2000 characters)" style='resize:none;height:100px;width:100%;'></textarea>
+					</div>
+				</div>
+				<div class="row" style=" margin-left: 13px;margin-right: 13px;">
+					<div class=" ">	
+						<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" >	
+						
+								<p class="displaycountp"> Remaining characters &nbsp;</p>
+								<input class="displaycounttext" type="text" id="displayremainingchar" readonly value=""/>
+						<!--</div>
+						<div class=" col-sm-offset-4 col-xs-offset-4 col-md-4 col-lg-4 col-sm-4 col-xs-4" >	-->
+							<a style="width: 50px !important;" ng-click="savenotes(); " data-parent="#accordion" class="collapsed">
+									<button class="btnstyle" id="savenotes" value="BookTest" style="margin: 10px;">Enter</button>
+									<!--<span style="color:white;">Enter</span>-->
+							</a> 
+								<!--<a onclick="" data-parent="#accordion" class="collapsed">
+									<span style="color:white;">Cancel</span>
+								</a> -->
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	<!--	<div id="allnotes" class="" style="width:1070px;background:white">
+			<div  class="notesComments contentDetails smallContent" style='resize: none;height:350px;width:100%;'  >
+				<div ng-repeat = "item in allnotes | filter: {status : 1} track by $index ">
+					<table class="">
+					<tr>
+					<td style="width:600px">
+						<div style="font-style:italic;font-family:serif;font-size:14px" >
+							<label style="font-style:italic;font-family:serif;font-size:14px" >
+								{{item.date}} : 
+							</label>
+							<label style="font-style:italic;font-family:serif;font-size:14px" >
+							{{item.desc1}}
+							</label>
+							<a ng-show="item.link1!=''" target="_blank" href="{{item.link1}}">
+								<span style="color:blue;">{{item.link1}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc2 !=''">
+							{{item.desc2}}
+							</label>
+							<a ng-show="item.link2!=''"  target="_blank"  href="{{item.link2}}">
+								<span style="color:blue;">{{item.link2}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc3 !=''">
+							{{item.desc3}}
+							</label>
+							<a ng-show="item.link3!=''"  target="_blank" href="{{item.link3}}">
+								<span style="color:blue;">{{item.link3}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc4 !=''">
+							{{item.desc4}}
+							</label>
+							<a ng-show="item.link4!=''"  target="_blank" href="{{item.link4}}">
+								<span style="color:blue;">{{item.link4}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc5 !=''">
+							{{item.desc5}}
+							</label>
+							<a ng-show="item.link5!=''"  target="_blank" href="{{item.link5}}">
+								<span style="color:blue;">{{item.link5}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc6 !=''">
+							{{item.desc6}}
+							</label>
+							<a ng-show="item.link6!=''"  target="_blank" href="{{item.link6}}">
+								<span style="color:blue;">{{item.link6}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc7 !=''">
+							{{item.desc7}}
+							</label>
+							<a ng-show="item.link7!=''"  target="_blank" href="{{item.link7}}">
+								<span style="color:blue;">{{item.link7}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc8 !=''">
+							{{item.desc8}}
+							</label>
+							<a ng-show="item.link8!=''"  target="_blank" href="{{item.link8}}">
+								<span style="color:blue;">{{item.link8}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc9 !=''">
+							{{item.desc9}}
+							</label>
+							<a ng-show="item.link9!=''"  target="_blank" href="{{item.link9}}">
+								<span style="color:blue;">{{item.link9}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc10 !=''">
+							{{item.desc10}}
+							</label>
+							<a ng-show="item.link10!=''"  target="_blank" href="{{item.link10}}">
+								<span style="color:blue;">{{item.link10}}</span>
+							</a>						
+						</div>
+					</td>
+					<td style="width:50px"><span ng-show= "((item.writtenbyuserid == item.foruserid) && (item.writtenbyuserid == item.loggeduserid))" ng-click="deletenote(item.id,$index)" class="iconDelete ng-scope"></span></td>
+					<td style="width:50px">
+						<a data-toggle="collapse" style="" onclick="" data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+							<span ng-show= "((item.writtenbyuserid == item.foruserid) && (item.writtenbyuserid == item.loggeduserid))" ng-click="editnote(item.id,item.notedesc)" class="iconEdit ng-scope"></span>						
+						</a>
+					</td>
+					</tr>
+					</table>
+					<table>
+					<tr>
+					<td style="width:600px">
+						<div style="font-size:14px" ng-show= "item.writtenbyuserid != item.foruserid">
+							<label style="font-size:14px" ng-show= "item.writtenbyuserid != item.foruserid">
+								{{item.date}} : {{item.writtenby}} : 
+							</label>
+							<label style="font-size:14px" ng-show= "item.desc1 !=''">
+							{{item.desc1}}
+							</label>
+							<a ng-show="item.link1!=''" target="_blank" href="{{item.link1}}">
+								<span style="color:blue;">{{item.link1}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc2 !=''">
+							{{item.desc2}}
+							</label>
+							<a ng-show="item.link2!=''"  target="_blank"  href="{{item.link2}}">
+								<span style="color:blue;">{{item.link2}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc3 !=''">
+							{{item.desc3}}
+							</label>
+							<a ng-show="item.link3!=''"  target="_blank" href="{{item.link3}}">
+								<span style="color:blue;">{{item.link3}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc4 !=''">
+							{{item.desc4}}
+							</label>
+							<a ng-show="item.link4!=''"  target="_blank" href="{{item.link4}}">
+								<span style="color:blue;">{{item.link4}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc5 !=''">
+							{{item.desc5}}
+							</label>
+							<a ng-show="item.link5!=''"  target="_blank" href="{{item.link5}}">
+								<span style="color:blue;">{{item.link5}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc6 !=''">
+							{{item.desc6}}
+							</label>
+							<a ng-show="item.link6!=''"  target="_blank" href="{{item.link6}}">
+								<span style="color:blue;">{{item.link6}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc7 !=''">
+							{{item.desc7}}
+							</label>
+							<a ng-show="item.link7!=''"  target="_blank" href="{{item.link7}}">
+								<span style="color:blue;">{{item.link7}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc8 !=''">
+							{{item.desc8}}
+							</label>
+							<a ng-show="item.link8!=''"  target="_blank" href="{{item.link8}}">
+								<span style="color:blue;">{{item.link8}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc9 !=''">
+							{{item.desc9}}
+							</label>
+							<a ng-show="item.link9!=''"  target="_blank" href="{{item.link9}}">
+								<span style="color:blue;">{{item.link9}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc10 !=''">
+							{{item.desc10}}
+							</label>
+							<a ng-show="item.link10!=''"  target="_blank" href="{{item.link10}}">
+								<span style="color:blue;">{{item.link10}}</span>
+							</a>						
+						</div>
+					</td>
+					<td style="width:50px"><span ng-show= "((item.writtenbyuserid != item.foruserid) && (item.writtenbyuserid == item.loggeduserid))" ng-click="deletenote(item.id,$index)" class="iconDelete ng-scope"></span></td>
+					<td style="width:50px">
+						<a data-toggle="collapse" style=""  data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+							<span ng-show= "((item.writtenbyuserid != item.foruserid) && (item.writtenbyuserid == item.loggeduserid))" ng-click="editnote(item.id,item.notedesc)" class="iconEdit ng-scope"></span>
+						</a>
+					</td>
+					</tr>
+					</table>					
+				</div>
+			</div>
+			<div class="detailsLink green">
+				<a data-toggle="collapse" style="" ng-click="addnote()" data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+					<span style="color:white;">Add Notes</span>
+				</a> 
+			</div>
+			<div id="collapseOne" class="panel-collapse collapse" style="position:fixed;top:90px;float:left;left:100px;width:700px">
+				<textarea class="notesComments contentDetails smallContent" placeholder="Write notes here (maximum 2000 characters)" ng-model="notes" maxlength="2000" title="Write notes here (maximum 2000 characters)" style='resize:none;height:250px;width:100%;'></textarea>
+				<div class="detailsLink green">
+					<a data-toggle="collapse" ng-click="savenotes(); " data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+						<span style="color:white;">Save</span>
+					</a> 
+					<a data-toggle="collapse" style="" onclick="" data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+						<span style="color:white;">Cancel</span>
+					</a> 
+				</div>
+			</div>			
+		</div>
+	</div>	-->	
+	</body>
+
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>AyushCorp - Program</title>
+<meta name="Description" content="Access your medical records from centralized storage from any where Ayushman announces special program for senior citizens a peace of mind for children living away. There are several ways in which use of India Online Health">
+<META name="keywords" content="Senior citizen health,Doctor online,Corporate healthcare program,Chronic Disease Management,Medical advice">
+<meta content="Details About the product and services?">
+
+<link href="/ayushman/assets/css/web2.css" rel="stylesheet" type="text/css" />
+<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="icon" type="image/jpg" href="/ayushman/assets/images/smallLogo.jpg">
+<link rel="shortcut icon" href="/ayushman/assets/images/smallLogo"/>
+<script src="/ayushman/assets/js/jquery-1.6.2.min.js" type="text/javascript"></script>
+<script src="/ayushman/assets/js/jquery-ui-1.8.17.custom.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/ayushman/assets/js/fx.js"></script>
+<link rel="stylesheet" href="/ayushman/assets/css/login/style.css" type="text/css" media="screen" />
+<script type="text/javascript">
+$(document).ready(function(){
+});
+function opendialog(){
+	location.href = '/ayushman/cayushcaremanager/acknowledge';
+}
+function closelogin(){
+					$("#panel4").toggle("fast");
+					
+
+		}
+		
+function openPdf(param)
+{
+	if(param=="AyushCareFAQ.html")
+	{
+		window.open(param,"",'width=985,height=600,top=60,left=180')
+	}
+	else
+	{
+		window.open(param,"",'width=700,height=600,top=60,left=300');
+    }
+}
+
+</script>
+<script type="text/JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.style1 {color: #FFFFFF}
+body {
+	background-image: url(/ayushman/assets/images/2nd_bg.png);
+}
+.style2 {color: #083F72}
+-->
+.footer{
+		clear:both;
+		height:40px;
+		line-height:40px;
+		background-color:#ecf8fb;
+		border-top:1px solid #a8c8d9;
+		margin-top:25px;
+	}
+	.footerButton{
+		margin-top:7px;
+		margin-right:10px;
+	}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /></head>
+
+<body onload="MM_preloadImages('/ayushman/assets/images/Btn_HowitWorksR.png','/ayushman/assets/images/Btn_ConsumersR.png','/ayushman/assets/images/Btn_doctorsR.png','/ayushman/assets/images/Btn_serviceProvidersR.png','/ayushman/assets/images/Btn_CompanyR.png','/ayushman/assets/images/Btn_homeR.png')">
+<table width="989" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="1608" colspan="8"><!--#include file="header.html"--><td width="18"></td>
+  </tr>
+  <tr>
+    <td height="316" colspan="8" align="left" valign="top"><img src="/ayushman/assets/images/AyushCare.png" width="989" height="315" /></td>
+  </tr>
+  <tr>
+    <td height="46" colspan="8" valign="middle" class="bodytext"> <!--#include file="MarqueeMsg.html"-->
+  </table> <MM:EndLock></td>
+  </tr>
+  <tr>
+    <td colspan="8" align="left" valign="top">
+	<table width="989" height="282" border="0" align="center" cellpadding="0" cellspacing="0">
+      
+      <tr>
+        <td height="34">&nbsp;</td>
+        <td colspan="5" class="bodytext style1">&nbsp;&nbsp;&nbsp;<strong>AyushCorp - Program</strong></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="14" height="181">&nbsp;</td>
+        <td colspan="6" align="left" valign="top" style="padding:10px;">
+        <table width="900" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="158"><a href="#" style="color:#FFF;" onclick="openPdf('/ayushman/assets/pdf/AyushCorpBrochure.pdf')"><img src="/ayushman/assets/images/AyushCorpBrochure.png" width="158" height="217" /></a></td>
+            <td width="72">&nbsp;</td>
+            <td width="158"><a href="#"  style="color:#FFF;" onclick="openPdf('/ayushman/assets/pdf/AyushCorpFactsheet.PDF')"><img src="/ayushman/assets/images/AyushCorpFactSheet.png" width="158" height="217" /></a></td>
+            <td width="72">&nbsp;</td>
+            <td width="158"></td>
+            <td width="70">&nbsp;</td>
+            <td colspan="2"></td>
+            </tr>
+          <tr>
+            <td colspan="8">&nbsp;</td>
+            </tr>
+          <tr>
+            <td align="center" valign="middle">
+            <a onclick="openPdf('/ayushman/assets/pdf/AyushCorpBrochure.pdf')" style="color:#FFF;">
+            <button style="width:100%" class="button">AyushCorp Brochure</button></a></td>
+            <td>&nbsp;</td>
+            <td align="center" valign="middle">
+            <a onclick="openPdf('/ayushman/assets/pdf/AyushCorpFactsheet.PDF')"  style="color:#FFF;">
+            <button style="width:100%" class="button">AyushCorp Fact Sheet</button></a></td>
+            <td>&nbsp;</td>
+            <td></td>
+            <td>&nbsp;</td>
+            <td width="158"></td>
+            <td width="54" align="center" valign="middle">&nbsp;</td>
+            </tr>
+          <tr>
+            <td colspan="8" align="center" valign="middle">&nbsp;</td>
+          </tr>
+          </table>
+</td>
+        <td width="13">&nbsp;</td>
+      </tr>
+      
+      <tr>
+        <td height="40">&nbsp;</td>
+        <td width="273">&nbsp;</td>
+        <td width="18">&nbsp;</td>
+        <td width="273">&nbsp;</td>
+        <td width="18">&nbsp;</td>
+        <td width="173">&nbsp;</td>
+        <td width="207" align="center" valign="top" class="bodytext">&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      
+      
+    </table></td>
+  </tr>
+</table>
+<!--#include file="footer.html"-->
+<div id="panel4" width="230" class="panel" style="z-index: 50000;;background:#E8E8E8;border:3px solid #909090;" >
+					<form id="loginformid" action="/ayushman/cuser/login"  method="post" accept-charset="utf-8">
+									<table border="0">
+									<tr>
+											<td >&nbsp;</td>
+											<td align="right"><a href="#" name="xy" style="color:white;"  onclick="closelogin()"><img src="/ayushman/assets/images/closed.png" width="27" height="25" border="0" /></a></td>
+										</tr>
+										<tr>
+											<td  colspan="2"  style="color: #00467F;font-family:Arial,Helvetica,sans-serif;font-size:19px;">Secure Sign In</td>
+										</tr>
+										<tr>
+											<td  colspan="2" >&nbsp;</td>
+										</tr>
+										<tr>
+											<td colspan="2" class="bodytext" id="Username">Username</td>
+										</tr>
+										<tr style="height:2px;">
+											<td colspan="2"><input id="email" name="email" tabindex="100" type="text"  style="width:200px;" autocomplete="off"/></td>
+										</tr>
+										<tr>
+											<td  colspan="2" >&nbsp;</td>
+										</tr>
+										<tr style="height:2px;">
+											<td class="bodytext" >Password  </td>
+											<td  class="bodytext" ><div align="right"><a href="/ayushman/cpasswordmanager/view" style="color:#00467F;">Forgot Password?</a></div> </td>
+										</tr>
+										<tr style="height:2px;">
+											<td colspan="2"> <input type="password" id="password" tabindex="101" name="password"  style="width:200px;"  /> </td>
+										</tr>
+										<tr>
+											<td>&nbsp;</td>
+										</tr>
+										<tr style="height:2px;">
+										
+                    					<td width="70"><input type="submit" style="border:1px solid #003058;border-radius:5px 5px 5px 5px;background:#003058;color:white;font-size:13px;padding;3px;text-transform:uppercase;height:25px;font-family:Arial,Helvetica,sans-serif;" value="Sign IN" name="name"   /></td>
+										<td width="130">&nbsp;</td>
+
+										</tr>
+										<tr>
+											<td>&nbsp;</td>
+										</tr>
+								</table>
+								</form>
+					</div>
+			
+</body>
+</html>

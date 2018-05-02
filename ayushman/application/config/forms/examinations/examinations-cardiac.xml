@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1,4,7</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>9,24,32</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>Inspection </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>40,3</follow>
+		</answer>
+		
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>40</id>
+		<label>Bulges </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>2</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Location</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Visible pulses</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>2</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Palpation</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>33,5,6</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>33</id>
+		<label>Thrills </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>2</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Apex Beat</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Displaced</label>
+			<follow>2</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Sounds</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>2</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Percussion Cardiac outline</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Shifted left</label>
+		</answer>
+		<answer>
+			<label>Shifted right</label>
+		</answer>
+		<answer>
+			<label>Shifted downwards</label>
+		</answer>
+	</question>
+
+	<question>
+		<id>9</id>
+		<label>Auscultation</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>50,12</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		
+		</answer>
+	</question>
+	
+	<question>
+		<id>50</id>
+		<label>Heart rate</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Irregular</label>
+		</answer>
+		<answer>
+			<label>Tachycardia</label>
+			<follow>34</follow>
+		</answer>
+		<answer>
+			<label>Bradycardia</label>
+			<follow>11</follow>
+		</answer>
+	</question>
+	
+
+	
+	<question>
+		<id>11</id>
+		<label>Beats (pm) </label>
+		<type>Text</type>
+		<validation>numeric</validation>
+	</question>
+	<question>
+		<id>34</id>
+		<label>Beats (pm) </label>
+		<type>Text</type>
+		<validation>numeric</validation>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Heart  Sound</label>
+		<type>DD</type>
+		<answer>
+			<label> Yes </label>
+			<follow>51,15,18,21</follow>
+		</answer>
+		<answer>
+			<label>No </label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>51</id>
+		<label>Mitral </label>
+		<type>DD</type>
+		<answer>
+			<label> Yes </label>
+			<follow>35,13,14</follow>
+		</answer>
+		<answer>
+			<label>No </label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>35</id>
+		<label>First sound</label>
+		<type>DD</type>
+		<answer>
+			<label>Soft</label>
+		</answer>
+		<answer>
+			<label>Loud</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label> Second sound</label>
+		<type>DD</type>
+		<answer>
+			<label>Soft</label>
+		</answer>
+		<answer>
+			<label>Loud</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Splitting</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Third Sound</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Tricuspid </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>36,16,17</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>36</id>
+		<label>First</label>
+		<type>DD</type>
+		<answer>
+			<label>Soft</label>
+		</answer>
+		<answer>
+			<label>Loud</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>Second </label>
+		<type>DD</type>
+		<answer>
+			<label>Soft</label>
+		</answer>
+		<answer>
+			<label>Loud</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Splitting</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Third </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label>Aortic</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>37,19,20</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>37</id>
+		<label>First </label>
+		<type>DD</type>
+		<answer>
+			<label>Soft</label>
+		</answer>
+		<answer>
+			<label>Loud</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>Second </label>
+		<type>DD</type>
+		<answer>
+			<label>Soft</label>
+		</answer>
+		<answer>
+			<label>Loud</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Splitting</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>Third </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>21</id>
+		<label> Pulmonary </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>38,22,23</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>38</id>
+		<label>First</label>
+		<type>DD</type>
+		<answer>
+			<label>Soft</label>
+		</answer>
+		<answer>
+			<label>Loud</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>22</id>
+		<label>Second</label>
+		<type>DD</type>
+		<answer>
+			<label>Soft</label>
+		</answer>
+		<answer>
+			<label>Loud</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Splitting</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>23</id>
+		<label>Third </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>24</id>
+		<label>Murmur </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>51,15,18,21</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>39</id>
+		<label> Mitral  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>28,30</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>26</id>
+		<label> Tricuspid </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>28,30</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	
+	
+	<question>
+		<id>28</id>
+		<label> Systolic</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>31</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+
+	<question>
+		<id>30</id>
+		<label>Diastolic</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>31</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>31</id>
+		<label> Grade</label>
+		<type>DD</type>
+		<answer>
+			<label>I</label>
+		</answer>
+		<answer>
+			<label>II</label>
+		</answer>
+		<answer>
+			<label>III</label>
+		</answer>
+		<answer>
+			<label>IV </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>32</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>100</id>
+		<type>Separator</type>
+	</question>
+	
+</form>

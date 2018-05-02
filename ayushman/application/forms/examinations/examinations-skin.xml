@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,7</questions>
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>31,25</questions>
+		<layout>Vertical</layout>
+	</container>
+	<question>
+		<id>1</id>
+		<label>Scalp Hair</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>30,2,3,5,6</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>30</id>
+		<label>Thinning </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Graying </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Alopecia </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Areata</label>
+		</answer>
+		<answer>
+			<label>Other </label>
+			<follow>4</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Others </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Pitryriasis </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Dandruff </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Body Hair</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>26,43,9,11,13</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>43</id>
+		<label>Rash </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>8,27</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Distribution </label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>27</id>
+		<label>Type </label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>9</id>
+		<label>Cyanosis </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>10</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Distribution </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Icterus </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>12</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Severity </label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Other </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>14</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Other </label>
+		<type>Text</type>
+	</question>
+	
+	
+	<question>
+		<id>25</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>26</id>
+		<label>Type</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Reduced </label>
+		</answer>
+		<answer>
+			<label>Increased</label>
+		</answer>
+		<answer>
+			<label>Hirsutism</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>31</id>
+		<label>Nails</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>32,33,34,35,36,37,38,39,40,41,42</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>32</id>
+		<label>Platynychia</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>33</id>
+		<label>Koilonychia </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>34</id>
+		<label>Paronychia </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>35</id>
+		<label>Clubbing </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>36</id>
+		<label>Pallor </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>37</id>
+		<label>Chipping </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>38</id>
+		<label>Cyanosis </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>39</id>
+		<label>Psoriasis </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>40</id>
+		<label>Hensenas </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>41</id>
+		<label>Taenia unguum </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	<question>
+		<id>42</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+</form>

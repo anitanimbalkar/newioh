@@ -1,0 +1,52 @@
+<html>
+<head>
+  <!--<script src="/ayushman/assets/app/lib/angular/angular.js"></script>
+  <script src="/ayushman/assets/app/lib/angular/angular-route.js"></script>
+  <script src="/ayushman/assets/app/js/app.js"></script>
+  <script src="/ayushman/assets/app/js/directives.js"></script>
+	<script src="/ayushman/assets/app/js/filters.js"></script>-->
+	<script src="/ayushman/assets/app/lib/ag-grid/dist/ag-grid.js"></script>
+	<script src="/ayushman/assets/app/lib/ag-grid/dist/ag-grid.min.js"></script>
+	<!--<link rel="stylesheet" type="text/css" href="/ayushman/assets/app/lib/ag-grid/dist/styles/ag-grid.css">
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/app/lib/ag-grid/dist/styles/theme-fresh.css">-->
+    
+  
+<script type="text/javascript">
+agGrid.initialiseAgGridWithAngular1(angular);
+var module = angular.module("example", ["agGrid"]);
+
+
+module.controller("exampleCtrl", function($scope, $http) {
+
+    var columnDefs = [
+        {headerName: "Make", field: "make"},
+        {headerName: "Model", field: "model"},
+        {headerName: "Price", field: "price"}
+    ];
+
+	var rowData = [
+        {make: "Toyota", model: "Celica", price: 35000},
+        {make: "Ford", model: "Mondeo", price: 32000},
+        {make: "Porsche", model: "Boxter", price: 72000}
+    ];
+	
+    $scope.gridOptions = {
+        columnDefs: columnDefs,
+        rowData: rowData,
+        pinnedColumnCount: 2,
+        pinnedRightColumnCount: 2
+    };
+	
+
+    
+});
+
+
+</script>
+
+   </head>
+<body ng-app="example" ng-controller="exampleCtrl">
+	This is grid example
+    <div ag-grid="gridOptions" style="height: 100%;" class="ag-fresh"></div>
+</body>
+</html>

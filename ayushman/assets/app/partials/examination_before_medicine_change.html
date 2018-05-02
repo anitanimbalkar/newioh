@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examination | India Online Health</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+	<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+	<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+	<style type="text/css">
+			.ui-autocomplete { max-height: 50%; overflow-y: auto; overflow-x: hidden;
+			-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);
+			-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);
+			box-shadow: 0 4px 15px rgba(0,0,0,1);
+			}
+			.notes
+			{
+				background-image: -webkit-linear-gradient(left, white 10px, transparent 10px), -webkit-linear-gradient(right, white 10px, transparent 10px), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+				background-image: -moz-linear-gradient(left, white 10px, transparent 10px), -moz-linear-gradient(right, white 10px, transparent 10px), -moz-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+				background-image: -ms-linear-gradient(left, white 10px, transparent 10px), -ms-linear-gradient(right, white 10px, transparent 10px), -ms-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+				background-image: -o-linear-gradient(left, white 10px, transparent 10px), -o-linear-gradient(right, white 10px, transparent 10px), -o-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+				background-image: linear-gradient(left, white 10px, transparent 10px), linear-gradient(right, white 10px, transparent 10px), linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+				background-size: 100% 100%, 100% 100%, 100% 31px;
+				line-height: 31px;
+				padding: 8px;
+				border:none;
+				box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+				font-size:9pt
+			}
+			.notes:focus
+			{
+				outline: none;
+			}
+			.fragment {
+				height: 27px;
+				border: none;
+				display: block;
+				padding: 3px;
+				box-sizing: border-box;
+			}
+
+			.fragment:hover {
+				box-shadow: 2px 2px 5px rgba(0,0,0,.2);
+
+			}
+
+			#close {
+				float:right;
+				display:inline-block;
+				padding:2px 5px;
+				background:#ccc;
+			}
+	</style>
+  </head>
+  <body>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			loadScripts();
+			$(".setdefaultcolor").css('background-color', '#D8D8D8').css("border-top", "1px solid #ccc");
+		});
+		function open_medicine_searchbox(){
+			$("#searchpopup").dialog("open");
+			document.getElementById("searchbox").value='';
+			$("#searchresult1").hide();
+			$("#searchguide").hide();
+		}
+	
+		function showselected(id){
+			$(".selectmainoption").css('background-color', '#F2F2F2').css("border-top", "1px solid #ccc");
+			$('#'+id).css('background-color', '#3294d6').css("border-top", "1px solid #ccc");
+		}
+		function clearsubmenu(){
+			$(".setdefaultcolor").css('background-color', '#D8D8D8 ').css("border-top", "1px solid #ccc");
+		}
+		function setdefaultcolor(id){
+			$(".selectmainoption").css('background-color', '#F2F2F2').css("border-top", "1px solid #ccc");
+			$(".setdefaultcolor").css('background-color', '#D8D8D8 ').css("border-top", "1px solid #ccc");
+			$('#'+id).css('background-color', '#7AB5DD').css("border-top", "1px solid #ccc");
+		}
+	</script>
+    <!--[if lt IE 7]>
+  	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container fullWidth" id="contentArea" style="margin:auto;margin-top:56px;">
+      <div class="row">
+		<div class="col-lg-2 col-sm-2">
+		  <div class="leftNavExam">
+			<div id="navbar" class="navbar navbar-inverse">
+				  <div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					  <span class="toggleText">Menu</span>
+					  <span class="icon-bar"></span>
+					  <span class="icon-bar"></span>
+					  <span class="icon-bar"></span>
+					</button>
+				  </div>
+				  <div class="clearfix"></div>
+				  <div class="collapse navbar-collapse">
+				<ul class="nav" id="menu-bar">
+					  <li id="idmaincomplaint" ng-class="is_selected('main complaint');" class="selectmainoption" onclick="showselected(id);clearsubmenu();" ng-click="selected='main complaint'; isForm=false;"><a href="">Symptoms</a></li>
+					  <li id="idsymtom" ng-class="is_selected('symptomatic review');" style="display:none;" class="selectmainoption"  onclick="showselected(id);" ng-click=" show_symptomatic_menu = !show_symptomatic_menu; ">
+						<a href="">Symptomatic Review of Systems</a>
+								<ul class="panel-collapse"  ng-show="show_symptomatic_menu"  style="display:block">
+								  <li id="{{value+'_link'}}" ng-repeat="(key, value) in menu.symptomaticMenu" class="setdefaultcolor" onclick="setdefaultcolor(id);" ng-click="showForm(value, 'symptomatic', 'true', 'symptomatic_target');" ng-class="is_selected(value);"><a href="">{{key}}</a></li>
+						</ul>
+					  </li>
+					  <li id="idvitals_link"  class="selectmainoption" onclick="showselected(id);clearsubmenu();" ng-class="is_selected('vital signs');" ng-click="selected = 'vital signs';isForm=true;showForm('vitals','examinations','false', 'vitals_target');"><a href="">Vital Signs</a></li>
+					  <li id="idexamination" class="selectmainoption" ng-class="is_selected('examination');"  onclick="showselected(id);" ng-click=" show_examination_menu = !show_examination_menu; ">
+						<a href="">Examination</a>
+								<ul class="panel-collapse" ng-show="show_examination_menu"  style="display:block">
+								  <li id="{{value+'_link'}}" ng-repeat="(key, value) in menu.examinationMenu" class="setdefaultcolor" onclick="setdefaultcolor(id);" ng-click="showForm(value, 'examinations', 'true', 'examinations_target');" ng-class="is_selected(value);"><a href="" >{{key}}</a></li>
+						</ul>
+					  </li>
+					  <li id="idexamination-summary" class="selectmainoption" onclick="showselected(id);clearsubmenu();" ng-class="is_selected('examination-summary');" ng-click="selected='examination-summary';isForm=false;"><a href="">Examination Summary</a></li>
+					  <li id="iddiagnosis" class="selectmainoption" onclick="showselected(id);clearsubmenu();" ng-class="is_selected('diagnosis');" ng-click="selected='diagnosis';isForm=false;"><a href="">Diagnosis</a></li>
+					  <li id="idinvestigations" class="selectmainoption" onclick="showselected(id);clearsubmenu();" ng-class="is_selected('investigations');" ng-click="selected='investigations';isForm=false;"><a href="">Investigations</a></li>
+					  <li id="idmedicines" class="selectmainoption" onclick="showselected(id);clearsubmenu();" ng-class="is_selected('medicines');" ng-click="selected='medicines';isForm=false;"><a href="">Medicines</a></li>
+					  <li id="idfollow-up" class="selectmainoption" onclick="showselected(id);clearsubmenu();" ng-class="is_selected('follow-up');" ng-click="selected='follow-up';isForm=false;"><a href="">Other instructions / <br/> Follow up advice</a></li>
+					</ul>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<div class="col-lg-6 col-sm-6 contentPad10">
+		  <div class="sectionBox examinationCnt" ng-show="selected == 'main complaint'">
+				<h2 class="darkblue">Symptoms</h2>
+				<div style="width:100%;" > <input style="width:100%;height:48px;; resize: none;" id="symptoms" placeholder="Type symptoms..." ng-model="examination_data.text_complaint" name="symptoms"  class="notes"/></div>
+		  </div>
+		  <div class="sectionBox examinationCnt" ng-show="selected == 'follow-up'">
+				<h2 class="darkblue">Other instructions / Follow up advice</h2>
+			<input ng-model="examination_data.text_followup" id="followup"  style="width:100%;height:48px;margin-top:10px;resize:none;" cols="98" rows="5" class="notes"></input>
+		  </div>
+		   <div class="sectionBox examinationCnt" ng-show="selected == 'examination-summary'">
+				<h2 class="darkblue">Examination Summary</h2>
+			<input ng-model="examination_data.text_examinationsummary" id="textexaminationsummary"  style="width:100%;height:48px;margin-top:10px;resize:none;" cols="98" rows="5" class="notes"></input>
+		  </div>
+		  <div class="sectionBox examinationCnt" ng-show="selected == 'diagnosis'">
+				<h2 class="darkblue">Diagnosis</h2>
+				<div style="width:100%;" > <input style="display:block;width:100%;height:48px;; resize: none;" id="diagnosis" placeholder="Type diagnosis..." ng-model="examination_data.text_diagnosis" name="Diagnosis" class="notes"/></div>
+		  </div>
+		  <div id="testpopup" class="sectionBox examinationCnt" ng-show="selected == 'investigations'" onkeyup="setTests();" onmouseup="setTests();">
+				<h2 class="darkblue">Investigations<span style="float:right; font-size: 12px;"><a onclick="getPastTests();" href="javascript:void(0);" style="color:white;background:transparent;">Get Past Tests</a></span></h2>
+				<div id ="investigation" class="summary_text"></div>
+				<input style="width:100%;height:48px;; resize: none;" id="investigations" placeholder="Type investigations..." ng-model="examination_data.text_investigations" name="investigations" class="notes"/>
+				<table id="investigationtemplatediv" style="width:100%;position:relative;display:none;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+					<tr>
+						<td>
+							<input id="investigationname" class="notes" style="font-size:10px;width:100%" placeholder="Investigation..."  />
+						</td>
+					</tr>
+					<tr>
+						<td >
+							<a href="javascript:void(0);" id="investigationOkBtn" class="action" style="float:right;" onclick="createInvestigationFragment();$('#investigationtemplatediv').hide();$('#investigations').show(); $('#investigations').focus();"><i class="fa fa-check" style="float:right;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Ok</i></a>
+							<a href="javascript:void(0);" id="investigationClearBtn" class="action" style="float:right;" onclick="clearInvestigationBoxes();$('#investigationtemplatediv').hide();$('#investigations').show();"><i class="fa fa-times" style="float:right;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Close</i></a>
+						</td>												
+					</tr>
+				</table>	
+		  </div>
+		  <div id="medicinepopup" class="sectionBox examinationCnt" ng-show="selected == 'medicines'" onkeyup="setMedicines();" onmouseup="setMedicines();">
+				<input type="hidden" value="2" id="autocompletevalue" />
+				<h2 class="darkblue">Medicines
+				<span style="float:right; font-size: 12px;">
+				<a onclick='open_medicine_searchbox();' href="javascript:void(0);" style="color:white;background:transparent;">Search for medicines</a>&nbsp;&nbsp;<a onclick="getPastMedicines();" href="javascript:void(0);" style="color:white;background:transparent;">Get Past Medicies</a></span></h2>
+				<div  id ="prescription" ></div>
+				<div style="float:right;width:100%;" > <input style="width:100%;height:48px;; resize: none;" id="medicines" placeholder="Type medicine name..." name="medicines" onclick="if (this.value == 'Medicines :') this.value = '';" class="notes"/>
+					<table id="medicinetemplatediv" style="width:100%;position:relative;display:none;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+						<tr>
+							<td>
+								<input id="medicinename" class="notes" style="font-size:10px;width:160px" placeholder="Medicine name..."  />
+							</td>
+							<td>
+								<input id="quantity"  class="notes" style="font-size:10px;width: 100px;" placeholder="Qty X Freq."  />
+							</td>
+							<td>
+								<input id="frequency"  class="notes" style="font-size:10px;width: 82px;" placeholder="Duration" />
+							</td>													
+							<td>
+								<input id="instructions"  class="notes" style="font-size:10px;width: 110px;" placeholder="Instructions"  />
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4">
+								<a href="javascript:void(0);" id="okBtn" class="action" style="float:right;" onclick="createFragment();$('#medicinetemplatediv').hide();$('#medicines').show(); $('#medicines').focus();"><i class="fa fa-check" style="float:right;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Ok</i></a>
+								<a href="javascript:void(0);" id="clearBtn" class="action" style="float:right;" onclick="clearBoxes();$('#medicinetemplatediv').hide();$('#medicines').show();"><i class="fa fa-times" style="float:right;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Clear</i></a>
+							</td>												
+						</tr>
+					</table>	
+				</div>
+		  </div>
+		  <div id="form_place_holder" class="sectionBox" ng-show="isForm == 1"></div>
+		</div>
+		<div class="col-lg-4 col-sm-4" style="z-index: 100">
+			  <div id="navbar" class="navbar navbar-inverse">
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".rightNav">
+					<span class="toggleText">Examination Details</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div class="clearfix"></div>
+				<div  class="collapse navbar-collapse rightNav">
+				  <div class="examRight">
+						  <div class="sectionBox" ng-show="examination_data.text_complaint.length">
+							<h2 class="darkblue">Symptoms </h2>
+							<p>{{examination_data.text_complaint}}</p>
+						  </div>
+						  <div id="symptomatic_target" class="sectionBox" style="display:none">
+								<h2 class="darkblue">Symptomatic Review <span><input type="checkbox"  ng-model="examination_data.check_symptomaticreview" ><label for="check_symptom">Show to patient</label></span></h2>
+							<p class="summary_text"></p>
+							<input type="hidden" id="symptomatic_text_target" value="">
+						  </div>
+						  <div id="vitals_target" class="sectionBox" style="display: none">
+							<h2 class="darkblue">Vital Signs </h2>
+							<p class="summary_text"></p>
+							<input type="hidden" id="vitalsTextTarget" value="">
+						  </div>
+						  <div class="sectionBox" ng-show="examination_data.text_examinationsummary.length">
+							<h2 class="darkblue">Examination Summary<span><input type="checkbox" name="check_examinationsummary" ng-model="examination_data.check_examinationsummary"><label for="check_examination">Show to patient</label></span></h2>
+							<p>{{examination_data.text_examinationsummary}}</p>
+						  </div>
+
+						  <div id="examinations_target" class="sectionBox" style="display: none">
+							<h2 class="darkblue">Examination <span><input type="checkbox" name="check_examination" ng-model="examination_data.check_examinations"/><label for="check_examination">Show to patient</label></span></h2>
+							<p class="summary_text"></p>
+							<input type="hidden" id="examinations_text_target" value="">
+						  </div>
+						  <div id="diagnosis_target" ng-show="examination_data.text_diagnosis.length" class="sectionBox" style="display: block">
+							<h2 class="darkblue">Diagnosis </h2>
+							<p class="summary_text" style="white-space: pre;">{{examination_data.text_diagnosis}}</p>
+						  </div>
+						  <div id="investigation_target" ng-show="examination_data.investigation_text.length" class="sectionBox" >
+							<h2 class="darkblue">Investigations <span><input type="hidden" name="check[textinvestigation]" value="on"></span></h2>
+							<p class="summary_text" style="white-space: pre;">{{examination_data.investigation_text}}</p>
+						  </div>
+						  <div id="prescription_target" class="sectionBox" ng-show="examination_data.medicine_text.length" >
+							<h2 class="darkblue">Medicines <span><input type="hidden" name="check[textprescription]" value="on"></span></h2>
+							<p class="summary_text" style="white-space: pre;">{{examination_data.medicine_text}}</p>
+						  </div>
+						  <div class="sectionBox" ng-show="examination_data.text_followup.length">
+							<h2 class="darkblue">Other instructions / Follow up advice</h2>
+							<p>{{examination_data.text_followup}}</p>
+						  </div>
+				  </div>
+			  <div style="display: none">
+			<div id="symptomatic_text_container" style="display: none" >
+			  <input type="hidden" ng-repeat="(key, value) in menu.symptomaticMenu"  id="{{value+'TextTarget'}}" name="{{key}}" value="" on-finish-render>
+			</div>
+			<div id="examinations_text_container" style="display: none">
+			  <input type="hidden" ng-repeat="(key, value) in menu.examinationMenu" id="{{value+'TextTarget'}}" name="{{key}}" value="" on-finish-render>
+			</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+      </div>
+      
+      <div id="searchpopup" style="width:500px; background-color:#ffffff;" class="table_roundBorder">
+		<div style="width:100%; height:25px; background-color:#ecf8fb; border-bottom:1px solid #a8c8d9; text-align:left; margin-bottom:10px;">
+			  &nbsp;&nbsp;<img src="/ayushman/assets/app/img/bullet.png" style="width: 15px;height: 15px;"/>&nbsp;
+			  <label id="searchheading" class="bodytext_bold">Search</label>
+			  <label style="float:right; height:25px; margin-top:5px;"><img src="/ayushman/assets/app/img/close_icon.png" style="cursor:pointer;width: 15px;height: 15px;" onclick="$('#searchpopup').dialog('close');"/></label>
+		</div>
+		<div id="searchbody" style="width:100%;">
+			  <label class="bodytext_bold">Enter generic name in box to search for medicines</label>
+			  <input type='text' id='searchbox' style="height:29px;width:93%;margin-top:2px;" onclick='populateautocomplete(this);' />
+			  <button class="button" onclick='getSearchResults($("#searchbox").val())'>Search</button>
+			  <div style="max-height:25px" id="search_medicine">
+				<table id = "searchguide" style="width:100%;display:none">
+					<tr class="Heading_Bg">
+						<td width="10%" align="middle">Type</td>
+						<td width="25%" align="middle">Generic Elements</td>
+						<td width="21%" align="middle">Name</td>
+						<td width="19%" align="middle">Strength</td>
+						<td width="15%" align="middle">Manufacturer</td>
+						<td width="10%" align="middle">Prescribe</td>
+					</tr>
+				</table>
+			  </div>
+			  <div style="max-height:375px;overflow:auto;margin-top:5px;">
+				<table id = "searchresult1" style="width:100%;display:none">
+				</table>
+			  </div>
+		</div>
+		<div style="width:100%; height:25px; background-color:#ecf8fb; border-top:1px solid #a8c8d9; margin-top:10px;"></div>
+      </div>
+    </div>
+    <!-- /container --> 
+  </body>
+</html>

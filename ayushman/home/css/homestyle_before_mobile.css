@@ -1,0 +1,386 @@
+
+#contentarea {
+	padding-top: 210px;
+	padding-left: 60px;
+	/*position: absolute;*/
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 100%;
+	box-shadow: 1px -7px 5px -6px #ccc inset;
+}
+#contentarea:after {
+	content: '';
+	background: url(/ayushman/assets/images/tablet-image.jpg) right bottom no-repeat #fcfcfc;
+	background-size: 100%;
+	position: absolute;
+	right:0px;
+	bottom:0px;
+	display: inline-block;
+	max-width: 870px;
+	width: 100%;
+	height: 100%;
+}
+ 
+#contentarea .contenInner {
+	position: relative;
+	z-index: 2;
+}
+h1 {
+	color: #04706d;
+	font-size: 60px;
+	font-size: 4.3vw;
+	text-transform: uppercase;
+}
+h2 {
+	color: #5bb1b1;
+	font-size: 2.5vw;
+}
+p a.viewArrow {
+	display: inline-block;
+	width: 56px;
+	height: 57px;
+	background: url(/ayushman/assets/images/arrow-rounded.jpg) right 12px no-repeat #fff;
+	text-indent: -999px;
+	overflow: hidden;
+	border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border: 2px solid #777e84;
+	margin-top: 15px;
+	-webkit-transition: all 300ms ease;
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: al	l 300ms ease;
+	transition: all 300ms ease;
+}
+p a.viewArrow:hover {
+	width: 250px;
+	text-indent: 0px;
+	padding-left: 25px;
+	padding-top: 10px;
+	font-size: 20px;
+	text-decoration: none;
+	background: none;
+	border:2px solid #46beb9;
+	color: #777e84;
+	-webkit-transition: all 300ms ease;
+	-moz-transition: all 300ms ease;
+	-ms-transition: all 300ms ease;
+	-o-transition: all 300ms ease;
+	transition: all 300ms ease;
+}
+
+#panel4.panel {
+	position: absolute;
+	color:#ccc;
+	top: 100px;
+	right: -1%;
+	display: none;
+	background: #fcfcfc;
+	
+	border:1px solid #04716e;
+	-moz-border-radius-topleft: 20px;
+	/*-webkit-border-top-left-radius: 20px;*/
+	-moz-border-radius-bottomleft: 20px;
+	/*-webkit-border-bottom-left-radius: 20px;*/
+
+	-moz-border-radius-topright: 20px;
+	/*-webkit-border-top-right-radius: 20px;*/
+	-moz-border-radius-bottomright: 20px;
+	/*-webkit-border-bottom-right-radius: 20px;*/
+
+	width: 300px;
+	height: 270px;
+	padding: 10px 10px 10px 10px;
+	filter: alpha(opacity=90);
+	opacity: 1;
+
+	font-family: "Open Sans",sans-serif;
+	font-size:13px;
+}
+.panel{
+	color:#ccc;
+	top: 100px;
+	right: -1%;
+	background: #fcfcfc;
+	padding: 10px 10px 10px 10px;
+	filter: alpha(opacity=90);
+	opacity: 1;
+
+	font-family: "Open Sans",sans-serif;
+	font-size:13px;
+}
+.panel p{
+	margin: 0 0 5px 0;
+	padding: 0;
+	color: #cccccc;
+}
+
+.panel a, .panel a:visited{
+margin: 0;
+padding: 0;
+color: #9FC54E;
+text-decoration: none;
+border-bottom: 1px solid transparent;
+}
+
+.panel a:hover, .panel a:visited:hover{
+margin: 0;
+padding: 0;
+color: #ffffff;
+text-decoration: none;
+border-bottom: 1px solid transparent;
+}
+.previewtext{
+	
+	background-color:rgba(128, 128, 128, 0.63);
+	padding-bottom:40px;
+	z-index:20;
+	position:relative;
+	font-family: "Open Sans",sans-serif;
+	font-size: 1.0vw;
+	color: white;
+	height:15px;
+}
+.form-control {
+	width: 100%;
+	height: 34px;
+}
+.form-group{
+	margin-top:15px;
+}
+.formheader{
+	color:#04706d;
+	font-size:18px;
+	height:20px;
+	text-align:center;
+}
+.formclose{
+	background: url(/ayushman/assets/images/Close_icon.png) 0 0 no-repeat;
+	height:20px;
+	width:27px;
+	display:inline-block;	
+	float: right;
+}
+
+.btn-info, .btn-info:hover, .btn-link:focus, .btn-link:active{
+	color:#fff;
+	background-color:#04706d;
+	float : right;
+}
+/*
+ @media only screen and (min-width : 1824px) {
+#contentarea.home:after {
+	max-width: 1120px;
+}
+}
+
+#contentarea .contenInner {
+	position: relative;
+	z-index: 2;
+}*/
+
+ .carousel-caption{
+	text-shadow:none;
+	-webkit-text-shadow:none;
+}
+ .carousel-control.left,  .carousel-control.right{
+	background:none;	
+}
+ .carousel-inner > .item > img{
+	width:100%;
+	height:100%;
+	max-height:540px;
+	/*padding-bottom:20px;*/
+}
+
+ .carousel-caption{
+	left:5%;
+	right:auto;
+	text-align:left;
+	width:40%;
+	bottom:auto;
+	top:0;
+	height:100%;
+	padding:0;
+	margin:0;
+	display:table;
+	z-index:99;
+}
+ .carousel-caption > .captionInner{
+	display:table-cell;
+	vertical-align:middle;	
+}
+ .carousel-caption h2,  .carousel-caption h3{
+	font:300 48px/55px Arial, Helvetica, sans-serif;
+	color:#04706d;
+	text-transform:uppercase;
+}	
+ .carousel-caption h3{
+	color:#f15f60;	
+}
+ .carousel-caption p strong{
+	font:300 24px/26px Arial, Helvetica, sans-serif;
+	color:#5bb1b1;
+	text-align:justify;
+}
+ .carousel-caption p{
+	font:300 16px/18px Arial, Helvetica, sans-serif;
+	color:#5bb1b1;
+	padding:10px 0 0;	
+	text-align:justify;
+}
+.carousel-caption li {
+	font:300 20px/22px  Arial, Helvetica, sans-serif;
+	color:#5bb1b1;
+	padding:10px 0 0;
+}
+ .carousel-control{
+	width:44px;
+	height:56px;
+	top:auto;
+	bottom:35px;	
+}
+ .carousel-control.right{
+	background:url(/ayushman/assets/images/next.png) 0 0 no-repeat;	
+	opacity:0.3;
+}
+ .carousel-control.right:hover,  .carousel-control.left:hover{
+	opacity:1;	
+}
+ .carousel-control.left{
+	background:url(/ayushman/assets/images/prev.png) 0 0 no-repeat;	
+	opacity:0.3;
+}
+ .carousel-indicators{
+	background:#fcfcfc;	
+	border-radius:5px;
+	width:90px;
+	-webkit-border-radius:5px;
+	margin-left:-45px;
+    height: 42px;
+	line-height:20px;
+	padding:17px 10px;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	bottom:50px;
+}
+ .carousel-indicators li{
+	width:9px;
+	height:9px;
+	border-radius:5px;
+	-webkit-border-radius:5bx;
+	background:black;
+	border:1px solid #fff;
+	margin:0 4px;
+	float:left;
+	padding:0;
+	line-height:16px;
+}
+ .carousel-indicators .active{
+	width:9px;
+	height:9px;
+	float:left;
+	margin:0 3px;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	background:#00aca9;
+	border:1px solid #00aca9;
+	line-height:16px;
+	padding:0;
+}
+.carousel-inner > .item {
+  -webkit-transition:  2s ease-in-out left;
+       -o-transition:  2s ease-in-out left;
+          transition:  2s ease-in-out left;
+}
+
+#docCarousel .carousel-inner > .item > img{
+	max-height:540px;
+	height:100%;
+	
+	
+}
+
+#docCarousel .carousel-indicators{
+	width:95px;
+	padding:17px 5px;
+}
+
+#companyCarousel .carousel-inner > .item > img{
+	width:100%;
+	max-height:580px;
+	height:100%;
+	
+}
+.alternatebgcolor{
+	background-color: rgb(237, 236, 240);
+	background-size:100%;
+}
+.section{	
+	width: 100%;
+	max-width: 100%;
+	font-size: 1.2vw;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	height: 100%;
+	box-shadow: 1px -7px 5px -6px #ccc inset;/*1px -8px 6px -6px #ccc inset;*/
+}
+.patient{
+	/*padding-bottom:50px;*/
+}
+
+.news{
+	
+	
+	background:url(/ayushman/assets/images/news.png) right no-repeat;
+	background-size:cover;
+}
+.article{
+	height:100%;
+	min-height:580px;
+	background:url(/ayushman/assets/images/articles.png) right no-repeat;
+	background-size:cover;
+}
+.contact{
+	box-shadow: none;
+}
+
+
+.audience{	
+	font-size: 22px;
+	color: #04706d;
+	display: block;
+	text-align: left;	
+	padding-left: 60px;	
+	text-shadow: 1px 1px 0 #000;
+	
+}
+.audiencealter{	
+	font-size: 42px;
+	color: white;
+	display: block;
+	text-align: left;	
+	padding-left: 60px;	
+	text-shadow: 1px 1px 0 #000;
+	background-color:#04706d;
+	padding: 14px;
+	padding-left:40%;
+}
+a.audiencealter:hover{
+	text-decoration:none;	
+	font-size: 22px;
+	color: #04706d;
+	display: block;
+	text-align: left;
+	background-color:rgb(237, 236, 240);
+}
+
+a.audience:hover{
+	text-decoration:none;	
+	font-size: 22px;
+	color: #04706d;
+	display: block;
+	text-align: left;
+	
+}
+

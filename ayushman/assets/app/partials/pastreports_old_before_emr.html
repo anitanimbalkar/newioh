@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/ayushman/assets/app/css/bootstrap.min.css" />
+</head>
+	<body>
+		<div class="sectionbox" ng-controller="myreportsCtrl" id="divprescription" style="" ng-show="! showDetails">
+			<div style="width:100%; border-bottom:1px solid #9cd4f9;position:relative;padding-top:10px;background-color:white;">
+				<div class="container">
+					<div class="row">
+						<div class=" " ng-show="reports['data'].length != 0" style="" >
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" align="left">
+								<strong> DATE 
+								(INCIDENCE)</strong> 
+							</div>		
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" align="left">
+								<strong> TEST NAME </strong>
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" align="center">
+								<strong> ACTIONS </strong>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--<div class="bodytext_bold" custom-autofocus style="width:100%; border-bottom:1px solid #9cd4f9;position:relative;padding-top:10px;" ng-repeat="(metric, metricData) in reports['page'] "> -->
+			<div class="bodytext_bold" custom-autofocus style="width:100%; border-bottom:1px solid #9cd4f9;position:relative;padding-top:10px;" ng-repeat="(metric, metricData) in reports['page']  | filter: {status : 'show'}"> 
+					<div class="container">					
+						<div  title="Click here to toggle more information" style="">				
+							<div class="row">	
+								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									<div style="" class="bodytext_bold">
+										{{metricData['date']}}
+									</div>
+								
+									<div ng-show="metricData['parameters']!= null && metricData['parameters']['incident']!= null && metricData['parameters']['incident']!= ''" style="" >
+										({{metricData['parameters']['incident']}})
+									</div>
+								
+									<div style="width:100%;">
+										&nbsp;
+										<div style="" ng-repeat="(key, value) in metricData['parameters']['para']">
+											<p style="white-space: pre-line; color:#428bca;" >{{key}}&nbsp:&nbsp{{value}}</p>
+										</div>
+									</div>	
+									<div>
+										<a class="actionlinks" style="color:blue;padding-left:100px;" href="javascript:void(0);" ng-click="editIncidence(metricData['patienttestreportid']);">Edit Incidence</a>
+									</div>
+									<div id ="{{metricData['patienttestreportid']}}" class="moreinfo">
+										<table class="bodytext_bold"  style="width:100%">
+											<tr>
+												<td>
+													<input id="incident{{metricData['patienttestreportid']}}" type ="text" class="formtextarea"  style="maxlength:50" value="{{metricData['parameters']['incident']}}"/>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<input id="savebtn" type="button" class="button" style="width:99px"   value="Save" ng-click="saveIncident(metricData['patienttestreportid'],$index);" >
+												</td>
+											</tr>
+										</table>
+									</div>	
+								</div>
+								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">	
+									<div style="" class="bodytext_bold">
+										&nbsp;
+										{{metricData['testname']}}
+									</div>
+									
+								</div>		
+								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">								
+									<div ng-show="metricData['filepath'] == ''" align="center">
+										<a style="color:red;">Report Not Attached</a>
+									</div>
+									<div ng-show="metricData['filepath'] != '' && metricData['isdicom']!= 1" align="center">
+										<a href="javascript:void(0);" ng-click="openDialog(metricData['filepath'],800,600)" style="color:blue;">View Report  </a>
+									</div>
+									<div ng-show="metricData['filepath'] != '' && metricData['isdicom']== 1" align="center">						
+										<a href="javascript:void(0);" ng-click="openDicom(metricData['patienttestreportid'])" style="color:blue;">View Dicom </a>					
+									</div>
+									<div ng-show="metricData['showdelete'] =='yes'" align="center">
+										  <a class="searchbychar" ng-click="deleteReportRecord(metricData['patienttestreportid'],$index);" href="" style="color:red;">Delete Record</a>
+									</div>	
+								</div>	
+								
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">	
+				<div class="row">				
+					<div class="col-sm-12 col-md-12 col-lg-12">
+						<div class="bodytext_bold" style="position:relative;" ng-show="reports['data'].length == 0">
+							No Reports uploaded
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">	
+				<div class="row">							
+					<div class="col-sm-12 col-md-12 col-lg-12">
+						<div class="bodytext_bold" style="position:relative;padding-top:5px;" align="center" >
+							<a href="javascript:void(0);" ng-click="showMoreVisits();" ng-show="reports['data'].length != reports['page'].length" style="color:blue;align:center;">Show Next 5 Reports</a>
+							<a href="javascript:void(0);" ng-click="showAllVisits();" ng-show="reports['data'].length != reports['page'].length" style="color:blue;align:center;">/ Show All Reports</a>
+							<a href="javascript:void(0);" ng-click="showLessVisits();" ng-show="reports['page'].length > 5" style="color:blue;align:center;">/ Show Only Latest 5 Reports</a>
+							<label class="bodytext_bold" ng-show="reports['data'].length != 0" style="float:right;">Showing 1 - {{reports['page'].length}} of {{reports['data'].length}} records </label>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

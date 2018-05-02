@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content=""India Online Health, online health, India online, health online, India Health, " />
+<title>India Online Health......</title>
+<meta name="Description" content=""India Online Health, online health, India online, health online, India Health, ">
+<META name="keywords" content="India Online Health, online health, India online, health online, India Health, ">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="apple-touch-icon" sizes="57x57" href="/ayushman/assets/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/ayushman/assets/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/ayushman/assets/images/apple-touch-icon-60x60.png">
+<link rel="icon" type="image/png" href="/ayushman/assets/images/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/ayushman/assets/images/favicon-32x32.png" sizes="32x32">
+<meta name="msapplication-TileColor" content="#da532c">
+
+<link href="/ayushman/assets/css/web2.css" rel="stylesheet" type="text/css" />
+
+<!-- BOOTSTRAP CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<!-- CUSTOM CSS-->
+<link href="/ayushman/assets/css/style2.css" rel="stylesheet">
+<link href="css/homestyle.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/footercss.css" />
+<link href="/ayushman/assets/css/responsive.css" rel="stylesheet">
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="/ayushman/assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<script>window.jQuery || document.write('<script src="../assets/js/jquery-1.7.1.min.js"><\/script>')</script>
+<!-- page JS -->
+<script src="js/main.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+
+<body>
+	<!--#include file="header.html"-->
+<div style="padding-left:30px;padding-right:30px;" class="container">
+		<div id="term" style="width:100%;padding-top:100px;"><h4 style="color:#04706d;">Return Policy </h4>
+		<p class="bodytext">
+			<strong>Ayushman</strong> believes in helping its Consumers and Service providers, as far as possible, and has therefore a fair cancellation policy as laid down below.<br /><br/>
+            <strong>1. Refund upon Cancellation of Subscription:</strong><br/></p>
+			<p class="bodytext" style="padding-left:15px;">		
+				a)&nbsp;Consumers may cancel their subscription any time with following conditions:<br/></p>
+				<p class="bodytext" style="padding-left:25px;">		
+					i. One time registration is non-refundable.<br/>
+					ii. Annual subscription charges will be payable for the calendar month in which cancellation is requested and balance in the account, if any, will be refunded within 60 days after the end of calendar month in which cancellation request is made.<br/>
+					iii. Any outstanding charges to Doctors and other Service Providers, whose services have already been availed, will be payable / deductible from advance.<br/>
+				</p>	
+			<p class="bodytext" style="padding-left:15px;">		
+				b)&nbsp;Renewal of License is due at the end of period for which Consumer has subscribed. If Licenses is not renewed before the due date, the access to his account will be suspended and Consumer will not be able to access his medical records and avail any other services. Consumer will have 15 days to renew his license, after which his account may be permanently suspended or deleted and he may lose all records that he may have created in the past. If  Ayushman has retained his EMR records, and Consumer wishes to reactivate his account at a subsequent date, Ayushman will at have sole discretion to accept such a request with or without any re-activation charges. <br/>
+			</p>
+			<p class="bodytext">
+					<strong>2. Refund upon Cancellation of Service by Registered Service Provider:</strong></p>
+			 <p class="bodytext" style="padding-left:15px;">		
+					a)&nbsp;Cancellations / Rescheduling of Appointment with a Doctor by Consumer will be not considered if the request is made within 48 hours from scheduled appointment time. If cancellation is made within 48 hours, Doctor’s fees will be payable, unless Doctor has explicitly waived the charges. However, Ayushman’s Platform usage charge will not be charged.<br/><br/>
+					
+					b)&nbsp;Cancellation / Rescheduling of Appointment with a Pathology Lab with ‘sample pick up facility’ will not be considered if the request is made within 24 hours from scheduled appointed time. If the Cancellation is requested within 24 hours, ‘sample pick-up charges’ will be payable unless explicitly waived  by the Pathology Lab.<br/><br/>
+					
+					c)&nbsp;Cancellation / Rescheduling of Appointment with a Radiology Lab will not be considered if the request is made within 48 hours from scheduled appointment time. If cancellation is made within 48 hours, Lab’s fees will be payable, unless Lab has explicitly waived the charges.<br/><br/>
+					
+					d)&nbsp;There is no cancellation of orders placed under the Same Day Appointment with Doctor and Radiology Labs. <br/><br/>
+					
+					e)&nbsp;<strong>Ayushman</strong> does not accept refund requests for service already availed by the Consumer. Consumer will have to deal with Service Provider directly for any refund due to deficiency in service by the Doctor / Service Provider.<br/><br/>
+			</p>
+			<p class="bodytext">			
+					<strong>3. Refund against Special Offers:</strong> </p>
+			<p class="bodytext" style="padding-left:15px;">		
+					No cancellations are entertained for any offer made under a promotional scheme. These are limited occasion offers and therefore cancellations are not possible.
+			</p>
+		</div>
+	</div>
+	<!--#include file="footer.html"-->         
+			
+</body>
+</html>

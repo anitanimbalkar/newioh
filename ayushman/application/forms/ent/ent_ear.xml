@@ -1,0 +1,1647 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>14,1,500,2,500,3,4,501,5,6,502,7,12,503,8,9,10,11,13,403,504</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>16,51,505,52,505,53,54,506,55,56,507,57,64,508,58,59,60,62,63,408,509</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>14</id>
+		<label>Left Ear</label>
+		<type>label</type>
+	</question>
+	
+	
+	
+	<question>
+		<id>1</id>
+		<label>History</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Blockage Of Ear</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label>Difficulty In Chewing</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>Deafness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>Tinnitus</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>21</id>
+		<label>Discharge</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>22</id>
+		<label>Pain</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>23</id>
+		<label>Vertigo</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>24</id>
+		<label>Nausea/vomiting </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>25</id>
+		<label>Previous Ear Surgery</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>26</id>
+		<label>Head injury</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>27</id>
+		<label>Family History Of Deafness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>28</id>
+		<label>Systemic Disease</label>
+		<type>DD</type>
+		<answer>
+			<label>Stroke</label>
+			<follow>601</follow>
+		</answer>
+		<answer>
+			<label>Multiple Sclerosis</label>
+			<follow>602</follow>
+		</answer>
+		<answer>
+			<label>Cardiovascular Disease </label>
+			<follow>603</follow>
+		</answer>
+		<answer>
+			<label>Hypertension</label>
+			<follow>604</follow>
+		</answer>
+		<answer>
+			<label>DM</label>
+			<follow>605</follow>
+		</answer>
+		<answer>
+			<label>Other</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>29</id>
+		<label>Ototoxic drugs</label>
+		<type>DD</type>
+		<answer>
+			<label>Gentamicin</label>
+			<follow>601</follow>
+		</answer>
+		<answer>
+			<label>Diuretics</label>
+			<follow>602</follow>
+		</answer>
+		<answer>
+			<label>Streptomycin</label>
+			<follow>603</follow>
+		</answer>
+		<answer>
+			<label>Cytotoxics </label>
+			<follow>604</follow>
+		</answer>
+		<answer>
+			<label>Other</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>30</id>
+		<label>Exposure To High Decibel Noise</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>31</id>
+		<label>History Of Atopy And Allergy</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>32</id>
+		<label>Headache</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>33</id>
+		<label>Fever</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>2</id>
+		<label>Inspection Of The External Ear Examination </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>103,104,105,106,107,108,109,110,111,112</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>103</id>
+		<label>Size and shape of the pinna</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>104</id>
+		<label>Extra cartilage tags/pre-auricular sinuses or pits</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>105</id>
+		<label>Signs of trauma to the pinna</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>106</id>
+		<label>skin lesions on the pinna</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>107</id>
+		<label>Skin conditions external canal</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>108</id>
+		<label>Infection of the external ear canal</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	                
+	
+	<question>
+		<id>109</id>
+		<label>Inflammation of external ear canal</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>110</id>
+		<label>Discharge</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>215,300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>215</id>
+		<label>Type</label>
+		<type>DD</type>
+		<answer>
+			<label>Watery</label>
+		</answer>
+		<answer>
+			<label>Mucoid</label>
+		</answer>
+		<answer>
+			<label>Mucopurulent </label>
+		</answer>
+		<answer>
+			<label>Foul Smelling </label>
+		</answer>
+		<answer>
+			<label>Scanty </label>
+		</answer>
+		<answer>
+			<label>Copious </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>111</id>
+		<label>Scars of previous surgery</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>112</id>
+		<label>Mastoid </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>201,202</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>201</id>
+		<label>Tenderness</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>202</id>
+		<label>Swelling </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+
+	<question>
+		<id>3</id>
+		<label>Inspecting the ear canal and eardrum</label>
+		<type>label</type>
+	</question>
+		
+	<question>
+		<id>4</id>
+		<label>Otoscopic examination</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>113,114,115,116,117,118,401</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>113</id>
+		<label>Canal skin</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>114</id>
+		<label>Wax</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Impacted</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>115</id>
+		<label>Foreign Tissue</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>116</id>
+		<label>Discharge</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>117</id>
+		<label>Tympanic Membrane</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>203,204,205,206,207</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>203</id>
+		<label>Perforations </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>301,302,303</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>301</id>
+		<label>Size</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>302</id>
+		<label>Site</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>303</id>
+		<label>Position</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>204</id>
+		<label>Tympanosclerosis </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>205</id>
+		<label>Cholesteatoma </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>206</id>
+		<label>Middle-ear Effusion </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>207</id>
+		<label>Retractions Of The Drum/Adhesive Otitis Media  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	 
+	<question>
+		<id>118</id>
+		<label>Haemotympanum </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Pneumatic speculum examination</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Ear drum mobility</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Facial Nerve Function</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Hearing Tests</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>Weber's Test </label>
+		<type>DD</type>
+		<answer>
+			<label>Lateralize To Right </label>
+		</answer>
+		<answer>
+			<label>Lateralize To Left </label>
+		</answer>
+		<answer>
+			<label>Central</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Rinne's test </label>
+		<type>DD</type>
+		<answer>
+			<label>Nigetive</label>
+		</answer>
+		<answer>
+			<label>Positive</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Whisper from 40cm</label>
+		<type>DD</type>
+		<answer>
+			<label>Nigetive</label>
+		</answer>
+		<answer>
+			<label>Positive</label>
+			<follow>300</follow>
+		</answer>
+	</question> 
+	<question>
+		<id>13</id>
+		<label>Absolute Bone Conduction</label>
+		<type>DD</type>
+		<answer>
+			<label>Nigetive</label>
+		</answer>
+		<answer>
+			<label>Positive</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Nystagmus</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>500</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>501</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>502</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>503</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>504</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>400</id>
+		<label>Other </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>401</id>
+		<label>Other </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>402</id>
+		<label>Other </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>403</id>
+		<label>Other </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>404</id>
+		<label>Other </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>300</id>
+		<label>Describe</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>Right Ear</label>
+		<type>Label</type>
+	</question>
+	
+	<question>
+		<id>51</id>
+		<label>History</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>34</id>
+		<label>Blockage Of Ear</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>35</id>
+		<label>Difficulty In Chewing</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>36</id>
+		<label>Deafness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>37</id>
+		<label>Tinnitus</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>38</id>
+		<label>Discharge</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>39</id>
+		<label>Pain</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>40</id>
+		<label>Vertigo</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>41</id>
+		<label>Nausea/vomiting </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>42</id>
+		<label>Previous Ear Surgery</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>43</id>
+		<label>Head injury</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>44</id>
+		<label>Family History Of Deafness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>45</id>
+		<label>Systemic Disease</label>
+		<type>DD</type>
+		<answer>
+			<label>Stroke</label>
+			<follow>601</follow>
+		</answer>
+		<answer>
+			<label>Multiple Sclerosis</label>
+			<follow>602</follow>
+		</answer>
+		<answer>
+			<label>Cardiovascular Disease </label>
+			<follow>603</follow>
+		</answer>
+		<answer>
+			<label>Hypertension</label>
+			<follow>604</follow>
+		</answer>
+		<answer>
+			<label>DM</label>
+			<follow>605</follow>
+		</answer>
+		<answer>
+			<label>Other</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>46</id>
+		<label>Ototoxic drugs</label>
+		<type>DD</type>
+		<answer>
+			<label>Gentamicin</label>
+			<follow>601</follow>
+		</answer>
+		<answer>
+			<label>Diuretics</label>
+			<follow>602</follow>
+		</answer>
+		<answer>
+			<label>Streptomycin</label>
+			<follow>603</follow>
+		</answer>
+		<answer>
+			<label>Cytotoxics </label>
+			<follow>604</follow>
+		</answer>
+		<answer>
+			<label>Other</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>47</id>
+		<label>Exposure To High Decibel Noise</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>48</id>
+		<label>History Of Atopy And Allergy</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>49</id>
+		<label>Headache</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>50</id>
+		<label>Fever</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>52</id>
+		<label>Inspection Of The External Ear</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>119,120,121,122,123,124,125,126,127,128</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>119</id>
+		<label>Size and shape of the pinna</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>120</id>
+		<label>Extra cartilage tags/pre-auricular sinuses or pits</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>121</id>
+		<label>Signs of trauma to the pinna</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>122</id>
+		<label>skin lesions on the pinna</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>123</id>
+		<label>Skin conditions external canal</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>124</id>
+		<label>Infection of the external ear canal</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	                
+	
+	<question>
+		<id>125</id>
+		<label>Inflammation of external ear canal</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>126</id>
+		<label>Discharge</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>127</id>
+		<label>Scars of previous surgery</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>128</id>
+		<label>Mastoid </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>209,210</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>209</id>
+		<label>Tenderness</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>210</id>
+		<label>Swelling </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+
+	<question>
+		<id>53</id>
+		<label>Inspecting the ear canal and eardrum</label>
+		<type>label</type>
+	</question>
+		
+	<question>
+		<id>54</id>
+		<label>Otoscopic examination</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>129,130,131,132,133,134,406</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>129</id>
+		<label>Canal skin</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>130</id>
+		<label>Wax</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Impacted</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>131</id>
+		<label>Foreign Tissue</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>132</id>
+		<label>Discharge</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>133</id>
+		<label>Tympanic Membrane</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>210,211,212,213,214</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>210</id>
+		<label>Perforations </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>304,305,306</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>304</id>
+		<label>Size</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>305</id>
+		<label>Site</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>306</id>
+		<label>Position</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>211</id>
+		<label>Tympanosclerosis </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>212</id>
+		<label>Cholesteatoma </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>213</id>
+		<label>Middle-ear Effusion </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>214</id>
+		<label>Retractions Of The Drum/Adhesive Otitis Media  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	 
+	<question>
+		<id>134</id>
+		<label>Haemotympanum </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>55</id>
+		<label>Pneumatic speculum examination</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>56</id>
+		<label>Ear drum mobility</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>57</id>
+		<label>Facial Nerve Function</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>58</id>
+		<label>Hearing Tests</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>59</id>
+		<label>Weber's Test </label>
+		<type>DD</type>
+		<answer>
+			<label>Lateralize To Right </label>
+		</answer>
+		<answer>
+			<label>Lateralize To Left </label>
+		</answer>
+		<answer>
+			<label>Central</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>60</id>
+		<label>Rinne's test </label>
+		<type>DD</type>
+		<answer>
+			<label>Nigetive</label>
+		</answer>
+		<answer>
+			<label>Positive</label>
+			<follow>300</follow>
+		</answer>
+	</question>	
+	
+	<question>
+		<id>62</id>
+		<label>Whisper from 40cm</label>
+		<type>DD</type>
+		<answer>
+			<label>Nigetive</label>
+		</answer>
+		<answer>
+			<label>Positive</label>
+			<follow>300</follow>
+		</answer>
+	</question> 
+	<question>
+		<id>63</id>
+		<label>Absolute Bone Conduction</label>
+		<type>DD</type>
+		<answer>
+			<label>Nigetive</label>
+		</answer>
+		<answer>
+			<label>Positive</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>64</id>
+		<label>Nystagmus</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>505</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>506</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>507</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>508</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>509</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>405</id>
+		<label>Other </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>406</id>
+		<label>Other </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>407</id>
+		<label>Other </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>408</id>
+		<label>Other </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>409</id>
+		<label>Other </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>601</id>
+		<label>Duration </label>
+		<type>text</type>
+	</question>
+		
+	<question>
+		<id>602</id>
+		<label>Duration </label>
+		<type>text</type>
+	</question>
+		
+	<question>
+		<id>603</id>
+		<label>Duration </label>
+		<type>text</type>
+	</question>
+		
+	<question>
+		<id>604</id>
+		<label>Duration </label>
+		<type>text</type>
+	</question>
+	
+		
+	<question>
+		<id>605</id>
+		<label>Duration </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>200</id>
+		<label>Duration </label>
+		<type>text</type>
+	</question>
+	
+	
+	<question>
+		<id>300</id>
+		<label>Describe</label>
+		<type>text</type>
+	</question>
+		
+</form>

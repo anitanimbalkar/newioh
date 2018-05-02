@@ -1,0 +1,76 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,2,3,4,5</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>6,7,8,9,10</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>Date of Operation</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>2</id>
+		<label>Name</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>3</id>
+		<label>Indication</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>4</id>
+		<label>Anaesthetia Detail</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>5</id>
+		<label>Anaesthetist</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Notes</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>7</id>
+		<label>Recovery</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>8</id>
+		<label>Date of Admission</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>9</id>
+		<label>Discharge Date</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Advice</label>
+		<type>Text</type>
+	</question>
+	
+	
+	
+</form>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>EMR | India Online Health</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+  	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container">
+      <div class="row">
+	<div class="col-lg-12">
+	  <div class="sectionBox">
+            <h2 class="blue">EMR</h2>
+            <div class="row">
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <h3>Risk Factors</h3>
+		  <p>{{riskText}}.</p>
+		</div>
+              </div>
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <h3>Allergies</h3>
+		  <p ng-if="emr_snapshot.allergies.join() != '' ">{{emr_snapshot.allergies.join()}}</p>
+		  <p ng-if="emr_snapshot.allergies.join() == '' ">No information provided.</p>
+		</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <hr />
+		  <h3>Social Habits</h3>
+		  <p>Diet: {{emr_snapshot.social_habits.diet_c}}, Smoking: {{emr_snapshot.social_habits.smoking_c}}, Alcohol: {{emr_snapshot.social_habits.alcohol_c}}, Tobacco: {{emr_snapshot.social_habits.tobacco_c}}, Exercise: {{emr_snapshot.social_habits.exercisepatterns_c}}, Outdoor Sports: {{emr_snapshot.social_habits.outdoorsport_c}}.</p>
+		</div>
+              </div>
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <hr />
+		  <h3>Immunization</h3>
+		  <p ng-if="emr_snapshot.immunizations.join() != '' ">{{emr_snapshot.immunizations.join()}}.</p>
+		  <p ng-if="emr_snapshot.immunizations.join() == '' ">No information provided.</p>
+		</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <hr />
+		  <h3>Past Diseases</h3>
+		  <p ng-if="emr_snapshot.past_diseases.join() != '' ">{{emr_snapshot.past_diseases.join()}}.</p>
+		  <p ng-if="emr_snapshot.past_diseases.join() == '' ">No information provided.</p>
+		</div>
+              </div>
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <hr />
+		  <h3>Major Illness and Treatment History</h3>
+		  <p ng-if="emr_snapshot.past_illness.join() != '' ">{{emr_snapshot.past_illness.join()}}.</p>
+		  <p ng-if="emr_snapshot.past_illness.join() == '' ">No information provided.</p>
+		</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <hr />
+		  <h3>Operation Procedures</h3>
+		  <p ng-if="emr_snapshot.past_surgeries.join() != '' ">{{emr_snapshot.past_surgeries.join()}}.</p>
+		  <p ng-if="emr_snapshot.past_surgeries.join() == '' ">No information provided.</p>
+		  <hr />
+		</div>
+              </div>
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <hr />
+		  <h3>Family History</h3>
+		  <p ng-repeat="i in emr_snapshot.family_history">
+		    {{i["relation"]}}({{i["yob"]}}): <span ng-if="i['medhis'] != ''">{{i["medhis"]}}.</span><span ng-if="i['medhis'] == ''">No medical problems.</span>&nbsp;<span ng-if="i['yod'] != ''">Died at age: {{i["yod"]}} ({{i["cod"]}}).</span>
+		  </p>
+		  <hr />
+		</div>
+              </div>
+            </div>
+	    <div class="row">
+	      <div class="col-lg-12">
+		<div class="contentDetailsInner">
+		  <accordion id="emrAcc" close-others="false">
+		    <accordion-group is-open="isShowVisit">
+		      <accordion-heading>
+			<label>Visits</label> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isShowVisit, 'glyphicon-chevron-right': !isShowVisit}"></i>
+		      </accordion-heading>
+		      <div>
+			<div class="accordion-body">
+			  <div class="accordion-inner">
+			    <table class="dataTable collapsibleTbl">
+                              <tbody ng-repeat="appointment in past_appointments">
+				<tr>
+				  <td>{{appointment.dr_name}}</td>
+				  <td>{{appointment.app_time}}</td>
+				  <td>{{appointment.problem}}</td>
+				  <td>
+				    <a ng-if="appointment['status'] == 'notfromsystem' && appointment['prescription'] != 'Informationnotyetfilled'" href="" ng-click="show_summary_nfs(appointment['app_id']);" target="_blank" class="summary">View Summary</a>
+				    <a ng-if="appointment['status'] == 'notfromsystem' && appointment['prescription'] == 'Informationnotyetfilled'" href="" class="summary">No Summary</a>
+				    <a ng-if="appointment['status'] == 'fromsystem'" href="" class="summary" ng-click="show_summary_fs(appointment['app_id']);">View Summary</a>
+				  </td>
+				  <td>
+				    <a href="javascript:void(0);" ng-click="get_report_details(appointment['app_id'], appointment['status']);appointment[show-report-details] = !appointment[show-report-details]" ng-show="appointment[show-report-details] != true">View Report</a>
+				    <a href="javascript:void(0);" ng-click="appointment[show-report-details] = !appointment[show-report-details]" ng-show="appointment[show-report-details] == true">Close Report</a>
+				  </td>
+				</tr>
+				<!--DETAILS SECTION-->
+				<tr class="empDetailsEMR" ng-show="appointment[show-report-details] == true">
+				  <td colspan="5" class="pad0">
+                            	    <div class="emrPatientDetails">
+                                      <table class="emrPatientDetailsTbl">
+                                    	<tr ng-repeat="(key, value) in pastReportDetails[appointment['app_id']][appointment['app_id']]">
+                                          <td style="width:10%">{{key}}</td>
+                                          <td style="width:85%" ng-repeat="val in value">
+					    <a href="" class="fancybox" ng-click="show_report_lb_nfs(val['file']);"><img src="{{val['thumb']}}" height="100" width="75" /></a>
+					  </td>
+                                        </tr>
+                                      </table>
+                                    </div>
+				  </td>
+				</tr>
+                              </tbody>
+			    </table>
+			  </div>
+			</div>
+		      </div>
+		    </accordion-group>
+		    <accordion-group is-open="isShowReports">
+		      <accordion-heading>
+			<label>Reports</label> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isShowReports, 'glyphicon-chevron-right': !isShowReports}"></i>
+		      </accordion-heading>
+		      <div>
+			<div class="accordion-inner">
+			  <table class="dataTable collapsibleTbl">
+                            <tbody ng-repeat = "report in past_reports">
+                              <tr>
+				<td>{{report['doctorname']}}</td>
+				<td>{{report['centername']}}</td>
+				<td>{{(report['tests']).split('----').join(', ').substring(1)}}</td>
+				<td>
+				  <a href="javascript:void(0);" ng-click="get_all_report_details(report['requisitionno']);report[show-report-details] = !report[show-report-details]" ng-show="report[show-report-details] != true">View Report</a>
+				    <a href="javascript:void(0);" ng-click="report[show-report-details] = !report[show-report-details]" ng-show="report[show-report-details] == true">Close Report</a>
+				</td>
+                              </tr>
+				<!--DETAILS SECTION-->
+				<tr class="empDetailsEMR" ng-show="report[show-report-details]">
+				  <td colspan="5" class="pad0">
+                            	    <div class="emrPatientDetails">
+                                      <table class="emrPatientDetailsTbl">
+                                    	<tr ng-repeat="(key, value) in reportDetails[report['requisitionno']]['details']">
+                                          <td style="width:10%">{{key}}</td>
+                                          <td style="width:85%" ng-repeat="val in value">
+					    <a href="" class="fancybox" ng-click="show_report_lb_nfs(val['file']);"><img src="{{val['thumb']}}" height="100" width="75"</a>
+					  </td>
+                                        </tr>
+                                      </table>
+                                    </div>
+				  </td>
+				</tr>
+                            </tbody>
+			  </table>
+			</div>
+                      </div>
+		    </accordion-group>
+		  </accordion>
+		</div>
+	      </div>
+	    </div>
+          </div>
+	</div>
+      </div>
+    </div>
+</div>
+<!-- /container --> 
+</body>
+</html>

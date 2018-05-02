@@ -1,0 +1,80 @@
+<style>
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+a:hover {
+    color: hotpink;
+}
+
+a:active {
+    color: red;
+}
+</style>
+<div class="container">					
+		<div class="sectionBox" id="divprescription" style="float:left;width:100%;margin-top:5px;border-bottom:1px solid #9cd4f9;" >
+			<div style="width:100%;position:relative;text-align:top;border-bottom:1px solid #9cd4f9;min-height:40px;vertical-align:top;" class="bodytext_bold">
+				<div class="row">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 bodytext_bold" style="padding:3px;float:right;right:0;">
+								Actions
+							</div>
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 bodytext_bold" style="padding:3px;float:right;right:0;">
+								TestName
+							</div>
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 bodytext_bold" style="padding:3px;float:right;right:0;">
+								Suggested By
+							</div>
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 bodytext_bold" style="padding:3px;float:right;right:0; ">
+								Date
+								(Incidence)
+							</div>
+					</div>
+			</div>
+<!--			<div class="bodytext_bold" style=" border-bottom:1px solid #9cd4f9;position:relative;" ng-repeat="(metric, metricData) in reports['page']"> -->
+		<div class="bodytext_bold" style=" border-bottom:1px solid #9cd4f9;position:relative;" ng-repeat="(metric, metricData) in reports['page'] | filter: {status : 'show'}">
+			<div ng-click="toggle(reports.id);" title="Click here to toggle more information" style="width:100%;position:relative;text-align:top;min-height:60px;vertical-align:top;">
+				<div class="row">
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 " style="float:right;right:0;">
+						<div  ng-show="metricData['filepath']!='' && metricData['isdicom']!=1" style="padding:3px;float:right;right:0;">
+							<a href="javascript:void(0);" ng-click="openDialog(metricData['filepath'],800,600)" style="color:blue;">View Report </a>
+						</div>
+						<div  ng-show="metricData['filepath']!='' && metricData['isdicom']==1" style="padding:3px;float:right;right:0;">
+							<a href="javascript:void(0);" ng-click="openDicom(metricData['patienttestreportid'])"style="color:blue;">View Dicom </a>
+						</div>
+						<div  ng-show="metricData['filepath'] ==''" style="padding:3px;float:right;right:0;">
+							  <a class="searchbychar" ng-click="setuploaddata(metricData['testid'],metricData['visits'],metricData['incidentid'],metricData['parameters'],metricData['patienttestreportid']);" data-target="Upload" href="" style="color:red;">Upload Report</a>
+						</div>
+						<div  ng-show="metricData['showdelete'] =='yes'" style="padding:3px;float:right;right:0;">
+							  <a class="searchbychar" ng-click="deleteReportRecord(metricData['patienttestreportid'],$index);" href="" style="color:red;">Delete record</a>
+						</div>
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 " style="padding:3px;float:left;left:0;" >
+							<p style="white-space: pre-line; color:#428bca;">{{metricData['date']}}<br/> {{metricData['parameters']['incident']}} </p>
+							<!--p style="white-space: pre-line;">({{data.incidentname}})</p--> 
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 " style="padding:3px;float:left;left:0;" >
+							<p style="white-space: pre-line; color:#428bca;"> {{metricData['parameters']['Suggestedby']}} </p>
+							<!--p style="white-space: pre-line;">({{data.incidentname}})</p--> 
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 " style="padding:3px;float:left;left:0;" >
+							<p style="white-space: pre-line; color:#428bca;"> {{metricData['parameters']['testname']}} </p>
+							<!--p style="white-space: pre-line;">({{data.incidentname}})</p--> 
+					</div>					
+				</div>	
+			</div>
+		</div>
+			<div class="bodytext_bold" style="position:relative;" ng-show="reports['data'].length == 0">
+				No Reports uploaded
+			</div>
+			<div class="bodytext_bold" style="position:relative;padding-top:5px;" align="center" >
+				<a href="javascript:void(0);" ng-click="showMoreVisits();" ng-show="reports['data'].length != reports['page'].length" style="color:blue;align:center;">Show Next 5 Visits</a>
+				<a href="javascript:void(0);" ng-click="showAllVisits();" ng-show="reports['data'].length != reports['page'].length" style="color:blue;align:center;">/ Show All Visits</a>
+				<a href="javascript:void(0);" ng-click="showLessVisits();" ng-show="reports['page'].length > 5" style="color:blue;align:center;">/ Show Only Latest 5 Visits</a>
+				<label id="pagination" class="bodytext_bold" ng-show="reports['data'].length != 0" style="float:right;">Showing 1 - {{reports['page'].length}} of {{reports['data'].length}} records </label>
+			</div>
+		</div>
+</div>

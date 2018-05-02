@@ -1,0 +1,866 @@
+<head>
+   		<link rel="stylesheet" href="/ayushman/assets/app/css/emrstyle.css" />
+				
+ </head>
+	<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>EMR | India Online Health</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body>
+		<!--[if lt IE 7]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+		<div class="navbar header" ng-if="show_nav_link('emrheader');" style="position:fixed;top:0px;z-index:100;box-shadow:2px 0px 7px #888888;">
+			<div class="container fullWidth">
+				<div class="navbar" style="position:relative;z-index:0;">
+					<a class="navbar-brand" ng-click="loading(true);" style="float:right;" href="javascript:history.go(-1)" class="bodytext_normal"><img src="/ayushman/assets/app/img/back.png" style="width:46"/><font size="3">Back</font></a>
+					<a class="navbar-brand" href=""><img style="width:193px" src="/ayushman/assets/app/img/logo.png" alt="India Online Health"></a>
+					<span>
+					<div class="navbar-header pull-left" >
+						<ul class="nav navbar-nav navbar-left">
+							<li >
+								<img ng-src="{{patientinfo.PatientPhoto}}" style="box-shadow:2px 7px 19px #888888;max-height:50px;" alt="Profile.png">
+							</li>
+							<li class="bodytext_bold" >
+								<div style="width:auto;padding-left:10px;padding-top:5px;">
+									{{patientinfo.name}}&nbsp;<label ng-show="patientinfo.PatientGender!='' || patientinfo.age!=0">(<label ng-show="patientinfo.age!=0">{{patientinfo.age}} Yrs</label>,{{patientinfo.PatientGender}} )</label></br>
+									IOH Id : {{patientinfo.id}} </br>
+								</div>
+							</li>
+						</ul>
+					</div></span>
+				</div>
+			</div>
+		</div>
+		<div id="patientemr" class="container2" style="margin-top:50px;">
+			<div class="row">
+				<div class="col-lg-12">
+					<div  style="width:100%;background:white;margin-top:5px;min-height:160px;">
+						<div id="dialog10" title="Examination Summary" class="sectionBox" style="box-shadow:2px 7px 19px #888888; width:329px;display:none;position:absolute;margin-left:41%;margin-top:38px;background-color:white;z-index:1;">
+							<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:3px;height:23px;cursor:pointer;" onclick="closebloodgroup(10);">
+							<div style="width:100%;" id="bloodgroup_form_place_holder" class="sectionBox" ng-show="isForm == 1"></div>
+							<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;"><input type="button" class="button" onclick="saveAndclose_bloodgroupHandicap();" style="float:right;" value="save"/></div>
+						</div>
+						
+
+						<div style="padding:10px;padding-left:24px;width:25%;float:right;right:0;" class="bodytext_bold">
+							<h5>Demographic Info </h5></br>
+						 
+							Location    :  {{patientinfo.location_c}} </br>
+							City : {{patientinfo.city_c}}
+							</br>
+						</div>
+						<div style="padding:10px;padding-left:24px;width:30%;float:right;right:0;" class="bodytext_bold">
+							<h5 onclick="closebloodgroup(10);">Health Info  &nbsp&nbsp<a href="javascript:void(0);" style="float:right;"  title="Click To Edit" ng-click="showForm('healthinfo','emrforms','false', 'vitals_target','','bloodgroup_form_place_holder');"><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a></h5></br> 
+								Blood Group :{{emr_snapshot.user_info.bloodgroup_c}}</br>
+								<div ng-show="emr_snapshot.user_info.handicap_c == 'true' ">Handicap Details : {{emr_snapshot.user_info.handicapby_c}}</div></br>
+							<input type="hidden" id="patientid" value='{{patientinfo.id}}' />
+							</br>
+						</div>
+						<div style="padding:10px;padding-left:24px;width:27%;float:right;right:0;" class="bodytext_bold">
+							<h5>Personal Info</h5></br> 
+							
+							Name      :   {{patientinfo.name}} </br>
+							
+							Gender    :  {{patientinfo.PatientGender}} </br>
+							
+							Age			:<label ng-show="patientinfo.age!=0">{{patientinfo.age}} Yrs.</label></br>									
+							Email     :   {{patientinfo.email}}</br>
+							Moblie    : {{patientinfo.mobile}}</br>
+						</div>
+						<div style="padding-top:10px;padding-left:10px;float:right;right:0;">
+							<img src="{{patientinfo.PatientPhoto}}" style="box-shadow:2px 7px 19px #888888;max-height:130px;" />
+						</div>
+						
+					</div>
+					
+					<div class="sectionBox" style="margin-top:5px; background:white;" class="bodytext_bold">
+						<style type="text/css">
+							hr{
+								border-bottom:1px solid #9cd4f9;
+							}
+						</style>
+						<div class="row">
+							<div class="col-lg-6 col-sm-6">
+								<div style="padding:10px;padding-left:50px;width:100%;" class="bodytext_bold" >
+									<h5>Risk Factors   &nbsp&nbsp<label style="font-style: italic;font-size:11px;color:blue;" ng-show="emr_snapshot.user_role!='doctor'">(Only Doctor Can Edit Risk Factors)</label><a href="javascript:void(0);" ng-show="emr_snapshot.user_role=='doctor'" title="Click To Edit" style="float:right;" onclick="closeRiskFactors(1);"><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a></h5></br> 
+									<div ng-if="riskText!= '' "><div style="color:red;">{{riskText}}</div></div>
+									<div ng-if="riskText == '' ">No information provided.</div>
+
+									
+								</div>
+								<div id="dialog1"  class="sectionBox" style="float:left;width:73%;display:none;position:absolute;margin-left:141px;margin-top:-46px; z-index:1;">
+									<div risk-factor ></div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-sm-6">
+								<div id="dialog2" title="Examination Summary" class="sectionBox" style="box-shadow:2px 7px 19px #888888; width:420px;display:none;position:absolute;margin-left:50px;margin-top:48px;background-color:white;z-index:1;">
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:3px;height:23px;cursor:pointer;" onclick="closeAllergies(2);">
+									<div style="width:100%;" id="form_place_holder" class="sectionBox" ng-show="isForm == 1"></div>
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;"><input type="button" class="button" onclick="saveAndclose_allergy();" style="float:right;" value="save"/></div>
+								</div>
+								<div style="padding:10px;padding-left:50px;width:100%;" class="bodytext_bold">
+									<h5 onclick="closeAllergies(2);">Allergies    &nbsp&nbsp<a href="javascript:void(0);" style="float:right;"  title="Click To Edit" ng-click="showForm('allergies','emrforms','false', 'vitals_target','','form_place_holder');"><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a></h5></br> 
+									<div ng-if="allergy.allergies != ''">{{allergy.allergies}}</div>
+									<div ng-if="allergy.allergies == '' ||allergy.allergies == '' ">No information provided.</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-6 col-sm-6">
+								<div id="dialog3" title="Examination Summary" class="sectionBox" style="box-shadow:2px 7px 19px #888888; width:420px;display:none;position:absolute;margin-left:50px;margin-top:48px;background-color:white;z-index:1;">
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:3px;height:23px;cursor:pointer;" onclick="closeSocialHabits(3);">
+									<div style="width:100%;" id="social_habits_form_place_holder" class="sectionBox" ng-show="isForm == 1"></div>
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;"><input type="button" class="button" onclick="saveAndclose_socialhabits();" style="float:right;" value="save"/></div>
+								</div>
+								<div style="padding:10px;padding-left:50px;width:100%;" class="bodytext_bold">
+									<hr/>
+									<h5 onclick="closeSocialHabits(3);">Social Habits   &nbsp&nbsp<a href="javascript:void(0);" style="float:right;"  title="Click To Edit" ng-click="showForm('socialhabits','emrforms','false', 'vitals_target','','social_habits_form_place_holder');" ><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a></h5></br> 
+									<div style="display:inline-flex;">
+									<div ng-show="emr_snapshot.social_habits.diet_c != null && emr_snapshot.social_habits.smoking_c !=null  && emr_snapshot.social_habits.alcohol_c !=null  && emr_snapshot.social_habits.tobacco_c !=null && emr_snapshot.social_habits.exercisepatterns_c !=null && emr_snapshot.social_habits.outdoorsport_c !=null">								
+									<div ng-show="emr_snapshot.social_habits.diet_c != ''">Diet: {{emr_snapshot.social_habits.diet_c}}.</br></div> <div ng-show="emr_snapshot.social_habits.smoking_c != ''">Smoking: {{emr_snapshot.social_habits.smoking_c}}.<br/> </div><div ng-show="emr_snapshot.social_habits.alcohol_c!= ''">Alcohol: {{emr_snapshot.social_habits.alcohol_c}}.<br/></div>
+									
+									 <div ng-show="emr_snapshot.social_habits.tobacco_c != ''">Tobacco: {{emr_snapshot.social_habits.tobacco_c}}.<br/> </div><div ng-show="emr_snapshot.social_habits.exercisepatterns_c!= ''">Exercise: {{emr_snapshot.social_habits.exercisepatterns_c}}.</br></div> <div ng-show="emr_snapshot.social_habits.outdoorsport_c != ''">Outdoor Sports: {{emr_snapshot.social_habits.outdoorsport_c}}.</div>
+									
+									</div>
+									<div ng-show="emr_snapshot.social_habits.diet_c == null && emr_snapshot.social_habits.smoking_c ==null  && emr_snapshot.social_habits.alcohol_c ==null  && emr_snapshot.social_habits.tobacco_c ==null && emr_snapshot.social_habits.exercisepatterns_c ==null && emr_snapshot.social_habits.outdoorsport_c ==null ">No information Provided. </div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-sm-6">
+								<div id="dialog4" class="sectionBox" style="box-shadow:2px 7px 19px #888888; width:700px;display:none;position:absolute;margin-left:-223px;margin-top:48px;background-color:white;z-index:1;">
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:3px;height:23px;cursor:pointer;" onclick="closeImmunization(4);">
+									<input type="button" class="button" style="width:6%;height:28px;margin-top:30px;margin-right:-6px;float:right;" onclick="saveAndclose_immunization();" value="save"/>
+									<div id="immunization_form_place_holder" class="sectionBox" ng-show="isForm == 1"></div>
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;"><input type="button" class="button" onclick="saveAndclose_immunization();" style="float:right;" value="save"/></div>
+								</div>
+								<div style="padding:10px;padding-left:50px;width:100%;" class="bodytext_bold">
+									<hr/>
+									<h5 onclick="closeImmunization(4);">Immunization   &nbsp&nbsp<a href="javascript:void(0);" style="float:right;"  ng-click="showForm('immunization','emrforms','false', 'vitals_target','','immunization_form_place_holder');" title="Click To Edit" ><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a></h5></br> 
+									<div ng-if="immunize.immunization != '' ">{{immunize.immunization}}</div>
+									<div ng-if="immunize.immunization == '' ">No information provided.</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-6 col-sm-6">
+							<div id="dialog5" class="sectionBox" style="box-shadow:2px 7px 19px #888888; width:420px;display:none;position:absolute;margin-left:50px;margin-top:48px;background-color:white;z-index:1;">
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:3px;height:23px;cursor:pointer;" onclick="closePastDiseases(5);">
+									<input type="button" class="button" style="width:9%;height:30px;margin-top:30px;margin-right:-14px;float:right;" onclick="saveAndclose_pastdisease();" value="save"/>
+									<div style="width:100%;" id="pastdiseases_form_place_holder" class="sectionBox" ng-show="isForm == 1"></div>
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;"><input type="button" class="button" onclick="saveAndclose_pastdisease();" style="float:right;" value="save"/></div>
+								</div>
+								<div style="padding:10px;padding-left:50px;width:100%;" class="bodytext_bold">
+									<hr/>
+									<h5 onclick="closePastDiseases(5);"> Medical History   &nbsp&nbsp
+									<a href="javascript:void(0);" style="float:right;"  title="Click To Edit" ng-click="showForm('pastdiseases','emrforms','false', 'vitals_target','','pastdiseases_form_place_holder');" >
+									<i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a></h5></br> 
+									<div ng-repeat="pastdisease in emr_snapshot.past_diseases_history">
+																	
+										<!--<div ng-repeat="pastdisease in emr_snapshot.past_diseases_history">-->
+										<div ng-if="pastdisease.2 ==2">{{pastdisease.0}}&nbsp;&nbsp:&nbsp&nbsp;
+										<label ng-if="pastdisease.1!=''">{{pastdisease.1}}</label></br></div>
+									</div>
+									<div ng-if="pastd.pastdisease == '' ">No information provided.</div>
+									<!--<div ng-repeat="pastdisease in pastd.pastdisease">{{pastdisease}}<br/></div>
+									-->
+								</div>
+							</div>
+							<div class="col-lg-6 col-sm-6">
+								<div id="dialog6" class="sectionBox" style="box-shadow:2px 7px 19px #888888; width:420px;display:none;position:absolute;margin-left:50px;margin-top:48px;background:white;z-index:1;">
+									<h2 class="darkblue" >Current Illness and Treatment History</h2>
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:-25px;height:23px;cursor:pointer;" onclick="closeMajorIllness(6);">
+									<div id='divillness' style="height:auto; position:relative;float:left;width:100%;margin-top:0px;"></div>
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;"><input type="button" class="button" onclick="saveAndclose_illness();" style="float:right;" value="save"/></div>
+								</div>
+								<div style="padding:10px;padding-left:50px;width:100%;" class="bodytext_bold">
+									<hr/>
+									<h5>Current Illness and Treatment History   &nbsp&nbsp<a href="javascript:void(0);" style="float:right;"  title="Click To Edit" onclick="closeMajorIllness(6);get_past_data();"><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a></h5></br> 
+										<div ng-if="emr_snapshot.past_illness!=''">
+										<div ng-repeat="illness in emr_snapshot.past_illness">{{illness.disease_name}}&nbsp;({{illness.disease_peroid}})&nbsp;:&nbsp;{{illness.disease_detail}}</br></div>
+										</div>
+										<div ng-if="emr_snapshot.past_illness==''">No information Provided</div>
+									
+				<!--					<div ng-if="emr_snapshot.past_illness.join() != '' ">{{emr_snapshot.past_illness.join(", ")}}.</div>
+									<div ng-if="emr_snapshot.past_illness.join() == '' ">No information provided.</div>
+									-->
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-6 col-sm-6">
+								<div id="dialog7" class="sectionBox" style="box-shadow:2px 7px 19px #888888; width:420px;display:none;position:absolute;margin-left:50px;margin-top:48px;background:white;z-index:1;">
+									<h2 class="darkblue" >Operation Procedures</h2>
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:-25px;height:23px;cursor:pointer;" onclick="closeOperationProcedures(7);">
+									<div id='divsurgery' style="height:auto; position:relative;float:left;width:100%;margin-top:0px;"></div>
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;"><input type="button" class="button" onclick="saveAndclose_operationproc();" style="float:right;" value="save"/></div>
+								</div>
+								<div style="padding:10px;padding-left:50px;width:100%;" class="bodytext_bold">
+									<hr/>
+									<h5>Operation Procedures   &nbsp&nbsp<a href="javascript:void(0);" style="float:right;"  title="Click To Edit" onclick="closeOperationProcedures(7);get_past_data();"><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a></h5></br> 
+									<div ng-if="emr_snapshot.past_surgeries!=''">
+										<div ng-repeat="surgeries in emr_snapshot.past_surgeries">{{surgeries.surgery_name}}&nbsp;({{surgeries.surgery_date}})&nbsp;:&nbsp;{{surgeries.surgery_desc}}</br></div>
+									</div>	
+									<div ng-if="emr_snapshot.past_surgeries==''">No information Provided</div>
+				<!--					<div ng-if="emr_snapshot.past_surgeries.join() != '' ">{{emr_snapshot.past_surgeries.join(", ")}}.</div>
+									<div ng-if="emr_snapshot.past_surgeries.join() == '' ">No information provided.</div>
+				-->
+								</div>
+							</div>
+							<div class="col-lg-6 col-sm-6">
+								<div id="dialog8" class="sectionBox" style="box-shadow:2px 7px 19px #888888; width:680px;display:none;position:absolute;margin-left:-205px;margin-top:48px;background-color:white;z-index:1;">
+									<h2 class="darkblue" >Family History</h2>
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:0px;margin-top:-23px;height:23px;cursor:pointer;" onclick="closefamilyhistory(8);">
+				<!--					<div style="width:100%;" id="family_history_form_place_holder" class="sectionBox" ng-show="isForm == 1"></div>
+				-->			<table>	
+							<td colspan="4">
+								<table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#0d6596" style="border-width:1px; border-style: solid; border-collapse: collapse;">
+									<tr>
+										<td width="12%" align="left" valign="middle" class="bodytext_bold" style="text-align:left; padding-left:10px;">Relative</td>
+										<td width="12%" align="left" valign="middle"  class="bodytext_bold" style="text-align:left; padding-left:10px;"> Year of Birth </td>
+										<td width="41%" align="center" valign="middle" class="bodytext_bold"  style="text-align:left; padding-left:15px;">Known Medical History</td>
+										<td width="25%"  class="bodytext_bold" style="text-align:left; padding-left:15px;"> If not alive, age in years &amp; cause</td>
+										<td width="10%" class="bodytext_bold" style="text-align:left; padding-left:15px;">&nbsp;</td>
+									</tr>
+									<tr  class="bodytext_normal" id="fathe{{emr_snapshot.array_relativeFather.id}}">
+										<td height="28" align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:10px;">Father</td>
+										<td align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:10px;">
+											<select ng-model="emr_snapshot.array_relativeFather.birthyear" name="id{{emr_snapshot.array_relativeFather.id}}birthyear" class="yearpicker" id="id<?=$array_relativeFather['id']; ?>birthyear"  ></select>
+										</td>
+										<td height="22" align="left" valign="middle"  style="border-bottom:2px solid #0d6596; padding-left:15px;">
+											<input onchange="if($(this).val() != ''){highlight(this,true);}else{highlight(this,false);}" id="medicalhistorytxt{{emr_snapshot.array_relativeFather.id}}"  name="medicalhistorytxt{{emr_snapshot.array_relativeFather.id}}" type="text" class="textarea" size="52"  value="{{emr_snapshot.array_relativeFather.medicalhistory}}" />  
+										</td>
+										<td height="22" align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:15px;">
+											<table width="100%" border="0" cellspacing="0" cellpadding="0"  style="padding-top:3px" >
+												<tr id="trnotalivetxtid<?=$array_relativeFather['id']; ?>" name="trnotalivetxtid<?=$array_relativeFather['id']; ?>" style="valign:middle">
+													<td width="10%" >
+														<input name="id{{emr_snapshot.array_relativeFather.id}}deathagetxt" id="id{{emr_snapshot.array_relativeFather.id}}deathagetxt" type="text" class="textarea" size="2" placeholder="Age" value="{{emr_snapshot.array_relativeFather.deathage}}"  maxlength="3" />
+													</td>
+													<td width="5%">&nbsp;
+													</td>
+													<td width="85%">
+														<input name="id{{emr_snapshot.array_relativeFather.id}}deathcausetxt" id="id{{emr_snapshot.array_relativeFather.id}}deathcausetxt" type="text" class="textarea" size="13" placeholder="Cause"  value="{{emr_snapshot.array_relativeFather.deathcause}}"/>
+													</td>
+												</tr>
+											</table>	
+										</td>
+										<td align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:20px;"  >&nbsp;</td>
+									</tr>
+									<tr style="background-color:<?php if( $array_relativeMother['medicalhistory'] == ''){echo 'transparent';}else{echo '#FFFFA5';}?>;" class="bodytext_normal" id="mother{{emr_snapshot.array_relativeMother.id}}">
+										<td height="28" align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:10px;">Mother</td>
+										<td align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:10px;">
+											<select ng-model="emr_snapshot.array_relativeMother.birthyear" name="id{{emr_snapshot.array_relativeMother.id}}birthyear" class="yearpicker" id="id<?=$array_relativeMother['id']; ?>birthyear"></select>
+										</td>
+										
+										<td height="22" align="left" valign="middle" style="border-bottom:2px solid #0d6596; padding-left:15px;">
+											<input onchange="if($(this).val() != ''){highlight(this,true);}else{highlight(this,false);}" id="medicalhistorytxt{{emr_snapshot.array_relativeMother.id}}"  name="medicalhistorytxt{{emr_snapshot.array_relativeMother.id}}" type="text" class="textarea" size="52"  value="{{emr_snapshot.array_relativeMother.medicalhistory}}"  />  
+										</td>
+										<td height="22" align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:15px; ">
+											<table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding-top:3px" >
+												<tr id="trnotalivetxtid{{emr_snapshot.array_relativeMother.id}}" name="trnotalivetxtid{{emr_snapshot.array_relativeMother.id}}" >
+													<td width="10%" >
+														<input name="id{{emr_snapshot.array_relativeMother.id}}deathagetxt" id="id{{emr_snapshot.array_relativeMother.id}}deathagetxt" type="text" class="textarea" size="2" placeholder="Age" value="{{emr_snapshot.array_relativeMother.deathage}}"  maxlength="3"/>
+													</td>
+													<td width="5%">&nbsp;
+													</td>
+													<td width="85%">
+														<input name="id{{emr_snapshot.array_relativeMother.id}}deathcausetxt" id="id{{emr_snapshot.array_relativeMother.id}}deathcausetxt" type="text" class="textarea" size="13" placeholder="Cause" value="{{emr_snapshot.array_relativeMother.deathcause}}" />
+													</td>
+												</tr>
+											</table>	
+										</td>
+										<td align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:20px;"  >
+											&nbsp;
+										</td>
+									</tr>
+										<tr ng-repeat="relative in emr_snapshot.array_relative" style="background-color:<?php if( $relative['medicalhistory'] == ''){echo 'transparent';}else{echo '#FFFFA5';}?>;" class="bodytext_normal" id="relative{{relative['id']}}">
+											<td height="28" align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:10px;">{{relative['relation']}}</td>
+											<td align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:10px;">
+												<select ng-model="relative['birthyear']" name="id{{relative['id']}}birthyear" class="yearpicker" id="id<?=$relative['id']; ?>birthyear" ></select>
+											</td>
+											<td height="22" align="left" valign="middle"  style="border-bottom:2px solid #0d6596; padding-left:15px;">
+												<input onchange="if($(this).val() != ''){highlight(this,true);}else{highlight(this,false);}" id="medicalhistorytxt{{relative['id']}}"  name="medicalhistorytxt{{relative['id']}}" type="text" class="textarea" size="52" value="{{relative['medicalhistory']}}" />  
+											</td>
+											<td height="22" align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:15px;">
+												<table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding-top:3px">
+													<tr id="trnotalivetxtid{{relative['id']}}" name="trnotalivetxtid{{relative['id']}}" >
+														<td width="10%" >
+															<input name="id{{relative['id']}}deathagetxt" id="id{{relative['id']}}deathagetxt" type="text" class="textarea" size="2" placeholder="Age" value="{{relative['deathage']}}"  maxlength="3" number="true"/>
+														</td>
+														<td width="5%">&nbsp;
+														</td>
+														<td width="85%">
+															<input name="id{{relative['id']}}deathcausetxt" id="id{{relative['id']}}deathcausetxt" type="text" class="textarea" size="13" placeholder="Cause" value="{{relative['deathcause']}}"/>
+														</td>
+													</tr>
+												</table>	
+											</td>
+											<td align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:30px;"  >
+												<img src="/ayushman/assets/images/Close_Icon.png"  title="Delete" width="20" height="20" border="0" ng-click="deleterow(relative['id'])" style="cursor:pointer;" id="deleterelativebutton" />
+											</td>
+										</tr>
+									<tr>
+										<td height="28" align="left" valign="middle"  class="bodytext_normal" style=" padding-left:8px; border-bottom:2px solid #0d6596;" ><select name="select" id="newrelative" name="newrelative" style="size:50px;" >
+												<option ng-repeat="relationmaster in emr_snapshot.array_relationmaster"  value="{{relationmaster}}">{{relationmaster}}</option>";
+											</select>
+										</td>
+										<td align="left" valign="middle"  class="bodytext_normal" style=" padding-left:10px; border-bottom:2px solid #0d6596;"><select name="newrelativebirthyear" class="yearpicker" id="newrelativebirthyear"></select> </td>
+										<td height="25" align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:15px;"><input name="newrelativemedicalhistory" id="newrelativemedicalhistory" type="text" class="textarea" size="52"/></td>
+										<td height="25" align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:15px;"><input  name="newrelativedeathage" id="newrelativedeathage" type="text" class="textarea" size="2" placeholder="age" maxlength="3" />
+											&nbsp;
+											<input name="newrelativedeathcause" id="newrelativedeathcause" type="text" class="textarea" size="13"  placeholder="Cause" /></td>
+										<td align="left" valign="middle"  class="bodytext_normal" style="border-bottom:2px solid #0d6596; padding-left:30px;"  >
+											<img src="/ayushman/assets/images/add_arow.png" ng-click="addnewrelative()" title="Save" width="20" height="20" border="0" style="cursor:pointer;" id="addnewrelativebutton" />
+										</td>
+									</tr>
+								</table>	
+							</td>
+							</table>	
+									<input type="hidden" id="relativesdetails"/>
+									<input type="hidden" id="motherdetails" />
+									<input type="hidden" id="fatherdetails"/>
+							
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;"><input type="button" class="button" onclick="saveAndclose_familyhistory();" style="float:right;" value="save"/></div>
+								</div>
+								<div style="padding:10px;padding-left:50px;width:100%;" class="bodytext_bold">
+									<hr/>
+<!--									<h5 onclick="closefamilyhistory();">Family History   &nbsp&nbsp<a href="javascript:void(0);" style="float:right;"  title="Click To Edit" ng-click="showForm('familyhistory','emrforms','false', 'vitals_target','','family_history_form_place_holder');"><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a></h5></br> 
+	-->								<h5 onclick="closefamilyhistory(8);">Family History   &nbsp&nbsp<a href="javascript:void(0);" style="float:right;"  title="Click To Edit"><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a></h5></br> 
+									<div ng-repeat="i in emr_snapshot.family_history">
+										<div ng-show="(i['medhis'] != '' && i['medhis'] !=null) || (i['yod'] != '' && i['yod'] != null)">
+											{{i["relation"]}}<label ng-show="i['medhis'] != '' && i['medhis'] != null">({{i["yob"]}})</label>
+											: <span ng-if="i['medhis'] != ''">{{i["medhis"]}}.</span><span ng-if="i['medhis'] == ''">No medical problems.</span>&nbsp;<span ng-if="i['yod'] != ''">Died at age: {{i["yod"]}} ({{i["cod"]}}).</span>
+										</div>
+										<label ng-show="(i['medhis'] == '' || i['medhis'] ==null) && (i['yod'] == '' || i['yod'] == null)">{{i["relation"]}} : No information provided</label>
+									</div>
+									<div ng-show="emr_snapshot.family_history == ''">No information provided</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+								<div class="col-lg-6 col-sm-6">
+								<div id="dialog11" class="sectionBox" style="box-shadow:2px 7px 19px #888888; width:420px;display:none;position:absolute;margin-left:50px;margin-top:48px;background-color:white;z-index:1;">
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:3px;height:23px;cursor:pointer;" onclick="closehistory(11);">
+									<input type="button" class="button" style="width:9%;height:30px;margin-top:30px;margin-right:-14px;float:right;" onclick="saveAndclose_history();" value="save"/>
+									<div style="width:100%;" id="history_form_place_holder" class="sectionBox" ng-show="isForm == 1"></div>
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;">
+									<input type="button" class="button" onclick="saveAndclose_history();" style="float:right;" value="save"/></div>
+								</div>
+								<hr/>
+								<!--<div style="padding:10px;padding-left:50px;width:100%;" class="bodytext_bold">
+								<table>
+										<tr>
+											<td width = "200"><h5> Special Medical Episode</td><td td width = "190">
+											<select class="form-control regnformcontrol" style="width:100%;"  id="historyid" name="historyid" ng-model="selectedhistoryform" ng-options="selectedhistoryform.id as selectedhistoryform.name for selectedhistoryform in spe" > 
+										<option value="">Select Form</option>
+									</select></td>
+									<td width = "100"><a href="javascript:void(0);" style="float:right;"  title="Click To Edit" onclick="showmedicalforms();closehistory(11);" >
+									<i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a></h5></br></td>
+								</table>
+																		
+									 	<!--<div ng-repeat="pastdisease in emr_snapshot.past_diseases_history">
+										<div ng-if="pastdisease.2 ==2">{{pastdisease.0}}&nbsp;&nbsp:&nbsp&nbsp;
+										<label ng-if="pastdisease.1!=''">{{pastdisease.1}}</label></br></div>
+									    </div>
+									<div ng-if="pastd.pastdisease == '' ">No information provided.</div>
+									<!--<div ng-repeat="pastdisease in pastd.pastdisease">{{pastdisease}}<br/></div>
+									
+								</div>-->
+								</div>
+							<div class="col-lg-6 col-sm-6">
+								<div id="dialog9" class="sectionBox" style="box-shadow:2px 7px 19px #888888; width:420px;display:none;position:absolute;margin-left:50px;margin-top:48px;background:white;z-index:1;">
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:3px;height:23px;cursor:pointer;" onclick="closeMedicalObservation(9);">
+									<input type="button" class="button" style="width:9%;height:30px;margin-top:32px;margin-right:-13px;float:right;" onclick="saveAndclose_othermedical();" value="save"/>
+									<div style="width:100%;" id="othermedicalobservation_form_place_holder" class="sectionBox" ng-show="isForm == 1"></div>
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;"><input type="button" class="button" style="float:right;" onclick="saveAndclose_othermedical();" value="save"/></div>
+								</div>
+								<div style="padding:10px;padding-left:50px;width:100%;" class="bodytext_bold">
+									<hr/>
+									<h5 onclick="closeMedicalObservation(9);">Other Medical Observation   &nbsp&nbsp<a href="javascript:void(0);" style="float:right;"  title="Click To Edit" ng-click="showForm('othermedicalobservation','emrforms','false', 'vitals_target','','othermedicalobservation_form_place_holder');"><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a></h5></br> 
+									<div ng-show="emr_snapshot.ques_answer.0.1 != null && emr_snapshot.ques_answer.1.1 != null && emr_snapshot.ques_answer.2.1 != null &&emr_snapshot.ques_answer.3.1 != null && emr_snapshot.ques_answer.4.1 != null && emr_snapshot.ques_answer.5.1 != null && emr_snapshot.ques_answer.6.1 != null ">
+									<div ng-if="emr_snapshot.ques_answer.0.1 != ''">Present Medical Problem : {{emr_snapshot.ques_answer.0.1}}</br></div>
+									<div ng-if="emr_snapshot.ques_answer.1.1 != ''">Doctor visits :{{emr_snapshot.ques_answer.1.1}}</br></div>
+									<div ng-if="emr_snapshot.ques_answer.2.1 != ''">Blood/Sputum test :{{emr_snapshot.ques_answer.2.1}}</br></div>
+									<div ng-if="emr_snapshot.ques_answer.3.1 != ''">Ongoing medications :{{emr_snapshot.ques_answer.3.1}}</br></div>
+									<div ng-if="emr_snapshot.ques_answer.4.1 != ''">Full Health checkup : {{emr_snapshot.ques_answer.4.1}}</br></div>
+									<div ng-if="emr_snapshot.ques_answer.5.1 != ''">Spectacles : {{emr_snapshot.ques_answer.5.1}}</br></div>
+									<div ng-if="emr_snapshot.ques_answer.6.1 != ''">Other Findings : {{emr_snapshot.ques_answer.6.1}}</br></div>
+									</div>
+									<div ng-if="emr_snapshot.ques_answer.0.1 == null  && emr_snapshot.ques_answer.1.1 == null && emr_snapshot.ques_answer.2.1 == null && emr_snapshot.ques_answer.3.1 == null && emr_snapshot.ques_answer.4.1 == null && emr_snapshot.ques_answer.5.1 == null && emr_snapshot.ques_answer.6.1 == null">No information provided.</div>
+										</br>
+										</br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<past-visits  patient_id="pid"></past-visits>
+					<div my-reports  ></div>
+					<div my-certificates  ></div>
+					<div ng-show="emr_snapshot.user_role == 'doctor'" class="sectionBox"  style="position:fixed;bottom:0;float:right;right:1px;width:350px">
+						<h2 class="orange" style="height:34px;">
+							<a data-toggle="collapse" style="" onclick="" data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+								<span class="icons iconNotes" style="color:white;float:left;left:0">History Notes</span> <i class="fa fa-compress" style="color:white;float:right;right:10px;font-size:23px;"></i>
+							</a> 
+						</h2>
+						 <div id="collapseOne" class="panel-collapse collapse">
+							<textarea class="notesComments contentDetails smallContent" placeholder="Write notes here" ng-model="doctor_notes.notes" style='resize: none;height:200px;width:100%;'></textarea>
+							<div style="padding:2px;width:100%;border:1px solid;position:relative;background:rgb(237, 231, 231);;" ng-show="doctor_historynotes != ''">
+								<a href="javascript:void(0);" ng-click="openHistoryNotes();"><i class="fa fa-paperclip" style="font-size:20px;">&nbsp;</i>history notes .pdf</a>
+								<a href="javascript:void(0);" ng-click="deleteHistoryNotes();" style="float:right;right:0"><i class="fa fa-times" style="font-size:20px;">&nbsp;</i>Delete</a>
+							</div>
+							<div class="detailsLink orange">
+								<a href="javascript:void(0);" style="float:left;left:0px"  ng-show="doctor_historynotes != ''" ng-click="uploadHistoryNotes();"><span style="color:white;"><i class="fa fa-upload"></i>&nbsp;Upload Attachment </span></a> 
+							<a href="javascript:void(0);" style="float:left;left:0px"  ng-show="doctor_historynotes == ''" ng-click="launchNotesUpload();"><span style="color:white;"><i class="fa fa-upload"></i>&nbsp;Upload Attachment </span></a> 
+								<a href="javascript:void(0);" ng-click="save_notes(appointment_info.appointment_id, patientinfo.id);"><span style="color:white;">Save Notes</span></a> 
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div style="height:50px">
+			&nbsp;
+			</div>
+			
+		</div>
+			<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+			
+	<script>
+					
+						var jsonIllness = [{id: "listboxillness",	dataitem:{
+								0:{textbox:"",minlength:1,autocomplete:'true',watermarktext:'Major Illness',query:'select id as id, diseasename_c as value from diseasemasters where diseasename_c'},
+								1:{textbox:"",autocomplete:'false',watermarktext:'period of Treatment'},
+								2:{textbox:'',autocomplete:'false',watermarktext:'Description'}
+								
+								
+							},targetid: "divillness",boxes:3,label: "Major Illness:"}];
+						var jsonSurgery = [{id: "listboxsurgery",	dataitem:{
+								0:{textbox:"",minlength:1,autocomplete:'false',watermarktext:'Name of Surgery'},
+								1:{textbox:"",autocomplete:'false',watermarktext:'Date of Surgery'},
+								2:{textbox:'',autocomplete:'false',watermarktext:'Reason And Description'}
+								
+								
+							},targetid: "divsurgery",boxes:3,label: "Major Surgeries:"}];
+						$(document).ready(function(){
+							createlistbox(jsonIllness);
+							createlistbox(jsonSurgery);
+					
+							
+							for (i = new Date().getFullYear(); i > 1819; i--)
+							{
+								$('.yearpicker').append($('<option />').val(i).html(i));
+							}
+
+						});
+							var window_array=new Array();
+							var win;
+							for(i=1;i<12;i++){
+								window_array[i]=0;
+							}
+
+						var patientid = '';
+						function get_past_data()
+						{
+							$.ajax({
+								url: "/ayushman/cpatientpastillness/getpastdata?patid="+patientid,
+								success: function( data ) {
+									jsonObj =eval("("+data+")");
+									set_past_id(jsonObj['pastillness'],"divillness","listboxillness",jsonIllness[0].dataitem,3);
+									set_past_id(jsonObj['pastsurgery'],"divsurgery","listboxsurgery",jsonSurgery[0].dataitem,3);
+									//resize();
+									console.log(data);
+								},
+								error : function(){showMessage('550','200','Retrieving past data',"Could not retrieve past data.",'error','id');}
+							});	
+						}
+						function saveAndclose_socialhabits()
+						{
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.save_socialHabits();
+								});
+							}
+							setTimeout(function() {closeSocialHabits(3);},2250);
+						}
+						function saveAndclose_allergy()
+						{
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.save_allergies();
+								});
+							}
+							setTimeout(function() {closeAllergies(2);},2250);
+							
+						}
+						function saveAndclose_bloodgroupHandicap()
+						{
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.save_bloodgroupHandicap();
+								});
+							}
+							setTimeout(function() {closebloodgroup(10);},2250);
+							
+						}
+						function saveAndclose_immunization()
+						{
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.save_immunization();
+								});
+							}
+							setTimeout(function() {closeImmunization(4);},2250);
+							
+						}
+						function saveAndclose_pastdisease()
+						{
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.save_pastDiseases();
+								});
+							}
+							setTimeout(function() {closePastDiseases(5);},2250);
+							
+						}						
+						function saveAndclose_history()
+						{
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.save_history();
+								});
+							}
+							setTimeout(function() {closePastDiseases(5);},2250);
+							
+						}
+						function saveAndclose_illness()
+						{
+							savepastillness();
+							setTimeout(function() {closeMajorIllness(6);},2250);
+							
+						}
+						function saveAndclose_operationproc()
+						{
+							saveoperationdetails();
+							setTimeout(function() {closeOperationProcedures(7);},2250);
+							
+						}
+						function saveAndclose_othermedical()
+						{
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.save_othermedobserv();
+								});
+							}
+							setTimeout(function() {closeMedicalObservation(9);},2250);
+							
+						}
+						function saveAndclose_familyhistory()
+						{
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.savedetails(true);
+								});
+							}
+							setTimeout(function() {closefamilyhistory(8);},2250);
+						}
+
+						function set_past_id(data,div_name,targetid,data_item,no_of_boxes)
+						{
+							j=0;
+							
+							for(i=0;i<data.length;i++)
+							{
+								element = document.getElementById(div_name);
+								elements = element.getElementsByTagName("input");
+								images = element.getElementsByTagName("img");
+								$(images[i+1]).attr('src','/ayushman/assets/images/minus.gif');
+								$(images[i+1]).attr('onclick',"deleteParentElement(this)");
+								for( k=0;k<no_of_boxes*2;k++)
+								{
+									$(elements[k+j]).val(data[i][k]).removeClass('watermark');
+									$(element[k+j]).attr("style","border: none;font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; border-bottom: 1px solid #909090;margin-left:5px;float:left;");
+								}
+								createautocompletebox(targetid,data_item,no_of_boxes);
+								j=j+(no_of_boxes*2);
+							}
+						}
+						function savepastillness(){
+							$.ajax({
+								url: "/ayushman/cpatientpastillness/saveillness?ids="+getselecteditemsinjson('divillness',3)+"&columns=3&patid="+patientid,
+								success: function( data ) {showNotification('300','20','Save data','Major Illness & treatment history Updated successfully','notification','timernotification',3000);$('#message').dialog( "option", "position", "center" );
+								},
+								error : function(){showNotification('300','20','Save data','Error occured while saving record. Please contact your system administrator','notification','timernotification',3000);$('#message').dialog( "option", "position", "center" );}
+							});
+						}
+						function saveoperationdetails(){
+							$.ajax({
+								url: "/ayushman/cpatientpastillness/savesurgery?ids="+getselecteditemsinjson('divsurgery',3)+"&columns=3&patid="+patientid,
+								success: function( data ) {showNotification('300','20','Save data','Operation Procedure Details updated successfully','notification','timernotification',3000);$('#message').dialog( "option", "position", "center" );
+								},
+								error : function(){showNotification('300','20','Save data','Error occured while saving record. Please contact your system administrator','notification','timernotification',3000);$('#message').dialog( "option", "position", "center" );}
+							});
+						}
+
+					  function close_allwindow()
+					  {
+						var flag=0;
+					  	if(window_array[1]==1){
+							$("#dialog1").stop().slideToggle(500);
+							flag=1;
+							window_array[1]=0;
+					  	}
+					   if(window_array[2]==1){
+							$("#dialog2").stop().slideToggle(500);
+							flag=2;
+							window_array[2]=0;
+					  	}
+					   if(window_array[3]==1){
+							$("#dialog3").stop().slideToggle(500);
+							flag=3;
+							window_array[3]=0;
+					  	}
+					   if(window_array[4]==1){
+							$("#dialog4").stop().slideToggle(500);
+							flag=4;
+							window_array[4]=0;
+					  	}
+					   if(window_array[5]==1){
+							$("#dialog5").stop().slideToggle(500);
+							flag=5;
+							window_array[5]=0;
+					  	}
+					   if(window_array[6]==1){
+							$("#dialog6").stop().slideToggle(500);
+							flag=6;
+							window_array[6]=0;
+					  	}
+					   if(window_array[7]==1){
+							$("#dialog7").stop().slideToggle(500);
+							flag=7;
+							window_array[7]=0;
+					  	}
+					   if(window_array[8]==1){
+							$("#dialog8").stop().slideToggle(500);
+							flag=8;
+							window_array[8]=0;
+					  	}
+					   if(window_array[9]==1){
+							$("#dialog9").stop().slideToggle(500);
+							flag=9;
+							window_array[9]=0;
+					  	}
+					   if(window_array[10]==1){
+							$("#dialog10").stop().slideToggle(500);
+							flag=10;
+							window_array[10]=0;
+					  	}
+						 if(window_array[11]==1){
+							$("#dialog11").stop().slideToggle(500);
+							flag=11;
+							window_array[11]=0;
+					  	}
+						
+						return flag;
+					  }
+
+					  function closeRiskFactors(windownum)
+					  {
+					  	var check;
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog1").stop().slideToggle(500);
+							window_array[1]=1
+					  	}
+						var scope = angular.element($('#patientemr')).scope();
+						if(!scope.$$phase) {
+							scope.$apply(function(){
+								
+								scope.refreshrisk();
+							});
+						}
+						
+					  }
+					  function closeAllergies(windownum)
+					  {
+					  	var check;
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog2").stop().slideToggle(500);
+							window_array[2]=1;
+					  	}
+					  }
+					  function closeSocialHabits(windownum)
+					  {
+					  	var check;
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.refreshpastillness();
+								});
+							}
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog3").stop().slideToggle(500);
+							window_array[3]=1;
+					  	}
+					  }
+					  function closeImmunization(windownum)
+					  {
+					  	var check;
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog4").stop().slideToggle(500);
+							window_array[4]=1;
+					  	}
+					  }
+					  function closePastDiseases(windownum)
+					  {
+					  	var check;
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+							scope.$apply(function(){
+								scope.refreshpastillness();
+							});
+						}
+
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog5").stop().slideToggle(500);
+							window_array[5]=1;
+					  	}
+					  }
+					  function closeMajorIllness(windownum)
+					  {
+					  	var check;
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+							scope.$apply(function(){
+								scope.refreshpastillness();
+							});
+						}
+
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog6").stop().slideToggle(500);
+							window_array[6]=1;
+					  	}
+					  }
+					  function closeOperationProcedures(windownum)
+					  {
+					  	var check;
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+							scope.$apply(function(){
+								scope.refreshpastillness();
+							});
+						}
+
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog7").stop().slideToggle(500);
+							window_array[7]=1;
+					  	}
+					  }
+					  function closefamilyhistory(windownum)
+					  {
+					  	var check;
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.refreshpastillness();
+								});
+							}
+
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog8").stop().slideToggle(500);
+							window_array[8]=1;
+					  	}
+					  }
+					  function closeMedicalObservation(windownum)
+					  {
+					  	var check;
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.refreshpastillness();
+								});
+							}
+
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog9").stop().slideToggle(500);
+							window_array[9]=1;
+					  	}
+					  }
+
+  					  function closebloodgroup(windownum)
+					  {
+					  	var check;
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.refreshpastillness();
+								});
+							}
+
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog10").stop().slideToggle(500);
+							window_array[10]=1;
+					  	}
+					  }
+					  
+					   function closehistory(windownum)
+					  {
+					  	var check;
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.refreshpastillness();
+								});
+							}
+
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog11").stop().slideToggle(500);
+							window_array[11]=1;
+					  	}
+					  }
+					  
+					  function showmedicalforms()
+					  {
+					  var formname =$('#historyid').find(":selected").text();
+					  	  console.log(formname);
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+									 console.log(formname);
+									scope.$apply(function(){
+									scope.showForm(formname,'examinations','false', 'vitals_target','','history_form_place_holder');
+								});
+							}				  
+					  }
+					  					  
+					 </script>
+		
+		
+	</body>
+</html>

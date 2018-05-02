@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	
+	<container>
+		<id>1</id>
+		<questions>1,8</questions>
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>20,27</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>Inspection</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>25,2,3,4,5</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>25</id>
+		<label>Distension </label>
+		<type>DD</type>
+		<answer>
+			<label>Present </label>
+		
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Umbilical hernia </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Inguinal hernia</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Femoral hernia</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Visible lump</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>6,7</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Location</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Size</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Palpation </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>26,10,12,14,18,19</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+			
+		</answer>
+	</question>
+	<question>
+		<id>26</id>
+		<label>Tenderness </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>9</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>Location</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Rebound tenderness</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>11</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Location</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Palpable mass</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>13</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Location</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Hepatomegaly</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>15,16,17</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Intensity</label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>Consistency</label>
+		<type>DD</type>
+		<answer>
+			<label>Soft</label>
+		</answer>
+		<answer>
+			<label>Firm</label>
+		</answer>
+		<answer>
+			<label>Hard</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Tenderness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label>Splenomegaly</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>15,17</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>Thrill</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>Percussion Ascitis </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	<question>
+		<id>27</id>
+		<label>Auscultation </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>21,22</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>21</id>
+		<label>Aortic bruit</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>22</id>
+		<label>Renal bruit</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>23</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+	
+</form>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<head>
+<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+
+<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+			var medicinecheck=readCookie('medicinecheckbox');
+			if(medicinecheck == 'checked'){
+				$('#MedicinesChk').attr('checked','checked');
+			}
+			else{
+				$('#MedicinesChk').removeAttr('checked');
+			}
+			
+			var withoutheadercheck = readCookie('withoutheadercheckbox');
+			if(withoutheadercheck == 'checked'){
+				$('#withoutheaderChk').attr('checked','checked');
+				$("#headerCombine").hide();  // checked
+				$("#headerMedicine").hide();  // checked
+				$("#headerInvestigation").hide();
+				$('#bodycombine').css('marginTop','150');
+				$('#bodymedicine').css('marginTop','150');
+				$('#bodyinvestigation').css('marginTop','150');
+			}
+			else{
+				$('#withoutheaderChk').removeAttr('checked');
+				$("#headerCombine").show();  // checked
+				$("#headerMedicine").show();  // checked
+				$("#headerInvestigation").show();
+				$('#bodycombine').css('marginTop','0');
+				$('#bodymedicine').css('marginTop','0');
+				$('#bodyinvestigation').css('marginTop','0');
+			}
+			
+	
+			var investigationcheck=readCookie('investigationcheckbox');
+			if(investigationcheck == 'checked'){
+				$('#InvestigationChk').attr('checked','checked');
+			}
+			else{
+				$('#InvestigationChk').removeAttr('checked');
+			}
+	
+		$('.action').hide();
+		if($("#MedicinesChk").is(':checked')){
+    		$("#medicineDiv").show();  // checked
+    	}else{	
+    		$("#medicineDiv").hide();  // unchecked
+    		$("#medicineDiv").removeClass('yesPrint');
+    	} 
+    	if($("#InvestigationChk").is(':checked')){
+    		$("#investigateDiv").show();  // checked
+     	}else{
+    		$("#investigateDiv").hide();  // unchecked
+    		$("#investigateDiv").removeClass('yesPrint');
+    	}
+		
+	});
+    
+	$('#MedicinesChk').change(function () {
+		if($("#MedicinesChk").is(':checked')){
+    		$("#medicineDiv").show();  // checked
+    		$("#medicineDiv").addClass('yesPrint');
+			medicinecheckbox = Array();
+			medicinecheckbox='checked';
+			document.cookie = 'medicinecheckbox='+(medicinecheckbox);
+    	}else{	
+			document.cookie = 'medicinecheckbox=';
+    		$("#medicineDiv").hide();  // unchecked
+    		$("#medicineDiv").removeClass('yesPrint');
+    	} 
+	});
+
+	$('#InvestigationChk').change(function () {
+		if($("#InvestigationChk").is(':checked')){
+    		$("#investigateDiv").show();  // checked
+    		$("#investigateDiv").addClass('yesPrint');
+			investigationcheckbox = Array();
+			investigationcheckbox='checked';
+			document.cookie = 'investigationcheckbox='+(investigationcheckbox);
+     	}else{
+			document.cookie = 'investigationcheckbox=';
+    		$("#investigateDiv").hide();  // unchecked
+    		$("#investigateDiv").removeClass('yesPrint');
+    	}
+	});
+	
+	$('#withoutheaderChk').change(function () {
+		if($("#withoutheaderChk").is(':checked')){
+		
+    		$("#headerCombine").hide();  // checked
+			$("#headerMedicine").hide();  // checked
+			$("#headerInvestigation").hide();  // checked
+			withoutheadercheckbox = Array();
+			withoutheadercheckbox='checked';
+			document.cookie = 'withoutheadercheckbox='+(withoutheadercheckbox);
+			
+			$('#bodycombine').css('marginTop','100');
+			$('#bodymedicine').css('marginTop','100');
+			$('#bodyinvestigation').css('marginTop','100');
+     	}else{
+			document.cookie = 'withoutheadercheckbox=';
+    		$("#headerCombine").show();  // checked
+			$("#headerMedicine").show();  // checked
+			$("#headerInvestigation").show();  // checked
+			
+			$('#bodycombine').css('marginTop','0');
+			$('#bodymedicine').css('marginTop','0');
+			$('#bodyinvestigation').css('marginTop','0');
+			
+    	}
+	});
+	
+	/*function PrintElem(elem)
+    {
+		var scope = angular.element($("#quickprescription")).scope();
+		if(!scope.$$phase) {
+			scope.$apply(function(){
+				if(scope.previousexamination_data.text_complaint.length == 0){
+					$(".complaint").hide();
+				}
+				if(scope.previousexamination_data.text_examinationsummary.length == 0){
+					$(".examinationsummary").hide();
+				}
+				if(scope.previousexamination_data.text_diagnosis.length == 0){
+					$(".diagnosis").hide();
+				}
+				if(scope.previousexamination_data.text_followup.length == 0){
+					$(".followup").hide();
+				}
+				if(scope.previousexamination_data.isexaminationavailable == true){
+					$(".vitals").show();
+				}else{
+					$(".vitals").hide();
+				}
+			});
+		}
+		
+        Popup($(elem).html());
+    }
+
+    function Popup(data) 
+    {
+        var mywindow = window.open('', 'print', 'height=400,width=600');
+        mywindow.document.write('<html><head><title>my div</title>');
+       // optional stylesheet //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }*/
+	function PrintElem(elem,appointmentid)
+		{
+			var scope = angular.element($("#quickprescription")).scope();
+			if(!scope.$$phase) {
+				scope.$apply(function(){
+					if (scope.myprofile['userinfo'].systemGenflag == 1)
+					{
+						$(".systemheader").show();	
+						$(".systemfooter").show();
+						$(".uploadedheader").hide();
+						$(".uploadedfooter").hide();
+					}
+					else
+					{
+						$(".systemheader").hide();
+						$(".systemfooter").hide();
+						$(".uploadedheader").show();
+						$(".uploadedfooter").show();
+					}
+					
+			
+					if(scope.previousexamination_data.text_complaint.length == 0){
+						$(".complaint").hide();
+					}
+					if(scope.previousexamination_data.text_examinationsummary.length == 0 ){
+						$(".examinationsummary").hide();
+					}
+					if(scope.previousexamination_data.text_diagnosis.length == 0){
+						$(".diagnosis").hide();
+					}
+					if(scope.previousexamination_data.text_followup.length == 0){
+						$(".followup").hide();
+					}
+					if(scope.previousexamination_data.text_reportparameter.length == 0){
+						$(".report").hide();
+					}
+					if(scope.previousexamination_data.isexaminationavailable == true){
+						$(".vitals").show();
+					}else{
+						$(".vitals").hide();
+					}
+				});
+			}
+			savePDf(appointmentid);
+			setPrint();
+			console.log($('#prescriptionsPrint').html());
+			setTimeout(function(){
+				Popup($('#prescriptionsPrint').html());
+			},1000);			
+						
+			
+		}
+		function Popup(data) 
+		{
+			var mywindow = window.open('', 'print','height=768,width=1024');
+			mywindow.document.write('<html><head>');
+			mywindow.document.write('</head><body style="font-size:14px;">');
+			mywindow.document.write(data);
+			mywindow.document.write('</body></html>');
+			
+			mywindow.print();
+			mywindow.close();
+			return true;
+		}
+</script>
+<style type="text/css">	
+		.ui-autocomplete { max-height: 50%; overflow-y: auto; overflow-x: hidden;
+			-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);
+			-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);
+			box-shadow: 0 4px 15px rgba(0,0,0,1);
+		}
+		.ui-dialog { z-index: 3000 !important ;}
+        .notes
+        {
+            background-image: -webkit-linear-gradient(left, white 10px, transparent 10px), -webkit-linear-gradient(right, white 10px, transparent 10px), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -moz-linear-gradient(left, white 10px, transparent 10px), -moz-linear-gradient(right, white 10px, transparent 10px), -moz-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -ms-linear-gradient(left, white 10px, transparent 10px), -ms-linear-gradient(right, white 10px, transparent 10px), -ms-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -o-linear-gradient(left, white 10px, transparent 10px), -o-linear-gradient(right, white 10px, transparent 10px), -o-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: linear-gradient(left, white 10px, transparent 10px), linear-gradient(right, white 10px, transparent 10px), linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-size: 100% 100%, 100% 100%, 100% 31px;
+            line-height: 31px;
+            padding: 8px;
+			border:none;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+			font-size:9pt
+        }
+        .notes:focus
+        {
+            outline: none;
+        }
+		.fragment {
+			height: 27px;
+			border: none;
+			display: block;
+			padding: 3px;
+			box-sizing: border-box;
+		}
+
+		.fragment:hover {
+			box-shadow: 2px 2px 5px rgba(0,0,0,.2);
+
+		}
+		
+		
+		
+		#close {
+			float:right;
+			display:inline-block;
+			padding:2px 5px;
+			background:#ccc;
+		}
+		@page {
+			/* dimensions for the whole page */
+			size: A5;
+			margin: 0;
+		}
+
+	   	#dialog tr:hover{
+   	    		background-color:#D1E8F7;
+   	    		box-shadow:2px 7px 19px #888888;
+   	    	}
+		
+</style>
+<style type="text/css">
+		@media only print
+		{	
+			#actions{
+				display:none;
+				width:0px;
+			}
+		.yesPrint{page-break-before: always}
+			
+		}
+		.bodytext_normal{
+				color:black !important; 
+			}
+		.bodytext_bold{
+			color:black;
+		}
+		
+		.fragment bodytext_normal{
+			color:black !important;
+		}
+		body {
+			/* A5 dimensions */
+			height: 210mm;
+			width: 148.5mm;
+			margin: 0;
+		}
+	</style>
+<style media="screen">
+  .noPrint{ display: block; }
+  .yesPrint{ display: none !important; }
+  .yesPrintNoBreak{ display: none !important; }
+  .disableyesPrint{ display: none !important; }
+</style>
+
+<style media="print">
+  .noPrint{ display: none; }
+  .yesPrint{ display: block !important; }
+  .disableyesPrint{ display: none !important; }
+</style>
+</head>
+<body>
+<table>
+	<tr>
+		<td style="width:613px" class="preview" >
+			<div  id="prescriptionPrint" class="prescription">
+			<link rel="stylesheet" href="/ayushman/assets/app/css/prescription.css">
+				<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+				<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+				<div class="previewHeader">
+					
+					<div  class= "uploadedheader" id="uploadedheader" ng-show= "myprofile['userinfo'].systemGenflag == 0">
+						<img ng-if="myprofile['userinfo'].header" src="{{myprofile['userinfo'].header}}" width=100%>
+					</div>
+					<div  class="systemheader" id="systemheader" ng-show="myprofile['userinfo'].systemGenflag == 1">
+					<div class="doctorinfo">
+						<div class="doctorname">Dr. {{myprofile['userinfo'].name}}</div>
+						<div class="doctoreducation">{{myprofile['usereducation'].doctoreducation}}</div>
+						<div class="otherinfo">Regd No.:{{myprofile['userinfo'].regno}}</div>
+					</div>
+					<div class="doctorinfo">
+						<div class="doctoraddress">
+							<div class="doctorname">{{myclinics['clinicinfo'][0].clinicname}}</div>
+							<div class="otherinfo">
+								{{myclinics['clinicinfo'][0].line1}},
+								{{myclinics['clinicinfo'][0].nearmark}},
+								{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+								{{myclinics['clinicinfo'][0].state}}
+								</br>
+								Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}
+							</div>
+						</div>						
+					</div>
+					</div>
+				</div>
+				<div class="separator" />
+				<div class="patientinfo">
+					<div class="patientname">
+						{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}})
+					</div>
+					<div class="appointmentdate">
+						{{appointment_info.endConsultDate}}
+					</div>
+				</div>
+				<div class="vitals" ng-show="previousexamination_data.isexaminationavailable == true" >
+					<div class="signs">
+						Pulse : <label class="textarea" id="pvitals_q_21">{{previousexamination_data.vitals_q_21}}</label>&nbsp;pm
+					</div>
+					<div class="signs">
+						BP : <label class="textarea" id="pvitals_q_8" >{{previousexamination_data.vitals_q_8}}</label>&nbsp;mm/Hg
+					</div>
+					<div class="signs">
+						Height : <label id="pvitals_q_2"  class="textarea" >{{previousexamination_data.vitals_q_2}}</label>&nbsp;cms
+					</div>					
+					<div class="signs">
+						Weight : <label class="textarea" id="pvitals_q_1" >{{previousexamination_data.vitals_q_1}}</label>&nbsp;Kg
+					</div>	
+					<div class="signs">
+						BMI : <label class="textarea" id="pvitals_q_3" >{{previousexamination_data.vitals_q_3}}</label>&nbsp;
+					</div>	
+					<div class="signs">
+						Wst : <label class="textarea" id="pvitals_q_41" >{{previousexamination_data.vitals_q_41}}</label>&nbsp;cms
+					</div>		
+					<div class="signs">
+						HIP : <label class="textarea" id="pvitals_q_42" >{{previousexamination_data.vitals_q_42}}</label>&nbsp;cms
+					</div>	
+					<div class="signs">
+						WHR : <label class="textarea" id="pvitals_q_43" >{{previousexamination_data.vitals_q_43}}</label>&nbsp;
+					</div>
+					<div class="signs">
+						Temp : <label class="textarea" id="pvitals_q_11" >{{previousexamination_data.vitals_q_11}}</label>&nbsp; &#x2109;
+					</div>
+				</div>
+				
+				<div class="separator" />
+				<div id="quickprescription" class="body" >
+					<div class="rows complaint" ng-show="previousexamination_data.text_complaint.length > 0" >
+						<div class="heading">Symptoms -</div><div class="details">{{previousexamination_data.text_complaint}}</div>
+					</div>
+					<div class="rows examinationsummary" ng-show=" previousexamination_data.text_examinationsummary.length > 0" >
+						<div class="heading">Examination Summary -</div><div class="details">{{previousexamination_data.text_examinationsummary}}</div>
+					</div>
+					<div class="rows diagnosis" ng-show="previousexamination_data.text_diagnosis.length > 0" >
+						<div class="heading">Diagnosis -</div><div class="details"> {{previousexamination_data.text_diagnosis}}</div>
+					</div>
+					<div class="rows report" ng-show="previousexamination_data.text_reportparameter.length > 0"  >
+						<div class="heading">Reports-</div><div class="details"> {{previousexamination_data.text_reportparameter}}</div>
+					</div> 
+					<div class="heading rows" id ="pprescription" >Rx</div>
+					<div class="bodytext_normal" style="color:black;float:right;width:100%;margin-top:10px;margin-left:20px;" id ="pprescription" ><p style="white-space: pre-wrap;">{{previousexamination_data.medicine}}</p></div></br></br>
+					<br/>
+					<div class="heading rows" id ="pinvestigation">Investigations </div>
+					<div class="bodytext_normal" style="color:black;float:right;width:100%;margin-top:10px;margin-left:20px;" id ="pinvestigation" ><p style="white-space: pre-line;">{{previousexamination_data.investigations}}</div>
+					
+					<div class="rows followup" ng-show="previousexamination_data.text_diagnosis.length > 0" >
+						<div class="heading">Other Instructions / Follow Up advice -</div><div class="details"> {{previousexamination_data.text_followup}}</div>
+					</div>
+				</div>
+				<div  style="color:black;float:right;padding-right:50px;padding-bottom:10px;">			
+					Signature
+				</div>
+				<div class="note">
+					<div  class="systemfooter" id="systemfooter"ng-show="myprofile['userinfo'].systemGenflag == 1">
+						Note : Prescription available online at www.indiaonlinehealth.com
+					</div>
+					<div  class="uploadedfooter" id="uploadedfooter" ng-show="myprofile['userinfo'].systemGenflag == 0">
+						<img ng-if="myprofile['userinfo'].footer" src="{{myprofile['userinfo'].footer}}" width=100%>
+					</div>
+				</div>
+			</div>
+			<div id="prescriptionsPrint" style="display:none;">
+					
+			</div>
+		</div>	
+		</td>
+		<td width="50px;" id="actions" valign="top">
+			<div onclick="displaypritableprescriptionoption()" style="">
+			<input type="button" style="margin:5px;color: #19070B; background-color: #585858; border: 1pt ridge lightgrey;width:50px;height:40px;background: url(/ayushman/assets/images/printoption.jpg)no-repeat center top;" class="button" />
+			<label style="font-size: larger;color: #585858;margin-top:-20px;margin-left:15px;">Print </label>
+			</div>
+			<div id="dialog"  class="sectionBox" style="display:block;position:absolute;margin-left:68px;margin-top:-31px;background:white;">
+				<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:1px;margin-top:0px;height:20px;cursor:pointer;" onclick="displaypritableprescriptionoption();">
+				<table width="inherit" class='table_roundBorder' style="max-height:100%;width:266px; margin-right:13px" >
+					<tr style="border-bottom:1px solid #9cd4f9;">
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						<input type="checkbox" name="prescription"  id="combine" value="TRUE" checked disabled/>Combined copy of Medicine & Investigation<br>
+						</td>
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;">
+						
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						<input type="checkbox" name="prescription" id="MedicinesChk" />Separate copy for Medicines<br>
+						</td>
+					</tr>	
+					<tr style="border-bottom:1px solid #9cd4f9;">
+
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						<input type="checkbox" name="prescription" id="InvestigationChk" />Separate copy for Investigations 
+						</td>					
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" >
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+							<input type="checkbox" id="withoutheaderChk" />Print Without Header And Footer
+						</td>
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" onclick="PrintElem('#print',appointmentid);">
+						<td width="100%"  class="bodytext_bold" align="center" style="padding:5px;">
+							<input type="button" value="Print Now" style="margin:5px;width:150px;height:20px;" class="button" />
+						</td>
+					</tr>
+				</table>
+			</div>
+		</td>
+		</tr>
+</table>
+	 <script>
+	   function displaypritableprescriptionoption()
+	   {
+			$("#dialog").stop().slideToggle(500);
+	   }
+     </script>
+
+
+<div id="print">
+<div id="combine" class="yesPrintNoBreak">
+	<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+	<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+	<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+	<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+	<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+	<div style="color:black;width:100%;height:auto;float:left;">
+		<div id="headerCombine" style="color:black;float:left;width:100%;margin-left:3px;padding-top:7px;">
+			<table class="bodytext_bold">
+				<tr>
+					<td width="50%" style="color:black;text-align:left;width:50%;padding-left:10px;">
+						<font color="black">Dr. {{myprofile['userinfo'].name}}</font>&nbsp;<span class="bodytext_normal" style="color:black;font-size:9px;" >({{myprofile['usereducation'].doctoreducation}})</span></br>
+						<span class="bodytext_normal" style="color:black;font-size:10px;">{{myclinics['clinicinfo'][0].clinicname}}</br>
+						{{myclinics['clinicinfo'][0].line1}},
+						{{myclinics['clinicinfo'][0].nearmark}},
+						{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+						{{myclinics['clinicinfo'][0].state}}
+						</br>
+						Ph.+{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}</span>
+					</td>
+					<td width="50%" style="color:black;text-align:right;width:50%;padding-right:10px;vertical-align:top;">
+						<span class="bodytext_normal" style="color:black;font-size:9px;">Regd Number:{{myprofile['userinfo'].regno}}</span>
+					</td>
+				</tr>
+			</table>
+			<hr style="color:black;width:100%;"/>
+		</div>		
+		<div id="bodycombine" style="color:black;float:left;width:100%;margin-left:3px;">
+			<table class="bodytext_bold" width="100%">
+				<tr>
+					<td width="50%" style="color:black;text-align:left;vertical-align:top;width:50%;padding-left:10px;">
+						{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}})</br>
+					</td>
+					<td width="50%" style="color:black;text-align:right;width:50%;padding-right:8px;vertical-align:top;">
+								<span class="bodytext_normal" style="color:black">{{previousexamination_data.date}}</span>
+								</br></br><br/>
+								<span ng-show="previousexamination_data.isexaminationavailable == true" class="bodytext_normal vitals" style="color:black">Height : {{previousexamination_data.vitals_q_2}}&nbsp;(cms),&nbsp;&nbsp;&nbsp;Weight :{{previousexamination_data.vitals_q_1}}&nbsp;(Kg)</br>
+									BP : {{previousexamination_data.vitals_q_8}}&nbsp;(mm/Hg),&nbsp;Pulse :{{previousexamination_data.vitals_q_21}}&nbsp;(pm)
+								</span>
+							</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div id="quickprescription" class="bodytext_normal" style="color:black;min-height:548px;padding-left:15px;padding-right:15px;" >
+		<div style="color:black;width:100%">
+				</br>
+				<div style="color:black;float:right;width:100%;" class="complaint" ng-show="previousexamination_data.text_complaint.length > 0" ><span class="bodytext_bold" style="color:black">
+					Symptoms -</span>{{previousexamination_data.text_complaint}}
+					</br>
+					</br>
+				</div>
+				<div style="float:right;width:100%;color:black" class="examinationsummary" ng-show="previousexamination_data.text_examinationsummary.length > 0" class="bodytext_normal" ><span class="bodytext_bold" style="color:black;">
+					Examination Summary -</span><p style="white-space: pre-line;">{{previousexamination_data.text_examinationsummary}}</p>
+					</br>
+				</div>
+				<div style="color:black;float:right;width:100%;" class="diagnosis"  ng-show="previousexamination_data.text_diagnosis.length > 0" >
+					<span class="bodytext_bold" style="color:black">Diagnosis -</span>  {{previousexamination_data.text_diagnosis}}
+					</br>
+					</br>
+				</div>
+				<span class="bodytext_Normal" style="color:black;font-size:19px;" ng-show="previousexamination_data.medicine">Rx</span>
+					<div class="bodytext_normal" style="color:black;float:right;width:100%;margin-top:10px;margin-left:20px;" id ="pprescription" ><p style="white-space: pre-wrap;">{{previousexamination_data.medicine}}</p></div></br></br>
+					</br>
+					</br>
+					<div style="color:black;float:right;width:100%;"> 
+						<div class="bodytext_normal" style="color:black;float:right;width:100%;margin-top:10px;margin-left:20px;" id ="pinvestigation" ><p style="white-space: pre-line;">{{previousexamination_data.investigations}}</p></div>
+						</br>
+						</br>
+					</div>
+				<div style="color:black;float:right;width:100%;" class="followup"  ng-show="previousexamination_data.text_followup"><span class="bodytext_bold" style="color:black">Other Instructions / Follow Up advice -</span> {{previousexamination_data.text_followup}}</div>
+			</div>
+	</div>
+		<div style="color:black;float:right;bottom:right:50px;bottom:10px;">
+				Signature
+		</div>
+
+	</div>
+<div id="medicineDiv" class="yesPrint" style="display:none;">
+	<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+	<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+	<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+	<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+	<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+	<div style="color:black;width:100%;height:auto;float:left;">
+		<div id="headerMedicine" style="color:black;float:left;width:100%;margin-left:3px;padding-top:7px;">
+			<table class="bodytext_bold">
+				<tr>
+					<td width="50%" style="color:black;text-align:left;width:50%;padding-left:10px;">
+						<font color="black">Dr. {{myprofile['userinfo'].name}}</font>&nbsp;<span class="bodytext_normal" style="color:black;font-size:9px;" >({{myprofile['usereducation'].doctoreducation}})</span></br>
+						<span class="bodytext_normal" style="color:black;font-size:10px;">{{myclinics['clinicinfo'][0].clinicname}}</br>
+						{{myclinics['clinicinfo'][0].line1}},
+						{{myclinics['clinicinfo'][0].nearmark}},
+						{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+						{{myclinics['clinicinfo'][0].state}}
+						</br>
+						Ph.+{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}</span>
+					</td>
+					<td width="50%" style="color:black;text-align:right;width:50%;padding-right:10px;vertical-align:top;">
+						<span class="bodytext_normal" style="color:black;font-size:9px;">Regd Number:{{myprofile['userinfo'].regno}}</span>
+					</td>
+				</tr>
+			</table>
+			<hr style="color:black;width:100%;"/>
+		</div>
+		<div id="bodymedicine" style="color:black;float:left;width:100%;margin-left:3px;">
+			<table class="bodytext_bold" width="100%">
+				<tr>
+					<td width="50%" style="color:black;text-align:left;vertical-align:top;width:50%;padding-left:10px;">
+						{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}})</br>
+					</td>
+					<td width="50%" style="color:black;text-align:right;width:50%;padding-right:8px;vertical-align:top;">
+								<span class="bodytext_normal" style="color:black">{{previousexamination_data.date}}</span>
+								</br></br><br/>
+								<span ng-show="previousexamination_data.isexaminationavailable == true" class="bodytext_normal vitals" style="color:black">Height : {{previousexamination_data.vitals_q_2}}&nbsp;(cms),&nbsp;&nbsp;&nbsp;Weight :{{previousexamination_data.vitals_q_1}}&nbsp;(Kg)</br>
+									BP : {{previousexamination_data.vitals_q_8}}&nbsp;(mm/Hg),&nbsp;Pulse :{{previousexamination_data.vitals_q_21}}&nbsp;(pm)
+								</span>
+							</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div id="quickprescription" class="bodytext_normal" style="color:black;min-height:548px;padding-left:15px;padding-right:15px;" >
+		<div style="color:black;width:100%">
+				</br>
+				</br>
+				</br>
+				<span class="bodytext_Normal" style="color:black;font-size:19px;" ng-show="previousexamination_data.medicine">Rx</span>
+					<div class="bodytext_normal" style="white-space: pre-wrap; color:black;float:right;width:100%;margin-top:10px;margin-left:20px;" id ="pprescription" ><p style="white-space: pre-wrap;">{{previousexamination_data.medicine}}</p></div></br></br>
+					</br>
+					</br>
+			</div>
+	</div>
+		<div style="color:black;float:right;bottom:right:50px;bottom:10px;">
+				Signature
+		</div>
+	</div>
+<div id="investigateDiv" class="yesPrint" style="display:none;">
+	<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+	<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+	<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+	<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+	<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+	<div style="color:black;width:100%;height:auto;float:left;">
+		<div id="headerInvestigation" style="color:black;float:left;width:100%;margin-left:3px;padding-top:7px;">
+			<table class="bodytext_bold">
+				<tr>
+					<td width="50%" style="color:black;text-align:left;width:50%;padding-left:10px;">
+						<font color="black">Dr. {{myprofile['userinfo'].name}}</font>&nbsp;<span class="bodytext_normal" style="color:black;font-size:9px;" >({{myprofile['usereducation'].doctoreducation}})</span></br>
+						<span class="bodytext_normal" style="color:black;font-size:10px;">{{myclinics['clinicinfo'][0].clinicname}}</br>
+						{{myclinics['clinicinfo'][0].line1}},
+						{{myclinics['clinicinfo'][0].nearmark}},
+						{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+						{{myclinics['clinicinfo'][0].state}}
+						</br>
+						Ph.+{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}</span>
+					</td>
+					<td width="50%" style="color:black;text-align:right;width:50%;padding-right:10px;vertical-align:top;">
+						<span class="bodytext_normal" style="color:black;font-size:9px;">Regd Number:{{myprofile['userinfo'].regno}}</span>
+					</td>
+				</tr>
+			</table>
+			<hr style="color:black;width:100%;"/>
+		</div>
+		<div id="bodyinvestigation" style="color:black;float:left;width:100%;margin-left:3px;">
+			<table class="bodytext_bold" width="100%">
+				<tr>
+					<td style="color:black;text-align:left;vertical-align:top;width:50%;padding-left:10px;">
+						{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}})</br>
+					</td>
+					<td width="50%" style="color:black;text-align:right;width:50%;padding-right:8px;vertical-align:top;">
+								<span class="bodytext_normal" style="color:black">{{previousexamination_data.date}}</span>
+								</br></br><br/>
+								<span ng-show="previousexamination_data.isexaminationavailable == true" class="bodytext_normal vitals" style="color:black">Height : {{previousexamination_data.vitals_q_2}}&nbsp;(cms),&nbsp;&nbsp;&nbsp;Weight :{{previousexamination_data.vitals_q_1}}&nbsp;(Kg)</br>
+									BP : {{previousexamination_data.vitals_q_8}}&nbsp;(mm/Hg),&nbsp;Pulse :{{previousexamination_data.vitals_q_21}}&nbsp;(pm)
+								</span>
+							</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div id="quickprescription" class="bodytext_normal" style="color:black;min-height:548px;padding-left:15px;padding-right:15px;" >
+		<div style="color:black;width:100%">
+				</br>
+				</br>
+				</br>
+					<div style="color:black;float:right;width:100%;"> 
+						<div class="bodytext_normal" style="color:black;float:right;width:100%;margin-top:10px;margin-left:20px;" id ="pinvestigation" ><p style="white-space: pre-line;">{{previousexamination_data.investigations}}</p></div>
+						</br>
+						</br>
+					</div>
+			</div>
+	</div>
+		<div style="color:black;float:right;bottom:right:50px;bottom:10px;">
+				Signature
+		</div>
+
+	</div>
+</div>
+
+</body>

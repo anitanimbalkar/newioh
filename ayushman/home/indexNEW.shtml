@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!--FONT AWESOME ICONS-->
+<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+<!--FULLPAGE CSS-->
+<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+<!-- BOOTSTRAP CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<!-- CUSTOM CSS-->
+<link rel="stylesheet" type="text/css" href="css/custom.css" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IOH - India Online Health</title>
+<meta name="author" content="Somorjit Konthoujam" />
+<meta name="description" content="" />
+<meta name="keywords"  content="" />
+<meta name="Resource-type" content="Document" />
+
+<style>#panel4.panel {
+	position: absolute;
+	color:#ccc;
+	top: 100px;
+	right: -1%;
+	display: none;
+	background: #fcfcfc;
+	
+	border:1px solid #04716e;
+	-moz-border-radius-topleft: 20px;
+	/*-webkit-border-top-left-radius: 20px;*/
+	-moz-border-radius-bottomleft: 20px;
+	/*-webkit-border-bottom-left-radius: 20px;*/
+
+	-moz-border-radius-topright: 20px;
+	/*-webkit-border-top-right-radius: 20px;*/
+	-moz-border-radius-bottomright: 20px;
+	/*-webkit-border-bottom-right-radius: 20px;*/
+
+	width: 300px;
+	height: 270px;
+	padding: 10px 10px 10px 10px;
+	filter: alpha(opacity=90);
+	opacity: 1;
+
+	font-family:tahoma, Helvetica, sans-serif;
+	font-size:13px;
+	
+}
+.fa{
+	font-size:30px;
+}
+.panel{
+	color:#ccc;
+	top: 100px;
+	right: -1%;
+	background: #fcfcfc;
+	padding: 10px 10px 10px 10px;
+	filter: alpha(opacity=90);
+	opacity: 1;
+
+	font-family:tahoma, Helvetica, sans-serif;
+	font-size:13px;
+}
+.panel p{
+	margin: 0 0 5px 0;
+	padding: 0;
+	color: #cccccc;
+}
+
+.panel a, .panel a:visited{
+margin: 0;
+padding: 0;
+color: #9FC54E;
+text-decoration: none;
+border-bottom: 1px solid transparent;
+}
+
+.panel a:hover, .panel a:visited:hover{
+margin: 0;
+padding: 0;
+color: #ffffff;
+text-decoration: none;
+border-bottom: 1px solid transparent;
+}
+.formheader{
+	color:#04706d;
+	font-size:18px;
+	height:20px;
+	text-align:center;
+}
+.form-group{
+	margin-top:15px;
+}
+
+</style>
+</head>
+<?php flush(); ?>
+<body>
+	<header>
+		This is header
+	</header>
+	<footer>
+		This is footer
+	</footer>
+</body>
+</html>
+<script src="js/jquery.min.js"></script> 
+<script>window.jQuery || document.write('<script src="js/jquery-1.11.1.js"><\/script>')</script> 
+<!-- BOOTSTRAP JS --> 
+<script src="js/bootstrap.js"></script> 
+<script src="js/jquery-ui.min.js"></script> 
+<script type="text/javascript" src="js/vendors/jquery.slimscroll.min.js"></script> 
+<script type="text/javascript" src="js/jquery.fullPage.js"></script> 
+<script src="js/mainhome.js"></script>
+<script language="Javascript">
+	function closelogin(){
+		$("#panel4").toggle("slow");
+	}
+	
+	$(document).ready(function(){ 
+		//Stop carousels auto slide while scrolling 
+		
+		
+		var page=document.URL.substring(document.URL.lastIndexOf("/")+1,document.URL.lastIndexOf("."));
+		$("#"+page).attr("class","active");
+		$("#"+page).find("a").css("color","#fff");
+		$(".login").click(function(){
+			$("#panel4").toggle("slow");
+			$('html,body').animate({
+                        scrollTop: 0
+            }, 10);
+			document.getElementById("email").focus();
+			return false;
+		});
+		$(document).click(function(e){
+			if ($(e.target).parents("#panel4").length == 0) 
+				$("#panel4").hide("slow");
+		});
+		var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+		if(is_chrome)
+		{
+			if(document.getElementById('chromeabsent') != null)
+				document.getElementById('chromeabsent').innerHTML = "";
+		}
+		else
+		{
+			if(document.getElementById('chromeabsent') != null)
+				document.getElementById('chromeabsent').visible = true;
+		}
+	});
+	
+    // Scrolls to the selected menu item on the page
+   $(function() {
+        $('a[href*=#menu]').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+				
+                if (target.length) { 
+					var offsettop = target.offset().top;
+                    $('html,body').animate({
+                        scrollTop: offsettop
+                    }, 1000);
+					hideLeftMenu();
+                    return false;
+                }
+            }
+        });
+    });
+</script>
+

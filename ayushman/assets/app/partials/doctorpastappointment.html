@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>India Online Health</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+  	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container body-content"> 
+      <!-- Example row of columns -->
+      <div class="row main-content">
+		<div class="col-lg-4 content-col" style="min-width:970px;margin-top:6px">
+			  <div class="sectionBox" style="height:auto;">
+				<h2 class="blue"><span class="icons iconEMR">Past Appointments</span><a href="#/dashboard/" style="float:right;""><font color="blue">Upcoming Appointments</font></a></h2>
+					<div style="overflow:auto;height:auto;padding-bottom:0px;">
+						<div custom-autofocus ng-repeat="appointment in pastappointments['page']" style="position:relative;" >
+							<table width="inherit" class='table_roundBorder' onmouseover="$(this).prev().show();$(this).prev().prev().show();" onmouseout="$(this).prev().hide();$(this).prev().prev().hide();"  style="max-height:100%;width:100%;" >
+								<tr style="border-bottom:1px solid #9cd4f9;">
+									<td width="5%" class="bodytext_bold" align="left" style="padding:5px;">
+										<img src="{{appointment.PatientPhoto}}" style="box-shadow:2px 7px 19px #888888;height:60px;width:50px;"/>
+									</td>
+									<td width="20%" class="bodytext_bold" align="left" style="padding-left:15px;">
+										{{appointment.Patientname}}</br>{{appointment.PatientGender}}&nbsp;&nbsp;<label ng-show="appointment.age!='0'">{{appointment.age}}Yrs.</label></br><label ng-show="appointment.PatientContactNumber">+91&nbsp;{{appointment.PatientContactNumber}}</label>
+										</br>
+									</td>
+									<td class="bodytext_bold" align="left" width="20%">
+										{{appointment.DateAndTime}}
+										</br>Incidence&nbsp;:&nbsp;{{appointment.incidentsname_c}}
+										</br>Mode&nbsp;:&nbsp;{{appointment.mode}}</br>
+									</td>
+									<td width="15%">
+										<a href="#/patientemr/{{appointment.refappfromid_c}}" ng-click="loading(true);"><font color="blue">View / Edit Emr</font></a></br>
+									</td>
+									<td width="20%">	
+										<a ng-if="appointment.status == 'notfromsystem' && appointment.prescription != 'Informationnotyetfilled' " href="" ng-click="show_summary_nfs(appointment.appointment_id);" target="_blank" class="summary" style="color:blue;">Print Prescription</a>
+										<a ng-if="appointment.status == 'notfromsystem' && appointment.prescription == 'Informationnotyetfilled'" href="" class="summary" style="color:blue;">No Summary</a>
+										<a ng-if="appointment.status == 'fromsystem'" href="" class="summary" ng-click="show_summary_fs(appointment.appointment_id);" style="color:blue;">Print Prescription</a> 
+									</td>
+									<td width="20%">
+										<a ng-show="appointment.billGenerated=='no'" ng-controller="pastbillCtrl" href="" ng-click="launchPrintableBill(appointment.appointment_id,appointment.diagnosis,'generate',appointment);" style="padding-left:5px;color:blue;">&nbsp;Generate Bill</a> 
+										<a ng-show="appointment.billGenerated=='yes'" ng-controller="pastbillCtrl" href="" ng-click="printoldbill(appointment.appointment_id,appointment.diagnosis,'print',appointment);" style="padding-left:5px;color:blue;">&nbsp;Print Bill</a> 
+									</td>
+								</tr>
+							</table><input type="hidden" id="cancelappid" name="cancelappid" value=""/>
+						</div>
+					</div>
+					<div class="bodytext_bold" style="position:relative;text-align: center;" ng-if="gotvisits == false">
+						Loading Past Appointments <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+					</div>
+					<div class="bodytext_bold" style="position:relative;text-align: center;" ng-show="pastappointments['apps'].length==0 &&  gotvisits">
+						Past Appointments are not available.
+					</div>
+					<div class="bodytext_bold" ng-show="pastappointments['page'].length > 0" style="position:relative;padding-top:5px;" align="center" >
+						<a href="javascript:void(0);" ng-click="showMoreVisits();" ng-if="pastappointments['apps'].length != pastappointments['page'].length" style="color:blue;align:center;">Show Next 5 Appointment</a>
+						<a href="javascript:void(0);" ng-click="showAllVisits();" ng-if="pastappointments['apps'].length != pastappointments['page'].length" style="color:blue;align:center;">/ Show All Appointments</a>
+						<a href="javascript:void(0);" ng-click="showLessVisits();" ng-if="pastappointments['page'].length > 5" style="color:blue;align:center;">/ Show Only Latest 5 Appointments</a>
+						<label class="bodytext_bold" ng-if="pastappointments['apps'].length != 0" style="float:right;">Showing 1 - {{pastappointments['page'].length}} of {{pastappointments['apps'].length}} records </label>
+					</div>
+					
+			  </div>
+		</div>
+    </div>
+    <!-- /container --> 
+  </body>
+</html>

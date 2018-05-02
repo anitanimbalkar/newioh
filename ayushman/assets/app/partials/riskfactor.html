@@ -1,0 +1,21 @@
+	<div  ng-controller="riskfactorCtrl">
+	<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:6px;height:23px;cursor:pointer;" onclick="closeRiskFactors(1);">
+		<h2 class="darkblue"><span class="icons iconWarning">Risk Factors</span></h2>
+		  <div class="riskFactorDetails contentDetails" style="height:130px;" >
+			<ul ng-repeat="risk in risks">
+			  <li ng-show="!(risk.edit_mode)" class="bodytext_bold">
+				{{risk.risk_text}}
+					<span ng-if="risk.writer_id == myprofile['userinfo'].id" class="iconDelete" ng-click="delete_risk($index,patient_id); refreshrisk();"></span>
+					<span ng-if="risk.writer_id == myprofile['userinfo'].id" class="iconEdit" ng-click="risk.edit_mode = true"></span>
+			  </li>
+			  <li ng-show="(risk.edit_mode)">
+				<input type="text" ng-model="risk.risk_text" />
+				<div class="iconSave" ng-click="edit_risk($index,patient_id);risk.edit_mode=false"></div>
+			  </li>
+		  </ul>
+		</div>
+	<div class="detailsLink darkblue">
+		<input type="text" ng-model="new_risk.text" ng-enter="add_risk(appointment_info.refappfromid_c);"/>
+		<a href="javascript:void(0);" ng-click="add_risk(patient_id); refreshrisk();"><span style="color:white;">Enter Risk</span></a>
+    </div>
+</div>

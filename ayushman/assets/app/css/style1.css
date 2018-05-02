@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+ .tools{
+        margin-top: 20px;
+        
+    }
+    .tools span{
+        float: left;
+        display: inline-block;
+        padding: 5px 20px;
+        background-color: #f40;
+        color: #fff;
+        cursor: pointer;
+        margin-bottom: 5px;
+        margin-right: 5px;
+    }
+    .clearfix {
+        zoom: 1;
+    }
+    .clearfix:before{
+        content: " ";
+        display: table;
+    }
+    .clearfix:after{
+        content: " ";
+        display: table;
+        clear: both;
+    }
+    .cropPoint{
+        position: absolute;
+        height: 8px;
+        width: 8px;
+        background-color: rgba(255,255,255,0.7);
+        cursor: pointer;
+    }
+    .upload-wapper{
+        position: relative;
+        float: left;
+        height: 26px;
+        line-height: 26px;
+        width: 132px;
+        background-color: #f40;
+        color: #fff;
+        text-align: center;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    #upload-file{
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        width: 132px;
+        height: 26px;
+        cursor: pointer;
+    }

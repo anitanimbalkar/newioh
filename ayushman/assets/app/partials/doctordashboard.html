@@ -1,0 +1,949 @@
+<div class="container dashboard clearfix">
+ 		<!--<div class="col-lg-12 placeholderMessage">
+        	<p>Placeholder for message to appear here when needed.</p>
+        </div>
+		-->
+        <div class="container">
+        	<div class="col-lg-10 col-md-10 col-sm-10 searchSection">
+        		<input type="text" id="search" placeholder="Search Patient by Name / IOH ID for Consultation / Booking appointment"/>
+                <input type="button" id="searchbutton" value="" onclick="search();"/>
+				<i class="" id="searchicon" style="font-size:31px;position:absolute;float:right;right:174px;top:21px;"></i>
+        	</div>
+            <div class="col-lg-2 col-md-2 col-sm-2 addPatientBtn">
+            	<a href="javascript:void(0);" onclick="$('#nonregisteredUser').dialog('open');" title="Add Patient">Add Patient</a>
+            </div>
+        </div>		
+        
+        <div class="container">
+          <div class="panel-group" id="accordionDashboard">
+			  <div class="panel">
+			  <div class="panel-heading">
+				 <h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed" >
+					   Regular Patients
+					</a>
+				 </h4>
+			  </div>
+			  <div id="collapseTwo" class="panel-collapse collapse">
+				 <div class="panel-body">
+					<div class="container patientsRow" ng-repeat="regularPatient in regularPatients['apps']">
+					<div class="row" style="    margin-right: 8px;  margin-left: 8px;">
+						<div class="col-lg-4 col-md-4 col-sm-4 doctorsDetailsCol">
+							<div class="thumbnailPatient">
+								<img ng-src="{{regularPatient.photo}}"  style="height:50px;width:50px;" alt="">
+							</div>
+							<div>
+								<p class="patientDetailsColBio" title={{regularPatient.patientname}}>{{regularPatient.patientname}}<br />
+								{{regularPatient.gender}}&nbsp;&nbsp;{{regularPatient.age}}</p>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2  col-sm-2 appointDetailsCol">
+							<p>															
+								{{regularPatient.location_c}}&nbsp;&nbsp;{{regularPatient.city_c}}<br/>
+								{{regularPatient.mobilenumber}}</br>								
+								{{regularPatient.email_c}}
+							</p>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-2 appointmentsEditCol">
+							<p><a href="#/patientemr/{{regularPatient.patientuserid}}">View Emr</a><br />
+							<!--a href="javascript:void(0);">Book Appointment	</a--></p>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-2 quickPrescription text-center">
+							<a href="javascript:void(0);" class="btnDefaultCols" ng-click="startquickprescription(regularPatient.patientuserid);" title="Quick Prescription">Quick Prescription</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-2 quickConsultation text-center">
+							<a href="javascript:void(0);"  ng-if="((appointment.isfollowup == '0') && ((myprofile['con_profile']).length > 0))"   ng-click="toggle(appointment.appointment_id)" class="btnDefaultCols" title="Start ConsultationConsultation">Start Consultation</a>
+						
+							<a href="javascript:void(0);"  ng-if="((appointment.isfollowup == '0') && ((myprofile['con_profile']).length == 0))"  ng-click="launch_consultation_app(appointment.appointment_id,0)" class="btnDefaultCols" title="Start Consultation">Start Consultation</a>
+							
+							<!--<a href="javascript:void(0);"  ng-if="(appointment.isfollowup == 1)" ng-click="launch_consultation_app(appointment.appointment_id,0)" class="btnDefaultCols" title="Start Consultation">Start Consultation</a>-->
+							
+							<a href="javascript:void(0);" ng-click="startconsultation(regularPatient.patientuserid);" class="btnDefaultCols" title="Start Consultation">Start Consultation</a>
+						</div>
+					</div>
+					</div>
+				 </div>
+			  </div>
+		   </div>
+		   <div class="panel">
+			  <div class="panel-heading">
+				 <h4 class="panel-title">
+					<a id="apptaccordians" data-toggle="collapse" data-parent="#accordion" href="/dashboard/#collapse1" class="collapsed">
+					   Incomplete Consultations
+					</a>
+				 </h4>
+			  </div>
+			   <div id="collapse1" class="panel-collapse">
+				 <div id="incomplete" class="panel-body" >
+					<div custom-autofocus class="container patientsRow" style="position:relative;"  ng-repeat="appointment in inappointments['page']">
+						<!-- <div ng-show="$index == 0" style="height:0px;">
+							&nbsp;
+						</div> -->
+						<div ng-show="appointment.description.length > 0 && $index == 0"  style="position:absolute;display:none;top:-3px;left:3px;z-index:100;max-width:300px;padding:10px;background-color:#F5F8FC;border:solid 1px #a0c7ff;-moz-border-radius:5px;-ie-border-radius:5px;-webkit-border-radius:5px;-o-border-radius:5px;border-radius:5px;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+							<p>{{appointment.description}}</p>
+							<div style="position:absolute;bottom:-8px;left:28px;width:0;height:0;border:solid 2px #fff;box-shadow:0 0 10px 1px #555;"></div>
+							<div style="position:absolute;bottom:-15px;left:27px;width:0;height:0;border-color:#a0c7ff transparent transparent transparent;border-style:solid;"></div>
+							<div style="position:absolute;bottom:-18px;left:20px;width:0;height:0;border-color:#f9f9f9 transparent transparent transparent;border-width:10px;border-style:solid;"></div>
+						</div>
+						<div ng-show="appointment.description.length > 0 && $index != 0"  style="position:absolute;display:none;top:-49px;left:3px;z-index:100;max-width:300px;padding:10px;background-color:#F5F8FC;border:solid 1px #a0c7ff;-moz-border-radius:5px;-ie-border-radius:5px;-webkit-border-radius:5px;-o-border-radius:5px;border-radius:5px;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+							<p>{{appointment.description}}</p>
+							<div style="position:absolute;bottom:-8px;left:28px;width:0;height:0;border:solid 2px #fff;box-shadow:0 0 10px 1px #555;"></div>
+							<div style="position:absolute;bottom:-15px;left:27px;width:0;height:0;border-color:#a0c7ff transparent transparent transparent;border-style:solid;"></div>
+							<div style="position:absolute;bottom:-18px;left:20px;width:0;height:0;border-color:#f9f9f9 transparent transparent transparent;border-width:10px;border-style:solid;"></div>
+						</div>
+						<div class="row" style="    margin-right: 8px;  margin-left: 8px;" onmouseover="$(this).prev().show();$(this).prev().prev().show();" onmouseout="$(this).prev().hide();$(this).prev().prev().hide();" >	
+							<div class="col-lg-4 col-md-4 col-sm-4 doctorsDetailsCol">
+								<div class="thumbnailPatient">
+									<img ng-src="{{appointment.PatientPhoto}}" style="height:50px;width:50px;" alt="">
+								</div>
+							
+								<div>
+									<p class="patientDetailsColBio" title={{appointment.Patientname}}>{{appointment.Patientname}}<br />
+									{{appointment.PatientGender}}&nbsp;&nbsp;{{appointment.age}}<br />
+									{{appointment.PatientContactNumber}} </p>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 appointDetailsCol">
+								<p>
+									Consultation Date : {{appointment.endConsultDate}}<br/>
+									Incidence : {{appointment.incidentsname_c}} <br/>
+									Mode : {{appointment.mode}}
+								</p>
+							</div>
+							
+							<div class="col-lg-3 col-md-3 col-sm-3 quickPrescription text-center" style="  top: 24px;">
+								<a href="javascript:void(0);" ng-click="launch_consultation_app(appointment.appointment_id,1)" class="btnDefaultCols" title="Resume Prescription">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resume&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+								
+								<!--<a href="javascript:void(0);"  ng-if="(appointment.isfollowup == 1)" ng-click="launch_consultation_app(appointment.appointment_id,0)" class="btnDefaultCols" title="Start Consultation">Start Consultation</a>-->
+							</div>
+						</div>
+					</div>	
+					<div class="bodytext_bold" style="position:relative;text-align: center;" ng-if="gotvisits == false">
+						Loading Appointments <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+					</div>
+					<div class="bodytext_bold" style="position:relative;text-align: center;" ng-show="inappointments['apps'].length==0 &&  gotvisits">
+						No Appointments.
+					</div>
+					<div class="bodytext_bold" ng-show="inappointments['page'].length > 0" style="position:relative;padding-top:5px;" align="center" >
+						<a href="javascript:void(0);" ng-click="showMoreVisitsInc();" ng-if="inappointments['apps'].length != inappointments['page'].length">Show Next 5 Appointment</a>
+						<a href="javascript:void(0);" ng-click="showAllVisitsInc();" ng-if="inappointments['apps'].length != inappointments['page'].length">/ Show All Appointments</a>
+						<a href="javascript:void(0);" ng-click="showLessVisitsInc();" ng-if="inappointments['page'].length > 5">/ Show Only Latest 5 Appointments</a>
+						<label ng-if="inappointments['apps'].length != 0" style="float:right;">Showing 1 - {{inappointments['page'].length}} of {{inappointments['apps'].length}} records </label>
+					</div>
+				 </div>
+			  </div>	
+			</div>		   
+		   <div class="panel">
+			  <div class="panel-heading">
+				 <h4 class="panel-title">
+					<a id="apptaccordian" data-toggle="collapse" data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+					   Upcoming Appointments
+					</a>
+				 </h4>
+			  </div>
+			  
+			  <div id="collapseOne" class="panel-collapse">
+				 <div id="upcoming" class="panel-body" >
+					 <a href="javascript:showPastApps();" class="pastAppointments" title="">Past Consultations</a>
+					<div custom-autofocus class="container patientsRow" style="position:relative;"  ng-repeat="appointment in appointments['page']">
+						<div ng-show="$index == 0" style="height:50px;">
+							&nbsp;
+						</div>
+						<div ng-show="appointment.description.length > 0 && $index == 0"  style="position:absolute;display:none;top:-3px;left:3px;z-index:100;max-width:300px;padding:10px;background-color:#F5F8FC;border:solid 1px #a0c7ff;-moz-border-radius:5px;-ie-border-radius:5px;-webkit-border-radius:5px;-o-border-radius:5px;border-radius:5px;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+							<p>{{appointment.description}}</p>
+							<div style="position:absolute;bottom:-8px;left:28px;width:0;height:0;border:solid 2px #fff;box-shadow:0 0 10px 1px #555;"></div>
+							<div style="position:absolute;bottom:-15px;left:27px;width:0;height:0;border-color:#a0c7ff transparent transparent transparent;border-style:solid;"></div>
+							<div style="position:absolute;bottom:-18px;left:20px;width:0;height:0;border-color:#f9f9f9 transparent transparent transparent;border-width:10px;border-style:solid;"></div>
+						</div>
+						<div ng-show="appointment.description.length > 0 && $index != 0"  style="position:absolute;display:none;top:-49px;left:3px;z-index:100;max-width:300px;padding:10px;background-color:#F5F8FC;border:solid 1px #a0c7ff;-moz-border-radius:5px;-ie-border-radius:5px;-webkit-border-radius:5px;-o-border-radius:5px;border-radius:5px;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+							<p>{{appointment.description}}</p>
+							<div style="position:absolute;bottom:-8px;left:28px;width:0;height:0;border:solid 2px #fff;box-shadow:0 0 10px 1px #555;"></div>
+							<div style="position:absolute;bottom:-15px;left:27px;width:0;height:0;border-color:#a0c7ff transparent transparent transparent;border-style:solid;"></div>
+							<div style="position:absolute;bottom:-18px;left:20px;width:0;height:0;border-color:#f9f9f9 transparent transparent transparent;border-width:10px;border-style:solid;"></div>
+						</div>
+						<div class="row" style="    margin-right: 8px;  margin-left: 8px;" onmouseover="$(this).prev().show();$(this).prev().prev().show();" onmouseout="$(this).prev().hide();$(this).prev().prev().hide();" >	
+							<div class="col-lg-4 col-md-4 col-sm-4 doctorsDetailsCol">
+								<div class="thumbnailPatient">
+									<img ng-src="{{appointment.PatientPhoto}}" style="height:50px;width:50px;" alt="">
+								</div>
+							
+								<div>
+									<p class="patientDetailsColBio" title={{appointment.Patientname}}>{{appointment.Patientname}}<br />
+									{{appointment.PatientGender}}&nbsp;&nbsp;{{appointment.age}}<br />
+									{{appointment.PatientContactNumber}} </p>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 appointDetailsCol">
+								<p>
+									Appointment : {{appointment.DateAndTime}}<br/>
+									Incidence : {{appointment.incidentsname_c}} <br/>
+									Mode : {{appointment.mode}}
+								</p>
+							</div>
+							<div class="col-lg-2 col-md-2 col-sm-2 appointmentsEditCol">
+								<p> <a href="#/patientemr/{{appointment.refappfromid_c}}">View / Edit Emr</a><br />
+									<a href="javascript:void(0);" ng-click="cancel_appointment(appointment.appointment_id)">Cancel Appointment</a>
+								</p>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 quickPrescription text-center" style="  top: 24px;">
+								<a href="javascript:void(0);" ng-click="launch_consultation_app(appointment.appointment_id,1)" class="btnDefaultCols" title="Quick Prescription">Quick Prescription</a>
+							
+								
+								<a href="javascript:void(0);"  ng-if="((appointment.isfollowup == '0') && ((myprofile['con_profile']).length > 0))"   ng-click="toggle(appointment.appointment_id)" class="btnDefaultCols" title="Start Consultation">Start Consultation</a>
+							
+								<a href="javascript:void(0);"  ng-if="((appointment.isfollowup == '0') && ((myprofile['con_profile']).length == 0))"  ng-click="launch_consultation_app(appointment.appointment_id,0)" class="btnDefaultCols" title="Start Consultation">Start Consultation</a>
+								
+								<!--<a href="javascript:void(0);"  ng-if="(appointment.isfollowup == 1)" ng-click="launch_consultation_app(appointment.appointment_id,0)" class="btnDefaultCols" title="Start Consultation">Start Consultation</a>-->
+								
+								<a href="javascript:void(0);" ng-click="launch_consultation_app(appointment.appointment_id,0)" class="btnDefaultCols" title="Start Consultation">Start Consultation</a>
+							</div>
+						</div>
+					</div>	
+					<div class="bodytext_bold" style="position:relative;text-align: center;" ng-if="gotvisits == false">
+						Loading Appointments <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+					</div>
+					<div class="bodytext_bold" style="position:relative;text-align: center;" ng-show="appointments['apps'].length==0 &&  gotvisits">
+						No Appointments.
+					</div>
+					<div class="bodytext_bold" ng-show="appointments['page'].length > 0" style="position:relative;padding-top:5px;" align="center" >
+						<a href="javascript:void(0);" ng-click="showMoreVisits();" ng-if="appointments['apps'].length != appointments['page'].length">Show Next 5 Appointment</a>
+						<a href="javascript:void(0);" ng-click="showAllVisits();" ng-if="appointments['apps'].length != appointments['page'].length">/ Show All Appointments</a>
+						<a href="javascript:void(0);" ng-click="showLessVisits();" ng-if="appointments['page'].length > 5">/ Show Only Latest 5 Appointments</a>
+						<label ng-if="appointments['apps'].length != 0" style="float:right;">Showing 1 - {{appointments['page'].length}} of {{appointments['apps'].length}} records </label>
+					</div>
+				 </div>
+			  </div>	
+				
+			  <div id="collapseOnePastAppt" class="panel-collapse collapse" style="display:none"> 
+				<div class="panel-body" style="padding:0px;" ng-controller="docpastappointment">
+					<a href="javascript:showUpcomingApps();" class="pastAppointments" title="">Upcoming Appointments</a>						
+					<div class="container patientsRow" ng-repeat="appointment in pastappointments['page']" ng-class="{warning : appointment.statusid == '6'}">
+						<div class="row" style="    margin-right: 8px;  margin-left: 8px;">
+							<div class="col-lg-4 col-md-4 col-sm-4 doctorsDetailsCol">
+								<div class="thumbnailPatient" >
+									<img ng-src="{{appointment.PatientPhoto}}" style="height:50px;width:50px;" alt="">
+								</div>
+								<div>
+									<p class="patientDetailsColBio" title={{appointment.Patientname}}>{{appointment.Patientname}}<br />
+									{{appointment.PatientGender}}&nbsp;&nbsp;{{appointment.age}} Yrs.<br />
+									{{appointment.PatientContactNumber}} </p>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 appointDetailsCol">
+								<p>
+									Consultation Date : {{appointment.DateAndTime}}<br/>
+									Incidence : {{appointment.incidentsname_c}} <br/>
+									Mode : {{appointment.mode}}
+								</p>
+							</div>
+							<div class="col-lg-1 col-md-1 col-sm-1 appointmentsEditCol">
+								<p> <a href="#/patientemr/{{appointment.refappfromid_c}}">View Emr</a></br>
+								<a href="#/patientemr/{{appointment.refappfromid_c}}">Edit Emr</a></p>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4 quickPrescription text-center">
+								<!--<a ng-if="appointment.status == 'notfromsystem' && appointment.prescription != 'Informationnotyetfilled' " href="" ng-click="show_summary_nfs(appointment.appointment_id);" target="_blank" class="btnDefaultCols">Print Prescription</a>
+								<a ng-if="appointment.status == 'notfromsystem' && appointment.prescription == 'Informationnotyetfilled'" class="btnDefaultCols">No Summary</a>
+								<a ng-if="appointment.status == 'fromsystem'" href="" ng-click="show_summary_fs(appointment.appointment_id);" class="btnDefaultCols">Print Prescription</a> -->
+								<a ng-click="show_summary_fs(appointment.appointment_id);" class="btnDefaultCols">Print Prescription</a> 
+								<!--<a ng-controller="pastbillCtrl" href="" ng-click="launchPrintableBill(appointment.appointment_id,appointment.diagnosis,'generate',appointment);" class="btnDefaultCols">Generate Bill</a> 
+								<a  class="btnDefaultCols">View Bill</a> -->
+								<a href="javascript:void(0);"  ng-if="appointment.statusid == 6"  ng-click="launch_consultation_app(appointment.appointment_id,0)" class="btnDefaultCols" title="Start Consultation">Edit Consultation</a>
+								<a ng-show="appointment.billGenerated=='no'" ng-controller="pastbillCtrl" href="" ng-click="launchPrintableBill(appointment.appointment_id,appointment.diagnosis,'generate',appointment);" class="btnDefaultCols">Generate Bill</a> 
+								<a ng-show="appointment.billGenerated=='yes'" href="/ayushman/files/Documents/{{appointment.pdffilename}}" class="btnDefaultCols"> Print Bill </a>
+								
+								<!--<a ng-show="appointment.billGenerated=='yes'" ng-controller="pastbillCtrl" href="" ng-click="printoldbill(appointment.appointment_id,appointment.diagnosis,'print',appointment);" class="btnDefaultCols">Print Bill</a>-->
+							</div>	
+						</div>						
+					</div>
+					<div class="bodytext_bold" style="position:relative;text-align: center;" ng-if="gotvisits == false">
+						Loading Past Appointments <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+					</div>
+					<div class="bodytext_bold" style="position:relative;text-align: center;" ng-show="pastappointments['appscount']['count']==0 &&  gotvisits">
+						Past Appointments are not available.
+					</div>
+					<div class="bodytext_boldblue" ng-show="pastappointments['appscount']['count'] > 0" style="position:relative;padding-top:5px;font-size:11px;" align="center" >
+						<a href="javascript:void(0);" ng-click="showMoreVisits();" style="color:blue !important" ng-if="pastappointments['appscount']['count'] != pastappointments['page'].length">Show Next 5 Appointment</a>
+						<a href="javascript:void(0);" ng-click="showAllVisits();" style="color:blue !important" ng-if="pastappointments['appscount']['count'] != pastappointments['page'].length">/ Show All Appointments</a>
+						<a href="javascript:void(0);" ng-click="showLessVisits();" style="color:blue !important" ng-if="pastappointments['appscount']['count'] > 5">/ Show Only Latest 5 Appointments</a>
+						<label ng-if="pastappointments['appscount']['count'] != 0" style="float:right;">Showing 1 - {{pastappointments['page'].length}} of {{pastappointments['appscount']['count']}} records </label>
+					</div>							
+				</div>				
+			 </div>
+		   </div>
+		 </div>        
+        </div>
+		
+		<div id="nonregisteredUser">
+			<form autocomplete="off" class="form-horizontal" id="registrationform" action="javascript:void(0);" method="post">
+				<div class="formHeader">Patient Details</div>
+				<div style="margin-left:20px;margin-top:20px;">
+				<div class="row" style="margin-left:20px;">	
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group" style="margin-right:10px;">					
+						<label for="firstname">First Name * :</label>
+						<input id = "firstname" class = "form-control connectformcontrol" autocomplete="on" autofocus="autofocus"/>
+					
+						<script type="text/javascript">
+							var firstname = new LiveValidation('firstname');
+							firstname.add( Validate.Presence );
+							firstname.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed"} );
+						</script>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group" style="margin-right:10px;">					
+						<label for="middlename">Middle Name :</label>
+						<input id = "middlename" class = "form-control connectformcontrol"autocomplete="on"  />
+						<script type="text/javascript">
+							var middlename = new LiveValidation('middlename');
+							middlename.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed"} );
+						</script>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group">	
+						<label for="lastname">Last Name * :</label>
+						<input id = "lastname" class = "form-control connectformcontrol" autocomplete="on" autofocus="autofocus"/>
+						<script type="text/javascript">
+							var lastname = new LiveValidation('lastname');
+							lastname.add( Validate.Presence );
+							lastname.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed"} );
+						</script>
+					</div>
+				</div>
+				<div class="row" style="margin-left:20px;">
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group" style="margin-right:10px;">
+						<label for="gender_c">Gender * :</label>
+						<select id="gender_c" name="gender_c" class = "form-control connectformcontrol" style="height:30px">
+							<option value="">Select Gender</option>
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
+						</select>
+						<script type="text/javascript">
+							var gender_c = new LiveValidation('gender_c');
+							gender_c.add( Validate.Presence );
+						</script>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group" style="margin-right:10px;">
+						<label for="dob">Date Of Birth * :</label>
+						<input id="DOB_c" name="dob" readonly="readonly"  value="" type="text" onchange="setAge()" class = "form-control connectformcontrol"/>
+						<script type="text/javascript">
+							var DOB_c = new LiveValidation('DOB_c',{onlyOnSubmit: true });
+							DOB_c.add( Validate.Presence );
+						</script>
+						<style type="text/css">
+							div.ui-datepicker{
+								font-size:10px;
+								width:250px !important;
+							}
+						</style>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group">
+						<label for = "age">Age :</label>
+						<input id = "age" autocomplete="on" onchange="setDob()" class = "form-control connectformcontrol" />						
+					</div>
+				</div>
+				<div class="row" style="margin-left:20px;">
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group" style="margin-right:10px;">
+						<label for="mobilenumber">Mobile No :</label>
+						<input id = "mobilenumber" autocomplete="on" class = "form-control connectformcontrol"  />
+						<script type="text/javascript">
+							var mobilenumber = new LiveValidation('mobilenumber');
+							mobilenumber.add( Validate.Numericality, {onlyInteger: true } );
+							mobilenumber.add( Validate.Length, { is: 10 });
+							mobilenumber.add( Validate.Format, { pattern: /^[0-9]+$/,failureMessage: "only numeric values allowed"} );
+						</script>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group">
+						<label for = "email">Email :</label>
+						<input id = "email" autocomplete="on" class = "form-control connectformcontrol" />
+						<script type="text/javascript">
+							var email = new LiveValidation('email', {onlyOnSubmit: true });
+							email.add( Validate.Email );
+						</script>
+					</div>
+				</div>
+				<div class="row" style="margin-left:20px;">
+					<div class="col-lg-12 col-md-12 col-sm-12 form-group" align="left">
+						<input type="checkbox" id = "attachnetwork" checked class="regnbutton" style="float:left;"  >&nbsp;Attach Chemist and network for automatic order placement.</input>			
+					</div>
+				</div>	
+				<div class="row" style="margin-left:20px;">
+					<div class="col-lg-12 col-md-12 col-sm-12 form-group" align="left">
+						<input type="checkbox" id = "registrationinfo" checked class="regnbutton" style="float:left;"  >&nbsp;Send User credentials on Mobile number.</input>
+					</div>
+				</div>
+				<div class="row" style="margin-left:20px;">
+					<div class="col-lg-12 col-md-12 col-sm-12 form-group" align="center">
+						<input type="Submit" id = "proccedButton" class="regnbutton" value="PROCEED" onclick="addNewPatient();"/>			
+						<input type="button" class="regnbutton" value="CANCEL" onclick="$('#nonregisteredUser').dialog('close');$('#topNav').show();"/>
+					</div>
+				</div>	
+				</div>
+			</form>
+			<div id="exists" style="display:none;background-color:#efefef;border-top:1px solid #c6dbe4;border-bottom:1px solid #c6dbe4; width:100%;height:auto; vertical-align:middle;padding:10px 10px 10px 50px; overflow-x:hidden;" class="bodytext" >
+				Users listed below have the same registration information. Do you want to register another user ?
+				<input type="button" value="YES>>" onclick="addNewPatient('true');" class="regnbutton"/>
+			</div>
+
+			<div id = "searchresult"></div>		
+		</div>
+			
+</div>
+<!-- CONTAINER ENDS --> 
+	
+
+	<div id="addNewPatient" style="padding-top:2px;width:500px;overflow-x:hidden; background-color:#ffffff;" overflow-x="hidden">
+		<div class="formHeader">Patient Registered Successfully</div>
+		<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;cursor:pointer;  margin-top: -27px;" onclick="$('#addNewPatient').dialog('close');" width="20" height="20"/>	
+					
+		<div id="addNewPatientInformationBody" style="width:96%;margin:10px;" class="bodytext" ></div>
+		<div id="tdTakeappointment" align="right"></div>
+	</div>
+	<div id="patloading" style="width:40px;height:30px;background-color:transparent;align:center;overflow-y:hidden;overflow-x:hidden;">
+		<img id="patloading" src="/ayushman/assets/images/ajax-loader.gif" />
+	</div>
+	
+	<!--<div id="contentDiv" ng-view style="height:auto;overflow-y: none;"></div>-->
+	<input type="hidden" id="selectedpatientid" name="selectedpatientid" value="" />
+	<input type="hidden" id="profileid" name="profileid" value="" />
+	
+	<div id="connectnow" class="connectformdiv">
+		<div style="border:1px solid #eee;">
+		<form id= "connectInclinicAdhoc" class="form-horizontal" autocomplete="off"  method="post" enctype="multipart/form-data" >
+			<div class="formHeader"><img src="/ayushman/assets/images/WhiteArrow_Icon.png" width="9" height="7"/>&nbsp;&nbsp;Connect Now</div>
+			<div class="col-lg-12 col-md-12 form-group">
+					Select incidence name for the appointment </br> e.g. <span class="bodytext"><b>Diabetes, Hypertension, Asthma, Glaucoma, </b></span>etc.				
+			</div>
+			<div class="row">
+				<div class="col-lg-5 col-md-5">				
+					<input name="radiobutton" type="radio" id="newincidentbutton" value="radiobutton" onclick="newincidentbuttonclick()" checked="checked"/>
+				
+					<label for="incidenttxt">New Incidence</label>
+				</div>
+				<div class="col-lg-7 col-md-7 form-group">	
+					<input id="incidenttxt" name="incidenttxt" type="text" class="form-group connectformcontrol" maxlength="40" onmouseover="$('#lblerror').text('');" />			  
+					<!--select ng-if="(myprofile['con_profile']).length>0" class="input" id="profileList" name="profileList"  class="form-group connectformcontrol"  align="left"  >
+						<option value="" selected="" >Select Profile</option>
+						<option ng-repeat="template in myprofile['con_profile']" value="{{template[1]}}" >{{template[0]}}</option>
+					</select-->
+				</div>
+			</div>
+			<div id="oldIncidenceTr" class="row">
+				<div class="col-lg-5 col-md-5" >		
+					<input name="radiobutton" type="radio" id="oldincidentbutton" value="radiobutton" onclick="oldincidentbuttonclick()"/>
+								
+					<label for="incidentcombo">Old Incidence </label>
+				</div>
+				<div class="col-lg-7 col-md-7 form-group">		
+					<select id="incidentcombo" name="incidentcombo"  class="form-group connectformcontrol"  align="left" disabled="disabled" onmouseover="$('#lblerror').text('');" >
+						<option value="" selected="" >Previous Incident</option>
+					</select>	
+				</div>
+			</div>
+			<div class="row">
+				<div  class="col-lg-12 col-md-12 form-group bodytext_error" >
+					<label id="lblerror" disabled="false"></label>
+				</div>
+			</div>
+			<div class="row">
+				<div  class="col-lg-12 col-md-12 form-group" >
+					<input type="button" class="regnbutton" onClick="connetonclick()" value="Connect"/>				
+					<input type="button" class="regnbutton" onClick="closepopup('connectnow')" value="Cancel"/>									  
+				</div>
+			</div>		
+			<input type="hidden" id="patientuserid" name="patientuserid" value=""/>
+		</form>
+		</div>
+	</div>
+	<style type="text/css">
+		.ui-autocomplete { max-height: 90%; overflow-y: auto; overflow-x: hidden;
+		-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);
+		-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);
+		box-shadow: 0 4px 15px rgba(0,0,0,1);
+		}
+		.ui-dialog { z-index: 4005 !important ;}
+		.ui-widget-overlay
+		{
+				z-index: 0 !important;   
+		}
+		.dialogWithDropShadow {
+		  -webkit-box-shadow: 0px 0px 64px rgba(0,0,0,.5);
+		  -moz-box-shadow: 0px 0px 64px rgba(0,0,0,.5);
+		}
+		.warning{
+			background-color:rgba(0, 128, 0, 0.14);
+		}
+	</style>
+	
+	<script type='text/javascript'>
+	$(document).ready(function() {
+		$(function(){
+			$( "input[name=dob]" ).datepicker({yearRange: "-120:+0",maxDate: '0',changeMonth: true,changeYear: true,  dateFormat: 'dd M yy'});
+		});
+		$('#nonregisteredUser').dialog({
+			autoOpen: false,			
+			show: "fade",
+			hide: "fade",
+			width: "550",
+			dialogClass: 'dialogWithDropShadow',
+			modal: false,
+			height: "auto",
+			resize: "auto",
+			resizable: false,
+			fluid:true,
+			position: { my: 'top', at: 'top+100' },
+			maxWidth:'800',			
+			maxHeight:'600',
+			open: function(){
+
+			}
+		});
+		$('#connectnow').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			width: "auto",
+			modal: false,
+			dialogClass: 'dialogWithDropShadow',
+			height: "auto",
+			resize: "auto",
+			resizable: false,
+			fluid:true,
+			maxWidth:'800'
+		});
+		$('#patloading').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			modal: true,
+			height: "30",
+			dialogClass: 'dialogWithDropShadow',
+			resizable: false,
+			width: "100px",
+			fluid:true,
+			maxWidth:'500'
+		});
+		$('#addNewPatient').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			width: "421px",
+			modal: false,
+			height: "auto",
+			resize: "auto",
+			dialogClass: 'dialogWithDropShadow',
+			resizable: false,
+			fluid:true,
+			maxWidth:'500',
+			open: function(){
+				jQuery('.ui-widget-overlay').bind('click',function(){
+					jQuery('#addNewPatient').dialog('close');
+				})
+			}
+		});
+		jQuery("#connectnow").dialog('option', 'position', 'center');
+		$(".ui-dialog-titlebar").hide();
+		$("#connectInclinicAdhoc").onclick=function(){
+			document.getElementById('lblerror').style.display = false;
+		};
+		
+	});
+	// on window resize run function
+	$(window).resize(function () {
+		fluidDialog();
+	});
+
+	// catch dialog if opened within a viewport smaller than the dialog width
+	$(document).on("dialogopen", ".ui-dialog", function (event, ui) {
+		fluidDialog();
+	});
+
+	function fluidDialog() {
+		var $visible = $(".ui-dialog:visible");
+		// each open dialog
+		$visible.each(function () {
+			var $this = $(this);
+			var dialog = $this.find(".ui-dialog-content").data("dialog");
+			// if fluid option == true
+			if (dialog.options.fluid) {
+				var wWidth = $(window).width();
+				// check window width against dialog width
+				if (wWidth < (parseInt(dialog.options.maxWidth) + 50))  {
+					// keep dialog from filling entire screen
+					$this.css("max-width", "90%");
+				} else {
+					// fix maxWidth bug
+					$this.css("max-width", dialog.options.maxWidth + "px");
+				}
+				
+				//reposition dialog
+				dialog.option("position", dialog.options.position);
+			}			
+		});
+	}
+	function closepopup(thisclose)
+	{
+		$("#"+thisclose).dialog("close");
+		$('#topNav').show();
+	}
+	//Search results cached
+	$(window).resize(function() {
+		$(".ui-autocomplete").css('display', 'none');
+		$("input#search").autocomplete("search");
+	});
+	
+	function search(){ 
+	    var check =  $("#search").val();
+		if(check != ''){
+		  $("#searchicon").addClass('fa fa-spinner fa-spin');
+		  $('input#search').autocomplete("search");
+		} else {
+		  showNotification('200','10','Save data','Please enter search parameter','notification','timernotification',1000);
+		  $('#search').trigger("focus"); 
+		}
+		
+	}
+	
+	//Search terms are cached 
+	var cache = {};
+	$("#search").autocomplete({
+		source:function(request, response){		 
+			var term = request.term;
+			$("#searchicon").addClass('fa fa-spinner fa-spin');
+			if ( term in cache ) {
+				response($.map(cache[ term ] , function(item) {
+					searchitemindex = 0;
+					return {
+						value: item.patientname,
+						label: item.patientname,
+						icon: item.photo,
+						gender: item.gender,
+						age: item.age,
+						mobilenumber: item.mobilenumber,
+						city: item.city_c,
+						location: item.location_c,
+						id: item.patientuserid
+					}
+				}))
+			}
+			$.post("/ayushman/cconsultation/getpatients", {data:request.term}, function(data){   
+				cache[ term ] = data;
+				
+				$('#search').trigger("focus");
+
+				if(data.length == 0){
+					$("#searchicon").removeClass('fa fa-spinner fa-spin');
+					showNotification('300','20','Save data','No Records found for the search','notification','timernotification',1000);
+					$('#search').trigger("focus");
+				}
+				response($.map(data, function(item) {
+					searchitemindex = 0;
+					$("#searchicon").removeClass('fa fa-spinner fa-spin');
+					return {
+						value: item.patientname,
+						label: item.patientname,
+						icon: item.photo,
+						gender: item.gender,
+						age: item.age,
+						mobilenumber: item.mobilenumber,
+						city: item.city_c,
+						location: item.location_c,
+						id: item.patientuserid
+					}
+				}))
+			}, "json");
+		  },
+		minLength: 3,
+		maxHeight:500
+	}).data("autocomplete")._renderItem = function (ul, item) {
+		$('#search').trigger("focus");
+		if(searchitemindex == 0) ul.append('<div class="searchResultsHeader "> Search Results...</div>');
+		searchitemindex++;
+		return $("<li>")
+			.data("item.autocomplete", item)				
+				.append('<div class="container searchResultRow"><div class="col-lg-5 col-md-5"><div class="thumbnailPatient"><img src="'+item.icon+'" alt=""></div><div><p>'+item.label+'<br />'+item.gender+' '+item.age+'<br/>'+item.city+' '+item.location+' <br/>'+item.mobilenumber+'</br>'+'IOH ID: '+item.id+'</p></div></div><div class="col-lg-3 col-md-3"><p><a href="#/patientemr/'+item.id+'">View Emr</a><br /><a href="#/patientemr/'+item.id+'">Edit Emr</a></p></div><div class="col-lg-3 col-md-3 quickPrescription text-center"><a href="javascript:void(0);" onclick="connectnowclick('+item.id+',0,1)" class="btnDefaultCols" style="color:#fff;margin-bottom:5px;" title="Quick Prescription">Quick Prescription</a><a href="javascript:void(0);" onclick="connectnowclick('+item.id+',1)" class="btnDefaultCols" style="color:#fff;margin-bottom:5px;" title="Start Consultation">Start Consultation</a><a href="javascript:void(0);" onclick="appointmentschedule('+item.id+')" class="btnDefaultCols" style="color:#fff;margin-bottom:5px;" title="Book Appointment">Book Appointment</a><a href="javascript:void(0);" onclick="buildPatientNetwork('+item.id+');" class="btnDefaultCols" style="color:#fff;" title="Preferred Chemist and Lab">Preferred Network</a></div></div>').appendTo(ul);
+	};
+	function addNewPatient(forceadd)
+	{
+		if($("#firstname").val() != '' && $("#lastname").val() != '' && $("#DOB_c").val() != '' && $("#gender_c").val()!= ''){
+			if (($("#mobilenumber").val().length != 10) && ($("#mobilenumber").val().length != 0)) {
+				showNotification('200','10','Save data','Mobile number must be of 10 digits.','notification','timernotification',2000);
+				$('#mobilenumber').trigger("focus");
+				return false;
+			 }
+		}else {
+			alert('Please, Fill all mandatory fields.');
+			return false;
+		}
+		$("#searchresult").empty();
+		if(forceadd == undefined){
+			forceadd = false;
+		}else{
+			forceadd = true;
+		}
+		$('#exists').hide();
+		$('#nonregisteredUser').dialog('close');
+		$('#patloading').dialog("open");
+		attachnetwork = $('input[id="attachnetwork"]:checked').length > 0 ;
+		sendregistrationinfo = $('input[id="registrationinfo"]:checked').length > 0;
+		$.ajax({
+			url: "/ayushman/cregistrar/patientregistrationbystaff?firstname="+$("#firstname").val()+"&lastname="+$("#lastname").val()+"&email="+$("#email").val()+"&mobilenumber="+$('#mobilenumber').val()+"&doctorname=doctor &middlename="+$("#middlename").val()+"&dob="+$("#DOB_c").val()+"&gender="+$("#gender_c").val()+"&forceadd="+forceadd+"&attachnetwork="+attachnetwork+"&sendregistrationinfo="+sendregistrationinfo,
+			success:function( data ){
+				var returnArray= JSON.parse(data);
+				if(returnArray['found'] == 'yes'){
+					patName = $("#firstname").val();
+					patLastName = $("#lastname").val();
+					patContact = $('#mobilenumber').val();
+					patEmail = '';
+					patId='';
+					patDOB = $('#DOB_c').val();
+					searchandshow(patName,patLastName,patContact,patEmail,patId,patDOB);
+					$('#exists').show();
+				}else{
+					var displayString= "<img src='/ayushman/assets/images/Success_Arrow.png' width='20' height='20' />&nbsp;We have created account for  "+returnArray['name']+". <strong>Ioh id "+returnArray['patientuserid']+"</strong><br/><br/>";
+					if((returnArray['mobilenumberPresent']== "true") || (returnArray['emailPresent']== "true" ) )
+						displayString = displayString+"<img src='/ayushman/assets/images/Success_Arrow.png' width='20' height='20' />&nbsp;Patient has been notified.<br/><br/>";
+					else
+						displayString = displayString+"<img src='/ayushman/assets/images/error_icon.png' width='20' height='20' />&nbsp;Patient has not been notified. Please inform IOH id to patient.<br/><br/>";
+					$('#addNewPatientInformationBody').html(""+displayString+"");
+					
+					$('#tdTakeappointment').html('<button class="regnbutton" style="margin-right:10px;" onclick="buildPatientNetwork('+returnArray['patientuserid']+');">Preferred Chemist and Lab</button><button class="regnbutton" style="margin-right:10px;" onclick="editProfile('+returnArray['patientuserid']+');">Edit Profile</button><button class="regnbutton" onclick=connectnowclick("'+returnArray['patientuserid']+'","0")>Start Consultation</button>');
+					$('#addNewPatient').dialog('open');
+				}
+				$('#patloading').dialog("close");
+				
+			},
+			error:function(){
+				$('#patloading').dialog("close");
+				showMessage('250','50','Send Data to patient','Error occured while saving data. Please try again.','error','id');
+			},
+		});
+	}
+	function buildPatientNetwork(patientuserid){
+		parent.openDialog("/ayushman/cpatientprofile/buildnetwork?id="+patientuserid, '900px','1024px');
+	}
+	function searchandshow(patName,patLastName,patContact,patEmail,patId,patDOB){
+		$.ajax({
+			url: "/ayushman/ctakeappointment/searchForPatient/get?patName="+patName+"&patLastName="+patLastName+"&patContact="+patContact+"&patEmail="+patEmail+"&patId="+patId+"&dob="+patDOB,
+			success: function(jsonSearchResults) {
+				searchResults = eval("("+jsonSearchResults+")");
+				if(searchResults.length == 0){
+					$("<span class='bodytext_bold' align='middle'>No Results Found</span>").appendTo($("#searchresult"));
+					$("#searchresult").show();
+				}
+				else{
+					$("#searchresult").empty();
+					for(var i=0;i<searchResults.length;i++){
+						var result = $("<div style='padding-left:20px;border-bottom:1px solid #eee;'>");
+						if(searchResults[i].photo == null){
+							var imgsrc = '/ayushman/assets/images/pic02.png';
+						}
+						else{
+							var imgsrc = searchResults[i].photo;
+						}
+						$("<div class='row'><div class='col-lg-10 doctorsDetailsCol'>").appendTo(result);
+						$("<div class='thumbnailPatient'><img src='"+imgsrc+"' width='90' height='90'/></div>").appendTo(result);
+						var info = $("<div class='patientContent'>");
+						$("<span class='labeltext'><b>Name:</b> "+searchResults[i].name+"</span><br/>").appendTo(info);
+						$("<span class='labeltext'><b>Contact:</b> "+searchResults[i].contact+"</span><br/>").appendTo(info);
+						$("<span class='labeltext'><b>DOB:</b> "+searchResults[i].dob+"</span><br/>").appendTo(info);
+						$("<span class='labeltext'><b>IOH ID:</b>"+searchResults[i].id+"</span><br/></div></div>").appendTo(info);
+						$(info).appendTo(result);
+						$(result).appendTo($("#searchresult"));
+						$("<div class='row'><div class='col-lg-12 doctorsDetailsCol' align='center'><button class='regnbutton' onclick='editProfile("+searchResults[i].id+");'>Edit Profile</button>&nbsp;&nbsp;<button class='regnbutton' onclick='connectnowclick("+searchResults[i].id+",0,1)'>Quick Prescription</button>&nbsp;&nbsp;<button class='regnbutton' onclick='connectnowclick("+searchResults[i].id+",1)'>Start Consultation</button></div></div></div>").appendTo($("#searchresult"));
+					}
+					$("#searchresult").show();
+					$('#nonregisteredUser').dialog('open');
+				}
+				
+				$('#loading').dialog('close');
+			},
+			error : function(){
+				$("<td class='bodytext_bold' colspan='6' align='middle'>An Error Has Occured. Please Try Again</td>").appendTo($("#searchresult"));
+				$("#searchresult").show();
+			}
+		});
+	}
+	function editProfile(patId){
+		parent.openDialog("/ayushman/cpatientprofile/displayProfile?patId="+patId, '830px','770px');
+	}
+	function connetonclick(quick)
+	{
+		$("#lblerror").text("");
+		var incidence= "";
+		var newIncidence= "";
+		if(document.getElementById('newincidentbutton').checked == true)
+		{
+			if(document.getElementById('incidenttxt').value == "")
+			{ 
+				$("#lblerror").text("Please enter Incidence Name");
+				document.getElementById('lblerror').style.disabled = true;
+			}
+			else{
+				incidence= document.getElementById('incidenttxt').value;
+				newIncidence ="true";
+			}
+		}
+		else
+		{
+			var s = document.getElementById('incidentcombo');
+			var selectedValue = s.options[s.selectedIndex].value;
+			if(selectedValue == "")
+			{ 
+				$("#lblerror").text("Please select Incidence Name");
+				document.getElementById('lblerror').style.disabled = true;
+			}
+			else{
+				incidence= selectedValue;
+				newIncidence ="false";
+			}
+		}
+		if(quick == 1){
+			parent.location="/ayushman/cadhocappointmentmanger/connectinclinc?patientuserid="+document.getElementById("patientuserid").value+"&newIncidence="+'true'+"&incidence="+''+"&quick="+quick;
+		}
+		if(document.getElementById("lblerror").innerHTML == "")
+		{
+			profileValue= '';
+			if(document.getElementById("profileList") != undefined){
+				profileValue = document.getElementById("profileList").value;
+			}
+			parent.location="/ayushman/cadhocappointmentmanger/connectinclinc?patientuserid="+document.getElementById("patientuserid").value+"&newIncidence="+newIncidence+"&incidence="+incidence+"&quick="+0+"&p="+profileValue;
+			//$("#connectInclinicAdhoc").submit();
+		}
+	}
+	function showPastApps(){
+		 $("#collapseOnePastAppt" ).css('display', 'block');
+		 $("#collapseOne" ).css('display', 'none');
+		 $('#apptaccordian').text("Past Consultations");		 
+	}
+	
+	function showUpcomingApps(){
+		 $("#collapseOne" ).css('display', 'block');
+		 $("#collapseOnePastAppt" ).css('display', 'none');
+		 $('#apptaccordian').text("Upcoming Appointments");	 		 
+	}
+	function showOpenApps(){
+		 $("#collapseOneOpenAppt" ).toggle();
+	}
+	function oldincidentbuttonclick()
+	{
+		$("#lblerror").text("");
+		document.getElementById('incidentcombo').disabled = false;
+		document.getElementById('incidenttxt').disabled = true;
+		document.getElementById('incidenttxt').value ="";
+	}
+	function newincidentbuttonclick()
+	{
+		$("#lblerror").text("");
+		document.getElementById('incidentcombo').disabled = true;
+		document.getElementById('incidenttxt').value ="";
+		document.getElementById('incidenttxt').disabled = false;
+	}
+	function removeItemInList(i)
+	{
+		var list  = document.getElementById('incidentcombo');
+		list.remove(i);
+	}
+	function additemtolocation (locationvalue,id)
+	{
+		var opt = document.createElement("option");
+		opt.text =locationvalue
+		opt.value = id;
+		document.getElementById("incidentcombo").options.add(opt);       
+	}
+	function connectnowclick(patientUserId,lastappset,quick)
+	{		
+		document.getElementById("patientuserid").value = patientUserId;
+		document.getElementById('newincidentbutton').checked = true;
+		if(lastappset == 0)
+		{
+			document.getElementById('oldIncidenceTr').style.display = 'none';
+		}
+		else{
+			document.getElementById('oldIncidenceTr').style.display = '';
+			$.ajax({
+				url: "/ayushman/cpatientdirectory/previousincidence?patientuserid="+patientUserId,
+				success: function( data ) {
+						//var  incidence =  eval('('+data+')');
+						var  incidence = eval('(' + (data)+ ')');
+						if(incidence == ''){
+							}
+						else
+						{
+							for(var iter = document.getElementById("incidentcombo").length -1; iter >= 0; --iter)
+							{
+								removeItemInList(iter);
+							}
+							additemtolocation("Previous Incident","");
+							for(i=0;i< incidence.length;i++)
+							{
+								additemtolocation(incidence[i][1],incidence[i][0]);
+							}
+						}
+					},
+					error : function(){}
+			  });
+		  }	
+		document.getElementById('incidenttxt').value ="";
+		if(quick == 1){
+			//connectonclick(1);
+			connetonclick(1);
+		}else{
+			$('#addNewPatient').dialog('close');
+			$('#connectnow').dialog('open');
+		}
+	}
+	function appointmentschedule(patientUserId)
+	{		
+		//$('#appointmentschedule').dialog('open');
+		angular.element($('#contentDiv')).scope().launchbookappointment(patientUserId);
+	}
+	/*/////////////////
+	By Vijay
+	*//////////////////
+function setAge(){
+	
+	var dob = document.getElementById("DOB_c").value;
+	var yeardob=	dob.substring(7);
+	var date=new Date();
+    var year = date .getFullYear(); 
+	var age=year-yeardob;
+	if(age==0){
+		document.getElementById("age").value="Age<1 Year";
+	}
+	else{
+		document.getElementById("age").value=age;
+	}
+
+}
+function setDob(){
+	var age=document.getElementById("age").value;
+	if (age < 1 || age > 120 || !age.match("^[0-9]+$") ) {
+		alert("Invalid Age");
+		document.getElementById("age").value="";
+		document.getElementById("DOB_c").value="";
+		
+	}
+	var d = new Date();
+	var day=d.getDate();
+	var month = new Array();
+	month[0] = "Jan";
+	month[1] = "Feb";
+	month[2] = "Mar";
+	month[3] = "Apr";
+	month[4] = "May";
+	month[5] = "Jun";
+	month[6] = "Jul";
+	month[7] = "Aug";
+	month[8] = "Sep";
+	month[9] = "Oct";
+	month[10] = "Nov";
+	month[11] = "Dec";
+	var n = month[d.getMonth()];
+	var year=d.getFullYear();
+	//console.log( day, n, year);
+	var age=document.getElementById("age").value;
+	
+	year=year-age;
+	if(year%4!=0 && n=="Feb" && day==29){
+		day=day-1;
+	}
+	document.getElementById("DOB_c").value=day+" "+n+" "+year;
+}	
+</script>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1</questions>
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>14</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label> Left breast </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>30,2,3,5,10,27</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>30</id>
+		<label>Skin retraction  </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Peau de  orange </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Nipple discharge </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>4</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Colour</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Lumps </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>6,7,8,9</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Location</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Size</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Consistency</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>Mobility</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Axillary node </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>11,12,13</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Number </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Consistency</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Mobility </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label> Right breast </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+				<follow>31,15,16,18,23,27</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>31</id>
+		<label>Skin retraction  </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Peau de orange</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>Nipple discharge </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>17</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Colour </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label>Lumps </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>19,20,21,22</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>Location</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>Size</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>21</id>
+		<label>Consistency</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>22</id>
+		<label>Mobility</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>23</id>
+		<label>Axillary node </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+			<follow>24,25,26</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>24</id>
+		<label>Number </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>25</id>
+		<label>Consistency</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>26</id>
+		<label>Mobility </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>27</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+	
+</form>

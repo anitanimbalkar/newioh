@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if IE 8]>              <html class="ie-old ie8"  lang="en-US"     <![endif]-->
+<!--[if IE 7]>              <html class="ie-old ie7"  lang="en-US"     <![endif]-->
+<!--[if IE 6]>              <html class="ie-old ie6"  lang="en-US"     <![endif]-->
+<!--[if IE 6]>              <html class="ie-old ie6"  lang="en-US"     <![endif]-->
+
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+	<script type="text/javascript" src="/ayushman/assets/js/fancybox/source/jquery.fancybox1.js"></script>
+
+<script type="text/javascript">
+
+
+	$(function() {
+
+		$( "#orderdate" ).datepicker({ yearRange: "-80:+0",changeMonth: true,changeYear: true,  dateFormat: 'dd M yy' });
+	});
+	$(document).ready(function()
+		{
+			$("#testservices").load();
+			document.getElementById('wardservices').style.display = "block";
+			document.getElementById('savetest').style.display = "none";
+			//document.getElementById('selection.id_qty').value = "1";
+// console.log(selection.id);
+		}
+	);	
+
+	function openfinalService(){
+		$("#savetest").dialog({
+		modal: false,
+		draggable: true,
+		resizable: false,
+		position: ['center', 'center'],
+		// title: ' Credit  --- ',
+		show: 'blind',
+		hide: 'blind',
+		width: 400,
+		dialogClass: 'ui-dialog-osx',
+		// onClosed: function() {
+  //                                 window.location.reload(true);
+  //                                 },
+		 });
+	}
+
+</script>
+</head>
+<body class="single single-staff postid-182">
+	<div id="testservices">
+	<div id="top-wrapper" class="clearfix">
+		<div class="wrapper-ie clearfix">
+		<div class="staff-right">
+		<div id="testsave" style="float:right;margin-top:1%;margin-right:30%;" onclick="openfinalService();">
+			<a href="{{referer}}" title="Previous Page" ><b  style="font-size:14px;color:blue;">&nbsp;Back&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
+			<a href="javascript:void(0);" title="Click To Save" ><b class="fa fa-floppy-o" style="font-size:14px;color:blue;">&nbsp;Submit</b></a>
+		</div>
+		<br>
+		<span id="wardservices"   style="float:center;padding-left:15%;margin-top:5%;margin-bottom:1%;height:-1%;" >
+			<label style="width:230px;" class="wrapper clearfix" ng-repeat='record in service | filter: "" track by $index'>
+				<input type='checkbox' style='float:center;' ng-model="selected"   class='select' ng-checked="selection.indexOf(record.id) > -1" ng-click="toggleSelection(record.testname,record.id,record.rate)" id="{{record.id}}"  value="{{record.testname}}">&nbsp;{{record.testname}}&nbsp;
+			</label>
+		</span>
+
+	<div id="savetest" class="wrapper clearfix" style="display:none;" >
+	<form id="savetest">
+		<label style="margin-left:1%;">Date &nbsp;</label>
+		<input style='margin-left:4%;height:15pt;' name='orderdate' id='orderdate' readonly value="" >
+		<br>
+		<br>
+
+		<table width="100%" style="margin-left:3%;">
+			<tr style="margin-bottom:2%;">
+				<th> Test Name</th>
+				<th>Rate </th>
+				<th>Quantity </th>
+			</tr>
+			<tr>
+				<td><div></div> </td>	
+				<td><div></div> </td>	
+				<td><div></div> </td>	
+			</tr>
+           <tr ng-repeat='selectedchecks in selection | filter: "" track by $index'>
+<!-- 		<div style="width:20" ng-repeat='selectedchecks in selection | filter: "" track by $index'>
+ -->		<td width="25%">
+ 				<label>	{{selectedchecks.testname}}</label>
+			</td>
+			<td width="25%">
+				<input type='number' min=1 ng-model="rate[selectedchecks.id]" style='margin-left:2%;height:15pt;'class='select' name='{{selectedchecks.id}}_rate' id='{{selectedchecks.id}}_rate'   value="{{selectedchecks.rate}}" size=5  >
+				
+<!--  				<label>	{{selectedchecks.rate}}</label>
+ -->		</td>
+			<td width="25%">
+				<input type='number' ng-model="quantity[selectedchecks.id]" style='margin-left:2%;height:15pt;'class='select' name='{{selectedchecks.id}}_qty' id='{{selectedchecks.id}}_qty'   value="{{qtyno}}" min=1  size=5  >
+				
+			</td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<input type="button" id="btnsave" height="22" style="width: 90px; height: 25px;line-height:23px; text-align:center; " value="Finalise Services" ng-click="acceptorder(selectedchecks.testname,document.getElementById('orderdate').value,document.getElementById('qty').value);"/>
+	</form>
+	</div>	
+	</div> <!-- End of Full width content -->
+	</div> <!-- End of main-->
+	</div> <!-- End of wrapper -->
+</div>
+</body> <!-- End of body -->
+

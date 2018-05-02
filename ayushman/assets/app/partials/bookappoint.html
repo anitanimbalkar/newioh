@@ -1,0 +1,192 @@
+<script>window.jQuery || document.write('<script src="/ayushman/assets/js/jquery-1.7.1.min.js"><\/script>')</script> 
+
+<style>
+body {
+  font-family: Arial;
+  font-size: 14px;
+}
+calendar {
+    float:left;
+    display:block;
+    .border-box;
+    background:white;
+    width:300px;
+    border:solid 1px #CCC;
+    margin-bottom:10px;
+}
+.header
+{
+float: left;
+  width: 100%;
+  background: #5cb1b6;
+  height: 40px;
+  color: white;
+  font-size: large;
+
+}
+i
+{
+
+  width: 40px;
+  font-size: 1.125em;
+  font-weight: bold;
+  position: relative;
+  padding: 0 10px;
+  cursor: pointer;
+}
+i.fa-angle-left {
+            text-align:left;
+        }
+		i.fa-angle-right {
+            text-align:right;
+            margin-left:40px*-1;
+        }
+span { 
+            
+            font-weight:bold;
+            text-transform:uppercase;
+            .border-box;
+            padding-left:40px+10px;
+            margin-left:40px*-1;
+            text-align:center;
+            padding-right:40px;
+            color:inherit;
+        }	
+.week {
+        float: left;
+  width: 100%;
+  border-top: solid 1px #cccccc;
+}
+.week:last-child
+{
+border-bottom: solid 1px #cccccc;
+}
+.names
+{
+		color: #2875c7;
+		font-weight: bold;
+}  
+.day {
+           float: left;
+		   width: 14.28571429%;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			  border-left: solid 1px #cccccc;
+			  font-size: 0.75em;
+			  text-align: center;
+			  height: 30px;
+			  line-height: 30px !important;
+			  display: inline-block;
+			  vertical-align: middle;
+			  background: white;
+			  cursor: pointer;
+			  color: black;
+        }
+.slot {
+           float: left;
+		     width: 100%;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			  border-left: solid 1px #cccccc;
+			  font-size: 0.75em;
+			  text-align: center;
+			  height: 30px;
+			  line-height: 30px !important;
+			  display: inline-block;
+			  vertical-align: middle;
+			  background: white;
+			  cursor: pointer;
+			  color: black;
+        }
+		.day:last-child {
+                border-right:solid 1px #cccccc;
+            }
+ .different-month
+ {
+	color: #C0C0C0;
+ }
+ .selected {
+                background:#5cb1b6;
+                color:white;
+            }
+			.today {
+                background:#E3F2FF;
+            }
+.form-group{
+	margin-bottom: 7px !important;
+}
+.row {
+  margin-right: 84px;
+    margin-left: 106px;
+  }
+  
+</style>
+<body>
+<div id="appointmentschedule" class="connectformdiv"  >
+		<div style="border:1px solid #eee;">
+		<form id= "bookappointmentform" class="form-horizontal" autocomplete="off"  method="post" enctype="multipart/form-data" >
+			<div class="formHeader"><img src="/ayushman/assets/images/WhiteArrow_Icon.png" width="9" height="7"/>&nbsp;&nbsp;Book Appointment</div>
+			<div>
+				
+			</div>
+			<div class="col-lg-12 col-md-12 form-group bodytext_normalblue">
+					Select incidence name for the appointment e.g. Diabetes, Hypertension, Asthma, Glaucoma etc.				
+			</div>
+			<div class="row">
+				<div class="col-lg-5 col-md-5">				
+					<input name="radiobutton" type="radio" ng-click="newincidence = true;oldincidence = false;" id="newincidentbutton" value="radiobutton" onclick="newincidentbuttonclick()" checked="checked"/>
+				
+					<label for="incidencename">New Incidence</label>
+				</div>
+				<div class="col-lg-7 col-md-7 form-group">	
+					<input id="incidencename" ng-disabled="oldincidence" name="incidencename" type="text" class="form-group connectformcontrol" maxlength="40"  ng-model="incidencename" />			  
+				</div>
+			</div>
+			<div id="oldIncidenceTr" class="row" ng-show="incidence.length > 0">
+				<div class="col-lg-5 col-md-5" >		
+					<input name="radiobutton" ng-click="oldincidence = true;newincidence = false;" type="radio" id="oldincidentbutton" value="radiobutton" />
+								
+					<label for="incidentcombo">Old Incidence </label>
+				</div>
+				<div class="col-lg-7 col-md-7 form-group">		
+					
+					<select id="incidentcombo" ng-disabled="newincidence" name="incidentcombo"  class="form-group connectformcontrol"  align="left"   ng-options="val.id as val.name for val in incidence" ng-model="incidenceid" >
+						<!--<option ng-repeat="item in incidence" value="">{{item.name}}</option>-->
+					</select>	
+					<input id="incidenceid" name="incidenceid" type="hidden" class="form-group connectformcontrol" maxlength="40" value="{{incidenceid}}" ng-model="incidenceid"/>
+					
+				</div>
+			</div>
+			<div class="row">
+			<div class="col-lg-5 col-md-5">
+					<label for="cliniccombo">Select Clinic </label>				
+					</div>
+				<div class="col-lg-7 col-md-7 form-group">
+					
+					<select id="cliniccombo" name="cliniccombo"  class="form-group connectformcontrol"  align="left"  ng-options="val.id as val.name for val in clinics" ng-model="clinicname" >
+						
+					</select>	
+					<input id="clinicid" name="clinicid" type="hidden" class="form-group connectformcontrol" maxlength="40" value="{{clinicname}}" ng-model="clinicname"/>
+				</div>
+			</div>
+			<div calendar selected="day" ></div>
+			
+			
+		  <div class="bodytext_normalblue" >Selected date: <b>{{day.display_time}} </b></div>
+		  <input id="dated" name="dated" type="hidden" class="form-group connectformcontrol" maxlength="40" value="{{day}}" ng-model="day"/>
+				
+			
+			<div class="row" style="margin-top:10px;">
+				<div ng-hide="day.display_time.length" class="col-lg-12 col-md-12 form-group bodytext_normalblue" style="color:red;">
+					Please select Incidence, Clinic, Date and slot.
+				</div>
+				<div  class="col-lg-12 col-md-12 form-group" >
+					<input type="button" ng-show="day.display_time.length > 0" class="regnbutton" ng-click='bookappoint(this)' value="Confirm"/>				
+					<input type="button" class="regnbutton" onClick="location.reload()" value="Cancel"/>									  
+				</div>
+			</div>		
+			
+		</form>
+		</div>
+	</div>
+	</body>

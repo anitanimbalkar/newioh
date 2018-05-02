@@ -1,0 +1,846 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,2,500,3,500,4,500,5,500,6,7,500</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>8,9,500,10,500,11,12,500,13,14</questions>
+		<layout>Vertical</layout>
+	</container>
+
+	<question>
+		<id>1</id>
+		<label>Presenting Complaint </label>
+		<type>Label</type>
+	</question>
+
+	<question>
+		<id>2</id>
+		<label>Menstrual History</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>101,102</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>101</id>
+		<label>Present</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>201,202,203,204,205,206,207,208</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>102</id>
+		<label>Past</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>202,203</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>201</id>
+		<label>Age Of Menarche (Year) </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>202</id>
+		<label>Cycle Length </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>203</id>
+		<label>Cycle frequency (Days)</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>204</id>
+		<label>Severity</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Less</label>
+		</answer>
+		<answer>
+			<label>Heavy</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>205</id>
+		<label>LMP</label>
+		<type>text</type>
+	</question>
+		
+	<question>
+		<id>206</id>
+		<label>Age Of Menopause (Year)</label>
+		<type>Text</type>
+	</question>
+				
+	<question>
+		<id>207</id>
+		<label>Post Menopausal Bleeding </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+				
+	<question>
+		<id>208</id>
+		<label>Post Coital Bleeding </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Discharge</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>103,104,105,106,107,108</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>103</id>
+		<label>Color</label>
+		<type>DD</type>
+		<answer>
+			<label>Red</label>
+		</answer>
+		<answer>
+			<label>White</label>
+		</answer>
+		<answer>
+			<label>Frothy</label>
+		</answer>
+		<answer>
+			<label>Other</label>			
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>104</id>
+		<label>Amount</label>
+		<type>DD</type>
+		<answer>
+			<label>Scanty</label>
+		</answer>
+		<answer>
+			<label>Need Tampons</label>
+		</answer>
+		<answer>
+			<label>Other</label>			
+			<follow>300</follow>
+		</answer>
+	</question>
+		
+	<question>
+		<id>105</id>
+		<label>Smell</label>
+		<type>DD</type>
+		<answer>
+			<label>Smelly</label>
+		</answer>
+		<answer>
+			<label>Not Smelly</label>
+		</answer>
+	</question>
+			
+	<question>
+		<id>106</id>
+		<label>Itchiness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+			
+	<question>
+		<id>107</id>
+		<label>Duration</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>209,210,211</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>209</id>
+		<label>Days</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>210</id>
+		<label>Months</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>211</id>
+		<label>Years</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>108</id>
+		<label>Rash</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Red</label>
+		</answer>
+		<answer>
+			<label>Other</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>109</id>
+		<label>Symptoms In A Partner </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Pain Or Discomfort</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>110,111,112,113,114,115,116,117,118,119,120</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>110</id>
+		<label>Duration (Days) </label>
+		<type>Text</type>
+	</question>
+	
+		
+	<question>
+		<id>111</id>
+		<label>Type </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>112</id>
+		<label>Alleviating  </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>113</id>
+		<label>Aggravating  </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>114</id>
+		<label>Radiation</label>
+		<type>DD</type>
+		<answer>
+			<label>Taken</label>
+		</answer>
+		<answer>
+			<label>Not Taken</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>115</id>
+		<label>Any Relation To Cycle </label>
+		<type>DD</type>
+		<answer>
+			<label>Mild Cycle</label>
+		</answer>
+		<answer>
+			<label>Period Related</label>
+		</answer>
+	</question>
+	
+		
+	<question>
+		<id>116</id>
+		<label>Any Possibility Of Pregnancy </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+			
+	<question>
+		<id>117</id>
+		<label>Any Possibility Of Ectopic </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+				
+	<question>
+		<id>118</id>
+		<label>Bowel Problems </label>
+		<type>DD</type>
+		<answer>
+			<label>Diarrhoea</label>
+		</answer>
+		<answer>
+			<label>Constipation</label>
+		</answer>
+	</question>
+					
+	<question>
+		<id>119</id>
+		<label>A Feeling Of "Something Coming Down Below"</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>120</id>
+		<label>Dyspareunia</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>212,213</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>212</id>
+		<label>Superficial</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>213</id>
+		<label>Deep</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Urinary Symptoms</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>121,122,123,124,125,126,127,128</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>121</id>
+		<label>Leakage</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>122</id>
+		<label>Cloudiness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>123</id>
+		<label>Haematuria</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>124</id>
+		<label>Hesitancy</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>125</id>
+		<label>Dysuria</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>126</id>
+		<label>Frequency</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>127</id>
+		<label>Stranguary</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>128</id>
+		<label>Stree Or Urge Incontinence</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Contraception</label>
+		<type>label</type>
+	</question>
+		
+	<question>
+		<id>7</id>
+		<label>Contraceptive History</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>129</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>129</id>
+		<label>Type</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Sex/Relationships</label>
+		<type>label</type>
+	</question>
+		
+	<question>
+		<id>9</id>
+		<label>Sexually</label>
+		<type>DD</type>
+		<answer>
+			<label>Active</label>
+		</answer>
+		<answer>
+			<label>Inactive</label>
+		</answer>
+	</question>
+	
+			
+	<question>
+		<id>10</id>
+		<label>Infection</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>130,131,132,133</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>130</id>
+		<label>Any Past History Of Pelvic Inflammatory Disease</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>131</id>
+		<label>Any Known Contact With Sexually Trasmitted Diseases</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>132</id>
+		<label>HIV</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>133</id>
+		<label>Hapatitis</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>	
+	
+	
+	<question>
+		<id>11</id>
+		<label>General Health</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>134,135,136,137,138,139,140,141,142,143</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>134</id>
+		<label>Smoking</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>135</id>
+		<label>Alcohol</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+		
+	<question>
+		<id>136</id>
+		<label>Drugs(Especially Intravenous Usage)</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>137</id>
+		<label>Any Systemic Illness</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>138</id>
+		<label>Any Breast Symptoms</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+			
+	<question>
+		<id>139</id>
+		<label>History Of Breast Cancer</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+				
+	<question>
+		<id>140</id>
+		<label>Acne</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>141</id>
+		<label>Hirsutism</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>142</id>
+		<label>Abnormal Weight Loss</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>143</id>
+		<label>Abnormal Weight Gain</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Gynaecological operations </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>144,145</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>144</id>
+		<label>Date Of Last Cervical Smear </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>145</id>
+		<label>Result Of Last Cervical Smear </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Family History</label>
+		<type>Label</type>		
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Any Genetic illness</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	
+	
+	<question>
+		<id>400</id>
+		<label>Other </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>500</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>300</id>
+		<label>Describe</label>
+		<type>text</type>
+	</question>
+
+</form>

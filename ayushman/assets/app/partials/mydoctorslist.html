@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Table</title>
+    <meta name="viewport"
+          content="width = device-width, initial-scale = 1.0, minimum-scale = 1.0, maximum-scale = 1.0, user-scalable = no"/>
+    <link href="../assets/app/css/table.css" rel="stylesheet" type="text/css"/>
+    <link href="../assets/app/css/footable.core.css?v=2-0-1" rel="stylesheet" type="text/css"/>
+    <link href="../assets/app/css/footable-demos.css" rel="stylesheet" type="text/css"/>
+   
+    <script src="../assets/app/js/extra/footable.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/footable.sort.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/footable.filter.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/footable.paginate.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/bootstrap-tab.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	$(document).ready(function() {
+		jQuery("#connectnow").dialog('option', 'position', 'center');
+		$(".ui-dialog-titlebar").hide();
+		$("#connectInclinicAdhoc").onclick=function(){
+			document.getElementById('lblerror').style.display = false;
+		};
+	});
+		
+		$('#nonregisteredUser').dialog({
+			autoOpen: false,			
+			show: "fade",
+			hide: "fade",
+			width: "auto",
+			modal: true,
+			height: "auto",
+			resize: "auto",
+			resizable: false,
+			fluid:true,
+			maxWidth:'800',			
+			maxHeight:'600',
+			open: function(){
+				jQuery('.ui-widget-overlay').bind('click',function(){
+					jQuery('#nonregisteredUser').dialog('close');
+					$('#topNav').show();
+				})
+			}
+		});
+
+    $(function () {
+		   $('table').footable({ bookmarkable: { enabled: true }}).bind({
+            'footable_filtering': function (e) {
+                var selected = $('.filter-status').find(':selected').text();
+                if (selected && selected.length > 0) {
+                    e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
+                    e.clear = !e.filter;
+                }
+            },
+            'footable_filtered': function() {
+                var count = $('table.demo tbody tr:not(.footable-filtered)').length;
+                $('.row-count').html(count + ' rows found');
+            }
+        });
+
+        $('.clear-filter').click(function (e) {
+            e.preventDefault();
+            $('.filter-status').val('');
+            $('table.demo').trigger('footable_clear_filter');
+            $('.row-count').html('');
+        });
+
+        $('.filter-status').change(function (e) {
+            e.preventDefault();
+            $('table.demo').data('footable-filter').filter( $('#patientlist').val() );
+        });
+    });
+	// on window resize run function
+	$(window).resize(function () {
+		fluidDialog();
+	});
+
+	// catch dialog if opened within a viewport smaller than the dialog width
+	$(document).on("dialogopen", ".ui-dialog", function (event, ui) {
+		fluidDialog();
+	});
+
+	function fluidDialog() {
+		var $visible = $(".ui-dialog:visible");
+		// each open dialog
+		$visible.each(function () {
+			var $this = $(this);
+			var dialog = $this.find(".ui-dialog-content").data("dialog");
+			// if fluid option == true
+			if (dialog.options.fluid) {
+				var wWidth = $(window).width();
+				// check window width against dialog width
+				if (wWidth < (parseInt(dialog.options.maxWidth) + 50))  {
+					// keep dialog from filling entire screen
+					$this.css("max-width", "90%");
+				} else {
+					// fix maxWidth bug
+					$this.css("max-width", dialog.options.maxWidth + "px");
+				}
+				
+				//reposition dialog
+				dialog.option("position", dialog.options.position);
+			}			
+		});
+	}
+	function closepopup(thisclose)
+	{
+		$("#"+thisclose).dialog("close");
+		$('#topNav').show();
+	}
+	//Search results cached
+	$(window).resize(function() {
+		$(".ui-autocomplete").css('display', 'none');
+		$("input#search").autocomplete("search");
+	});
+	
+</script>
+<style type="text/css">.BreakWord {word-break: break-all; }
+	    h4 {line-height: 2.1};
+</style>
+	
+</head>
+<body>
+<div style="align-items:center;justify-content:center;" class="demo-container">
+        
+    <div style="margin:auto;width:85%;max-width:1030px;background-color: white;padding:10px;" class="tab-content">
+        <div class="tab-pane active" id="demo">
+  		<h4 class="headingcls">My Doctors Network</h4>
+          <table class="table demo" data-page-size="5"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th width="10%" data-toggle="true">
+                        Doctor Name	
+                    </th>
+                    <th width="7%" data-hide="phone">
+                        City
+                    </th>
+                    <th width="7%" data-hide="phone">
+                        Location
+                    </th>
+                    <th width="10%" data-hide="phone">
+                        Specialization
+                    </th>
+                    <th width="10%" data-hide="phone">
+                        Education
+                    </th>
+					<th width="7%">
+                        Profile
+                    </th>
+					<th width="7%">
+                        Remove
+                    </th>
+					
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "record in statements" on-finish-render="ngRepeatFinished">
+                    <td>{{record.doctorname}}</td>
+                    <td>{{record.city_c}}</td>
+                    <td>{{record.location_c}}</td>
+                    <td class="BreakWord">{{record.specialization_c}}</td>
+                    <td class="BreakWord">{{record.education_c}}</td>
+                  <td><a class="btnDefaultCols"  href="#/doctorprofile/{{record.favdoctorsid}}"  title="Doctors">View Profile</a></td>
+                
+                    <td><a href="javascript:void(0);"  class="btnDefaultCols" ng-click="addremove(record.favdoctorsid,'remove')">Remove</a></td>
+                    
+                </tr>
+                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			<div style="width:100%;align:center;border:1px solid grey" class="form" align="center" ng-if="show">
+                    No Doctors in the Network..
+                </div>
+        </div>
+        <div style="margin-top:60px;" class="tab-pane active" id="demo">
+      	<hr>     
+            <div style="margin:16px 0px 10px 10px;" class="tab-pane active">
+	   		<h4 >Search Doctor in IOH Network</h4>
+            	Dr. <input style="height:30px;width:200px;" placeholder="Enter Doctor Name" ng-model="searchname" type="text">
+				<select style="height:30px;" id="searchspec" ng-model="selectspec" ng-options="spec.name for spec in specialization"><option>Select Specialization</option></select>
+				<select style="height:30px;" id="searchcity" ng-model="selectcity" ng-options="cit.name for cit in city"><option>Select City</option></select>
+				<select style="height:30px;" id="searchlang" ng-model="selectlang" ng-options="lang.name for lang in language"><option>Select Language</option></select>
+                <a href="javascript:void(0);" class="btnDefaultCols" ng-click="searchDoctors();">Search Doctor</a>
+            </div>
+           <table class="table demo" data-page-size="10"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th width="10%" data-toggle="true">
+                        Doctor Name	
+                    </th>
+                    <th width="7%" data-hide="phone">
+                        City
+                    </th>
+                    <th width="7%" data-hide="phone">
+                        Location
+                    </th>
+                    <th width="10%" data-hide="phone">
+                        Specialization
+                    </th>
+                    <th width="10%" data-hide="phone">
+                        Education
+                    </th>
+					<th width="7%">
+                        Profile
+                    </th>
+					<th width="7%">
+                        Add to Panel
+                    </th>
+					
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "record in finddoctors" on-finish-render="ngRepeatFinished">
+                    <td>{{record.doctorname}}</td>
+                    <td>{{record.city_c}}</td>
+                    <td>{{record.location_c}}</td>
+                    <td class="BreakWord">{{record.specialization_c}}</td>
+                    <td class="BreakWord">{{record.education_c}}</td>
+                  <td><a class="btnDefaultCols"  href="#/doctorprofile/{{record.userid}}"  title="Doctors">View Profile</a></td>
+                  <td><a href="javascript:void(0);"  class="btnDefaultCols" ng-click="addremove(record.userid,'add')">Add</a></td>
+                    
+                </tr>
+                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			<div style="width:100%;align:center;border:1px solid grey" class="form" align="center" ng-if="searchshow">
+                    No Records Found
+                </div>
+        </div>
+        
+    </div>
+ 
+ 	<div class="connectformdiv">
+	<div id="nonregisteredUser" style="border:1px solid #eee;" >
+							<div style="display:inline-flex;width:100%;background:white;margin-top:5px;min-height:100px;">
+							<div style="padding-top:10px;padding-left:10px;">
+							<img src="{{viewprofile.photo}}" style="box-shadow:2px 7px 19px #888888;max-height:130px;" />
+							</div>
+							<div style="padding:10px;padding-left:50px;width:25%;" class="bodytext_bold">
+								<h5>Personal Info</h5></br> 
+								
+								Name      :  {{viewprofile.doctorname}} </br>
+								
+								Gender    :  {{viewprofile.gender}} </br>
+								
+								Email     :   {{viewprofile.email}}</br>
+								Moblie    : {{viewprofile.mobileno}}</br>
+							</div>
+							<div style="padding:10px;padding-left:33px;width:30%;" class="bodytext_bold">
+							<h5>Other Info</h5>
+							</br>
+							Language :   {{viewprofile.languages_c}} </br>
+							Qualification :   {{viewprofile.education_c}} </br>
+							Domain    :   {{viewprofile.domain_c}} </br>
+							Specialization :   {{viewprofile.specialization_c}} </br>
+							Experience  :   {{viewprofile.experience}} </br>				 
+							</div>
+							<div style="padding:10px;padding-left:67px;width:25%;" class="bodytext_bold">
+								<h5>IOH Info & Address</h5></br>
+								IOH Id    :  {{viewprofile.favdoctorsid}} </br>
+								City  :   {{viewprofile.city_c}} </br>				 
+								Location  :   {{viewprofile.location_c}} </br>				 
+								</br>
+							</div>
+
+							</div>
+							<div style="display:inline-flex;width:100%;background:white;margin-top:5px;height:auto;">
+								<div style="padding:10px;width:100%;" class="bodytext_bold" >
+									<h5>Profile as seen by Other</h5>
+									</br>
+									{{viewprofile.doctorprofile}} </br>
+								</div>
+									
+
+							</div>
+	
+	</div>
+	
+</div>
+   
+</div>
+</body>
+</html>

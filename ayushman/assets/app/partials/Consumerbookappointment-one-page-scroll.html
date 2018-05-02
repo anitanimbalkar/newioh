@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html class="no-js">
+<script src="/ayushman/assets/js/jquery-ui.min.js"></script>
+<title>Booking Appointment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/ayushman/home/css/w3.css">
+<script type='text/javascript' src='/ayushman/assets/js/jquery-ui.multidatespicker.js'></script>
+<link href="/ayushman/assets/app/css/visits.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/ayushman/assets/app/css/bootstrap.min.css" />
+<script src="/ayushman/assets/app/js/createDialog.js"></script>
+	
+<style>
+.w3-light-blue,
+.w3-hover-light-blue:hover{color:#000!important;background-color:rgba(30,190,240,0.4)!important}
+.w3-orange,.w3-hover-orange:hover{color:#000!important;background-color:rgba(255, 110, 2, 0.4) !important}
+.w3-light-grey,.w3-hover-light-grey:hover,.w3-light-gray,.w3-hover-light-gray:hover{color:#000!important;background-color:#f1f1f1!important}
+
+.link_blink {color:black;animation: blink-trvl 1s steps(2, start) infinite;}
+@keyframes blink-trvl {
+from { color: color:rgba(255, 110, 2, 0.7); background-color:#fff; }
+to { color: #ffd525; background-color:#fff;}
+}
+.btnTime {
+	color:#000!important;
+    font-weight: bold;
+    width: 80px;
+    height: 40px;
+    padding: 1px;
+    background-color: white;
+    border-radius: 4px;
+	box-shadow: 4px 4px 2px #888888
+}	
+.btnTime:hover {
+box-shadow: 0 0 6px rgba(35, 173, 278, 1);
+
+</style>
+<script>
+	// Added because of error "a.curCSS is not a function"
+	jQuery.curCSS = function(element, prop, val) {
+		return jQuery(element).css(prop, val);
+	};
+</script>
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var  x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+$(document).ready(function(){
+	showDivs(1);
+});
+
+$(document).ready(function() {
+	$(function(){
+		$( "#selected_date" ).datepicker({yearRange: "-120:+1",minDate: '0',changeMonth: true,changeYear: true,  dateFormat: 'dd M yy'});
+	});
+	$(function(){
+		$( "#testdate" ).datepicker({yearRange: "-120:+1",minDate: '0',changeMonth: true,changeYear: true,  dateFormat: 'dd M yy'});
+	});
+    //set_fees('First Time'); 
+// Add control buttons in bottom bar
+	$('<div class="visible-sm visible-xs col-sm-visible" style ="text-align:center;position: fixed; bottom:10px;color:black; width: 100%;height:45px; background-color:#ddeffe; z-index: 1030;"><div class="w3-text-left"> <button class="button w3-light-blue" style="width:100px;height:40px" onclick="javascript:history.go(-1)" ng-click="">Cancel</button><button class="button w3-orange" style="width:100px;height:40px" onclick="prepare_book_form()">Confirm</button></div></div>').appendTo($(".mainpage"));
+	//$('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;').appendTo($("body"));
+	resizescreen();
+});
+
+function resizescreen()
+{
+	parent.setIframeHeight(document.getElementById('icontent'));
+}
+function changesign(item)
+{
+	if($(item).hasClass("glyphicon-plus"))
+	{
+		 $(item).removeClass("glyphicon-plus").addClass("glyphicon-minus");
+	}
+	else
+	{
+		 $(item).removeClass("glyphicon-minus").addClass("glyphicon-plus");
+	}	
+}
+</script>  
+<div id="btnControls">
+</div>
+<!--<body onload="parent.setIframeHeight(document.getElementById('icontent'));">-->
+
+<div style="height:auto; background:rgba(128,128,128,0.2)">
+	<!--<div class="navbar header"  style="position:fixed;z-index:100; height: 50px;">
+	<div class="navbar" style="position:relative; background:white; height: 0px;">
+		<a class="navbar-brand" href=""><img style="width:193px" src="/ayushman/assets/app/img/logo.png" alt="India Online Health"></a>
+		<span>
+		<div class="navbar-header pull-left" >
+		<ul class="nav navbar-nav navbar-left">
+		</ul>
+		</div>
+		</span>
+		<a href="javascript:history.go(-1)" class="btn btn-info btn-md" style="float:right;color:black; margin:10px;">
+			<span class="glyphicon glyphicon-circle-arrow-left" style="font-size:14px;width: 20px;"></span><strong style="font-size:14px;"> Back </strong>
+		</a>
+	</div>
+	</div>
+	<div style="height:5px;padding-top:55px;"></div>-->
+<div ng-if="doctorlist.length == 0">	
+	<span class="bodytext_normal" style="font-size:25px;padding-top:50px;padding-left:50px" ng-if="(currentSlots[1].appointments == null) ||((currentSlots[1].appointments).length==0)">				
+		Please add doctors in your network for Appointments
+	</span>
+</div>
+	
+<div ng-if="doctorlist.length > 0">	
+	<!--Display when at least one doctor in network -->
+	<div class="w3-text-left" style="background-color:white;height:auto;min-height:100px" >
+	<div class="mySlides" id="slide" style="display:none">
+		<div style="height:5px"></div>
+			<table>
+			<tr>
+				<td style="align:left;width:15%">
+					<img  src= "{{currentDoctordata.photo}}" style="height:80px;width:80px" >
+				</td>
+				<td style="text-align:center;width:60%" ><span class="bodytext_bold">{{currentDoctordata.name}} </span>
+				<span class="bodytext_normal" >({{currentDoctordata.education}})</span>
+				</br>
+				<span class="bodytext_normal" > {{currentDoctordata.specialization}}</span>		
+				</br>
+				<span class="bodytext_bold">Ph.&nbsp;&nbsp;{{currentDoctordata.phone}}</span>				
+				</br>
+				</td>
+				<td class="w3-text-right" style="position:absolute;text-align:right;right:2%;width:20%">
+				<div ng-if="doctorlist.length > 1" >
+					<a id="othersonpanel" data-toggle="collapse" style="color:blue;" data-parent="#accordion" href="/dashboard/#alldoctors" class="collapsed" title="Display other doctors in Network">
+						<button class="button w3-light-blue" style="height:60px" title="Display other doctors in Network">
+							Doctors in Network
+						</button>
+					</a> 
+					<div id="alldoctors" class="panel-collapse collapse" style="text-align:left;background-color:rgb(229, 229, 250);position:absolute;z-index:100;float:right;right:1%;width:200px;box-shadow:5px 5px 5px 5px #888888">
+						</br>
+						<div class="bodytext_normal" ng-repeat="data in doctorlist track by $index" style="padding-left:15px">
+							<div ng-if="currentDoctorid == data.doctorid">
+								<input type="radio" name="doc" id="doc$index" value="{{data.doctorid}}" checked />
+								<span style="margin-left:5px">{{data.name}}</span></br>
+								<span style="margin-left:10px">({{data.education}})</span>
+							</div>
+							<div ng-if="currentDoctorid != data.doctorid">
+								<input type="radio" name="doc" id="doc$index" value="{{data.doctorid}}" onclick="resetColor();resetColorDay();" ng-click="clearslots();showselecteddoctor(data.doctorid);" />
+								<span style="margin-left:5px">{{data.name}}</span></br>
+								<span style="margin-left:10px">({{data.education}})</span>
+							</div>				
+						</div>
+						</br>
+					</div>		
+				</div>
+				</td>
+			</tr>
+			<tr>
+				<td style="align:left;width:15%">
+				</td>
+				<td style="text-align:center;width:60%" >
+					<select id="doctorclinic" name="doctorclinic" class="textarea" ng-model="currentClinicid" class="textarea" style="height:30px;width:auto" align="left" onchange="resetColor();resetColorDay();" ng-change = "getslotsforclinic('In-clinic');" >
+						<option ng-repeat="template in currentClinics" value="{{template['address_id']}}" >{{template['name']}}</option>
+					</select>
+					</br>
+					<span class="bodytext_normal">{{currentClinicAddress}}</span>
+					</br>	
+				</td>
+			</tr>
+			</table>
+		<!--<a href="" ng-click="clearslots();showprevdoctor()" style="position:absolute;top:5%;left:0%;" title="Previous Doctor"  >		
+			<img  src= "/ayushman/assets/images/BlueArrow_Icon001.png" >
+		</a>
+		<a href="" ng-click="clearslots();shownextdoctor()" style="position:absolute;top:5%;right:0%;" title="Next Doctor" >		
+			<img  src= "/ayushman/assets/images/BlueArrow_Icon002.png" >
+		</a>-->
+	</div>	
+	</div>
+	<div style="height:5px"></div>
+	<div class="w3-center" style="background-color:white;height:auto;min-height:290px;">
+		<div style="height:10px"></div>
+		<table class="w3-center" style="width:100%"><tr>
+		<td width="30%">
+			<a class="" style="width:80px;color:blue;margin-right:10px;" href="" onclick="resetColor();resetColorDay();" ng-click="showtodayslots();" style="position:absolute;top:1%;left:0%;" title="Display today's slot">
+				Today({{todayDate}})
+			</a>
+		</td>
+		<td width="30%">
+			<span class="bodytext_normal">Date</span>
+			<input type="text" class="textarea" name="selected_date" id="selected_date" style="width:80px;" readonly  onchange="resetColor();resetColorDay();getslots(this.value);" value="{{currentDate}}" />		
+		</td>
+		<td width="30%">
+			<a class="link_blink" style="width:100px;color:blue;margin-left:10px;" href="" onclick="resizescreen();resetColor();resetColorDay();" ng-click="shownextslots();" style="position:absolute;top:1%;right:20%;" title="Next dates">
+				<span class="glyphicon glyphicon-plus-sign" style="font-size:14px;width: 20px;"></span>				
+					Next Week
+			</a>	
+		</td>
+		</tr></table>
+		<div style="height:10px"></div>
+		<table class="w3-center" style="width:100%">
+		<tr>
+			<td class="bodytext_normal" >
+				<button id="day1" class="button w3-light-blue" style="min-height:50px;height:auto" onclick="resizescreen();changeColorDay(this)" ng-click="displayslots(1);" title="{{currentSlots[1].day_name}} {{currentSlots[1].date}}"> 
+				{{currentSlots[1].day_name}} </br> {{currentSlots[1].date}}
+				</button>
+			</td>
+			<td class="bodytext_normal" >
+				<button id="day2" class="button w3-light-blue" style="min-height:50px;height:auto" onclick="resizescreen();changeColorDay(this)" ng-click="displayslots(2);" title="{{currentSlots[2].day_name}} {{currentSlots[2].date}}"> 
+				{{currentSlots[2].day_name}} </br> {{currentSlots[2].date}}
+				</button>			
+			</td>
+			<td class="bodytext_normal" >
+				<button id="day3" class="button w3-light-blue" style="min-height:50px;height:auto" onclick="resizescreen();changeColorDay(this)" ng-click="displayslots(3);" title="{{currentSlots[3].day_name}} {{currentSlots[3].date}}"> 
+				{{currentSlots[3].day_name}} </br> {{currentSlots[3].date}}
+				</button>
+			</td>
+			<td class="bodytext_normal" >
+				<button id="day4" class="button w3-light-blue" style="min-height:50px;height:auto" onclick="resizescreen();changeColorDay(this)" ng-click="displayslots(4);" title="{{currentSlots[4].day_name}} {{currentSlots[4].date}}"> 
+				{{currentSlots[4].day_name}} </br> {{currentSlots[4].date}}
+				</button>
+			</td>
+			<td class="bodytext_normal" >
+				<button id="day5" class="button w3-light-blue" style="min-height:50px;height:auto" onclick="resizescreen();changeColorDay(this)" ng-click="displayslots(5);" title="{{currentSlots[5].day_name}} {{currentSlots[5].date}}">
+				{{currentSlots[5].day_name}} </br> {{currentSlots[5].date}}
+				</button>
+			</td>
+			<td class="bodytext_normal" >
+				<button id="day6" class="button w3-light-blue" style="min-height:50px;height:auto" onclick="resizescreen();changeColorDay(this)" ng-click="displayslots(6);" title="{{currentSlots[6].day_name}} {{currentSlots[6].date}}"> 
+				{{currentSlots[6].day_name}} </br> {{currentSlots[6].date}}
+				</button>
+			</td>
+			<td class="bodytext_normal" >
+				<button id="day7" class="button w3-light-blue" style="min-height:50px;height:auto" onclick="resizescreen();changeColorDay(this)" ng-click="displayslots(7);" title="{{currentSlots[7].day_name}} {{currentSlots[7].date}}"> 
+				{{currentSlots[7].day_name}} </br> {{currentSlots[7].date}}
+				</button>						
+			</td>
+		</tr>
+		</table>
+		<div class="w3-text-left">
+		<table class ="w3-text-left">
+		<tr> 
+			<!--<td  ng-if="currentDate == currentSlots[1].date" >
+				</br>
+				<span class="bodytext_normal" style="font-size:25px;padding-top:50px;padding-left:50px" ng-if="(currentSlots[1].appointments == null) ||((currentSlots[1].appointments).length==0)">				
+						No slots
+				</span>
+				<span class="bodytext_normal" ng-repeat="app in currentSlots[1].appointments track by $index" style="padding-top:5px;padding-right:15px;padding-left:15px">
+					<button class="btnTime" style="margin-top:20px" onclick="changeColor(this)" ng-click="setappdetail(1,$index);" title="{{currentSlots[1].day_name}} {{currentSlots[1].date}}">{{app.display_onlytime}}</button>
+					<div ng-if = "(currentSlots[1]['appointments'][$index].ampmflag != currentSlots[1]['appointments'][$index+1].ampmflag) && (currentSlots[1]['appointments'][$index+1].ampmflag == 'PM')">
+						</br> </br> <!-- spacing for morning and evening appointments 
+					</div>
+				</span>				
+			</td>-->
+			<td ng-if="currentDate == currentSlots[1].date" >
+				</br>
+				<div class="bodytext_normal" style="font-size:25px;padding-top:50px;padding-left:50px"  ng-if="(currentSlots[1].appointments == null) ||((currentSlots[1].appointments).length==0)">				
+						No slots
+				</div>
+				<span class="bodytext_normal" ng-repeat="app in currentSlots[1].appointments track by $index" style="padding-top:5px;padding-right:15px;padding-left:15px">
+					<button class="btnTime" style="margin-top:20px" onclick="changeColor(this);on_change_set_fees();" ng-click="setappdetail(1,$index);" title="{{currentSlots[1].day_name}} {{currentSlots[1].date}}">{{app.display_onlytime}}</button>				
+					<div ng-if = "(currentSlots[1]['appointments'][$index].ampmflag != currentSlots[1]['appointments'][$index+1].ampmflag) && (currentSlots[1]['appointments'][$index+1].ampmflag == 'PM')">
+						</br> </br> <!-- spacing for morning and evening appointments -->
+					</div>
+				</span>
+			</td>
+			<td ng-if="currentDate == currentSlots[2].date" >
+				</br>
+				<div class="bodytext_normal" style="font-size:25px;padding-top:50px;padding-left:50px"  ng-if="(currentSlots[2].appointments == null) ||((currentSlots[2].appointments).length==0)">				
+						No slots
+				</div>
+				<span class="bodytext_normal" ng-repeat="app in currentSlots[2].appointments track by $index" style="padding-top:5px;padding-right:15px;padding-left:15px">
+					<button class="btnTime" style="margin-top:20px" onclick="changeColor(this);on_change_set_fees" ng-click="setappdetail(2,$index);" title="{{currentSlots[2].day_name}} {{currentSlots[2].date}}">{{app.display_onlytime}}</button>				
+					<div ng-if = "(currentSlots[2]['appointments'][$index].ampmflag != currentSlots[2]['appointments'][$index+1].ampmflag) && (currentSlots[2]['appointments'][$index+1].ampmflag == 'PM')">
+						</br> </br> <!-- spacing for morning and evening appointments -->
+					</div>
+				</span>
+			</td>
+			<td ng-if="currentDate == currentSlots[3].date" >
+				</br>
+				<div class="bodytext_normal" style="font-size:25px;padding-top:50px;padding-left:50px"  ng-if="(currentSlots[3].appointments == null) ||((currentSlots[3].appointments).length==0)">				
+						No slots
+				</div>
+				<span class="bodytext_normal" ng-repeat="app in currentSlots[3].appointments track by $index" style="padding-top:5px;padding-right:15px;padding-left:15px">
+					<button class="btnTime" style="margin-top:20px" onclick="changeColor(this);on_change_set_fees();" ng-click="setappdetail(3,$index);" title="{{currentSlots[3].day_name}} {{currentSlots[3].date}}">{{app.display_onlytime}}</button>				
+					<div ng-if = "(currentSlots[3]['appointments'][$index].ampmflag != currentSlots[3]['appointments'][$index+1].ampmflag) && (currentSlots[3]['appointments'][$index+1].ampmflag == 'PM')">
+						</br> </br> <!-- spacing for morning and evening appointments -->
+					</div>
+				</span>			
+			</td>
+			<td ng-if="currentDate == currentSlots[4].date" >
+				</br>
+				<div class="bodytext_normal" style="font-size:25px;padding-top:50px;padding-left:50px" ng-if="(currentSlots[4].appointments == null) ||((currentSlots[4].appointments).length==0)">				
+						No slots
+				</div>
+				<span class="bodytext_normal" ng-repeat="app in currentSlots[4].appointments track by $index" style="padding-top:5px;padding-right:15px;padding-left:15px">
+					<button class="btnTime" style="margin-top:20px" onclick="changeColor(this);on_change_set_fees();" ng-click="setappdetail(4,$index); " title="{{currentSlots[4].day_name}} {{currentSlots[4].date}}">{{app.display_onlytime}}</button>				
+					<div ng-if = "(currentSlots[4]['appointments'][$index].ampmflag != currentSlots[4]['appointments'][$index+1].ampmflag) && (currentSlots[4]['appointments'][$index+1].ampmflag == 'PM')">
+						</br> </br> <!-- spacing for morning and evening appointments -->
+					</div>
+				</span>
+			</td>
+			<td ng-if="currentDate == currentSlots[5].date" >
+				</br>
+				<div class="bodytext_normal" style="font-size:25px;padding-top:50px;padding-left:50px" ng-if="(currentSlots[5].appointments == null) ||((currentSlots[5].appointments).length==0)">
+						No slots
+				</div>
+				<span class="bodytext_normal" ng-repeat="app in currentSlots[5].appointments track by $index" style="padding-top:5px;padding-right:15px;padding-left:15px">
+					<button class="btnTime" style="margin-top:20px" onclick="changeColor(this);on_change_set_fees();" ng-click="setappdetail(5,$index);" title="{{currentSlots[5].day_name}} {{currentSlots[5].date}}">{{app.display_onlytime}}</button>				
+					<div ng-if = "(currentSlots[5]['appointments'][$index].ampmflag != currentSlots[5]['appointments'][$index+1].ampmflag) && (currentSlots[5]['appointments'][$index+1].ampmflag == 'PM')">
+						</br> </br> <!-- spacing for morning and evening appointments -->
+					</div>
+				</span>
+			</td>
+			<td ng-if="currentDate == currentSlots[6].date" >
+				</br>
+				<div class="bodytext_normal" style="font-size:25px;padding-top:50px;padding-left:50px" ng-if="(currentSlots[6].appointments == null) ||((currentSlots[6].appointments).length==0)">
+						No slots
+				</div>
+				<span class="bodytext_normal" ng-repeat="app in currentSlots[6].appointments track by $index" style="padding-top:5px;padding-right:15px;padding-left:15px">
+					<button class="btnTime" style="margin-top:20px" onclick="changeColor(this);on_change_set_fees();" ng-click="setappdetail(6,$index); " title="{{currentSlots[6].day_name}} {{currentSlots[6].date}}">{{app.display_onlytime}}</button>				
+					<div ng-if = "(currentSlots[6]['appointments'][$index].ampmflag != currentSlots[6]['appointments'][$index+1].ampmflag) && (currentSlots[6]['appointments'][$index+1].ampmflag == 'PM')">
+						</br> </br> <!-- spacing for morning and evening appointments -->
+					</div>
+				</span>
+			</td>
+			<td ng-if="currentDate == currentSlots[7].date" >
+				</br>
+				<div class="bodytext_normal" style="font-size:25px;padding-top:50px;padding-left:50px" ng-if="(currentSlots[7].appointments == null) ||((currentSlots[7].appointments).length==0)">
+						No slots
+				</div>
+				<span class="bodytext_normal" ng-repeat="app in currentSlots[7].appointments track by $index" style="padding-top:5px;padding-right:15px;padding-left:15px">
+					<button class="btnTime" style="margin-top:20px" onclick="changeColor(this);on_change_set_fees();" ng-click="setappdetail(7,$index);" title="{{currentSlots[7].day_name}} {{currentSlots[7].date}}">{{app.display_onlytime}}</button>				
+					<div ng-if = "(currentSlots[7]['appointments'][$index].ampmflag != currentSlots[7]['appointments'][$index+1].ampmflag) && (currentSlots[7]['appointments'][$index+1].ampmflag == 'PM')">
+						</br> </br> <!-- spacing for morning and evening appointments -->
+					</div>
+				</span>
+			</td>
+		</tr>
+		</table>
+		</div>
+		</br>
+	</div>
+	<div id="paydetails" class="bodytext_normal panel-collapse collapse" style="position:absolute;background-color:rgb(229,229,250);z-index:100;margin-left:30%;min-width:250px;text-align:left;box-shadow:5px 5px 5px 5px #888888">
+		<table>
+			<tr>
+				<td width="70%"><span style="margin-left:10px;" class="bodytext_normal">Appointment Charges</span></td>
+				<td><label id='appointment_charges' width="18%" class="bodytext_normal">:&nbsp;</label></td>
+			</tr>
+			<tr>
+				<td width="70%"><span class="bodytext_normal"style="margin-left:10px;">Platform Usage Charges</span></td>
+				<td><label id='platform_usage_charges' class="bodytext_normal">:&nbsp;</label></td>
+			</tr>
+			<tr>
+				<td width="70%"><span class="bodytext_normal"style="margin-left:10px;">Online Booking Charges(non refundable)</span></td>
+				<td><label id='online_booking_charges' class="bodytext_normal">: &nbsp;</label></td>
+			</tr>
+			<tr>
+				<td width="70%"><span class="bodytext_normal" style="margin-left:10px;">Service Tax (non refundable) ({{servicetax}})</span></td>
+				<td><label id='servicetaxonayushmancharges' class="bodytext_normal">: &nbsp;</label></td>
+			</tr>
+		</table>
+  	  </br>
+	</div>				
+	<div style="height:5px"></div>
+	<div class="w3-content w3-display-container" style="background-color:white;height:auto;min-height:250;padding-left:2%;">
+		<div class="w3-center" style="color:black; font-size:15px">
+			<strong>{{currentDoctorName}}&nbsp;&nbsp;&nbsp;&nbsp;
+			{{currentDateTime}}</strong>
+		</div>
+		<div id ="loadingDiv"class=" loading_class bodytext_bold" style="position:relative;text-align: center;display:none;" >
+			<img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+		</div>
+  		<div id='paymentmode' style="width:98%;margin:7px;">
+			<table width="100%">
+			<tr><td title="You can make payment online or pay at the time of consultation.">
+				<input type="radio" id="onlinepayment" name="payment" value="1" ><span class="bodytext_normal">Pay online.</span></input>
+			</td>
+			<td>
+				<input type="radio"  name="payment" id="inclinicpayment" value="0" checked ><span class="bodytext_normal">Pay at the time of appointment.</span></input>
+			</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+			<td title="Visit type" onchange="on_change_set_fees();">
+				<input type="radio" id="first_time" name="visit_type" value="1" checked title="First Time" ><span class="bodytext_normal">First Time</span></input>
+			</td>
+			<td title="Visit type" onchange="on_change_set_fees();">
+				<input type="radio"  name="visit_type" id="follow_up" value="0"  ><span class="bodytext_normal" title="Follow-up" >Follow-up</span></input>
+			</td>
+			</tr>
+			</table>
+		</div>
+		<div style="height:10px"></div>
+		<div style="width:98%;margin:7px;">
+			<div class="AppDetails">
+				<span class="bodytext_normal">Total Charges &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<span id='total_charges' class="bodytext_bold">: &nbsp;</span>
+				<a id="paylink" data-toggle="collapse" data-parent="#accordion" style="color:blue;margin-left:8%" href="/dashboard/#paydetails" class="collapsed">
+					<span class="glyphicon glyphicon-plus-sign" style="font-size:14px;width: 20px;"></span>				
+					More...
+				</a>
+				</br>
+				<span class="bodytext_normal" style="text-align:right">Current Balance &nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;Rs. {{netbalance}}</span>
+			</div>
+		</div>
+		<p class="bodytext_normal" style="width:98%;text-align:center;">(IOH Service charges will be deducted online even if you select 'Pay at the time of appointment' option.)</p>
+
+		<div class="w3-text-left" style="background-color:white;">
+			<button class="button w3-light-blue" style="width:100px;height:40px" onclick="javascript:history.go(-1)" ng-click="">Cancel</button>				
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button class="button w3-orange" style="width:100px;height:40px" onclick='prepare_book_form()'>Confirm</button>				
+		</div>
+		<div style="height:20px"></div>
+	</div>
+</div>
+</div>
+<!--<div class="visible-sm visible-xs col-sm-visible" style ="text-align:center;position: fixed; bottom:10px;color:black; width: 100%;height:45px; background-color:#ddeffe;; z-index: 1030;">
+	<div class="w3-text-left" style="">
+		<button class="button w3-light-blue" style="width:100px;height:40px" onclick="javascript:history.go(-1)" ng-click="">Cancel</button>				
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<button class="button w3-orange" style="width:100px;height:40px" onclick='prepare_book_form()'>Confirm</button>				
+	</div>
+</div>-->
+<!--This div is defined in vtemplatewithmenu and activated here-->
+
+<form id='appointment_book_form' method="post" enctype="multipart/form-data"  action="/ayushman/cappointment/book"> 
+    <input type='hidden' name = 'display_time' value="{{display_time}}" />
+    <input type='hidden' name = 'start_time' value="{{start_time}}" />
+    <input type='hidden' name = 'end_time' value="{{end_time}}" />
+    <input type='hidden' id='form_visit_type' name = 'visit_type' value='' />
+    <input type='hidden' name = 'doctor_id' value="{{currentDoctorid}}" />
+    <input type='hidden' name = 'clinic_id' value="{{currentClinicid}}" />
+    <input type='hidden' id='form_incident' name= 'incident' value='' />
+    <input type='hidden' name='charge_type' value='Standard'/>
+    <input type='hidden' id='payment_mode' name='payment_mode' value='{{payment_mode}}'/>
+    <input type='hidden' name='clinic_name' value='{{currentClinicname}}'/>
+    <input type='hidden' name='appointment_type' value="{{appointment_type}}" />
+	<input type='hidden' id='descriptions' name='descriptions' value='' />
+	<input type='hidden' name='ayushmancharges' id="ayushmancharges" value='' />
+	<input type='hidden' name='servicetax_ayushmancharges' id='servicetax_ayushmancharges' value='' />
+	<input type='hidden' name='totalcharges' id='totalcharges' value='' />
+	<input type='hidden' name='appointmentcharges' id='appointmentcharges' value='' />
+	<!-- Fields added for get array values -->
+	<input type='hidden' name='first_time_fees' id='first_time_fees' value='{{first_time_fees}}' />
+	<input type='hidden' name='followup_fees' id='followup_fees' value='{{followup_fees}}' />
+	<input type='hidden' name='online_fees' id='online_fees' value='{{online_fees}}' />
+	<input type='hidden' name='servicetax' id='servicetax' value='{{servicetax}}' />	 
+	<input type='hidden' name='usagechargesinclinic' id='usagechargesinclinic' value='{{usagechargesinclinic}}' />	 
+	<input type='hidden' name='servicecharges' id='servicecharges' value='{{servicecharges}}' />	 
+	<input type='hidden' name='selecteddatetime' id='selecteddatetime' value='{{currentDateTime}}' />	 
+	
+</form>
+<!--</body>-->
+</html>
+<script>	
+function on_change_set_fees(){
+	if(document.getElementById('first_time').checked == true)
+		visit_type = 'First Time';
+	else
+		visit_type = 'Follow-up';	
+	set_fees(visit_type);
+}
+
+  function set_fees(visit_type){
+    var consultation_mode = 'In-clinic';
+    var consultation_fees;
+    var usage_charges;
+	var servicetax = document.getElementById('servicetax').value;
+    //if(consultation_mode == 'In-clinic')
+	//{
+      if(visit_type == 'First Time'){
+		if(document.getElementById('first_time_fees').value == "Not defined")
+			consultation_fees = 0;
+		else
+			consultation_fees = document.getElementById('first_time_fees').value;
+      }
+      else{
+		if (document.getElementById('followup_fees').value == "Not defined")
+			consultation_fees = 0
+		else
+			consultation_fees = document.getElementById('followup_fees').value;
+      }
+		usage_charges =  document.getElementById('usagechargesinclinic').value;
+    //}
+
+	var ayushman_charges = document.getElementById('servicecharges').value;
+	servicetaxon_ayushmancharges = (parseFloat(usage_charges) + parseFloat(ayushman_charges))*parseFloat(servicetax)/100;
+
+    $('#appointment_charges').text(": Rs. "+ parseFloat(consultation_fees));
+    var total_ayushman_charges = parseFloat(usage_charges) + parseFloat(ayushman_charges);
+    var total_charges = parseFloat(consultation_fees) + total_ayushman_charges + servicetaxon_ayushmancharges;
+    $('#total_charges').text(": Rs. "+total_charges);
+	$('#online_booking_charges').text(": Rs. " + ayushman_charges);
+	$('#platform_usage_charges').text(": Rs. " + usage_charges);
+	$('#servicetaxonayushmancharges').text(": Rs. " + servicetaxon_ayushmancharges.toFixed(2));
+
+	$("#ayushmancharges").val(total_ayushman_charges);
+	$('#servicetax_ayushmancharges').val(servicetaxon_ayushmancharges);
+	$('#totalcharges').val(total_charges);
+	$('#appointmentcharges').val(consultation_fees);
+  }
+
+function getslots(datevalue){
+	var scope = angular.element($("#selected_date")).scope();
+	resetColor();
+	if(!scope.$$phase) {
+		scope.$apply(function(){
+		scope.getslotsfordate(datevalue);
+		});
+	}
+}
+
+function changeColor(element){
+	// Changed color of clicked button to orange and 
+	// Change existing back to blue
+		var y = document.getElementsByClassName('clickedBtn');
+		for (i=0 ; i< y.length ; ++i)
+		{
+			y[i].classList.add("btnTime");			
+			y[i].classList.remove("w3-orange");
+			y[i].classList.remove("clickedBtn");
+			
+		}
+		element.classList.add("w3-orange");
+		element.classList.add("clickedBtn");
+}
+
+function resetColor(){
+	// Changed color of clicked button to orange and 
+	// Change existing back to blue
+		var y = document.getElementsByClassName('clickedBtn');
+		for (i=0 ; i< y.length ; ++i)
+		{
+			y[i].classList.add("w3-light-blue");			
+			y[i].classList.remove("w3-orange");
+			y[i].classList.remove("clickedBtn");
+		}
+}
+
+
+/// Functions for Changing and resetting colur for days selection
+
+function changeColorDay(element){
+	// Changed color of clicked button to orange and 
+	// Change existing back to blue
+		var y = document.getElementsByClassName('clickedBtnDay');
+		for (i=0 ; i< y.length ; ++i)
+		{
+			y[i].classList.add("w3-light-blue");			
+			y[i].classList.remove("w3-orange");
+			y[i].classList.remove("clickedBtnDay");			
+		}
+		element.classList.add("w3-orange");
+		element.classList.add("clickedBtnDay");
+		element.classList.remove("w3-light-blue");
+}
+
+function resetColorDay(){
+	// Changed color of clicked button to orange and 
+	// Change existing back to blue
+		var y = document.getElementsByClassName('clickedBtnDay');
+		for (i=0 ; i< y.length ; ++i)
+		{
+			y[i].classList.add("w3-light-blue");			
+			y[i].classList.remove("w3-orange");
+			y[i].classList.remove("clickedBtnDay");
+		}
+}
+
+
+
+function set_incidence_input(select_object){
+	visit_type = $(select_object).val();
+    if(visit_type == 'Follow-up')
+	{
+		$('#incidence_first').hide();
+		$('#incidence_follow').show();
+		set_fees();
+    }
+    if(visit_type == 'First Time')
+	{
+		$('#incidence_follow').hide();
+		$('#incidence_first').show();
+		set_fees('First Time');
+    }
+}
+  function prepare_book_form(){
+    var visit_type = '';
+	if(document.getElementById('first_time').checked == true)
+		visit_type = 'First Time';
+	else
+		visit_type = 'Follow-up';
+
+	var description =$('#description').val();
+	$('#descriptions').val(description);
+    $("#form_visit_type").val(visit_type);
+	if(document.getElementById('selecteddatetime').value=="")
+	{
+		alert("Please select time slot for appointment");
+		return;
+	}
+	if(visit_type == 'Follow-up')
+		set_fees();
+    if(visit_type == 'First Time')
+		set_fees('First Time');
+	set_payment_mode();
+
+    /*if(visit_type == 'First Time'){
+      var incidence_name = $('#input_incidence_name').val();
+      if(incidence_name == ''){
+        alert('Please enter a name for this visit.');
+      }
+      else{
+        $('#form_incident').val(incidence_name);
+        set_payment_mode();
+      }
+    }
+    else if (visit_type == 'Follow-up'){
+      $('#form_incident').val($('#input_incidence_select').val());
+      set_payment_mode();
+    }*/
+  }
+  
+  function set_payment_mode(){
+    var role = 'patient';
+    if(role == 'patient'){
+      var consultation_mode = 'In-clinic';
+      if(consultation_mode == 'In-clinic'){
+        //$('#paymentmode').dialog('open'); 
+		if(document.getElementById('onlinepayment').checked == true)
+			$('#payment_mode').val(1);
+		else
+			$('#payment_mode').val(0);
+			book_appointment();
+      }
+     else{
+        $('#payment_mode').val(1);
+        book_appointment();
+      }
+    }
+    else{
+      $('#payment_mode').val(0);
+      //$('#appointment_book_form').submit();
+	  var scope = angular.element($("#selected_date")).scope();
+			$("#loadingDiv").attr("style","position:relative;text-align: center;display:block"); 
+			resizescreen();
+			if(!scope.$$phase) {
+				scope.$apply(function(){
+				scope.bookappointment();
+				$("#loadingDiv").attr("style","position:relative;text-align:center;display:none"); 
+				if(scope.booksuccess)
+				{
+					parent.window.location.href="/ayushman/cdashboard/view";
+				}
+			});
+		}
+    }
+  }
+  function book_appointment(){
+	var payment_mode = ($('#payment_mode').val());
+	if(payment_mode == 1)
+	{
+	if( ((document.getElementById('first_time_fees').value == "Not defined") && 
+		(document.getElementById('first_time').checked == true)) ||
+	((document.getElementById('followup_fees').value == "Not defined") && 
+		(document.getElementById('follow_up').checked == true)) )	
+		{
+		    var payment_mode = 1;
+		    document.getElementById("inclinicpayment").checked = true;
+			alert('Online payment cannot be done since Doctors fees not defined. Pay at the time of appointment.');
+			return;
+		}
+	}	
+    var payment_mode = ($('#payment_mode').val());
+	
+    var total_fees = $('#totalcharges').val();
+    var ayushman_charges = parseFloat($('#ayushmancharges').val()) + parseFloat($('#servicetax_ayushmancharges').val());
+	
+    if(payment_mode == 1 && parseFloat(total_fees)> parseFloat(document.getElementById('netbalance'))){
+      alert("Insuficient balance.Please recharge.");
+	  return;
+    }
+    else if(payment_mode == 0 && parseFloat(ayushman_charges)> parseFloat(document.getElementById('netbalance'))){
+	  alert("Insuficient balance.Please recharge.");
+	  return;
+    }
+    else{
+			var scope = angular.element($("#selected_date")).scope();
+				$("#loadingDiv").attr("style","position:relative;text-align: center;display:block"); 
+				resizescreen();
+			if(!scope.$$phase) {
+				scope.$apply(function(){
+				scope.bookappointment();
+				$("#loadingDiv").attr("style","position:relative;text-align: center;display:none"); 
+				if(scope.booksuccess)
+				{
+					parent.window.location.href="/ayushman/cdashboard/view";
+				}
+			});
+			}
+      //$('#appointment_book_form').submit();
+    }
+  }
+ </script>

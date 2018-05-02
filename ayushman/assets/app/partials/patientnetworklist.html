@@ -1,0 +1,215 @@
+
+<style>
+	.ui-autocomplete 
+{  margin-top: 0px !important;
+					 top: 60px !important;
+}
+.container{
+	float:left;
+	width:100%;
+	padding-left: 10px;
+	padding-top: 10px;
+	border:1px solid;
+	padding-bottom: 10px;
+	font-size:12px !important;
+}
+
+.regnformcontrol{
+	width:100%;
+}
+.formelements{
+margin-left:1% ! important;
+}
+body{
+	margin-top: 0% !important;
+}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#loading').dialog({
+				autoOpen: false,
+				show: "fade",
+				hide: "fade",
+				modal: true,
+				height: "30",
+				resizable: false,
+				width: "100px"
+			});
+			$(".ui-dialog-titlebar").hide();
+		$(function () {
+			   $('table').footable({ bookmarkable: { enabled: true }}).bind({
+				'footable_filtering': function (e) {
+					var selected = $('.filter-status').find(':selected').text();
+					if (selected && selected.length > 0) {
+						e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
+						e.clear = !e.filter;
+					}
+				},
+				'footable_filtered': function() {
+					var count = $('table.demo tbody tr:not(.footable-filtered)').length;
+					$('.row-count').html(count + ' rows found');
+				}
+			});
+
+			$('.clear-filter').click(function (e) {
+				e.preventDefault();
+				$('.filter-status').val('');
+				$('table.demo').trigger('footable_clear_filter');
+				$('.row-count').html('');
+			});
+
+			$('.filter-status').change(function (e) {
+				e.preventDefault();
+				$('table.demo').data('footable-filter').filter( $('#preferedchemistlist').val() );
+				$('table.demo').data('footable-filter').filter( $('#prefereddoctorlist').val() );
+				$('table.demo').data('footable-filter').filter( $('#prefereddclist').val() );
+			});
+		});
+		$('table').trigger('footable_clear_filter');
+	});
+    
+</script>
+
+<div class="container" >
+	<div id="selected-items" ng-if="orderpermissionforchemist" class="col-full bodytext_normal"  style="float:left;margin:10px;width:49%;min-width: 386px;">
+		<img src="/ayushman/assets/images/Success_Arrow.png" /><Label for="btnpermission" >&nbsp;Permission to place automatic order to prefered Chemist.</label>
+	</div>
+	<div id="selected-items" ng-if="orderpermissionforchemist == 0" class="col-full bodytext_normal"  style="float:left;margin:10px;width:49%;min-width: 386px;">
+		<img src="/ayushman/assets/images/error_icon.png" /><Label for="btnpermission" >&nbsp;Do Not place automatic order to prefered Chemist.</label>
+	</div>
+	<div class="container" style="border:0;">
+		<div >
+            <table ng-if="chemistsinnetwork.length > 0" class="table demo" data-filter="#preferedchemistlist" data-page-size="10"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th data-toggle="true">
+                        Pharmacy Name
+                    </th>
+                    <th >
+                        Location
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    <th >
+                        Home Delivery
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "record in chemistsinnetwork" on-finish-render="ngRepeatFinished">
+                    <td><img src="/ayushman/assets/images/Success_Arrow.png"/>&nbsp;&nbsp;{{record[1]}}</td>
+                    <td>{{record[3]}}</td>
+                    <td>{{record[2]}}</td>
+                    <td>{{record[4]}}</td>
+                </tr>                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			<div ng-if="chemistsinnetwork.length == undefined" style="width:100%;align:center;border:1px solid black" class="form" align="center" ng-if="show">
+				No Chemist is selected as prefered Chemist
+			</div>
+		</div>
+	</div>	
+</div>
+<div class="container" >
+	<div id="selected-items" ng-if="orderpermissionfordc" class="col-full bodytext_normal"  style="float:left;margin:10px;width:49%;min-width: 386px;">
+		<img src="/ayushman/assets/images/Success_Arrow.png" /><Label for="btnpermission" >&nbsp;Permission to place automatic order to prefered Diagnostic Center.</label>
+	</div>
+	<div id="selected-items" ng-if="orderpermissionfordc == 0" class="col-full bodytext_normal"  style="float:left;margin:10px;width:49%;min-width: 386px;">
+		<img src="/ayushman/assets/images/error_icon.png" /><Label for="btnpermission" >&nbsp;Do Not place automatic order to prefered Diagnostic Center.</label>
+	</div>
+	<div class="container" style="border:0;">
+		<div >
+            <table ng-if="pathologistinnetwork.length > 0" class="table demo" data-filter="#prefereddclist" data-page-size="10"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th data-toggle="true">
+                        Diagnostic Center
+                    </th>
+                    <th >
+                        Location
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    <th >
+                        Sample Pickup Facility
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "record in pathologistinnetwork" on-finish-render="ngRepeatFinished">
+                    <td><img src="/ayushman/assets/images/Success_Arrow.png"/>&nbsp;&nbsp;{{record[1]}}</td>
+                    <td>{{record[2]}}</td>
+                    <td>{{record[3]}}</td>
+                    <td>{{record[4]}}</td>
+                </tr>                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			
+			<div ng-if="pathologistinnetwork.length == undefined" style="width:100%;align:center;border:1px solid black" class="form" align="center" ng-if="show">
+				No Diagnostic center is selected as prefered Lab
+			</div>
+		</div>
+	</div>	
+</div>
+<div class="container" >
+	<div class="container" style="border:0;">
+		<div >
+            <table ng-if="doctorinnetwork.length > 0" class="table demo" data-filter="#prefereddoctorlist" data-page-size="10"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th data-toggle="true">
+                        Doctor Name
+                    </th>
+                    <th >
+                        Education
+                    </th>
+                    <th>
+                        Specialization
+                    </th>
+					<th>
+                        City
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "record in doctorinnetwork" on-finish-render="ngRepeatFinished">
+                    <td><img src="/ayushman/assets/images/Success_Arrow.png"/>&nbsp;&nbsp;{{record[1]}}</td>
+                    <td>{{record[2]}}</td>
+                    <td>{{record[3]}}</td>
+					 <td>{{record[4]}}</td>
+                </tr>                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			<div ng-if="doctorinnetwork.length == undefined" style="width:100%;align:center;border:1px solid black" class="form" align="center" ng-if="show">
+				No Doctor is in Panel
+			</div>
+		</div>
+	</div>	
+</div>
+
+<div id="loading" style="width:40px;height:30px;background-color:transparent;align:center;overflow-y:hidden;overflow-x:hidden;">
+ <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+</div>

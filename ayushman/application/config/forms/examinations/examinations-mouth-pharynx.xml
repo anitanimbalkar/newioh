@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form>
+
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,100,3,100,5,100,6</questions>
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>7,100,19,100,20,100,12</questions>
+		<layout>Vertical</layout>
+	</container>
+
+	<question>
+		<id>1</id>
+		<label>Lips Type</label>
+		<type>DD</type>
+		<answer>
+			<label>Pale</label>
+		</answer>
+		<answer>
+			<label>Chapped</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Others</label>
+			<follow>2</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label> type</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Tongue Type</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Pale</label>
+		</answer>
+		<answer>
+			<label>Red</label>
+		</answer>
+		<answer>
+			<label>Ulcers</label>
+		</answer>
+		<answer>
+			<label>geographical</label>
+		</answer>
+		<answer>
+			<label>bald</label>
+		</answer>
+		<answer>
+			<label>Others</label>
+			<follow>4</follow>
+		</answer>
+	</question>
+	                  
+	<question>
+		<id>4</id>
+		<label>type</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Leukoplakia</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Tonsils</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Enlarged</label>
+		</answer>
+		<answer>
+			<label>Quinsy</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Pharynx</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Granular pharyngitis</label>
+		</answer>
+		<answer>
+			<label>Others</label>
+			<follow>8</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>20</id>
+		<label>Gums</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>9,10,11</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>9</id>
+		<label>Tenderness </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Bleeding </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Discharge </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>19</id>
+		<label>Teeth</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>13,16,17,18</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Missing </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes  </label>
+			<follow>14,15</follow>
+		</answer>
+		<answer>
+			<label>No  </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Location</label>
+		<type>DD</type>
+		<answer>
+			<label>Upper Rt </label>
+		</answer>
+		<answer>
+			<label>Upper Lt </label>
+		</answer>
+		<answer>
+			<label>Lower Rt </label>
+		</answer>
+		<answer>
+			<label>Lower Lt </label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Number </label>
+		<type>DD</type>
+		<answer>
+			<label> 1st Incisor</label>
+		</answer>
+		<answer>
+			<label> 2nd Incisor</label>
+		</answer>
+		<answer>
+			<label>Canine</label>
+		</answer>
+		<answer>
+			<label>1st Premolar</label>
+		</answer>
+		<answer>
+			<label>2nd Premolar</label>
+		</answer>
+		<answer>
+			<label> 1st Molar</label>
+		</answer>
+		<answer>
+			<label> 2nd Molar</label>
+		</answer>
+		<answer>
+			<label> 3rd Molar</label>
+		</answer>
+	</question>
+	<question>
+		<id>16</id>
+		<label>Discoloration </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	<question>
+		<id>17</id>
+		<label>Fillings </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>14,15</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>18</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>100</id>
+		<type>Separator</type>
+	</question>
+	
+	
+</form>

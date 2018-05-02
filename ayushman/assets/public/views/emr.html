@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>EMR | India Online Health</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+  	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="navbar header">
+      <div class="container"> 
+	<div class="navbar ">
+	  <a class="navbar-brand" href="#">
+	    <img src="/ayushman/assets/images/Logo.png" alt="India Online Health">
+	  </a>
+	  <div class="userProfile">
+	    <img ng-if='appointment_info.PatinetPhoto == ""' src="/ayushman/assets/public/img/Profile_Pic.png" alt="Profile_Pic.png">
+	    <img ng-if='appointment_info.PatinetPhoto != ""' ng-src="{{appointment_info.PatientPhoto}}" alt="Profile_Pic.png">
+	    <p>
+	      <span class="patientsName">{{appointment_info.Patientname}}</span>
+	      <span class="patientsAge">{{appointment_info.age}}</span><br />
+              <span>{{appointment_info.incidentsname_c}}</span>
+	    </p>
+	  </div>
+	  <div class="navbar-header pull-right">
+            <ul class="nav navbar-nav navbar-right">          
+	      <li><a href="#!/{{appointment_info.appointment_id}}"><span class="overview"></span><span class="menuText">Overview</span></a></li>
+              <li>
+		<a href="" ng-click='showNotes = !showNotes; visible="notes"'><span class="notes"></span><span class="menuText">Notes</span></a>
+		<div class="sectionBoxCallout" ng-show="showNotes && is_visible('notes')">
+		  <h2 class="orange"><span class="icons iconNotes">Notes</span></h2>
+		  <textarea class="notesComments contentDetails smallContent" placeholder="Write notes here" ng-model="doctor_notes.notes" style='resize: none'></textarea>
+		  <div class="detailsLink orange"> <a href="javascript:void(0);" ng-click="save_notes(appointment_info.appointment_id, appointment_info.refappfromid_c);">Save Notes</a> </div>
+		</div>
+	      </li>
+              <li>
+		<a href="#" ng-click='showRisk = !showRisk;visible="risk"'><span class="risks"></span><span class="menuText">Risks</span></a>
+		<div class="sectionBoxCallout" ng-show='showRisk && is_visible("risk")'>
+		  <h2 class="red"><span class="icons iconWarning">Risk Factors</span></h2>
+		  <div class="riskFactorDetails contentDetails smallContent">
+		    <ul ng-repeat="risk in risks">
+		      <li ng-show="!(risk.edit_mode)">
+			{{risk.risk_text}} 
+			<span ng-if='risk.writer_id == appointment_info.doctorid' class="iconDelete" ng-click="delete_risk($index,appointment_info.refappfromid_c)"></span>
+			<span ng-if='risk.writer_id == appointment_info.doctorid' class="iconEdit" ng-click="risk.edit_mode = true"></span>
+		      </li>
+		      <li ng-show="(risk.edit_mode)">
+			<input type="text" ng-model="risk.risk_text" />
+			<div class="iconSave" ng-click="edit_risk($index,appointment_info.refappfromid_c);risk.edit_mode=false"></div>
+		      </li>
+		    </ul>
+		  </div>
+		  <div class="detailsLink red">
+		    <input type="text" ng-model="new_risk.text"/>
+		    <a href="javascript:void(0);" ng-click="add_risk();">Enter Risk</a> </div>
+		</div>
+	      </li>
+              <li>
+		<a href="" ng-init="showTracker=false;"  ng-click="showTracker = !showTracker; visible='tracker';"><span class="tracker"></span><span class="menuText">Trackers</span></a>
+		<div class="sectionBoxCallout" ng-show='showTracker && is_visible("tracker")'>
+		  <h2 class="green"><span class="icons iconTracker">Trackers</span></h2>
+		  <div class="calloutGridStyle">
+		    <div class="calloutGridStyle" ng-if='tracker_info["current_tracker_id"] != null && showTracker' ng-grid="currentGrid;"></div>
+		    <h3 ng-if='tracker_info["current_tracker_id"] == null' >No trackers available for this consultation.</h3>
+		  </div>
+		  <div class="detailsLink green">
+		    <a href="#!/tracker/{{appointment_info.appointment_id}}">View all Trackers</a>
+		  </div>
+		</div>
+	      </li>
+              <li>
+		<a href="" ng-click='showExamination =!showExamination; visible="examination"'><span class="examination"></span><span class="menuText">Examination</span></a>
+		<div class="sectionBoxCallout" ng-show='showExamination && is_visible("examination")'>
+		  <h2 class="darkblue"><span class="icons iconExamination">Examination</span></h2>
+		  <div class="examinationContent contentDetails smallContent">
+		    <h3 ng-if="pastAppData.maincomplaint">Main Complaint</h3>
+		    <p ng-if="pastAppData.maincomplaint">{{pastAppData.maincomplaint}}.</p>
+		    <h3 ng-if="pastAppData.diagnosis">Diagnosis</h3>
+		    <p ng-if="pastAppData.diagnosis">{{pastAppData.diagnosis}}.</p>
+		    <h3 ng-if="pastAppData.investigation">Investigation</h3>
+		    <p ng-if="pastAppData.investigation">{{pastAppData.investigation}}.</p>
+		    <h3 ng-if="pastAppData.medicine">Medicine</h3>
+		    <p ng-if="pastAppData.medicine">{{pastAppData.medicine}}.</p>
+		    <h3 ng-if="!pastAppData.maincomplaint && !pastAppData.diagnosis && !pastAppData.investigation && !pastAppData.medicine">No Past Data</h3>
+		  </div>
+		  <div class="detailsLink darkblue"> <a href="#!/examination/{{appointment_info.appointment_id}}">Launch Examination</a> </div>
+		</div>
+	      </li>
+            </ul>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+	<div class="col-lg-12">
+	  <div class="sectionBox">
+            <h2 class="blue">EMR</h2>
+            <div class="row">
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <h3>Risk Factors</h3>
+		  <p>{{riskText}}.</p>
+		</div>
+              </div>
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <h3>Allergies</h3>
+		  <p ng-if="emr_snapshot.allergies.join() != '' ">{{emr_snapshot.allergies.join()}}</p>
+		  <p ng-if="emr_snapshot.allergies.join() == '' ">No information provided.</p>
+		</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <hr />
+		  <h3>Social Habits</h3>
+		  <p>Diet: {{emr_snapshot.social_habits.diet_c}}, Smoking: {{emr_snapshot.social_habits.smoking_c}}, Alcohol: {{emr_snapshot.social_habits.alcohol_c}}, Tobacco: {{emr_snapshot.social_habits.tobacco_c}}, Exercise: {{emr_snapshot.social_habits.exercisepatterns_c}}, Outdoor Sports: {{emr_snapshot.social_habits.outdoorsport_c}}.</p>
+		</div>
+              </div>
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <hr />
+		  <h3>Immunization</h3>
+		  <p ng-if="emr_snapshot.immunizations.join() != '' ">{{emr_snapshot.immunizations.join()}}.</p>
+		  <p ng-if="emr_snapshot.immunizations.join() == '' ">No information provided.</p>
+		</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <hr />
+		  <h3>Past Diseases</h3>
+		  <p ng-if="emr_snapshot.past_diseases.join() != '' ">{{emr_snapshot.past_diseases.join()}}.</p>
+		  <p ng-if="emr_snapshot.past_diseases.join() == '' ">No information provided.</p>
+		</div>
+              </div>
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <hr />
+		  <h3>Major Illness and Treatment History</h3>
+		  <p ng-if="emr_snapshot.past_illness.join() != '' ">{{emr_snapshot.past_illness.join()}}.</p>
+		  <p ng-if="emr_snapshot.past_illness.join() == '' ">No information provided.</p>
+		</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <hr />
+		  <h3>Operation Procedures</h3>
+		  <p ng-if="emr_snapshot.past_surgeries.join() != '' ">{{emr_snapshot.past_surgeries.join()}}.</p>
+		  <p ng-if="emr_snapshot.past_surgeries.join() == '' ">No information provided.</p>
+		  <hr />
+		</div>
+              </div>
+              <div class="col-lg-6">
+		<div class="contentDetailsInner">
+		  <hr />
+		  <h3>Family History</h3>
+		  <p ng-repeat="i in emr_snapshot.family_history">
+		    {{i["relation"]}}({{i["yob"]}}): <span ng-if="i['medhis'] != ''">{{i["medhis"]}}.</span><span ng-if="i['medhis'] == ''">No medical problems.</span>&nbsp;<span ng-if="i['yod'] != ''">Died at age: {{i["yod"]}} ({{i["cod"]}}).</span>
+		  </p>
+		  <hr />
+		</div>
+              </div>
+            </div>
+	    <div class="row">
+	      <div class="col-lg-12">
+		<div class="contentDetailsInner">
+		  <accordion id="emrAcc" close-others="false">
+		    <accordion-group is-open="isShowVisit">
+		      <accordion-heading>
+			<label>Visits</label> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isShowVisit, 'glyphicon-chevron-right': !isShowVisit}"></i>
+		      </accordion-heading>
+		      <div>
+			<div class="accordion-body">
+			  <div class="accordion-inner">
+			    <table class="dataTable collapsibleTbl">
+                              <tbody>
+				<tr ng-repeat="appointment in past_appointments">
+				  <td>{{appointment.dr_name}}</td>
+				  <td>{{appointment.app_time}}</td>
+				  <td>{{appointment.problem}}</td>
+				  <td>
+				    <a ng-if="appointment['status'] == 'notfromsystem' && appointment['prescription'] != 'Informationnotyetfilled'" href="/ayushman/cdisplayprescriptions/view?appid={{appointment['app_id']}}" target="_blank" class="summary">View Summary</a>
+				    <a ng-if="appointment['status'] == 'notfromsystem' && appointment['prescription'] == 'Informationnotyetfilled'" href="" class="summary">No Summary</a>
+				    <a ng-if="appointment['status'] == 'fromsystem'" href="" class="summary" ng-click="show_summary({{appointment['app_id']}});">View Summary</a>
+				  </td>
+				  <td><a href="javascript:void(0);" ng-click="show_report();">View Report</a></td>
+				</tr>
+                              </tbody>
+			    </table>
+			  </div>
+			</div>
+		      </div>
+		    </accordion-group>
+		    <accordion-group is-open="isShowReports">
+		      <accordion-heading>
+			<label>Reports</label> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isShowReports, 'glyphicon-chevron-right': !isShowReports}"></i>
+		      </accordion-heading>
+		      <div>
+			<div class="accordion-inner">
+			  <table class="dataTable collapsibleTbl">
+                            <tbody>
+                              <tr>
+				<td>This feature is yet to be implemented</td>
+                              </tr>
+                            </tbody>
+			  </table>
+			</div>
+                      </div>
+		    </accordion-group>
+		  </accordion>
+		</div>
+	      </div>
+	    </div>
+          </div>
+	</div>
+      </div>
+    </div>
+</div>
+<!-- /container --> 
+</body>
+</html>

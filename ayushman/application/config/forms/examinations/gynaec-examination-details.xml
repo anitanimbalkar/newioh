@@ -1,0 +1,134 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>19,20,21,22,1,2,3,4,5,6</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>7,8,9,10,12,13,14,15,16,17,18</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>Examination Details </label>
+		<type>label</type>
+	</question>
+	<question>
+		<id>2</id>
+		<label>Date of Examination</label>
+		<type>Text</type>		
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Vulva</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>4</id>
+		<label>Vagina</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>5</id>
+		<label>Cervix</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>6</id>
+		<label>Descent</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>7</id>
+		<label>Mobility</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>8</id>
+		<label>Size</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>9</id>
+		<label>Shape</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>10</id>
+		<label>Fornices</label>
+		<type>Text</type>		
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>CVS</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>13</id>
+		<label>RS</label>
+		<type>Text</type>		
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Breast</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>15</id>
+		<label>Pulse</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>16</id>
+		<label>BP</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>17</id>
+		<label>Palor</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>18</id>
+		<label>Other</label>
+		<type>Text</type>		
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>Menarche</label>
+		<type>Text</type>		
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>LMP</label>
+		<type>Text</type>		
+	</question>
+	
+	<question>
+		<id>21</id>
+		<label>PMC</label>
+		<type>Text</type>		
+	</question>
+	
+	<question>
+		<id>22</id>
+		<label>PRMC</label>
+		<type>Text</type>		
+	</question>
+	
+</form>

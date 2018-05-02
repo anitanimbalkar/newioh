@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1,2,3,41,42,43,100,4,5,6,100,7,8,9,100,10,11,12,100,13,14,38,16</questions>
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>17,18,19,20,21,22,40,24,25,26,27,28,100,31,32,33,34,35,36</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>(*) Weight (kg)</label>
+		<type>Text</type>
+		<validation>numeric</validation>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>(*) Height (cms)</label>
+		<type>Text</type>
+		<validation>numeric</validation>
+	</question>
+	<question>
+		<id>3</id>
+		<label>BMI (kg/cm)</label>
+		<type>Text</type><validation>numeric</validation>
+		<calculate>(Number($("#vitals_a_1").val())/((Number($("#vitals_a_2").val())/100)*(Number($("#vitals_a_2").val())/100)))</calculate>
+		<validation>numeric</validation>
+	</question>
+	<question>
+		<id>4</id>
+		<label> BP - RH - Supine (mm/Hg)</label>
+		<type>Text</type>
+		<validation>bp</validation>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label> BP - RH - Sitting (mm/Hg)</label>
+		<type>Text</type>
+		<validation>bp</validation>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>BP - RH - Standing (mm/Hg)</label>
+		<type>Text</type>
+		<validation>bp</validation>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>BP - LH - Supine (mm/Hg)</label>
+		<type>Text</type><validation>bp</validation>
+		
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>(*) BP - LH - Sitting (mm/Hg)</label>
+		<type>Text</type><validation>bp</validation>
+		
+	</question> 
+	
+	<question>
+		<id>9</id>
+		<label>BP - LH - Standing (mm/Hg)</label>
+		<type>Text</type><validation>bp</validation>
+		
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Temp - Mouth (Fahrenheit)</label>
+		<type>Text</type><validation>numeric</validation>
+		
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Temp - Axilla (Fahrenheit)</label>
+		<type>Text</type><validation>numeric</validation>
+		
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Temp - Rectum (Fahrenheit)</label>
+		<type>Text</type><validation>numeric</validation>
+		
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Pulse - RH - Rate (pm)</label>
+		<type>Text</type><validation>numeric</validation>
+		
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Pulse - RH - Rhythm  </label>
+		<type>DD</type>
+		<answer>
+			<label>Regular</label>
+		</answer>
+		<answer>
+			<label>Irregularly Irregular</label>
+		</answer>
+		<answer>
+			<label>Regularly Irregular</label>
+		</answer>
+		<answer>
+			<label>Ectopic</label>
+			<follow>15</follow>
+		</answer>
+	</question>
+	<question>
+		<id>38</id>
+		<label>Pulse - RH - Volume </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>High</label>
+		</answer>
+		<answer>
+			<label>Low</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Ratio</label>
+		<type>DD</type>
+		<answer>
+			<label>1:2</label>
+		</answer>
+		<answer>
+			<label>1:3</label>
+		</answer>
+		<answer>
+			<label>1:4</label>
+		</answer>
+		<answer>
+			<label>1:5</label>
+		</answer>
+		<answer>
+			<label>other</label>
+			<follow>37</follow>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>16</id>
+		<label>Pulse types - RH - Anacrotic </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Pulse types - RH - Water hammer </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label> Pulse types - RH - Bisferiens </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>Pulse types - RH - Paradoxus </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>Pulse types - RH - Alternans </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>39</id>
+		<label>Pulse types - RH - Other</label>
+		<type>Text</type><validation>numeric</validation>
+		
+	</question>
+	
+	<question>
+		<id>21</id>
+		<label>(*) Pulse - LH - Rate (pm)</label>
+		<type>Text</type><validation>numeric</validation>
+		
+	</question>
+	
+	<question>
+		<id>22</id>
+		<label>Pulse - LH - Rhythm  </label>
+		<type>DD</type>
+		<answer>
+			<label>Regular</label>
+		</answer>
+		<answer>
+			<label>Irregularly irregular</label>
+		</answer>
+		<answer>
+			<label>Regularly irregular</label>
+		</answer>
+		<answer>
+			<label>Ectopic</label>
+			<follow>23</follow>
+		</answer>
+	</question>
+	<question>
+		<id>40</id>
+		<label>Pulse - LH - Volume </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>High</label>
+		</answer>
+		<answer>
+			<label>Low</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>23</id>
+		<label>Ratio </label>
+		<type>DD</type>
+		<answer>
+			<label>1:2</label>
+		</answer>
+		<answer>
+			<label>1:3</label>
+		</answer>
+		<answer>
+			<label>1:4</label>
+		</answer>
+		<answer>
+			<label>1:5</label>
+		</answer>
+		<answer>
+			<label>other</label>
+			<follow>37</follow>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>24</id>
+		<label>Pulse types - LH - Anacrotic </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>25</id>
+		<label>Pulse types - LH - Water hammer </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>26</id>
+		<label> Pulse types - LH - Bisferiens</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>27</id>
+		<label>Pulse types - LH - Paradoxus </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>28</id>
+		<label>Pulse types - LH - Alternans </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>30</id>
+		<label>Popliteal Pulse</label>
+		<type>DD</type>
+		<answer>
+			<label>normal</label>
+		</answer>
+		<answer>
+			<label>high</label>
+		</answer>
+		<answer>
+			<label>low</label>
+		</answer>
+		<answer>
+			<label>bruit</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>31</id>
+		<label>Femoral Pulse</label>
+		<type>DD</type>
+		<answer>
+			<label>normal</label>
+		</answer>
+		<answer>
+			<label>high</label>
+		</answer>
+		<answer>
+			<label>low</label>
+		</answer>
+		<answer>
+			<label>bruit</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>32</id>
+		<label>Ankle Pulse</label>
+		<type>DD</type>
+		<answer>
+			<label>normal</label>
+		</answer>
+		<answer>
+			<label>high</label>
+		</answer>
+		<answer>
+			<label>low</label>
+		</answer>
+		<answer>
+			<label>bruit</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>33</id>
+		<label>Dorsum foot Pulse</label>
+		<type>DD</type>
+		<answer>
+			<label>normal</label>
+		</answer>
+		<answer>
+			<label>high</label>
+		</answer>
+		<answer>
+			<label>low</label>
+		</answer>
+		<answer>
+			<label>bruit</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>34</id>
+		<label>Brachial Pulse</label>
+		<type>DD</type>
+		<answer>
+			<label>normal</label>
+		</answer>
+		<answer>
+			<label>high</label>
+		</answer>
+		<answer>
+			<label>low</label>
+		</answer>
+		<answer>
+			<label>bruit</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>35</id>
+		<label>Carotid Pulse</label>
+		<type>DD</type>
+		<answer>
+			<label>normal</label>
+		</answer>
+		<answer>
+			<label>high</label>
+		</answer>
+		<answer>
+			<label>low</label>
+		</answer>
+		<answer>
+			<label>bruit</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>36</id>
+		<label>Aortic (Abdomen) Pulse</label>
+		<type>DD</type>
+		<answer>
+			<label>normaL</label>
+		</answer>
+		<answer>
+			<label>high</label>
+		</answer>
+		<answer>
+			<label>low</label>
+		</answer>
+		<answer>
+			<label>bruit</label>
+		</answer>
+	</question>
+	<question>
+		<id>37</id>
+		<label>Rate </label>
+		<type>Text</type><validation>numeric</validation>
+	</question>
+	
+	<question>
+		<id>41</id>
+		<label>Wst (cms)</label>
+		<type>Text</type>
+		<validation>numeric</validation>		
+	</question>	
+	
+	<question>
+		<id>42</id>
+		<label>Hip (cms)</label>
+		<type>Text</type>
+		<validation>numeric</validation>
+	</question>
+	<question>
+		<id>43</id>
+		<label>WHR</label>
+		<type>Text</type>
+		<validation>numeric</validation>
+		<calculate>((Number($("#vitals_a_41").val()))/(Number($("#vitals_a_42").val())))</calculate>
+		<validation>numeric</validation>
+	</question>
+	
+	 <question>
+		<id>100</id>
+		<type>Separator</type>
+	</question>
+	
+</form>

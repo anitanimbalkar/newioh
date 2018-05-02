@@ -1,0 +1,589 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,2,101,102,103,104,105,105,106,107,108,109,122,123,110,111,112,113,501,500,3,114,115,116,117,118,119,120,121,501,500</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>12,124,125,126,127,128,129,130,131,132,501,500,502,13,133,134,135,136,501,500,4,5,6,7,8,9,10,11,501,500</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label> - Examination</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label> - Inspection </label>
+		<type>label</type>
+		
+	</question>
+	
+	<question>
+		<id>101</id>
+		<label> - Looks</label>
+		<type>DD</type>
+		<answer>
+			<label> - Ill</label>
+		</answer>
+		<answer>
+			<label> - Well</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>102</id>
+		<label> - Evidence Of Systemic Illness</label>
+		<type>DD</type>
+		<answer>
+			<label> - Absent</label>
+		</answer>
+		<answer>
+			<label> - Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>103</id>
+		<label> - Lesions</label>
+		<type>DD</type>
+		<answer>
+			<label> - Absent</label>
+		</answer>
+		<answer>
+			<label> - Present</label>
+			<follow>201,202,203,204</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>201</id>
+		<type>DD</type>
+		<label> - Distribution </label>
+		<answer>
+			<label> - Symmetrical </label>
+		</answer>
+		<answer>
+			<label> - Asymmetrical </label>
+		</answer>
+		<answer>
+			<label> - Flexor  </label>
+		</answer>
+		<answer>
+			<label> - Extensor Surfaces </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>202</id>
+		<type>DD</type>
+		<label> - Areas Of Friction Or Pressure </label>
+		<answer>
+			<label> - Yes </label>
+		</answer>
+		<answer>
+			<label> - No  </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>203</id>
+		<type>DD</type>
+		<label> - Sweaty Regions </label>
+		<answer>
+			<label> - Yes </label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label> - No  </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>204</id>
+		<type>DD</type>
+		<label> - Exposed Regions </label>
+		<answer>
+			<label> - Yes </label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label> - No  </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>104</id>
+		<label> - Evidence Of Scabies' Burrows</label>
+		<type>DD</type>
+		<answer>
+			<label> - Absent</label>
+		</answer>
+		<answer>
+			<label> - Present</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>105</id>
+		<label> - Hair In The Local Skin</label>
+		<type>DD</type>
+		<answer>
+			<label> - Normal</label>
+		</answer>
+		<answer>
+			<label> - Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>106</id>
+		<label> - Hair On The Head</label>
+		<type>DD</type>
+		<answer>
+			<label> - Normal</label>
+		</answer>
+		<answer>
+			<label> - Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>107</id>
+		<label> - Nails</label>
+		<type>DD</type>
+		<answer>
+			<label> - Normal</label>
+		</answer>
+		<answer>
+			<label> - Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>108</id>
+		<label> - Mucous Membranes </label>
+		<type>DD</type>
+		<answer>
+			<label> - Normal</label>
+		</answer>
+		<answer>
+			<label> - Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>109</id>
+		<label> - Genital Skin </label>
+		<type>DD</type>
+		<answer>
+			<label> - Normal</label>
+		</answer>
+		<answer>
+			<label> - Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>122</id>
+		<label> - Size-by </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>123</id>
+		<label> - Number </label>
+		<type>DD</type>
+		<answer>
+			<label> - Single</label>
+		</answer>
+		<answer>
+			<label> - Multipal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>110</id>
+		<label> - Rash </label>
+		<type>multiDD</type>
+		<answer>
+			<label> - Macular</label>
+		</answer>
+		<answer>
+			<label> - Vesicular</label>
+		</answer>
+		<answer>
+			<label> - Crusty</label>
+		</answer>
+		<answer>
+			<label> - Urticarial </label>
+		</answer>
+		<answer>
+			<label> - Other </label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>111</id>
+		<label> - Color</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>112</id>
+		<label> - Shape</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>113</id>
+		<label> - Margins</label>
+		<type>multiDD</type>
+		<answer>
+			<label> - Regular  </label>
+		</answer>
+		<answer>
+			<label> - Irregular </label>
+		</answer>
+		<answer>
+			<label> - Inflamed Around  </label>
+		</answer>
+		<answer>
+			<label> - Edge Clearly Demarcated  </label>
+		</answer>
+		<answer>
+			<label> - Poorly Defined </label>
+		</answer>
+		<answer>
+			<label> - Other </label>
+			<follow>300</follow>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label> - Palpation </label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>114</id>
+		<label> - Tenderness</label>
+		<type>DD</type>
+		<answer>
+			<label> - Present</label>
+		</answer>
+		<answer>
+			<label> - Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>115</id>
+		<label> - Warmth</label>
+		<type>DD</type>
+		<answer>
+			<label> - Present</label>
+		</answer>
+		<answer>
+			<label> - Absent</label>
+		</answer>
+	</question>	
+	
+	<question>
+		<id>116</id>
+		<label> - Thickness</label>
+		<type>DD</type>
+		<answer>
+			<label> - Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label> - Absent</label>
+		</answer>
+	</question>	
+	
+	<question>
+		<id>117</id>
+		<label> - Consistency </label>
+		<type>multiDD</type>
+		<answer>
+			<label> - Hard</label>
+		</answer>
+		<answer>
+			<label> - Soft</label>
+		</answer>
+		<answer>
+			<label> - Firm</label>
+		</answer>
+		<answer>
+			<label> - Fluctuant</label>
+		</answer>
+		<answer>
+			<label> - Other </label>
+			<follow>300</follow>
+		</answer>
+		
+	</question>	
+	
+	<question>
+		<id>118</id>
+		<label> - Does Firm Pressure Lead To Blanching</label>
+		<type>DD</type>
+		<answer>
+			<label> - Yes</label>
+		</answer>
+		<answer>
+			<label> - No</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>119</id>
+		<label> - Is It Friable </label>
+		<type>DD</type>
+		<answer>
+			<label> - Yes</label>
+		</answer>
+		<answer>
+			<label> - No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>119</id>
+		<label> - Does It Bleed Easily </label>
+		<type>DD</type>
+		<answer>
+			<label> - Yes</label>
+		</answer>
+		<answer>
+			<label> - No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>120</id>
+		<label> - Scaling  </label>
+		<type>DD</type>
+		<answer>
+			<label> - Yes</label>
+		</answer>
+		<answer>
+			<label> - No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>121</id>
+		<label> - Regional Lymph Nodes  </label>
+		<type>DD</type>
+		<answer>
+			<label> - Enlarged</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label> - Normal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label> - Investigations</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label> - Swabs </label>
+		<type>DD</type>
+		<answer>
+			<label> - Taken </label>
+		</answer>
+		<answer>
+			<label> - Not Taken </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label> - Skin Scrapings </label>
+		<type>DD</type>
+		<answer>
+			<label> - Taken </label>
+		</answer>
+		<answer>
+			<label> - Not Taken </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label> - Nail clippings  </label>
+		<type>DD</type>
+		<answer>
+			<label> - Taken </label>
+		</answer>
+		<answer>
+			<label> - Not Taken </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label> - Hair root samples</label>
+		<type>DD</type>
+		<answer>
+			<label> - Taken </label>
+		</answer>
+		<answer>
+			<label> - Not Taken </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label> - Wood's ultra violet light</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label> - Skin biopsy</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label> - Patch and skin prick tests</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label> - Malignancy Scorer</label>
+		<type>label</type>		
+	</question>
+	
+	<question>
+		<id>124</id>
+		<label> - Score 2 Points Each</label>
+		<type>Label</type>
+	</question>
+	<question>
+		<id>125</id>
+		<label> - Rapid Change In Size </label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>126</id>
+		<label> - Irregular Shape  </label>
+		<type>text</type>
+	</question>	
+	<question>
+		<id>127</id>
+		<label> - Irregular Color   </label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>128</id>
+		<label> - Score 1 Points Each</label>
+		<type>Label</type>
+	</question>
+	
+	<question>
+		<id>129</id>
+		<label> - Largest Diameter 7 mm or More   </label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>130</id>
+		<label> - Inflammation  </label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>131</id>
+		<label> - Oozing   </label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>132</id>
+		<label> - Change In Sensation    </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label> - Urgent Referral</label>
+		<type>label</type>		
+	</question>
+	<question>
+		<id>133</id>
+		<label> - Score More Than Three Points</label>
+		<type>Label</type>
+	</question>
+	
+	<question>
+		<id>134</id>
+		<label> - 	A New Pigmented Line In A Nail. </label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>135</id>
+		<label> - Lesions Growing Under A Nail</label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>136</id>
+		<label> - Pigmented Lesions On Mucosal Surfaces   </label>
+		<type>text</type>
+	</question>
+	
+	
+	<question>
+		<id>300</id>
+		<label> - Elaborate</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>500</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>501</id>
+		<label> - Others</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>502</id>
+		<label>.</label>
+		<type>label</type>
+	</question>
+	
+</form>

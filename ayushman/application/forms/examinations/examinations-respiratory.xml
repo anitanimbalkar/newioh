@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1</questions>
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>2</questions>
+		<layout>Vertical</layout>
+	</container>
+	<question>
+		<id>1</id>
+		<label>Right Lung </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>101,102,103,104,100</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>2</id>
+		<label>Left Lung </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>101,102,103,104,100</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>101</id>
+		<label>Inspection </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>201,202,203</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>201</id>
+		<label>Respiratory Rate </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>202</id>
+		<label>Bulges</label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>203</id>
+		<label>Deformities</label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>102</id>
+		<label>Palpation </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>204,205</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>204</id>
+		<label>Crepitus   </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>205</id>
+		<label>Tenderness</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>206,207</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>206</id>
+		<label>Location</label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>207</id>
+		<label>Other</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>103</id>
+		<label>Percussion </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>208,212</follow>
+		</answer>
+		<answer>
+			<label>No </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>208</id>
+		<label>Sound</label>
+		<type>DD</type>
+		<answer>
+			<label>Resonant</label>
+		</answer>
+		<answer>
+			<label>Hyper Resonant </label>
+		</answer>
+		<answer>
+			<label>Stony Dull</label>
+		</answer>
+		<answer>
+			<label>Dull</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>212</id>
+		<label>Intercostal space </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>23</id>
+		<label>Right Lung</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>104</id>
+		<label>Auscultation  </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>210,214</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+			
+		</answer>
+	</question>
+	
+	<question>
+		<id>210</id>
+		<label>Crepitations</label>
+		<type>DD</type>
+		<answer>
+			<label>Apical</label>
+		</answer>
+		<answer>
+			<label>Mid</label>
+		</answer>
+		<answer>
+			<label>Lower</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>214</id>
+		<label>Rhonchi</label>
+		<type>DD</type>
+		<answer>
+			<label>Apical</label>
+		</answer>
+		<answer>
+			<label>Mid</label>
+		</answer>
+		<answer>
+			<label>Lower</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+
+	<question>
+		<id>100</id>
+		<label>Others</label>
+		<type>text</type>
+		
+	</question>
+
+	
+</form>

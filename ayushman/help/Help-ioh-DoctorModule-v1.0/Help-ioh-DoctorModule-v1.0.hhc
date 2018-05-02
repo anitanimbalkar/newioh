@@ -1,0 +1,546 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<BODY>
+<OBJECT type="text/site properties">
+	<param name="Window Styles" value="0x800025">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Welcome topic">
+	<param name="ImageNumber" value="3">
+	<param name="Local" value="welcome_topic.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Introduction">
+	<param name="ImageNumber" value="3">
+	<param name="Local" value="introduction.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="About Help Manual">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="about_help_manual.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="REGISTRATION">
+	<param name="ImageNumber" value="3">
+	<param name="Local" value="registration.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Register ID">
+	<param name="ImageNumber" value="7">
+	<param name="Local" value="register_id.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Account Activation">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="account_activation.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Login">
+	<param name="ImageNumber" value="7">
+	<param name="Local" value="login.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Forgot password">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="forgot_password.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Logout">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="logout.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Change Password">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="change_password.htm">
+</OBJECT>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="My Account">
+	<param name="ImageNumber" value="3">
+	<param name="Local" value="my_account.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Profile">
+	<param name="ImageNumber" value="7">
+	<param name="Local" value="profile.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Access Profile">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="access_profile.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Create/Edit Profile">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="create_edit_profile.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="My Clinics">
+	<param name="ImageNumber" value="7">
+	<param name="Local" value="my_clinics.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Access My Clinics">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="access_my_clinics.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="AddClinic">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="addclinic.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Edit/Delete Clinic">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="edit_delete_clinic.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Consultation Fees">
+	<param name="ImageNumber" value="7">
+	<param name="Local" value="consultation_fees.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Set Consultation Fees">
+	<param name="ImageNumber" value="5">
+	<param name="Local" value="set_consultation_fees.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Current Fee Structure">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="current_fee_structure.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Schedule Fee Structure">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="schedule_fee_structure.htm">
+</OBJECT>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Working Hours ">
+	<param name="ImageNumber" value="7">
+	<param name="Local" value="working_hours_.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Set Working Hours">
+	<param name="ImageNumber" value="5">
+	<param name="Local" value="set_working_hours.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Add Consultation Timing">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="add_consultation_timing.htm">
+</OBJECT>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="My Packages">
+	<param name="ImageNumber" value="7">
+	<param name="Local" value="my_packages.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Access Change Password">
+	<param name="ImageNumber" value="7">
+	<param name="Local" value="access_change_passowrd.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Change Password">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="change_password2.htm">
+</OBJECT>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="My Network">
+	<param name="ImageNumber" value="3">
+	<param name="Local" value="my_network.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Patients">
+	<param name="ImageNumber" value="7">
+	<param name="Local" value="patients.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Access Patients ">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="access_patients_.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Search Patient">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="search_patient.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Create New Patient">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="create_new_patient.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Add Patient to Network">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="add_patient_to_network.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="View Patient Details">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="view_patient_details2.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Start Consultation">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="start_consultation.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Diagnostic Centers">
+	<param name="ImageNumber" value="7">
+	<param name="Local" value="diagnostic_centers.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Access Diagnostic Centers">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="access_diagnostic_centers.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Add/Remove Diagnostic Center">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="add_remove_diagnostic_center.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="View Diagnostic Center Details">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="view_diagnostic_center_details.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Search Diagnostic Center">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="search_diagnostic_center.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Chemist">
+	<param name="ImageNumber" value="7">
+	<param name="Local" value="chemist.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Access Chemists">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="access_chemists.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="View Chemists">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="view_chemists.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Add/Remove Chemists">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="add_remove_chemists.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Search Chemists">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="search_chemists.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Staff">
+	<param name="ImageNumber" value="7">
+	<param name="Local" value="staff.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Access Staff">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="access_staff.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Add/Delete Staff">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="add_delete_staff.htm">
+</OBJECT>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Appointments">
+	<param name="ImageNumber" value="3">
+	<param name="Local" value="appointments.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Upcoming Appointments">
+	<param name="ImageNumber" value="7">
+	<param name="Local" value="upcoming_appointments.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="View Patient Details">
+	<param name="ImageNumber" value="5">
+	<param name="Local" value="view_patient_details.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Consult Patient">
+	<param name="ImageNumber" value="14">
+	<param name="Local" value="consult_patient.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Examination Record">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="examination_record.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Prescription">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="prescription.htm">
+</OBJECT>
+</UL>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Past Appointments">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="past_appointments.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Access Past Appointments">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="access_past_appointments.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="View Appointment Details">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="view_appointment_details.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Search Patient">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="search_patient2.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Visit Summary">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="visit_summary.htm">
+</OBJECT>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Dashboard Consultation">
+	<param name="ImageNumber" value="3">
+	<param name="Local" value="dashboard_consultation.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Access Dashboard Consultation">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="access_dashboard_consultation.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Search Patient">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="search_patient3.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Add Patient">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="add_patient.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Dashboard Upcoming Appointments">
+	<param name="ImageNumber" value="7">
+	<param name="Local" value="dashboard_upcoming_appointment.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="View EMR">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="view_emr.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Edit EMR">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="edit_emr.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Cancel Appointment">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="cancel_appointment.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Quick Prescription">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="quick_prescription.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Prescription Template">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="prescription_template.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="End Consultation">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="end_consultation2.htm">
+</OBJECT>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Start Consultation">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="start_consultation2.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Create/Save Electronic Records">
+	<param name="Local" value="create_save_electronic_records.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="EMR">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="emr.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="View Full EMR">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="view_full_emr.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Notes">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="notes.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Risk Factors">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="risk_factors.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Prescriptions">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="prescriptions.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Quick Menu">
+	<param name="Local" value="quick_menu.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Current Prescription">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="current_prescription.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Trackers">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="trackers.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Examination">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="examination.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Main Complaint">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="main_complaint.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Vital Signs">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="vital_signs.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Examination">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="examination2.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Diagnosis">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="diagnosis.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Investigations">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="investigations.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Medicines">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="medicines.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Follow Up">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="follow_up.htm">
+</OBJECT>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="End Consultation">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="end_consultation.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Create/Save Receipt">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="create_save_receipt.htm">
+</OBJECT>
+</UL>
+</UL>
+</UL>
+</UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Short-Cut Menu Buttons">
+	<param name="ImageNumber" value="3">
+	<param name="Local" value="short-cut_menu_buttons.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Videos">
+	<param name="ImageNumber" value="3">
+	<param name="Local" value="videos.htm">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Login Demo">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="login_demo.htm">
+</OBJECT>
+<LI><OBJECT type="text/sitemap">
+	<param name="Name" value="Registration Demo">
+	<param name="ImageNumber" value="1">
+	<param name="Local" value="registration_demo.htm">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>

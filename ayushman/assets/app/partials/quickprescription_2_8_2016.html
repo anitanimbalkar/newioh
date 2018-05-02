@@ -1,0 +1,568 @@
+<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+<script src="/ayushman/assets/app/js/controllers/reportsparameter.js"></script>
+<script src="/ayushman/assets/app/js/controllers/myreportsctrl.js"></script>
+<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		loadScripts();
+		$("#addBtn").hide();
+		$("#findBtn").show();
+	
+		$('#load').click(
+			function () {
+				//show its submenu
+				$("#rightMenuload").stop().slideToggle(500);    
+			}
+		);
+		$('#rightMenuload').click(
+			function () {
+				//show its submenu
+				$("#rightMenuload").stop().slideToggle(500);    
+			}
+		);
+		$("#rightMenuload").stop().slideToggle(500);  
+		$('#save').click(
+			function () {
+				//show its submenu
+				$("#rightMenusave").stop().slideToggle(500);    
+			}
+		);
+		$('#savetemplatename').click(
+			function () {
+				//show its submenu
+				   
+			}
+		);
+		$("#rightMenusave").stop().slideToggle(500);  
+		
+		// For delete prescription template
+		$('#delete').click(
+			function () {
+				//show its submenu
+				$("#rightMenudelete").stop().slideToggle(500);    
+			}
+		);
+		$('#deletetemplatename').click(
+			function () {
+				//show its submenu
+				   
+			}
+		);
+		$("#rightMenudelete").stop().slideToggle(500);  
+		
+		//----------
+		
+		
+			
+});
+	
+
+	function Popup(data) 
+		{
+			var mywindow = window.open('', 'print','height=768,width=1024');
+			mywindow.document.write('<html><head>');
+			
+			mywindow.document.write('</head><body style="font-size:14px;">');
+			mywindow.document.write(data);
+			mywindow.document.write('</body></html>');
+			
+			mywindow.print();
+			mywindow.close();
+			return true;
+		}
+		
+		
+		
+		
+		
+</script>
+<style type="text/css">	
+		.ui-autocomplete { max-height: 30%; overflow-y: auto; overflow-x: hidden;
+			-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);
+			-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);
+			box-shadow: 0 4px 15px rgba(0,0,0,1);
+			width:200px !important;
+		}
+		.ui-dialog { z-index: 3000 !important ;}
+        .notes
+        {
+            background-image: -webkit-linear-gradient(left, white 10px, transparent 10px), -webkit-linear-gradient(right, white 10px, transparent 10px), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -moz-linear-gradient(left, white 10px, transparent 10px), -moz-linear-gradient(right, white 10px, transparent 10px), -moz-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -ms-linear-gradient(left, white 10px, transparent 10px), -ms-linear-gradient(right, white 10px, transparent 10px), -ms-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -o-linear-gradient(left, white 10px, transparent 10px), -o-linear-gradient(right, white 10px, transparent 10px), -o-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: linear-gradient(left, white 10px, transparent 10px), linear-gradient(right, white 10px, transparent 10px), linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-size: 100% 100%, 100% 100%, 100%;
+            line-height: 31px;
+            padding: 8px;
+			border:none;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+			font-size:9pt
+        }
+        .notes:focus
+        {
+            outline: none;
+        }
+		.fragment {
+			height: 27px;
+			border: none;
+			display: block;
+			padding: 3px;
+			box-sizing: border-box;
+		}
+
+		#close {
+			float:right;
+			display:inline-block;
+			padding:2px 5px;
+			background:#ccc;
+		}
+</style>
+<div style="width:641px;">
+<input type="hidden" value="2" id="autocompletevalue" />
+<table >
+	<tr>
+		<td width="720px;" height="750px" style="vertical-align:top;box-shadow:2px 7px 19px #888888;padding:5px;border:1px solid black;">
+			<div style="width:100%;height:auto;float:left;">
+				<div style="float:left;width:100%;margin-left:3px;  padding: 13px 10px 23px 12px;">
+					<div style="float:left;width:78%;">
+						<font color="1e90ff">Dr. {{myprofile['userinfo'].name}}</font>&nbsp;<span class="bodytext_normal" style="font-size:11px;" >({{myprofile['usereducation'].doctoreducation}})</span></br>
+							<span class="bodytext_normal" style="font-size:11px;">{{myclinics['clinicinfo'][0].clinicname}}</br>
+							{{myclinics['clinicinfo'][0].line1}},
+							{{myclinics['clinicinfo'][0].nearmark}},
+							{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+							{{myclinics['clinicinfo'][0].state}}
+							</br>
+							Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}</span>
+					</div>
+					<div style="float:left;width:22%;">
+						<span class="bodytext_normal" style="font-size:11px;">Regd No.:{{myprofile['userinfo'].regno}}</span>
+					</div>
+				</div>
+				<hr style="width:100%;"/>
+				<div style="float:left;width:100%;margin-left:3px;display:inline-flex;  padding: 14px 10px 23px 4px;">
+					<div class="bodytext_bold" style="float:left;position:relative;width:52%;">
+						{{appointment_info.Patientname}}&nbsp;&nbsp;(<a href="#" ng-click="toggle('genderlist');" ng-if="(appointment_info.PatientGender == '')" ><font color="blue" >Select Gender</font></a> <font style="cursor:pointer;" ng-click="toggle('genderlist');" ng-if="appointment_info.PatientGender != ''">{{appointment_info.PatientGender}}</font>, <a href="#" ng-click="toggle('age');" ng-if="((appointment_info.age == null) || (appointment_info.age == ''))"><font color="blue" >Select Age</font></a> <font style="cursor:pointer;" ng-click="toggle('age');">{{appointment_info.age}}</font>)</br>
+						<div ng-mouseleave="toggle('genderlist')" id="genderlist"   style="box-shadow:2px 7px 19px #888888;background:white;display:none;width:150px;position:relative;float:right;top:0px;">
+							<table width="inherit" class='table_roundBorder' style="max-height:100%;width:100%;" >
+								<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" ng-click="saveGender('Female');">
+									<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+										<span >Female</span>
+									</td>
+								</tr>
+								<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" ng-click="saveGender('Male');">
+									<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+										<span >Male</span>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div id="age" style="display:none;width:238px;box-shadow:2px 7px 19px #888888;padding:7px;background:white;">
+							<input type="text" class="textarea" readonly id="txtage" value="" placeholder="Select Date Of Birth" />
+							<input type="button" id="btnage" ng-click="saveAge();" class="button" value="Save" />
+							<input type="button" ng-click="toggle('age');" class="button" value="Close" />
+							<span id="error" style="display:none;" class="bodytext_error">Only Numeric values are allowed.</span>
+						</div>
+					</div>
+					<div class="bodytext_bold" style="width:41%;">
+						<span style="float:right;" class="bodytext_bold">{{appointment_info.DateAndTime}}</span>
+					</div>
+				</div>
+				<div class="bodytext_normal" style="position:relative;width:100%;display:inline-flex;margin:5px;  padding: 0px 10px 23px 4px;">
+					<div style="width:43%">
+						&nbsp;
+					</div>
+					<div style="width:150px;float:right;">
+						<table class="bodytext_Normal">
+							<tr>
+								<td>
+									Height
+								</td>
+								<td>
+									<input type="text" id="vitals_q_2" onkeyup="setVitals(this);" class="textarea" style="width:50px" />
+								</td>
+								<td>
+									cms.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									BP
+								</td>
+								<td>
+									<input type="text" placeholder="       / " class="textarea" id="vitals_q_8" onkeyup="setVitals(this);" style="width:50px" />
+								</td>
+								<td>
+									mm/Hg.
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div style="width:150px;align:right;">	
+						<table class="bodytext_Normal">
+							<tr>
+								<td>
+									Weight
+								</td>
+								<td>
+									 <input type="text" class="textarea" id="vitals_q_1" onkeyup="setVitals(this);" style="width:50px" />
+								</td>
+								<td>
+									Kg.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Pulse
+								</td>
+								<td>
+									<input type="text" class="textarea" id="vitals_q_21" onkeyup="setVitals(this);" style="width:50px" />
+								</td>
+								<td>
+									pm.
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div id="quickprescription" style="min-height:576px;height:auto;padding-left:15px;padding-right:15px;" >
+				<div style="width:100%;  padding: 14px 10px 23px 4px;">
+					</br>&nbsp;
+					<div style="display:inline-block;width:100%;" id="vsymptoms" onclick="$('#symptoms').show();$('#symptoms').focus();$('#vsymptoms').hide();" class="bodytext_normal"><span class="bodytext_bold">
+						Symptoms -</span>&nbsp;{{examination_data.text_complaint}}&nbsp;&nbsp;<a href="javascript:void(0);" title="Click To Edit" ><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a>
+						</br>&nbsp;
+					</div>
+					<div style="float:right;width:100%;" > <input style="display:none;width:100%;height:48px; resize: none;"  onblur="if($(this).val() != ''){$('#symptoms').hide();$('#vsymptoms').show();}else{$('#symptoms').show();}" id="symptoms" placeholder="Type symptoms..." ng-model="examination_data.text_complaint" name="symptoms"  class="notes"/></div>
+					
+					<div style="width:100%;padding-top:10px;" ng-if="examination_data.check_examinationsummary && examination_data.text_examinationsummary.length > 0" class="bodytext_normal"><span class="bodytext_bold">
+						Examination Summary -</span><span >{{examination_data.text_examinationsummary}}</span>
+						</br>
+					</div>
+					<br/>
+					<div style="display:inline-block;width:100%;padding-top:10px;" id="vimmunization" ng-if="examination_data.text_immunization.length > 0"  class="bodytext_normal" ><span class="bodytext_bold">
+						Immunizations -</span>&nbsp;<span>{{examination_data.text_immunization}} </span>&nbsp;&nbsp;
+						</br>
+					</div>
+					<br/>
+					<div style="display:inline-block;width:100%;padding-top:10px;" id="vdiagnosis" onclick="$('#diagnosis').show();$('#diagnosis').focus();$('#vdiagnosis').hide();" class="bodytext_normal" ><span class="bodytext_bold">
+						Diagnosis -</span>&nbsp;<span>{{examination_data.text_diagnosis}} </span>&nbsp;&nbsp;<a href="javascript:void(0);" title="Click To Edit" ><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a>
+						</br>&nbsp;
+						</br>
+					</div>
+					<div style="float:right;width:100%;" > <input style="display:none;width:100%;height:48px;; resize: none;" id="diagnosis" placeholder="Type diagnosis..." onblur="if($(this).val() != ''){$('#diagnosis').hide();$('#vdiagnosis').show();}else{$('#diagnosis').show();}" ng-model="examination_data.text_diagnosis" name="Diagnosis" class="notes"/></div>
+					<div style="display:inline-block;width:100%;padding-top:10px;" id="vreport" onclick="$('#report').show();$('#report').focus();$('#vreport').hide();" class="bodytext_normal" ><span class="bodytext_bold">
+						Reports-</span>&nbsp;<span>{{examination_data.testdata}} </span>&nbsp;&nbsp;
+						</br>&nbsp;
+						</br>
+					</div>
+					<div style="float:right;width:100%;" > <input style="display:none;width:100%;height:48px;; resize: none;" id="report" readonly placeholder="Test report..." onblur="if($(this).val() != ''){$('#report').hide();$('#vreport').show();}else{$('#report').show();}"ng-model="examination_data.testdata"  name="Report" class="notes"/></div>
+
+					<h5>Rx</h5>
+					<div style="float:right;width:100%;" id ="prescription" ></div>
+					<div style="float:right;width:100%;" > <input title="Press 'Tab' key to skip options" style="width:100%;height:48px;; resize: none;" id="medicines" placeholder="Type medicine name..." name="medicines" onclick="if (this.value == 'Medicines :') this.value = '';" class="notes"/>
+						<table id="medicinetemplatediv" style="width:100%;position:relative;display:none;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+							<tr>
+								<td>
+									<input id="medicinename" class="notes" style="font-size:10px;width:160px;font-weight:bold;" placeholder="Medicine name..."  />
+								</td>
+								<td>
+									<input id="quantity"  class="notes" style="font-size:10px;width: 100px;font-weight:bold;" placeholder="Qty X Freq."  />
+								</td>
+								<td>
+									<input id="frequency"  class="notes" style="font-size:10px;width: 82px;font-weight:bold;" placeholder="Duration" />
+								</td>													
+								<td>
+									<input id="instructions"  class="notes" style="font-size:10px;width: 110px;font-weight:bold;" placeholder="Instructions"  />
+								</td>
+								<td>
+									<input id="medId" type="hidden" class="notes" style="font-size:10px;width: 110px;" placeholder="medId"  />
+								</td>
+
+							</tr>
+							<tr>
+								<td colspan="4">
+									<a href="javascript:void(0);" id="okBtn" class="action" style="float:right;" onclick="createFragment(),autocompletetboxes();$('#medicinetemplatediv').hide();$('#medicines').show(); $('#medicines').focus();"><i class="fa fa-check" style="float:right;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Ok</i></a>
+									<a href="javascript:void(0);" id="clearBtn" class="action" style="float:right;" onclick="clearBoxes(),autocompletetboxes();$('#medicinetemplatediv').hide();$('#medicines').show();"><i class="fa fa-times" style="float:right;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Clear</i></a>
+									<a href="javascript:void(0);" id="addBtn" class="action" style="float:left;" onclick="savepersonalmed()"><i class="fa fa-plus" style="float:left;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Add to List</i></a>
+									<a href="javascript:void(0);" id="findBtn" class="action" style="float:left;" onclick="findinMaster($('#medicinename').val())"><i class="fa fa-plus" style="float:left;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Double click here to search from full list</i></a>
+							</td>												
+							</tr>
+						</table>											
+					</div>
+					<div style="float:right;width:100%;" > 
+							<div style="float:right;width:100%;margin-top:10px;" id ="investigation" ></div>
+							<input style="width:100%;height:48px;; resize: none;" id="investigations" placeholder="Type investigations..." ng-model="examination_data.text_investigations" name="investigations" class="notes"/>
+							<table id="investigationtemplatediv" style="width:100%;position:relative;display:none;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+								<tr>
+									<td>
+										<input id="investigationname" class="notes" style="font-size:10px;width:100%" placeholder="Investigation..."  />
+									</td>
+								</tr>
+								<tr>
+									<td >
+										<a href="javascript:void(0);" id="investigationOkBtn" class="action" style="float:right;" onclick="createInvestigationFragment();$('#investigationtemplatediv').hide();$('#investigations').show(); $('#investigations').focus();"><i class="fa fa-check" style="float:right;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Ok</i></a>
+										<a href="javascript:void(0);" id="investigationClearBtn" class="action" style="float:right;" onclick="clearInvestigationBoxes();$('#investigationtemplatediv').hide();$('#investigations').show();"><i class="fa fa-times" style="float:right;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Clear</i></a>
+									</td>												
+								</tr>
+							</table>	
+					</div>
+					
+					<div style="display:inline-block;width:100%;padding-top:10px;" id="vfollowup" onclick="$('#followup').show();$('#followup').focus();$('#vfollowup').hide();" class="bodytext_normal"><span class="bodytext_bold">
+						Other Instructions / Follow Up advice -</span>&nbsp;<span>{{examination_data.text_followup}} </span>&nbsp;&nbsp;<a href="javascript:void(0);" title="Click To Edit" ><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a>
+						</br>&nbsp;
+						</br>
+					</div>
+					
+					<div style="float:right;width:100%;" > <input style="width:100%;height:48px;; resize: none;" id="followup" placeholder="Type follow up advice..." ng-model="examination_data.text_followup" onblur="if($(this).val() != ''){$('#followup').hide();$('#vfollowup').show();}else{$('#followup').show();}"  name="followup"  class="notes"/></div>
+				</div>
+			</div>
+			
+			<form id="emrform" method="post" enctype="multipart/form-data">
+					<input type="hidden" value="" id="transferto" name="transferto"/>
+					<input type="hidden" id="symptomatic_text_target" name="textsymptom" value=""/>
+					<input type="hidden" id="examinations_text_target" name='textexamination' value=""/>
+					<input type="hidden" id="diagnosis_text" name="textdiagnosisnote" value="{{examination_data.text_diagnosis}}"/>
+					<input type="hidden" id = "test_ids" name = "testIds" value="" />
+					<input type="hidden" id = "medicine_ids" name = "medicineIds" value = "" />
+					<input type='hidden' id='text_complaint' name="textcomplaint" value="{{examination_data.text_complaint}}"/>
+					<input type='hidden' id='text_followup_note' name="textfollowupnote" value="{{examination_data.text_followup}}"/>
+					<input type='hidden' id='text_examinationsummary' name="textexaminationsummary" value="{{examination_data.text_examinationsummary}}"/>
+					<input type="hidden" name="appid" value="{{appointment_info.appointment_id}}" />
+					<input type="hidden" id="jsontextexamination" name="jsontextexamination" value="" />
+					
+					<input type="hidden" id="check_symptoms" name="check_symptoms" value="true" />
+					<input type="hidden" id="check_examinations" name="check_examinations" value="true" />
+					<input type="hidden" id="check_diagnosis" name="check_diagnosis" value="true" />
+					<input type="hidden" id="check_examinationsummary" name="check_examinationsummary" value="true" />
+					<input type="hidden" id="check_vitals" name="check_vitals" value="true" />
+					<input type="hidden" id="check_symptomaticreview" name="check_symptomaticreview" value="true" />
+				</form>
+		</td>		
+		<td width="27px;" height="100%" id="tools" style="height:550px">
+			<div style="padding-left:5px;height:50%;">
+				<a href="javascript:void(0);" ng-click="$modalSuccess()"  ><i title="Click to end the consultation."  style="font-size:23px;" class="fa fa-power-off"></i></a>
+				<table>
+				<tr>
+				  <td align="right" style="padding-top:5px;" >
+					<div>
+						<img src="/ayushman/assets/images/download.png" title="Load Past Prescription"  style="float:right;margin-right:2 px;height:32px;margin-top:30px;cursor:pointer" ng-click="getPastprescription();">
+					</div>
+				  </td>
+				</tr>
+				<tr>
+						<td align="right" style="padding-top:10px;">
+							<a href="javascript:void(0);" ng-show="prescriptiontemplates['templates'].length != 0 " id="load" ><i style="font-size:23px;" title="Load prescription from templates" class="fa fa-folder-open"></i></a>
+							<div id="rightMenuload" style="overflow-y:auto !important;width:88px;box-shadow:2px 7px 19px #888888;position:absolute;background:white;">
+								<div ng-repeat="template in prescriptiontemplates['templates']" style="border-bottom:1px solid #9cd4f9;cursor:pointer;" ng-click="loadPrescriptiontemplate(template['id']);">
+									<div width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+										<span >{{template['name_c']}}</span>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td align="right" style="padding-top:10px;">
+							<a href="javascript:void(0);" id="save" ><i style="font-size:23px;" title="Save prescription as template"  class="fa fa-save"></i></a><br/>
+							<div id="rightMenusave" style="width:200px;box-shadow:2px 7px 19px #888888;position:absolute;padding:10px;background:white;">
+								Save prescription as template
+								<input type="text" id="templatename" ng-model="appointment_info.templatename" class="textarea" value="" placeholder="Type template name..." />
+								<input type="button" id="savetemplatename" ng-click="savePrescriptiontemplate();" class="button" value="Save" />
+							</div>
+						</td>						
+					</tr>
+					<tr>
+						<td align="right" style="padding-top:10px;">
+							<a href="javascript:void(0);" id="delete" ><i style="font-size:23px;" title="Delete prescription template"  class="iconDelete"></i></a><br/><br/>
+							<div id="rightMenudelete" style="width:200px;box-shadow:2px 7px 19px #888888;position:absolute;padding:10px;background:white;">
+								Delete prescription template
+								<input type="text" id="templatename" ng-model="appointment_info.templatename" class="textarea" value="" placeholder="Type template name..." />
+								<input type="button" id="deletetemplatename" ng-click="deletePrescriptiontemplate();" class="button" value="Delete" />
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div style="padding-left:5px;height:50%;">
+				
+				<table width="auto" class="options" style="height:100%;">
+					<tr>
+						<td style="padding-top:10px;vertical-align:bottom;">
+							<div id="dialog" title="Examination Summary" class="sectionBox" style="display:none;position:absolute;margin-left:43px;margin-top:-150px;background:white;">
+								<h2 class="darkblue" >Examination Summary</h2>
+								<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:-25px;height:23px;cursor:pointer;" onclick="displayExaminationSummary();">
+								<p><input type="checkbox" name="check[text_examinationsummary]" id="check_examinationsummary" ng-model="examination_data.check_examinationsummary" ><label for="check_examination">Show to patient (Print on prescription)</label></input></p>
+								<textarea id="textexaminationsummary" ng-model="examination_data.text_examinationsummary"  class="notes" style="height:100px;width:290px;"> </textarea>
+							</div>
+							<div id="reports" readonly title="Reports" class="sectionBox" style="display:none;position:absolute;margin-left:43px;margin-top:-250px;background:white;">
+								<h2 class="darkblue" >Reports</h2>
+								<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:-25px;height:23px;cursor:pointer;" onclick="displayReports();">
+								<div reports ng-controller="reportsparameter"></div>
+							</div>
+							<div id="immunizations" title="Reports" class="sectionBox" style="display:none;position:absolute;margin-left:43px;margin-top:-500px;background:white;  width: 67%;">
+								<h2 class="darkblue" >Immunizations <a href="javascript:void(0);" id="immunizationchart" style="color: white !important;"><i style="margin-right: 34px;float:right" class="fa fa-print" onclick="Popup($('#immunizationtable').html());">Print</i></a></h2>
+								<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:-25px;height:23px;cursor:pointer;" onclick="displayImmunization()">
+								<div immunizations ng-controller="immunizationCtrl"></div>
+							</div>
+							<div immunization-print ></div>
+
+							<div id="riskfactors" title="Risk Factors" class="sectionBox" style="width:320px;display:none;position:absolute;margin-left:43px;margin-top:-150px;background:white;">
+								<h2 class="red" >Risk Factors</h2>
+								<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:-25px;height:23px;cursor:pointer;" onclick="displayRiskFactors();">
+								<div class="riskFactorDetails contentDetails" style="height:130px;">
+									<ul ng-repeat="risk in risks">
+										<li ng-show="!(risk.edit_mode)">
+											{{risk.risk_text}} 
+											<span ng-if='risk.writer_id == appointment_info.doctorid' class="iconDelete" ng-click="delete_risk($index,appointment_info.refappfromid_c)"></span>
+											<span ng-if='risk.writer_id == appointment_info.doctorid' class="iconEdit" ng-click="risk.edit_mode = true"></span>
+										</li>
+										<li ng-show="(risk.edit_mode)">
+											<input type="text" ng-model="risk.risk_text" />
+											<div class="iconSave" ng-click="edit_risk($index,appointment_info.refappfromid_c);risk.edit_mode=false"></div>
+										</li>
+									</ul>
+								</div>
+								<div class="detailsLink red">
+								<input type="text" ng-model="new_risk.text" ng-enter="add_risk(appointment_info.refappfromid_c);"/>
+								<a href="javascript:void(0);" ng-click="add_risk(appointment_info.refappfromid_c);"><span style="color:white;">Enter Risk</span></a> </div>
+							</div>
+							<div id="options" style="display:block;height:auto;width:24px;text-align:right;vertical-align:bottom">
+								<ul class="nav navbar-nav navbar-right" style="width:27px;">
+									<!--<li style="padding-top:10px;">
+										<a title="Tracker" ><span class="tracker" ></span></a>
+									</li>-->
+									<!--<li style="padding-top:10px;padding-bottom:5px;">
+										<a title="Risk Factors" onclick="displayRiskFactors();"><span class="risks" ></span></a>
+									</li>-->
+									<li ng-if="showimmu" title="Immunization"style="padding-top:5px;padding-bottom:5px;">
+										<img src="/ayushman/assets/images/immunization.svg" style="float:right;margin-right:4px;height:31px;cursor:pointer;" onclick="displayImmunization();">
+										
+									</li>
+									<li style="padding-top:5px;padding-bottom:5px;">
+										<img src="/ayushman/assets/images/patreport.jpg" style="float:right;margin-right:4px;height:31px;cursor:pointer;" onclick="displayReports();">
+										
+									</li>
+									<li style="padding-top:10px;padding-bottom:5px;">
+										<a title="Examination Summary" onclick="displayExaminationSummary();"><span class="examination" ></span></a>
+									</li>
+								</ul>
+							</div>
+							<a href="javascript:void(0);" style="display:none;"  id="showoptions" ng-click="showoptions();"><i style="font-size:23px;" title="More Options" class="fa fa-plus"></i></a>
+							<a href="javascript:void(0);" id="hideoptions" ng-click="showoptions();"><i style="font-size:23px;" title="More Options" class="fa fa-minus"></i></a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</td>
+	</tr>
+	</table>
+	<div id="addNewMedicine" style="width:500px;overflow-x:hidden; background-color:#ffffff;" class="table_roundBorder" overflow-x="hidden">
+	<div style="width:100%; height:25px; background-color:#ecf8fb; border-bottom:1px solid #a8c8d9; text-align:left; ">
+			&nbsp;&nbsp;<img src="/ayushman/assets/images/bullet.png" width="7" height="7"/>&nbsp;
+			<label id="informationheading" class="bodytext_bold">Medicine added successfully </label>
+			<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;cursor:pointer;" onclick="$('#addNewMedicine').dialog('close');" width="20" height="20"/>
+	</div>
+	</div>
+
+
+	 <script>
+	 function displayExaminationSummary()
+	  {
+			$("#dialog").stop().slideToggle(500);
+	  }
+	  function displayReports()
+	  {
+			$("#reports").stop().slideToggle(500);
+	  }
+	  function displayImmunization()
+	  {
+			$("#immunizations").stop().slideToggle(500);
+	  }
+	  function displayRiskFactors()
+	  {
+			$("#riskfactors").stop().slideToggle(500);
+	  }
+	  $(document).ready(function() {
+			$(function(){
+				$( "#txtage" ).datepicker({yearRange: "-120:+0",maxDate: '0',changeMonth: true,changeYear: true,  dateFormat: 'dd M yy'});
+			});
+	
+			$('#report').show();$('#vreport').hide();
+			$('#symptoms').show();$('#vsymptoms').hide();
+			$('#diagnosis').show();$('#vdiagnosis').hide();
+			$('#followup').show();$('#vfollowup').hide();
+				$('#addNewMedicine').dialog({
+				autoOpen: false,
+				show: "fade",
+				hide: "fade",
+				width: "421px",
+				modal: true,
+				height: "auto",
+				resize: "auto",
+				resizable: false
+				});
+				$(".ui-dialog-titlebar").hide();
+		});
+	
+	  function savepersonalmed(){ 
+		 var  medicinename=document.getElementById("medicinename").value;
+		 var  medId=document.getElementById("medId").value;
+		 var  frequenci=document.getElementById("frequency").value;
+		 var  quantity=document.getElementById("quantity").value;
+		 var  instructions=document.getElementById("instructions").value;
+		
+		 var splitFrequency= quantity.split("X ");
+		 var splitDays= frequenci.split("X");
+       
+		 for (var f = 0; f < splitFrequency.length; f++) {
+            var a=splitFrequency[0];
+			var b=splitFrequency[f];
+         }
+		for (var d = 0; d < splitDays.length; d++) {
+              var c=splitDays[d];
+         }
+					
+				if (medicinename == "") {
+					//alert("Medicine Name must be filled out");
+					showNotification('300','20','Save data','Medicine Name must be filled out','notification','timernotification',2000);
+					return false;
+				}
+				if (frequenci == "") {
+					//alert("Duration must be filled out");
+					showNotification('300','20','Save data','Duration must be filled out','notification','timernotification',2000);
+					return false;
+				}
+				if (quantity == "") {
+					//alert("Quantity must be filled out");
+					showNotification('300','20','Save data','Quantity must be filled out','notification','timernotification',2000);
+					return false;
+				}
+				    $.ajax({
+								type: 'GET',
+								url: "/ayushman/cdoctordrug/saveconsultationmedicine?medId="+medId+"&days="+c+"&dosage="+a+"&frequency="+b+"&instructions="+instructions,
+								datatype: 'json',
+								success:function( data ){
+								var returnArray= JSON.parse(data);
+								//console.log(returnArray);
+								if(returnArray['found'] == 'yes'){
+								//alert("Medicine already present...!");
+								showNotification('300','20','Save data','Medicine already present...!','notification','timernotification',2500);
+								}
+								else{
+									//alert("Medicine Added In Personalized List...!");
+									showNotification('300','20','Save data','Medicine Added In Personalized List...!','notification','timernotification',2500);												
+								}			
+							}
+						});
+						$('#addBtn').hide();
+						//$('#addNewMedicine').dialog('open');
+
+			}
+  </script>
+	
+</div>

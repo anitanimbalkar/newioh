@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,3,4</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>5,6,7,8</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>Mood </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>2</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Description</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Appearance</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Unkempt</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Anxiety</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Restlessness</label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Irritability</label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Depression</label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+	
+</form>

@@ -1,0 +1,376 @@
+
+<style>
+	.ui-autocomplete 
+{  margin-top: 0px !important;
+					 top: 60px !important;
+}
+.container{
+	float:left;
+	width:100%;
+	padding-left: 10px;
+	padding-top: 10px;
+	border:1px solid;
+	padding-bottom: 10px;
+	font-size:12px !important;
+}
+
+.regnformcontrol{
+	width:100%;
+}
+.formelements{
+margin-left:1% ! important;
+}
+body{
+	margin-top: 0% !important;
+}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#tickpermission").show();
+		$("#btnpermission").hide();
+		$('input[id="btnpermission"]').prop('checked', true);
+		$('#loading').dialog({
+				autoOpen: false,
+				show: "fade",
+				hide: "fade",
+				modal: true,
+				height: "30",
+				resizable: false,
+				width: "100px"
+			});
+			$(".ui-dialog-titlebar").hide();
+		$(function () {
+			   $('table').footable({ bookmarkable: { enabled: true }}).bind({
+				'footable_filtering': function (e) {
+					var selected = $('.filter-status').find(':selected').text();
+					if (selected && selected.length > 0) {
+						e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
+						e.clear = !e.filter;
+					}
+				},
+				'footable_filtered': function() {
+					var count = $('table.demo tbody tr:not(.footable-filtered)').length;
+					$('.row-count').html(count + ' rows found');
+				}
+			});
+
+			$('.clear-filter').click(function (e) {
+				e.preventDefault();
+				$('.filter-status').val('');
+				$('table.demo').trigger('footable_clear_filter');
+				$('.row-count').html('');
+			});
+			
+			$('.filter-status').change(function (e) {
+				e.preventDefault();
+				$('table.demo').data('footable-filter').filter( $('#chemistlist').val() );
+				$('table.demo').data('footable-filter').filter( $('#preferedchemistlist').val() );
+				$('table.demo').data('footable-filter').filter( $('#dclist').val() );
+				$('table.demo').data('footable-filter').filter( $('#prefereddclist').val() );
+				
+				$('table.demo').data('footable-filter').filter( $('#prefereddoctorlist').val() );
+				$('table.demo').data('footable-filter').filter( $('#doctorlist').val() );
+				
+				
+			});
+			
+			
+		});
+		$('table').trigger('footable_clear_filter');
+	});
+    
+</script>
+<div id="selected-items" class="col-full bodytext_normal"  style="float:left;margin:10px;width:49%;min-width: 386px;">
+	<img src="/ayushman/assets/images/Success_Arrow.png" id="tickpermission" style="display:none;" ng-click="askOtp1();"/><input class="item" type="checkbox"  ng-click="askOtp();"  id="btnpermission" /><Label for="btnpermission" >&nbsp;Place automatic order to following chemist and Diagnostic Center.</label>
+</div>
+<div id="selected-items" ng-show = "otp" class="col-full bodytext_normal"  style="float:left;margin:10px;width:38%;  min-width: 421px;">
+	Enter OTP :
+	<button id="sendotpbutton" class="button" ng-click="sendOtp();" style="padding-left: 6px;padding-right: 6px; font-size:11px;">
+		Send Otp&nbsp 
+	</button>
+	<input id="otp" name="otp" type='text'  class='regnformcontrol' style="width:100px;  height: 30px;" />
+	<button class="button" ng-click="checkOtp();" style="padding-left: 6px;padding-right: 6px;font-size:11px;">
+		Ok
+	</button>
+</div>
+<div class="container" >
+	<div class="container" style="border:0;">
+		<div ng-if="chemistsinnetwork.length > 0">
+            <table class="table demo" data-filter="#preferedchemistlist" data-page-size="10"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th data-toggle="true">
+                        Pharmacy Name
+                    </th>
+                    <th >
+                        Location
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    <th >
+                        Home Delivery
+                    </th>
+					<th >
+                       Actions 
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "record in chemists" ng-if="record.id == chemistsinnetwork[0][0] || record.id == chemistsinnetwork[1][0] || record.id == chemistsinnetwork[2][0] || record.id == chemistsinnetwork[3][0] || record.id == chemistsinnetwork[4][0] || record.id == chemistsinnetwork[5][0]" on-finish-render="ngRepeatFinished">
+                    <td><img src="/ayushman/assets/images/Success_Arrow.png"/>&nbsp;&nbsp;{{record.medicalname}}</td>
+                    <td>{{record.location}}</td>
+                    <td>{{record.city}}</td>
+                    <td>{{record.homedelivery}}</td>
+                    <td><a href="javascript:void(0);" ng-click="removeChemist(record.userid,record.id);" style="color: #0000FF;font:bold;"> Remove From Network </a></td>
+                </tr>                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			<div style="width:100%;align:center;border:1px solid black" class="form" align="center" ng-if="show">
+				No Records Found
+			</div>
+		</div>
+		<div >
+            <p>
+                Search Chemist : <input id="chemistlist" type="text"/>
+                <a href="#clear" class="clear-filter" title="clear filter">[clear]</a>
+            </p>
+            <table class="table demo" data-filter="#chemistlist" data-page-size="10"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th data-toggle="true">
+                        Pharmacy Name
+                    </th>
+                    <th >
+                        Location
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    <th >
+                        Home Delivery
+                    </th>
+					<th >
+                        Actions
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "record in chemists" on-finish-render="ngRepeatFinished">
+                    <td>{{record.medicalname}}</td>
+                    <td>{{record.location}}</td>
+                    <td>{{record.city}}</td>
+                    <td>{{record.homedelivery}}</td>
+                    <td><a href="javascript:void(0);" ng-click="addChemist(record.userid,record.id);" style="color: #0000FF;font:bold;"> Attach Chemist </a></td>
+                </tr>                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			<div style="width:100%;align:center;border:1px solid black" class="form" align="center" ng-if="show">
+				No Records Found
+			</div>
+		</div>
+	</div>	
+</div>
+<div class="container" >
+	<div class="container" style="border:0;">
+		<div >
+            <table class="table demo" data-filter="#prefereddclist" data-page-size="10"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th data-toggle="true">
+                        Diagnostic Center
+                    </th>
+                    <th >
+                        Location
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    <th >
+                        Sample Pickup Facility
+                    </th>
+					<th >
+                        Actions
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "record in diagnostics" ng-if="record.pathologistid == pathologistinnetwork[0][0] || record.pathologistid == pathologistinnetwork[1][0] || record.pathologistid == pathologistinnetwork[2][0] || record.pathologistid == pathologistinnetwork[3][0] || record.pathologistid == pathologistinnetwork[4][0] || record.pathologistid == pathologistinnetwork[5][0]" on-finish-render="ngRepeatFinished">
+                    <td><img src="/ayushman/assets/images/Success_Arrow.png"/>&nbsp;&nbsp;{{record.centername}}</td>
+                    <td>{{record.location}}</td>
+                    <td>{{record.city}}</td>
+                    <td>{{record.homepickeup}}</td>
+                    <td><a href="javascript:void(0);" ng-click="removeDiagnostic(record.pathologistuserid,record.pathologistid);" style="color: #0000FF;font:bold;"> Remove From Network </a></td>
+                </tr>                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			<div style="width:100%;align:center;border:1px solid black" class="form" align="center" ng-if="show">
+				No Records Found
+			</div>
+		</div>
+		
+		<div >
+            <p>
+                Search Diagnostic Center: <input id="dclist" type="text"/>
+                <a href="#clear" class="clear-filter" title="clear filter">[clear]</a>
+            </p>
+            <table class="table demo" data-filter="#dclist" data-page-size="10"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th data-toggle="true">
+                        Diagnostic Center
+                    </th>
+                    <th >
+                        Location
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    <th >
+                        Sample Pickup Facility
+                    </th>
+					<th >
+                        Actions
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "record in diagnostics" on-finish-render="ngRepeatFinished">
+                    <td>{{record.centername}}</td>
+                    <td>{{record.location}}</td>
+                    <td>{{record.city}}</td>
+                    <td>{{record.homepickeup}}</td>
+                    <td><a href="javascript:void(0);" ng-click="addDiagnostic(record.pathologistuserid,record.pathologistid);" style="color: #0000FF;font:bold;"> Attach Pathologist </a></td>
+                </tr>                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			<div style="width:100%;align:center;border:1px solid black" class="form" align="center" ng-if="show">
+				No Records Found
+			</div>
+		</div>
+	</div>	
+</div>
+
+<div class="container" >
+	<div class="container" style="border:0;">
+		<div >
+            <table ng-if="doctorinnetwork.length > 0" class="table demo" data-filter="#prefereddoctorlist" data-page-size="10"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th data-toggle="true">
+                        Doctor Name
+                    </th>
+                    <th >
+                        Education
+                    </th>
+                    <th>
+                        Specialization
+                    </th>
+					<th>
+                        City
+                    </th>
+					<th>
+						Actions
+					</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "record in doctorinnetwork" on-finish-render="ngRepeatFinished">
+                    <td><img src="/ayushman/assets/images/Success_Arrow.png"/>&nbsp;&nbsp;{{record[1]}}</td>
+                    <td>{{record[2]}}</td>
+                    <td>{{record[3]}}</td>
+					 <td>{{record[4]}}</td>
+					 <td><a href="javascript:void(0);" ng-click="removeDoctor(record[0]);" style="color: #0000FF;font:bold;"> Remove Doctor </a></td>
+                </tr>                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			<div ng-if="doctorinnetwork.length == undefined" style="width:100%;align:center;border:1px solid black" class="form" align="center" ng-if="show">
+				No Doctor is in Panel
+			</div>
+		</div>
+		<div >
+            <p>
+                Search Doctors: <input id="doctorlist" type="text"/>
+                <a href="#clear" class="clear-filter" title="clear filter">[clear]</a>
+            </p>
+            <table class="table demo" data-filter="#doctorlist" data-page-size="10"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th data-toggle="true">
+                        Doctor Name
+                    </th>
+                    <th >
+                        Education
+                    </th>
+                    <th>
+                        Specialization
+                    </th>
+                    <th >
+                        City
+                    </th>
+					<th >
+                        Actions
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "record in doctors" on-finish-render="ngRepeatFinished">
+                    <td>{{record.doctorname}}</td>
+                    <td>{{record.education}}</td>
+                    <td>{{record.specialization}}</td>
+                    <td>{{record.city}}</td>
+                    <td><a href="javascript:void(0);" ng-click="addDoctor(record.doctoruserid,record.doctorid);" style="color: #0000FF;font:bold;"> Attach Doctor </a></td>
+                </tr>
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			<div style="width:100%;align:center;border:1px solid black" class="form" align="center" ng-if="show">
+				No Records Found
+			</div>
+		</div>
+	</div>	
+</div>
+<div id="loading" style="width:40px;height:30px;background-color:transparent;align:center;overflow-y:hidden;overflow-x:hidden;">
+ <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+</div>

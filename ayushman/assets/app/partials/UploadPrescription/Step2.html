@@ -1,0 +1,79 @@
+<head>
+
+<script type="text/javascript">
+$(document).ready(function(){
+$('#Prescription-Tags_a_6').change(function()
+					{
+						str=$(this).val();
+						var medarray = str.split(",");
+						console.log(medarray);
+						var temp;
+						var temphtml='<div>';
+						for (temp in medarray)
+						{
+						temphtml+='<div>'+medarray[temp]+'</div>';
+						}
+						temphtml+='</div>';
+						console.log(temphtml);
+						$("#medicinediv").html(temphtml);
+					}).change();
+					$('#Prescription-Tags_a_7').change(function()
+					{
+						str=$(this).val();
+						var medarray = str.split(",");
+						console.log(medarray);
+						var temp;
+						var temphtml='<div>';
+						for (temp in medarray)
+						{
+						temphtml+='<div>'+medarray[temp]+'</div>';
+						}
+						temphtml+='</div>';
+						console.log(temphtml);
+						$("#testdiv").html(temphtml);
+					}).change();
+
+
+});
+
+</script>
+<style>
+h2, .h2
+{
+font-family: tahoma, Helvetica, sans-serif;
+color: #5cb1b6;
+font-size: 18px !important;
+font-weight: bold;
+
+}
+.formbodytext_normal
+{
+	font-size: 0.9em ! important;
+}
+</style>
+<link href="/ayushman/assets/css/newformstyle.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div style="width:100%; margin-left: 16px;" id="Tags_place" class=" textcolor" ></div>
+<table>
+<td style="width: 59%;">
+<div id="medicinediv" style="margin-left: 13%;width:100%"  class="formbodytext_normal"></div>
+</td>
+<td>
+<div id="testdiv" style=""  class="formbodytext_normal"></div>
+</td>
+</table>
+<hr>
+						<div style="float: right;margin-right: 9px;">
+						<button class="btn button-style btn-s"ng-click="setStep(3)" ng-disabled="!isdate"style="padding: 2px;">
+							Next&nbsp <span class="glyphicon glyphicon-arrow-right"></span> 
+						</button>
+						
+						</div>
+						<div style="float: left;margin-left: 9px;">
+						<button class="btn button-style btn-s"ng-click="setStep(1)" style="padding: 2px;">
+							<span class="glyphicon glyphicon-arrow-left"></span>&nbsp Back 
+						</button>
+						</div>
+						
+</body>						

@@ -1,0 +1,98 @@
+<script src="/ayushman/assets/js/jquery.tools.min.js"></script>
+<style type="text/css">
+.error {
+    color: red;
+    font-style: italic;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	font-size:9pt;
+}
+.wrapper {
+	box-shadow:0px 0px 7px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 7px rgba(0,0,0,0.3);
+	-webkit-box-shadow: 0px 0px 7px rgba(0,0,0,0.3);
+	border:none;
+	padding:0;
+	background:#fff;
+	}
+</style>
+<script type="text/javascript" src="/ayushman/assets/js/livevalidation_standalone.compressed.js"></script>
+<!-- BOOTSTRAP CSS -->
+<link href="/ayushman/assets/css/bootstrap.css" rel="stylesheet">
+
+<link href="/ayushman/assets/css/style2.css" rel="stylesheet" type="text/css">
+<link href="/ayushman/assets/css/docstyle.css" rel="stylesheet" type="text/css">
+<script type="text/javascript"> 
+$(document).ready(function() {
+	$("#changepwform").validator({ position: 'center right' });
+	if($.trim($('#messagelistdiv').html()) != "")
+		showNotification('250','50','Errors',$.trim($('#messagelistdiv').html()),'notification','messagedialogboxid',5000);
+
+});
+$.tools.validator.fn("[minlength]", function(input, value) {
+	var min = input.attr("minlength");
+	
+	return value.length >= min ? true : {     
+		en: "Password should be at least " +min+ " character" + (min > 1 ? "s" : ""),
+		fi: "Kentän minimipituus on " +min+ " merkkiä" 
+	};
+	
+});
+$.tools.validator.fn("[data-equals]", "Value not equal with the $1 field", function(input) {
+	var name = input.attr("data-equals"),
+		 field = this.getInputs().filter("[name=" + name + "]"); 
+	return input.val() == field.val() ? true : [name]; 
+});
+$.tools.validator.fn("[data-notequals]", "Value should not equal with the $1 field", function(input) {
+	var name = input.attr("data-notequals"),
+		 field = this.getInputs().filter("[name=" + name + "]"); 
+	return input.val() != field.val() ? true : [name]; 
+});
+</script>
+<div class="panel" style="max-width:60%;height:auto;overflow:hidden; margin-left:20%;margin-top:10%; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);">
+	<div class="row editformHeader">
+		<div class="col-sm-4 col-md-4"><img src="/ayushman/assets/images/WhiteArrow_Icon.png" width="9" height="7">&nbsp;&nbsp;Invitation</div>
+	</div>
+	<div style="width:100%; margin:15px;">
+		<div style="background-color:#ecf8fb;width:96%;">
+			<div class="bodytext_bold" style="margin:15px;font-size:12px; line-height:20px;">
+			Invite a friend to <em>IndiaOnlineHealth</em>. This will help you to increase your reach and grow your network </div>
+		</div>
+		<form id="changepwform" autocomplete="off" role="form"  accept-charset="utf-8" >
+			
+				<INPUT TYPE="hidden" NAME="username" VALUE="">
+				<div class="col-sm-8">	
+					<label class="col-sm-5 control-label" for="oldpass">Email:</label>
+					<div class="col-sm-6">
+						<input name="textfield" type="text" class="form-control" id="textfield"  ng-model="email" /><script type="text/javascript">
+							var email = new LiveValidation('textfield');
+							email.add( Validate.Email );
+							email.add( Validate.Presence );
+						</script> <font size="1px" color="red"></font>
+					</div>
+				</div>
+				<div class="col-sm-8" style="margin-top:5px;">	
+					<label class="col-sm-5 control-label">Phone:</label>
+					<div class="col-sm-6">
+						<input name="textfield2" type="text" class="form-control" id="textfield2"  ng-model="phone" /><script type="text/javascript">
+							var mobilenumber = new LiveValidation('textfield2');
+							mobilenumber.add( Validate.Numericality, {onlyInteger: true } );
+							mobilenumber.add( Validate.Length, { is: 10 });
+							mobilenumber.add( Validate.Format, { pattern: /^[0-9]+$/,failureMessage: "only numeric values allowed"} );
+							mobilenumber.add( Validate.Presence );
+						</script> <font size="1px" color="red"></font>
+					</div>
+				</div>
+				<div class="col-sm-8" style="margin-top:5px;">	
+					<label class="col-sm-5 control-label">Message*:</label>
+					<div class="col-sm-6">
+						<div id="editsummary" ><textarea id="message" name="message" rows="6" cols="50" value="Dear Friend, I have been using IndiaOnlineHealth and I am very pleased with its features. I strongly recommend you to register and join my network." ng-model="message"></textarea></div>					</div>
+				</div>
+				
+				<input type="hidden" name="userid" value=""/>
+				
+		</form>
+		<div class="col-sm-12" style="margin-top:5px;">
+					<input type="submit" class="regnbutton" style="float:right;margin-right:10px;" value="Send"  ng-click ="sendmessage()"/>
+				</div>
+	</div>
+</div>

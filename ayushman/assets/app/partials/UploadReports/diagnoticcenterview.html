@@ -1,0 +1,107 @@
+<head>
+<link href="/ayushman/assets/css/newformstyle.css" rel="stylesheet" type="text/css">
+<style>
+	.ui-autocomplete 
+{  margin-top: 0px !important;
+					 top: 60px !important;
+}
+.ui-datepicker {
+  width: 30% ! important;
+}
+.container{
+	float:left;
+	width:100%;
+	padding-left: 10px;
+	padding-top: 10px;
+	border:1px solid;
+	padding-bottom: 0px;
+}
+.parameternames{
+	float:left;
+	width:59%;
+	text-align:left;
+	margin-left:1% ! important;
+}
+.parametervalues{
+	float:left;
+	width:40%;
+	text-align:left;
+}
+.regnformcontrol{
+	width:100%;
+}
+.formelements{
+margin-left:1% ! important;
+}
+</style>
+</head>
+<body>
+	<div class="container" ng-repeat="test in testids" >
+	<div class="panel-group" id="accordionDashboard">
+	<div class="panel">
+	 <div class="panel-heading collapsed">
+	 <h4 class="panel-title">
+	<a data-toggle="collapse" data-parent="#accordion" onclick="parent.setIframeHeight(document.getElementById('icontent'));" href="/dashboard/#{{test.id}}" class="collapsed" >
+	<h5 style=" background: #5cb1b6 !important;border-radius: 0;color:#fff; padding: 10px 5px 10px 15px;margin-top: 0;" ><span>{{test.value}}</span></h5></a></h4>
+		
+		</div><div class="container" style="border:0;">
+			<div class="twocol" style="display:none;">
+				<div class="formelements" id="results" >
+					<label for="testnametxt1" style="float:left;width:20%;" >Test Name :</label>
+					<input id="testnametxt1" readonly name="testnametxt1" type="text"  class="form-control regnformcontrol" style="float:left;width:50%;" value = "{{test.value}}" />
+				</div>
+			</div>
+					
+		</div>
+		<div id="val">
+		<div  id="{{test.id}}" class="panel-collapse collapse">
+			<div class="panel-body">
+		<div id="content1" class="container"  style="border:0;">
+		<div style="width:100%;">
+		<div class="parameternames" ng-if="test.parameters.length > 0" style="width:47%;"><label style="line-height:15px;"> Parameter names</label></div><div class="parametervalues" ng-if="test.parameters.length > 0" style="width:20%;"><label style="line-height:15px;">Parameter values</label></div><div class="parametervalues" ng-if="test.parameters.length > 0" style="width:10%;"><label style="line-height:15px;">Units</label></div> <div class="parameternames" ng-if="test.parameters.length > 0" style="width:20%;"><label style="line-height:15px;">Reference Values</label></div>
+
+		</div>
+			<div  ng-repeat="parameter in test.parameters">
+				<div class="parameternames" style="width:45%;"><label for="{{parameter.id}}" style="line-height:14px;">{{parameter.parametername}}</label>
+				</div>
+				<div class="parametervalues" style="width:25%;">
+					<div class="parameternames">
+						<input id="{{parameter.id}}" name="{{parameter.id}}" type='text' ng-hide="parameter.type=='nonnumeric'" class='form-control regnformcontrol'  ng-init="parameterdata[parameter.id]=parameter.parametername" ng-model="parameter_ids[parameter.id]"  />
+						<select class="form-control regnformcontrol" ng-init="parameterdata[parameter.id]=parameter.parametername" ng-show="parameter.type=='nonnumeric'" id="{{parameter.id}}" name="{{parameter.id}}"   ng-model="parameter_ids[parameter.id]"ng-options="value.valueid as value.valuename for value in parameter.paramvalues"> 
+							<option value="" selected="" >Select Value</option>
+						</select>
+					</div>
+					<div class="parametervalues">
+						<select class="form-control regnformcontrol" style="width:100px;" ng-hide="parameter.type=='nonnumeric'" id="{{parameter.id}}_unitscombo" name="{{parameter.id}}_unitscombo"  ng-model="parameter.defaultunit" ng-options="unit.unitid as unit.unitname for unit in parameter.units" > 
+							<option value="" selected="" >Select Unit</option>
+						</select>
+						<input id="{{parameter.id}}_unitscombo1" name="{{parameter.id}}_unitscombo1" type="text" class="form-control regnformcontrol"  ng-model="otherunits[parameter.id]" ng-show="parameter_units[parameter.id] == '2'"/>
+					</div>
+					
+				</div>
+				<div class="parameternames" style="width:2%;">&nbsp </div>
+				<div class="parametervalues" style="width:25%;">
+						<input id="{{parameter.id}}_unitscombo1" style="width:95%;" ng-hide="parameter.type=='nonnumeric'" name="{{parameter.id}}_unitscombo1" type="text" class="form-control regnformcontrol"  ng-model="param_ref[parameter.id]" ng-init="param_ref[parameter.id]=parameter.reference"/>
+				</div>
+				<div class="parametervalues" style="width:25%;">
+						<input id="{{parameter.id}}_testid" style="width:95%;" name="{{parameter.id}}_testid" type="hidden" value="{{test.id}}" ng-init="param_testid[parameter.id]=test.id" ng-model="param_testid[parameter.id]"/>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="container"  style="border:0;" >
+			<div class="col-md-3" ng-if="test.parameters.length > 0">
+				<h4 class="Textheading">Summary</h4>                                                                
+				<div class="textcolor">
+					<input id="reportSummary" name="reportSummary" style="width:100%;margin-bottom: 6px;" class="regnformcontrol ng-pristine ng-valid" type="text" ng-model="test.reportSummary" />
+				</div>	
+			</div>
+		</div>
+	
+		</div>
+		</div>
+		</div>
+			</div>
+		</div>		
+	</div>	
+</body>

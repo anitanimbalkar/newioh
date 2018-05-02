@@ -1,0 +1,80 @@
+<style>
+.chartfrontdiv
+{
+	width: 26%;
+	float: left;
+	
+}
+.linecolor
+{
+	color:#04706d;
+}
+.aligncenter{
+	text-align: center;
+}
+.chartcenterdiv
+{
+	width: 37%;
+	float: left;
+	
+}
+.chartlastdiv
+{
+	width: 37%;
+	float: left;
+	
+}
+.containerdiv
+{
+display: block;
+min-width: 200px;
+width:100%;
+}
+  a.btndefault
+  {
+  border-radius: 5px;
+  background: #00aca9;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  padding: 5px 2.5px;
+  text-decoration: none;
+	}
+  </style>
+<div>
+<accordion close-others="oneAtATime">
+	<accordion-group  ng-repeat="group in groups "  >
+		<accordion-heading  >
+		{{group[0][2]}} Due On {{dates[group[0][3]]}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': group.content, 'glyphicon-chevron-right': !group.content}"></i>
+		</accordion-heading>
+		<div ng-show="!actualdates[group[0][0]]" style="font-size:16px">
+			<div style="text-align:center; padding-bottom:4px;font-size:16px"><a href="javascript:void(0);" id="remind" ng-click="togglediv=!togglediv"><i class="fa fa-bell linecolor" style="font-size:24px" > Set Reminder</i></a></div>
+			<div ng-show="togglediv" style="margin-bottom: 40px;">
+			<div class="chartfrontdiv ">on</div> <div class="chartlastdiv aligncenter"><input  type="text" class="textareapopup"  style="color: black;font-family: Verdana,Arial,Helvetica,sans-serif;margin-right:0%;  width: 90px;" ng-model="dates[group[0][3]]"  datepickerahead /> </div><div class="chartlastdiv aligncenter"><a href="javascript:void(0);" class="btndefault" id="remind" ng-click="setreminder(group,dates[group[0][3]])"><i title="Done" class="fa fa-share-square-o" style="font-size:16px" >Send</i></a></div>
+			</div>
+		</div>		
+		<hr class="containerdiv linecolor">  	
+		<div class="containerdiv">
+			 <div class="chartfrontdiv ">Immunization</div> 
+			 
+			 <div class="chartlastdiv aligncenter">Actual </div>
+			 <div ng-if="!actualdates[group[0][0]]" class="chartlastdiv aligncenter">Actions</div>
+			 <div ng-if="actualdates[group[0][0]]" class="chartlastdiv aligncenter">Status</div>
+		</div> 
+		<br/>
+		<hr class="containerdiv linecolor">  
+	
+	  	  <div ng-repeat="name in group" class="containerdiv">
+				 <div class="containerdiv">
+						 <div class="chartfrontdiv">{{name[1]}}</div> 						 
+						 <div ng-if="actualdates[name[0]]" class="chartlastdiv aligncenter"><input ng-disabled="actualdates[name[0]]" type="text" class="textareapopup"  style="color: black;font-family: Verdana,Arial,Helvetica,sans-serif;margin-right:0%;  width: 90px;" ng-model="actualdates[name[0]]"  datepickerdefault /></div>
+						 <div ng-if="!actualdates[name[0]]" class="chartlastdiv aligncenter"><input  type="text" class="textareapopup"  style="color: black;font-family: Verdana,Arial,Helvetica,sans-serif;margin-right:0%;  width: 90px;" ng-model="dates[group[0][3]]"  datepickerdefault /></div>
+						 <div ng-if="actualdates[name[0]]" class="chartlastdiv aligncenter"><!--<a href="javascript:void(0);" id="remind" ng-click="deleteimmunization()">--><i title="Done" class="fa fa-check linecolor" style="font-size:16px">Completed</i> | <a href="javascript:void(0);" id="remind" ng-click="deleteimmunization(name)"><i title="Undo" class="fa fa-undo" style="font-size:16px">Undo</i></a></div>
+						 <div ng-if="!actualdates[name[0]]" class="chartlastdiv aligncenter"><a href="javascript:void(0);" id="remind" class="btndefault" ng-click="immunizationdone(dates[group[0][3]], name)"><span title="Done" style="font-size:16px">Complete</span></a></div>
+				 </div>
+				 <br/>
+				 <hr class="containerdiv linecolor">  	  
+		  </div>	
+	</accordion-group>
+</accordion>
+</div>

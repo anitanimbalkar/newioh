@@ -1,0 +1,25 @@
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      1/systemd           
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      19303/nginx: master 
+tcp        0      0 0.0.0.0:465             0.0.0.0:*               LISTEN      19183/master        
+tcp        0      0 0.0.0.0:4369            0.0.0.0:*               LISTEN      1570/epmd           
+tcp        0      0 0.0.0.0:5269            0.0.0.0:*               LISTEN      3009/beam.smp       
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1226/sshd           
+tcp        0      0 0.0.0.0:25              0.0.0.0:*               LISTEN      19183/master        
+tcp        0      0 0.0.0.0:90              0.0.0.0:*               LISTEN      19303/nginx: master 
+tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN      19303/nginx: master 
+tcp        0      0 0.0.0.0:39551           0.0.0.0:*               LISTEN      3009/beam.smp       
+tcp        0      0 0.0.0.0:5280            0.0.0.0:*               LISTEN      3009/beam.smp       
+tcp        0      0 0.0.0.0:5222            0.0.0.0:*               LISTEN      3009/beam.smp       
+tcp        0      0 0.0.0.0:5223            0.0.0.0:*               LISTEN      3009/beam.smp       
+tcp        0      0 127.0.0.1:4369          127.0.0.1:43396         ESTABLISHED 1570/epmd           
+tcp        0      0 127.0.0.1:43396         127.0.0.1:4369          ESTABLISHED 3009/beam.smp       
+tcp        0     84 159.89.160.59:22        222.186.15.174:34632    ESTABLISHED 19889/sshd: root [p 
+tcp6       0      0 :::3306                 :::*                    LISTEN      1417/mysqld         
+tcp6       0      0 :::111                  :::*                    LISTEN      1/systemd           
+tcp6       0      0 :::465                  :::*                    LISTEN      19183/master        
+tcp6       0      0 :::4369                 :::*                    LISTEN      1570/epmd           
+tcp6       0      0 :::21                   :::*                    LISTEN      1031/vsftpd         
+tcp6       0      0 :::22                   :::*                    LISTEN      1226/sshd           
+tcp6       0      0 :::25                   :::*                    LISTEN      19183/master        

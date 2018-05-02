@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en-US"><!--<![endif]-->
+<head>
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+
+    <!-- Title -->
+    <title>India Online Health</title>
+	<script type='text/javascript' src='webapp/js/jquery-1.11.1.min.js'></script>
+    <!-- Define a view port to mobile devices to use - telling the browser to assume that
+    the page is as wide as the device (width=device-width)
+     and setting the initial page zoom level to be 1 (initial-scale=1.0) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon-new.png">
+
+    <!-- Google Web Font -->
+<!-- Removed   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>-->
+    <!-- bootstrap Style Sheet (caution ! - Do not edit this stylesheet) -->
+
+    <!-- Flexslider stylesheet -->
+    <link rel="stylesheet" href="webapp/css/flexslider.css" type="text/css" media="all">
+
+    <!-- Animations stylesheet -->
+    <link rel="stylesheet" href="webapp/css/animations.css" type="text/css" media="all">
+    
+	<!-- Awesome Font stylesheet -->
+<!-- Removed   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+    <!-- Datepciker stylesheet -->
+    <link rel="stylesheet" href="webapp/css/datepicker.css" type="text/css" media="all">
+    <!-- Swipebox stylesheet -->
+    <link rel="stylesheet" href="webapp/css/swipebox.css" type="text/css" media="all">
+    <!-- meanmenu stylesheet -->
+    <link rel="stylesheet" href="webapp/css/meanmenu.css" type="text/css" media="all">
+    <!-- Include the site main stylesheet -->
+    <link rel="stylesheet" href="webapp/css/main.css" type="text/css" media="all">
+	<link rel="stylesheet" href="webapp/css/signup.css" type="text/css" media="all">
+	<link rel="stylesheet" href="webapp/css/login.css" type="text/css" media="all">
+    <link rel="stylesheet" href="webapp/css/ioh.css" type="text/css" media="all">
+	<!-- CUSTOM CSS-->
+	<link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <!-- Include the site responsive  stylesheet -->
+    <link rel="stylesheet" href="webapp/css/custom-responsive.css" type="text/css" media="all">
+	<script type="text/javascript" src="/ayushman/assets/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <link href="/ayushman/assets/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" type="text/css">
+    <!--<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>-->
+    <script type="text/javascript" src="/ayushman/assets/js/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <style>
+	#panel4.panel {
+	position: absolute;
+	color:#ccc;
+	top: 100px;
+	right: -1%;
+	display: none;
+	background: #fcfcfc;
+	
+	border:1px solid #04716e;
+	-moz-border-radius-topleft: 20px;
+	/*-webkit-border-top-left-radius: 20px;*/
+	-moz-border-radius-bottomleft: 20px;
+	/*-webkit-border-bottom-left-radius: 20px;*/
+
+	-moz-border-radius-topright: 20px;
+	/*-webkit-border-top-right-radius: 20px;*/
+	-moz-border-radius-bottomright: 20px;
+	/*-webkit-border-bottom-right-radius: 20px;*/
+
+	width: 300px;
+	height: 225px;
+	padding: 10px 10px 10px 10px;
+	filter: alpha(opacity=90);
+	opacity: 1;
+
+	font-family:tahoma, Helvetica, sans-serif;
+	font-size:13px;
+	
+}
+	 .danger{
+	   color:red;
+	 }
+	 .success{
+	  color:#00b100;
+	 }
+	 .dropbtn {
+			background-color: #fff;
+			color: black;
+			padding: 16px;
+			font-family: open sans;
+			font-size: 16px;
+			border: none;
+			cursor: pointer;
+			margin-top: -8px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 10px;
+}
+
+.sidenav a {
+    padding: 10px 10px 10px 0px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: -10px;
+    right: 2px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {color: red;}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+   color:red ;
+}
+.formheader{
+	color:#04706d;
+	font-size:18px;
+	height:20px;
+	text-align:center;
+}
+.form-group{
+	margin-top:15px;
+}
+	
+</style>
+	
+	
+<script type="text/javascript">
+	function closelogin(){
+		$("#panel4").toggle("slow");
+	}
+	
+	$(document).ready(function(){ 
+	closeNav();
+		//Stop carousels auto slide while scrolling 
+      if(window.screen.availWidth<=767){
+        $(".fp-viewing-home").addClass("fp-viewing-consumers-2");
+        $(".fp-viewing-home").removeClass("fp-viewing-home");
+        $("#section1").addClass("active");
+        $("#section0").hide();
+      }
+      window.onscroll = function (e) {
+        if (window.screen.availWidth <= 767) {
+          $(".fp-viewing-home").addClass("fp-viewing-consumers-2");
+          $(".fp-viewing-home").removeClass("fp-viewing-home");
+          $("#section1").addClass("active");
+        }
+      }
+
+      var page=document.URL.substring(document.URL.lastIndexOf("/")+1,document.URL.lastIndexOf("."));
+		$("#"+page).attr("class","active");
+		$("#"+page).find("a").css("color","#fff");
+		$(".login").click(function(){
+			$("#panel4").toggle("slow");
+			$('html,body').animate({
+                        scrollTop: 0
+            }, 10);
+			document.getElementById("email").focus();
+			return false;
+		});
+
+		$(document).click(function(e){
+			if ($(e.target).parents("#panel4").length == 0) 
+				$("#panel4").hide("slow");
+		});
+
+      $("#menuExpand").click(function(e) {
+        if($(".logoWrapper a").hasClass("expand-logo")){
+          $(".logoWrapper a").removeClass("expand-logo");
+        }else{
+          $(".logoWrapper a").addClass("expand-logo");
+        }
+      });
+
+      var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+		if(is_chrome)
+		{
+			if(document.getElementById('chromeabsent') != null)
+				document.getElementById('chromeabsent').innerHTML = "";
+		}
+		else
+		{
+			if(document.getElementById('chromeabsent') != null)
+				document.getElementById('chromeabsent').visible = true;
+		}
+	});
+var $= jQuery.noConflict();
+function openDialog(url, width, height){
+				 $.fancybox({
+                    'width': width,
+                    'height': height,
+                    'autoScale': false,
+                    'transitionIn': 'fade',
+                    'transitionOut': 'fade',
+                    'type': 'iframe',
+                    'href': url,
+                    'showCloseButton': true,
+                    'afterClose' : function(){
+					}
+            	});
+			}
+      
+function doc(){
+	$("#doc").show();
+	$("#con").hide();
+	$("#cop").hide();
+}
+function con(){
+	$("#doc").hide();
+	$("#con").show();
+	$("#cop").hide();
+}
+function cop(){
+	$("#doc").hide();
+	$("#con").hide();
+	$("#cop").show();
+}
+</script>
+     <!--[if lt IE 9]>
+
+    <![endif]-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</head>
+<body > <!--ng-app="landingPage">-->
+<!--<div ng-controller="landingPageController">-->
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="<php echo 'http://www.google.com/chromeframe/?redirect=true'; ?>">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>  
+	<!--#include file="TopMenu.shtml"-->
+<div class="home-slider clearfix" style="height:100%">
+<div class="flexslider" style="height:100%">
+<ul class="slides" style="height:100%">
+    <!--slide start-->
+<li class="flex-active-slide" style="height:100%">
+    <img src="webapp/img/landing-page/sliderbg1.png" style="height:100%"class="left-image" alt="Medical Services That You Can Trust" draggable="false">	
+<div style="padding-left:4%;padding-right:4%;" class="col-lg-12" >
+		<div id="term" style="width:100%;padding-top:50px;">
+		<h3>Privacy Policy </h3>
+		 <p class="bodytext">
+			  This privacy policy  sets out how <strong>Ayushman </strong>uses and protects any information that you give <strong>Ayushman </strong>when you use this website.<br />
+			  <br />
+			  <strong>Ayushman </strong>is committed to  ensuring that your privacy is protected. Should we ask you to provide certain  information by which you can be identified when using this website, then you  can be assured that it will only be used in accordance with this privacy  statement.<br />
+			  <br />
+			  <strong>Ayushman </strong>may change this  policy from time to time by updating this page. You should check this page from  time to time to ensure that you are happy with any changes. This policy is  effective from 1st July 2012.<br />
+			  <br />
+			  <strong>What we collect</strong></br>
+			  </br>
+			  We may collect the following information:</br>
+		</p> 
+		 <p class="bodytext" style="padding-left:15px;"> 
+		 
+			&bull; Name, age and gender and marital  status</br>
+ 
+			&bull; Contact  information including email address</br>
+			
+			&bull; Demographic  information such as locality, city, postcode, preferences and interests<br/>
+			
+			&bull; Medical records  including allergies, social habits, personal and family medical history,  medical investigation reports and doctor’s advice, time stamp of consultations and  other events, etc <br/>
+			
+			&bull; Other  information relevant to customer surveys and / or offers<br/>
+		</p>
+		</br>
+		 <p class="bodytext"><strong>What we do with the  information we gather</strong><br />
+			</br>
+			We require this  information to understand your needs and provide you with a better service, and  in particular for the following reasons:</p>
+			<p class="bodytext" style="padding-left:15px;"> 
+				&bull; To enable Doctors and  Other Healthcare Service Providers registered on our portal and whose services,  you are going to avail, to understand your requirements / case properly. This  is strictly on need-to-know basis.<br/>
+				
+				&bull; We  may use the information for Clinical Research. However, the information will be  anonymised before any data is used for Clinical Research and your privacy will  be maintained.<br/>
+				
+				&bull; We  may use the information to improve our products and services.<br/>
+				
+				&bull; We  may periodically send promotional emails about new products, special offers or  other information which we think you may find interesting using the email  address which you have provided.<br/>
+				
+				&bull; From  time to time, we may also use your information to contact you for market  research purposes. We may contact you by email, phone, or mail. We may use the  information to customise the website according to your interests.<br/>
+			</p>
+		</br>	
+		<p class="bodytext"><strong>Security</strong><br/>
+		</br>
+			We are committed to  ensuring that your information is secure. In order to prevent unauthorised  access or disclosure we have put in place suitable physical, electronic and  managerial procedures to safeguard and secure the information we collect  online.</p>
+		</br>
+        <p class="bodytext"><strong>How we use cookies</strong><br/>
+		</br> 
+			A cookie is a small  file which asks permission to be placed on your computer's hard drive. Once you  agree, the file is added and the cookie helps analyse web traffic or lets you  know when you visit a particular site. Cookies allow web applications to respond  to you as an individual. The web application can tailor its operations to your  needs, likes and dislikes by gathering and remembering information about your  preferences. <br />
+			We use traffic log  cookies to identify which pages are being used. This helps us analyse data  about webpage traffic and improve our website in order to tailor it to customer  needs. We only use this information for statistical analysis purposes and then  the data is removed from the system.<br />
+			Overall, cookies help  us provide you with a better website, by enabling us to monitor which pages you  find useful and which you do not. A cookie in no way gives us access to your  computer or any information about you, other than the data you choose to share  with us.<br />
+			You can choose to  accept or decline cookies. Most web browsers automatically accept cookies, but  you can usually modify your browser setting to decline cookies if you prefer.  This may prevent you from taking full advantage of the website.</p>
+		</br>
+		<p class="bodytext"><strong>Pop-Up Blocker:</strong><br />
+		</br>
+			We ask you to enable  Pop-Up to provide you certain messages and reports. Most browsers have the  provision to selectively enable urls / sites from where you may accept Pop-Up  for <strong><em>IndiaOnlineHealth</em></strong> site. You may enable Pop-up for our site  permanents to get better quality of service.</p>
+        <p class="bodytext"><strong>Links to other websites</strong><br />
+			Our website may  contain links to other websites of interest. However, once you have used these  links to leave our site, you should note that we do not have any control over  that other website. Therefore, we cannot be responsible for the protection and  privacy of any information which you provide whilst visiting such sites and  such sites are not governed by this privacy statement. You should exercise  caution and look at the privacy statement applicable to the website in  question.</p>
+		</br>
+		<p class="bodytext"><strong>Controlling your personal  information</strong><br />
+		</br>
+			You may choose to  restrict the collection or use of your personal information in the following  ways:</p>
+			<p class="bodytext" style="padding-left:15px;">
+				 &bull; Whenever you are asked to fill in a form on the website, look for the box that you can click to indicate that you do not want the information to be used by anybody for direct marketing purposes<br/>
+				 
+				 &bull; If you have previously agreed to us using your personal information for direct marketing purposes, you may change your mind at any time by writing to or emailing us at <u>support@indiaonlinehealth.com</u>
+			 </p>
+			 <p class="bodytext"> We will not sell, distribute or lease your personal information to third parties unless we have  your permission or are required by law to do so. We may use your personal information to send you promotional information about third parties which we  think you may find interesting if you tell us that you wish this to happen.<br /><br />
+			 
+			 You may request  details of personal information which we hold about you under the Data  Protection Act 1998. A small fee will be payable. If you would like a copy of  the information held on you please write to 5/A, Ramyanagari, Bibwewadi,  Pune-411045, India.</p>
+			 
+			 <p class="bodytext"> If you believe that any information we are  holding on you is incorrect or incomplete, please write to or email us as soon  as possible, at the above address. We will promptly correct any information  found to be incorrect.
+		     </p>
+</div>
+</li>
+</ul>
+</div>
+</div>	
+<div class="col-lg-12" style="height:90px">
+	</br>
+</div>
+<!--page footer-->
+	<!--#include file="BottomBar.shtml"-->
+<a href="#top" id="scroll-top"></a>
+<script type='text/javascript' id='quick-js'></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>-->
+<!--<script type='text/javascript' src='webapp/app/js/angular-route.js'></script>-->
+<!--<script type='text/javascript' src='app/controllers/landingPageController.js'></script>-->
+<!--<script type='text/javascript' src='webapp/app/app.js'></script>
+<script type='text/javascript' src='webapp/app/controllers/landingPageController.js'></script>-->
+<script type='text/javascript' id='quick-js'></script>
+<script type='text/javascript' src='webapp/js/jquery.flexslider-min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.swipebox.min.js'></script>
+<script type='text/javascript' src='webapp/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.isotope.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.appear.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.ui.core.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.ui.datepicker.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.validate.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.form.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.autosize.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.meanmenu.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.velocity.min.js'></script>
+<script type='text/javascript' src='webapp/js/respond.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery-migrate-1.2.1.min.js'></script>
+<script type='text/javascript' src="webapp/js/jquery.easing.min.js"></script>
+<script type='text/javascript' src='webapp/js/custom.js'></script>
+<script>
+jQuery(document).ready(function () {
+    // scroll-to-top animate
+    jQuery('#scroll-top').click(function () {
+        jQuery("html, body").animate({
+            scrollTop: 0
+        }, 900);
+        return false;
+    });
+	
+});
+</script>
+</div>
+<div id="panel4" class="panel panel-default login-panal" style="z-index: 50000;margin-right:3%;" >
+	<div class="panel-body">
+	<div class="formheader">Secure Log In <!--<a class="formclose" href="#" onclick="closelogin()"></a>--></div>
+	<form id="loginformid" action="/ayushman/cuser/login"  role="form" method="post" accept-charset="utf-8">
+		<div class="form-group" >
+			<input type="text" class="form-control" id="email" name="email" required="required" placeholder="Username" autocomplete="on">
+		</div>
+		<div class="form-group" >
+			<input type="password" class="form-control" id="password" name="password" required="required" placeholder="Password">
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-info">LOG IN </button>
+            <a href="/ayushman/cpasswordmanager/view" style="color:#04706d; margin-top:10px;">Forgot Password?</a>
+        </div>
+	</form>
+	</div>	
+</div> 
+</body>
+</html>

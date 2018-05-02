@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1,2,4,6,7,8,9,10,11,12</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>13,14,22,15,16,17,18,19,20,21</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>Rt-Eye - Conjuctival Congestion </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Rt-Eye Styes </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>3</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Styes Number</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Rt-Eye Trachoma </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>5</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Trachoma Number</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Rt-Eye - Cornea</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Red</label>
+		</answer>
+		<answer>
+			<label>Opaque</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Rt-Eye - Pallor</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Rt-Eye - Icterus</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>Rt-Eye - Visual Acuity</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Rt-Eye - Color Vision</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Loss of Green</label>
+		</answer>
+		<answer>
+			<label>Loss of Red</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Rt-Eye - Pressure</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Increased</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Rt-Eye - Fundus</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Retinopathy</label>
+		</answer>
+		<answer>
+			<label>Others</label>
+			<follow>25</follow>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>13</id>	
+		<label>Lt-Eye Conjuctival congestion</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Lt-Eye Styes</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>3</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>22</id>
+		<label>Lt-Eye Trachoma</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>5</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Lt-Eye - Cornea</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Red</label>
+		</answer>
+		<answer>
+			<label>Opaque</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>Lt-Eye - Pallor</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Lt-Eye - Icterus</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label>Lt-Eye - Visual Acuity</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>Lt-Eye - Color Vision</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Loss of Green</label>
+		</answer>
+		<answer>
+			<label>Loss of Red</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>Lt-Eye - Pressure</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Increased</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>21</id>
+		<label>Lt-Eye - Fundus</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Retinopathy</label>
+		</answer>
+		<answer>
+			<label>Others</label>
+			<follow>26</follow>
+		</answer>
+	</question>
+	<question>
+		<id>25</id>
+		<label>Other Rt-Eye Fundus</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>26</id>
+		<label>Other Lt-Eye Fundus</label>
+		<type>Text</type>
+	</question>
+</form>

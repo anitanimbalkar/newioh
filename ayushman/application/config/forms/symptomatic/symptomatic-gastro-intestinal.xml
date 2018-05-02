@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1,4,6,12</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>19,23,26,27</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>Appetite</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Increase</label>
+			<follow>2,3</follow>
+		</answer>
+		<answer>
+			<label>Decrease</label>
+			<follow>2,3</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Severity</label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Duration in days</label>
+		<type>text</type>
+	</question>
+
+	<question>
+		<id>4</id>
+		<label>Gas</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>5</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Duration in hours</label>
+		<type>text</type>
+		<validation>numeric</validation>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Diarrhoea</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>7,8,9,10,11</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Duration per day</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Stool passing with pain</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>Stool passing with blood</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Stool passing with mucus</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Stool passing with after eating</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Abdominal Pain</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>13,14,15,16,17,18</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>location</label>
+		<type>DD</type>
+		<answer>
+			<label>Upper abdominal</label>
+		</answer>
+		<answer>
+			<label>Mid Abdominal</label>
+		</answer>
+		<answer>
+			<label>Lower Abdominal</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Severity </label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Radiation</label>
+		<type>DD</type>
+		<answer>
+			<label>Backward</label>
+		</answer>
+		<answer>
+			<label>Downward</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>Vomiting</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Pain during passage of stool</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label>Pain during passage of urine</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>Constipation</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>20,3,21,22</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>Severity of constipation</label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>21</id>
+		<label>Stool Frequency</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>22</id>
+		<label>Constipation with blood</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>23</id>
+		<label>Heart Burn</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>24,25</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>24</id>
+		<label>Severity </label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>25</id>
+		<label>Frequency per day</label>
+		<type>text</type>
+	</question>
+
+	<question>
+		<id>26</id>
+		<label>Water brash</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>27</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+	
+</form>

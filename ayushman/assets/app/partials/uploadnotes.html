@@ -1,0 +1,69 @@
+<head>
+<link href="/ayushman/assets/css/docstyle.css" rel="stylesheet">
+ <style>
+	            .my-drop-zone { border: dotted 3px lightgray; }
+	            .ng-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+	            .another-file-over-class { border: dotted 3px green; }
+
+	            html, body { height: auto; }
+							.Textheading	{
+								font-family: tahoma, Helvetica, sans-serif;
+								font-weight: normal;
+								
+								font-weight: bold;
+								color: #5cb1b6 ;
+								}
+	        </style>
+</head>
+
+			<body>
+				
+						<div class="col-lg-12 placeholderMessage">
+						<h4 class="headingcls" style="padding:10px;">History Notes Attachement</h4>
+							<h4 >Select file to upload</h4>
+							<!-- 2. ng-file-select | ng-file-select="options" -->
+							<div class="textcolor" style="padding:10px;">
+							<input ng-file-select type="file"  accept="application/pdf" /><span style="color:red;">only .PDF files are accepted</span>
+							</div>
+						   
+						</div>
+						<div>
+						<table class="table textcolor" style="margin-left: 16px;width: 96%;">
+								<thead>
+									<tr >
+										<th style="width:47%">Name</th>
+										<th style="width:41%">Size</th>
+										<th ng-show="uploader.isHTML5" >Progress</th>
+										<th ng-show="uploader.isHTML5">Status</th>
+										<th >Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="item in uploader.queue">
+										<td><strong>{{ item.file.name }}</strong></td>
+										<td  ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+										<td ng-show="uploader.isHTML5">
+															<div class="progress" style="margin-bottom: 0;">
+																<div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+															</div>
+														</td>
+														<td class="text-center">
+															<span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+															<span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+															<span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+														</td>
+										<td nowrap>
+												<button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+												<span class="glyphicon glyphicon-trash"></span> Remove
+											</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<hr>
+						<button class="btn button-style btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length" style="padding: 2px;float:right;bottom:10px;right:10px;">
+							Upload&nbsp <span class="glyphicon glyphicon-upload"></span> 
+						</button>
+						<div style="height:30px"></div>
+			</body>

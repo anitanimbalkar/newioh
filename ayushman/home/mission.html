@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en-US"><!--<![endif]-->
+<head>
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+
+    <!-- Title -->
+    <title>India Online Health</title>
+<script type='text/javascript' src='webapp/js/jquery-1.11.1.min.js'></script>
+    <!-- Define a view port to mobile devices to use - telling the browser to assume that
+    the page is as wide as the device (width=device-width)
+     and setting the initial page zoom level to be 1 (initial-scale=1.0) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon-new.png">
+
+    <!-- Google Web Font -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <!-- bootstrap Style Sheet (caution ! - Do not edit this stylesheet) -->
+
+    <!-- Flexslider stylesheet -->
+    <link rel="stylesheet" href="webapp/css/flexslider.css" type="text/css" media="all">
+    <!-- Animations stylesheet -->
+    <link rel="stylesheet" href="webapp/css/animations.css" type="text/css" media="all">
+    <!-- Awesome Font stylesheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Datepciker stylesheet -->
+    <link rel="stylesheet" href="webapp/css/datepicker.css" type="text/css" media="all">
+    <!-- Swipebox stylesheet -->
+    <link rel="stylesheet" href="webapp/css/swipebox.css" type="text/css" media="all">
+    <!-- meanmenu stylesheet -->
+    <link rel="stylesheet" href="webapp/css/meanmenu.css" type="text/css" media="all">
+    <!-- Include the site main stylesheet -->
+    <link rel="stylesheet" href="webapp/css/main.css" type="text/css" media="all">
+    <link rel="stylesheet" href="webapp/css/bootstrap.css" type="text/css" media="all">
+    <link rel="stylesheet" href="webapp/css/ioh.css" type="text/css" media="all">
+    <!-- Include the site responsive  stylesheet -->
+    <link rel="stylesheet" href="webapp/css/custom-responsive.css" type="text/css" media="all">
+    
+	<script type="text/javascript" src="/ayushman/assets/js/jquery-ui-1.8.17.custom.min.js"></script>
+<link href="/ayushman/assets/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" type="text/css">
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+<script type="text/javascript" src="/ayushman/assets/js/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+<link rel="stylesheet" type="text/css" href="/ayushman/assets/js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <style>
+	 .danger{
+	   color:red;
+	 }
+	 .success{
+	  color:#00b100;
+	 }
+	 .blog-page{
+	  background-color:#F0F5F7;
+	 }
+	 
+	</style>
+	
+	
+<script type="text/javascript">
+var $= jQuery.noConflict();
+function openDialog(url, width, height){
+				 $.fancybox({
+                    'width': width,
+                    'height': height,
+                    'autoScale': false,
+                    'transitionIn': 'fade',
+                    'transitionOut': 'fade',
+                    'type': 'iframe',
+                    'href': url,
+                    'showCloseButton': true,
+                    'afterClose' : function(){
+					//	if(obj != undefined){
+						//	if(obj.fancyboxclosed != undefined){
+						//		obj.fancyboxclosed(obj);
+					//		}
+					//	}
+					}
+            	});
+			}
+function openterms()
+	{
+		document.getElementById("termsread").value="1";
+		var role1 = document.getElementById("accounttype");
+		var role = role1.options[role1.selectedIndex].value;
+		var wWidth = $(window).width();
+		var dWidth = 1030;
+		var wHeight = $(window).height();
+		var dHeight = wHeight * 0.99;
+		wWidth = (wWidth - dWidth)/2;
+		
+		switch(role)
+		{
+			case "patient": openDialog('/ayushman/home/termsAndcondition/pterms.html', 850, 600); break;
+			case "chemist":	openDialog('/ayushman/home/termsAndcondition/chemistterms.html', 850, 600);	break;
+			case "pathologist":	openDialog('/ayushman/home/termsAndcondition/pathologistterms.html', 850, 600);	break;
+			case "doctor": openDialog('/ayushman/home/termsAndcondition/doctorterms.html', 850, 600); break;
+		}
+	}
+function focusonusername(){
+			//alert("focus");
+			possibleusername();
+			document.getElementById("rowusernamepossiblecombination").style.display = "block";
+		}
+function bluronusername(){
+			//alert("blur");
+			checkUsername($("#username").val());
+			
+	}
+function reloadcaptcha() {
+  var obj = document.getElementById('captchasecurityimage');
+  var src = obj.src;
+  var date = new Date();
+  obj.src = src + '?v=' + date.getTime();
+}
+
+function selectedname(name){
+	var scope = angular.element($("#signupbox")).scope();
+	if(!scope.$$phase) {
+		scope.$apply(function(){
+			scope.username=name.innerHTML;
+		});
+	}
+	
+	 ///var e = $.Event('keyDown');
+    //$('#username').trigger(e);
+	checkUsername(name.innerHTML);
+}
+
+function  possibleusername(){
+	var name=document.getElementById("firstname").value+document.getElementById("lastname").value;
+	var isusernamespresent = document.getElementById("isusernamespresent").value;
+	var newusername, usernamestring,returnstring;
+	usernamestring="<span class='bodytext'>Here are some suggestions for Username.</span></br>";
+	if((name!="")&&(isusernamespresent == "false"))
+	{
+		$(".ui-dialog-titlebar").hide();
+		
+		var count =1;
+		var ischeck= 0;
+		while (count< 4)
+		{
+			switch(ischeck)
+			{
+				case 0:newusername = document.getElementById("firstname").value+document.getElementById("lastname").value;
+					break;
+				case 1:newusername = document.getElementById("lastname").value+document.getElementById("firstname").value;
+					break;
+				case 2:newusername = document.getElementById("firstname").value+"."+document.getElementById("lastname").value;
+					break;
+				case 3:newusername = document.getElementById("lastname").value+"."+document.getElementById("firstname").value;
+					break;
+				default:var randumNumber=Math.floor((Math.random()*100)+1);
+					newusername = document.getElementById("firstname").value+randumNumber+"."+document.getElementById("lastname").value;
+					break;
+			}
+			returnstring = findusername(newusername);
+			newusername = newusername.toLowerCase();
+			if (returnstring == "valid")
+			{
+				usernamestring = usernamestring+" <a onclick='selectedname(this)' style='cursor:pointer;color: #5cb1b6;border-bottom: 1px solid #5cb1b6;' >"+newusername+"</a></br>";
+				count ++;
+			}
+			ischeck++;
+		}
+		document.getElementById("isusernamespresent").value= "true";
+		$("#possiblenames").append(usernamestring);
+		
+	}
+}
+
+function findusername(newusername)
+{
+	var returnstring;
+	$.ajax({
+		url: "/ayushman/cregistrar/checkusernameavailability?username="+newusername,
+		async: false,
+		success: function(data) {
+			
+			if(data =="invalid"){
+				returnstring = "invalid";
+			}
+			else{
+				returnstring = "valid";
+			}
+		},
+		error : function(){
+			returnstring= "invalid";
+		}
+		});
+	return returnstring;
+}
+                 
+function checkUsername(username){
+	if(username != undefined){
+		$(".ui-dialog-titlebar").hide();
+		
+		$.ajax({
+			url: "/ayushman/cregistrar/checkusernameavailability?username="+username,
+			success: function(data) {
+				
+				if(data=="invalid"){
+					document.getElementById("usernameerror").style.display = "block";
+					document.getElementById("rowusernamepossiblecombination").style.display = "block";
+					document.getElementById("possiblenames").style.top = "75px";
+				}
+				else{
+					document.getElementById("usernameerror").style.display = "none";
+					
+					if($('#username').val() != ''){
+						$('#password').focus();
+						document.getElementById("rowusernamepossiblecombination").style.display = "none";
+					}else{
+						document.getElementById("rowusernamepossiblecombination").style.display = "block";
+					}
+				}
+				
+			},
+			error : function(){
+				
+			}
+		});
+		
+//		$('#termsconditions').hover(function(){
+//			 $("p").css("text-color", "yellow");
+//		}
+	}else{
+		return true;
+	}	
+}
+
+</script>
+     <!--[if lt IE 9]>
+
+    <![endif]-->
+</head>
+<body ng-app="landingPage">
+<div ng-controller="landingPageController">
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="<php echo 'http://www.google.com/chromeframe/?redirect=true'; ?>">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+<!--
+	<div class="header-top clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 ">
+                <p>Welcome to MecialPress a Premium Medical Theme</p>
+            </div>
+            <!--opening hours--
+            <div class="col-md-7 text-right">
+                <p>
+                    Opening Hours : <span>Monday to Saturday - 8am to 9pm</span>
+                    <br class="visible-xs">Contact : <span>+1-800-654-3210</span>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+-->
+
+<!--<header id="header">
+    <div class="container">
+
+        
+		<div class="col-md-1">
+                <img src="webapp/img/back-button.png" width="50" alt="IOH">
+        </div>
+		
+        <div class="logo clearfix col-lg-offset-3 col-md-offset-3">
+                <img src="webapp/img/iohlogo.png" alt="IOH">
+        </div>
+
+        
+        <nav class="main-menu">
+            <ul class="header-nav clearfix" id="menu-main-menu">
+                <li> <a href="" data-toggle="modal" ng-click="login_modal();" data-target="#myLogin">LOG IN</a> </li>
+                <li> <a href="" data-toggle="modal" ng-click="register_modal();" data-target="#myLogin">SIGN UP</a> </li>
+            </ul>
+        </nav>
+		
+        <div id="responsive-menu-container"></div>
+    </div>
+</header>-->
+
+<!--<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+   
+		
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="navbar-brand" href="index.html#/home">
+                    <img src="webapp/img/iohlogo.png" class="logo" alt="India Online Health">
+                </a> 
+			</div>
+            
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav pull-right my-nav">
+                    <li class="page-scroll"><a href="" data-toggle="modal" ng-click="login_modal();" data-target="#myLogin">LOG IN</a></li>
+                    <li><a href="" data-toggle="modal" ng-click="register_modal();" data-target="#myLogin">SIGN UP</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>-->
+
+<div class="blog-page default-page full-width clearfix">
+    <div class="container">
+	<a href="/ayushman/home/index.html#/home"><i class="fa fa-angle-left fa-4x" style="color:#ffa13c;"></i></a>
+        <div class="blog-page-single clearfix">
+            <article class=" page hentry  clearfix">
+                <div class="full-width-contents">
+                    <div class="entry-content">
+                        <div class="row">
+                        <div class="col-md-12 text-justify">						
+						<div id="comments-section">
+							<h3>Mission</h3>
+							<p> Build a modern Web based Platform that enables telemedicine practice at grass root level for better management of chronic diseases and bringing in transparency in healthcare system in India. </p>
+							<ol id="comments" class="commentlist">
+								<li class="comment">
+									<article>
+										<div class="comment-wrap clearfix">
+											<img src="webapp/img/mission-leadership/Dr.Sundararajan.jpg"  class="photo pull-left" alt="Dr Sundararajan"/>
+											<div class="comment-detail-wrap">
+												<div class="comment-meta">
+													<h5 class="author"><a href="#" class="url">Dr. Sundararajan</a></h5>
+												</div>
+												<div class="comment-body entry-content">
+													<p>Dr. Sundararajan, is a co-founder of the company, responsible for strategy and business development care Services as Co-Founder with focus on Health care delivery at work place and at home.Sundararajan has a M.S., and Ph.D., in Electrical Engineering with specialization in Computer Applications in “Real Time Enterprise” from The Ohio State University.</p>
+													<p>In a career spanning over three decades, he has major contributions to his credit in successfully launching several  products in the market place covering diverse application such as Industrial and Electro-Medical Instrumentation, Messaging, and IT based Customer facing Enterprise solutions, Manufacturing focused ERP implementation etc.  </p>
+													<p>His original contributions to the IT based Control & Instrumentation solution space have resulted in several recognitions from corporate bodies and academic community. He has held senior positions in several companies including DCM Data products, and Selectica, San Jose.
+													   He is on the Board of Directors of AccelTree Technologies which is into Mobile Enterprise Solutions. As a Lead Mentor with Mentor square he assists start-ups with  Product formulations and ‘go-to-market’ strategies. </p>
+													<p>He has been involved in Pune academic circle activities for over two decades. He is also Adjunct Professor, College of Engineering, Pune and a Senate member. Dr. Sundararajan has presented several papers in National and International seminars.
+													   He was recognized by Department of Small Scale Industries, Government of India in the year 1993 for design of a Tamper proof, 3-phase energy meter. </p>
+												</div>
+											</div>
+										</div>
+									</article>
+								</li>
+								<li class="comment">
+									<article>
+										<div class="comment-wrap clearfix">
+											<img alt="avatar" src="webapp/img/mission-leadership/Pankaj-Saxena.jpg" class="photo pull-left">
+											<div class="comment-detail-wrap">
+												<div class="comment-meta">
+													<h5 class="author"><a href="#" class="url">Dr. Pankaj Saxena</a></h5>
+												</div>
+												<div class="comment-body entry-content">
+												  <p>Pankaj Saxena is a co-founder of the company, responsible for setting up and managing operations of the company.</p>
+												<p>Pankaj Saxena, is an Electrical Engineer from Indian Institute of Science, Bangalore and has over three decadesof industry experience in product development, application development and profit center management. His industry experience spans from Industrial Control systems to Messaging technology, Storage Software to Interactive Selling Solutions for large enterprises.  </p>
+												<p>Since mid-nineties, Pankaj has assumed leadership roles in Indian as well as large multinational companies. In early nineties, he set up and managed complete operations of one of country’s first X-400 based Messaging service for Data pro. In early 2000, he joined Selectica Inc, responsible for building Enterprise Applications for selling complex configurable products and services for large clients in Asia pacific region. In 2004, he joined IBM to build Storage Software lab in India for developing Storage Virtualization solutions.</p>
+												<p>Pankaj co-founded Ayushman Pvt. Ltd., a company committed to bring telemedicine practice at grass root level in India. He is currently engaged in developing a Platform for Healthcare Service Providers to bring benefits of advancements in IT and Communication technologies to Consumers. The Platform is expected to improve medical record keeping for the patients and enable Video consultation with their Doctors without constraints of time,distance or location.</p>
+
+												</div>
+											</div>
+										</div>
+									</article>
+									<!-- end of comment -->
+								</li>
+								<li class="comment">
+									<article>
+										<div class="comment-wrap clearfix">
+										<h3>Medical Advisory Board</h3>
+											<img alt="avatar" src="webapp/img/mission-leadership/Geeta-Sundar.jpg"  class="photo pull-left">
+											<div class="comment-detail-wrap">
+												<div class="comment-meta">
+													<h5 class="author"><a href="#" class="url">Dr. Geeta Sundar</a></h5>													
+												</div>
+												<div class="comment-body entry-content">
+													 <p>Dr. Geeta Sundar is a thought leader on ‘Healthy Ageing’ and ‘Connected Health’ paradigms. She conducts corporate wellness programs to spread the message of Lifestyle changes in Preventive health.</p>
+													<p>She also writes on Wellness and Health in major newspapers and periodicals and is a frequent contributor to the Times Wellness section in 'Times of India’ besides being a content provider for MSN India. She has authored several books on Health. Her 'Health after Forty’ has been on the best seller list of Macmillan. </p>
+													<p>Since mid-nineties, Pankaj has assumed leadership roles in Indian as well as large multinational companies. In early nineties, he set up and managed complete operations of one of country’s first X-400 based Messaging service for Data pro. In early 2000, he joined Selectica Inc, responsible for building Enterprise Applications for selling complex configurable products and services for large clients in Asia pacific region. In 2004, he joined IBM to build Storage Software lab in India for developing Storage Virtualization solutions.</p>
+													<p>She served as senior resident medical officer for over six years at National Institute of Banking Management Pune, where she focused on preventive Health care and Lifestyle management for senior Bank professionals. This resulted in her acquiring deepknowledge of genetic disposition and life style profiles of people from across India. She was able to achieve impressive reventive results, and this laid the foundation to her interest in the forty plus age group.</p>
+													<p>Her association for over three decades as an Expert Medical Advisor to Life Insurance and Mediclaim industry has added to er a deep understanding of chronic diseasesand their prevention.</p>
+													<p>Dr. Geeta Sundar believes in a holistic approach to health and to that end has completed formal courses in Homeopathy and Ayurveda, although she does not practice these sciences. She has also completed a course in Medico Legal law.</p>
+													<p>Dr.Geeta Sundar completed her M.B.B.S. and M.D. (Internal Medicine) from Netaji Subhash Chandra Bose medical college Jabalpur in 1979.</p>
+													<p>After graduation, she joined Dr. BL Kapoor memorial hospital in Delhi and served asan honorary there for several years.</p>
+													<p>From 1992 she has been practicing internal medicine consultation at her own clinic at Bibvewadi Pune. Her areas of proficiency are Chronic Disease Management, especially related to Cardiology and Diabetes. She is a member of ---IMA, API and CSI.</p>
+													<p>In her spare time she writes Crime fiction, and her book ‘The Premier Murder League’ set in IPL background has been published by Penguin. She is also the winner of MSN-Random House short story competition in 2012.</p>
+													<p>Dr.Geeta Sundar's long and distinguished career in Health Care and Chronic Disease Management will be the focus area for India Online Health and is expected to set the direction for India online Health offerings.</p>
+
+												</div>
+											</div>
+										</div>
+									</article>
+								</li>
+								<li class="comment">
+								       <article>
+										<div class="comment-wrap clearfix">
+											<img alt="avatar" src="webapp/img/mission-leadership/Dr.Sanjeev.jpg"  class="photo pull-left">
+											<div class="comment-detail-wrap">
+												<div class="comment-meta">
+													<h5 class="author"><a href="#" class="url">Dr. Sanjeev S. Gokhale</a></h5>													
+												</div>
+												<div class="comment-body entry-content">
+													 <p>Dr. Sanjeev S. Gokhale is on the Board of the advisors is a Consulting Orthopedic Surgeon. He established his hospital in Pune over 30 years back. He is on the panel of Deenanath Mangeshkar hospital, Poona Hospital, Joshi Hospital, Ratna Hospital, and Ruby Hall Clinic. He is on the panel of university of Pune’s committee for longevity.</p>
+													<p>Dr. Gokhale graduated from Mumbai with M.S. (ORTH), D.ORTH in 1982. He has presented several prize winning papers in national and international seminars: Arthroscopy- early results of first one hundred cases presented to Indian Medical Association, High Tibial Osteotomy yearly workshop of IMA, High.</p>
+													<p>Tibial Osteotomy paper read at International Federation of Ageing Global Conference in Durban, South Africa in 1997.</p>
+													<p>He has authored several books in Marathi: Kambardukhi (relating to backache) and Gudaghedukhi (relating to knee problems). More than 100,000 copies of these books have been sold. Besides he has written numerous articles in newspapers about common orthopedic problems and given talks on TV.He established Laxmi-Raghunath  a Charitable foundation in the memory of his grandparents.</p>
+												</div>
+											</div>
+										</div>
+									</article>
+								</li>
+								  <li class="comment">
+								       <article>
+										<div class="comment-wrap clearfix">
+											<img alt="Dr.Neela Desai" src="webapp/img/mission-leadership/Dr.Neela.jpg"  class="photo pull-left">
+											<div class="comment-detail-wrap">
+												<div class="comment-meta">
+													<h5 class="author"><a href="#" class="url">Dr. Neela Desai</a></h5>													
+												</div>
+												<div class="comment-body entry-content">
+													 <p>Dr. Neela Desai is on the Board of the advisors is a reputed senior Gynecologist & Obstetrician practicing in the city of Pune for the past 30 years. She finished her MBBS and MS (Ob/Gyn) with distinction from MGM Medical College/MY Hospital, a premier teaching hospital in the city of Indore.</p>
+													<p>She then proceeded to go to UK in 1977 after obtaining full registration with General Medical Council UK. She gained vast experience in modern practice & techniques in Ob/Gyn for four years. She attended in various workshops & seminars of Royal College of London. She completed her DRCOG from Royal College of Obstetrics & Gynecologists in 1979.</p>
+													<p>Upon her return to India 1982 settled in Pune, an educational hub of India. She has been practicing Ob/Gyn in her own clinic in Vijayanagar Pune since then. She is a Consultant Gynecologist & Obstetrician at Poona Hospital & Research center, a post graduate teaching institute.</p>
+													<p>She has been practicing Gynec Endoscopic surgeries since 1997. She has attended many workshops & symposia including AAGL at San Francisco in 2004.  She undertook an advanced training course at Tagesclinik Hamburg Germany, in endoscopic surgery. Recently she presented 2 papers in FIGO World Congress 2012 in Rome.</p>
+													<p>She has performed large number of Endoscopic surgeries such as, Lap Hysterectomy, Myomectomy, for Endometriosis, operative hysteroscopy like septum resection, submucous myoma resection.</p>
+													<p>Dr. Neela Desai is a devoted Obstetrician and is renowned for her work with successful management of challenging high risk pregnancies.</p>
+												</div>
+											</div>
+										</div>
+									</article>
+								</li>
+								<li class="comment">
+								       <article>
+										<div class="comment-wrap clearfix">
+											<img src="webapp/img/mission-leadership/Dr.Gaurov.png"  class="photo pull-left" alt="India Online Health">
+											<div class="comment-detail-wrap">
+												<div class="comment-meta">
+													<h5 class="author"><a href="#" class="url">Dr. Gaurov Dayal</a></h5>													
+												</div>
+												<div class="comment-body entry-content">
+													 <p>Dr. Gaurov Dayal is on the Board of the advisors of the company and provides his expert advice on matters relating to medical practice management.</p>
+													<p>Dr. Gaurov Dayal serves as Senior Vice President and Chief Medical Officer of Adventist HealthCare. Adventist HealthCare operates five hospitals, six nursing centers, several home care companies, and affiliated health care services. Based in Rockville, Maryland, Adventist HealthCare is one of the largest private employers in that region, employing more than 7,800 people and caring for nearly half a million patients each year.</p>
+													<p>Dr. Dayal was appointed to his current role Adventist HealthCare in 2009. In this role he is responsible for clinical integration strategies for the Adventist HealthCare system. He leads Adventist Medical Group, the company’s medical group practice, health and wellness, and runs their Health Insurance plan. Dr. Dayal also leads the systems outpatient clinical informatics program. In 2010 he launched the ACES program, a program that enables community physicians to implement eClinical Works EMR in their offices. He is also very closely involved in the implementation of Adventist HealthCare's enterprise EMR, Cerner.</p>
+													<p>Prior to joining Adventist HealthCare, Dr. Dayal was a management consultant with the global strategy consulting firm McKinsey and Company. At McKinsey, he served a variety of clients in the pharmaceutical, biotech and health care industry. His past experience also includes roles in medical informatics, a biotech start up and academic medicine. Dr. Dayal is board certified in Pediatrics. He holds an undergraduate degree from the Johns Hopkins University and an M.D. from Northwestern University. He completed his residency training at Washington University, Saint Louis, USA. </p>
+												</div>
+											</div>
+										</div>
+									</article>
+								</li>
+							       </ol>
+							     </div>							
+							  </div>							
+						   </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

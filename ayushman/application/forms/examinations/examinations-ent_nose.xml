@@ -1,0 +1,1231 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>199,33,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,400,500,69,16,17,18,19,20,21,22,400,500,23,24,25,26,68,27,28,29,30,400,500,31,202,203,302,303,304,400,500,32,205,206,207,400,500</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>198,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,400,500,69,50,51,52,53,54,55,56,400,500,57,58,59,60,61,62,63,64,65,400,500,66,202,203,302,303,304,400,500,67,205,206,207,400,500</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>199</id>
+		<label>- NOSE</label>
+		<type>label</type>
+	</question>
+	<question>
+		<id>198</id>
+		<label>.</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>33</id>
+		<label>- Right Side</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>34</id>
+		<label>- Left Side</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>1</id>
+		<label>- History</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>- Airway obstruction </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>- Rhinorrhoea </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>- Sneezing </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>- Anosmia </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>- Facial pain </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>- Snoring   </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>- Allergies/atopic disease </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>- Smoking </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>- Pets at home </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>- Occupation </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>- History of previous surgery </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>- Previous trauma </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>- General medical history</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>- Seasonal or daily variation in symptoms</label>
+		<type>Text</type>
+		
+	</question>
+		
+	<question>
+		<id>16</id>
+		<label>- Inspection of the nose</label>
+		<type>label</type>
+	</question>	
+	
+	<question>
+		<id>17</id>
+		<label>- Size and shape </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label>- Swelling </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+
+	
+	<question>
+		<id>19</id>
+		<label>- Scars or abnormal creases </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>	
+	
+	<question>
+		<id>20</id>
+		<label>- Skin colour </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>	
+	
+	
+	<question>
+		<id>21</id>
+		<label>- Discharge or crusting</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>	
+		
+	<question>
+		<id>22</id>
+		<label>- Smell</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>	
+	
+	<question>
+		<id>23</id>
+		<label>- Inside nose</label>
+		<type>label</type>
+	</question>	
+		
+	<question>
+		<id>24</id>
+		<label>- Inflammation</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>25</id>
+		<label>- Discharged </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>101,102,103</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>101</id>
+		<label>- Mucoid </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>102</id>
+		<label>- Mucopurulent </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>103</id>
+		<label>- Purulent </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>26</id>
+		<label>- Septum  </label>
+		<type>DD</type>
+		<answer>
+			<label>Central </label>
+		</answer>
+		<answer>
+			<label>Deviation </label>
+			<follow>104,105</follow>
+		</answer>
+	</question>	
+		
+	<question>
+		<id>104</id>
+		<label>- Septal mucosa   </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Oedamatus</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>105</id>
+		<label>- Septal haematoma  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>68</id>
+		<label>- Polyps side </label>
+		<type>DD</type>
+		<answer>
+			<label>Left </label>
+		</answer>
+		<answer>
+			<label>Right </label>
+		</answer>
+		<answer>
+			<label>Single </label>
+		</answer>
+		<answer>
+			<label>Multiple </label>
+		</answer>
+	</question>	
+	
+	<question>
+		<id>27</id>
+		<label>- Foreign bodies</label>
+		<type>DD</type>
+		<answer>
+			<label>Present </label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>28</id>
+		<label>- Growths</label>
+		<type>DD</type>
+		<answer>
+			<label>Ulcerative </label>
+		</answer>
+		<answer>
+			<label>Cauliflower  </label>
+		</answer>
+		<answer>
+			<label>Site </label>
+			<follow>201</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>201</id>
+		<label>- Site</label>
+		<type>DD</type>
+		<answer>
+			<label>Middle Meati </label>
+		</answer>
+		<answer>
+			<label>Turbinate </label>
+		</answer>
+			<answer>
+			<label>Septum </label>
+		</answer>
+		<answer>
+			<label>Other </label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>29</id>
+		<label>- Bleeds on touch  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present </label>
+		</answer>
+		<answer>
+			<label>Absent </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>30</id>
+		<label>- Turbinate swelling</label>
+		<type>DD</type>
+		<answer>
+			<label>Inferior </label>
+		</answer>
+		<answer>
+			<label>Middle </label>
+		</answer>
+		<answer>
+			<label>Superior </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>31</id>
+		<label>- Nasal fracture</label>
+		<type>label</type>		
+	</question>
+	
+	<question>
+		<id>202</id>
+		<label>- Spetal type</label>
+		<type>DD</type>
+		<answer>
+			<label>1</label>
+		</answer>
+		<answer>
+			<label>2 </label>
+		</answer>
+		<answer>
+			<label>3 </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>203</id>
+		<label>- Lateral wall of nose type</label>
+		<type>DD</type>
+		<answer>
+			<label>1 </label>
+		</answer>
+		<answer>
+			<label>2 </label>
+		</answer>
+		<answer>
+			<label>3 </label>
+		</answer>
+	</question>
+	
+		
+	<question>
+		<id>302</id>
+		<label>- Growths shape</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>303</id>
+		<label>- Growths size</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>304</id>
+		<label>- Bleeding on touch</label>
+		<type>DD</type>
+		<answer>
+			<label>Present </label>
+		</answer>
+		<answer>
+			<label>Absent </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>301</id>
+		<label>- Type</label>
+		<type>DD</type>
+		<answer>
+			<label>1 </label>
+		</answer>
+		<answer>
+			<label>2 </label>
+		</answer>
+		<answer>
+			<label>3 </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>32</id>
+		<label>- Sinuses</label>
+		<type>label</type>		
+	</question>
+	
+	<question>
+		<id>205</id>
+		<label>- Frontal</label>
+		<type>DD</type>
+		<answer>
+			<label>Tender </label>
+		</answer>
+		<answer>
+			<label>Non Tender </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>206</id>
+		<label>- Maxillary</label>
+		<type>DD</type>
+		<answer>
+			<label>Tender </label>
+		</answer>
+		<answer>
+			<label>Non Tender </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>207</id>
+		<label>- Ethmoid</label>
+		<type>DD</type>
+		<answer>
+			<label>Tender </label>
+		</answer>
+		<answer>
+			<label>Non Tender </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>33</id>
+		<label>- Right side</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>34</id>
+		<label>- Left side</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>35</id>
+		<label>- History</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>36</id>
+		<label>- Airway obstruction </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>37</id>
+		<label>- Rhinorrhoea </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>38</id>
+		<label>- Sneezing </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>39</id>
+		<label>- Anosmia </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>40</id>
+		<label>- Facial pain </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>41</id>
+		<label>- Snoring </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>42</id>
+		<label>- Allergies/atopic disease </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>43</id>
+		<label>- Smoking </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>44</id>
+		<label>- Pets at home </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>45</id>
+		<label>- Occupation </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>46</id>
+		<label>- History of previous surgery </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>47</id>
+		<label>- Previous trauma </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>200,300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>48</id>
+		<label>- General medical history</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>49</id>
+		<label>- Seasonal or daily variation in symptoms</label>
+		<type>Text</type>
+		
+	</question>
+		
+	<question>
+		<id>50</id>
+		<label>- Inspection of the nose</label>
+		<type>label</type>
+	</question>	
+	
+	<question>
+		<id>51</id>
+		<label>- Size and shape </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>52</id>
+		<label>- Swelling </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+
+	
+	<question>
+		<id>53</id>
+		<label>- Scars or abnormal creases </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>	
+	
+	<question>
+		<id>54</id>
+		<label>- Skin colour </label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>	
+	
+	
+	<question>
+		<id>55</id>
+		<label>- Discharge or crusting</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>	
+		
+	<question>
+		<id>56</id>
+		<label>- Smell</label>
+		<type>DD</type>
+		<answer>
+			<label>Abnormal</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+	</question>	
+	
+	<question>
+		<id>57</id>
+		<label>- Inside nose</label>
+		<type>label</type>
+	</question>	
+		
+	<question>
+		<id>58</id>
+		<label>- Inflammation</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>59</id>
+		<label>- Discharged </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>101,102,103</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>101</id>
+		<label>- Mucoid </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>102</id>
+		<label>- Mucopurulent </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>103</id>
+		<label>- Purulent </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>60</id>
+		<label>- Septum  </label>
+		<type>DD</type>
+		<answer>
+			<label>Central </label>
+		</answer>
+		<answer>
+			<label>Deviation </label>
+			<follow>104,105</follow>
+		</answer>
+	</question>	
+		
+	<question>
+		<id>104</id>
+		<label>- Septal mucosa   </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Oedamatus</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>105</id>
+		<label>- Septal haematoma  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>61</id>
+		<label>- Polyps side </label>
+		<type>DD</type>
+		<answer>
+			<label>Left </label>
+		</answer>
+		<answer>
+			<label>Right </label>
+		</answer>
+		<answer>
+			<label>Single </label>
+		</answer>
+		<answer>
+			<label>Multiple   </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>62</id>
+		<label>- Foreign bodies</label>
+		<type>DD</type>
+		<answer>
+			<label>Present </label>
+			<follow>300</follow>
+		</answer>
+		<answer>
+			<label>Absent </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>63</id>
+		<label>- Growths</label>
+		<type>DD</type>
+		<answer>
+			<label>Ulcerative </label>
+		</answer>
+		<answer>
+			<label>Cauliflower  </label>
+		</answer>
+		<answer>
+			<label>Site   </label>
+			<follow>201</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>201</id>
+		<label>- Side</label>
+		<type>DD</type>
+		<answer>
+			<label>Middle meatus </label>
+		</answer>
+		<answer>
+			<label>Turbinate </label>
+		</answer>
+			<answer>
+			<label>Septum </label>
+		</answer>
+		<answer>
+			<label>Other </label>
+			<follow>300</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>64</id>
+		<label>- Bleeds on touch  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present </label>
+		</answer>
+		<answer>
+			<label>Absent </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>65</id>
+		<label>- Turbinate swelling</label>
+		<type>DD</type>
+		<answer>
+			<label>Inferior </label>
+		</answer>
+		<answer>
+			<label>Middle </label>
+		</answer>
+		<answer>
+			<label>Superior </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>66</id>
+		<label>- Nasal fracture</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>202</id>
+		<label>- Spetal type</label>
+		<type>DD</type>
+		<answer>
+			<label>1 </label>
+		</answer>
+		<answer>
+			<label>2 </label>
+		</answer>
+		<answer>
+			<label>3 </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>203</id>
+		<label>- Lateral wall of nose type</label>
+		<type>DD</type>
+		<answer>
+			<label>1</label>
+		</answer>
+		<answer>
+			<label>2 </label>
+		</answer>
+		<answer>
+			<label>3 </label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>302</id>
+		<label>- Growths shape</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>303</id>
+		<label>- Growths size</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>304</id>
+		<label>- Bleeding on touch</label>
+		<type>DD</type>
+		<answer>
+			<label>Present </label>
+		</answer>
+		<answer>
+			<label>Absent </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>301</id>
+		<label>- Type</label>
+		<type>DD</type>
+		<answer>
+			<label>1 </label>
+		</answer>
+		<answer>
+			<label>2 </label>
+		</answer>
+		<answer>
+			<label>3 </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>67</id>
+		<label>- Sinuses</label>
+		<type>label</type>		
+	</question>
+	
+	<question>
+		<id>205</id>
+		<label>- Frontal</label>
+		<type>DD</type>
+		<answer>
+			<label>Tender </label>
+		</answer>
+		<answer>
+			<label>Non Tender </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>206</id>
+		<label>- Maxillary</label>
+		<type>DD</type>
+		<answer>
+			<label>Tender </label>
+		</answer>
+		<answer>
+			<label>Non Tender </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>207</id>
+		<label>- Ethmoid</label>
+		<type>DD</type>
+		<answer>
+			<label>Tender </label>
+		</answer>
+		<answer>
+			<label>Non Tender </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>500</id>
+		<type>Separator</type>
+	</question>
+	
+	<question>
+		<id>300</id>
+		<label>Describe</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>200</id>
+		<label>Duration </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>400</id>
+		<label>- Others </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>69</id>
+		<label>Examination</label>
+		<type>label</type>		
+	</question>
+	
+</form>

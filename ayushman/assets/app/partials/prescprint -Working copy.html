@@ -1,0 +1,500 @@
+<head>
+	<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+	<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+	<link rel="stylesheet" type="text/css" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+	<style>
+		#option:hover{
+			background-color:rgba(216, 216, 216, 0.55);
+		}
+		.signatureClass{
+			float:left;
+			min-height:40px;
+			width:100%;
+			text-align:right;
+			font-size:14px;
+			padding-right:60px;
+			padding-top: 20px;
+			position:fixed;
+			bottom: 70;
+			}
+		.footerClass{
+			position:fixed;
+			bottom: 0;
+			width: 100%;
+			text-align:center;
+			}
+		.headerClass{
+			position:fixed;
+			top: 0;
+			width: 100%;
+			text-align:center;
+			}
+</style>
+	<script type="text/javascript">
+	
+		$(document).ready(function() {
+	
+					var checkRisk = document.getElementById("checkboxRisk").checked;
+					var checkAllergies = document.getElementById("checkboxAllergies").checked;		
+					var checkSymtom = document.getElementById("checkboxSymptom").checked;
+					var checkTest = document.getElementById("checkboxTest").checked;
+					var checkExamination = document.getElementById("checkboxExamination").checked;
+					var checkDiagnosis = document.getElementById("checkboxDiagnosis").checked;
+					console.log(checkRisk);
+					console.log(checkAllergies);
+					console.log(checkSymtom);
+					console.log(checkTest);
+					console.log(checkExamination);
+					console.log(checkDiagnosis);
+					if(checkRisk == false)
+					{
+						$("#RiskFactors").hide();
+					}
+					if(checkAllergies == false)
+					{
+						$("#Allergies").hide();
+					}
+					if(checkSymtom == false)
+					{
+						$("#Symptoms").hide();
+					}
+					if(checkTest == false)
+					{
+						$("#Reports").hide();
+					}
+					if(checkExamination == false)
+					{
+						$("#Examination").hide();
+					}
+					if(checkDiagnosis == false)
+					{
+						$("#Diagnosis").hide();
+					}  
+					
+		
+			$("#date").val( moment().format('D MMM, YYYY ') );
+			loadScripts();
+			$('.action').hide();
+			if(readCookie('medicine') == "[]"){
+				 var medicineid = document.getElementById("MedicinesChk");
+				 medicineid.setAttribute("disabled", "false");				 
+			}
+			else{
+				var medicinecheck=readCookie('medicinecheckbox');
+				if(medicinecheck == 'checked'){
+					$('#MedicinesChk').attr('checked','checked');
+				}
+				else{
+					$('#MedicinesChk').removeAttr('checked');
+				}
+			}
+			if(readCookie('investigation_text') == "[]"){
+				 var x = document.getElementById("InvestigationChk");
+				 x.setAttribute("disabled", "false");
+			}
+			else{
+				var investigationcheck=readCookie('investigationcheckbox');
+				if(investigationcheck == 'checked'){
+					$('#InvestigationChk').attr('checked','checked');
+				}
+				else{
+					$('#InvestigationChk').removeAttr('checked');
+				}
+			}
+		});
+		function PrintElem(elem,appointmentid)
+		{	
+			 /*var Appointmentstatus = document.getElementById("provisional2").value;
+			if(Appointmentstatus == "completed"){
+						$(".Provisional").hide();
+					}
+					else{
+						$(".Provisional").show();
+					}
+			*/
+			var scope = angular.element($("#quickprescription")).scope();		
+
+		if(!scope.$$phase) {
+				scope.$apply(function(){
+					if (scope.myprofile['userinfo'].systemGenflag == 1)
+					{
+						$(".systemheader").show();	
+						$(".systemfooter").show();
+						$(".uploadedheader").hide();
+						$(".uploadedfooter").hide();
+					}
+					else
+					{
+						$(".systemheader").hide();
+						$(".systemfooter").hide();
+						$(".uploadedheader").show();
+						$(".uploadedfooter").show();
+					}
+					if(scope.examination_data.text_complaint.length == 0){
+						$(".complaint").hide();
+					}
+					if(scope.examination_data.text_examinationsummary.length == 0 || scope.examination_data.check_examinationsummary == false || examination_data.textexaminationsummary){
+						$(".examinationsummary").hide();
+					}
+					if(scope.examination_data.text_diagnosis == undefined || scope.examination_data.text_diagnosis.length == 0){
+						$(".diagnosis").hide();
+					}
+					if(scope.examination_data.text_followup == undefined || scope.examination_data.text_followup.length == 0){
+						$(".followup").hide();
+					}
+					if(scope.examination_data.text_reportparameter == undefined || scope.examination_data.text_reportparameter.length == 0){
+						$(".report").hide();
+					}
+					if(scope.allergy.allergies == undefined || scope.allergy.allergies.length == 0){
+						$(".Allergies").hide();
+					} 
+					if(scope.riskText == undefined || scope.riskText.length == 0){
+						$(".RiskFactors").hide();
+					}
+					if(scope.examination_data.isexaminationavailable == true){
+						$(".vitals").show();
+					}else{
+						//$(".vitals").hide();
+						$(".vitals").show();
+					}
+					
+				});
+			}
+			//savePDf(appointmentid);
+			setPrint();
+			console.log($('#prescriptionsPrint').html());
+			setTimeout(function(){			
+				Popup($('#prescriptionsPrint').html());
+			},1000);
+
+			
+		}
+		function Popup(data) 
+		{
+			var mywindow = window.open('', 'print','height=600,width=800');
+			mywindow.document.write('<html><head><title> Prescription </title>');
+			//mywindow.document.write('</head><body style="font-size:14px;">');
+			mywindow.document.write('</head><body>');
+			mywindow.document.write(data);
+			mywindow.document.write('</body></html>');
+			
+			mywindow.print();
+			mywindow.close();
+			return true;
+		}
+			
+				
+	</script>
+	
+</head>
+<body>
+<div id="contentDivdiv">
+<table>
+	
+	<tr>
+		<td style="width:613px;" class="preview" >
+			<div id="prescriptionPrint" class="prescription">
+				<table >
+				<tr>
+
+			<input type="hidden" value="{{Appstatus}}" name="provisional2" id="provisional2">
+			
+					<td>
+				<link rel="stylesheet" href="/ayushman/assets/app/css/prescription.css">
+				<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+				<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+					<div id="Provisional"  ng-if="Appstatus =='saved'" class="Provisional">
+						<span id="Provisional1" ng-show="Appstatus =='saved'" style="margin-left:35%;float:center;" >
+						<font color="#DC143C">Provisional</font></span>
+					</div>
+						<br>
+							<div class="previewHeader">
+								<div  class= "uploadedheader" id="uploadedheader" ng-show= "myprofile['userinfo'].systemGenflag == 0">
+								<img ng-if="myprofile['userinfo'].header" src="{{myprofile['userinfo'].header}}" width=100%>
+								</div>
+							<div  class="systemheader" id="systemheader" ng-show="myprofile['userinfo'].systemGenflag == 1">
+					
+								<div class="doctorinfo">
+								
+									<div class="doctorname">Dr. {{myprofile['userinfo'].name}}</div>
+									<div class="doctoreducation">{{myprofile['usereducation'].doctoreducation}}</div>
+									<div class="otherinfo">Regd No.:{{myprofile['userinfo'].regno}}</div>
+								</div>
+								
+								<div class="doctorinfo">
+									<div class="doctoraddress">
+										<div class="doctorname">{{myclinics['clinicinfo'][0].clinicname}}</div>
+										<div class="otherinfo">
+											{{myclinics['clinicinfo'][0].line1}},
+											{{myclinics['clinicinfo'][0].nearmark}},
+											{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+											{{myclinics['clinicinfo'][0].state}}
+											</br>
+											Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}
+										</div>
+									</div>						
+								</div>
+							</div>
+						</div>
+							</td></tr>
+							
+					  <tr>
+							<td>
+								<div class="appointmentdate" style="float:right;">
+										Prescription no. : <span> {{appointmentid}} </span>
+								</div>
+							</td>
+						</tr>
+				<tr><td>
+	<div class="separator" />
+				<div class="patientinfo">
+					<div class="patientname">
+						{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}})
+					</div>	
+					<div class="appointmentdate">
+						{{appointment_info.DateAndTime}}
+					</div>
+				</div>
+				<div class="vitalsv" style="font-size:12px">
+					<table width="100%;">
+					<tr>
+						<td width="20%;">	
+							<div class="signsv">
+								<label style="font-size:12px">Pulse : </label><label style="font-size:12px" class="textarea" id="pvitals_q_21"></label>&nbsp;
+								<label id="Pulselabel" style="font-size:12px"> pm </label>
+							</div>
+						</td>
+						<td width="25%;">
+							<div class="signsv">
+								<label style="font-size:12px">BP : </label><label style="font-size:12px" class="textarea" id="pvitals_q_8" ></label>&nbsp;
+								<label id="BPlabel" style="font-size:12px"> mm/Hg </label>
+							</div>
+						</td >
+						<td width="20%;">
+							<div class="signsv">
+								<label style="font-size:12px">Height :</label><label class="textarea" style="font-size:12px" id="pvitals_q_2" ></label>&nbsp;
+								<label id="Heightlabel" style="font-size:12px"> cms </label>
+							</div>
+						</td>
+						<td width="20%;">
+							<div class="signsv">
+								<label style="font-size:12px">Weight :</label><label class="textarea" style="font-size:12px" id="pvitals_q_1" ></label>&nbsp;
+								<label id="Weightlabel" style="font-size:12px"> Kgs </label>
+							</div>
+						</td>
+						<td width="15%;">
+							<div class="signsv">
+								<label style="font-size:12px">BMI : </label><label class="textarea" style="font-size:12px" id="pvitals_q_3" ></label>&nbsp;
+								<label id="BMIlabel" style="font-size:12px">  </label>
+							</div>
+						</td>
+						</tr><tr>
+						<td width="20%;">
+							<div class="signsv">
+								<label style="font-size:12px">Wst : </label><label class="textarea" style="font-size:12px" id="pvitals_q_41" ></label>&nbsp;
+								<label id="Wstlabel" style="font-size:12px"> cms </label>
+							</div>
+						</td>
+						<td width="25%;">
+							<div class="signsv">
+								<label style="font-size:12px">Hip: </label><label style="font-size:12px" class="textarea" id="pvitals_q_42" ></label>&nbsp; &nbsp; &nbsp;
+								<label id="Hiplabel" style="font-size:12px"> cms </label>
+							</div>
+						</td>
+						<td width="20%;">
+							<div class="signsv">
+								<label style="font-size:12px">WHR : </label><label class="textarea" style="font-size:12px"  id="pvitals_q_43"></label>&nbsp;
+								<label id="WHRlabel" style="font-size:12px">  </label>
+							</div>
+						</td>
+						<td width="20%;">
+							<div class="signsv">
+								<label style="font-size:12px">Temp : </label> <label class="textarea" style="font-size:12px" id="pvitals_q_11" ></label>&nbsp;
+								<label id="templabel" style="font-size:12px"> &#x2109; </label>
+							</div>
+						</td>
+<td></td>						
+					</tr>
+				</table>
+				</div>
+				
+		<div class="separator" />
+		<div id="quickprescription" class="body" >
+			<table>
+				<tr>
+					<td width="80%" style="font-size:14px">
+						<div id="RiskFactors" class="rows RiskFactors"   ng-show="riskcount > 0" >
+							<div class="heading">Risk Factors -</div><div style="border-bottom:none;" class="details textarea "> &nbsp; {{riskText}}</div>
+						</div>
+						<div id="Allergies" class="rows Allergies"  ng-show="allergy.allergies != ''" >
+							<div class="heading">Allergies -</div><div style="border-bottom:none;"  class="details textarea"> &nbsp; {{allergy.allergies}}</div>
+						</div>				
+						
+						<div id="Symptoms" class="rows complaint" ng-show="examination_data.check_symptoms && examination_data.text_complaint.length > 0" >
+							<div class="heading">Symptoms -</div><div style="border-bottom:none;" class="details textarea">{{examination_data.text_complaint}}</div>
+						</div>
+						<div id="Examination" class="rows examinationsummary" ng-show="examination_data.text_examinationsummary || examination_data.textexaminationsummary" >
+							<div class="heading">Examination Summary -</div><div style="border-bottom:none;" class="details textarea">{{examination_data.text_examinationsummary}}{{examination_data.textexaminationsummary}}</div>
+						</div>
+						<div id="Diagnosis" class="rows diagnosis" ng-show="examination_data.text_diagnosis.length > 0" >
+							<div class="heading">Diagnosis -</div><div style="border-bottom:none;" class="details textarea"> {{examination_data.text_diagnosis}}</div>
+						</div>
+						<div id="Reports" class="rows report" ng-show="examination_data.text_reportparameter.length > 0"  >
+							<div class="heading">Reports-</div><div style="border-bottom:none;" class="details textarea"> {{examination_data.text_reportparameter}}</div>
+						</div> 
+					</td>
+					<td width="15%" align="top" ng-show="myprofile['userinfo'].photoflag == 1">
+						<div  class="patphoto" id="patphoto" ng-show="appointment_info.PatientPhoto">
+							<img ng-if="appointment_info.PatientPhoto && myprofile['userinfo'].photoflag == 1" src="{{appointment_info.PatientPhoto}}" width="90px" vertical-align="top" align="left" height="100px"/>
+						</div>
+					</td>
+				</tr>	
+			</table>
+				
+						<div class="heading rows">Rx</div>
+						<div class="fragment bodytext_normal" style="height:auto;cursor:default;" href="javascript:void(0);">
+							<div style="width:100%;padding-top:12px;font-size:10px;">
+								<div style="float:left;margin-left:1%;width:30%;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+								<div style='float:left;margin-left:1%;width:9%'>{{myprofile['userinfo'].morning}}</div>
+								<div style='float:left;margin-left:1%;width:9%'>{{myprofile['userinfo'].afternoon}}</div>
+								<div style='float:left;margin-left:1%;width:9%'>{{myprofile['userinfo'].evening}}</div>
+								<div style='float:left;margin-left:1%;width:9%'>{{myprofile['userinfo'].night}}</div>
+								<div style='float:left;margin-left:1%;width:20%'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+							</div>
+						</div>
+					<div  class="rows page" id ="pprescription" >
+						
+					</div>
+					</br>
+					
+					<div  class="rows" id ="pinvestigation" ></div>
+					<div class="rows followup" ng-show="examination_data.text_followup.length > 0" >
+						<div class="heading">Other Instructions / Follow Up advice -</div><div class="details"> &nbsp; {{examination_data.text_followup}}</div>
+					</div>
+		</div>
+				
+					</td></tr>
+				<tr><td>
+				<div class="signature" style="bottom:11%;">
+					<img ng-if="myprofile['userinfo'].signature" style="margin-right:10%" src="{{myprofile['userinfo'].signature}}">
+					</br>
+				</div>		
+				<div class="note">
+					<div  class="systemfooter" id="systemfooter"ng-show="myprofile['userinfo'].systemGenflag == 1">
+						<label style="font-size:12px;font-weight:bold;text-align:center">Powered by www.indiaonlinehealth.com</label>
+					</div>
+					<div  class="uploadedfooter" id="uploadedfooter" ng-show="myprofile['userinfo'].systemGenflag == 0">
+						<img ng-if="myprofile['userinfo'].footer" src="{{myprofile['userinfo'].footer}}" width=100%>
+						<label style="font-size:12px;font-weight:bold;text-align:center">Powered by www.indiaonlinehealth.com</label>
+					</div>
+				</div>
+				<div class="footernote" style="bottom:0;width:100%;float:left;display:none;text-align:center;position:fixed">
+					<label style="font-size:12px;font-weight:bold;text-align:center">Powered by www.indiaonlinehealth.com</label>					
+				</div>
+
+				</td></tr>
+			</table>
+			</div>
+			<div id="prescriptionsPrint" style="display:none;">
+					
+			</div>
+			
+			
+		</td>
+		<td width="50px;" id="actions" valign="top">
+			<!--<input type="button" value="Bill" ng-click="$modalSuccess();" style="margin:5px;width:50px;" class="button" />
+			<input type="button" value="Finish" ng-click="$modalCancel();" style="margin:5px;width:50px;" class="button" />
+			<div onclick="displaypritableprescriptionoption()" style="">
+			<input type="button" style="margin:5px;color: #19070B; background-color: #585858; border: 1pt ridge lightgrey;width:50px;height:40px;background: url(/ayushman/assets/images/printoption.jpg)no-repeat center top;" class="button" />
+			<label style="font-size: larger;color: #585858;margin-top:-20px;margin-left:15px;">Print </label>
+			</div>-->
+			<div id="dialog"  class="sectionBox" style="display:block;position:absolute;margin-left:68px;margin-top:15px;background:white;">
+				<table width="inherit" class='table_roundBorder' style="max-height:100%;width:266px; margin-right:13px" >
+					<tr style="border-bottom:1px solid #9cd4f9;">
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						<input type="checkbox" name="prescription"  id="combine" value="TRUE" checked disabled/>Combined copy of Medicine & Investigation<br>
+						</td>
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;">
+						
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						<input type="checkbox" name="prescription" id="MedicinesChk" />Separate copy for Medicines<br>
+						</td>
+					</tr>	
+					<tr style="border-bottom:1px solid #9cd4f9;">
+
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						<input type="checkbox" name="prescription" id="InvestigationChk" />Separate copy for Investigations 
+						</td>					
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" >
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+							<input type="checkbox" id="withoutheaderChk" />Print Without Header And Footer
+						</td>
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" >
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+							<input type="checkbox" id="withsignatureChk" name="signature" value="TRUE" checked>Print With Signature
+						</td>
+					</tr>
+					<!-- Below row is not displayed and since no option provided
+						 while printing individual prescription. This has to their
+						 on personalisation screen -->
+					<tr  style="display:none;border-bottom:1px solid #9cd4f9;cursor:pointer;" >
+						<td ng-if="myprofile['userinfo'].photoflag == 1"  width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+							<input type="checkbox" id="withphotoChk" name="patphoto" value="TRUE" checked>Print With Photo
+						</td>
+						<td ng-if="myprofile['userinfo'].photoflag == 0"  width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+							<input type="checkbox" id="withphotoChk" name="patphoto" value="FALSE" unchecked>Print With Photo
+						</td>						
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" onclick="PrintElem('#print',appointmentid);">
+						<td width="100%"  class="bodytext_bold" align="center" style="padding:5px;">
+							<input type="button" value="Print Now" style="margin:5px;width:150px;height:20px;" class="button" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!--<div style="position:absolute;margin-left:67px;background:white;margin:42px 13px 30px 69px">
+							
+				<table width="inherit" class='table_roundBorder' style="max-height:100%;width:266px;" >
+					<tr style="border-bottom:1px solid #9cd4f9;">
+						<td  width="100%"  class="bodytext_bold darkblue" align="left" style="padding:5px;text-align:center;color:white;font-size:15px">
+						 Print Certificate
+						</td>
+					</tr>
+					<tr  id="option" ng-click="$modalCallback('medical');dialogflag=0;" style="border-bottom:1px solid #9cd4f9;cursor:pointer;">
+						<td  width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						 Medical Certificate<br>
+						</td>
+					</tr>
+					<tr id="option" ng-click="$modalCallback('fitness');dialogflag=0;" style="border-bottom:1px solid #9cd4f9;cursor:pointer;">
+						
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						Fitness Certificate<br>
+						</td>
+					</tr>	
+				</table>		
+			</div>-->
+			<div id="followupappointment_workspace"  class="sectionBox" style="width:282px;display:block;position:absolute;margin-left:68px;margin-top:125px;background:white;">
+				<div bookingfollowup controller="bookingfollowupCtrl"></div>
+			</div>
+		</td>
+		<!--<td>{{data.aa}}
+		
+			<input type="text" id="aa" value={{data.aa}}>
+			<input type="text" id="bb" value={{data.bb}}>
+			<input type="text" id="bb" value={{data.cc}}>
+		</td>-->
+		</tr>
+	</table>
+</div>
+				
+				<input type="hidden" id="checkboxRisk" value="{{checkstatusRisk}}"/>
+				<input type="hidden" id="checkboxAllergies" value="{{checkstatusAllergies}}"/>
+				<input type="hidden" id="checkboxSymptom" value="{{checkstatusSymtom}}"/>
+				<input type="hidden" id="checkboxTest" value="{{checkstatusTest}}"/>
+				<input type="hidden" id="checkboxExamination" value="{{checkstatusExamination}}"/>
+				<input type="hidden" id="checkboxDiagnosis" value="{{checkstatusDiagnosis}}"/>
+				
+</body>

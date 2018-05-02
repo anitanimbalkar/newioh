@@ -1,0 +1,540 @@
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <style type="text/css">
+	.fixedlabel{
+			position:fixed;
+			z-index:100;
+			background:yellow;
+			}
+	.movelabel{
+			position:relative;
+			z-index:1;
+			background:white;
+			}
+</style>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tracker | India Online Health</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+	<link href="/ayushman/assets/app/css/main1.css" rel="stylesheet" type="text/css" />
+	<!--<script src="/ayushman/assets/app/css/main.css"></script>-->
+  </head>
+  <body>
+<style>
+	.col-lg-12 {
+		padding:0px !important;
+	}
+	.ui-datepicker{
+		z-index:2px !important;
+	}
+</style>
+    <!--[if lt IE 7]>
+  	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+		<div class="navbar header" ng-if="tracker_info['user_role']=='patient' && show_nav_link('emrheader');" style="position:fixed;top:0px;z-index:100;box-shadow:2px 0px 7px #888888;">
+			<div class="container fullWidth">
+				<div class="navbar" style="position:relative;z-index:0;">
+					<a class="navbar-brand" ng-click="loading(true);" style="float:right;" href="javascript:history.go(-1)" class="bodytext_normal"><img src="/ayushman/assets/app/img/back.png" style="width:46"/><font size="3">Back</font></a>
+					<a class="navbar-brand" href=""><img style="width:193px" src="/ayushman/assets/app/img/logo.png" alt="India Online Health"></a>
+					<span>
+					<div class="navbar-header pull-left" >
+						<ul class="nav navbar-nav navbar-left">
+							<li >
+								<img ng-src="{{patientinfo.PatientPhoto}}" style="box-shadow:2px 7px 19px #888888;max-height:50px;" alt="Profile.png">
+							</li>
+							<li class="bodytext_bold" >
+								<div style="width:auto;padding-left:10px;padding-top:5px;">
+									{{patientinfo.name}}&nbsp;<label ng-show="patientinfo.PatientGender!='' || patientinfo.age!=0">(<label ng-show="patientinfo.age!=0">{{patientinfo.age}} Yrs</label>,{{patientinfo.PatientGender}} )</label></br>
+									IOH Id : {{patientinfo.id}} </br>
+								</div>
+							</li>
+						</ul>
+					</div></span>
+				</div>
+			</div>
+		</div>
+
+<div id ="trackerdiv" class="fullWidth" style="width:97%;padding-left:3%;height:auto;background-color:white;"> 
+      <!-- Example row of columns -->
+      <div class="row main-content">
+	<div class="col-lg-12" style="height:500px;" ng-if="(tracker_info['tracker_list']).length == 0">
+		<div class="detailsLink green" style='text-align:left;margin-top:25px;margin-bottom:10px;padding-left:20px;'> 
+			<a href="javascript:void(0);" ng-click='create_tracker(null,patient_id);'>Create Blank Tracker</a>
+		</div>
+	  <span class="bodytext_bold" ng-if="tracker_info['template_list'].length > 0" style="margin-left:70px;">OR</span>
+	  <div class="detailsLink green" ng-if="tracker_info['template_list'].length > 0" style='text-align:left;margin-top:10px;padding-left:20px;'> 
+	    <a href="javascript:void(0);" >Create From Template</a> <!--ng-click='create_tracker(item.id, patient_id);'-->
+	    <ul class="dropdown-menu" style="display:inline-block;" >
+	      <li ng-repeat='item in tracker_info.template_list' ng-click='create_tracker(item.id, patient_id);' style="cursor:pointer;width: 150px;padding: 10px;text-align:left;display:inline-block;"><span class="bodytext_bold">{{item.name}}</span></li>	    
+	    </ul>
+	  </div>
+	</div>
+	
+	<div class="col-lg-12" ng-if="(tracker_info['tracker_list']).length > 0" style="margin-top:2px;margin-bottom:2px;">
+		<div class="sectionBox">
+			<table style="width:100%;">
+				<tr>
+					<td >
+						<div class="sectionBox green" style='text-align:left;margin-top:2px;margin-bottom:2px;padding-left:10px;width:140px'> 
+							<h2 class="green" style="height:30px;">
+								<a data-toggle="collapse" style="" onclick="" data-parent="#accordion" href="/dashboard/#alltrackers" class="collapsed">
+								<span class="" style="color:white;float:left;left:0">Trackers</span> <i class="fa fa-compress" style="color:white;float:right;right:10px;font-size:23px;"></i>
+								</a> 
+							</h2>
+							<div id="alltrackers" class="panel-collapse collapse" style="position:fixed;Z-index:100;background:white">
+							<table>
+								<tr>
+									<td class="btn dropdown-toggle" ng-class="{'dark_blue':tracker_info['user_id']==item['owner_id'],'dark_red':tracker_info['user_id']!=item['owner_id']}"  ng-repeat="item in tracker_info.tracker_list" ng-click="tracker_info['selected'] = item.id; get_tracker_data(patient_id,tracker_info['gridOptions'][item.id]);">
+										&nbsp;<span class="create">{{item.name}}</span>
+									</td>
+								</tr>
+							</table>			
+							</div>
+						</div>
+					</td>
+					<td style="width:40%;">
+						 &nbsp;					
+					</td>
+					<!--<td style="width:15%;height:30px">
+						<a class="navbar-brand" ng-if="tracker_info['user_role']=='doctor'" ng-click="loading(true);" style="float:left;" href="javascript:history.go(-1)" class="bodytext_normal"><img src="/ayushman/assets/app/img/back.png" style="width:70px;height:40px;"/><font size="3">Back</font></a>
+					</td>-->
+					<td style="position:relative;width:20%;">
+						<span ng-if="tracker_info['user_role']=='doctor'" class="bodytext_bold" style="float:right;">Create New Tracker From Templates</span>
+					</td>
+					<td style="position:relative;width:16%;">
+						<button ng-if="tracker_info['user_role']=='doctor'"  id="create" class="btn btn-success dropdown-toggle" style="width:159px;" ><span class="glyphicon glyphicon-plus"></span>&nbsp;<span class="create">Templates</span></button>
+						<button ng-if="tracker_info['user_role']=='patient'" class="btn btn-success dropdown-toggle" ng-click='create_new_tracker(null);'  style="width:182px;" >&nbsp;<span class="glyphicon glyphicon-plus"></span>Create Blank Tracker</button>
+						<ul ng-if="tracker_info['user_role']=='doctor'" class="dropdown-menu" style="position:absolute;float:right;right:1px;width:100px;">
+							<li ng-click='create_new_tracker(null);'><a href="">Blank Tracker</a></li>
+							<li ng-repeat='item in tracker_info.template_list' ng-if="item.isheader != 1" ng-click='create_new_tracker(item.id);'><a href="">{{item.name}}</a></li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div style="padding-left: 15px;">
+		<!--<label class="bodytext_bold"> <span class="patientsName">{{appointment_info.Patientname}}</span>'s Existing Trackers&nbsp;&nbsp;</label>
+		<select  style="width:159px;height:29px;" class="textarea"
+			ng-options="item.id as item.name for item in tracker_info.tracker_list" 
+			ng-change="get_tracker_data(patient_id,tracker_info['gridOptions'][item.id]);" 
+			ng-model="tracker_info['selected']">
+		</select>-->
+		
+<!--	<table>
+			<tr>
+				<td class="btn dropdown-toggle" ng-class="{'dark_blue':tracker_info['user_id']==item['owner_id'],'dark_red':tracker_info['user_id']!=item['owner_id']}"  ng-repeat="item in tracker_info.tracker_list" ng-click="tracker_info['selected'] = item.id; get_tracker_data(patient_id,tracker_info['gridOptions'][item.id]);">
+					&nbsp;<span class="create">{{item.name}}</span>
+				</td>
+			</tr>
+		</table>-->
+		
+	</div>
+	<div class="col-lg-12" ng-repeat='item in tracker_info.tracker_list'>
+	  <div class="sectionBox" ng-show='tracker_info["selected"] == item.id' >
+        <h2 style="height: 43px;" ng-class="{'dark_blue':tracker_info['user_id']==item['owner_id'],'dark_red':tracker_info['user_id']!=item['owner_id']}">
+	      <span ng-show='!item.edit_name' style="float:left;    margin: 7px;">{{item.name}}</span> 
+		  <span  ng-show="tracker_info['user_id']!=item['owner_id']" class="bodytext_bold" style="position:relative;float:left;left:100px;margin-top:10px">Note : You can't modify the tracker sheet data created by other's</span>
+	      <input ng-if="tracker_info['user_id']==item['owner_id']" ng-show='item.edit_name' style="float:left;    margin: 7px;" type='text' ng-model='item.name' ng-enter="update_tracker_name($index, patient_id)">
+		  <a ng-if="tracker_info['user_id']==item['owner_id']" href="" class="detailsIcon text-left" style="float:left;    margin: 7px;" title="Edit Sheet Name" ng-click='item.edit_name = true;' ng-show='!item.edit_name'>&nbsp;&nbsp;<span class="glyphicon glyphicon-edit" style="color:Blue;font-size:13px;">Edit</span></a>
+	      <a ng-if="tracker_info['user_id']==item['owner_id']" href="" class="detailsIcon text-left" style="float:left;    margin: 7px;" title="Edit Sheet Name" ng-click='update_tracker_name($index, patient_id);' ng-show='item.edit_name'>&nbsp;&nbsp;<span class="glyphicon glyphicon-ok" style="color:blue;font-size:13px;">Save</span></a>
+		  <div class="detailsLink" style="width:50%;float:right;" ng-class="{'dark_blue':tracker_info['user_id']==item['owner_id'],'dark_red':tracker_info['user_id']!=item['owner_id']}"> 
+				<a href="javascript:void(0);" ng-show='item["is_edit"] == true' ng-click='save_tracker(item.id, patient_id);item["is_edit"] = false;'><span class="glyphicon glyphicon-ok"></span>&nbsp;Save Changes</a>
+				<a href="javascript:void(0);" ng-show='item["is_edit"] == true' ng-click='discard_tracker(item.id, patient_id);item["is_edit"] = false;'><span class="glyphicon glyphicon-remove"></span>&nbsp;Discard Changes</a>
+				&nbsp;
+				<input ng-if="tracker_info['user_role']=='doctor'" type='text' placeholder='Enter Template Name' ng-model='tracker_info["template_name"]' ng-show='item["show_template_input"]'>
+				<a href='' ng-if="tracker_info['user_role']=='doctor'" ng-click='create_template(item.id, patient_id);item["show_template_input"] = false;' ng-show='item["show_template_input"]'><span class="glyphicon glyphicon-book"></span>&nbsp;Save as Template</a>
+				<a href="javascript:void(0);" ng-if="tracker_info['user_role']=='doctor'" ng-click='item["show_template_input"] = true;' ng-show='!item["show_template_input"]'><span class="glyphicon glyphicon-book"></span>&nbsp;Save As Template</a> 
+				<a href="javascript:void(0);" ng-if="tracker_info['user_id']==item['owner_id']" ng-click='delete_tracker(patient_id, item.id);'><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete Tracker</a> 
+			</div>
+		</h2>	
+		
+		<div class="col-lg-12" ng-if="(tracker_info['tracker_list']).length > 0" style="margin-top:1px;margin-bottom:1px;">
+			<!--<div trackerheader></div>-->
+	</div>
+		<div style="margin:0px 0px 0px 10px;">
+		<div ng-if="tracker_info['user_role']=='doctor'" class="box"style="width:20%" ><div class="foo" style="background-color:#FFCCCC;"></div><div style="margin-left:10px;float:left;padding-top:7px;" class="bodytext_bold">Created by Patient</div></div>
+		 <div ng-if="tracker_info['user_role']=='patient'" class="box" style="width:20%"><div class="foo" style="background-color:rgba(0, 0, 255, 0.45);"></div><div style="margin-left:10px;float:left;padding-top:7px;" class="bodytext_bold">Created by Doctor</div></div>
+		 <div ng-if="tracker_info['user_role']=='doctor'" class="box" style="width:20%"><div class="foo" style="background-color:rgba(0, 0, 255, 0.45);"></div><div style="margin-left:10px;float:left;padding-top:7px;" class="bodytext_bold">Created by Other Doctor's</div></div>
+		 <div class="box" style="width:20%"> <div class="foo" style="background-color:#CEF6CE;"></div><div style="margin-left:10px;float:left;padding-top:7px;" class="bodytext_bold">Created by Diagnostic Center</div></div>
+			<span class="bodytext_bold" style="position:relative;float:right;right:0px;padding-top:7px;">
+					Note:
+					1) Click on any cell to edit. 2) Click on <img src="/ayushman/assets/app/img/graph.png" style="height:15px;width:15px" /> to draw a line graph.
+			</span>		 
+		</div>
+	<div style="margin:2px 10px 1px 0px">
+		<div class="bodytext_bold" style="" ng-hide="tracker_info['current_tracker_id'] ||  tracker_info['gridOptions'][tracker_info['selected']] || (tracker_info['tracker_list']).length == 0">
+			Loading Tracker's Data <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+		</div>
+		<div class="bodytext_bold" style="" ng-if="gotparametersdata">
+			Loading Tracker Parameter's Data <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+		</div>
+	</div>
+		<div class="bodytext_bold" style="margin:0px 0px 0px 10px;">
+		<HR WIDTH="100%" ALIGN="LEFT">
+	Start Parameter's Date  <input datepickerdefault required type='text' value='{{item.parameterstartdate}}' ng-change="update_databy_date(item.id,tracker_info,patient_id,$index);" ng-model='item.parameterstartdate' />
+	To Parameter's Date  <input datepickerdefault required type='text' value='{{item.parametertodate}}' ng-change="update_databy_date(item.id,tracker_info,patient_id,$index);" ng-model='item.parametertodate' />
+		</div>
+		<!--<div ng-repeat ="normal in tracker_info.tracker_data_normal ">
+			<div ng-repeat="value in normal">
+				<div ng-repeat="key in value">
+					<label style ="display:inline-block;white-space: nowrap;overflow:hidden !important;text-overflow: ellipsis;float:left;width:120px;height:40px;">
+						{{key}}
+					</label>
+				</div>
+			</div>
+		</div>-->
+            <div class="contentDetails">
+				<div style="display:none;height:400px;width:99%;position:relative;z-index:0;background-color:white;top:0px;left:0px;display:none;border:1px solid black;">
+					<h3 ng-class="{'dark_blue':tracker_info['user_id']==item['owner_id'],'dark_red':tracker_info['user_id']!=item['owner_id']}" style="color:white;padding-left:5px;position:relative;"><span id="{{item.id+'_graph_title'}}"></span><a href="javascript:void(0);" ng-click="refresh_graph();"><span class="glyphicon glyphicon-refresh" style="color:blue;" >&nbsp;refresh</span></a><img src="/ayushman/assets/app/img/close_icon.png" ng-click="hide_graph();" style="float:right;"/></h3>
+					<div id="{{item.id+'_graph_place_holder'}}" style="height:200px;width:950px;margin:10px;" class='graph' title='Drag mouse over dates to zoom.'></div>
+				</div>
+				<!--<div id='{{item.id + "_tracksheet"}}' style="width:100%;position:relative;z-index:1;background-color:white;margin-top:5px;left:0px;"> 
+					<div class="gridStyle" ng-if="tracker_info['gridOptions'][item.id]" ng-grid="tracker_info['gridOptions'][item.id]" title="Click on a cell to edit."></div>
+				</div>-->
+				<div id='{{item.id + "_tracksheet"}}' style="height:400px;width:100%;position:relative;z-index:1;background-color:white;margin-top:5px;left:0px;"> 
+					<div id="grid1" class="gridStyle" style="height:400px;width:1200px" ng-if="tracker_info['gridOptions'][item.id]" ng-grid="tracker_info['gridOptions'][item.id]" ></div>
+				</div>
+				
+            </div>
+			<!--	<div class="bodytext_bold" style="padding:10px;position:relative;float:right;right:130px">
+					Note:
+					1) Click on any cell to edit. 2) Click on <img src="/ayushman/assets/app/img/graph.png" style="height:15px;width:15px" /> to draw a line graph.
+				</div>-->
+<!--            <div class="detailsLink" ng-class="{'dark_blue':tracker_info['user_id']==item['owner_id'],'dark_red':tracker_info['user_id']!=item['owner_id']}"> 
+				<a href="javascript:void(0);" ng-show='item["is_edit"] == true' ng-click='save_tracker(item.id, patient_id);item["is_edit"] = false;'><span class="glyphicon glyphicon-ok"></span>&nbsp;Save Changes</a>
+				<a href="javascript:void(0);" ng-show='item["is_edit"] == true' ng-click='discard_tracker(item.id, patient_id);item["is_edit"] = false;'><span class="glyphicon glyphicon-remove"></span>&nbsp;Discard Changes</a>
+				&nbsp;
+				<input ng-if="tracker_info['user_role']=='doctor'" type='text' placeholder='Enter Template Name' ng-model='tracker_info["template_name"]' ng-show='item["show_template_input"]'>
+				<a href='' ng-if="tracker_info['user_role']=='doctor'" ng-click='create_template(item.id, patient_id);item["show_template_input"] = false;' ng-show='item["show_template_input"]'><span class="glyphicon glyphicon-book"></span>&nbsp;Save as Template</a>
+				<a href="javascript:void(0);" ng-if="tracker_info['user_role']=='doctor'" ng-click='item["show_template_input"] = true;' ng-show='!item["show_template_input"]'><span class="glyphicon glyphicon-book"></span>&nbsp;Save As Template</a> 
+				<a href="javascript:void(0);" ng-if="tracker_info['user_id']==item['owner_id']" ng-click='delete_tracker(patient_id, item.id);'><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete Tracker</a> 
+			</div>-->
+	  </div>
+	</div>
+      </div>
+    </div>
+	<div id="notesDiv" class="sectionBox"  style="position:fixed;top:55px;z-index:100;float:left;left:260px;width:140px">
+		<h2 class="green" style="height:30px;">
+		<a id="allnoteslink"data-toggle="collapse" style="" ng-click="getallnotes()" data-parent="#accordion" href="/dashboard/#allnotes" class="collapsed">
+			<span class="icons iconNotes" style="color:white;float:left;left:0">Notes</span> <i class="fa fa-compress" style="color:white;float:right;right:10px;font-size:23px;"></i>
+		</a> 
+		</h2>
+		<div id="allnotes" class="panel-collapse collapse" style="width:700px;background:white">
+			<!--<textarea class="notesComments contentDetails smallContent" style='resize: none;height:160px;width:100%;'></textarea>			-->
+			<div class="notesComments contentDetails smallContent" style='resize: none;height:250px;width:100%;'  >
+				<div ng-repeat = "item in allnotes | filter: {status : 1} track by $index ">
+					<table>
+					<tr>
+					<td style="width:600px">
+						<div style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.writtenbyuserid == item.foruserid">
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.writtenbyuserid == item.foruserid">
+								{{item.date}} : 
+							</label>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc1 !=''">
+							{{item.desc1}}
+							</label>
+							<a ng-show="item.link1!=''" target="_blank" href="{{item.link1}}">
+								<span style="color:blue;">{{item.link1}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc2 !=''">
+							{{item.desc2}}
+							</label>
+							<a ng-show="item.link2!=''"  target="_blank"  href="{{item.link2}}">
+								<span style="color:blue;">{{item.link2}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc3 !=''">
+							{{item.desc3}}
+							</label>
+							<a ng-show="item.link3!=''"  target="_blank" href="{{item.link3}}">
+								<span style="color:blue;">{{item.link3}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc4 !=''">
+							{{item.desc4}}
+							</label>
+							<a ng-show="item.link4!=''"  target="_blank" href="{{item.link4}}">
+								<span style="color:blue;">{{item.link4}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc5 !=''">
+							{{item.desc5}}
+							</label>
+							<a ng-show="item.link5!=''"  target="_blank" href="{{item.link5}}">
+								<span style="color:blue;">{{item.link5}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc6 !=''">
+							{{item.desc6}}
+							</label>
+							<a ng-show="item.link6!=''"  target="_blank" href="{{item.link6}}">
+								<span style="color:blue;">{{item.link6}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc7 !=''">
+							{{item.desc7}}
+							</label>
+							<a ng-show="item.link7!=''"  target="_blank" href="{{item.link7}}">
+								<span style="color:blue;">{{item.link7}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc8 !=''">
+							{{item.desc8}}
+							</label>
+							<a ng-show="item.link8!=''"  target="_blank" href="{{item.link8}}">
+								<span style="color:blue;">{{item.link8}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc9 !=''">
+							{{item.desc9}}
+							</label>
+							<a ng-show="item.link9!=''"  target="_blank" href="{{item.link9}}">
+								<span style="color:blue;">{{item.link9}}</span>
+							</a>
+							<label style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.desc10 !=''">
+							{{item.desc10}}
+							</label>
+							<a ng-show="item.link10!=''"  target="_blank" href="{{item.link10}}">
+								<span style="color:blue;">{{item.link10}}</span>
+							</a>						
+						</div>
+					</td>
+					<td style="width:50px"><span ng-show= "((item.writtenbyuserid == item.foruserid) && (item.writtenbyuserid == item.loggeduserid))" ng-click="deletenote(item.id,$index)" class="iconDelete ng-scope"></span></td>
+					<td style="width:50px">
+						<a data-toggle="collapse" style="" onclick="" data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+							<span ng-show= "((item.writtenbyuserid == item.foruserid) && (item.writtenbyuserid == item.loggeduserid))" ng-click="editnote(item.id,item.notedesc)" class="iconEdit ng-scope"></span>						
+						</a>
+					</td>
+					</tr>
+					</table>
+					<table>
+					<tr>
+					<td style="width:600px">
+						<div style="font-size:14px" ng-show= "item.writtenbyuserid != item.foruserid">
+							<label style="font-size:14px" ng-show= "item.writtenbyuserid != item.foruserid">
+								{{item.date}} : {{item.writtenby}} : 
+							</label>
+							<label style="font-size:14px" ng-show= "item.desc1 !=''">
+							{{item.desc1}}
+							</label>
+							<a ng-show="item.link1!=''" target="_blank" href="{{item.link1}}">
+								<span style="color:blue;">{{item.link1}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc2 !=''">
+							{{item.desc2}}
+							</label>
+							<a ng-show="item.link2!=''"  target="_blank"  href="{{item.link2}}">
+								<span style="color:blue;">{{item.link2}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc3 !=''">
+							{{item.desc3}}
+							</label>
+							<a ng-show="item.link3!=''"  target="_blank" href="{{item.link3}}">
+								<span style="color:blue;">{{item.link3}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc4 !=''">
+							{{item.desc4}}
+							</label>
+							<a ng-show="item.link4!=''"  target="_blank" href="{{item.link4}}">
+								<span style="color:blue;">{{item.link4}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc5 !=''">
+							{{item.desc5}}
+							</label>
+							<a ng-show="item.link5!=''"  target="_blank" href="{{item.link5}}">
+								<span style="color:blue;">{{item.link5}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc6 !=''">
+							{{item.desc6}}
+							</label>
+							<a ng-show="item.link6!=''"  target="_blank" href="{{item.link6}}">
+								<span style="color:blue;">{{item.link6}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc7 !=''">
+							{{item.desc7}}
+							</label>
+							<a ng-show="item.link7!=''"  target="_blank" href="{{item.link7}}">
+								<span style="color:blue;">{{item.link7}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc8 !=''">
+							{{item.desc8}}
+							</label>
+							<a ng-show="item.link8!=''"  target="_blank" href="{{item.link8}}">
+								<span style="color:blue;">{{item.link8}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc9 !=''">
+							{{item.desc9}}
+							</label>
+							<a ng-show="item.link9!=''"  target="_blank" href="{{item.link9}}">
+								<span style="color:blue;">{{item.link9}}</span>
+							</a>
+							<label style="font-size:14px" ng-show= "item.desc10 !=''">
+							{{item.desc10}}
+							</label>
+							<a ng-show="item.link10!=''"  target="_blank" href="{{item.link10}}">
+								<span style="color:blue;">{{item.link10}}</span>
+							</a>						
+						</div>
+					</td>
+					<td style="width:50px"><span ng-show= "((item.writtenbyuserid != item.foruserid) && (item.writtenbyuserid == item.loggeduserid))" ng-click="deletenote(item.id,$index)" class="iconDelete ng-scope"></span></td>
+					<td style="width:50px">
+						<a data-toggle="collapse" style=""  data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+							<span ng-show= "((item.writtenbyuserid != item.foruserid) && (item.writtenbyuserid == item.loggeduserid))" ng-click="editnote(item.id,item.notedesc)" class="iconEdit ng-scope"></span>
+						</a>
+					</td>
+					</tr>
+					</table>					
+				</div>
+			</div>
+			<div class="detailsLink green">
+				<a data-toggle="collapse" style="" ng-click="addnote()" data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+					<span style="color:white;">Add Notes</span>
+				</a> 
+			</div>
+			<div id="collapseOne" class="panel-collapse collapse" style="position:fixed;top:90px;float:left;left:260px;width:700px">
+				<textarea class="notesComments contentDetails smallContent" placeholder="Write notes here (maximum 2000 characters)" ng-model="notes" maxlength="2000" title="Write notes here (maximum 2000 characters)" style='resize:none;height:250px;width:100%;'></textarea>
+				<div class="detailsLink green">
+					<a data-toggle="collapse" ng-click="savenotes();" data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+						<span style="color:white;">Save</span>
+					</a> 
+					<a data-toggle="collapse" style="" onclick="" data-parent="#accordion" href="/dashboard/#collapseOne" class="collapsed">
+						<span style="color:white;">Cancel</span>
+					</a> 
+				</div>
+			</div>			
+		</div>
+	</div>
+	<div id="reminderDiv" class="sectionBox"  style="position:fixed;top:55px;z-index:100;float:left;left:410px;width:140px">
+		<h2 class="green" style="height:30px;">
+		<a id="allreminderslink" data-toggle="collapse" style="" ng-click="getallreminders()" data-parent="#accordion" href="/dashboard/#allreminders" class="collapsed">
+			<span  style="color:white;float:left;left:0">Reminders</span> <i class="fa fa-compress" style="color:white;float:right;right:10px;font-size:23px;"></i>
+		</a> 
+		</h2>
+		<div id="allreminders" class="panel-collapse collapse" style="width:700px;background:white">
+			<div class="notesComments contentDetails smallContent" style='resize: none;height:250px;width:100%;'  >
+				<div ng-repeat = "item in allreminders | filter: {status : 1} track by $index ">
+				<table>
+				<tr>
+					<td style="width:600px"><label title="{{item.description}}" style="font-style:italic;font-family:serif;font-size:14px" ng-show= "item.createduserid == item.foruserid">{{item.startdate}} : {{item.templatesubject}} :  - executed {{item.frequency}} - last executed on {{item.lastdate}}</label></td>
+					<td style="width:50px">
+						<a data-toggle="collapse" style="" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed">
+							<span ng-show= "((item.createduserid == item.foruserid) && (item.createduserid == item.loggeduserid))" ng-click="deletereminder(item.id,$index)" class="iconDelete ng-scope">
+							</span>
+						</a>
+					</td>
+					<td style="width:50px">
+						<a data-toggle="collapse" style="" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed">
+							<span ng-show= "((item.createduserid == item.foruserid) && (item.createduserid == item.loggeduserid))" ng-click="editreminder(item.id,$index)" class="iconEdit ng-scope">
+							</span>	
+						</a>
+					</td>
+				</tr>
+				</table>
+				<table>
+				<tr>
+					<td style="width:600px"><label title="{{item.description}}" style="font-size:14px" ng-show= "item.createduserid != item.foruserid">{{item.startdate}} : {{item.templatesubject}} : - executed {{item.frequency}} - last executed on {{item.lastdate}}</label></td>
+					<td style="width:50px">
+						<a data-toggle="collapse" style="" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed">
+							<span ng-show= "((item.createduserid != item.foruserid) && (item.createduserid == item.loggeduserid))" ng-click="deletereminder(item.id,$index)" class="iconDelete ng-scope">
+							</span>
+						</a>
+					</td>
+					<td style="width:50px">
+						<a data-toggle="collapse" style="" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed">
+							<span ng-show= "((item.createduserid != item.foruserid) && (item.createduserid == item.loggeduserid))" ng-click="editreminder(item.id,$index)" class="iconEdit ng-scope"></span>
+						</a>
+					</td>
+				</tr>
+				</table>
+				</div>
+			</div>
+			<div class="detailsLink green">
+				<a data-toggle="collapse" style="" ng-click="setsmsflag();" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed">
+					<span style="color:white;">Add reminder</span>
+				</a> 
+			</div>
+			<div id="collapseTwo" class="panel-collapse collapse" style="position:fixed;top:90px;float:left;left:410px;width:700px">
+				<div class="notesComments contentDetails smallContent" style='resize: none;height:250px;width:100%;background:white' >
+					<input type="checkbox" id="smsflag" ng-checked="smsflag==1" ng-click ="setsmsflag()" style="margin-left:120px;"checked /><label style="padding-left:5px;">Send SMS</label>
+					<input type="checkbox" id="emailflag" ng-checked="emailflag==1" ng-click ="setemailflag()" style="margin-left:30px;" checked /><label style="padding-left:5px;">Send email</label>
+					<input type="checkbox" id="dbflag" ng-checked="dbflag==1" ng-click ="setdbflag()" style="margin-left:30px;" /><label style="padding-left:5px;">Message on dashboard</label>
+					</br>
+					<label>Template &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+					<select id="templatecode" ng-change="settemplatedata(this.value)" name="templatecode" style=" width:150px color: black;font-family: Verdana,Arial,Helvetica,sans-serif;font-size: 10px; align=left"  ng-model="templatecode" ng-options="value.code as value.subject for value in remindertemplates"> 
+						<option value="" selected="" >Select Value</option>
+					</select>
+					<label>Variables &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+					<label style="font-family:serif;font-size:12px;">{{templatevariables}}</label>
+					</br>
+					<div id="mailbodyeditable">
+						<label>Mail body &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+						<textarea id="mailbody"class="notesComments contentDetails smallContent" placeholder="Write message here" ng-model="templatemailbody" style='resize: none;height:50px;width:100%;'></textarea>
+					</div>
+					<div id="mailbodyreadonly" >
+						<label>Mail body &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+						<textarea id="mailbody" readonly class="notesComments contentDetails smallContent" placeholder="Write message here" ng-model="templatemailbody" style='resize: none;height:50px;width:100%;'></textarea>
+						<!--<label style="font-family:serif;font-size:12px;">{{templatemailbody}}</label>-->
+					</div>
+					</br></br>
+					<label>Variable data &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</label>
+					<input id="variabledata" style=" width:400px;border-bottom:1px solid black;" type='text' class="textarea"  ng-model='variabledata' placeholder="Enter comma ',' seperated values for variables" />					
+					</br>
+					<label>Date of reminder :&nbsp;&nbsp;&nbsp;&nbsp;</label>
+					<input futuredatepicker readonly ="readonly" style="border-bottom:1px solid black; width:150px" id="startdate" type='text' class="textarea"  value= "" ng-model='reminderstartdate' />
+					<label style="padding-left:20px;">Frequency &nbsp;&nbsp;:&nbsp;&nbsp;</label>
+					<select id="frequency" name="frequency" style=" width:150px color: black;font-family: Verdana,Arial,Helvetica,sans-serif;font-size: 10px; align=left"  ng-model="frequency" > 
+						<option value="" >Select</option>						
+						<option value=0  >Once</option>
+						<option value=1 >Every day</option>
+						<option value=7 >Every week</option>
+						<option value=30>Every month</option>						
+						<option value=92>Every quarter</option>						
+						<option value=183>Every half year</option>						
+						<option value=365>Every year</option>															
+						<option value=2 >Every alternate day</option>
+						<option value=14 >Every alternate week</option>
+						<option value=61>Every alternate month</option>						
+						<option value=183>Every alternate quarter</option>						
+						<option value=365>Every alternate half year</option>						
+						<option value=730>Every alternate year</option>															
+					</select>
+					<!--</br>
+					<label>Description &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</label>
+					<input id="templatedesc" style=" width:400px;border-bottom:1px solid black;" type='text' class="textarea"  ng-model='templatedesc' />-->
+				</div>
+				<div class="detailsLink green">
+					<a data-toggle="collapse" ng-click="savereminder();" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed" >
+						<span style="color:white;">Set reminder</span>
+					</a> 
+					<a data-toggle="collapse" style="" onclick="" data-parent="#accordion" href="/dashboard/#collapseTwo" class="collapsed">
+						<span style="color:white;">Cancel</span>
+					</a> 
+				</div>
+			</div>			
+		</div>
+	</div>
+
+    <!-- /container --> 
+  </body>
+</html>
+
+<script>
+$(window).resize(function () {
+  resizeGrid();
+});
+
+$(window).load(function() {
+  resizeGrid();
+});
+
+function resizeGrid() {
+  $('#grid1').closest(".ui-jqgrid-bdiv").css({"overflow-y" : "scroll"});
+  $('#grid1').closest(".ui-jqgrid-bdiv").css({"height" : "400px"});
+  $('#grid1').closest(".ui-jqgrid-bdiv").css({"width" : "1200px"});
+}
+
+/*$(function(){
+	$( "#startdate" ).datepicker({yearRange: "-120:+2",minDate: '0',changeMonth: true,changeYear: true,dateFormat: 'dd M yy'});
+});*/
+
+</script>

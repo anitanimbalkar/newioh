@@ -1,0 +1,19 @@
+<link href="/ayushman/assets/app/css/notifications.css" rel="stylesheet" type="text/css">
+<div class="sectionNotificationBox bodytext_bold" id="angelement">
+	<div class="notifications" ng-click="toggle('notificationlist')">
+		<i class="number" ng-class="{'unread':(messages['unreadmessages']>0), 'read':(messages['unreadmessages']==0) }">{{messages['unreadmessages']}}</i>&nbsp;
+		<i class="fa" style="font-size: x-large;" ng-class="{'unread fa-envelope':(messages['unreadmessages']>0), 'read fa-envelope-o':(messages['unreadmessages']==0) }"></i>
+		
+	</div>
+	<div  class="notificationlist" id="notificationlist">
+		<div class="panel-heading" >
+			<h4 class="panel-title"><i class="fa fa-bell-o"></i>&nbsp;Notifications <i class="fa fa-times" style="float:right;cursor:pointer;" ng-click="toggle('notificationlist')"></i></h4>
+		</div>
+		<div style="max-height:500px;overflow:auto;" class="scrollbar style-5" >
+			<div class="notification" ng-repeat="message in messages['messages']"  ng-class="{'unreadbackground':(message.isread==0), 'readbackground':(message.isread==1) }" ng-click="showVisit(message.id,message.appid);" >
+				<div class="name bodytext_boldblue"><i class="fa " style="font-size: smaller;" ng-class="{'unread fa-envelope':(message.isread==0), 'read fa-envelope-o':(message.isread==1) }"></i>&nbsp;{{message.name}}</div><div class="date bodytext_normalblue">{{message.datetime}}</div>
+				<div class="message bodytext_normalblue bodytext_normal">{{message.query}}</div>
+			</div>
+		</div>
+	</div>
+</div>

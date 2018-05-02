@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>1</columns>
+		<column>1</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1,2,3</questions>
+		<layout>Vertical</layout>
+	</container>
+	<question>
+		<id>1</id>
+		<label>Food Allergies</label>
+		<type>autocomplete</type>
+		<action>/ayushman/cpatienthistory/foodallergies</action>
+	</question>
+	<question>
+		<id>2</id>
+		<label>Drug Allergies</label>
+		<type>autocomplete</type>
+		<action>/ayushman/cpatienthistory/drugallergies</action>
+	</question>
+	<question>
+		<id>3</id>
+		<label>Other Allergies</label>
+		<type>autocomplete</type>
+		<action>/ayushman/cpatienthistory/plantallergies</action>
+	</question>
+</form>

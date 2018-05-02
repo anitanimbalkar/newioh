@@ -1,0 +1,196 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.action').hide();
+
+	});
+	function PrintElem(elem)
+    {
+        Popup($(elem).html());
+    }
+
+    function Popup(data) 
+    {
+        var mywindow = window.open('', 'print', 'height=400,width=600');
+        mywindow.document.write('<html><head><title>my div</title>');
+        /*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+</script>
+
+<div style="width:100%;">
+<input type="hidden" value="2" id="autocompletevalue" />
+<table >
+	<tr>
+		<td width="100%">
+			<div ng-show="examination_data.display_savebutton" id="printprescription"  style="box-shadow:2px 7px 19px #888888;">
+			<style type="text/css">
+				@media only print
+				{	
+				
+				}
+				@page {
+					/* dimensions for the whole page */
+					size: A5;
+					margin: 10;
+				}
+				body {
+					/* A5 dimensions */
+					height: 210mm;
+					width: 158.5mm;
+					margin: 10;
+				}
+			</style>
+			<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+			<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+			<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+			<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+			<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+			<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+			<table width="100%" class="table_roundborder" padding="10px">
+					<tr>
+						<td style="padding:10px">
+							<div id="name" style="height:auto;width:100%;line-height:200%">
+								<div style="border-bottom:1px solid;">
+									<label style="float:right;">Ph : 27280968</label>
+									<font size="3" color="1e90ff">DHANASHREE HOSPITAL</font>&nbsp;</br><span class="bodytext_normal" style="font-size:11px;" >Navi Sangvi, Pune - 27</span>
+								</div>
+								<div style="width:100%;">
+										<label style="float:left;height:auto;width:30%;vertical-align:top">
+											No:&nbsp; &nbsp; <input id="billid"  name="billid" style=" width:50px;border:none;text-align:right; border-bottom:1px solid;font-weight:bold" ng-model="appointment_info.billid" value=""/>
+										</label>	
+										<label style="float:right;">
+									Date &nbsp;:&nbsp;&nbsp;<label>{{billdate}} </label>
+										</label>
+								</div>			
+								</br>
+								</br>		
+								Received with thanks Rs. <input id="totalsum"  name="totalamt" style=" width:9.7%;border:none; border-bottom:1px solid;font-weight:bold" readonly value="{{appointment_info.totalsum}}" />(<input readonly value="{{appointment_info.amountinwords}}" id="amtinwords" style=" width:50.7%;border:none; border-bottom:1px solid;font-weight:bold" />)
+								</br>from Shri/Smt <input id="name" name="name" style=" width:41.8%;border:none; border-bottom:1px solid;font-weight:bold" ng-model="billdetail.patrelative"/> towords the medical services given
+								</br>to Shri/Smt/Master/Miss <input id="name" name="name" style=" width:57.8%;border:none; border-bottom:1px solid;font-weight:bold" readonly ng-model="appointment_info.Patientname"/>who was
+								</br>under my OPD treatment for <input id="diagnosis"  name="diagnosis" style=" width:63.5%;border:none; border-bottom:1px solid;font-weight:bold" ng-model="examination_data.text_diagnosis"/>
+								</br>
+								on/from <input ng-model="billdetail.treatmentfrom" style=" width:20.7%;border:none; border-bottom:1px solid;font-weight:bold" /> to <input ng-model="billdetail.treatmentto" style=" width:20.7%;border:none; border-bottom:1px solid;font-weight:bold"/>
+								</br>
+								</br>
+								<div style="float:left;padding-top:92px;">
+									<font size="2">Dr.S.V.Dange</font>&nbsp;</br><span class="bodytext_normal" style="font-size:11px;" >M.D.,D.N.B</span>
+								</div>
+								<div ng-app ="1" style="float:right;padding-bottom:5px;">
+								<table cellpadding="5" style="width:345px" frame="box">
+									<tr><td> Consultation :<input class="textarea" ng-blur="addtototalbill();" ng-model="appointment_info.consultationfee" id="consultation" value="{{appointment_info.consultationfee}}"style="width:60;border:none;"/></td><td>Reconsultation  :<input class="textarea" ng-blur="addtototalbill();" ng-model="billdetail.reconsultation"  id="reconsultation" value="{{billdetail.reconsultation}}" style="width:60;border:none;"/></td></tr>
+									<tr><td> Injection :<input class="textarea" ng-blur="addtototalbill();" ng-model="billdetail.injection"  id="injection" value="{{billdetail.injection}}"style="width:60;border:none;"/></td><td>Visit  :<input class="textarea" ng-blur="addtototalbill();" ng-model="billdetail.visit"  id="visit" value="{{billdetail.visit}}"style="width:60;border:none;"/></td></tr>
+									<tr><td> Dressing :<input class="textarea" ng-blur="addtototalbill();" ng-model="billdetail.dressing"  id="dressing" value="{{billdetail.dressing}}" style="width:60;border:none;"/></td><td>ECG  :<input class="textarea" ng-blur="addtototalbill();" ng-model="billdetail.ecg"  id="ecg" value="{{billdetail.ecg}}"style="width:60;border:none;"/></td></tr>
+									<tr><td> Lab.Test :<input class="textarea" ng-blur="addtototalbill();" ng-model="billdetail.labtest"  id="labtest" value="{{billdetail.labtest}}" style="width:60;border:none;"/></td><td>Misc  :<input class="textarea" ng-blur="addtototalbill();" ng-model="billdetail.misc"   id="misc" value="{{billdetail.misc}}"style="width:60;border:none;"/></td></tr>
+									<tr  style="border-top:1px solid;"><td colspan="2">Total Rs.<input ng-model="appointment_info.totalsum" id="totalbill" style="border:none;width:90;" readonly value="{{appointment_info.totalsum}}"/></td></tr>
+								</table>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div ng-hide="examination_data.display_savebutton" id="printprescriptionbill"  style="box-shadow:2px 7px 19px #888888;">
+			<style type="text/css">
+				@media only print
+				{	
+				
+				}
+				@page {
+					/* dimensions for the whole page */
+					size: A5;
+					margin: 10;
+				}
+				body {
+					/* A5 dimensions */
+					height: 210mm;
+					width: 158.5mm;
+					margin: 10;
+				}
+			</style>
+			<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+			<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+			<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+			<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+			<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+			<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+			<table width="100%" class="table_roundborder" padding="10px">
+					<tr>
+						<td style="padding:10px">
+							<div id="name" style="height:auto;width:100%;line-height:200%">
+								<div style="border-bottom:1px solid;">
+									<label style="float:right;">Ph : 27280968</label>
+									<font size="3" color="1e90ff">DHANASHREE HOSPITAL</font>&nbsp;</br><span class="bodytext_normal" style="font-size:11px;" >Navi Sangvi, Pune - 27</span>
+								</div>
+								<div style="width:100%;">
+										<label style="float:left;height:auto;width:30%;vertical-align:top">
+											No:&nbsp &nbsp; <input readonly id="billid"  name="billid" style=" width:50px;border:none;text-align:right; border-bottom:1px solid;font-weight:bold" readonly value="{{appointment_info.billid}}" />
+										</label>	
+										<label style="float:right;">
+									Date &nbsp;:&nbsp;&nbsp;<label>{{billdate}} </label>
+										</label>
+								</div>			
+								</br>
+								</br>		
+								Received with thanks Rs. <input readonly id="totalsum"  name="totalamt" style=" width:9.7%;border:none; border-bottom:1px solid;font-weight:bold" value="{{appointment_info.totalsum}}" />(<input readonly value="{{appointment_info.amountinwords}}" id="amtinwords" style=" width:50.7%;border:none; border-bottom:1px solid;font-weight:bold" />)
+								</br>from Shri/Smt <input readonly id="name" name="name" style=" width:41.8%;border:none; border-bottom:1px solid;font-weight:bold" value="{{billdetail.patrelative}}"/> towords the medical services given
+								</br>to Shri/Smt/Master/Miss <input readonly id="name" name="name" style=" width:57.8%;border:none; border-bottom:1px solid;font-weight:bold" readonly value="{{appointment_info.Patientname}}"/>who was
+								</br>under my OPD treatment for <input  id="diagnosis"  name="diagnosis" style=" width:63.5%;border:none; border-bottom:1px solid;font-weight:bold" value="{{examination_data.text_diagnosis}}"/>
+								</br>
+								on/from <input  value="{{billdetail.treatmentfrom}}" style=" width:20.7%;border:none; border-bottom:1px solid;font-weight:bold" /> to <input  value="{{billdetail.treatmentto}}" style=" width:20.7%;border:none; border-bottom:1px solid;font-weight:bold"/>
+								</br>
+								</br>
+								<div style="float:left;padding-top:92px;">
+									<font size="2">Dr.S.V.Dange</font>&nbsp;</br><span class="bodytext_normal" style="font-size:11px;" >M.D.,D.N.B</span>
+								</div>
+								<div ng-app="2"style="float:right;padding-bottom:5px;">
+								<table cellpadding="5" style="width:345px" frame="box">
+									<tr><td> Consultation :<input class="textarea" ng-blur="addtototalbill();" ng-model="appointment_info.consultationfee" id="consultation" value="{{appointment_info.consultationfee}}"style="width:60;border:none;"/></td><td>Reconsultation  :<input class="textarea" ng-blur="addtototalbill();" ng-model="billdetail.reconsultation"  id="reconsultation" value="{{billdetail.reconsultation}}"style="width:60;border:none;"/></td></tr>
+									<tr><td> Injection :<input class="textarea" ng-blur="addtototalbill();" ng-model="billdetail.injection"  id="injection" value="{{billdetail.injection}}" style="width:60;border:none;"/></td><td>Visit  :<input class="textarea" ng-blur="addtototalbill();" ng-model="billdetail.visit"  id="visit" value="{{billdetail.visit}}"style="width:60;border:none;"/></td></tr>
+									<tr><td> Dressing :<input class="textarea" ng-blur="addtototalbill();" ng-model="billdetail.dressing"  id="dressing" value="{{billdetail.dressing}}" style="width:60;border:none;"/></td><td>ECG  :<input class="textarea" ng-blur="addtototalbill();" ng-model="billdetail.ecg"  id="ecg" value="{{billdetail.ecg}}" style="width:60;border:none;"/></td></tr>
+									<tr><td> Lab.Test :<input class="textarea" ng-blur="addtototalbill();" ng-model="billdetail.labtest"  id="labtest" value="{{billdetail.labtest}}"style="width:60;border:none;"/></td><td>Misc  :<input class="textarea" ng-blur="addtototalbill();" ng-model="billdetail.misc"   id="misc" value="{{billdetail.misc}}"style="width:60;border:none;"/></td></tr>
+									<tr  style="border-top:1px solid;"><td colspan="2">Total Rs.<input ng-model="appointment_info.totalsum" id="totalbill" style="border:none;width:90;" readonly value="{{appointment_info.totalsum}}"/></td></tr>
+								</table>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div> 
+
+		</td>
+		<td width="50px;" valign="top">
+			<form id="billform" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="billid" value="{{appointment_info.billid}}" >
+					<input type="hidden" name="totalamt" value="{{appointment_info.totalsum}}" >
+					<input type="hidden" name="diagnosis" value="{{examination_data.text_diagnosis}}" >
+					<input type="hidden" name="appid" value="{{appointment_info.appointment_id}}" >
+					<input type="hidden" name="extrabillfields" value="true">
+					<input type="hidden" name="charge_injection" value="{{billdetail.injection}}" >
+					<input type="hidden" name="charge_dressing" value="{{billdetail.dressing}}" >
+					<input type="hidden" name="charge_labtest" value="{{billdetail.labtest}}" >
+					<input type="hidden" name="charge_reconsultation" value="{{billdetail.reconsultation}}" >
+					<input type="hidden" name="charge_ecg" value="{{billdetail.ecg}}" >
+					<input type="hidden" name="charge_visit" value="{{billdetail.visit}}" >
+					<input type="hidden" name="charge_misc" value="{{billdetail.misc}}" >
+					<input type="hidden" name="patrelative" value="{{billdetail.patrelative}}" >
+					<input type="hidden" name="treatmentfrom" value="{{billdetail.treatmentfrom}}" >
+					<input type="hidden" name="treatmentto" value="{{billdetail.treatmentto}}" >
+
+			</form>
+			<div ng-if="examination_data.display_Rx!=false">
+			<input type="button" value="Rx" style="margin:5px;width:50px;" ng-click="$modalSuccess();" class="button" />
+			</div>
+			<input ng-show="examination_data.display_Rx!=false" type="button" value="Finish" ng-click="savebill();$modalCancel();" style="margin:5px;width:50px;" class="button" />
+			<input ng-show="examination_data.display_Rx==false && examination_data.display_savebutton==true" type="button" value="Save" ng-click="savebill();$modalCancel();" style="margin:5px;width:50px;" class="button" />
+			<input type="button" value="Print" style="margin:5px;width:50px;" ng-click="savebill();$modalCancel();" onclick="PrintElem('#printprescriptionbill');" class="button" />
+		</td>
+	</table>
+</div>

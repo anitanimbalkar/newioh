@@ -1,0 +1,47 @@
+<html>
+<body>
+<style type="text/css">
+	div.ui-datepicker{
+        font-size:10px;
+		width:250px !important;
+    }
+</style>
+<form id="tagE" name="tagE" style="width:400px; height:auto; padding-left:10px; padding-top:2px;">
+		<label for = "Datetxt1" style='width: 20%;' >Test Date  *:</label><input id="Datetxt1" name="Datetxt" type="text" class="textareapopup"  style="color: black;font-family: Verdana,Arial,Helvetica,sans-serif;margin-right:0%;" ng-model="tag.Date"  datepickerdefault required/>
+	     <button type="button" class="button" style="float:right;width:60px;height:20px" value="save" ng-click="reset()">Reset</button>
+		</br>
+		<label for = "Labtext1" style='width: 20%;' >Lab name *:</label><input id="Labtxt1" name="Labtxt" type="text" class="textareapopup"  style="color: black;font-family: Verdana,Arial,Helvetica,sans-serif;margin-right:0%" ng-model="tag.Lab" />
+		 <button id="btn_savereoprtsdetail" type="button" class="button" style="float:right;width:60px;height:20px;" value="save" ng-click="savereoprtsdetail()">Save</button>
+		<div id="results" style="position:relative;">
+			<label for = "testnametxt1" style ="width:20%" >Test Name :</label> <input id="testnametxt1"  name="testnametxt" type="text" class="textareapopup"  style="color: black;font-family: Verdana,Arial,Helvetica,sans-serif;margin-right:0%;" ng-model="tag.testname" autocompletereportpara />
+		</div>
+	    
+		<div id="content1" style="padding-top:10px;" >
+					<div ng-repeat="parameter in paramdata track by $index">
+						<div style="width:100%; height:auto">
+							<label style="font-size:11px;" for="{{parameter.id}}">{{parameter.parametername}}</label>
+							<div style="padding-left:10px;">
+								<input id="{{parameter.id}}" name="{{parameter.id}}" value=" " type='text' class='textareapopup'  style='color: black; font-family: Verdana,Arial,Helvetica,sans-serif; width:25%;' ng-hide="parameter.type=='nonnumeric'" ng-init="parameterdata[parameter.id]=parameter.parametername" ng-model="parameter_ids[parameter.id]"  />
+								<select ng-init="parameterdata[parameter.id]=parameter.parametername" ng-show="parameter.type=='nonnumeric'" id="{{parameter.id}}" name="{{parameter.id}}" style=" width:35%; color: black;font-family: Verdana,Arial,Helvetica,sans-serif;font-size: 10px; margin-left: 2%;  align=left"  ng-model="parameter_ids[parameter.id]"ng-options="value.valueid as value.valuename for value in parameter.paramvalues"> 
+									<option value="" selected="" >Select Value</option>
+								</select>
+							<!--	<select class="input" ng-init="parameterdata[parameter.id]=parameter.parametername" ng-show="parameter.type=='nonnumeric'" id="{{parameter.id}}" name="{{parameter.id}}"  style=" width:35%; color: black;font-family: Verdana,Arial,Helvetica,sans-serif;font-size: 10px; margin-left: 2%;  align=left" ng-model="parameter_ids[parameter.id]">
+									<option value="" selected="" >Select Value</option>
+									<option value="absent" selected="" >Absent</option>
+									<option value="present" selected="" >Present</option>
+								</select>-->
+								<select class="input" ng-hide="parameter.type=='nonnumeric'" id="{{parameter.id}}_unitscombo" name="{{parameter.id}}_unitscombo"  style="width:20%; color: black;font-family: Verdana,Arial,Helvetica,sans-serif;font-size: 10px; margin-left: 2%;  align=left" ng-model="parameter_units[parameter.id]" ng-options="unit.unitid as unit.unitname for unit in parameter.units" >
+									<option value="" selected="" >Select Unit</option>
+								</select>
+								<input id="{{parameter.id}}_unitscombo1" name="{{parameter.id}}_unitscombo1" type="text" class="textareapopup"  style="width:20%; color: black;font-family: Verdana,Arial,Helvetica,sans-serif;padding-right: 0%;margin-left: 3%;" ng-model="otherunits[parameter.id]" ng-show="parameter_units[parameter.id] == '2'"/>
+								<input id="{{parameter.id}}_refrange" name="{{parameter.id}}_refrange" value=" " type='text' placeholder="Reference ..." class='textareapopup'  style='color: black; font-family: Verdana,Arial,Helvetica,sans-serif; width:25% ' ng-model="parameter_refs[parameter.id]"  />
+							</div>
+						</div>
+								<label style="height:10px;"></label>
+					</div>
+		</div>
+     <!--<button type="button" class="button" style="float:right;width:60px;height:20px;padding-left:10px" value="save" ng-click="reset()">Reset</button>
+	 <button id="btn_savereoprtsdetail" type="button" class="button" style="float:right;width:60px;height:20px;" value="save" ng-click="savereoprtsdetail()">Save</button>-->
+</form>
+</body>
+</html>

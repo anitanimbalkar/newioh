@@ -1,0 +1,791 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,1000,3,4,101,102,103,104,105,106,107,108,1000,6,117,118,119,120,121,122,123,124,1000,8,1000</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>2,1000,500,5,109,110,111,112,113,114,115,116,1000,7,125,126,127,128,129,130,131,132,1000</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>Dental History</label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Complaint </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Teeth Examination </label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Upper Right Quadrant(1-8) </label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>101</id>
+		<label>8 - Incisor (Central) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>102</id>
+		<label>7 - Incisor (Lateral) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>103</id>
+		<label>6 - Canine (Eye tooth / Cuspid) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>104</id>
+		<label>5 - Bicuspid (1st) Premolar</label>		
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>105</id>
+		<label>4 - Bicuspid (2nd) Premolar</label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>106</id>
+		<label>3 - Molar (1st Molar) </label>	
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>107</id>
+		<label>2 - Molar (2nd Molar) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>108</id>
+		<label>1 - Wisdom Tooth (3rd Molar) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Upper Left Quadrant(9-16) </label>
+		<type>label</type>
+	</question>
+	
+		<question>
+		<id>109</id>
+		<label>9 - Incisor (Central) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>110</id>
+		<label>10 - Incisor (Lateral) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>111</id>
+		<label>11 - Canine (Eye tooth / Cuspid) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>112</id>
+		<label>12 - Bicuspid (1st) Premolar</label>	
+		<type>DD</type>				
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>113</id>
+		<label>13 - Bicuspid (2nd) Premolar</label>
+		<type>DD</type>		
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>114</id>
+		<label>14 - Molar (1st) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>115</id>
+		<label>15 - Molar (2nd) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>116</id>
+		<label>16 - Wisdom Tooth (3rd Molar) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Lower Right Quadrant(25-32) </label>
+		<type>label</type>
+	</question>
+	
+		<question>
+		<id>117</id>
+		<label>32 - Wisdom Tooth (3rd Molar) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>118</id>
+		<label>31 - Molar (2nd Molar) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>119</id>
+		<label>30 - Molar (1st Molar) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>120</id>
+		<label>29 - Bicuspid (2nd) Premolar</label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137,</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>121</id>
+		<label>28 - Bicuspid (1st) Premolar</label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>122</id>
+		<label>27 - Canine (Eye tooth / Cuspid) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>123</id>
+		<label>26 - Incisor (Lateral) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>124</id>
+		<label>25 - Incisor (Central) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Lower Left Quadrant(17-24) </label>
+		<type>label</type>
+	</question>
+	
+		<question>
+		<id>125</id>
+		<label>17 - Wisdom Tooth (3rd Molar) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>126</id>
+		<label>18 - Molar (2nd Molar) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>127</id>
+		<label>19 - Molar (1st Molar) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>128</id>
+		<label>20 - Bicuspid (2nd) Premolar</label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>129</id>
+		<label>21 - Bicuspid (1st) Premolar</label>
+		<type>DD</type>
+		
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>130</id>
+		<label>22 - Canine (Eye tooth / Cuspid) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>131</id>
+		<label>23 - Incisor (Lateral) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>132</id>
+		<label>24 - Incisor (Central) </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>133,134,135,136,137</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>133</id>
+		<label>Buccal </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>138</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>134</id>
+		<label>Mesial </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>139</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>135</id>
+		<label>Lingual</label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>140</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>136</id>
+		<label>Occlusal </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>141</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>137</id>
+		<label>Distal </label>
+		<type>DD</type>
+		<answer>
+			<label> Present</label>
+			<follow>142</follow>
+		</answer>
+		<answer>
+			<label> Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>138</id>
+		<label>Select </label>
+		<type>DD</type>
+		<answer>
+			<label> Caries</label>
+			<follow>201</follow>
+		</answer>
+		<answer>
+			<label> Filling</label>
+			<follow>202</follow>
+		</answer>
+		<answer>
+			<label> Fractured Teeth</label>
+			<follow>203</follow>
+		</answer>
+		
+		<answer>
+			<label> Missing</label>
+			<follow>204</follow>
+		</answer>
+		
+		<answer>
+			<label> Crown</label>
+			<follow>205</follow>
+		</answer>
+		
+		<answer>
+			<label> Implant</label>
+			<follow>206</follow>
+		</answer>
+		
+		<answer>
+			<label> Impacted</label>
+			<follow>207</follow>
+		</answer>		
+	</question>
+	
+		<question>
+		<id>139</id>
+		<label>Select </label>
+		<type>DD</type>
+		<answer>
+			<label> Caries</label>
+			<follow>201</follow>
+		</answer>
+		<answer>
+			<label> Filling</label>
+			<follow>202</follow>
+		</answer>
+		<answer>
+			<label> Fractured Teeth</label>
+			<follow>203</follow>
+		</answer>
+		
+		<answer>
+			<label> Missing</label>
+			<follow>204</follow>
+		</answer>
+		
+		<answer>
+			<label> Crown</label>
+			<follow>205</follow>
+		</answer>
+		
+		<answer>
+			<label> Implant</label>
+			<follow>206</follow>
+		</answer>
+		
+		<answer>
+			<label> Impacted</label>
+			<follow>207</follow>
+		</answer>		
+	</question>
+	
+		<question>
+		<id>140</id>
+		<label>Select </label>
+		<type>DD</type>
+		<answer>
+			<label> Caries</label>
+			<follow>201</follow>
+		</answer>
+		<answer>
+			<label> Filling</label>
+			<follow>202</follow>
+		</answer>
+		<answer>
+			<label> Fractured Teeth</label>
+			<follow>203</follow>
+		</answer>
+		
+		<answer>
+			<label> Missing</label>
+			<follow>204</follow>
+		</answer>
+		
+		<answer>
+			<label> Crown</label>
+			<follow>205</follow>
+		</answer>
+		
+		<answer>
+			<label> Implant</label>
+			<follow>206</follow>
+		</answer>
+		
+		<answer>
+			<label> Impacted</label>
+			<follow>207</follow>
+		</answer>		
+	</question>
+	
+		<question>
+		<id>141</id>
+		<label>Select </label>
+		<type>DD</type>
+		<answer>
+			<label> Caries</label>
+			<follow>201</follow>
+		</answer>
+		<answer>
+			<label> Filling</label>
+			<follow>202</follow>
+		</answer>
+		<answer>
+			<label> Fractured Teeth</label>
+			<follow>203</follow>
+		</answer>
+		
+		<answer>
+			<label> Missing</label>
+			<follow>204</follow>
+		</answer>
+		
+		<answer>
+			<label> Crown</label>
+			<follow>205</follow>
+		</answer>
+		
+		<answer>
+			<label> Implant</label>
+			<follow>206</follow>
+		</answer>
+		
+		<answer>
+			<label> Impacted</label>
+			<follow>207</follow>
+		</answer>		
+	</question>
+	
+		<question>
+		<id>142</id>
+		<label>Select </label>
+		<type>DD</type>
+		<answer>
+			<label> Caries</label>
+			<follow>201</follow>
+		</answer>
+		<answer>
+			<label> Filling</label>
+			<follow>202</follow>
+		</answer>
+		<answer>
+			<label> Fractured Teeth</label>
+			<follow>203</follow>
+		</answer>
+		
+		<answer>
+			<label> Missing</label>
+			<follow>204</follow>
+		</answer>
+		
+		<answer>
+			<label> Crown</label>
+			<follow>205</follow>
+		</answer>
+		
+		<answer>
+			<label> Implant</label>
+			<follow>206</follow>
+		</answer>
+		
+		<answer>
+			<label> Impacted</label>
+			<follow>207</follow>
+		</answer>		
+	</question>
+	
+	<question>
+		<id>201</id>
+		<label>Describe </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>202</id>
+		<label>Describe </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>203</id>
+		<label>Describe </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>204</id>
+		<label>Describe </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>205</id>
+		<label>Describe </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>206</id>
+		<label>Describe </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>207</id>
+		<label>Describe </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Treatment Plan </label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>500</id>
+		<label>-</label>
+		<type>label</type>
+	</question>
+	<question>
+		<id>1000</id>
+		<type>separator</type>
+	</question>
+</form>

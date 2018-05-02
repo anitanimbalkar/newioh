@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/public/css/views/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/public/css/views/webflow.css">
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/public/css/views/ayushman.webflow.css">
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/css/newformstyle.css">
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/css/jquery.multiselect.css" />
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/css/jquery-ui-multiselect.css" />
+  </head><body>
+    <div class="consultation_header" id="main">
+      <div class="w-row">
+        <div class="w-col w-col-7">
+          <div class="w-clearfix">
+            <a href="#!/"><img class="back_image" src="/ayushman/assets/images/back-icon.png" width="30" height="63px" alt="back-icon.png"></a>
+            <img ng-if='appointment_info.PatinetPhoto == ""' src="/ayushman/assets/public/img/Profile_Pic.png" alt="Profile_Pic.png">
+            <img ng-if='appointment_info.PatinetPhoto != ""' ng-src="{{appointment_info.PatientPhoto}}" alt="Profile_Pic.png">
+            <div class="consultation_header_text white_text">
+              {{appointment_info.Patientname}} | {{appointment_info.age}} | {{appointment_info.incidentsname_c}} | {{appointment_info.DateAndTime}}.
+            </div>
+          </div>
+        </div>
+        <div class="w-col w-col-5 w-clearfix consultation_icons_cont">
+          <div class="w-clearfix floating_div">
+            <img class="consultation_header_icons" src="/ayushman/assets/images/risk-factor-icon.png" width="58" alt="past-visits-icon.png"  ng-click='visible="risk";show_risk = !show_risk;'>
+            <div class="white_text consultation_icon_subtext"  ng-click='visible="risk";show_risk = !show_risk'>Risks</div>
+            <div class="notification_popup" ng-show='is_visible("risk") && show_risk'>
+              <div class="blue-section red-section">
+		<h3 class="white_text">Risk Factors</h3>
+              </div>
+              <div class="consultation-small-content content_section">
+		<div class="w-clearfix preview_paragraphs" ng-repeat="risk in risks" >
+		  <div ng-show="!(risk.edit_mode)" >
+                    <div class="floaing_text_block">{{risk.risk_text}}.</div>
+                    <img ng-if='risk.writer_id == appointment_info.doctorid' class="action_icon" src="/ayushman/assets/images/delete-risk-factor-icon.png" alt="delete-risk-factor-icon.png" ng-click="delete_risk($index,appointment_info.refappfromid_c)" />
+                    <img ng-if='risk.writer_id == appointment_info.doctorid' class="action_icon" src="/ayushman/assets/images/edit-icon.png" alt="edit-icon.png" ng-click="risk.edit_mode = true" />
+		  </div>
+		  <div class="w-clearfix" ng-show="risk.edit_mode">
+                    <input class="w-input inline_input" type="text" name="risk_text" data-name="risk_text" value="{{risk.risk_text}}" ng-model="risk.risk_text" />
+                    <img class="action_icon large" src="/ayushman/assets/images/add-risk-factor-icon.png" alt="add-risk-factor-icon.png" ng-click="edit_risk($index,appointment_info.refappfromid_c);risk.edit_mode=false" />
+		  </div>
+		</div>
+              </div>
+              <div class="blue-section red-section work_area">
+		<div class="w-clearfix">
+		  <input class="w-input inline_input" type="text" placeholder="Enter risk here" name="risk_text" required="required" data-name="risk_text" ng-model="new_risk.text"></input>
+		  <img class="action_icon large" src="/ayushman/assets/images/add-risk-factor-icon.png" alt="add-risk-factor-icon.png" ng-click="add_risk();">
+		</div>
+              </div>
+            </div>
+          </div>
+          <div class="w-clearfix floating_div">
+            <img class="consultation_header_icons" src="/ayushman/assets/images/my-notes-icon.png" width="58" alt="past-visits-icon.png" ng-click='visible="notes";show_notes = !show_notes;'>
+            <div class="white_text consultation_icon_subtext" ng-click='visible="notes";show_notes = !show_notes;'>Notes</div>
+            <div class="notification_popup" ng-show='is_visible("notes") && show_notes'>
+              <div class="blue-section brown-section">
+		<h3 class="white_text">Notes</h3>
+              </div>
+              <div class="consultation-small-content">
+		<textarea class="w-input" placeholder="Example Text" ng-model="doctor_notes.notes"></textarea>
+              </div>
+              <div class="w-clearfix blue-section brown-section"><a class="button" ng-click="save_notes(appointment_info.appointment_id, appointment_info.refappfromid_c);">Save notes</a>
+              </div>
+            </div>
+          </div>
+          <div class="w-clearfix floating_div">
+            <img class="consultation_header_icons" src="/ayushman/assets/images/view-emr-icon.png" width="58" alt="past-visits-icon.png" ng-click='visible="emr";show_emr = !show_emr'>
+            <div class="white_text consultation_icon_subtext">EMR</div>
+            <div class="notification_popup" ng-show='is_visible("emr") && show_emr'>
+              <div class="w-clearfix blue-section">
+		<img ng-if='appointment_info.PatinetPhoto == ""' src="/ayushman/assets/public/img/Profile_Pic.png" alt="Profile_Pic.png">
+		<img ng-if='appointment_info.PatinetPhoto != ""' ng-src="{{appointment_info.PatientPhoto}}" alt="Profile_Pic.png">
+		<div class="floaing_text_block">
+		  <div class="white_text">{{appointment_info.Patientname}}</div>
+		  <div class="white_text">{{appointment_info.age}}</div>
+		  <div class="white_text">{{appointment_info.incidentsname_c}}</div>
+		</div>
+              </div>
+              <div class="content_section">
+		<div class="emr-section">
+		  <h5>Allergies</h5>
+		  <p class="preview_paragraphs" ng-if="emr_snapshot.allergies.join() != '' ">{{emr_snapshot.allergies.join()}}.</p>
+		  <p class="preview_paragraphs" ng-if="emr_snapshot.allergies.join() == '' ">No information provided.</p>
+		</div>
+		<div class="emr-section">
+		  <h5>Past Diseases</h5>
+		  <p class="preview_paragraphs" ng-if="emr_snapshot.past_diseases.join() != '' ">{{emr_snapshot.past_diseases.join()}}.</p>
+		  <p class="preview_paragraphs" ng-if="emr_snapshot.past_diseases.join() == '' ">No information provided.</p>
+		</div>
+		<div class="emr-section">
+		  <h5>Major Illness and Treatment History</h5>
+		  <p class="preview_paragraphs" ng-if="emr_snapshot.past_illness.join() != '' ">{{emr_snapshot.past_illness.join()}}.</p>
+		  <p class="preview_paragraphs" ng-if="emr_snapshot.past_illness.join() == '' ">No information provided.</p>
+		</div>
+		<div class="emr-section">
+		  <h5>Surgical Procedures</h5>
+		  <p class="preview_paragraphs" ng-if="emr_snapshot.past_surgeries.join() != '' ">{{emr_snapshot.past_surgeries.join()}}.</p>
+		  <p class="preview_paragraphs" ng-if="emr_snapshot.past_surgeries.join() == '' ">No information provided.</p>
+		</div>
+              </div>
+              <div class="w-clearfix blue-section"><a class="button" href="#!/emr/{{appointment_info.appointment_id}}">View / Edit EMR</a>
+              </div>
+            </div>
+          </div>
+          <div class="w-clearfix floating_div" ng-click="viewSummary();">
+            <img class="consultation_header_icons" src="/ayushman/assets/images/summary-icon.png" width="58" alt="past-visits-icon.png">
+            <div class="white_text consultation_icon_subtext">View Summary</div>
+          </div>
+          <div class="w-clearfix floating_div" ng-click='confirm_endconsultation()'>
+            <img class="consultation_header_icons" src="/ayushman/assets/images/end-consultation-icon.png" width="58" alt="past-visits-icon.png">
+            <div class="white_text consultation_icon_subtext">End Consultation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="w-row">
+        <div class="w-col w-col-2 w-col-medium-4 w-col-small-4 w-col-tiny-4 nav_bar content">
+          <ul>
+            <li class="consultation_nav" ng-class="is_selected('main complaint');" ng-click="state.selected='main complaint'; state.isForm=false;"><a href="">Main Complaint</a></li>
+            <li class="consultation_nav" ng-class="is_selected('vital signs');" ng-click="state.selected = 'vital signs';state.isForm=true;showForm('vitals','examinations','false', 'vitals_target');"><a href="">Vital Signs</a></li>
+            <li class="consultation_nav" ng-class="is_selected('symptomatic review');" ng-click=" show_symptomatic_menu = !show_symptomatic_menu; ">
+              <a href="">Symptomatic Review of Systems</a>
+            </li>
+            <ul ng-show="show_symptomatic_menu" ng-repeat="(key, value) in state.symptomaticMenu" >
+              <li class="consultation_nav" ng-click="state.selected=value;state.isForm=true;showForm(value, 'symptomatic', 'true', 'symptomatic_target');" ng-class="is_selected(value);">
+                <a href="">{{key}}</a>
+              </li>
+            </ul>
+            <li class="consultation_nav" ng-class="is_selected('examination');" ng-click=" show_examination_menu = !show_examination_menu;">
+              <a href="">Examination</a>
+            </li>
+            <ul ng-show="show_examination_menu" ng-repeat="(key, value) in state.examinationMenu" >
+              <li class="consultation_nav" ng-click="state.selected=value;state.isForm=tru;showForm(value, 'examinations', 'true', 'examinations_target');" ng-class="is_selected(value);">
+                <a href="">{{key}}</a>
+              </li>
+            </ul>
+            <li class="consultation_nav" ng-class="is_selected('diagnosis');" ng-click="state.selected='diagnosis';state.isForm=false;"><a href="">Diagnosis</a></li>
+            <li class="consultation_nav" ng-class="is_selected('investigations');" ng-click="state.selected='investigations';state.isForm=false;"><a href="">Investigations</a></li>
+            <li class="consultation_nav" ng-class="is_selected('medicines');" ng-click="state.selected='medicines';state.isForm=false;"><a href="">Medicines</a></li>
+            <li class="consultation_nav" ng-class="is_selected('follow-up');" ng-click="state.selected='follow-up';state.isForm=false;"><a href="">Follow-up</a></li>
+          </ul>
+        </div>
+
+        <div class="w-col w-col-6 w-col-medium-4 w-col-small-4 w-col-tiny-4 nav_bar content">
+          <div ng-show="state.selected == 'main complaint' ">
+            <h4 class='consultation_heading'>Main Complaint</h4>
+            <textarea ng-model="state.text_complaint"></textarea>
+          </div>
+          <div ng-show="state.selected == 'follow-up' ">
+            <h4 class='consultation_heading'>Follow-up</h4>
+            <textarea ng-model="state.text_followup"></textarea>
+          </div>
+          <div ng-show="state.selected == 'diagnosis' ">
+            <h4 class='consultation_heading'>Diagnosis</h4>
+            <div  id="diagnosispopup" style="margin-left:0px; margin-top:0px; width:99%;" onkeyup="setDiagnosis();" onmouseup="setDiagnosis();" onblur="setDiagnosis()">
+              <div id="diagnosiscontainer"  style="width:100%;" onkeyup="setDiagnosis();" onmouseup="setDiagnosis();" onblur="setDiagnosis()">
+                <div id='diagnosisdiv' onkeyup="setDiagnosis();" onmouseup="setDiagnosis();" onblur="setDiagnosis()" >
+                  <div id='divdiagnosis' style="position:relative;float:left;width:100%;margin-top:0px;" onkeyup="setDiagnosis();" onmouseup="setDiagnosis();" onblur="setDiagnosis()"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div  id="testpopup" class="examform" onkeyup="setTests();" onmouseup="setTests();" ng-show="state.selected == 'investigations'">
+            <div><h4 class='consultation_heading'>Investigations</h4>
+              <div style="float:right"><a class = "bodytext_normal" onclick="getPastTests();" href="javascript:void(0);">Get Past Tests</a></div>
+            </div>
+            <div id="testcontent" class="formContent"></div>
+          </div>
+          <div  id="medicinepopup" class="examform" onkeyup="setMedicines();" onmouseup="setMedicines();" ng-show="state.selected == 'medicines'">
+            <div><h4 class="consultation_heading">Medicines</h4>
+              <div style="float:right; margin-right:20px;"><a onclick='$("#searchpopup").dialog("open");' href="javascript:void(0);">Search for medicines</a></div>
+              <div style="float:right"><a class = "bodytext_normal" onclick="getPastMedicines();" href="javascript:void(0);">Get Past Medicies</a></div>
+            </div>
+            <div id="medicinecontent" class="formContent"></div>
+          </div>
+          <div id="form_place_holder" ng-show="state.isForm == 1"></div>
+        </div>
+
+        <div class="w-col w-col-4 w-col-medium-4 w-col-small-4 w-col-tiny-4 nav_bar content">
+          <form id="emrform" method="post" enctype="multipart/form-data">
+	    <input type='hidden' value='' id='transferto' name='transferto'/>
+            <div class="summary_block" ng-show="state.text_complaint.length">
+              <div class="w-clearfix consultation_heading">
+		<h4 class="floating_div">Main Complaint</h4>
+		<div class="floating_right_div"><input type="checkbox" name="check[textcomplaint]" id="check_complaint" checked><label class="bodytext_normal" for="check_complaint" class="floating_div">Show to patient</label></div>
+              </div>
+              <div class="summary_text">
+		<p>{{state.text_complaint}}</p>
+              </div>
+            </div>
+            <div id='vitals_target' class="summary_block" style="display: none">
+              <div class="w-clearfix consultation_heading">
+		<h4 class="floating_div">Vital Signs</h4>
+		<div class="floating_right_div"><input type="checkbox" name="check[textvital]" id="check_vital" checked><label class="bodytext_normal" for="check_vital" class="floating_div">Show to patient</label></div>
+              </div>
+              <div class="summary_text"></div>
+              <input type="hidden" id="vitalsTextTarget" name="textvital" value="">
+            </div>
+            <div id="symptomatic_target" class="summary_block" style="display: none">
+              <div class="w-clearfix consultation_heading">
+		<h4 class="floating_div">Symptomatic Review</h4>
+		<div class="floating_right_div"><input type="checkbox" name="check[textsymptom]" id="check_symptom" checked><label class="bodytext_normal" for="check_symptom" class="floating_div">Show to patient</label></div>
+              </div>
+              <div class="summary_text"></div>
+              <input type="hidden" id="symptomatic_text_target" name="textsymptom" value="">
+            </div>
+            <div id="examinations_target" class="summary_block" style="display: none">
+              <div class="w-clearfix consultation_heading">
+		<h4 class="floating_div">Examination</h4>
+		<div class="floating_right_div"><input type="checkbox" name="check[textexamination]" id="check_examination" checked><label class="bodytext_normal" for="check_examination" class="floating_div">Show to patient</label></div>
+              </div>
+              <div class="summary_text"></div>
+              <input type="hidden" id="examinations_text_target" name='textexamination' value="">
+            </div>
+            <div id="diagnosis_target" class="summary_block" style="display: none">
+              <div class="w-clearfix consultation_heading">
+		<h4 class="floating_div">Diagnosis</h4>
+		<div class="floating_right_div"><input type="checkbox" name="check[textdiagnosisnote]" id="check_diagnosisnote" checked><label class="bodytext_normal" for="check_diagnosisnote" class="floating_div">Show to patient</label></div>
+              </div>
+              <div class="summary_text">
+		<p><textarea id="diagnosis_text" name="textdiagnosisnote"></textarea></p>
+              </div>
+            </div>
+            <div id="investigation_target" class="summary_block" style="display: none">
+              <div class="w-clearfix consultation_heading">
+		<h4 class="floating_div">Investigation</h4>
+		<input type="hidden" name="check[textinvestigation]" value="on">
+              </div>
+              <div class="summary_text">
+		<p><textarea id="investigation_text" name="textinvestigation"></textarea></p>
+              </div>
+            </div>
+            <div id="prescription_target" class="summary_block" style="display: none">
+              <div class="w-clearfix consultation_heading">
+		<h4 class="floating_div">Medicine</h4>
+		<input type="hidden" name="check[textprescription]" value="on">
+              </div>
+              <div class="summary_text">
+		<p><textarea id="prescription_text" name="textprescription"></textarea></p>
+              </div>
+            </div>
+            <div class="summary_block" ng-show="state.text_followup.length">
+              <div class="w-clearfix consultation_heading">
+		<h4 class="floating_div">Follow-up</h4>
+		<div class="floating_right_div"><input type="checkbox" name="check[textfollowupnote]" id="check_followup" checked><label class="bodytext_normal" for="check_followup" class="floating_div">Show to patient</label></div>
+              </div>
+              <div class="summary_text">
+		<p>{{state.text_followup}}</p>
+              </div>
+            </div>
+            <input type="hidden" id = "test_ids" name = "testIds" value="" />
+            <input type="hidden" id = "medicine_ids" name = "medicineIds" value = "" />
+            <input type='hidden' id='text_complaint' name="textcomplaint" value="{{state.text_complaint}}"/>
+            <input type='hidden' id='text_followup_note' name="textfollowupnote" value="{{state.text_followup}}"/>
+            <input type="hidden" name="appid" value="{{appointment_info.appointment_id}}" >
+          </form>
+        </div>
+      </div>
+    </div>
+    <div style="display: none">
+      <div id="symptomatic_text_container" style="display: none" >
+	<!--suppress XmlDuplicatedId -->
+	<input type="hidden" ng-repeat="(key, value) in state.symptomaticMenu"  id="{{value+'TextTarget'}}" name="{{key}}" value="">
+      </div>
+      <div id="examinations_text_container" style="display: none" >
+	<!--suppress XmlDuplicatedId -->
+	<input type="hidden" ng-repeat="(key, value) in state.examinationMenu" id="{{value+'TextTarget'}}" name="{{key}}" value="">
+      </div>
+    </div>
+    <div id="informationpopup" style="width:500px; background-color:#ffffff;" class="table_roundBorder">
+      <div style="width:100%; height:25px; background-color:#ecf8fb; border-bottom:1px solid #a8c8d9; text-align:left; margin-bottom:10px;">
+	&nbsp;&nbsp;<img src="/ayushman/assets/images/bullet.png" style="width: 15px;height: 15px; margin-top: 5px;margin-left: 5px" />&nbsp;
+	<label id="informationheading" class="bodytext_bold" style="display: inline-block">Information</label>
+	<label style="float:right; height:25px; margin-top:5px;display: inline-block"><img src="/ayushman/assets/images/Close_Icon.png" style="cursor:pointer;width: 15px;height: 15px;" onclick="$('#informationpopup').dialog('close');"/></label>
+      </div>
+      <div id="informationbody" style="width:100%;"></div>
+      <div style="width:100%; height:25px; background-color:#ecf8fb; border-top:1px solid #a8c8d9; margin-top:10px;"></div>
+    </div>
+    <div id="searchpopup" style="width:500px; background-color:#ffffff;" class="table_roundBorder">
+      <div style="width:100%; height:25px; background-color:#ecf8fb; border-bottom:1px solid #a8c8d9; text-align:left; margin-bottom:10px;">
+        &nbsp;&nbsp;<img src="/ayushman/assets/images/bullet.png" style="width: 15px;height: 15px;"/>&nbsp;
+        <label id="searchheading" class="bodytext_bold">Search</label>
+        <label style="float:right; height:25px; margin-top:5px;"><img src="/ayushman/assets/images/Close_Icon.png" style="cursor:pointer;width: 15px;height: 15px;" onclick="$('#searchpopup').dialog('close');"/></label>
+      </div>
+      <div id="searchbody" style="width:100%;">
+        <label class="bodytext_bold">Enter generic name in box to search for medicines</label>
+        <input type='text' id='searchbox' style="height:29px;width:93%;margin-top:2px;" onclick='populateautocomplete(this);' />
+        <button class="button" onclick='getSearchResults($("#searchbox").val())'>Search</button>
+        <div style="max-height:25px">
+          <table id = "searchguide" style="width:100%;display:none">
+            <tr class="Heading_Bg">
+              <td width="10%" align="middle">Type</td>
+              <td width="25%" align="middle">Generic Elements</td>
+              <td width="21%" align="middle">Name</td>
+              <td width="19%" align="middle">Strength</td>
+              <td width="15%" align="middle">Manufacturer</td>
+              <td width="10%" align="middle">Prescribe</td>
+            </tr>
+          </table>
+        </div>
+        <div style="max-height:375px;overflow:auto;margin-top:5px;">
+          <table id = "searchresult" style="width:100%;display:none">
+          </table>
+        </div>
+      </div>
+      <div style="width:100%; height:25px; background-color:#ecf8fb; border-top:1px solid #a8c8d9; margin-top:10px;"></div>
+    </div>
+  </body>
+</html>

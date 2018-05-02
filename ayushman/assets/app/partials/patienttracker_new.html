@@ -1,0 +1,180 @@
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tracker | India Online Health</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">		
+	<!--<link href="/ayushman/assets/app/css/main1.css" rel="stylesheet"/>-->
+	<script src="/ayushman/assets/app/lib/excanvas.min.js"></script>
+  </head>
+  <body>
+<style>
+	.col-lg-12 {
+		padding:0px !important;
+	}
+	.ui-datepicker{
+		z-index:2px !important;
+	}
+	.ui-autocomplete { max-height: 60%; overflow-y: auto; overflow-x: hidden;
+	-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);
+	-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);
+	box-shadow: 0 4px 15px rgba(0,0,0,1);
+	}
+</style>
+    <!--[if lt IE 7]>
+  	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+		<div class="navbar header" ng-if="tracker_info['user_role']=='patient' && show_nav_link('emrheader');" style="position:fixed;top:0px;z-index:100;box-shadow:2px 0px 7px #888888;">
+			<div class="container fullWidth">
+				<div class="navbar" style="position:relative;z-index:0;">
+					<a class="navbar-brand" ng-click="loading(true);" style="float:right;" href="javascript:history.go(-1)" class="bodytext_normal"><img src="/ayushman/assets/app/img/back.png" style="width:46"/><font size="3">Back</font></a>
+					<a class="navbar-brand" href=""><img style="width:193px" src="/ayushman/assets/app/img/logo.png" alt="India Online Health"></a>
+					<span>
+					<div class="navbar-header pull-left" >
+						<ul class="nav navbar-nav navbar-left">
+							<li >
+								<img ng-src="{{patientinfo.PatientPhoto}}" style="box-shadow:2px 7px 19px #888888;max-height:50px;" alt="Profile.png">
+							</li>
+							<li class="bodytext_bold" >
+								<div style="width:auto;padding-left:10px;padding-top:5px;">
+									{{patientinfo.name}}&nbsp;<label ng-show="patientinfo.PatientGender!='' || patientinfo.age!=0">(<label ng-show="patientinfo.age!=0">{{patientinfo.age}} Yrs</label>,{{patientinfo.PatientGender}} )</label></br>
+									IOH Id : {{patientinfo.id}} </br>
+								</div>
+							</li>
+						</ul>
+					</div></span>
+				</div>
+			</div>
+		</div>
+
+<div class="container" style="height:auto;background-color:white;"> 
+      <!-- Example row of columns -->
+      <div class="row main-content">
+	<div class="col-lg-12" style="height:500px;" ng-if="(tracker_info['tracker_list']).length == 0">
+		<div class="detailsLink green" style='text-align:left;margin-top:25px;margin-bottom:10px;padding-left:20px;'> 
+	    <a href="javascript:void(0);" ng-click='create_tracker(null,patient_id);'>Create Blank Tracker</a>
+	  </div>
+	  <span class="bodytext_bold" ng-if="tracker_info['template_list'].length > 0" style="margin-left:70px;">OR</span>
+	  <div class="detailsLink green" ng-if="tracker_info['template_list'].length > 0" style='text-align:left;margin-top:10px;padding-left:20px;'> 
+	    <a href="javascript:void(0);" >Create From Template</a> <!--ng-click='create_tracker(item.id, patient_id);'-->
+	    <ul class="dropdown-menu" style="display:inline-block;" >
+	      <li ng-repeat='item in tracker_info.template_list' ng-click='create_tracker(item.id, patient_id);' style="cursor:pointer;width: 150px;padding: 10px;text-align:left;display:inline-block;"><span class="bodytext_bold">{{item.name}}</span></li>
+	    
+	    </ul>
+	  </div>
+	</div>
+	
+	<div class="col-lg-12" ng-if="(tracker_info['tracker_list']).length > 0" style="margin-top:7px;margin-bottom:7px;">
+		<div class="sectionBox">
+			 &nbsp;
+					
+			<table style="width:100%;">
+				<tr>
+					<td style="width:50%;">
+					</td>
+					<td style="position:relative;width:38%;">
+						<span ng-if="tracker_info['user_role']=='doctor'" class="bodytext_bold" style="float:right;">Create New Tracker From Templates</span>
+					</td>
+					<td style="position:relative;width:16%;">
+						<button ng-if="tracker_info['user_role']=='doctor'"  id="create" class="btn btn-success dropdown-toggle" style="width:159px;" ><span class="glyphicon glyphicon-plus"></span>&nbsp;<span class="create">Templates</span></button>
+						<button ng-if="tracker_info['user_role']=='patient'" class="btn btn-success dropdown-toggle" ng-click='create_new_tracker(null);'  style="width:182px;" >&nbsp;<span class="glyphicon glyphicon-plus"></span>Create Blank Tracker</button>
+						<ul ng-if="tracker_info['user_role']=='doctor'" class="dropdown-menu" style="position:absolute;float:right;right:1px;width:100px;">
+							<li ng-click='create_new_tracker(null);'><a href="">Blank Tracker</a></li>
+							<li ng-repeat='item in tracker_info.template_list' ng-if="item.isheader != 1" ng-click='create_new_tracker(item.id);'><a href="">{{item.name}}</a></li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div style="padding-left: 15px;">
+		<!--<label class="bodytext_bold"> <span class="patientsName">{{appointment_info.Patientname}}</span>'s Existing Trackers&nbsp;&nbsp;</label>
+		<select  style="width:159px;height:29px;" class="textarea"
+			ng-options="item.id as item.name for item in tracker_info.tracker_list" 
+			ng-change="get_tracker_data(patient_id,tracker_info['gridOptions'][item.id]);" 
+			ng-model="tracker_info['selected']">
+		</select>-->
+		<table>
+			<tr>
+				<td class="btn dropdown-toggle" ng-class="{'dark_blue':tracker_info['user_id']==item['owner_id'],'dark_red':tracker_info['user_id']!=item['owner_id']}" ng-repeat="item in tracker_info.tracker_list" ng-click="tracker_info['selected'] = item.id;get_tracker_data(patient_id,tracker_info['gridOptions'][item.id]);">
+					&nbsp;<span class="create">{{item.name}}</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-lg-12" ng-repeat='item in tracker_info.tracker_list'>
+	  <div class="sectionBox" ng-show='tracker_info["selected"] == item.id' >
+        <h2 style="height: 43px;" ng-class="{'dark_blue':tracker_info['user_id']==item['owner_id'],'dark_red':tracker_info['user_id']!=item['owner_id']}">
+	      <span ng-show='!item.edit_name' style="float:left;    margin: 7px;">{{item.name}}</span> 
+	      <input ng-if="tracker_info['user_id']==item['owner_id']" ng-show='item.edit_name' style="float:left;    margin: 7px;" type='text' ng-model='item.name' ng-enter="update_tracker_name($index, patient_id)">
+		  <a ng-if="tracker_info['user_id']==item['owner_id']" href="" class="detailsIcon text-left" style="float:left;    margin: 7px;" title="Edit Sheet Name" ng-click='item.edit_name = true;' ng-show='!item.edit_name'>&nbsp;&nbsp;<span class="glyphicon glyphicon-edit" style="color:Blue;font-size:13px;">Edit</span></a>
+	      <a ng-if="tracker_info['user_id']==item['owner_id']" href="" class="detailsIcon text-left" style="float:left;    margin: 7px;" title="Edit Sheet Name" ng-click='update_tracker_name($index, patient_id);' ng-show='item.edit_name'>&nbsp;&nbsp;<span class="glyphicon glyphicon-ok" style="color:blue;font-size:13px;">Save</span></a>
+		  <div class="detailsLink" style="width:50%;float:right;" ng-class="{'dark_blue':tracker_info['user_id']==item['owner_id'],'dark_red':tracker_info['user_id']!=item['owner_id']}"> 
+				<a href="javascript:void(0);" ng-show='item["is_edit"] == true' ng-click='save_tracker(item.id, patient_id);item["is_edit"] = false;'><span class="glyphicon glyphicon-ok"></span>&nbsp;Save Changes</a>
+				<a href="javascript:void(0);" ng-show='item["is_edit"] == true' ng-click='discard_tracker(item.id, patient_id);item["is_edit"] = false;'><span class="glyphicon glyphicon-remove"></span>&nbsp;Discard Changes</a>
+				&nbsp;
+				<input ng-if="tracker_info['user_role']=='doctor'" type='text' placeholder='Enter Template Name' ng-model='tracker_info["template_name"]' ng-show='item["show_template_input"]'>
+				<a href='' ng-if="tracker_info['user_role']=='doctor'" ng-click='create_template(item.id, patient_id);item["show_template_input"] = false;' ng-show='item["show_template_input"]'><span class="glyphicon glyphicon-book" style="height:25px;"></span>&nbsp;Save as Template</a>
+				<a href="javascript:void(0);" ng-if="tracker_info['user_role']=='doctor'" ng-click='item["show_template_input"] = true;' ng-show='!item["show_template_input"]'><span class="glyphicon glyphicon-book"></span>&nbsp;Save As Template</a> 
+				<a href="javascript:void(0);" ng-if="tracker_info['user_id']==item['owner_id']" ng-click='delete_tracker(patient_id, item.id);'><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete Tracker</a> 
+			</div>
+		</h2>	
+		
+		<div class="col-lg-12" ng-if="(tracker_info['tracker_list']).length > 0" style="margin-top:7px;margin-bottom:7px;">
+			<div trackerheader></div>
+	</div>
+		<div style="margin:5px 10px 20px 10px;"><span class="bodytext_bold">Note : You can't modify the tracker sheet data created by other's</span></br>
+		<div ng-if="tracker_info['user_role']=='doctor'" class="box"><div class="foo" style="background-color:#FFCCCC;"></div><div style="margin-left:10px;float:left;padding-top:7px;" class="bodytext_bold">Created by Patient</div></div>
+		 <div ng-if="tracker_info['user_role']=='patient'" class="box"><div class="foo" style="background-color:rgba(0, 0, 255, 0.45);"></div><div style="margin-left:10px;float:left;padding-top:7px;" class="bodytext_bold">Created by Doctor</div></div>
+		 <div ng-if="tracker_info['user_role']=='doctor'" class="box"><div class="foo" style="background-color:rgba(0, 0, 255, 0.45);"></div><div style="margin-left:10px;float:left;padding-top:7px;" class="bodytext_bold">Created by Other Doctor's</div></div>
+		<div class="box"> <div class="foo" style="background-color:#CEF6CE;"></div><div style="margin-left:10px;float:left;padding-top:7px;" class="bodytext_bold">Created by Diagnostic Center</div></div>
+		 </div>
+	<div style="margin:25px 10px 1px 0px">
+		<div class="bodytext_bold" style="" ng-hide="tracker_info['current_tracker_id'] ||  tracker_info['gridOptions'][tracker_info['selected']] || (tracker_info['tracker_list']).length == 0">
+			Loading Tracker's Data <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+		</div>
+		<div class="bodytext_bold" style="" ng-if="gotparametersdata">
+			Loading Tracker Parameter's Data <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+		</div>
+	</div>
+		<div class="bodytext_bold" style="margin:10px 10px 5px 1px;    padding: 11px;">
+		<HR WIDTH="100%" ALIGN="LEFT">
+	Start Parameter's Date  <input datepickerdefault required type='text' value='{{item.parameterstartdate}}' ng-change="update_databy_date(item.id,tracker_info,patient_id,$index);" ng-model='item.parameterstartdate' />
+	To Parameter's Date  <input datepickerdefault required type='text' value='{{item.parametertodate}}' ng-change="update_databy_date(item.id,tracker_info,patient_id,$index);" ng-model='item.parametertodate' />
+		</div>
+            <div class="contentDetails" >
+				<div style="display:none;height:261px;width:99%;position:relative;z-index:0;background-color:white;top:0px;left:0px;display:none;border:1px solid black;">
+					<h3 ng-class="{'dark_blue':tracker_info['user_id']==item['owner_id'],'dark_red':tracker_info['user_id']!=item['owner_id']}" style="color:white;padding-left:5px;position:relative;"><span id="{{item.id+'_graph_title'}}"></span><a href="javascript:void(0);" ng-click="refresh_graph();"><span class="glyphicon glyphicon-refresh" style="color:blue;" >&nbsp;refresh</span></a><img src="/ayushman/assets/app/img/close_icon.png" ng-click="hide_graph();" style="float:right;"/></h3>
+					<div id="{{item.id+'_graph_place_holder'}}" style="height:200px;width:950px;margin:10px;" class='graph' title='Drag mouse over dates to zoom.'></div>
+				</div>
+				<div id='{{item.id + "_tracksheet"}}' style="width:100%;position:relative;z-index:1;background-color:white;margin-top:5px;left:0px;"> 
+					<div class="gridStyle" ng-grid="tracker_info['gridOptions'][item.id]" title="Click on a cell to edit."></div>
+				</div>
+            </div>
+				<div class="bodytext_bold" style="padding:10px;position:relative;">
+					Note: <br/>
+					1) Click on any cell to edit.</br>
+					2) Click on <img src="/ayushman/assets/app/img/graph.png" style="height:15px;width:15px" /> to draw a line graph.
+				</div>
+            <div class="detailsLink" ng-class="{'dark_blue':tracker_info['user_id']==item['owner_id'],'dark_red':tracker_info['user_id']!=item['owner_id']}"> 
+				<a href="javascript:void(0);" ng-show='item["is_edit"] == true' ng-click='save_tracker(item.id, patient_id);item["is_edit"] = false;'><span class="glyphicon glyphicon-ok"></span>&nbsp;Save Changes</a>
+				<a href="javascript:void(0);" ng-show='item["is_edit"] == true' ng-click='discard_tracker(item.id, patient_id);item["is_edit"] = false;'><span class="glyphicon glyphicon-remove"></span>&nbsp;Discard Changes</a>
+				&nbsp;
+				<input ng-if="tracker_info['user_role']=='doctor'" type='text' placeholder='Enter Template Name' ng-model='tracker_info["template_name"]' ng-show='item["show_template_input"]'>
+				<a href='' ng-if="tracker_info['user_role']=='doctor'" ng-click='create_template(item.id, patient_id);item["show_template_input"] = false;' ng-show='item["show_template_input"]'><span class="glyphicon glyphicon-book"></span>&nbsp;Save as Template</a>
+				<a href="javascript:void(0);" ng-if="tracker_info['user_role']=='doctor'" ng-click='item["show_template_input"] = true;' ng-show='!item["show_template_input"]'><span class="glyphicon glyphicon-book"></span>&nbsp;Save As Template</a> 
+				<a href="javascript:void(0);" ng-if="tracker_info['user_id']==item['owner_id']" ng-click='delete_tracker(patient_id, item.id);'><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete Tracker</a> 
+			</div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <!-- /container --> 
+  </body>
+</html>

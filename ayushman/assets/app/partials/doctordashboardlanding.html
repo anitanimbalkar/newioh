@@ -1,0 +1,1525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<style type="text/css">
+.table_roundBorder{
+			border:1px solid #a8c8d9;
+			-moz-border-radius:4px;
+			-webkit-border-radius:4px;
+			-opera-border-radius:4px;
+			-khtml-border-radius:4px;
+			border-radius:4px;
+			display: table;
+			border-collapse: separate;
+			border-spacing: 2px;
+			border-color: #A8C8D9;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			}
+.color
+{
+color : red;
+}		
+	</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Doctor Dashboaard landing page</title>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- Include all compiled plugins (below), or include individual files as needed-->
+<link href="/ayushman/assets/css/rstyle.css" rel="stylesheet" type="text/css" />
+<link href="/ayushman/assets/css/rcstyle.css" rel="stylesheet" type="text/css" />
+<!--<script src="/ayushman/assets/app/js/createDialog.js">							</script>	
+<script src="/ayushman/assets/app/js/extra/dashboard.js"></script>-->
+<script src="/ayushman/assets/app/js/services/dashboardservice.js"></script>
+</br> </br> </br>
+<div class="wrapper1" id="search1" style = "font-family:verdana;">
+<div class="main1" ng-app="myapp">
+	<div class="row">
+		<div class="col-md-2">
+			</br>	
+			<table style="position:fixed; width:210px;">
+			<tr><td>
+				<div  class="waiting1">
+					<button type="button" class="consultation_bluebtna1" id="button4" ng-click="getupcomingappointment();" onclick="displayupcomingappointment(); btnhide();">Upcoming Appointments</button>
+					<button type="button" class="consultation_bluebtna1" id="button5" ng-click="" onclick="displaypastpatient(); btnhide();">Past Consultations</button>
+					<button type="button" class="consultation_bluebtna1" id="button6" ng-click="incompleteconsultation();" onclick="displayincompletecons(); btnhide();">Incomplete Consultations</button>
+					<button type="button" class="consultation_bluebtna1" onclick="btnhide(); $('#nonregisteredUser').dialog('open');">Add new patient</button>
+					<button type="button" class="consultation_bluebtna1" onclick="btnhide(); $('#bulkregistration').dialog('open');">Bulk Registration</button>
+					<button type="button" class="consultation_bluebtna1" onclick="btnhide(); $('#bulkConsultation').dialog('open');">Bulk Consultation</button>
+					
+				</div>
+			
+				<div id="seletpatientbtn" class="waiting1">		
+					<button  	id="button1" 	type="button" class="consultation_bluebtna1" 	onclick="go(); ">			Consultation								</button>
+					<button  	id="buttonsearch" 	type="button" class="consultation_bluebtna1" 	onclick="gosearch(); ">			Consultation								</button>
+					<button  	id="button2" 	type="button" class="consultation_bluebtna1"  	onclick="goincomplete();">	Consultation								</button>
+					<button 	id="resume" 	type="button" class="consultation_bluebtna1" 	onclick="go();">			Resume Prescription							</button>
+					<button  	id="Preferred" 	type="button" class="consultation_bluebtna1" 	onclick="buildPatientNetwork();">			Preferred Network			</button>
+					<button 	id="button3"	type="button" class="consultation_bluebtna1" 	onclick="appointmentschedule();">	Book Appointment					</button>
+					<button 	id="button7" 	type="button" class="consultation_bluebtna1" 	onclick="canappoint();">Cancel Appointment</button>
+					<button type="button8" class="consultation_bluebtna1"  onclick="myFunction();">Full EMR</button>
+					<button 	id="button9" 	type="button" class="consultation_bluebtna1" 	onclick="displayTracker();">Tracker</button>
+					<button 	id="printpastprescription" 	type="button" class="consultation_bluebtna1" onclick="pastprint();">Print Prescription						</button>
+					<div id="generatebill">
+						<a><button type="button" class="consultation_bluebtna1" onclick="generatbill();" >Generate Bill </button></a>
+					</div>
+					<!--<a ng-show="biiprint == 'no'">	<button 	id="generatebill" 		type="button" class="consultation_bluebtna1" ng-controller="pastbillCtrl" onclick="generatbill();" >Generate Bill </button></a>
+					-->
+					<div id="printbill">
+						<a id="pdffilename" href="/ayushman/files/Documents/{{namefile}}">	<button 	id="generatebil2" 		type="button" class="consultation_bluebtna1">Print Bill </button>	</a>
+					</div>
+					<button 	id="button9" 			type="button" class="consultation_bluebtna1" ng-click="show_medical_certificate(selectedpatientid);">Medical Certificate			  </button>					
+					<button 	id="button10"			type="button" class="consultation_bluebtna1" ng-click="show_fitness_certificate(selectedpatientid);">Fitness Certificate			  </button>
+				</div>
+		</td>
+		</tr>
+		</table>
+		</div>						
+		<div id="all" style="margin-left:225px;">
+		<div class="col-md-10" >		    				
+			<div class="forma3">		
+			<table width="100%" >
+				<tr>
+					<td width="80%">	Name/IOHID:<input type="text" id="textjob" class="areaa1" placeholder="Search Patient By Name/Mobile No.">  </td>
+					<td width="20%">	<button type="button" id="searchbutton" onclick="searchpatient(); displaypatient(); btnhide();"  class="consultation_bluebtna1"><h4><i class="fa fa-search" style="font-size:20px;top:21px;" aria-hidden="true"></i>Search</h4></button></td> &nbsp
+				</tr>
+			</table>				
+			</div>
+						</div>
+						<div class="col-md-10" id="register">	
+						<div class="row">
+						<div class="blank1">
+		<!-- regular patient table --> 					
+		<table class="table demo table_roundBorder" id="patienttable" style="font-size:15px;">
+				<thead  style="background: rgba(100,149,237,0.35);color: black; font-weight:bold; font-family:verdana; font-size:12px ;">
+			<tr>
+				 <td colspan="6" align="center"> <b>Searched Patients </b></td>
+			</tr>
+			
+			<tr>
+					<th>IOH ID	</th>
+                    <th>Patient name	</th>
+                    <th>Gender				</th>
+                    <th>Age		</th>					
+                    <th>Patient Mobile	</th>
+					<th>Patient Photo 	</th>
+                </tr>
+            </thead>
+			
+                <tbody style = "background-color : #f2f2f2;" id="tab">	
+				<tr ng-if="searchrecordstat == 0">
+						<td colspan="5" align="center">
+								No record found
+					   	</td>
+				</tr>
+				<!--<tr id="u{{patient.patientuserid}}" style = "background-color : #f2f2f2;" ng-model="patientdata" ng-repeat= "patient in patientdata" ng-click="getid(patient.patientuserid);" onclick="get_id();" >-->
+					<tr id="u{{patient.patientuserid}}" style = "background-color : #f2f2f2; font-family:verdana; font-size:12px;" ng-model="patientdata" ng-repeat= "patient in patientdata" ng-click="getid(patient.patientuserid); setbgcolor(patient.patientuserid);" title="Click to Select" onClick="btnshow();">
+					    <td>{{patient.patientuserid}}</td>
+						<td><a href="" ng-dblclick="connetonclick(patient.patientuserid,1);" title="Double Click to Start Consultation">{{patient.patientname}}</a></td>
+						<td>{{patient.gender}}</td>
+						<td>{{patient.age}}</td>
+						<td>{{patient.mobilenumber}}</td>
+						<td align="center"><img ng-src="{{patient.photo}}"  style="height:50px;width:50px;" alt=""></td>									                    
+					</tr>    
+						<tr>
+							<th colspan = "6" align=>
+								<div class="bodytext_bold" style="position:relative;text-align: center;" ng-if="gotvisits == false">
+									Loading <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+								</div>
+								<div class="bodytext_bold" ng-show="patdataLength > 5" style="position:relative;padding-top:5px;" align="center" >
+									<a href="javascript:void(0);" ng-click="showMorepatient();" ng-if="patientda.name['length'] != patientdata['length']">Show Next 5 Patients</a>
+									<a href="javascript:void(0);" ng-click="showallpatient();" ng-if="patientda.name['length'] != patientdata['length']">/Show All patients/</a>
+									<a href="javascript:void(0);" ng-click="showLesspatient();" ng-if="patientdata['length'] > 5">Show Only Latest 5 patients</a>
+									<label ng-if="patientda.name['length'] != 0" style="float:right;">Showing 1 - {{patientdata['length']}} of {{patientda.name['length']}} records </label>
+								</div>
+							</th>
+							
+						</tr>
+                </tbody>					
+        </table>
+	
+ 
+  <!-- Upcoming Appointment table --> 		
+		<table class="table demo table_roundBorder" id="upcomingapptable" style="font-size:15px;">
+			<thead style="background: rgba(100,149,237,0.35);color: black; font-weight:bold; font-family:verdana; font-size:12px ;">    
+					<tr>
+						<td colspan="9" align="center"> <b>Upcoming Appointments  <h4></td>
+					</tr>
+				<tr>
+					<th>IOH ID	</th>
+                    <th>Patient name	</th>
+                    <th>Gender				</th>
+                    <th>Age		</th>					
+                    <th>Patient Mobile	</th>
+					<th>Appointment 	</th>
+					<!--<th>Incidence 		</th>-->
+					<th>Mode			</th>
+					<th>Patient Photo 	</th>
+	         </tr>
+            </thead>
+                <tbody style = "background-color : #f2f2f2;" id="tab">	
+					<tr ng-if="upcomerecordstat == 0">
+						<td colspan="8" align="center">
+								No Upcoming Appointment(s) found
+					   	</td>
+					</tr>
+					<!--<tr id="{{upappointment.appointment_id}}" style = "background-color : #f2f2f2;" ng-model="upappointments" ng-repeat= "upappointment in upappointments" ng-click="getappid(upappointment.refappfromid_c,upappointment.appointment_id);" onClick="chBackcolor();">-->
+					<tr id="u{{upappointment.appointment_id}}" style = "background-color : #f2f2f2; font-family:verdana; font-size:12px;" ng-model="upappointments" ng-repeat= "upappointment in upappointments" ng-click="getappid(upappointment.refappfromid_c,upappointment.appointment_id); setbgcolor(upappointment.appointment_id);" title="Click to Select" onClick="btnshow();">
+					    <td>{{upappointment.refappfromid_c}}</td>
+						<td><a href="" ng-dblclick="connetoincompleteclick(upappointment.refappfromid_c,upappointment.appointment_id,1);" title="Double Click to Start Consultation">{{upappointment.Patientname}}</a></td>
+						<td>{{upappointment.PatientGender}}</td>
+						<td>{{upappointment.age}}</td>
+						<td>{{upappointment.PatientContactNumber}}</td>
+						<td>{{upappointment.DateAndTime}}</td>
+						<!--<td>{{upappointment.incidentsname_c}}</td>--->
+						<td>{{upappointment.mode}}</td>
+						<td align="center" ><img ng-src="{{upappointment.PatientPhoto}}"  style="height:50px;width:50px;" alt=""></td>									                    
+					</tr>
+						<tr>
+							<th colspan = "9" align=>
+								<div class="bodytext_bold" style="position:relative;text-align: center;" ng-if="gotvisits == false">
+									Loading Upcoming Appointments <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+								</div>
+								
+								<div class="" ng-show="count > 5" style="position:relative;padding-top:5px; color:black;" align="center" >
+									<a href="javascript:void(0);" ng-click="showMoreuppatient();" ng-if="appointmen.length != upappointments['length']">Show Next 5 patients</a>
+									<a href="javascript:void(0);" ng-click="showalluppatient();" ng-if="appointmen.length != upappointments['length']">/ Show All patients/</a>
+									<a href="javascript:void(0);" ng-click="showLessuppatient();" ng-if="upappointments['length'] > 5">Show Only Latest 5 patients</a>
+									<label ng-if="appointmen.length != 0" style="float:right;">Showing 1 - {{upappointments['length']}} of {{appointmen.length}} records </label>
+								
+								</div>
+							</th>
+							
+						</tr>
+                </tbody>					
+        </table>
+ 
+ <!-- incomplete appointment table --> 		
+ 	<table class="table demo table_roundBorder" id="incompleteapptable">
+		<thead  style="background: rgba(100,149,237,0.35);color: black; font-weight:bold; font-family:verdana; font-size:12px ;">
+			<tr>
+				 <td colspan="8" align="center"> <b>Incomplete Consultations  <h4></td>
+			</tr>
+                <tr>
+					<th>IOH ID	</th>
+                    <th>Patient name	</th>
+                    <th>Gender				</th>
+                    <th>Age		</th>					
+                    <th>Patient Mobile	</th>
+					<th>Last saved date	</th>
+					<!--<th>Incidence 		</th>-->
+					<th>Mode			</th>
+					<!--<th>Action			</th>-->
+					<th>Patient Photo 	</th>
+				
+                </tr>
+            </thead>
+                <tbody style = "background-color : #f2f2f2;" id="tab">	
+						<tr ng-if="incompletrecordstat == 0">
+							<td colspan="8" align="center">
+								No Incomplete Consultation(s) found
+							</td>
+						</tr>
+					<!--<tr id="{{appointment.appointment_id}}" style = "background-color : #f2f2f2;" ng-model="upappointments" ng-repeat= "appointment in inappointments['page']" ng-click="getappid(appointment.refappfromid_c,appointment.appointment_id);" onclick="get_appid();" >-->
+					<tr id="u{{appointment.appointment_id}}" style = "background-color : #f2f2f2; font-family:verdana; font-size:12px;" ng-model="upappointments" ng-repeat= "appointment in inappointments['page']" ng-click="getappid(appointment.refappfromid_c,appointment.appointment_id);setbgcolor(appointment.appointment_id);" title="Click to Select" onClick="btnshow();">
+					     <td>{{appointment.refappfromid_c}}</td>
+						<td><a href="" ng-dblclick="connetoincompleteclick(appointment.refappfromid_c,appointment.appointment_id,1);" title="Double Click to Start Consultation">{{appointment.Patientname}}</a></td>
+						<td>{{appointment.PatientGender}}</td>
+						<td>{{appointment.age}}</td>
+						<td>{{appointment.PatientContactNumber}}</td>
+						<td>{{appointment.endConsultDate}}</td>
+						<!--<td>{{appointment.incidentsname_c}}</td>-->
+						<td>{{appointment.mode}}</td>
+					<!--	<td><a href="javascript:void(0);">Resume</a></td>-->
+						<td align="center" ><img ng-src="{{appointment.PatientPhoto}}"  style="height:50px;width:50px;" alt=""></td>									                    
+					</tr>
+						<tr>
+							<th colspan = "8" align=>
+								<div class="bodytext_bold" style="position:relative;text-align: center;" ng-if="gotvisits == false">
+									Loading Incomplete Consultations <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+								</div>
+								
+								<div class="bodytext_bold" ng-show="inappointments['page'].length > 0" style="position:relative;padding-top:5px;" align="center" >
+									<a href="javascript:void(0);" ng-click="showMoreVisitsInc();" ng-if="inappointments['apps'].length != inappointments['page'].length">Show Next 5 Patients</a>
+									<a href="javascript:void(0);" ng-click="showAllVisitsInc();" ng-if="inappointments['apps'].length != inappointments['page'].length">/ Show All Patients/</a>
+									<a href="javascript:void(0);" ng-click="showLessVisitsInc();" ng-if="inappointments['page'].length > 5"> Show Only Latest 5 Patients</a>
+									<label ng-if="inappointments['apps'].length != 0" style="float:right;">Showing 1 - {{inappointments['page'].length}} of {{inappointments['apps'].length}} records </label>
+								</div>
+							</th>
+							
+						</tr>
+                </tbody>					
+        </table>
+		
+  <!-- Past appointment table --> 	
+		<table class="table demo table_roundBorder" id="pastapptable">
+			 <thead  style="background: rgba(100,149,237,0.35);color: black; font-weight:bold; font-family:verdana; font-size:12px ;">
+			 <tr>
+				 <td colspan="8" align="center"> <b>Past Consultations  <h4></td>
+			</tr>
+				
+			  <tr>
+					<th>IOH ID	</th>
+					<th>Patient name	</th>
+                    <th>Gender				</th>
+                    <th>Age				</th>					
+                    <th>Patient Mobile	</th>
+					<th>Consultation date 	</th>
+					<!--<th>Incidence 		</th>-->
+					<th>Mode			</th>
+					<!--<th>Action			</th>-->
+					<th>Patient Photo 	</th>
+				
+                </tr>
+            </thead>
+                <tbody style = "background-color : #f2f2f2;" id="tab">
+						<tr ng-if="pastrecordstat == 0">
+							<td colspan="8" align="center">
+								No Past Consultation(s) found
+							</td>
+						</tr>
+					<!--<tr id="{{pastappointmentdata.appointment_id}}" style = "background-color : #f2f2f2;" ng-model="pastappointment" ng-repeat= "pastappointmentdata in pastappointment" ng-click="getidpast(pastappointmentdata.refappfromid_c,pastappointmentdata.appointment_id,pastappointmentdata.diagnosis,pastappointmentdata.billGenerated,pastappointmentdata.pdffilename);" onclick="get_idpast();" >-->
+					<tr id="u{{pastappointmentdata.appointment_id}}" style = "background-color : #f2f2f2; font-family:verdana; font-size:12px;" ng-model="pastappointment" ng-repeat= "pastappointmentdata in pastappointments['page']" ng-click="getidpast(pastappointmentdata.refappfromid_c,pastappointmentdata.appointment_id,pastappointmentdata.diagnosis,pastappointmentdata.billGenerated,pastappointmentdata.pdffilename); setbgcolor(pastappointmentdata.appointment_id);" title="Click to Select" onClick="btnshow();">
+						<td>{{pastappointmentdata.refappfromid_c}}</td>
+						<td>{{pastappointmentdata.Patientname}}</td>
+						<td>{{pastappointmentdata.PatientGender}}</td>
+						<td>{{pastappointmentdata.age}}</td>
+						<td>{{pastappointmentdata.PatientContactNumber}}</td>
+						<td>{{pastappointmentdata.DateAndTime}}</td>
+						<!--<td>{{pastappointmentdata.incidentsname_c}}</td>-->
+						<td>{{pastappointmentdata.mode}}</td>
+						<!--<td><a href="">print prescription</a></td>-->
+						<td align="center"><img ng-src="{{pastappointmentdata.PatientPhoto}}"  style="height:50px;width:50px;" alt=""></td>									                    
+					</tr>    
+						<tr>
+							<th colspan = "8" align=>
+								<div class="bodytext_bold" style="position:relative;text-align: center;" ng-if="gotvisits == false">
+									Loading Past Consultations <img id="loading" src="/ayushman/assets/images/ajax-loader.gif" />
+								</div>
+								
+								<div class="bodytext_bold" ng-show="pastappointments['appscount']['count'] > 0" style="position:relative;padding-top:5px;" align="center" >
+									<a href="javascript:void(0);" ng-click="showMorepastpatient();"  ng-if="pastappointments['appscount']['count'] != pastappointments['page'].length">Show Next 5 Patients</a>
+									<a href="javascript:void(0);" ng-click="showallpastpatient();" ng-if="patcount != pastappointment['length']"> /Show All Patients/</a>
+									<a href="javascript:void(0);" ng-click="showLesspastpatient();" ng-if="pastappointments['appscount']['count'] > 5">Show Only Latest 5 Patients</a>
+									<label ng-if="pastappointments['appscount']['count'] != 0" style="float:right;">Showing 1 - {{pastappointments['page'].length}} of {{pastappointments['appscount']['count']}} records  </label>
+								</div>
+								
+							</th>
+							
+						</tr>
+                </tbody>					
+        </table>
+							
+											<input type="hidden" id="pat" value="{{selectedpatientid}}" />
+											<input type="hidden" id="pat1" value="{{preselectedpatientid}}" />
+											<input type="hidden" id="pat2" value="{{selectedpatientidpast}}" />
+											<input type="hidden" id="pat3" value="{{preselectedpatientidpast}}" />
+											<input type="hidden" id="pat4" value="{{patientiddiagnosis}}" />
+											<input type="hidden" id="pat5" value="{{pastappointments}}" />
+											<input type="hidden" id="pat7" value="{{preselectedappid}}" />
+								</div>
+					</div>
+				</div>			
+			</div>	
+		</div>
+	</div>
+</div>
+			<!--By pallavi Done  -->
+
+<div id="bulkregistration">
+	<div class="formHeader">Bulk Registration</div>
+	<div style="margin-left:4px;margin-top:20px;">
+	<div class="row" style="margin-left:4px;">
+	<div  style="float:left;position:relative;" class="bodytext_normal">
+		<div class="bodytext_bold">Steps to bulk register patients :-</div>
+			</br>
+			1) Download format <a href="javascript:void();" style="color:blue; font-size:small;margin-left:50px" title="click here to download format" onclick="window.location.href='/ayushman/cpatientbulkregistration/download'">Download format in xls.</a><br/>
+			2) Make changes in the downloaded xls and enter required details <br/>
+			3) Upload the xls for multiple registrations
+			<br/></br>
+	</div>
+					
+	<div class="col-lg-4 col-md-4 col-sm-4 form-group" style="margin-right:10px;">					
+		<form id="catalogform" method="post" enctype="multipart/form-data"  action="/ayushman/cpatientbulkregistration/upload"  >
+          <input type="file" name="zip_file" id="datafile" value="Choose File" class="bodytext_normal"/>          
+          <label class="bodytext_normal">
+          </label>
+          <label id="lblimageerror" style="display:none;" class="bodytext_error">
+            data file in .xls format only...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="submit" name="submit" id="submit" style="display:none" value="upload"/>
+          </label>
+		</form>
+		  <div class="row" style="margin-left:20px;">
+			<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+				<table>
+				<tr>
+				<td><input type="button" class="regnbutton" name="btnproceed" id="btnproceed" style="margin-left:100px" onclick="importtransactions();" value="Proceed"/></td>
+				<td><input type="button" class="regnbutton" value="Cancel" style="margin-left:50px" onclick="$('#bulkregistration').dialog('close');$('#topNav').show();"/></td>
+				</tr>
+				</table>
+			</div>
+		  </div>
+	</div>
+</div>
+</div>
+</div>
+<div id="bulkConsultation">
+	<div class="formHeader">Bulk Consultation Upload</div>
+	<div style="margin-left:4px;margin-top:20px;">
+	<div class="row" style="margin-left:4px;">
+	<div  style="float:left;position:relative;" class="bodytext_normal">
+		<div class="bodytext_bold">Steps to upload past consultations :-</div>
+			</br>
+			1) Download format <a href="javascript:void();" style="color:blue; font-size:small;margin-left:50px" title="click here to download format" onclick="window.location.href='/ayushman/cpatientbulkregistration/downloadconsultationformat'">Download format in xls.</a><br/>
+			2) Enter consultations in the downloaded xls <br/>
+			3) Upload the xls for past consulations data
+			<br/></br>
+	</div>
+	<div class="col-lg-6 col-md-6 col-sm-6 form-group" style="margin-right:10px;">					
+		<form id="consultationform" method="post" enctype="multipart/form-data"  action="/ayushman/cpatientbulkregistration/uploadconsultation"  >
+          <input type="file" name="zip_file" id="consultfile" value="Choose File" class="bodytext_normal"/>          
+          <label class="bodytext_normal">
+          </label>
+          <label id="lblimageerror1" style="display:none;" class="bodytext_error">
+            data file in .xls format only...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </label>
+          <input type="submit" name="submit1" id="submit1" style="display:none;" value="upload"/>
+		  </form>
+
+  		  <div class="row" style="margin-left:20px;">
+			<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+				<table>
+				<tr>
+				<td><input type="button" class="regnbutton" name="btnproceed" id="btnproceed" style="margin-left:100px" onclick="importtransactions2();" value="Proceed"/></td>
+				<td><input type="button" class="regnbutton" value="Cancel" style="margin-left:50px" onclick="$('#bulkConsultation').dialog('close');$('#topNav').show();"/></td>
+				</tr>
+				</table>
+			</div>
+		  </div>
+   	</div>
+</div>
+</div>
+</div>
+
+<div id="nonregisteredUser">
+			<form autocomplete="off" class="form-horizontal" id="registrationform" action="javascript:void(0);" method="post">
+				<div class="formHeader">Patient Details</div>
+				<div style="margin-left:20px;margin-top:20px;">
+				<div class="row" style="margin-left:20px;">	
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group" style="margin-right:10px;">					
+						<label for="firstname">First Name * :</label>
+						<input id = "firstname" class = "form-control connectformcontrol" autocomplete="on" autofocus="autofocus"/>
+					
+						<script type="text/javascript">
+							var firstname = new LiveValidation('firstname');
+							firstname.add( Validate.Presence );
+							firstname.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed"} );
+						</script>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group" style="margin-right:10px;">					
+						<label for="middlename">Middle Name :</label>
+						<input id = "middlename" class = "form-control connectformcontrol"autocomplete="on"  />
+						<script type="text/javascript">
+							var middlename = new LiveValidation('middlename');
+							middlename.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed"} );
+						</script>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group">	
+						<label for="lastname">Last Name * :</label>
+						<input id = "lastname" class = "form-control connectformcontrol" autocomplete="on" autofocus="autofocus"/>
+						<script type="text/javascript">
+							var lastname = new LiveValidation('lastname');
+							lastname.add( Validate.Presence );
+							lastname.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed"} );
+						</script>
+					</div>
+				</div>
+				<div class="row" style="margin-left:20px;">
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group" style="margin-right:10px;">
+						<label for="gender_c">Gender * :</label>
+						<select id="gender_c" name="gender_c" class = "form-control connectformcontrol" style="height:30px">
+							<option value="">Select Gender</option>
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
+						</select>
+						<script type="text/javascript">
+							var gender_c = new LiveValidation('gender_c');
+							gender_c.add( Validate.Presence );
+						</script>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group" style="margin-right:10px;">
+						<label for="dob">Date Of Birth * :</label>
+						<input id="DOB_c" name="dob" readonly="readonly"  value="" type="text" onchange="setAge()" class = "form-control connectformcontrol"/>
+						<script type="text/javascript">
+							var DOB_c = new LiveValidation('DOB_c',{onlyOnSubmit: true });
+							DOB_c.add( Validate.Presence );
+						</script>
+						<style type="text/css">
+							div.ui-datepicker{
+								font-size:10px;
+								width:250px !important;
+							}
+						</style>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group">
+						<label for = "age">Age :</label>
+						<input id = "age" autocomplete="on" onchange="setDob()" class = "form-control connectformcontrol" />
+						
+						
+					</div>
+				</div>
+				<div class="row" style="margin-left:20px;">
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group" style="margin-right:10px;">
+						<label for="mobilenumber">Mobile No :</label>
+						<input id = "mobilenumber" autocomplete="on" class = "form-control connectformcontrol"  />
+						<script type="text/javascript">
+							var mobilenumber = new LiveValidation('mobilenumber');
+							mobilenumber.add( Validate.Numericality, {onlyInteger: true } );
+							mobilenumber.add( Validate.Length, { is: 10 });
+							mobilenumber.add( Validate.Format, { pattern: /^[0-9]+$/,failureMessage: "only numeric values allowed"} );
+						</script>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4 form-group">
+						<label for = "email">Email :</label>
+						<input id = "email" autocomplete="on" class = "form-control connectformcontrol" />
+						<script type="text/javascript">
+							var email = new LiveValidation('email', {onlyOnSubmit: true });
+							email.add( Validate.Email );
+						</script>
+					</div>
+								
+				</div>
+				<div class="row" style="margin-left:20px;">
+					<div class="col-lg-12 col-md-12 col-sm-12 form-group" align="left">
+						<input type="checkbox" id = "attachnetwork" checked class="regnbutton" style="float:left;"  >&nbsp;Attach Chemist and network for automatic order placement.</input>			
+					</div>
+				</div>	
+				<div class="row" style="margin-left:20px;">
+					<div class="col-lg-12 col-md-12 col-sm-12 form-group" align="left">
+						<input type="checkbox" id = "registrationinfo" checked class="regnbutton" style="float:left;"  >&nbsp;Send User credentials on Mobile number.</input>
+					</div>
+				</div>
+				<div class="row" style="margin-left:20px;">
+					<div class="col-lg-12 col-md-12 col-sm-12 form-group" align="center">
+						<input type="Submit" id = "proccedButton" class="regnbutton" value="PROCEED" onclick="addNewPatient(); setreset();"/>			
+						<input type="button" class="regnbutton" value="CANCEL" onclick="$('#nonregisteredUser').dialog('close');$('#topNav').show();"/>
+					</div>
+				</div>	
+				</div>
+			</form>
+			<div id="exists" style="display:none;background-color:#efefef;border-top:1px solid #c6dbe4;border-bottom:1px solid #c6dbe4; width:100%;height:auto; vertical-align:middle;padding:10px 10px 10px 50px; overflow-x:hidden;" class="bodytext" >
+				Users listed below have the same registration information. Do you want to register another user ?
+				<input type="button" value="YES>>" onclick="addNewPatient('true');" class="regnbutton"/>
+			</div>
+
+			<div id = "searchresult"></div>		
+		</div>
+		
+		<div id="addNewPatient" style="padding-top:2px;width:500px;overflow-x:hidden; background-color:#ffffff;" overflow-x="hidden">
+		<div class="formHeader">Patient Registered Successfully</div>
+		<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;cursor:pointer;  margin-top: -27px;" onclick="$('#addNewPatient').dialog('close');" width="20" height="20"/>	
+					
+		<div id="addNewPatientInformationBody" style="width:96%;margin:10px;" class="bodytext" ></div>
+		<div id="tdTakeappointment" align="right"></div>
+	</div>
+	<div id="patloading" style="width:40px;height:30px;background-color:transparent;align:center;overflow-y:hidden;overflow-x:hidden;">
+		<img id="patloading" src="/ayushman/assets/images/ajax-loader.gif" />
+	</div>
+
+<div id="connectnow" class="connectformdiv">
+		<div style="border:1px solid #eee;">
+		<form id= "connectInclinicAdhoc" class="form-horizontal" autocomplete="off"  method="post" enctype="multipart/form-data" >
+			<div class="formHeader"><img src="/ayushman/assets/images/WhiteArrow_Icon.png" width="9" height="7"/>&nbsp;&nbsp;Connect Now</div>
+			<div class="col-lg-12 col-md-12 form-group">
+					Select incidence name for the appointment </br> e.g. <span class="bodytext"><b>Diabetes, Hypertension, Asthma, Glaucoma, </b></span>etc.				
+			</div>
+			<div class="row">
+				<div class="col-lg-5 col-md-5">				
+					<input name="radiobutton" type="radio" id="newincidentbutton" value="radiobutton" onclick="newincidentbuttonclick()" checked="checked"/>
+				
+					<label for="incidenttxt">New Incidence</label>
+				</div>
+				<div class="col-lg-7 col-md-7 form-group">	
+					<input id="incidenttxt" name="incidenttxt" type="text" class="form-group connectformcontrol" maxlength="40" onmouseover="$('#lblerror').text('');" />			  
+					<!--select ng-if="(myprofile['con_profile']).length>0" class="input" id="profileList" name="profileList"  class="form-group connectformcontrol"  align="left"  >
+						<option value="" selected="" >Select Profile</option>
+						<option ng-repeat="template in myprofile['con_profile']" value="{{template[1]}}" >{{template[0]}}</option>
+					</select-->
+				</div>
+			</div>
+			<div id="oldIncidenceTr" class="row">
+				<div class="col-lg-5 col-md-5" >		
+					<input name="radiobutton" type="radio" id="oldincidentbutton" value="radiobutton" onclick="oldincidentbuttonclick()"/>
+								
+					<label for="incidentcombo">Old Incidence </label>
+				</div>
+				<div class="col-lg-7 col-md-7 form-group">		
+					<select id="incidentcombo" name="incidentcombo"  class="form-group connectformcontrol"  align="left" disabled="disabled" onmouseover="$('#lblerror').text('');" >
+						<option value="" selected="" >Previous Incident</option>
+					</select>	
+				</div>
+			</div>
+			<div class="row">
+				<div  class="col-lg-12 col-md-12 form-group bodytext_error" >
+					<label id="lblerror" disabled="false"></label>
+				</div>
+			</div>
+			<div class="row">
+				<div  class="col-lg-12 col-md-12 form-group" >
+					<input type="button" class="regnbutton" onClick="connetonclick()" value="Connect"/>				
+					<input type="button" class="regnbutton" onClick="closepopup('connectnow')" value="Cancel"/>									  
+				</div>
+			</div>				
+		</form>
+		</div>
+	</div>
+	<style type="text/css">
+		.ui-autocomplete { max-height: 90%; overflow-y: auto; overflow-x: hidden;
+		-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);
+		-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);
+		box-shadow: 0 4px 15px rgba(0,0,0,1);
+		}
+		.ui-dialog { z-index: 4005 !important ;}
+		.ui-widget-overlay
+		{
+				z-index: 0 !important;   
+		}
+		.dialogWithDropShadow {
+		  -webkit-box-shadow: 0px 0px 64px rgba(0,0,0,.5);
+		  -moz-box-shadow: 0px 0px 64px rgba(0,0,0,.5);
+		}
+		.warning{
+			background-color:rgba(0, 128, 0, 0.14);
+		}
+	</style>
+   <style type="text/css">
+		.ui-autocomplete { max-height: 90%; overflow-y: auto; overflow-x: hidden;
+		-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);
+		-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);
+		box-shadow: 0 4px 15px rgba(0,0,0,1);
+		}
+	</style>
+	<script type='text/javascript'>
+function importtransactions()
+{
+    ext = (document.getElementById("datafile").value).split('.'); 
+	if(ext[1]==""||ext[1]!="xlsx")
+		document.getElementById("lblimageerror").style.display = "block";
+	else
+	{
+		document.getElementById("lblimageerror").style.display = "none";
+		showMessage('250','50','Confirmation','Do you really want to register patients from selected file?','confirmation','bulkregpopup');
+	}
+}
+
+function importtransactions2(file)
+{
+    ext = (document.getElementById("consultfile").value).split('.'); 
+	if(ext[1]==""||ext[1]!="xlsx")
+		document.getElementById("lblimageerror1").style.display = "block";
+	else
+	{
+		document.getElementById("lblimageerror1").style.display = "none";
+		showMessage('250','50','Confirmation','Do you really want to upload data from selected file?','confirmation','bulkconsultpopup');
+	}    
+}
+  
+	function btnhide(){
+	
+		$("#seletpatientbtn").hide();
+	
+	}
+	function myFunction() {
+		var patid = document.getElementById("pat").value;;		
+    //var myWindow = window.open("#/patientemr/"+patid, "", "width=1000,height=600,left=240,top=50");
+	var myWindow = window.location.href = "#/patientemrnewui/"+patid;
+	}
+	function displayTracker() {
+		var patid = document.getElementById("pat").value;;		
+    //var myWindow = window.open("#/patientemr/"+patid, "", "width=1000,height=600,left=240,top=50");
+	var myWindow = window.location.href = "#/patienttracker/"+patid;
+	}
+
+	function btnshow(){
+	
+	$("#seletpatientbtn").show();
+	
+	}
+function PrintElem(elem,appointmentid)
+		{
+			var scope = angular.element($("#quickpre")).scope();
+			if(!scope.$$phase) {
+				scope.$apply(function(){
+					if(scope.examination_data.text_complaint.length == 0){
+						$(".complaint").hide();
+					}
+					if(scope.examination_data.text_examinationsummary.length == 0 || scope.examination_data.check_examinationsummary == false){
+						$(".examinationsummary").hide();
+					}
+					if(scope.examination_data.text_diagnosis == undefined || scope.examination_data.text_diagnosis.length == 0){
+						$(".diagnosis").hide();
+					}
+					if(scope.examination_data.text_followup == undefined || scope.examination_data.text_followup.length == 0){
+						$(".followup").hide();
+					}
+					if(scope.previousexamination_data.isexaminationavailable == true){
+						$(".vitals").show();
+					}else{
+						//$(".vitals").hide();
+						$(".vitals").show();
+					}
+				});
+			}
+			savePDf(appointmentid);
+			setPrint();
+			$('#printpre').html();
+			setTimeout(function(){
+				$("#print").show();
+				Popup($(elem).html());
+				$("#print").hide();
+			},1000);			
+						
+			
+		}
+
+	function chBackcolor() {	
+			var patid = document.getElementById("pat2").value;;		
+			document.getElementById(+patid).style.backgroundColor = 'rgba(255,110,2,0.40)';
+		
+				var preselecetdid = document.getElementById("pat7").value;
+				if(preselecetdid != 'undefined' && preselecetdid != patid){
+						document.getElementById(+preselecetdid).style.backgroundColor ='rgba(255,110,2,0.40)';
+				}		
+		}
+	
+function buildPatientNetwork(){
+
+		var patientuserid = document.getElementById("pat").value;
+		if(patientuserid > 0)
+		{
+		parent.openDialog("/ayushman/cpatientprofile/buildnetwork?id="+patientuserid, '900px','1024px');
+		}else{
+		showNotification('300','20','Select Patient','<h5>Please Select Patient</h5>','notification','timernotification',3000);
+			
+		}
+	}	
+	function openDialog(url, width, height,obj){
+				 $.fancybox({
+                    'width': width,
+                    'height': height,
+                    'autoScale': false,
+                    'transitionIn': 'fade',
+                    'transitionOut': 'fade',
+                    'type': 'iframe',
+                    'href': url,
+                    'showCloseButton': true,
+                    'afterClose' : function(){
+						if(obj != undefined){
+							if(obj.fancyboxclosed != undefined){
+								obj.fancyboxclosed(obj);
+							}
+						}
+					}
+                });
+			}
+function cancelappointment(appointment_id){
+		cancelAppId = appointment_id ;
+		showMessage('250','50','Cancel Appointment','Do you really want to cancel appointment?','confirmation','cancelappointmentpopup');
+	}
+var Confirmation_Event = function(id,confirmation){
+		var appointment_id = cancelAppId;
+		if(id == 'cancelappointmentpopup')
+		{
+			if(confirmation == 'yes')
+			{
+				angular.element($('#contentDiv')).scope().openDialog('/ayushman/cappointmenteditor/cancelappointment?appid='+appointment_id+'&role=doctor&representative=',800,800,this );
+			}
+		}
+		if(id == 'bulkregpopup')
+		{
+			if(confirmation == 'yes')
+			{
+				$("#submit").trigger("click");  				
+			}
+		}
+		if(id == 'bulkconsultpopup')
+		{
+			if(confirmation == 'yes')
+			{
+				$("#submit1").trigger("click");  				
+				$('#bulkConsultation').dialog('close');		
+			}
+		}
+	};
+/*$('#consultationform').submit(function(){
+	event.preventDefault();
+	$.ajax({
+      url: $('#consultationform').attr('action'),
+      type: "post",
+      data : $('#consultationform').serialize(),
+      success: function(data){
+			alert(data);
+		}
+	});	
+});
+*/
+
+$("#textjob")
+			.bind("keydown", function( event ) {
+			if ( event.keyCode === $.ui.keyCode.ENTER ) {
+					searchpatient();
+					btnhide();
+					displaypatient();
+				}
+			})
+			
+	
+	function fancyboxclosed(obj){
+		angular.element($('#contentDiv')).scope().reloadRoute();
+	}
+	
+	$(document).ready(function() {
+		btnhide();
+		$("#button2").hide();
+		$("#buttonsearch").hide();
+		$("#button3").hide();
+		$("#resume").hide();
+		$("#generatebill").hide();
+		$("#generatebil2").hide();
+		$("#pastapptable").hide();
+		$("#patienttable").hide();
+		$("#printpastprescription").hide();		
+		$("#incompleteapptable").hide();		
+		$('button').click(function() {
+   $(this).effect( "highlight", {color: 'gray'});
+});
+		
+		$(function(){
+			$( "input[name=dob]" ).datepicker({yearRange: "-120:+0",maxDate: '0',changeMonth: true,changeYear: true,  dateFormat: 'dd M yy'});
+		});
+		$('#nonregisteredUser').dialog({
+			autoOpen: false,			
+			show: "fade",
+			hide: "fade",
+			width: "550",
+			dialogClass: 'dialogWithDropShadow',
+			modal: false,
+			height: "auto",
+			resize: "auto",
+			resizable: false,
+			fluid:true,
+			position: { my: 'top', at: 'top+100' },
+			maxWidth:'800',			
+			maxHeight:'600',
+			open: function(){
+
+			}
+		});
+		$('#bulkregistration').dialog({
+			autoOpen: false,			
+			show: "fade",
+			hide: "fade",
+			width: "500",
+			dialogClass: 'dialogWithDropShadow',
+			modal: true,
+			height: "auto",
+			resize: "auto",
+			resizable: false,
+			fluid:true,
+			position: { my: 'top', at: 'top+100' },
+			maxWidth:'600',			
+			maxHeight:'600',
+			open: function(){
+
+			}
+		});
+		
+		$('#bulkConsultation').dialog({
+			autoOpen: false,			
+			show: "fade",
+			hide: "fade",
+			width: "500",
+			dialogClass: 'dialogWithDropShadow',
+			modal: false,
+			height: "auto",
+			resize: "auto",
+			resizable: false,
+			fluid:true,
+			position: { my: 'top', at: 'top+100' },
+			maxWidth:'600',			
+			maxHeight:'600',
+			open: function(){
+			}
+		});
+		
+		$('#connectnow').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			width: "auto",
+			modal: false,
+			dialogClass: 'dialogWithDropShadow',
+			height: "auto",
+			resize: "auto",
+			resizable: false,
+			fluid:true,
+			maxWidth:'800'
+		});
+		$('#patloading').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			modal: true,
+			height: "30",
+			dialogClass: 'dialogWithDropShadow',
+			resizable: false,
+			width: "100px",
+			fluid:true,
+			maxWidth:'500'
+		});
+		$('#addNewPatient').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			width: "421px",
+			modal: false,
+			height: "auto",
+			resize: "auto",
+			dialogClass: 'dialogWithDropShadow',
+			resizable: false,
+			fluid:true,
+			maxWidth:'500',
+			open: function(){
+				jQuery('.ui-widget-overlay').bind('click',function(){
+					jQuery('#addNewPatient').dialog('close');
+				})
+			}			
+		});
+		jQuery("#connectnow").dialog('option', 'position', 'center');
+		$(".ui-dialog-titlebar").hide();
+		$("#connectInclinicAdhoc").onclick=function(){
+			document.getElementById('lblerror').style.display = false;
+		};
+		
+	});
+	function displayupcomingappointment(){
+		$("#button2").hide();
+		$("#Preferred").show();
+		$("#incompleteapptable").hide();
+		$("#patienttable").hide();
+		$("#pastapptable").hide();		
+		$("#generatebill").hide();
+		$("#generatebil2").hide();
+		$("#resume").hide();
+		$("#button3").hide();
+		$("#button9").show();
+		$("#button10").show();
+		$("#printpastprescription").hide();
+		$("#upcomingapptable").show();
+		$("#button1").show();	
+		$("#button7").show();buttonsearch
+		$("#buttonsearch").hide();
+	}
+	function displaypatient(){
+		$("#button2").hide();
+		$("#button9").show();
+		$("#button10").show();
+		$("#Preferred").show();
+		$("#generatebil2").hide();
+		$("#incompleteapptable").hide();
+		$("#generatebill").hide();
+		$("#printpastprescription").hide();
+		$("#upcomingapptable").hide();
+		$("#resume").hide();
+		$("#pastapptable").hide();
+		$("#button7").hide();
+		$("#patienttable").show();	
+		$("#button1").hide();
+		$("#button3").show();
+		$("#buttonsearch").show();
+	}
+	function displaypastpatient(){	
+		$("#button1").hide();
+		$("#buttonsearch").hide();
+		$("#button2").hide();
+		$("#button7").hide();
+		$("#Preferred").hide();
+		$("#incompleteapptable").hide();
+		$("#upcomingapptable").hide();
+		$("#patienttable").hide();	
+		$("#resume").hide();		
+		$("#button3").hide();
+		$("#button9").show();
+		$("#button10").show();
+		$("#pastapptable").show();
+		$("#generatebill").show();
+		$("#generatebil2").show();
+		$("#printpastprescription").show();	
+	}
+	function displayincompletecons(){	
+		$("#printpastprescription").hide();
+		$("#upcomingapptable").hide();
+		$("#patienttable").hide();		
+		$("#pastapptable").hide();
+		$("#generatebill").hide();	
+		$("#generatebil2").hide();
+		$("#Preferred").hide();
+		$("#button2").hide();
+		$("#button1").hide();
+		$("#buttonsearch").hide();
+		$("#button7").hide();
+		$("#button9").show();
+		$("#button10").show();
+		$("#button3").show();
+		$("#resume").show();
+		$("#incompleteapptable").show();
+		
+	}
+	// on window resize run function
+	$(window).resize(function () {
+		fluidDialog();
+	});
+
+	// catch dialog if opened within a viewport smaller than the dialog width
+	$(document).on("dialogopen", ".ui-dialog", function (event, ui) {
+		fluidDialog();
+	});
+
+	function fluidDialog() {
+		var $visible = $(".ui-dialog:visible");
+		// each open dialog
+		$visible.each(function () {
+			var $this = $(this);
+			var dialog = $this.find(".ui-dialog-content").data("dialog");
+			// if fluid option == true
+			if (dialog.options.fluid) {
+				var wWidth = $(window).width();
+				// check window width against dialog width
+				if (wWidth < (parseInt(dialog.options.maxWidth) + 50))  {
+					// keep dialog from filling entire screen
+					$this.css("max-width", "90%");
+				} else {
+					// fix maxWidth bug
+					$this.css("max-width", dialog.options.maxWidth + "px");
+				}
+				
+				//reposition dialog
+				dialog.option("position", dialog.options.position);
+			}			
+		});
+	}
+	function closepopup(thisclose)
+	{
+		$("#"+thisclose).dialog("close");
+		$('#topNav').show();
+	}
+	//Search results cached
+	$(window).resize(function() {
+		$(".ui-autocomplete").css('display', 'none');
+		$("input#search").autocomplete("search");
+	});
+	
+	function search(){ 
+	
+	    var check =  $("#search").val();
+		if(check != ''){
+		  $("#searchicon").addClass('fa fa-spinner fa-spin');
+		  $('input#search').autocomplete("search");
+		} else {
+		  showNotification('200','10','Save data','<h5>Please enter search parameter</h5>','notification','timernotification',1000);
+		  $('#search').trigger("focus"); 
+		}
+		
+	}
+	
+	//Search terms are cached 
+	var cache = {};
+	$("#search").autocomplete({
+		source:function(request, response){		 
+			var term = request.term;
+			$("#searchicon").addClass('fa fa-spinner fa-spin');
+			if ( term in cache ) {
+				response($.map(cache[ term ] , function(item) {
+					searchitemindex = 0;
+					return {
+						value: item.patientname,
+						label: item.patientname,
+						icon: item.photo,
+						gender: item.gender,
+						age: item.age,
+						mobilenumber: item.mobilenumber,
+						city: item.city_c,
+						location: item.location_c,
+						id: item.patientuserid
+					}
+				}))
+			}
+			$.post("/ayushman/cconsultation/getpatients", {data:request.term}, function(data){   
+				cache[ term ] = data;
+				$('#search').trigger("focus");
+
+				if(data.length == 0){
+					$("#searchicon").removeClass('fa fa-spinner fa-spin');
+					showNotification('300','20','Save data','</h5>No Records found for the search</h5>','notification','timernotification',1000);
+					$('#search').trigger("focus");
+				}
+				response($.map(data, function(item) {
+					searchitemindex = 0;
+					$("#searchicon").removeClass('fa fa-spinner fa-spin');
+					return {
+						value: item.patientname,
+						label: item.patientname,
+						icon: item.photo,
+						gender: item.gender,
+						age: item.age,
+						mobilenumber: item.mobilenumber,
+						city: item.city_c,
+						location: item.location_c,
+						id: item.patientuserid
+					}
+				}))
+			}, "json");
+		  },
+		minLength: 3,
+		maxHeight:500
+	})
+	function addNewPatient(forceadd)
+	{
+		if($("#firstname").val() != '' && $("#lastname").val() != '' && $("#DOB_c").val() != '' && $("#gender_c").val()!= ''){
+			if (($("#mobilenumber").val().length != 10) && ($("#mobilenumber").val().length != 0)) {
+				showNotification('200','10','Save data','<h5>Mobile number must be of 10 digits.</h5>','notification','timernotification',2000);
+				$('#mobilenumber').trigger("focus");
+				return false;
+			 }
+		}else {
+			alert('Please, Fill all mandatory fields.');
+			return false;
+		}
+		$("#searchresult").empty();
+		if(forceadd == undefined){
+			forceadd = false;
+		}else{
+			forceadd = true;
+		}
+		$('#exists').hide();
+		$('#nonregisteredUser').dialog('close');
+		$('#patloading').dialog("open");
+		attachnetwork = $('input[id="attachnetwork"]:checked').length > 0 ;
+		sendregistrationinfo = $('input[id="registrationinfo"]:checked').length > 0;
+		$.ajax({
+			url: "/ayushman/cregistrar/patientregistrationbystaff?firstname="+$("#firstname").val()+"&lastname="+$("#lastname").val()+"&age="+$('#age').val()+"&email="+$("#email").val()+"&mobilenumber="+$('#mobilenumber').val()+"&doctorname=doctor &middlename="+$("#middlename").val()+"&dob="+$("#DOB_c").val()+"&gender="+$("#gender_c").val()+"&forceadd="+forceadd+"&attachnetwork="+attachnetwork+"&sendregistrationinfo="+sendregistrationinfo,
+			success:function( data ){
+				var returnArray= JSON.parse(data);
+				if(returnArray['found'] == 'yes'){
+					patName = $("#firstname").val();
+					patLastName = $("#lastname").val();
+					patContact = $('#mobilenumber').val();
+					patEmail = '';
+					patId='';
+					patDOB = $('#DOB_c').val();
+					patAge = $('#age').val();
+					searchandshow(patName,patLastName,patContact,patEmail,patId,patDOB,patAge);
+					$('#exists').show();
+				}else{
+				showNotification('300','20','Patient Registration is complete','<h5>Patient Registration is complete, Search patient to start Consultaion </h5>','notification','timernotification',4000);
+					/*var displayString= "<img src='/ayushman/assets/images/Success_Arrow.png' width='20' height='20' />&nbsp;We have created account for  "+returnArray['name']+". <strong>Ioh id "+returnArray['patientuserid']+"</strong><br/><br/>";
+					if((returnArray['mobilenumberPresent']== "true") || (returnArray['emailPresent']== "true" ) )
+						displayString = displayString+"<img src='/ayushman/assets/images/Success_Arrow.png' width='20' height='20' />&nbsp;Patient has been notified.<br/><br/>";
+					else
+						displayString = displayString+"<img src='/ayushman/assets/images/error_icon.png' width='20' height='20' />&nbsp;Patient has not been notified. Please inform IOH id to patient.<br/><br/>";
+					$('#addNewPatientInformationBody').html(""+displayString+"");
+					
+					$('#tdTakeappointment').html('<button class="regnbutton" style="margin-right:10px;" onclick="buildPatientNetwork('+returnArray['patientuserid']+');">Preferred Chemist and Lab</button><button class="regnbutton" style="margin-right:10px;" onclick="editProfile('+returnArray['patientuserid']+');">Edit Profile</button>');
+					$('#addNewPatient').dialog('open');*/
+				}
+				$('#patloading').dialog("close");
+				
+			},
+			error:function(){
+				$('#patloading').dialog("close");
+				showMessage('250','50','Send Data to patient','Error occured while saving data. Please try again.','error','id');
+			},
+		});
+	}
+	
+	function setreset(){
+		document.getElementById("registrationform").reset();
+	}
+	
+	function searchandshow(patName,patLastName,patContact,patEmail,patId,patDOB){
+		$.ajax({
+			url: "/ayushman/ctakeappointment/searchForPatient/get?patName="+patName+"&patLastName="+patLastName+"&patContact="+patContact+"&patEmail="+patEmail+"&patId="+patId+"&dob="+patDOB,
+			success: function(jsonSearchResults) {
+				searchResults = eval("("+jsonSearchResults+")");
+				if(searchResults.length == 0){
+					$("<span class='bodytext_bold' align='middle'>No Results Found</span>").appendTo($("#searchresult"));
+					$("#searchresult").show();
+				}
+				else{
+					$("#searchresult").empty();
+					for(var i=0;i<searchResults.length;i++){
+						var result = $("<div style='padding-left:20px;border-bottom:1px solid #eee;'>");
+						if(searchResults[i].photo == null){
+							var imgsrc = '/ayushman/assets/images/pic02.png';
+						}
+						else{
+							var imgsrc = searchResults[i].photo;
+						}
+						$("<div class='row'><div class='col-lg-10 doctorsDetailsCol'>").appendTo(result);
+						$("<div class='thumbnailPatient'><img src='"+imgsrc+"' width='90' height='90'/></div>").appendTo(result);
+						var info = $("<div class='patientContent'>");
+						$("<span class='labeltext'><b>Name:</b> "+searchResults[i].name+"</span><br/>").appendTo(info);
+						$("<span class='labeltext'><b>Contact:</b> "+searchResults[i].contact+"</span><br/>").appendTo(info);
+						$("<span class='labeltext'><b>DOB:</b> "+searchResults[i].dob+"</span><br/>").appendTo(info);
+						$("<span class='labeltext'><b>IOH ID:</b>"+searchResults[i].id+"</span><br/></div></div>").appendTo(info);
+						$(info).appendTo(result);
+						$(result).appendTo($("#searchresult"));
+						$("<div class='row'><div class='col-lg-12 doctorsDetailsCol' align='center'><button class='regnbutton' onclick='editProfile("+searchResults[i].id+");'>Edit Profile</button>&nbsp;&nbsp;<button class='regnbutton' onclick='connectnowclick("+searchResults[i].id+",0,1)'>Quick Prescription</button>&nbsp;&nbsp;<button class='regnbutton' onclick='connectnowclick("+searchResults[i].id+",1)'>Start Consultation</button></div></div></div>").appendTo($("#searchresult"));
+					}
+					$("#searchresult").show();
+					$('#nonregisteredUser').dialog('open');
+				}
+				
+				$('#loading').dialog('close');
+			},
+			error : function(){
+				$("<td class='bodytext_bold' colspan='6' align='middle'>An Error Has Occured. Please Try Again</td>").appendTo($("#searchresult"));
+				$("#searchresult").show();
+			}
+		});
+	}
+	function editProfile(patId){
+		parent.openDialog("/ayushman/cpatientprofile/displayProfile?patId="+patId, '830px','770px');
+	}
+	function connetonclick(quick)
+	{
+		$("#lblerror").text("");
+		var incidence= "";
+		var newIncidence= "";
+		if(document.getElementById('newincidentbutton').checked == true)
+		{
+			if(document.getElementById('incidenttxt').value == "")
+			{ 
+				$("#lblerror").text("Please enter Incidence Name");
+				document.getElementById('lblerror').style.disabled = true;
+			}
+			else{
+				incidence= document.getElementById('incidenttxt').value;
+				newIncidence ="true";
+			}
+		}
+		else
+		{
+			var s = document.getElementById('incidentcombo');
+			var selectedValue = s.options[s.selectedIndex].value;
+			if(selectedValue == "")
+			{ 
+				$("#lblerror").text("Please select Incidence Name");
+				document.getElementById('lblerror').style.disabled = true;
+			}
+			else{
+				incidence= selectedValue;
+				newIncidence ="false";
+			}
+		}
+		if(quick == 1){
+			parent.location="/ayushman/cadhocappointmentmanger/connectinclinc?patientuserid="+document.getElementById("patientuserid").value+"&newIncidence="+'true'+"&incidence="+''+"&quick="+quick;
+		}
+		if(document.getElementById("lblerror").innerHTML == "")
+		{
+			profileValue= '';
+			if(document.getElementById("profileList") != undefined){
+				profileValue = document.getElementById("profileList").value;
+			}
+			parent.location="/ayushman/cadhocappointmentmanger/connectinclinc?patientuserid="+document.getElementById("patientuserid").value+"&newIncidence="+newIncidence+"&incidence="+incidence+"&quick="+0+"&p="+profileValue;
+			//$("#connectInclinicAdhoc").submit();
+		}
+	}
+	function showPastApps(){
+		 $("#collapseOnePastAppt" ).css('display', 'block');
+		 $("#collapseOne" ).css('display', 'none');
+		 $('#apptaccordian').text("Past Consultaions");		 
+	}
+	
+	function showUpcomingApps(){
+		 $("#collapseOne" ).css('display', 'block');
+		 $("#collapseOnePastAppt" ).css('display', 'none');
+		 $('#apptaccordian').text("Upcoming Appointments");	 		 
+	}
+	function showOpenApps(){
+		 $("#collapseOneOpenAppt" ).toggle();
+	}
+	function oldincidentbuttonclick()
+	{
+		$("#lblerror").text("");
+		document.getElementById('incidentcombo').disabled = false;
+		document.getElementById('incidenttxt').disabled = true;
+		document.getElementById('incidenttxt').value ="";
+	}
+	function newincidentbuttonclick()
+	{
+		$("#lblerror").text("");
+		document.getElementById('incidentcombo').disabled = true;
+		document.getElementById('incidenttxt').value ="";
+		document.getElementById('incidenttxt').disabled = false;
+	}
+	function removeItemInList(i)
+	{
+		var list  = document.getElementById('incidentcombo');
+		list.remove(i);
+	}
+	function additemtolocation (locationvalue,id)
+	{
+		var opt = document.createElement("option");
+		opt.text =locationvalue
+		opt.value = id;
+		document.getElementById("incidentcombo").options.add(opt);       
+	}
+	function connectnowclick(patientUserId,lastappset,quick)
+	{		
+		document.getElementById("patientuserid").value = patientUserId;
+		document.getElementById('newincidentbutton').checked = true;
+		if(lastappset == 0)
+		{
+			document.getElementById('oldIncidenceTr').style.display = 'none';
+		}
+		else{
+			document.getElementById('oldIncidenceTr').style.display = '';
+			$.ajax({
+				url: "/ayushman/cpatientdirectory/previousincidence?patientuserid="+patientUserId,
+				success: function( data ) {
+						//var  incidence =  eval('('+data+')');
+						var  incidence = eval('(' + (data)+ ')');
+						if(incidence == ''){
+							}
+						else
+						{
+							for(var iter = document.getElementById("incidentcombo").length -1; iter >= 0; --iter)
+							{
+								removeItemInList(iter);
+							}
+							additemtolocation("Previous Incident","");
+							for(i=0;i< incidence.length;i++)
+							{
+								additemtolocation(incidence[i][1],incidence[i][0]);
+							}
+						}
+					},
+					error : function(){}
+			  });
+		  }	
+		document.getElementById('incidenttxt').value ="";
+		if(quick == 1){
+			//connectonclick(1);
+			connetonclick(1);
+		}else{
+			$('#addNewPatient').dialog('close');
+			$('#connectnow').dialog('open');
+		}
+	}
+	function MedicalCertificate()
+	{
+			var selecetdid = document.getElementById("pat2").value;
+			console.log(selecetdid);
+			angular.element($('#contentDiv')).scope().launchMedicalCertificate(selecetdid);
+	}
+	
+	function FitnessCertificate()
+	{
+		console.log(selecetdid);
+			var selecetdid = document.getElementById("pat2").value;
+			angular.element($('#contentDiv')).scope().launchFitnessCertificate(selecetdid);
+	}	
+	function generatbill(){
+		var selecetdid = document.getElementById("pat2").value;
+		var selecetddia = document.getElementById("pat4").value;
+		var selecetdpatdata = document.getElementById("pat5").value;
+		angular.element($('#contentDiv')).scope().launchPrintableBill(selecetdid,selecetddia,'generate',selecetdpatdata);
+	}
+	function pastprint()
+	{
+			var selecetdid = document.getElementById("pat2").value;
+			angular.element($('#contentDiv')).scope().show_summary_fs(selecetdid);
+	}
+	function appointmentschedule()
+	{
+			var selecetdid = document.getElementById("pat").value;
+			angular.element($('#contentDiv')).scope().launchbookappointment(selecetdid);
+	}
+	function emr()
+	{
+			var selecetdid = document.getElementById("pat").value;
+			angular.element($('#contentDiv')).scope().launemr(selecetdid);
+			
+	}
+	function canappoint()
+	{
+			var selecetdid = document.getElementById("pat2").value;
+			angular.element($('#contentDiv')).scope().cancel_appointment(selecetdid);
+	}
+	/*/////////////////
+	By Vijay
+	*//////////////////
+function setAge(){
+	
+	var dob = document.getElementById("DOB_c").value;
+	var yeardob=	dob.substring(7);
+	var date=new Date();
+    var year = date .getFullYear(); 
+	var age=year-yeardob;
+	if(age==0){
+		document.getElementById("age").value="Age<1 Year";
+	}
+	else{
+		document.getElementById("age").value=age;
+	}
+
+}
+function setDob(){
+	var age=document.getElementById("age").value;
+	if (age < 1 || age > 120 || !age.match("^[0-9]+$") ) {
+		alert("Invalid Age");
+		document.getElementById("age").value="";
+		document.getElementById("DOB_c").value="";
+		
+	}
+	var d = new Date();
+	var day=d.getDate();
+	var month = new Array();
+	month[0] = "Jan";
+	month[1] = "Feb";
+	month[2] = "Mar";
+	month[3] = "Apr";
+	month[4] = "May";
+	month[5] = "Jun";
+	month[6] = "Jul";
+	month[7] = "Aug";
+	month[8] = "Sep";
+	month[9] = "Oct";
+	month[10] = "Nov";
+	month[11] = "Dec";
+	var n = month[d.getMonth()];
+	var year=d.getFullYear();
+	var age=document.getElementById("age").value;
+	
+	year=year-age;
+	if(year%4!=0 && n=="Feb" && day==29){
+		day=day-1;
+	}
+	document.getElementById("DOB_c").value=day+" "+n+" "+year;
+}
+
+			
+function go()
+			{
+				var selecetdid = document.getElementById("pat").value;
+				var selecetdappid = document.getElementById("pat2").value;				
+					
+				var scope = angular.element($('#search1')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.connetoincompleteclick(selecetdid,selecetdappid,1);
+								});
+							} 
+			}
+function gosearch()
+			{
+				var selecetdid = document.getElementById("pat").value;
+				var scope = angular.element($('#search1')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.connetonclick(selecetdid,1);
+								});
+							} 
+			}
+function goincomplete()
+			{
+					var selecetdid = document.getElementById("pat").value;
+					var selecetdappid = document.getElementById("pat2").value;				
+					var scope = angular.element($('#search1')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.connetoincompleteclick(selecetdid,selecetdappid,1);
+								});
+							} 
+			}
+		
+  $('#connectnow').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			width: "auto",
+			modal: false,
+			dialogClass: 'dialogWithDropShadow',
+			height: "auto",
+			resize: "auto",
+			resizable: false,
+			fluid:true,
+			maxWidth:'800'
+		});
+  function connetonclick(pid,quick)
+	{
+	var id=pid;
+		if(quick == 1){
+		
+			parent.location="/ayushman/cadhocappointmentmanger/connectnewinclinc?patientuserid="+ document.getElementById("patientuserid").value +"&newIncidence="+'true'+"&incidence="+''+"&quick="+quick;
+		}
+	}
+  
+  function connectnowclick(patientUserId,lastappset,quick)
+	{		
+		document.getElementById("patientuserid").value = patientUserId;
+		document.getElementById('newincidentbutton').checked = true;
+		if(lastappset == 0)
+		{
+			document.getElementById('oldIncidenceTr').style.display = 'none';
+		}
+		else{
+			document.getElementById('oldIncidenceTr').style.display = '';
+			$.ajax({
+				url: "/ayushman/cpatientdirectory/previousincidence?patientuserid="+patientUserId,
+				success: function( data ) {
+						//var  incidence =  eval('('+data+')');
+						var  incidence = eval('(' + (data)+ ')');
+						if(incidence == ''){
+							}
+						else
+						{
+							for(var iter = document.getElementById("incidentcombo").length -1; iter >= 0; --iter)
+							{
+								removeItemInList(iter);
+							}
+							additemtolocation("Previous Incident","");
+							for(i=0;i< incidence.length;i++)
+							{
+								additemtolocation(incidence[i][1],incidence[i][0]);
+							}
+						}
+					},
+					error : function(){}
+			  });
+		  }	
+		document.getElementById('incidenttxt').value ="";
+		if(quick == 1){
+			//connectonclick(1);
+			connetonclick(1);
+		}else{
+			$('#addNewPatient').dialog('close');
+			$('#connectnow').dialog('open');
+		}
+	}
+  
+  function searchpatient()
+					  {
+					   var pname =document.getElementById('textjob').value;
+					  	  var scope = angular.element($('#search1')).scope();
+							if(!scope.$$phase) {
+									scope.$apply(function(){
+									scope.searchp(pname);
+								});
+							}
+							
+					  }	
+					  
+	</script>

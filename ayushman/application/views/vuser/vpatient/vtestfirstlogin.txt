@@ -1,0 +1,149 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Good Bootstarp Website Template | Home :: w3layouts</title>
+<link href="/ayushman/assets/css/css/firstlogin/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/ayushman/assets/js/firstlogin/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="/ayushman/assets/css/css/firstlogin/style.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--webfont-->
+<link href='http://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="/ayushman/assets/js/firstlogin/move-top.js"></script>
+					<script type="text/javascript" src="/ayushman/assets/js/firstlogin/easing.js"></script>
+					<script type="text/javascript">
+					jQuery(document).ready(function($) {
+						$(".scroll").click(function(event){		
+							event.preventDefault();
+							$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+						});
+					});
+					</script>
+<!-- Add fancyBox main JS and CSS files -->
+		<script src="/ayushman/assets/js/firstlogin/jquery.magnific-popup.js" type="text/javascript"></script>
+		<link href="/ayushman/assets/css/css/firstlogin/magnific-popup.css" rel="stylesheet" type="text/css">
+		<script>
+			$(document).ready(function() {
+				$('.popup-with-zoom-anim').magnificPopup({
+					type: 'inline',
+					fixedContentPos: false,
+					fixedBgPos: true,
+					overflowY: 'auto',
+					closeBtnInside: true,
+					preloader: false,
+					midClick: true,
+					removalDelay: 300,
+					mainClass: 'my-mfp-zoom-in'
+			});
+		});
+		</script>
+</head>
+<body>
+ <div class="header">
+  <div class="header-top">	
+	<div class="container">
+   			
+			
+				<div class="clearfix"></div>
+			</div>	
+		</div>	
+	    <div class="wmuSlider example1">
+			   <article style="position: absolute; width: 100%; opacity: 0;"> 
+			   	   <div class="banner-wrap">
+						<h1>Welcome to <br/> IndiaOnlineHealth</h1>
+						<ul class="banner_btn">
+						   <li class="grey"><a href="#">Get Started</a></li>
+						   
+		    			 </ul>
+					</div>
+				</article>
+				<article style="position: absolute; width: 100%; opacity: 0;"> 
+				   	<div class="banner-wrap">
+						<h1>We are with you</h1>
+						<h2>To take care of your health.</h2>
+						<ul class="banner_btn">
+						   <li class="grey"><a href="#">Get Started</a></li>
+					  </ul>
+					 </div>
+				</article>
+		  </div>
+          <script src="/ayushman/assets/js/firstlogin/jquery.wmuSlider.js"></script> 
+			<script>
+       			$('.example1').wmuSlider();         
+   		    </script> 	           	      
+   	   </div>    
+   	   <div class="main">
+   	   	<div class="services" id="work">
+   	   		<div class="container">
+   	   			<div class="service_top">
+   	   				<h3>What All you can do</h3>
+  	   			</div>
+   	   			<div class="row service_grid">
+   	   				<div class="col-md-4">	
+   	   					<div class="post_block text-center">
+   	   					   <i class="one"> </i>
+   	   					   <h5 class="m_1"><a href="#">Build Your medical Record</a></h5>
+   	   					   <p class="m_2">- EMR contains medical and treatment history.<br/>
+- Allows doctor to track, identify & check your health.<br/>
+-       Monitor and improve overall quality of care.<br/>
+</p>
+   	   					</div>
+   	   				</div>
+   	   				<div class="col-md-4">
+   	   					<div class="post_block1 text-center">
+   	   					   <i class="two"> </i>
+   	   					   <h5 class="m_1"><a href="#">Fix an Appointment</a></h5>
+   	   					   <p class="m_2">-	Fix an appointment with the doctors online.<br/>
+-	Choose a time slot convenient for you.<br/>
+-	Avoid queue at the clinic.<br/>&nbsp <br/> &nbsp
+</p>
+   	   					</div>
+   	   				</div>
+   	   				<div class="col-md-4">
+   	   					<div class="post_block2 text-center">
+   	   					   <i class="four"> </i>
+   	   					   <h5 class="m_1"><a href="#">Search for Doctors</a></h5>
+   	   					   <p class="m_2">-	Search a doctor by Name, Specialization, Qualification, City, Experience,and Language.<br/>
+-	Create a panel of doctors where you provide access to your EMR.
+</p>
+   	   					</div>
+   	   				</div>
+   	   			</div>
+   	   			<div class="row">
+   	   				<div class="col-md-4">	
+   	   					<div class="post_block text-center">
+   	   					   <i class="five"> </i>
+   	   					   <h5 class="m_1"><a href="#">Place order for Tests</a></h5>
+   	   					   <p class="m_2">nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper susci</p>
+   	   					</div>
+   	   				</div>
+   	   				<div class="col-md-4">
+   	   					<div class="post_block1 text-center">
+   	   					   <i class="six"> </i>
+   	   					   <h5 class="m_1"><a href="#">Place order for Medicines</a></h5>
+   	   					   <p class="m_2">ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Mirum est notare</p>
+   	   					</div>
+   	   				</div>
+   	   				<div class="col-md-4">
+   	   					<div class="post_block2 text-center">
+   	   					   <i class="three"> </i>
+   	   					   <h5 class="m_1"><a href="#">Take care of your Family</a></h5>
+   	   					   <p class="m_2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Mirum est notare</p>
+   	   					</div>
+   	   				</div>
+   	   			</div>
+   	   		</div>
+   	   </div>
+   	   
+   	   		</div>	
+</body>
+</html>		

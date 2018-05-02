@@ -1,0 +1,938 @@
+<head>
+<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		loadScripts();
+		$("#savemedicinepdf").hide();
+		if(readCookie('medicine') == "{}"){
+			 var medicineid = document.getElementById("MedicinesChk");
+   			 medicineid.setAttribute("disabled", "false");
+		}
+		else{
+			var medicinecheck=readCookie('medicinecheckbox');
+			if(medicinecheck == 'checked'){
+				$('#MedicinesChk').attr('checked','checked');
+			}
+			else{
+				$('#MedicinesChk').removeAttr('checked');
+			}
+		
+		}
+		var withoutheadercheck = readCookie('withoutheadercheckbox');
+		if(withoutheadercheck == 'checked'){
+			$('#withoutheaderChk').attr('checked','checked');
+			$("#headerCombine").hide();  // checked
+			$("#headerMedicine").hide();  // checked
+			$("#headerInvestigation").hide();
+			$('#bodycombine').css('marginTop','150');
+			$('#bodymedicine').css('marginTop','150');
+			$('#bodyinvestigation').css('marginTop','150');
+		}
+		else{
+			$('#withoutheaderChk').removeAttr('checked');
+			$("#headerCombine").show();  // checked
+			$("#headerMedicine").show();  // checked
+			$("#headerInvestigation").show();
+			$('#bodycombine').css('marginTop','0');
+			$('#bodymedicine').css('marginTop','0');
+			$('#bodyinvestigation').css('marginTop','0');
+		}
+		if(readCookie('investigation_text') == "{}"){
+			 var x = document.getElementById("InvestigationChk");
+   			 x.setAttribute("disabled", "false");
+		}
+		else{
+			var investigationcheck=readCookie('investigationcheckbox');
+			if(investigationcheck == 'checked'){
+				$('#InvestigationChk').attr('checked','checked');
+			}
+			else{
+				$('#InvestigationChk').removeAttr('checked');
+			}
+		}
+		
+		$('.action').hide();
+		if($("#MedicinesChk").is(':checked')){
+    		$("#medicineDiv").show();  // checked
+    	}else{	
+    		$("#medicineDiv").hide();  // unchecked
+    		$("#medicineDiv").removeClass('yesPrint');
+    	} 
+    	if($("#InvestigationChk").is(':checked')){
+    		$("#investigateDiv").show();  // checked
+     	}else{
+    		$("#investigateDiv").hide();  // unchecked
+    		$("#investigateDiv").removeClass('yesPrint');
+    	}
+		if($("#withsignatureChk").is(':checked')){
+    		$("#signatureOncombineDiv").show();  // checked
+    		$("#signatureOnmedicineDiv").show();  // checked
+    		$("#signatureinvestigationDiv").show();  // checked
+    		$("#signatureOncombineDiv").addClass('yesPrint');
+    		$("#signatureOnmedicineDiv").addClass('yesPrint');
+    		$("#signatureinvestigationDiv").addClass('yesPrint');
+    	}else{	
+    		$("#signatureOncombineDiv").show();  // checked
+    		$("#signatureOnmedicineDiv").show();  // checked
+    		$("#signatureinvestigationDiv").show();  // checked
+    		$("#signatureOncombineDiv").removeClass('yesPrint');
+    		$("#signatureOnmedicineDiv").removeClass('yesPrint');
+    		$("#signatureinvestigationDiv").removeClass('yesPrint');
+    	} 
+		
+	});
+    
+	$('#MedicinesChk').change(function () {
+		if($("#MedicinesChk").is(':checked')){
+    		$("#medicineDiv").show();  // checked
+    		$("#medicineDiv").addClass('yesPrint');
+			medicinecheckbox = Array();
+			medicinecheckbox='checked';
+			document.cookie = 'medicinecheckbox='+(medicinecheckbox);
+    	}else{	
+    		$("#medicineDiv").hide();  // unchecked
+    		$("#medicineDiv").removeClass('yesPrint');
+    	} 
+	});
+
+	$('#InvestigationChk').change(function () {
+		if($("#InvestigationChk").is(':checked')){
+    		$("#investigateDiv").show();  // checked
+    		$("#investigateDiv").addClass('yesPrint');
+			investigationcheckbox = Array();
+			investigationcheckbox='checked';
+			document.cookie = 'investigationcheckbox='+(investigationcheckbox);
+     	}else{
+    		$("#investigateDiv").hide();  // unchecked
+    		$("#investigateDiv").removeClass('yesPrint');
+    	}
+	});
+	$('#withsignatureChk').change(function(){
+		if($('#withsignatureChk').is(':checked')){
+    		$("#signatureOncombineDiv").show();  // checked
+    		$("#signatureOnmedicineDiv").show();  // checked
+    		$("#signatureinvestigationDiv").show();  // checked
+    		$("#signatureOncombineDiv").addClass('yesPrint');
+    		$("#signatureOnmedicineDiv").addClass('yesPrint');
+    		$("#signatureinvestigationDiv").addClass('yesPrint');
+			signaturecheckbox = Array();
+			signaturecheckbox='checked';
+			document.cookie = 'signaturecheckbox='+(signaturecheckbox);
+		}
+		else{
+    		$("#signatureOncombineDiv").hide();  // checked
+    		$("#signatureOnmedicineDiv").hide();  // checked
+    		$("#signatureinvestigationDiv").hide();  // checked
+    		$("#signatureOncombineDiv").removeClass('yesPrint');
+    		$("#signatureOnmedicineDiv").removeClass('yesPrint');
+    		$("#signatureinvestigationDiv").removeClass('yesPrint');
+		}
+	});
+	
+	$('#withoutheaderChk').change(function () {
+		if($("#withoutheaderChk").is(':checked')){
+		
+    		$("#headerCombine").hide();  // checked
+			$("#headerMedicine").hide();  // checked
+			$("#headerInvestigation").hide();  // checked
+			withoutheadercheckbox = Array();
+			withoutheadercheckbox='checked';
+			document.cookie = 'withoutheadercheckbox='+(withoutheadercheckbox);
+			
+			$('#bodycombine').css('marginTop','100');
+			$('#bodymedicine').css('marginTop','100');
+			$('#bodyinvestigation').css('marginTop','100');
+     	}else{
+			document.cookie = 'withoutheadercheckbox=';
+    		$("#headerCombine").show();  // checked
+			$("#headerMedicine").show();  // checked
+			$("#headerInvestigation").show();  // checked
+			
+			$('#bodycombine').css('marginTop','0');
+			$('#bodymedicine').css('marginTop','0');
+			$('#bodyinvestigation').css('marginTop','0');
+			
+    	}
+	});
+	function PrintElem(elem,appointmentid)
+    {
+		var scope = angular.element($("#quickprescription")).scope();
+		if(!scope.$$phase) {
+			scope.$apply(function(){
+				if(scope.examination_data.text_complaint.length == 0){
+					$(".complaint").hide();
+				}
+				console.log(scope.examination_data.check_examinationsummary);
+				if(scope.examination_data.text_examinationsummary.length == 0 || scope.examination_data.check_examinationsummary == false){
+					$(".examinationsummary").hide();
+				}
+				console.log('diagnosis');
+				if(scope.examination_data.text_diagnosis == undefined || scope.examination_data.text_diagnosis.length == 0){
+					$(".diagnosis").hide();
+				}
+				console.log('followup');
+				if(scope.examination_data.text_followup == undefined || scope.examination_data.text_followup.length == 0){
+					$(".followup").hide();
+				}
+			});
+		}
+ 	       Popup($(elem).html());
+     	       var htmlfile={htmlfile:$("#savemedicinepdf").html(),appointmentid:appointmentid};
+ 	     				$.ajax({
+							type: 'post',
+							data:htmlfile,
+							url: "/ayushman/cconsultation/htmlToPdf",
+							datatype: 'html', 
+							success: function (data) { 
+							},
+							error: function (req, status, error) {
+							}
+						});
+
+    }
+
+    function Popup(data) 
+    {
+        var mywindow = window.open('', 'print', 'height=400,width=600');
+        mywindow.document.write('<html><head>');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+		setTimeout(function() {
+	        mywindow.print();
+    	    mywindow.close();
+        	return true;
+ 		}, 3000);	
+
+    }
+</script>
+<style type="text/css">	
+		.ui-autocomplete { max-height: 50%; overflow-y: auto; overflow-x: hidden;
+			-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);
+			-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);
+			box-shadow: 0 4px 15px rgba(0,0,0,1);
+		}
+		.ui-dialog { z-index: 3000 !important ;}
+        .notes
+        {
+            background-image: -webkit-linear-gradient(left, white 10px, transparent 10px), -webkit-linear-gradient(right, white 10px, transparent 10px), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -moz-linear-gradient(left, white 10px, transparent 10px), -moz-linear-gradient(right, white 10px, transparent 10px), -moz-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -ms-linear-gradient(left, white 10px, transparent 10px), -ms-linear-gradient(right, white 10px, transparent 10px), -ms-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -o-linear-gradient(left, white 10px, transparent 10px), -o-linear-gradient(right, white 10px, transparent 10px), -o-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: linear-gradient(left, white 10px, transparent 10px), linear-gradient(right, white 10px, transparent 10px), linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-size: 100% 100%, 100% 100%, 100% 31px;
+            line-height: 31px;
+            padding: 8px;
+			border:none;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+			font-size:9pt
+        }
+        .notes:focus
+        {
+            outline: none;
+        }
+		.fragment {
+			height: 25px;
+			border: none;
+			display: block;
+			padding: 3px;
+			box-sizing: border-box;
+		}
+
+		.fragment:hover {
+			box-shadow: 2px 2px 5px rgba(0,0,0,.2);
+
+		}
+		
+		.bodytext_bold{
+			font-family: tahoma, Helvetica, sans-serif !important;
+			font-weight: bold !important;
+			font-size: 11px !important;
+			color:black !important;
+		}
+		
+		#close {
+			float:right;
+			display:inline-block;
+			padding:2px 5px;
+			background:#ccc;
+		}
+		@page {
+			/* dimensions for the whole page */
+			size: A5;
+			margin: 0mm;
+		}
+
+	   	#dialog tr:hover{
+   	    		background-color:#D1E8F7;
+   	    		box-shadow:2px 7px 19px #888888;
+   	    	}
+		
+</style>
+<style type="text/css">
+		@media only print
+		{	
+			#actions{
+				display:none;
+				width:0px;
+			}
+		.yesPrint{page-break-before: always;margin-right: 1% !important; }
+			
+		}
+		.bodytext_normal{
+				color:black !important; 
+			}
+		.bodytext_bold{
+			color:black !important;
+		}
+		
+		.fragment bodytext_normal{
+			color:black !important;
+		}
+		body {
+			/* A5 dimensions */
+			height: 140mm;
+			width: 120.5mm;
+			margin: 0;
+		}
+	</style>
+<style media="screen">
+  .noPrint{ display: block; }
+  .yesPrint{ display: none !important; }
+  .yesPrintNoBreak{ display: none !important; }
+  .disableyesPrint{ display: none !important; }
+</style>
+
+<style media="print">
+  .noPrint{ display: none; }
+  .yesPrint{ display: block !important; margin:3% !important;margin-bottom:0% !important;}
+  .disableyesPrint{ display: none !important; }
+</style>
+</head>
+<body>
+<div style="color:black;width:536px;" class="noPrint">
+<input type="hidden" value="2" id="autocompletevalue" />
+<table>
+	<tr>
+		<td width="520px;" style="color:black;box-shadow:2px 7px 19px #888888;-moz-box-shadow: 2px 4px 15px #888888;-webkit-box-shadow: 2 7px 19px #888888;">
+			
+			<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+			<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+			<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+			<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+			<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+			<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+			<div style="color:black;width:100%;height:auto;position:relative">
+				<div style="float:left;width:100%;margin-left:3px;  padding: 13px 10px 23px 12px;">
+					<div style="float:left;width:78%;">
+						<span class="bodytext_bold" style="font-size:14px;">Dr. {{myprofile['userinfo'].name}}</span>&nbsp;<span class="bodytext_normal" style="font-size:14px;" >({{myprofile['usereducation'].doctoreducation}})</span></br>
+							<span class="bodytext_normal" style="font-size:14px;">{{myclinics['clinicinfo'][0].clinicname}}</br>
+							{{myclinics['clinicinfo'][0].line1}},
+							{{myclinics['clinicinfo'][0].nearmark}},
+							{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+							{{myclinics['clinicinfo'][0].state}}
+							</br>
+							Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}</span>
+					</div>
+					<div style="float:left;width:22%;">
+						<span class="bodytext_normal" style="font-size:11px;">Regd No.:{{myprofile['userinfo'].regno}}</span>
+					</div>
+				</div>
+				<hr style="color:black;width:100%;"/>
+				<div class="bodytext_bold" style="float:left;width:100%;margin-left:13px;display:inline-flex;padding: 14px 10px 23px 4px;">
+					<div style="float:left;position:relative;width:49%;color:black;">
+						{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}})
+					</div>
+					<div  style="float:left;width:49%;color:black;">
+						<span style="float:right;">{{appointment_info.DateAndTime}}</span>
+					</div>
+				</div>
+				
+				<div class="bodytext_normal vitals" style="position:relative;width:100%;display:inline-flex;margin:5px;padding: 0px 10px 23px 4px;">
+					<div style="width:33%">
+						&nbsp;
+					</div>
+					<div style="width:150px;float:right;">
+						<table class="bodytext_Normal">
+							<tr>
+								<td>
+									Height
+								</td>
+								<td>
+									<label id="pvitals_q_2"  class="textarea" style="float:right;color:black;width:27px" ></label>
+								</td>
+								<td>
+									cms.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									BP
+								</td>
+								<td>
+									<label class="textarea" id="pvitals_q_8" style="float:right;color:black;width:50px" ></label>
+								</td>
+								<td>
+									mm/Hg.
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div style="width:150px;align:right;">	
+						<table class="bodytext_Normal">
+							<tr>
+								<td>
+									Weight
+								</td>
+								<td>
+									 <label class="textarea" id="pvitals_q_1" style="float:right;color:black;width:27px" ></label>
+								</td>
+								<td>
+									Kg.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Pulse
+								</td>
+								<td>
+									<label class="textarea" id="pvitals_q_21" style="float:right;color:black;width:27px" ></label>
+								</td>
+								<td>
+									pm.
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div id="quickprescription" class="bodytext_normal" style="color:black;min-height:231px;padding-left:15px;padding-right:15px;" >
+				<div style="color:black;width:100%;padding: 14px 10px 23px 4px;">
+					</br>
+					<div style="color:black;float:right;width:100%;" ng-show="examination_data.check_symptoms && examination_data.text_complaint.length > 0" ><span class="bodytext_bold" style="color:black">
+						Symptoms -</span>{{examination_data.text_complaint}}
+						</br>
+						</br>
+					</div>
+					<div style="float:right;width:100%;color:black" ng-show="examination_data.check_examinationsummary && examination_data.text_examinationsummary.length > 0" class="bodytext_normal" ><span class="bodytext_bold" style="color:black;">
+						Examination Summary -</span>{{examination_data.text_examinationsummary}}
+						</br>
+						</br>
+					</div>
+					<div style="color:black;float:right;width:100%;" ng-show="examination_data.check_diagnosis && examination_data.text_diagnosis.length > 0" >
+						<span class="bodytext_bold" style="color:black">Diagnosis -</span>  {{examination_data.text_diagnosis}}
+						</br>
+						</br>
+					</div>
+					<span class="bodytext_Normal" style="color:black;font-size:19px;">Rx</span>
+					<div style="color:black;float:right;width:100%;margin-top:10px;margin-left:20px;" id ="pprescription" ></div></br></br>
+					</br>
+					</br>
+					<div style="color:black;float:right;width:100%;" > 
+						<div style="color:black;float:right;width:100%;margin-top:10px;margin-left:20px;display:none;" id ="pinvestigation" ></div>
+						</br>
+						</br>
+					</div>
+					</br>
+					<div style="color:black;float:right;width:100%;padding-top:10px;"  ng-show="examination_data.text_followup"><span class="bodytext_bold" style="color:black">Other Instructions / Follow Up advice -</span> {{examination_data.text_followup}}</div>
+				</div>
+			</div>
+				<div style="color:black;float:right;padding-right:50px;padding-bottom:10px;">
+					<img ng-if="myprofile['userinfo'].signature" src="{{myprofile['userinfo'].signature}}" style="margin-bottom:10px;height:60px;"></br>
+					<label style="margin-left:60px;">Signature</label>
+				</div>
+		</td>
+		<td width="50px;" id="actions" valign="top">
+			<input type="button" value="Bill" ng-click="$modalSuccess();" style="margin:5px;width:50px;" class="button" />
+			<input type="button" value="Finish" ng-click="$modalCancel();" style="margin:5px;width:50px;" class="button" />
+			<div onclick="displaypritableprescriptionoption()" style="">
+			<input type="button" style="margin:5px;color: #19070B; background-color: #585858; border: 1pt ridge lightgrey;width:50px;height:40px;background: url(/ayushman/assets/images/printoption.jpg)no-repeat center top;" class="button" />
+			<label style="font-size: larger;color: #585858;margin-top:-20px;margin-left:15px;">Print </label>
+			</div>
+			<div id="dialog"  class="sectionBox" style="display:block;position:absolute;margin-left:68px;margin-top:-156px;background:white;">
+				<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:1px;margin-top:0px;height:20px;cursor:pointer;" onclick="displaypritableprescriptionoption();">
+				<table width="inherit" class='table_roundBorder' style="max-height:100%;width:266px; margin-right:13px" >
+					<tr style="border-bottom:1px solid #9cd4f9;">
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						<input type="checkbox" name="prescription"  id="combine" value="TRUE" checked disabled/>Combined copy of Medicine & Investigation<br>
+						</td>
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;">
+						
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						<input type="checkbox" name="prescription" id="MedicinesChk" />Separate copy for Medicines<br>
+						</td>
+					</tr>	
+					<tr style="border-bottom:1px solid #9cd4f9;">
+
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						<input type="checkbox" name="prescription" id="InvestigationChk" />Separate copy for Investigations 
+						</td>					
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" >
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+							<input type="checkbox" id="withoutheaderChk" />Print Without Header And Footer
+						</td>
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" >
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+							<input type="checkbox" id="withsignatureChk" name="signature" value="TRUE" checked>Print With Signature
+						</td>
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" onclick="PrintElem('#print',appointmentid);">
+						<td width="100%"  class="bodytext_bold" align="center" style="padding:5px;">
+							<input type="button" value="Print Now" style="margin:5px;width:150px;height:20px;" class="button" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="followupappointment_workspace"  class="sectionBox" style="width:50%;display:block;position:absolute;margin-left:68px;margin-top:75px;background:white;">
+				<div bookingfollowup controller="bookingfollowupCtrl"></div>
+			</div>
+		</td>
+		</tr>
+	</table>
+	 <script>
+	   function displaypritableprescriptionoption()
+	   {
+			$("#dialog").stop().slideToggle(500);
+			$("#followupappointment_workspace").stop().slideToggle(500);
+			
+	   }
+     </script>
+</div>
+
+<div id="savemedicinepdf">
+	<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+	<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+	<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+	<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+	<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+	<div style="width:1024px;">
+		<div style="color:black;width:100%;height:auto;position:relative;">
+			<div id="headerCombine" style="float:left;width:100%;margin-left:3px;  padding: 13px 10px 23px 12px;">
+				<div style="float:left;width:78%;">
+					<span class="bodytext_bold" style="font-size:14px;">Dr. {{myprofile['userinfo'].name}}</span>&nbsp;<span class="bodytext_normal" style="font-size:14px;" >({{myprofile['usereducation'].doctoreducation}})</span></br>
+						<span class="bodytext_normal" style="font-size:14px;">{{myclinics['clinicinfo'][0].clinicname}}</br>
+						{{myclinics['clinicinfo'][0].line1}},
+						{{myclinics['clinicinfo'][0].nearmark}},
+						{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+						{{myclinics['clinicinfo'][0].state}}
+						</br>
+						Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}</span>
+				</div>
+				<div style="float:left;width:22%;">
+					<span class="bodytext_normal" style="font-size:11px;">Regd No.:{{myprofile['userinfo'].regno}}</span>
+				</div>
+			</div>
+			<hr style="color:black;width:100%;"/>
+			
+			<div id="bodycombine" style="color:black;width:100%;margin-left:3px;position:relative;">
+				<div class="bodytext_bold" style="width:100%;margin-left:13px;display:inline-flex;padding: 14px 10px 23px 4px;">
+					<div  style="position:relative;float:left;width:49%;color:black;">
+						{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}})
+					</div>
+					<div class="bodytext_bold" style="color:black;float:left;width:49%;">
+						<span style="float:right;" >{{appointment_info.DateAndTime}}</span>
+					</div>
+				</div>
+				<div class="bodytext_normal vitals" style="position:relative;width:100%;display:inline-flex;margin:5px;padding: 0px 10px 23px 4px;">
+								<span>
+									Height&nbsp;&nbsp;
+									<label id="p4vitals_q_2" class="textarea" style="font-weight:bold;color:black;width:27px" ></label>
+									cms.
+								</span>&nbsp;&nbsp;
+								<span>
+									Weight&nbsp;&nbsp;
+									 <label class="textarea" id="p4vitals_q_1" style="font-weight:bold;color:black;width:27px" ></label>&nbsp;
+									Kg.
+								</span>	
+								</br>
+								</br>
+								<span>
+									BP&nbsp;&nbsp;
+									<label class="textarea" id="p4vitals_q_8" style="font-weight:bold;color:black;width:50px" ></label>&nbsp;
+									mm/Hg.
+								</span>&nbsp;&nbsp;
+								<span>
+									Pulse&nbsp;&nbsp;
+									<label class="textarea" id="p4vitals_q_21" style="font-weight:bold;color:black;width:27px" ></label>&nbsp;
+									pm.
+								</span>	
+				</div>
+				<div id="quickprescription" class="bodytext_normal" style="color:black;min-height:231px;margin-top:25px;padding-left:15px;padding-right:15px;" >
+					<div style="color:black;width:100%;">
+							</br>
+							<span class="bodytext_Normal" style="color:black;font-weight:bold;font-size:22px;">Rx</span>
+							<div style="color:black;float:right;width:100%;margin-top:10px;margin-left:20px;" id ="p3prescription" >
+							</div></br></br>
+							</br>
+					</div>
+					<div style="color:black;float:right;padding-right:50px;padding-bottom:10px;">
+						<div id="signatureOncombineDiv" class="yesPrint" style="display:none;">
+						<img src="{{myprofile['userinfo'].signature}}" style="margin-bottom:10px;height:60px;">
+						</div>
+						<label style="margin-left:60px;">Signature</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="print">
+<div id="combine" class="yesPrintNoBreak">
+	<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+	<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+	<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+	<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+	<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+	<div style="color:black;width:100%;height:auto;position:relative;">
+		<div id="headerCombine" style="float:left;width:100%;margin-left:3px;  padding: 13px 10px 23px 12px;">
+			<div style="float:left;width:78%;">
+				<span class="bodytext_bold" style="font-size:14px;">Dr. {{myprofile['userinfo'].name}}</span>&nbsp;<span class="bodytext_normal" style="font-size:14px;" >({{myprofile['usereducation'].doctoreducation}})</span></br>
+					<span class="bodytext_normal" style="font-size:14px;">{{myclinics['clinicinfo'][0].clinicname}}</br>
+					{{myclinics['clinicinfo'][0].line1}},
+					{{myclinics['clinicinfo'][0].nearmark}},
+					{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+					{{myclinics['clinicinfo'][0].state}}
+					</br>
+					Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}</span>
+			</div>
+			<div style="float:left;width:22%;">
+				<span class="bodytext_normal" style="font-size:11px;">Regd No.:{{myprofile['userinfo'].regno}}</span>
+			</div>
+		</div>
+		<hr style="color:black;width:100%;"/>
+		
+		<div id="bodycombine" style="color:black;width:100%;margin-left:3px;position:relative;">
+			<div class="bodytext_bold" style="width:100%;margin-left:13px;display:inline-flex;padding: 14px 10px 23px 4px;">
+				<div  style="position:relative;width:49%;color:black;">
+					{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}})
+				</div>
+				<div class="bodytext_bold" style="color:black;width:49%;">
+					<span style="float:right;" >{{appointment_info.DateAndTime}}</span>
+				</div>
+			</div>
+			<div class="bodytext_normal vitals" style="position:relative;width:100%;display:inline-flex;margin:5px;padding: 0px 10px 23px 4px;">
+				<div style="width:33%">
+					&nbsp;
+				</div>
+				<div style="width:150px;float:right;">
+					<table class="bodytext_Normal" style="float:right;">
+						<tr>
+							<td>
+								Height
+							</td>
+							<td>
+								<label id="p3vitals_q_2" class="textarea" style="color:black;width:27px" ></label>
+							</td>
+							<td>
+								cms.
+							</td>
+						</tr>
+						<tr>
+							<td>
+								BP
+							</td>
+							<td>
+								<label class="textarea" id="p3vitals_q_8" style="color:black;width:50px" ></label>
+							</td>
+							<td>
+								mm/Hg.
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div style="width:150px;align:right;float:right;">	
+					<table class="bodytext_Normal" style="float:right;">
+						<tr>
+							<td>
+								Weight
+							</td>
+							<td>
+								 <label class="textarea" id="p3vitals_q_1" style="color:black;width:27px" ></label>
+							</td>
+							<td>
+								Kg.
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Pulse
+							</td>
+							<td>
+								<label class="textarea" id="p3vitals_q_21" style="color:black;width:27px" ></label>
+							</td>
+							<td>
+								pm.
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="quickprescription" class="bodytext_normal" style="color:black;min-height:231px;padding-left:15px;padding-right:15px;" >
+		<div style="color:black;width:100%">
+				</br>
+				<div style="color:black;float:right;width:100%;" class="complaint" ng-show="examination_data.check_symptoms && examination_data.text_complaint.length > 0" ><span class="bodytext_bold" style="color:black">
+					Symptoms -</span>{{examination_data.text_complaint}}
+					</br>
+					</br>
+				</div>
+				<div style="float:right;width:100%;color:black" class="examinationsummary" ng-show="examination_data.check_examinationsummary && examination_data.text_examinationsummary.length > 0" class="bodytext_normal" ><span class="bodytext_bold" style="color:black;">
+						Examination Summary -</span>{{examination_data.text_examinationsummary}}
+						</br>
+						</br>
+					</div>
+				<div style="color:black;float:right;width:100%;" class="diagnosis" ng-show="examination_data.check_diagnosis && examination_data.text_diagnosis.length > 0" >
+					<span class="bodytext_bold" style="color:black">Diagnosis -</span>  {{examination_data.text_diagnosis}}
+					</br>
+					</br>
+				</div>
+				<span class="bodytext_Normal" style="color:black;font-size:19px;">Rx</span>
+				<div style="color:black;float:right;width:100%;margin-top:10px;margin-left:20px;" id ="p1prescription" ></div></br></br>
+				</br>
+				</br>
+				<div style="color:black;float:right;width:100%;" > 
+					<div style="color:black;float:right;width:100%;margin-top:10px;margin-left:20px;display:none;" id ="p1investigation" ></div>
+					</br>
+					</br>
+				</div>
+				</br>
+				<div style="color:black;float:right;width:100%;padding-top:10px;" class="followup"  ng-show="examination_data.text_followup"><span class="bodytext_bold" style="color:black">Other Instructions / Follow Up advice -</span> {{examination_data.text_followup}}</div>
+			</div>
+			<div style="color:black;float:right;padding-right:50px;padding-bottom:10px;">
+				<div id="signatureOncombineDiv" class="yesPrint" style="display:none;">
+				<img src="{{myprofile['userinfo'].signature}}" ng-show="myprofile['userinfo'].signature.length > 0" style="margin-bottom:10px;height:60px;">
+				</div>
+				<label style="margin-left:60px;">Signature</label>
+			</div>
+	</div>
+				
+
+	</div>
+<div id="medicineDiv" class="yesPrint" style="display:none;">
+	<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+	<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+	<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+	<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+	<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+	<div style="color:black;width:100%;height:auto;position:relative;margin-bottom:50px;">
+		<div id="headerMedicine" style="float:left;width:100%;margin-left:3px;  padding: 13px 10px 23px 12px;">
+			<div style="float:left;width:78%;">
+				<span class="bodytext_bold" style="font-size:14px;">Dr. {{myprofile['userinfo'].name}}</span>&nbsp;<span class="bodytext_normal" style="font-size:14px;" >({{myprofile['usereducation'].doctoreducation}})</span></br>
+					<span class="bodytext_normal" style="font-size:14px;">{{myclinics['clinicinfo'][0].clinicname}}</br>
+					{{myclinics['clinicinfo'][0].line1}},
+					{{myclinics['clinicinfo'][0].nearmark}},
+					{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+					{{myclinics['clinicinfo'][0].state}}
+					</br>
+					Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}</span>
+			</div>
+			<div style="float:left;width:22%;">
+				<span class="bodytext_normal" style="font-size:11px;">Regd No.:{{myprofile['userinfo'].regno}}</span>
+			</div>
+		</div>
+		<hr style="color:black;width:100%;"/>
+		<div id="bodymedicine" style="color:black;width:100%;margin-left:3px;position:relative;">
+			<div class="bodytext_bold" style="width:100%;margin-left:13px;display:inline-flex; padding: 14px 10px 23px 4px;">
+				<div style="position:relative;width:49%;color:black;">
+					{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}})
+				</div>
+				<div style="width:49%;">
+					<span style="float:right;color:black;">{{appointment_info.DateAndTime}}</span>
+				</div>
+			</div>
+			<div class="bodytext_normal vitals" style="position:relative;width:100%;display:inline-flex;margin:5px;padding: 0px 10px 23px 4px;">
+				<div style="width:33%">
+					&nbsp;
+				</div>
+				<div style="width:150px;float:right;">
+					<table class="bodytext_Normal" style="float:right;">
+						<tr>
+							<td>
+								Height
+							</td>
+							<td>
+								<label id="p1vitals_q_2" class="textarea" style="color:black;width:27px" ></label>
+							</td>
+							<td>
+								cms.
+							</td>
+						</tr>
+						<tr>
+							<td>
+								BP
+							</td>
+							<td>
+								<label class="textarea" id="p1vitals_q_8" style="color:black;width:50px" ></label>
+							</td>
+							<td>
+								mm/Hg.
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div style="width:150px;align:right;">	
+					<table class="bodytext_Normal" style="float:right;">
+						<tr>
+							<td>
+								Weight
+							</td>
+							<td>
+								 <label class="textarea" id="p1vitals_q_1" style="color:black;width:27px" ></label>
+							</td>
+							<td>
+								Kg.
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Pulse
+							</td>
+							<td>
+								<label class="textarea" id="p1vitals_q_21" style="color:black;width:27px" ></label>
+							</td>
+							<td>
+								pm.
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="quickprescription" class="bodytext_normal" style="color:black;min-height:231px;padding-left:15px;padding-right:15px;" >
+			<div style="color:black;width:100%">
+				<span class="bodytext_Normal" style="color:black;font-size:19px;">Rx</span>
+				<div style="color:black;float:right;width:100%;margin-top:10px;margin-left:20px;" id ="medicinepprescription" ></div></br></br>
+			</div>
+		</div>
+		<div style="color:black;float:right;padding-right:50px;padding-bottom:10px;">
+			<div id="signatureOnmedicineDiv" class="yesPrint" style="display:none;">
+			<img src="{{myprofile['userinfo'].signature}}" style="margin-bottom:10px;height:60px;">
+			</div>
+			<label style="margin-left:60px;">Signature</label>
+		</div>
+	</div>
+	
+	</div>
+<div id="investigateDiv" class="yesPrint" style="display:none;">
+	<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+	<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+	<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+	<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+	<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+	<div style="color:black;width:100%;height:auto;position:relative;margin-bottom:50px;">
+		<div id="headerInvestigation" style="float:left;width:100%;margin-left:3px;  padding: 13px 10px 23px 12px;">
+			<div style="float:left;width:78%;">
+				<span class="bodytext_bold" style="font-size:14px;">Dr. {{myprofile['userinfo'].name}}</span>&nbsp;<span class="bodytext_normal" style="font-size:14px;" >({{myprofile['usereducation'].doctoreducation}})</span></br>
+					<span class="bodytext_normal" style="font-size:14px;">{{myclinics['clinicinfo'][0].clinicname}}</br>
+					{{myclinics['clinicinfo'][0].line1}},
+					{{myclinics['clinicinfo'][0].nearmark}},
+					{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+					{{myclinics['clinicinfo'][0].state}}
+					</br>
+					Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}</span>
+			</div>
+			<div style="float:left;width:22%;">
+				<span class="bodytext_normal" style="font-size:11px;">Regd No.:{{myprofile['userinfo'].regno}}</span>
+			</div>
+		</div>
+		<hr style="color:black;width:100%;"/>
+		<div id="bodyinvestigation" style="color:black;position:relative;width:100%;margin-left:3px;">
+			<div style="width:100%;margin-left:13px;display:inline-flex;padding: 14px 10px 23px 4px;">
+				<div class="bodytext_bold" style="position:relative;width:49%;color:black;">
+					{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}})
+				</div>
+				<div style="width:49%;color:black;" >
+					<span style="float:right;">{{appointment_info.DateAndTime}}</span>
+				</div>
+			</div>
+			<div class="bodytext_normal vitals" style="position:relative;width:100%;display:inline-flex;margin:5px;padding: 0px 10px 23px 4px;">
+				<div style="width:33%">
+					&nbsp;
+				</div>
+				<div style="width:150px;float:right;">
+					<table class="bodytext_Normal" style="float:right;">
+						<tr>
+							<td>
+								Height
+							</td>
+							<td>
+								<label id="p2vitals_q_2" class="textarea" style="color:black;width:27px" ></label>
+							</td>
+							<td>
+								cms.
+							</td>
+						<tr>
+						<tr>
+							<td>
+								BP
+							</td>
+							<td>
+								<label class="textarea" id="p2vitals_q_8" style="color:black;width:50px" ></label>
+							</td>
+							<td>
+								mm/Hg.
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div style="width:150px;align:right;">	
+					<table class="bodytext_Normal" style="float:right;">
+						<tr>
+							<td>
+								Weight
+							</td>
+							<td>
+								 <label class="textarea" id="p2vitals_q_1" style="color:black;width:27px" ></label>
+							</td>
+							<td>
+								Kg.
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Pulse
+							</td>
+							<td>
+								<label class="textarea" id="p2vitals_q_21" style="color:black;width:27px" ></label>
+							</td>
+							<td>
+								pm.
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div id="quickprescription" class="bodytext_normal" style="color:black;min-height:231px;padding-left:15px;padding-right:15px;position:relative;" >
+			<div style="color:black;width:100%">
+				<div style="color:black;float:right;width:100%;" > 
+					<div style="color:black;float:right;width:100%;margin-top:10px;margin-left:20px;display:none;" id ="p2investigation" ></div>
+				</div>
+			</div>
+		</div>
+		<div style="color:black;float:right;padding-right:50px;padding-bottom:10px;">
+			<div id="signatureinvestigationDiv" class="yesPrint" style="display:none;">
+			<img src="{{myprofile['userinfo'].signature}}" style="margin-bottom:10px;height:60px;">
+			</div>
+			<label style="margin-left:60px;">Signature</label>
+		</div>
+	</div>	
+
+	</div>
+</div>
+</body>

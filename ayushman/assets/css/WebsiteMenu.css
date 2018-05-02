@@ -1,0 +1,101 @@
+/* Structure
+------------------------------------------*/
+#WebsiteMenu,
+#WebsiteMenu ul {
+	list-style: none;
+}
+#WebsiteMenu {
+	float: left;
+}
+#WebsiteMenu > li {
+	float: left;
+}
+#WebsiteMenu li a {
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+}
+#WebsiteMenu ul {
+	position: absolute;
+	display: none;
+	z-index: 999;
+}
+#WebsiteMenu ul li a {
+	width: 80px;
+}
+#WebsiteMenu li:hover ul.noJS {
+	display: block; 
+}
+
+
+/* Main menu
+------------------------------------------*/
+#WebsiteMenu {
+	font-family: Arial;
+	font-size: 12px;
+	text-align:left;
+}
+#WebsiteMenu > li > a {
+	color: #000;
+	font-weight: bold;
+	
+}
+#WebsiteMenu > li:hover > a {
+	background: #034971;
+	color: #FFF;
+		-webkit-border-top-left-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	-opera-border-radius-topleft:4px;
+	-khtml-border-radius-topleft:4px;
+
+}
+
+
+/* Submenu
+------------------------------------------*/
+#WebsiteMenu ul {
+	background: #034971;
+	background:rgb(255,255,255); 
+	background: rgba(255,255,255, .9); /* Works on all modern browsers */
+	width:142px;
+	font-weight:bold;
+	border:1px solid #bddff3;
+}
+#WebsiteMenu ul li a {
+	color: #000;
+	border-bottom:dotted 1px #ccc;
+	width:auto;
+
+}
+#WebsiteMenu ul li:hover a {
+	background: #034971;
+	color:#FFF;
+	width:auto;
+}
+
+.active{
+	color:#FFF;
+	cursor: pointer;
+	background-color:#034971;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	-opera-border-radius-topleft:4px;
+	-khtml-border-radius-topleft:4px;
+}
+.web-text{
+	color: #000;
+	font: 12px Arial, Helvetica, sans-serif;
+	text-decoration:none;
+	font-weight:bold;
+}

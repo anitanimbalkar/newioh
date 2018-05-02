@@ -1,0 +1,664 @@
+ <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="com">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="indiaonlinehealth">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="individualorders" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="individualorder" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="patientRole">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:integer" name="id"/>
+																<xs:element name="addr">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:string" name="streetAddressLine"/>
+																			<xs:element type="xs:string" name="city"/>
+																			<xs:element type="xs:string" name="state"/>
+																			<xs:element name="postalCode">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{6}|"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element type="xs:string" name="country"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="telecom">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:pattern value="[0-9]{12}|"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="mobilenumber">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:pattern value="[0-9]{12}|"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="patient">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="name">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element type="xs:string" name="salutation"/>
+																						<xs:element type="xs:string" name="firstname"/>
+																						<xs:element type="xs:string" name="middlename"/>
+																						<xs:element type="xs:string" name="family"/>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element type="xs:string" name="uid"/>
+																			<xs:element type="xs:string" name="administrativeGenderCode"/>
+																			<xs:element type="xs:string" name="birthTime"/>
+																			<xs:element name="age">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="years">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:integer" >
+																									<xs:minInclusive value="0"/>
+																									<xs:maxInclusive value="120"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="months">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:integer" >
+																									<xs:minInclusive value="0"/>
+																									<xs:maxInclusive value="11"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="days">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:integer" >
+																									<xs:minInclusive value="0"/>
+																									<xs:maxInclusive value="30"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="birthplace">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="place">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="addr">
+																										<xs:complexType>
+																											<xs:sequence>
+																												<xs:element type="xs:string" name="state"/>
+																												<xs:element name="postalCode">
+																													<xs:simpleType>
+																														<xs:restriction base="xs:string">
+																															<xs:pattern value="[0-9]{6}|"/>
+																														</xs:restriction>
+																													</xs:simpleType>
+																												</xs:element>
+																												<xs:element type="xs:string" name="country"/>
+																											</xs:sequence>
+																										</xs:complexType>
+																									</xs:element>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="orderinfo">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:short" name="id"/>
+																<xs:element type="xs:double" name="grossamount"/>
+																<xs:element type="xs:double" name="discountamount"/>
+																<xs:element type="xs:short" name="discountpercentage"/>
+																<xs:element type="xs:string" name="reasonfordiscount"/>
+																<xs:element type="xs:double" name="netamount"/>
+																<xs:element type="xs:string" name="referringdoctor"/>
+																<xs:element type="xs:string" name="uid"/>
+																<xs:element name="referringdoctorcontact">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:pattern value="[0-9]{10}|"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+
+																<xs:element type="xs:string" name="ordertype"/>
+																<xs:element type="xs:string" name="medicalhistory"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="tests">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="test" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:string" name="loinc"/>
+																			<xs:element type="xs:string" name="labtestcode"/>
+																			<xs:element type="xs:short" name="iohtestcode"/>
+																			<xs:element type="xs:string" name="labtestname"/>
+																			<xs:element type="xs:double" name="labstdprice"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="bulkorders" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="individualorder" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="xs:integer" name="bulkorderid"/>
+													<xs:element name="patientRole">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:integer" name="id"/>
+																<xs:element name="addr">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:string" name="streetAddressLine"/>
+																			<xs:element type="xs:string" name="city"/>
+																			<xs:element type="xs:string" name="state"/>
+																			<xs:element name="postalCode">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{6}|"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element type="xs:string" name="country"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="telecom">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:pattern value="[0-9]{10}|"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="mobilenumber">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:pattern value="[0-9]{10}|"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="patient">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="name">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element type="xs:string" name="salutation"/>
+																						<xs:element type="xs:string" name="firstname"/>
+																						<xs:element type="xs:string" name="middlename"/>
+																						<xs:element type="xs:string" name="family"/>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element type="xs:string" name="administrativeGenderCode"/>
+																			<xs:element type="xs:string" name="birthTime"/>
+																			<xs:element name="age">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element type="xs:short" name="years"/>
+																						<xs:element type="xs:short" name="months"/>
+																						<xs:element type="xs:short" name="days"/>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="birthplace">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="place">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="addr">
+																										<xs:complexType>
+																											<xs:sequence>
+																												<xs:element type="xs:string" name="state"/>
+																												<xs:element name="postalCode">
+																													<xs:simpleType>
+																														<xs:restriction base="xs:string">
+																															<xs:pattern value="[0-9]{6}|"/>
+																														</xs:restriction>
+																													</xs:simpleType>
+																												</xs:element>
+																												<xs:element type="xs:string" name="country"/>
+																											</xs:sequence>
+																										</xs:complexType>
+																									</xs:element>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="orderinfo">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:short" name="id"/>
+																<xs:element type="xs:double" name="grossamount"/>
+																<xs:element type="xs:double" name="discountamount"/>
+																<xs:element type="xs:short" name="discountpercentage"/>
+																<xs:element type="xs:string" name="reasonfordiscount"/>
+																<xs:element type="xs:double" name="netamount"/>
+																<xs:element type="xs:string" name="referringdoctor"/>
+
+																<xs:element name="referringdoctorcontact">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:pattern value="[0-9]{10}|"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+
+																<xs:element type="xs:string" name="ordertype"/>
+																<xs:element type="xs:string" name="medicalhistory"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="tests">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="test">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:short" name="testcode"/>
+																			<xs:element type="xs:string" name="packageid"/>
+																			<xs:element type="xs:short" name="testid"/>
+																			<xs:element type="xs:string" name="testname"/>
+																			<xs:element type="xs:double" name="sellingprice"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="acknowledgements" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ack" maxOccurs="unbounded" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="status">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="order">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:string" name="type"/>
+																			<xs:element type="xs:short" name="id"/>
+																			<xs:element name="statuscode">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:enumeration value="accepted"/>
+																						<xs:enumeration value="rejected"/> 
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element type="xs:string" name="details"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="request" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										
+													<xs:element name="order">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="type"/>
+																<xs:element type="xs:string" name="id"/>
+																<xs:element type="xs:string" name="statuscode"/>
+																<xs:element type="xs:string" name="details"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="reports" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="report">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="order">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element type="xs:string" name="id"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="performer">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="assignedEntity">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="assignedPerson">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="name">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element type="xs:string" name="prefix"/>
+																									<xs:element type="xs:string" name="given"/>
+																									<xs:element type="xs:string" name="family"/>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																						<xs:element type="xs:string" name="uid"/>
+																						<xs:element type="xs:string" name="registrationnumber"/>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="representedOrganization">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element type="xs:string" name="name"/>
+																						<xs:element name="telecom">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:pattern value="[0-9]{12}|"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>                   
+																						<xs:element name="addr">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element type="xs:string" name="streetAddressLine"/>
+																									<xs:element type="xs:string" name="city"/>
+																									<xs:element type="xs:string" name="state"/>
+																									<xs:element name="postalCode">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:string">
+																												<xs:pattern value="[0-9]{6}|"/>
+																											</xs:restriction>
+																										</xs:simpleType>
+																									</xs:element>
+																									<xs:element type="xs:string" name="country"/>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="recordTarget">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="patientRole">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:integer" name="id"/>
+																			<xs:element name="addr">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element type="xs:string" name="streetAddressLine"/>
+																						<xs:element type="xs:string" name="city"/>
+																						<xs:element type="xs:string" name="state"/>
+																						<xs:element name="postalCode">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:pattern value="[0-9]{6}|"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element type="xs:string" name="country"/>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="telecom">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{12}|"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="mobilenumber">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{12}|"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="patient">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="name">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element type="xs:string" name="salutation"/>
+																									<xs:element type="xs:string" name="firstname"/>
+																									<xs:element type="xs:string" name="middlename"/>
+																									<xs:element type="xs:string" name="family"/>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																						<xs:element type="xs:string" name="uid"/>
+																						<xs:element type="xs:string" name="administrativeGenderCode"/>
+																						<xs:element type="xs:string" name="birthTime"/>
+																						<xs:element name="age">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="years">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:string">
+																												<xs:pattern value="[0-9]{2}|[0-9]{1}|"/>
+																											</xs:restriction>
+																										</xs:simpleType>
+																									</xs:element>
+																									<xs:element name="months">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:string">
+																												<xs:pattern value="[0-9]{2}|[0-9]{1}|"/>
+																											</xs:restriction>
+																										</xs:simpleType>
+																									</xs:element>
+																									<xs:element name="days">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:string">
+																												<xs:pattern value="[0-9]{2}|[0-9]{1}|"/>
+																											</xs:restriction>
+																										</xs:simpleType>
+																									</xs:element>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																						<xs:element name="birthplace">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="place">
+																										<xs:complexType>
+																											<xs:sequence>
+																												<xs:element name="addr">
+																													<xs:complexType>
+																														<xs:sequence>
+																															<xs:element type="xs:string" name="state"/>
+																															<xs:element name="postalCode">
+																																<xs:simpleType>
+																																	<xs:restriction base="xs:string">
+																																		<xs:pattern value="[0-9]{6}|"/>
+																																	</xs:restriction>
+																																</xs:simpleType>
+																															</xs:element>
+																															<xs:element type="xs:string" name="country"/>
+																														</xs:sequence>
+																													</xs:complexType>
+																												</xs:element>
+																											</xs:sequence>
+																										</xs:complexType>
+																									</xs:element>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="tests">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="test" maxOccurs="unbounded" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element type="xs:string" name="loinc"/>
+																			<xs:element type="xs:string" name="labtestcode"/>
+																			<xs:element type="xs:string" name="iohtestcode"/>
+																			<xs:element type="xs:string" name="labtestname"/>
+																			<xs:element type="xs:string" name="samplecollectiondate"/>
+																			<xs:element type="xs:string" name="samplecollectionplace"/>
+																			<xs:element type="xs:string" name="samplearrivaltime"/>
+																			<xs:element type="xs:string" name="reportgenerationtime"/>
+																			<xs:element type="xs:string" name="authorizedby"/>
+																			<xs:element name="files" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="file" maxOccurs="unbounded" minOccurs="1">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element name="type" minOccurs="1" maxOccurs="1">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:string">
+																												<xs:enumeration value="pdf"/>
+																												<xs:enumeration value="jpg"/>
+																												<xs:enumeration value="jpeg"/>
+																												<xs:enumeration value="png"/>
+																												<xs:enumeration value="bmp"/>
+																												<xs:enumeration value="gif"/>
+																											</xs:restriction>
+																										</xs:simpleType>
+																									</xs:element>
+																									<xs:element type="xs:string" name="document" maxOccurs="1" minOccurs="1"/>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="parameters" maxOccurs="1" minOccurs="1" >
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="parameter" maxOccurs="unbounded" minOccurs="1">
+																							<xs:complexType>
+																								<xs:sequence>
+																									<xs:element type="xs:string" name="labparametercode" minOccurs="1" maxOccurs="1"/>
+																									<xs:element type="xs:string" name="labparametername" minOccurs="1" maxOccurs="1"/>
+																									<xs:element type="xs:string" name="observedvalue" minOccurs="1" maxOccurs="1"/>
+																									<xs:element type="xs:string" name="biologicalreference" minOccurs="1" maxOccurs="1"/>
+																									<xs:element type="xs:string" name="unit" minOccurs="1" maxOccurs="1"/>
+																									<xs:element name="signal" minOccurs="1" maxOccurs="1">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:string">
+																												<xs:enumeration value="normal"/>
+																												<xs:enumeration value="abnormal"/>
+																											</xs:restriction>
+																										</xs:simpleType>
+																									</xs:element>
+																									<xs:element type="xs:string" name="comment" minOccurs="1" maxOccurs="1"/>
+																								</xs:sequence>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="response" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="order">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element type="xs:string" name="statuscode"/>
+													<xs:element type="xs:string" name="details"/>
+													<xs:element type="xs:string" name="id"/>
+													<xs:element type="xs:string" name="type"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

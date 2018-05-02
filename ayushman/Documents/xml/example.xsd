@@ -1,0 +1,133 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="data">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="unknownNode" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:integer" name="A"/>
+              <xs:element type="xs:string" name="B"/>
+              <xs:element type="xs:string" name="C"/>
+              <xs:element type="xs:string" name="D"/>
+              <xs:element type="xs:string" name="E"/>
+              <xs:element type="xs:string" name="F"/>
+              <xs:element type="xs:string" name="G"/>
+              <xs:element type="xs:string" name="H"/>
+              <xs:element type="xs:string" name="I"/>
+              <xs:element type="xs:string" name="J"/>
+              <xs:element type="xs:string" name="K"/>
+              <xs:element type="xs:string" name="L"/>
+              <xs:element type="xs:string" name="M"/>
+              <xs:element type="xs:string" name="N"/>
+              <xs:element type="xs:string" name="O"/>
+              <xs:element type="xs:string" name="P"/>
+              <xs:element type="xs:string" name="Q"/>
+              <xs:element type="xs:string" name="R"/>
+              <xs:element type="xs:string" name="S"/>
+              <xs:element type="xs:string" name="T"/>
+              <xs:element type="xs:string" name="U"/>
+              <xs:element type="xs:string" name="V"/>
+              <xs:element type="xs:string" name="W"/>
+              <xs:element type="xs:string" name="X"/>
+              <xs:element type="xs:string" name="Y"/>
+              <xs:element type="xs:string" name="Z"/>
+              <xs:element type="xs:string" name="AA"/>
+              <xs:element type="xs:string" name="AB"/>
+              <xs:element type="xs:string" name="AC"/>
+              <xs:element type="xs:string" name="AD"/>
+              <xs:element type="xs:string" name="AE"/>
+              <xs:element type="xs:string" name="AF"/>
+              <xs:element type="xs:string" name="AG"/>
+              <xs:element type="xs:string" name="AH"/>
+              <xs:element type="xs:string" name="AI"/>
+              <xs:element type="xs:string" name="AJ"/>
+              <xs:element type="xs:string" name="AK"/>
+              <xs:element type="xs:string" name="AL"/>
+              <xs:element type="xs:string" name="AM"/>
+              <xs:element type="xs:string" name="AN"/>
+              <xs:element type="xs:string" name="AO"/>
+              <xs:element type="xs:string" name="AP"/>
+              <xs:element type="xs:string" name="AQ"/>
+              <xs:element type="xs:string" name="AR"/>
+              <xs:element type="xs:string" name="AS"/>
+              <xs:element type="xs:string" name="AT"/>
+              <xs:element type="xs:string" name="AU"/>
+              <xs:element type="xs:string" name="AV"/>
+              <xs:element type="xs:string" name="AW"/>
+              <xs:element type="xs:string" name="AX"/>
+              <xs:element type="xs:string" name="AY"/>
+              <xs:element type="xs:string" name="AZ"/>
+              <xs:element type="xs:string" name="BA"/>
+              <xs:element type="xs:string" name="BB"/>
+              <xs:element type="xs:string" name="BC"/>
+              <xs:element type="xs:string" name="BD"/>
+              <xs:element type="xs:string" name="BE"/>
+              <xs:element type="xs:string" name="BF"/>
+              <xs:element type="xs:string" name="BG"/>
+              <xs:element type="xs:string" name="BH"/>
+              <xs:element type="xs:string" name="BI"/>
+              <xs:element type="xs:string" name="BJ"/>
+              <xs:element type="xs:string" name="BK"/>
+              <xs:element type="xs:string" name="BL"/>
+              <xs:element type="xs:string" name="BM"/>
+              <xs:element type="xs:string" name="BN"/>
+              <xs:element type="xs:string" name="BO"/>
+              <xs:element type="xs:string" name="BP"/>
+              <xs:element type="xs:string" name="BQ"/>
+              <xs:element type="xs:string" name="BR"/>
+              <xs:element type="xs:string" name="BS"/>
+              <xs:element type="xs:string" name="BT"/>
+              <xs:element type="xs:string" name="BU"/>
+              <xs:element type="xs:string" name="BV"/>
+              <xs:element type="xs:string" name="BW"/>
+              <xs:element type="xs:string" name="BX"/>
+              <xs:element type="xs:string" name="BY"/>
+              <xs:element type="xs:string" name="BZ"/>
+              <xs:element type="xs:string" name="CA"/>
+              <xs:element type="xs:string" name="CB"/>
+              <xs:element type="xs:string" name="CC"/>
+              <xs:element type="xs:string" name="CD"/>
+              <xs:element type="xs:string" name="CE"/>
+              <xs:element type="xs:string" name="CF"/>
+              <xs:element type="xs:string" name="CG"/>
+              <xs:element type="xs:string" name="CH"/>
+              <xs:element type="xs:string" name="CI"/>
+              <xs:element type="xs:string" name="CJ"/>
+              <xs:element type="xs:string" name="CK"/>
+              <xs:element type="xs:string" name="CL"/>
+              <xs:element type="xs:string" name="CM"/>
+              <xs:element type="xs:string" name="CN"/>
+              <xs:element type="xs:string" name="CO"/>
+              <xs:element type="xs:string" name="CP"/>
+              <xs:element type="xs:string" name="CQ"/>
+              <xs:element type="xs:string" name="CR"/>
+              <xs:element type="xs:string" name="CS"/>
+              <xs:element type="xs:string" name="CT"/>
+              <xs:element type="xs:string" name="CU"/>
+              <xs:element type="xs:string" name="CV"/>
+              <xs:element type="xs:string" name="CW"/>
+              <xs:element type="xs:string" name="CX"/>
+              <xs:element type="xs:string" name="CY"/>
+              <xs:element type="xs:string" name="CZ"/>
+              <xs:element type="xs:string" name="DA"/>
+              <xs:element type="xs:string" name="DB"/>
+              <xs:element type="xs:string" name="DC"/>
+              <xs:element type="xs:string" name="DD"/>
+              <xs:element type="xs:string" name="DE"/>
+              <xs:element type="xs:string" name="DF"/>
+              <xs:element type="xs:string" name="DG"/>
+              <xs:element type="xs:string" name="DH"/>
+              <xs:element type="xs:string" name="DI"/>
+              <xs:element type="xs:string" name="DJ"/>
+              <xs:element type="xs:string" name="DK"/>
+              <xs:element type="xs:string" name="DL"/>
+              <xs:element type="xs:string" name="DM"/>
+              <xs:element type="xs:string" name="DN"/>
+              <xs:element type="xs:string" name="DO"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

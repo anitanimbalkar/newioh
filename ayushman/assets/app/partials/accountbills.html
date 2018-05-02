@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Table</title>
+    <meta name="viewport"
+          content="width = device-width, initial-scale = 1.0, minimum-scale = 1.0, maximum-scale = 1.0, user-scalable = no"/>
+    <link href="../assets/app/css/table.css" rel="stylesheet" type="text/css"/>
+    <link href="../assets/app/css/footable.core.css?v=2-0-1" rel="stylesheet" type="text/css"/>
+    <link href="../assets/app/css/footable-demos.css" rel="stylesheet" type="text/css"/>
+   
+    <script src="../assets/app/js/extra/footable.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/footable.sort.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/footable.filter.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/footable.paginate.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/bootstrap-tab.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	$(document).ready(function(){
+			$(function () {
+				   $('table').footable({ bookmarkable: { enabled: true }}).bind({
+					'footable_filtering': function (e) {
+						var selected = $('.filter-status').find(':selected').text();
+						if (selected && selected.length > 0) {
+							e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
+							e.clear = !e.filter;
+						}
+					},
+					'footable_filtered': function() {
+						var count = $('table.demo tbody tr:not(.footable-filtered)').length;
+						$('.row-count').html(count + ' rows found');
+					}
+				});
+
+				$('.clear-filter').click(function (e) {
+					e.preventDefault();
+					$('.filter-status').val('');
+					$('table.demo').trigger('footable_clear_filter');
+					$('.row-count').html('');
+				});
+
+				$('.filter-status').change(function (e) {
+					e.preventDefault();
+					$('table.demo').data('footable-filter').filter( $('#accountsearch').val() );
+				});
+				
+				
+			});
+			$('table').trigger('footable_clear_filter');
+		});
+</script>
+
+	<style type="text/css">.BreakWord {word-break: break-all; }
+	    h4 {line-height: 2.1};
+</style>
+</head>
+<body>
+<div class="demo-container">
+        
+    <div style="margin:auto;width:85%;max-width:1030px;background-color: white;padding:10px;" class="tab-content">
+        <div class="tab-pane active" id="demo">
+			<h4 class="headingcls">Bills</h4>
+		  <p>
+                Search: <input id="accountsearch" type="text"/>
+                
+                
+                <a href="#clear" class="clear-filter" title="clear filter">[clear]</a>
+                <span class="row-count"></span>
+            </p>
+            <table class="table demo" data-filter="#accountsearch" data-page-size="10"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th data-toggle="true">
+                        Name	
+                    </th>
+                    <th data-hide="phone">
+                        Bill Id
+                    </th>
+                    <th data-hide="phone">
+                        Reason
+                    </th>
+                    <th  >
+                        Amount (Rs.)
+                    </th>
+                    <th data-hide="phone">
+                        Payment Mode
+                    </th>
+					<th>
+                        Date
+                    </th>
+					
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "record in statements" on-finish-render="ngRepeatFinished">
+                    <td>{{record.PaidBy}}</td>
+                    <td>{{record.TransactionId}}</td>
+                    <td>{{record.Reason}}</td>
+                    <td>{{record.Amount}}</td>
+                    <td><div ng-show="{{record.cashpaymentflag}}">Cash</div> <div ng-show="!{{record.cashpaymentflag}}">Online</div></td>
+                    
+                    <td>{{record.Date}}</td>
+                    
+                </tr>
+                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			<div style="width:100%;align:center;border:1px solid black" class="form" align="center" ng-if="show">
+                    No Records Found
+                </div>
+        </div>
+        
+    </div>
+</div>
+</body>
+</html>

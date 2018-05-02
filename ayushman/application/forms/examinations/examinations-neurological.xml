@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1,2,3,4,5,6</questions>
+	<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>7,8,9,10</questions>
+		<layout>Vertical</layout>
+	</container>
+	<question>
+		<id>1</id>
+		<label>Speech</label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Dysarthria</label>
+		</answer>
+		<answer>
+			<label>Aphasia</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Orientation </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Oriented</label>
+		</answer>
+		<answer>
+			<label>Disoriented</label>
+		</answer>
+	</question> 
+	
+	<question>
+		<id>3</id>
+		<label>Gaze </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>101</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>101</id>
+		<label>Describe </label>
+		<type>text</type>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Tremors </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>102</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>102</id>
+		<label>Status</label>
+		<type>DD</type>
+		<answer>
+			<label>Fine</label>
+		</answer>
+		<answer>
+			<label>coarse</label>
+			<follow>201,202</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>201</id>
+		<label>Location </label>
+		<type>DD</type>
+		<answer>
+			<label>Head</label>
+		</answer>
+		<answer>
+			<label>Hands</label>
+		</answer>
+		<answer>
+			<label>Upper Limb</label>
+		</answer>
+		<answer>
+			<label>Lower Limb</label>
+		</answer>
+		<answer>
+			<label>All Over </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>202</id>
+		<label>Type</label>
+		<type>DD</type>
+		<answer>
+			<label>Intention</label>
+		</answer>
+		<answer>
+			<label>At Rest</label>
+		</answer>
+	</question>
+	<question>
+		<id>5</id>
+		<label>Nystagmus</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>203</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	<question>
+		<id>203</id>
+		<label>Location</label>
+		<type>DD</type>
+		<answer>
+			<label>Left Eye</label>
+		</answer>
+		<answer>
+			<label>Right Eye</label>
+		</answer>
+	</question>
+	<question>
+		<id>6</id>
+		<label>Gait </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>204</follow>
+		</answer>
+	</question>
+	<question>
+		<id>204</id>
+		<label>Describe </label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>7</id>
+		<label>Power </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>205</follow>
+		</answer>
+	</question>
+	<question>
+		<id>205</id>
+		<label>Location </label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>8</id>
+		<label>Tone </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Reduced</label>
+			<follow>206</follow>
+		</answer>
+		<answer>
+			<label>Increased</label>
+			<follow>207</follow>
+		</answer>
+	</question>
+	<question>
+		<id>206</id>
+		<label>Location </label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>207</id>
+		<label>Location </label>
+		<type>text</type>
+	</question>
+	<question>
+		<id>9</id>
+		<label>Reflexes </label>
+		<type>DD</type>
+		<answer>
+			<label>Knee </label>
+			<follow>208</follow>
+		</answer>
+		<answer>
+			<label>Ankle</label>
+			<follow>209</follow>
+		</answer>
+		<answer>
+			<label>Triceps</label>
+			<follow>210</follow>
+		</answer>
+		<answer>
+			<label>Biceps</label>
+			<follow>211</follow>
+		</answer>
+	</question>
+	<question>
+		<id>208</id>
+		<label>Status </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal </label>
+		</answer>
+		<answer>
+			<label>Increased </label>
+		</answer>
+		<answer>
+			<label>Decreased </label>
+		</answer>
+	</question>
+		<question>
+		<id>209</id>
+		<label>Status </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal </label>
+		</answer>
+		<answer>
+			<label>Increased </label>
+		</answer>
+		<answer>
+			<label>Decreased </label>
+		</answer>
+	</question>
+		<question>
+		<id>210</id>
+		<label>Status </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal </label>
+		</answer>
+		<answer>
+			<label>Increased </label>
+		</answer>
+		<answer>
+			<label>Decreased </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>211</id>
+		<label>Status </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal </label>
+		</answer>
+		<answer>
+			<label>Increased </label>
+		</answer>
+		<answer>
+			<label>Decreased </label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Sensation  </label>
+		<type>DD</type>
+		<answer>
+			<label>Yes  </label>
+			<follow>212,214,217,218,219,220</follow>
+		</answer>
+		<answer>
+			<label>No  </label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>212</id>
+		<label>Touch </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>213</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+			
+		</answer>
+	</question>
+
+	<question>
+		<id>214</id>
+		<label>Position </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>213</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+			
+		</answer>
+	</question>
+	
+	<question>
+		<id>217</id>
+		<label>Vibration  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>213</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+			
+		</answer>
+	</question>
+		
+	<question>
+		<id>218</id>
+		<label>Pain  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>213</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+			
+		</answer>
+	</question>
+	
+	<question>
+		<id>219</id>
+		<label>Temperature   </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+				<follow>213</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		
+		</answer>
+	</question>
+	
+	<question>
+		<id>220</id>
+		<label>Proprioception  </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			
+			<follow>213</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>213</id>
+		<label>Location </label>
+		<type>text</type>
+	</question>
+	
+	
+	
+</form>	

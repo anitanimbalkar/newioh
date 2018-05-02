@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IOH - India Online Health</title>
+<meta name="author" content="Somorjit Konthoujam" />
+<meta name="description" content="" />
+<meta name="keywords"  content="" />
+<meta name="Resource-type" content="Document" />
+<script src="js/jquery.min.js"></script> 
+<script>window.jQuery || document.write('<script src="js/jquery-1.11.1.js"><\/script>')</script> 
+<!-- BOOTSTRAP JS --> 
+<script src="js/bootstrap.js"></script> 
+<script src="js/jquery-ui.min.js"></script> 
+<script type="text/javascript" src="js/vendors/jquery.slimscroll.min.js"></script> 
+<script type="text/javascript" src="js/jquery.fullPage.js"></script> 
+<script src="js/mainhome.js"></script>
+<script language="Javascript">
+	function closelogin(){
+		$("#panel4").toggle("slow");
+	}
+	
+	$(document).ready(function(){ 
+		//Stop carousels auto slide while scrolling 
+      if(window.screen.availWidth<=767){
+        $(".fp-viewing-home").addClass("fp-viewing-consumers-2");
+        $(".fp-viewing-home").removeClass("fp-viewing-home");
+        $("#section1").addClass("active");
+        $("#section0").hide();
+      }
+      window.onscroll = function (e) {
+        if (window.screen.availWidth <= 767) {
+          $(".fp-viewing-home").addClass("fp-viewing-consumers-2");
+          $(".fp-viewing-home").removeClass("fp-viewing-home");
+          $("#section1").addClass("active");
+        }
+      }
+
+      var page=document.URL.substring(document.URL.lastIndexOf("/")+1,document.URL.lastIndexOf("."));
+		$("#"+page).attr("class","active");
+		$("#"+page).find("a").css("color","#fff");
+		$(".login").click(function(){
+			$("#panel4").toggle("slow");
+			$('html,body').animate({
+                        scrollTop: 0
+            }, 10);
+			document.getElementById("email").focus();
+			return false;
+		});
+
+		$(document).click(function(e){
+			if ($(e.target).parents("#panel4").length == 0) 
+				$("#panel4").hide("slow");
+		});
+
+      $("#menuExpand").click(function(e) {
+        if($(".logoWrapper a").hasClass("expand-logo")){
+          $(".logoWrapper a").removeClass("expand-logo");
+        }else{
+          $(".logoWrapper a").addClass("expand-logo");
+        }
+      });
+
+      var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+		if(is_chrome)
+		{
+			if(document.getElementById('chromeabsent') != null)
+				document.getElementById('chromeabsent').innerHTML = "";
+		}
+		else
+		{
+			if(document.getElementById('chromeabsent') != null)
+				document.getElementById('chromeabsent').visible = true;
+		}
+	});
+	
+    // Scrolls to the selected menu item on the page
+   $(function() {
+        $('a[href*=#menu]').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+				
+                if (target.length) { 
+					var offsettop = target.offset().top;
+                    $('html,body').animate({
+                        scrollTop: offsettop
+                    }, 1000);
+					hideLeftMenu();
+                    return false;
+                }
+            }
+        });
+    });
+</script>
+
+<!--FONT AWESOME ICONS-->
+<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+<!--FULLPAGE CSS-->
+<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+<!-- BOOTSTRAP CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<!-- CUSTOM CSS-->
+<link rel="stylesheet" type="text/css" href="css/custom.css" />
+<style>#panel4.panel {
+	position: absolute;
+	color:#ccc;
+	top: 100px;
+	right: -1%;
+	display: none;
+	background: #fcfcfc;
+	
+	border:1px solid #04716e;
+	-moz-border-radius-topleft: 20px;
+	/*-webkit-border-top-left-radius: 20px;*/
+	-moz-border-radius-bottomleft: 20px;
+	/*-webkit-border-bottom-left-radius: 20px;*/
+
+	-moz-border-radius-topright: 20px;
+	/*-webkit-border-top-right-radius: 20px;*/
+	-moz-border-radius-bottomright: 20px;
+	/*-webkit-border-bottom-right-radius: 20px;*/
+
+	width: 300px;
+	height: 225px;
+	padding: 10px 10px 10px 10px;
+	filter: alpha(opacity=90);
+	opacity: 1;
+
+	font-family:tahoma, Helvetica, sans-serif;
+	font-size:13px;
+	
+}
+.fa{
+	font-size:30px;
+}
+.panel{
+	color:#ccc;
+	top: 100px;
+	right: -1%;
+	background: #fcfcfc;
+	padding: 10px 10px 10px 10px;
+	filter: alpha(opacity=90);
+	opacity: 1;
+
+	font-family:tahoma, Helvetica, sans-serif;
+	font-size:13px;
+}
+.panel p{
+	margin: 0 0 5px 0;
+	padding: 0;
+	color: #cccccc;
+}
+
+.panel a, .panel a:visited{
+margin: 0;
+padding: 0;
+color: #9FC54E;
+text-decoration: none;
+border-bottom: 1px solid transparent;
+}
+
+.panel a:hover, .panel a:visited:hover{
+margin: 0;
+padding: 0;
+color: #ffffff;
+text-decoration: none;
+border-bottom: 1px solid transparent;
+}
+.formheader{
+	color:#04706d;
+	font-size:18px;
+	height:20px;
+	text-align:center;
+}
+.form-group{
+	margin-top:15px;
+}
+
+</style>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" id="topNav" role="navigation">
+  <div class="container" id="topHeader">
+	<div id="javascript" class="bodytext_normal" style="  float: right;top: 67px;  color: white;right: 12%;font-size:18px;vertical-align:top;width:989px;z-index:1005;position:fixed;" align="center"  >
+		<noscript>
+				<span style="border:2px solid #f0c36d;background-color:red;padding:10px;"  >
+					<strong>Please Enable Javascript in browser settings and refresh page.</strong>
+				</span>
+		</noscript>
+	</div>
+    <div class="navbar-header">
+      <div class="logoWrapper"> <a class="navbar-brand" href="javascript:void(0);" title="INDIA ONLINE HEALTH"><img src="images/logo-ioh.png" alt="INDIA ONLINE HEALTH"></a> </div>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="javascript:void(0);" title="Menu" id="menuExpand" class="menu menu-btn" onClick="showLeftMenu();"><i class="fa fa-bars" aria-hidden="true"></i> <label>Menu</label></a></li>
+      </ul>
+      <ul class="nav navbar-nav pull-right login-section-area">
+        <li><a href="/ayushman/cregistrar/view" title="Signup" class="signup">
+          <span>
+            <i class="fa fa-user"></i>
+            <img src="images/signup-green.png">
+          </span>
+          <label>Signup</label>
+        </a>
+        </li>
+        <li><a href="javascript:void(0);" title="Login" class="login">
+          <span>
+            <img src="images/login-green.png">
+            <i class="fa fa-sign-in"></i>
+          </span><label>Login</label></a></li>
+      </ul>
+    </div>
+    <!--/.nav-collapse -->
+  </div>
+</div>
+<div id="subNavigation" class="main-nav"> 
+<ul>
+      <li><a href="#home"> <img src="images/home.png" /> <span>Home</span></a></li>
+      <li><a href="#consumers"><img src="images/consumer.png" /> <span>Consumers</span></a></li>
+      <!--<li><a href="#doctors"><img src="images/doctor.png" /> <span>Doctors</span></a></li>
+      <li><a href="#corporates"><img src="images/corporate.png" /> <span>Corporates</span></a></li>-->
+      <li><a href="#news"><img src="images/news1.png" /> <span>News</span></a></li>
+      <li><a href="#articles"><img src="images/articles.png" /> <span>Articles</span></a></li>
+      <li class="visible-xs"><a href="javascript:void(0);"><img src="images/contact.png" /> <span>Contact Us</span></a>
+          <ul>
+              <li><a href="/ayushman/home/About.shtml"><div class="sub-links"></div>About</a></li>
+              <li><a href="/ayushman/home/Mission.shtml"><div class="sub-links"></div>Vision and Leadership</a></li>
+              <li><a href="/ayushman/home/TermsofUse.shtml"><div class="sub-links"></div>Terms of Use</a></li>
+              <li><a href="/ayushman/home/Disclaimer.shtml"><div class="sub-links"></div>Disclaimer</a></li>
+              <li><a href="/ayushman/home/PrivacyPolicy.shtml"><div class="sub-links"></div>Privacy Policy</a></li>
+              <li><a href="/ayushman/home/ReturnPolicy.shtml"><div class="sub-links"></div>Return Policy</a></li>
+          </ul>
+      </li>
+    </ul>
+</div>
+<div id="fullpage" class="clearfix">
+  <!--HOME SECTION STARTS-->
+  <div class="section first-section" id="section0">
+    <div class="container home" id="contentarea">
+      <div class="contenInner">
+        <h1>india online<br />
+          health</h1>
+        <h2>Active Health Management <br />
+          for your family</h2>
+        <p><a href="javascript:void(0);" class="enter" title="Enter">Enter</a></p>
+        <span class="downArrow"><img src="images/down-arrow.png" alt="Scroll Down"> <br /><span class="textEnter">Consumers</span></span></div>
+    </div>
+  </div>
+  <!--HOME SECTION ENDS-->
+  
+  <!--HOME CONSUMERS STARTS-->
+  <div class="section" id="section1">
+    <h2 class="heading">consumers</h2>
+    <!--<div class="searchDoc"><a href="#">Search for Doctor Now</a></div>-->
+    <div class="slide" id="slide1">
+      <div class="containerSlide">
+        <div class="graphics"> <img src="images/consumers-01.jpg" alt="A connected Healthcare platform created especially for you"> </div>
+        <div class="text">
+          <h3>A connected Healthcare platform created especially for you</h3>
+          <ul>
+            <li>For providing you continuity in healthcare seamlessly anytime, anywhere.</li>
+            <li>For your doctor to advise you based on your records.</li>
+          </ul>
+          <p><a href="#" title="">We put you in control of your health.</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="slide" id="slide2">
+      <div class="containerSlide">
+        <div class="graphics"> <img src="images/consumers-02.jpg" alt="Manage your Medical Records easily"> </div>
+        <div class="text">
+          <h3>Manage your Medical Records easily</h3>
+          <p><a href="#" title="">So you have them when you need them.</a></p>
+          <ul>
+            <li>Keep all your health record on the cloud - private and secured – be it doctor’s observation, prescription, lab results or fitness data.</li>
+            <li>Your health information comes from different sources – your doctors, your path labs, your own recordings, or even wearable devices. All of this is synthesised into an easy-to-understand view – both for you and your doctor.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide" id="slide3">
+      <div class="containerSlide">
+        <div class="graphics"> <img src="images/consumers-03.jpg" alt="Track your health yourself"> </div>
+        <div class="text">
+          <h3>Track your health yourself</h3>
+          <p><a href="#">Ignorance is not bliss when it comes to health.</a></p>
+          <ul>
+            <li>Record your health parameters easily and monitor them regularly.</li>
+            <li>Variations in health parameters can alert you before onset of serious conditions.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide" id="slide4">
+      <div class="containerSlide">
+        <div class="graphics"> <img src="images/consumers-04.jpg" alt="Meet the doctor of your choice"> </div>
+        <div class="text">
+          <h3>Meet the doctor of your choice</h3>
+          <ul>
+            <li>Choose from wide range of specialists based on your requirements.</li>
+            <li>Search based on specialiy, location, experience, language.</li>
+          </ul>
+          <p><a href="#" title="">Our platform helps doctors to provide patient centric consulting.</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--HOME CONSUMERS ENDS-->
+  
+  <!--HOME DOCTORS STARTS-->
+  <div class="section" id="section2">
+    <h2 class="heading">doctors</h2>
+    <div class="slide" id="slide1">
+      <div class="containerSlide">
+        <div class="graphics"> <img src="images/doctors-01.jpg" alt="Stand out, be counted"> </div>
+        <div class="text">
+          <h3>Stand out, be counted</h3>
+          <p><a href="#">World over technology is helping save lives and keep people healthier.</a></p>
+          <ul>
+            <li>Be among the first breed of doctors using technology in India to improve the outcomes.</li>
+            <li>Surprisingly it can also save you time and improve your revenue view – both for you and your doctor.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide" id="slide2">
+      <div class="containerSlide">
+        <div class="graphics"> <img src="images/doctors-02.jpg" alt="Practice Management made easy"> </div>
+        <div class="text">
+          <h3>Practice Management made easy</h3>
+          <ul>
+            <li>Announce your presence by creating your profile.</li>
+            <li>Track all your appointments.</li>
+            <li>Manage time better through smart scheduling.</li>
+            <li>Manage space better.</li>
+          </ul>
+          <p><a href="#">Your staff manages it all ...</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="slide" id="slide3">
+      <div class="containerSlide">
+        <div class="graphics"> <img src="images/doctors-03.jpg" alt="Consultation Management"> </div>
+        <div class="text">
+          <h3>Consultation Management</h3>
+          <ul>
+            <li>View complete medical file of the patient.</li>
+            <li>Record your observations with structured forms.</li>
+            <li>Use tracker for quick view of health parameters.</li>
+            <li>Write e-Rx with ease and avoid clarification calls.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide" id="slide4">
+      <div class="containerSlide">
+        <div class="graphics"> <img src="images/doctors-04.jpg" alt="Collaborate and Contribute"> </div>
+        <div class="text">
+          <h3>Collaborate and Contribute</h3>
+          <ul>
+            <li>Read latest news in medical science.</li>
+            <li>Connect with peer doctors.</li>
+            <li>Contribute your views and present your case studies.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--HOME DOCTORS ENDS--> 
+  
+  <!--HOME CORPORATES STARTS-->
+  <div class="section" id="section3">
+    <h2 class="heading">Corporates</h2>
+    <div class="slide" id="slide1">
+      <div class="containerSlide">
+        <div class="graphics"> <img src="images/corporates-01.jpg" alt="They take care of you."> </div>
+        <div class="text">
+          <h3>They take care of you.</h3>
+          <p><a href="#">Are you taking care of them?</a></p>
+          <ul>
+            <li>Healthier employee means higher productivity.</li>
+            <li>Research shows that employees ignore their health.</li>
+            <li>Small but regular interventions may result in significant positive outcomes.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide" id="slide2">
+      <div class="containerSlide">
+        <div class="graphics"> <img src="images/corporates-02.jpg" alt="Engage Employees with genuine actions"> </div>
+        <div class="text">
+          <h3>Engage Employees with genuine actions</h3>
+          <ul>
+            <li>An engaged workforce is a productive workforce.</li>
+            <li>Identifying health issues gains lifelong respect from employee.</li>
+            <li>Improving health outcomes gains respect of employees.</li>
+            <li>Use principles of behavioural economics to improve employee health.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide" id="slide3">
+      <div class="containerSlide">
+        <div class="graphics"> <img src="images/corporates-03.jpg" alt="Do good, Be rewarded"> </div>
+        <div class="text">
+          <h3>Do good, Be rewarded</h3>
+          <ul>
+            <li>Improved health index improves productivity.</li>
+            <li>Reduces cost in terms of lost days, and insurance premiums.</li>
+            <li>Healthier workforce is a happier workforce. A happier workforce is an effective workforce.</li>
+            <li>Happier workforce results in less attrition and more loyalty.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide" id="slide4">
+      <div class="containerSlide">
+        <div class="graphics"> <img src="images/corporates-04.jpg" alt="IOH can help"> </div>
+        <div class="text">
+          <h3>IOH can help</h3>
+          <ul>
+            <li>Create a Health index for your company.</li>
+            <li>Identify health issues using online HRA tool.</li>
+            <li>Company wide checkups to screen and inform employees.</li>
+            <li>Health awareness programs.</li>
+            <li>Use principles of behavioural economics to drive lifestyle changes.</li>
+            <li>Corporate health Dashboard.</li>
+            <li>Measurable outcomes.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--HOME CORPORATES ENDS--> 
+  
+  <!--HOME NEWS STARTS-->
+  <div class="section" id="section4">
+    <h2 class="heading">News</h2>
+    <div class="newsContent"> 
+       <div class="newsImageWrap"> 
+        <img src="images/news.png" class="newsImage" alt="News">
+      </div>
+      <div class="textNews">
+        <p><img src="images/indian-express.png" alt="The Indian EXPRESS"></p>
+        <p><span class="highlight">CoEP unfolds health plan for 1,800 students living in hostels</span><br />
+          In a first-of-its-kind initiative in the field of education, the College of Engineering, Pune (CoEP), has initiated an active health management programme for its more than 1,800 students living in hostels. <a href="http://www.indianexpress.com/news/coep-unfolds-health-plan-for-1800-students-living-in-hostels/1160061" target="_newtab">Read more...</a></p>
+        <p><img src="images/mid-day.png" alt="MID DAY"></p>
+        <p><span class="highlight">CoEP’s health survey reveals 30% girls have anaemia</span><br />
+          A recent health survey carried out by the College of Engineering also found out that 1.5 per cent of the girls as well as boys residing in the hostel suffer from high stress levels; they can now consult their doctors on video. <a href="http://www.mid-day.com/news/2013/may/200513-pune-coeps-health-survey-reveals-30-percent-girls-have-anaemia.htm" target="_newtab">Read more...</a></p>
+        <p><img src="images/times-of-india.jpg" alt="THE TIMES OF INDIA"></p>
+        <p><span class="highlight">Pune engineering college launches health management programme</span><br />
+          The prestigious Government College of Engineering Pune (CoEP) here has launched an innovative health management program for its 1,800-odd hostel students from this year. <a href="http://articles.timesofindia.indiatimes.com/2013-05-18/pune/39353709_1_hostel-students-coep-anil-sahasrabudhe" target="_newtab">Read more...</a></p>
+      </div>
+    </div>
+  </div>
+  <!--HOME NEWS ENDS--> 
+  
+  <!--HOME ARTICLES STARTS-->
+  <div class="section" id="section5">
+    <h2 class="heading">articles</h2>
+    <div class="articlesContent"> 
+      <div class="articlesImageWrap">
+      	<img src="images/articles.jpg" alt="Articles" class="articlesImage">
+      </div>
+      <div class="textArticles">
+       <p><strong>Ayushman Patrika Jun 2016</strong><br />
+         It is June and with impending rains, there is hope in the air. And we at Ayushman are all geared up to send you the latest issue of AyushPatrika. Continuing our series on the Human body, in our main topic---we get to know how to take care of our eyes. We overwork our eyes and give them little rest.<br />
+         <a href="/wordpress/articles/ayushmanpatrika-june-2015" target="_blank">Read more...</a></p>
+       <p><strong>Ayushman Patrika May 2016</strong><br />
+         It is May and I am happy to inform you that this is our anniversary issue. Yes--- we have been together for 12 months now. It has been an enjoyable journey so far creating a health bulletin for you that carries some useful information, a bit of learning and a bit of fun too. Since this is our anniversary issue<br />
+         <a href="/wordpress/articles/ayushmanpatrika-may-2015" target="_blank">Read more...</a></p>
+     </div>
+    </div>
+ </div>
+  <!--HOME ARTICLES ENDS  #04706d--> 
+  </div>
+  <!-- Sticky Footer -->
+  <div class="footer-section">
+	<div class="articlesFooter"style="margin:auto;">
+      <div>
+	    <div class="col-lg-2 col-md-2 col-sm-2" >
+          <ul>
+            <li style="padding-top:10px;"><a href="/ayushman/home/About.shtml"><strong>ABOUT</strong></a></li>
+		 </ul>		  
+        </div>
+		
+        <div class="col-lg-2 col-md-2 col-sm-2" >
+          <ul>
+            <li style="padding-top:10px;"><a href="/ayushman/home/Mission.shtml"><strong>Vision and Leadership</strong></a></li>
+           </ul>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2" >
+          <ul>
+            <li style="padding-top:10px;"><a href="/ayushman/home/TermsofUse.shtml"><strong>Terms of Use</strong></a></li>
+		   </ul>
+        </div>
+		<div class="col-lg-2 col-md-2 col-sm-2">
+          <ul>
+        	<li style="padding-top:10px;"><a href="/ayushman/home/Disclaimer.shtml"><strong>Disclaimer</strong></a></li>
+           </ul>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2" >
+          <ul >
+            <li style="padding-top:10px;"><a href="/ayushman/home/PrivacyPolicy.shtml"><strong>Privacy Policy</strong></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2" >
+          <ul >
+            <li style="padding-top:10px;"><a href="/ayushman/home/ReturnPolicy.shtml"><strong>Return Policy</strong></a></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="col-lg-3 col-md-3 col-sm-3 web-address" style="margin-top: 10px;">
+          <p style="padding-top:0px;text-align:left;font-size:11px"><strong>Ayushman Pvt. Ltd.</strong><br />
+            5-6/A, Ramyanagari, Bibwewadi,Pune - 411037<br />
+            Tel.: +91 20 2422 5288 Email: <a href="mailto:info@indiaonlinehealth.com">info@indiaonlinehealth.com</a></p>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2" style="margin-top: 10px;">
+          <ul>
+        	<li style="height:15px"><p style="padding-top:0px"> IOH Ver 2.0</p></li>
+        	<li style="height:15px"><span id="cdSiteSeal1"><script type="text/javascript" src="//tracedseals.starfieldtech.com/siteseal/get?scriptId=cdSiteSeal1&amp;cdSealType=Seal1&amp;sealId=55e4ye7y7mb73ce640efcab6ea9b3019r1y7mb7355e4ye726c90cffaed182ce1"></script></span></li>
+		   </ul>		  
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="panel4" class="panel panel-default login-panal" style="z-index: 50000;margin-right:3%;" >
+		<div class="panel-body">
+			<div class="formheader">Secure Sign In <!--<a class="formclose" href="#" onclick="closelogin()"></a>--></div>
+			
+			<form id="loginformid" action="/ayushman/cuser/login"  role="form" method="post" accept-charset="utf-8">
+				
+				<div class="form-group" >
+					<!--<label for="email">Username</label>-->
+					<input type="text" class="form-control" id="email" name="email" required="required" placeholder="Username" autocomplete="on">
+				</div>
+				<div class="form-group" >
+					<!--<label for="password">Password</label>-->
+					<input type="password" class="form-control" id="password" name="password" required="required" placeholder="Password">
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-info">SIGN IN </button>
+                    <a href="/ayushman/cpasswordmanager/view" style="color:#04706d; margin-top:10px;">Forgot Password?</a>
+                </div>
+				
+			</form>
+		</div>	
+	</div>
+</body>
+</html>

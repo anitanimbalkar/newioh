@@ -1,0 +1,106 @@
+<head>
+<link href="/ayushman/assets/css/newformstyle.css" rel="stylesheet" type="text/css">
+<style>
+	.ui-autocomplete 
+{  margin-top: 0px !important;
+					 top: 60px !important;
+}
+.ui-datepicker {
+  width: 30% ! important;
+}
+.container{
+	float:left;
+	width:100%;
+	padding-left: 10px;
+	padding-top: 10px;
+	border:1px solid;
+	padding-bottom: 10px;
+}
+.parameternames{
+	float:left;
+	width:59%;
+	text-align:left;
+	margin-left:1% ! important;
+}
+.parametervalues{
+	float:left;
+	width:40%;
+	text-align:left;
+}
+.regnformcontrol{
+	width:100%;
+}
+.formelements{
+margin-left:1% ! important;
+}
+</style>
+</head>
+<body>
+<form method="post" action="/ayushman/upload/uploadradioreport" enctype="multipart/form-data">
+<input type="hidden" id="orderid" name="orderid" value="<?php echo $orderid; ?>"/>
+<input id="testid" name="testid" type="hidden" class="formtextarea" value="<?php echo $testid; ?>"/>
+	<div class="container" ng-repeat="test in testids" >
+	
+		<table width="100%">
+			<tr>
+				<td width="60%">
+					<span>{{test.value}}</span></h5>
+					
+					<input type="hidden" id="test" value="{{test.id}}" name="test"/>
+				</td>
+				<td align="center">
+					<input type="button" value="Attach Reports" id="{{test.id}}"onclick="view(this.id);this.disabled=true;"/>	
+				</td>
+			</tr>
+		</table>	
+	</div>
+	
+
+</form>	
+</body>
+<script type="text/javascript">
+function disableAttReport(currentvalue,currentselection){ 
+	label = currentvalue+'_attLabel';
+	//myfile = currentvalue+'_myFile';
+	
+	if( currentselection == "sysReport")
+	{
+		// If system generated Report then hide the division
+		document.getElementById(label).style.display = "none";
+		//document.getElementById(myfile).value="";
+	}
+	else
+	{
+		// Show option to upload report
+		window.alert("Please check entered values with the report uploaded");
+		document.getElementById(label).style.display = "block";
+	}
+}
+
+function calltofun()
+{
+	alert(document.getElementById("fileData").value);
+	alert($('#fileData').val());
+	$("#pict").attr("src",document.getElementById("fileData").value);
+}
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+function view(testid)
+{	
+	
+		//var testid=document.getElementById("testid").value;
+		var orderid=document.getElementById("orderid").value;
+			parent.openDialog("/ayushman/cradiologistdashboard/reports/get?orderid="+orderid+"&testid="+testid,500);
+}
+
+</script>

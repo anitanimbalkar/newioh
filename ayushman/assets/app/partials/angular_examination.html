@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ayushman - examination</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/public/css/views/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/public/css/views/webflow.css">
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/public/css/views/ayushman.webflow.css">
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/css/newformstyle.css">
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/css/style.css">
+</head><body>
+<div class="consultation_header" id="main">
+    <div class="w-row">
+        <div class="w-col w-col-7">
+            <div class="w-clearfix">
+                <a href="#!/"><img class="back_image" src="/ayushman/assets/images/back-icon.png" width="30" height="63px" alt="back-icon.png"></a>
+                <img src="/ayushman/assets/images/Profile_Pic.png" alt="Profile_Pic.png" height="63px" width="63px">
+                <div class="consultation_header_text white_text">
+                    {{state.app_info.Patientname}} | {{state.app_info.age}} | {{state.app_info.incidentsname_c}} | {{state.app_info.DateAndTime}}.
+                </div>
+            </div>
+        </div>
+        <div class="w-col w-col-5 w-clearfix consultation_icons_cont">
+            <div class="w-clearfix floating_div">
+                <img class="consultation_header_icons" src="/ayushman/assets/images/past-visits-icon.png" width="58" alt="past-visits-icon.png">
+                <div class="white_text consultation_icon_subtext">Past Reports</div>
+            </div>
+            <div class="w-clearfix floating_div">
+                <img class="consultation_header_icons" src="/ayushman/assets/images/my-notes-icon.png" width="58" alt="past-visits-icon.png">
+                <div class="white_text consultation_icon_subtext">Notes</div>
+            </div>
+            <div class="w-clearfix floating_div">
+                <img class="consultation_header_icons" src="/ayushman/assets/images/risk-factor-icon.png" width="58" alt="past-visits-icon.png">
+                <div class="white_text consultation_icon_subtext">Risks</div>
+            </div>
+            <div class="w-clearfix floating_div">
+                <img class="consultation_header_icons" src="/ayushman/assets/images/view-emr-icon.png" width="58" alt="past-visits-icon.png">
+                <div class="white_text consultation_icon_subtext">EMR</div>
+            </div>
+            <div class="w-clearfix floating_div">
+                <img class="consultation_header_icons" src="/ayushman/assets/images/invite-relative-icon.png" width="58" alt="past-visits-icon.png">
+                <div class="white_text consultation_icon_subtext">Invite</div>
+            </div>
+            <div class="w-clearfix floating_div" ng-click="viewSummary();">
+                <img class="consultation_header_icons" src="/ayushman/assets/images/summary-icon.png" width="58" alt="past-visits-icon.png">
+                <div class="white_text consultation_icon_subtext">View Summary</div>
+            </div>
+            <div class="w-clearfix floating_div">
+                <img class="consultation_header_icons" src="/ayushman/assets/images/end-consultation-icon.png" width="58" alt="past-visits-icon.png">
+                <div class="white_text consultation_icon_subtext">End Consultation</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="w-row">
+        <div class="w-col w-col-2 w-col-medium-4 w-col-small-4 w-col-tiny-4 nav_bar content">
+	  <ul ng-repeat='menu in main_menu'>
+	    <div ng-if='menu.type == "text"'>
+	      <li class="consultation_nav" ng-class="is_selected(menu.id);" ng-click="main_menu.selected=menu.id;"><a href="">{{menu.label}}</a></li>
+	    </div>
+	    <div ng-if='menu.type == "form"'>
+	      <li class="consultation_nav" ng-class="is_selected(menu.id);" ng-click="main_menu.selected=menu.id;get_form_data(menu.id, menu.data);"><a href="">{{menu.label}}</a></li>
+	    </div>
+	    <div ng-if='menu.type == "menu"'>
+	      <li class="consultation_nav" ng-click=" main_menu.show_sub_menu[menu.id] = !main_menu.show_sub_menu[menu.id]; ">
+		<a href="">{{menu.label}}</a>
+	      </li>
+	      <ul ng-show='main_menu.show_sub_menu[menu.id]' ng-repeat="sub_menu in menu.data" >
+		<li class="consultation_nav" ng-click="main_menu.selected=sub_menu.id;get_sub_form_data(sub_menu.id, sub_menu.data, menu.id);" ng-class="is_selected(sub_menu.id);">
+		  <a href="">{{sub_menu.label}}</a>
+		</li>
+	      </ul>
+	    </div>
+	  </ul>  
+	</div>
+    
+	<div class="w-col w-col-6 w-col-medium-4 w-col-small-4 w-col-tiny-4 nav_bar content">
+	  <div ng-repeat='menu in main_menu'>
+	    <div ng-if='menu.type == "text"'>
+              <div ng-show="main_menu.selected == menu.id ">
+                <h4 class='consultation_heading'>{{menu.label}}</h4>
+                <textarea ng-model="main_menu.value[menu.id]['value']"></textarea>
+              </div>
+	    </div>
+	    <div ng-if='menu.type == "menu"'>
+	      <div ng-repeat='sub_menu in menu.data'>
+		<div ng-show="main_menu.selected == sub_menu.id">
+		  <div ng-repeat="question in main_menu.value[menu.id][sub_menu.id]" >
+		    <div ng-if="!question.isFollow">
+		      <div ng-switch="question.type" id="{{question.id[0]}}">
+			<div ng-switch-when="Text">
+			  <label>{{question.label[0]}}</label>
+			  <input type="text" ng-model="question.value" value="">
+			</div>
+			<div ng-switch-when="DD">
+			  <label>{{question.label[0]}}</label>
+			  <select ng-model="question.value">
+			    <option ng-repeat="answer in question.answer" value="{{answer.label[0]}}">{{answer.label[0]}}</option>
+			  </select>
+			</div>
+		      </div>
+		    </div>
+                    <div ng-if="question.isFollow" ng-show="show_question(sub_menu.id, question.isFollow, $index, menu.id);">
+		      <div ng-switch="question.type" id="{{question.id[0]}}">
+		      	<div ng-switch-when="Text">
+			  <label>{{question.label[0]}}</label>
+			  <input type="text" ng-model="question.value" value="">
+			</div>
+			<div ng-switch-when="DD">
+			  <label>{{question.label[0]}}</label>
+			  <select ng-model="question.value">
+			    <option ng-repeat="answer in question.answer" value="{{answer.label[0]}}">{{answer.label[0]}}</option>
+			  </select>
+			</div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	      </div>
+	    </div>  
+	    <div ng-if='menu.type == "form"'>
+	      <div ng-show="main_menu.selected == menu.id">
+		<div ng-repeat="question in main_menu.value[menu.id]" >
+		  <div ng-if="!question.isFollow">
+		    <div ng-switch="question.type" id="{{question.id[0]}}">
+		      <div ng-switch-when="Text">
+			<label>{{question.label[0]}}</label>
+			<input type="text" ng-model="question.value" value="">
+		      </div>
+		      <div ng-switch-when="DD">
+			<label>{{question.label[0]}}</label>
+			<select ng-model="question.value">
+			  <option ng-repeat="answer in question.answer" value="{{answer.label[0]}}">{{answer.label[0]}}</option>
+			</select>
+		      </div>
+		    </div>
+		  </div>
+                  <div ng-if="question.isFollow" ng-show="show_question(menu.id, question.isFollow, $index);">
+		    <div ng-switch="question.type" id="{{question.id[0]}}">
+		      <div ng-switch-when="Text">
+			<label>{{question.label[0]}}</label>
+			<input type="text" ng-model="question.value" value="">
+		      </div>
+		      <div ng-switch-when="DD">
+			<label>{{question.label[0]}}</label>
+			<select ng-model="question.value">
+			  <option ng-repeat="answer in question.answer" value="{{answer.label[0]}}">{{answer.label[0]}}</option>
+			</select>
+                      </div>
+		    </div>
+		  </div>
+		</div>
+	      </div>
+	    </div>  
+	  </div> 
+	</div>
+
+        <div class="w-col w-col-4 w-col-medium-4 w-col-small-4 w-col-tiny-4 nav_bar content">
+            <form id="emrform" method="post" enctype="multipart/form-data">
+                <div class="summary_block" ng-show="state.text_complaint.length">
+                    <div class="w-clearfix consultation_heading">
+                        <h4 class="floating_div">Main Complaint</h4>
+                        <div class="floating_right_div"><input type="checkbox" name="check[textcomplaint]" id="check_complaint" checked><label class="bodytext_normal" for="check_complaint" class="floating_div">Show to patient</label></div>
+                    </div>
+                    <div class="summary_text">
+                        <p>{{state.text_complaint}}</p>
+                    </div>
+                </div>
+                <div id='vitals_target' class="summary_block" style="display: none">
+                    <div class="w-clearfix consultation_heading">
+                        <h4 class="floating_div">Vital Signs</h4>
+                        <div class="floating_right_div"><input type="checkbox" name="check[textvital]" id="check_vital" checked><label class="bodytext_normal" for="check_vital" class="floating_div">Show to patient</label></div>
+                    </div>
+                    <div class="summary_text"></div>
+                    <input type="hidden" id="vitalsTextTarget" name="textvital" value="">
+                </div>
+                <div id="symptomatic_target" class="summary_block" style="display: none">
+                    <div class="w-clearfix consultation_heading">
+                        <h4 class="floating_div">Symptomatic Review</h4>
+                        <div class="floating_right_div"><input type="checkbox" name="check[textsymptom]" id="check_symptom" checked><label class="bodytext_normal" for="check_symptom" class="floating_div">Show to patient</label></div>
+                    </div>
+                    <div class="summary_text"></div>
+                    <input type="hidden" id="symptomatic_text_target" name="textsymptom" value="">
+                </div>
+                <div id="examinations_target" class="summary_block" style="display: none">
+                    <div class="w-clearfix consultation_heading">
+                        <h4 class="floating_div">Examination</h4>
+                        <div class="floating_right_div"><input type="checkbox" name="check[textexamination]" id="check_examination" checked><label class="bodytext_normal" for="check_examination" class="floating_div">Show to patient</label></div>
+                    </div>
+                    <div class="summary_text"></div>
+                    <input type="hidden" id="examinations_text_target" name='textexamination' value="">
+                </div>
+                <div id="diagnosis_target" class="summary_block" style="display: none">
+                    <div class="w-clearfix consultation_heading">
+                        <h4 class="floating_div">Diagnosis</h4>
+                        <div class="floating_right_div"><input type="checkbox" name="check[textdiagnosisnote]" id="check_diagnosisnote" checked><label class="bodytext_normal" for="check_diagnosisnote" class="floating_div">Show to patient</label></div>
+                    </div>
+                    <div class="summary_text">
+                        <p><textarea id="diagnosis_text" name="textdiagnosisnote"></textarea></p>
+                    </div>
+                </div>
+                <div id="investigation_target" class="summary_block" style="display: none">
+                    <div class="w-clearfix consultation_heading">
+                        <h4 class="floating_div">Investigation</h4>
+                        <input type="hidden" name="check[textinvestigation]" value="on">
+                    </div>
+                    <div class="summary_text">
+                        <p><textarea id="investigation_text" name="textinvestigation"></textarea></p>
+                    </div>
+                </div>
+                <div id="prescription_target" class="summary_block" style="display: none">
+                    <div class="w-clearfix consultation_heading">
+                        <h4 class="floating_div">Medicine</h4>
+                        <input type="hidden" name="check[textprescription]" value="on">
+                    </div>
+                    <div class="summary_text">
+                        <p><textarea id="prescription_text" name="textprescription"></textarea></p>
+                    </div>
+                </div>
+                <div class="summary_block" ng-show="state.text_followup.length">
+                    <div class="w-clearfix consultation_heading">
+                        <h4 class="floating_div">Follow-up</h4>
+                        <div class="floating_right_div"><input type="checkbox" name="check[textfollowupnote]" id="check_followup" checked><label class="bodytext_normal" for="check_followup" class="floating_div">Show to patient</label></div>
+                    </div>
+                    <div class="summary_text">
+                        <p>{{state.text_followup}}</p>
+                    </div>
+                </div>
+                <input type="hidden" id = "test_ids" name = "testIds" value="" />
+                <input type="hidden" id = "medicine_ids" name = "medicineIds" value = "" />
+                <input type='hidden' id='text_complaint' name="textcomplaint" value="{{state.text_complaint}}"/>
+                <input type='hidden' id='text_followup_note' name="textfollowupnote" value="{{state.text_followup}}"/>
+                <input type="hidden" name="appid" value="{{state.app_info.appointment_id}}" >
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

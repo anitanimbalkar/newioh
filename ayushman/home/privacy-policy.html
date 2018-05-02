@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en-US"><!--<![endif]-->
+<head>
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+
+    <!-- Title -->
+    <title>India Online Health</title>
+<script type='text/javascript' src='webapp/js/jquery-1.11.1.min.js'></script>
+    <!-- Define a view port to mobile devices to use - telling the browser to assume that
+    the page is as wide as the device (width=device-width)
+     and setting the initial page zoom level to be 1 (initial-scale=1.0) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon-new.png">
+
+    <!-- Google Web Font -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <!-- bootstrap Style Sheet (caution ! - Do not edit this stylesheet) -->
+
+    <!-- Flexslider stylesheet -->
+    <link rel="stylesheet" href="webapp/css/flexslider.css" type="text/css" media="all">
+    <!-- Animations stylesheet -->
+    <link rel="stylesheet" href="webapp/css/animations.css" type="text/css" media="all">
+    <!-- Awesome Font stylesheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Datepciker stylesheet -->
+    <link rel="stylesheet" href="webapp/css/datepicker.css" type="text/css" media="all">
+    <!-- Swipebox stylesheet -->
+    <link rel="stylesheet" href="webapp/css/swipebox.css" type="text/css" media="all">
+    <!-- meanmenu stylesheet -->
+    <link rel="stylesheet" href="webapp/css/meanmenu.css" type="text/css" media="all">
+    <!-- Include the site main stylesheet -->
+    <link rel="stylesheet" href="webapp/css/main.css" type="text/css" media="all">
+    <link rel="stylesheet" href="webapp/css/bootstrap.css" type="text/css" media="all">
+    <link rel="stylesheet" href="webapp/css/ioh.css" type="text/css" media="all">
+    <!-- Include the site responsive  stylesheet -->
+    <link rel="stylesheet" href="webapp/css/custom-responsive.css" type="text/css" media="all">
+    
+	<script type="text/javascript" src="/ayushman/assets/js/jquery-ui-1.8.17.custom.min.js"></script>
+<link href="/ayushman/assets/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" type="text/css">
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+<script type="text/javascript" src="/ayushman/assets/js/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+<link rel="stylesheet" type="text/css" href="/ayushman/assets/js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <style>
+	 .danger{
+	   color:red;
+	 }
+	 .success{
+	  color:#00b100;
+	 }
+	 .blog-page{
+	  background-color:#F0F5F7;
+	 } 
+	</style>
+	
+	
+<script type="text/javascript">
+var $= jQuery.noConflict();
+function openDialog(url, width, height){
+				 $.fancybox({
+                    'width': width,
+                    'height': height,
+                    'autoScale': false,
+                    'transitionIn': 'fade',
+                    'transitionOut': 'fade',
+                    'type': 'iframe',
+                    'href': url,
+                    'showCloseButton': true,
+                    'afterClose' : function(){
+					//	if(obj != undefined){
+						//	if(obj.fancyboxclosed != undefined){
+						//		obj.fancyboxclosed(obj);
+					//		}
+					//	}
+					}
+            	});
+			}
+function openterms()
+	{
+		document.getElementById("termsread").value="1";
+		var role1 = document.getElementById("accounttype");
+		var role = role1.options[role1.selectedIndex].value;
+		var wWidth = $(window).width();
+		var dWidth = 1030;
+		var wHeight = $(window).height();
+		var dHeight = wHeight * 0.99;
+		wWidth = (wWidth - dWidth)/2;
+		
+		switch(role)
+		{
+			case "patient": openDialog('/ayushman/home/termsAndcondition/pterms.html', 850, 600); break;
+			case "chemist":	openDialog('/ayushman/home/termsAndcondition/chemistterms.html', 850, 600);	break;
+			case "pathologist":	openDialog('/ayushman/home/termsAndcondition/pathologistterms.html', 850, 600);	break;
+			case "doctor": openDialog('/ayushman/home/termsAndcondition/doctorterms.html', 850, 600); break;
+		}
+	}
+function focusonusername(){
+			//alert("focus");
+			possibleusername();
+			document.getElementById("rowusernamepossiblecombination").style.display = "block";
+		}
+function bluronusername(){
+			//alert("blur");
+			checkUsername($("#username").val());
+			
+	}
+function reloadcaptcha() {
+  var obj = document.getElementById('captchasecurityimage');
+  var src = obj.src;
+  var date = new Date();
+  obj.src = src + '?v=' + date.getTime();
+}
+
+function selectedname(name){
+	var scope = angular.element($("#signupbox")).scope();
+	if(!scope.$$phase) {
+		scope.$apply(function(){
+			scope.username=name.innerHTML;
+		});
+	}
+	
+	 ///var e = $.Event('keyDown');
+    //$('#username').trigger(e);
+	checkUsername(name.innerHTML);
+}
+
+function  possibleusername(){
+	var name=document.getElementById("firstname").value+document.getElementById("lastname").value;
+	var isusernamespresent = document.getElementById("isusernamespresent").value;
+	var newusername, usernamestring,returnstring;
+	usernamestring="<span class='bodytext'>Here are some suggestions for Username.</span></br>";
+	if((name!="")&&(isusernamespresent == "false"))
+	{
+		$(".ui-dialog-titlebar").hide();
+		
+		var count =1;
+		var ischeck= 0;
+		while (count< 4)
+		{
+			switch(ischeck)
+			{
+				case 0:newusername = document.getElementById("firstname").value+document.getElementById("lastname").value;
+					break;
+				case 1:newusername = document.getElementById("lastname").value+document.getElementById("firstname").value;
+					break;
+				case 2:newusername = document.getElementById("firstname").value+"."+document.getElementById("lastname").value;
+					break;
+				case 3:newusername = document.getElementById("lastname").value+"."+document.getElementById("firstname").value;
+					break;
+				default:var randumNumber=Math.floor((Math.random()*100)+1);
+					newusername = document.getElementById("firstname").value+randumNumber+"."+document.getElementById("lastname").value;
+					break;
+			}
+			returnstring = findusername(newusername);
+			newusername = newusername.toLowerCase();
+			if (returnstring == "valid")
+			{
+				usernamestring = usernamestring+" <a onclick='selectedname(this)' style='cursor:pointer;color: #5cb1b6;border-bottom: 1px solid #5cb1b6;' >"+newusername+"</a></br>";
+				count ++;
+			}
+			ischeck++;
+		}
+		document.getElementById("isusernamespresent").value= "true";
+		$("#possiblenames").append(usernamestring);
+		
+	}
+}
+
+function findusername(newusername)
+{
+	var returnstring;
+	$.ajax({
+		url: "/ayushman/cregistrar/checkusernameavailability?username="+newusername,
+		async: false,
+		success: function(data) {
+			
+			if(data =="invalid"){
+				returnstring = "invalid";
+			}
+			else{
+				returnstring = "valid";
+			}
+		},
+		error : function(){
+			returnstring= "invalid";
+		}
+		});
+	return returnstring;
+}
+                 
+function checkUsername(username){
+	if(username != undefined){
+		$(".ui-dialog-titlebar").hide();
+		
+		$.ajax({
+			url: "/ayushman/cregistrar/checkusernameavailability?username="+username,
+			success: function(data) {
+				
+				if(data=="invalid"){
+					document.getElementById("usernameerror").style.display = "block";
+					document.getElementById("rowusernamepossiblecombination").style.display = "block";
+					document.getElementById("possiblenames").style.top = "75px";
+				}
+				else{
+					document.getElementById("usernameerror").style.display = "none";
+					
+					if($('#username').val() != ''){
+						$('#password').focus();
+						document.getElementById("rowusernamepossiblecombination").style.display = "none";
+					}else{
+						document.getElementById("rowusernamepossiblecombination").style.display = "block";
+					}
+				}
+				
+			},
+			error : function(){
+				
+			}
+		});
+		
+//		$('#termsconditions').hover(function(){
+//			 $("p").css("text-color", "yellow");
+//		}
+	}else{
+		return true;
+	}	
+}
+
+</script>
+     <!--[if lt IE 9]>
+
+    <![endif]-->
+</head>
+<body ng-app="landingPage">
+<div ng-controller="landingPageController">
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="<php echo 'http://www.google.com/chromeframe/?redirect=true'; ?>">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+<!--
+	<div class="header-top clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 ">
+                <p>Welcome to MecialPress a Premium Medical Theme</p>
+            </div>
+            <!--opening hours--
+            <div class="col-md-7 text-right">
+                <p>
+                    Opening Hours : <span>Monday to Saturday - 8am to 9pm</span>
+                    <br class="visible-xs">Contact : <span>+1-800-654-3210</span>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+-->
+
+<!--<header id="header">
+    <div class="container">
+
+        
+		<div class="col-md-1">
+                <img src="webapp/img/back-button.png" width="50" alt="IOH">
+        </div>
+		
+        <div class="logo clearfix col-lg-offset-3 col-md-offset-3">
+                <img src="webapp/img/iohlogo.png" alt="IOH">
+        </div>
+
+        
+        <nav class="main-menu">
+            <ul class="header-nav clearfix" id="menu-main-menu">
+                <li> <a href="" data-toggle="modal" ng-click="login_modal();" data-target="#myLogin">LOG IN</a> </li>
+                <li> <a href="" data-toggle="modal" ng-click="register_modal();" data-target="#myLogin">SIGN UP</a> </li>
+            </ul>
+        </nav>
+		
+        <div id="responsive-menu-container"></div>
+    </div>
+</header>-->
+<!--
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="navbar-brand" href="index.html#/home">
+                    <img src="webapp/img/iohlogo.png" alt="India Online Health">
+                </a> 
+			</div>
+            
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav pull-right my-nav">
+                    <li class="page-scroll"><a href="" data-toggle="modal" ng-click="login_modal();" data-target="#myLogin">LOG IN</a></li>
+                    <li><a href="" data-toggle="modal" ng-click="register_modal();" data-target="#myLogin">SIGN UP</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>-->
+
+<div class="blog-page default-page full-width clearfix">
+    <div class="container">
+	<a href="/ayushman/home/index.html#/home"><i class="fa fa-angle-left fa-4x" style="color:#ffa13c;"></i></a>
+        <div class="blog-page-single clearfix">
+            <article class="page hentry  clearfix">
+                <div class="full-width-contents">
+                    <div class="entry-content">						
+                        <div class="row">
+                        <div class="col-md-12 text-justify">
+						<h3>Disclaimer</h3>
+                            <div class="col-sm-12 home-blog" style="padding:30px;">
+                                <p><strong><i>IndiaOnlineHealth</i></strong> is a platform provided by Ayushman for enabling Consumers to take appointment and consult with doctors, who are registered on the Platform; as well as to connect with Support Service Providers (SSP) such as pathologist and radiologist for taking appointment and availing their services; as well as Medicine & Equipment Suppliers (MES) such as medical store and surgical equipment providers for placing order for their products. Â Ayushman has taken declaration from Doctors, SSPs and MESs regarding holding appropriate degree and validity of licenses from appropriate authorities and has solely depended on their declaration but has not verified their validity or regarding any action pending against them under penal laws. While availing their services, Consumer has to do his own due-diligence.</p>
+								<p>Diagnostic capability and treatment skills vary from doctor to doctor. Ayushman does not warrant capability of individual Medical Doctors for making diagnosis of all ailments and their treatment skills for cure of all ailments. Ayushman also does not warrant cure of customer patient by treatment given by Medical Doctor. </p>
+                                <p>Ayushman has taken declaration from Diagnostic labs for the quality of material used by them for performing the tests or for analyzing the samples. Ayushman physically does not check the quality of material. It is up to the Consumer, to be alert and vigilant while accepting the services and material. Ayushman is not responsible for the quality of material used by labs for individual tests, accuracy of test results, and format, media or quality of reports provided by them to Consumer. </p>
+                                <p>Ayushman has not accepted any liability towards Medical Doctors and SSPs. All Medical Doctors as well as SSPs have agreed to offer and provide their services on the Ayushman platform exclusively at their own responsibility, risk, and cost. Ayushman will never be responsible for any action taken against them by any person and authority. </p>
+                                <p>The information contained in this website is for general information purposes only. AyushmanÂ  endeavoured to keep the information up to date and correct, No representations or warranties of any kind, express or implied, are given about the completeness, accuracy, reliability, suitability or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose. Any reliance placed on such information shall be strictly always at Userâ€™s own risk.</p>
+								<p>In no event Ayushman will be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of this website.</p>
+								<p>Through this website, it is possible to link to other websites, which are not under the control of Ayushman. No control is established over the nature, content and availability of those sites. The inclusion of any links does not necessarily imply a recommendation or endorse the views expressed within them.</p>
+								<p>Every effort is made to keep the website up and running smoothly. However, there may be occasions due technical glitches, planned maintenance shut-down or business reasons. Ayushman takes no responsibility for, and will not be liable for, the website being temporarily unavailable due to any reason whatsoever. </p>
+								<hr class="gray-line">	
+							  </div>							
+						   </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

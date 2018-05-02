@@ -1,0 +1,66 @@
+<head>
+
+</head>
+ <style>
+	            .my-drop-zone { border: dotted 3px lightgray; }
+	            .ng-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+	            .another-file-over-class { border: dotted 3px green; }
+
+	            html, body { height: auto; }
+							.Textheading	{
+								font-family: tahoma, Helvetica, sans-serif;
+								font-weight: normal;							
+								font-weight: bold;
+								color: black;
+								}
+	        </style>
+			<body>
+						<div class="col-md-3">
+							
+							<h4 class="Textheading">Select files</h4>
+
+							<div ng-show="uploader.isHTML5">                   
+								<!-- Example: ng-file-drop | ng-file-drop="options" -->
+								<div class="well my-drop-zone textcolor" ngf-accept="'.jpg,.png,.pdf, .bmp, .jpeg, .dcm'" ng-file-drop="{ url: '/ayushman/upload/saveuploadedreports' }" ng-file-over="another-file-over-class">
+									Drag and Drop files here..
+								</div>
+							</div>
+
+							<!-- 2. ng-file-select | ng-file-select="options" -->
+							<div class="textcolor">
+							Multiple
+							<input ng-file-select type="file"  multiple /><br/>
+							</div>
+						   
+						</div>
+						<div>
+						<table class="table textcolor" style="margin-left: 16px;width: 96%;">
+								<thead>
+									<tr ng-if="uploader.getNotUploadedItems().length">
+										<th style="width:47%">Name</th>
+										<th style="width:41%">Size</th>
+										
+										<th >Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="item in uploader.queue">
+										<td><strong>{{ item.file.name }}</strong></td>
+										<td  ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+										
+										<td nowrap>
+												<button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+												<span class="glyphicon glyphicon-trash"></span> Remove
+											</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<hr>
+						<div style="float: right;margin-right: 9px;">
+						<button class="btn button-style btn-s"ng-click="setStep(2)" ng-disabled="!uploader.getNotUploadedItems().length"style="padding: 2px;">
+							Next&nbsp <span class="glyphicon glyphicon-arrow-right"></span> 
+						</button>
+						</div>
+			</body>

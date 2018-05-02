@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en-US"><!--<![endif]-->
+<head>
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+
+    <!-- Title -->
+    <title>India Online Health</title>
+	<script type='text/javascript' src='webapp/js/jquery-1.11.1.min.js'></script>
+    <!-- Define a view port to mobile devices to use - telling the browser to assume that
+    the page is as wide as the device (width=device-width)
+     and setting the initial page zoom level to be 1 (initial-scale=1.0) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon-new.png">
+
+    <!-- Google Web Font -->
+<!-- Removed   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>-->
+    <!-- bootstrap Style Sheet (caution ! - Do not edit this stylesheet) -->
+
+    <!-- Flexslider stylesheet -->
+    <link rel="stylesheet" href="webapp/css/flexslider.css" type="text/css" media="all">
+
+    <!-- Animations stylesheet -->
+    <link rel="stylesheet" href="webapp/css/animations.css" type="text/css" media="all">
+    
+	<!-- Awesome Font stylesheet -->
+<!-- Removed   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+    <!-- Datepciker stylesheet -->
+    <link rel="stylesheet" href="webapp/css/datepicker.css" type="text/css" media="all">
+    <!-- Swipebox stylesheet -->
+    <link rel="stylesheet" href="webapp/css/swipebox.css" type="text/css" media="all">
+    <!-- meanmenu stylesheet -->
+    <link rel="stylesheet" href="webapp/css/meanmenu.css" type="text/css" media="all">
+    <!-- Include the site main stylesheet -->
+    <link rel="stylesheet" href="webapp/css/main.css" type="text/css" media="all">
+	<link rel="stylesheet" href="webapp/css/signup.css" type="text/css" media="all">
+	<link rel="stylesheet" href="webapp/css/login.css" type="text/css" media="all">
+    <link rel="stylesheet" href="webapp/css/ioh.css" type="text/css" media="all">
+	<!-- CUSTOM CSS-->
+	<link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <!-- Include the site responsive  stylesheet -->
+    <link rel="stylesheet" href="webapp/css/custom-responsive.css" type="text/css" media="all">
+	<script type="text/javascript" src="/ayushman/assets/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <link href="/ayushman/assets/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" type="text/css">
+    <!--<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>-->
+    <script type="text/javascript" src="/ayushman/assets/js/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <style>
+	#panel4.panel {
+	position: absolute;
+	color:#ccc;
+	top: 100px;
+	right: -1%;
+	display: none;
+	background: #fcfcfc;
+	
+	border:1px solid #04716e;
+	-moz-border-radius-topleft: 20px;
+	/*-webkit-border-top-left-radius: 20px;*/
+	-moz-border-radius-bottomleft: 20px;
+	/*-webkit-border-bottom-left-radius: 20px;*/
+
+	-moz-border-radius-topright: 20px;
+	/*-webkit-border-top-right-radius: 20px;*/
+	-moz-border-radius-bottomright: 20px;
+	/*-webkit-border-bottom-right-radius: 20px;*/
+
+	width: 300px;
+	height: 225px;
+	padding: 10px 10px 10px 10px;
+	filter: alpha(opacity=90);
+	opacity: 1;
+
+	font-family:tahoma, Helvetica, sans-serif;
+	font-size:13px;
+	
+}
+	 .danger{
+	   color:red;
+	 }
+	 .success{
+	  color:#00b100;
+	 }
+	 .dropbtn {
+			background-color: #fff;
+			color: black;
+			padding: 16px;
+			font-family: open sans;
+			font-size: 16px;
+			border: none;
+			cursor: pointer;
+			margin-top: -8px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 10px;
+}
+
+.sidenav a {
+    padding: 10px 10px 10px 0px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: -10px;
+    right: 2px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {color: red;}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+   color:red ;
+}
+.formheader{
+	color:#04706d;
+	font-size:18px;
+	height:20px;
+	text-align:center;
+}
+.form-group{
+	margin-top:15px;
+}
+	
+</style>
+	
+	
+<script type="text/javascript">
+// Added because of error "a.curCSS is not a function"
+	jQuery.curCSS = function(element, prop, val) {
+		return jQuery(element).css(prop, val);
+	};
+	function closelogin(){
+		$("#panel4").toggle("slow");
+	}
+	
+	$(document).ready(function(){ 
+	closeNav();
+		//Stop carousels auto slide while scrolling 
+      if(window.screen.availWidth<=767){
+        $(".fp-viewing-home").addClass("fp-viewing-consumers-2");
+        $(".fp-viewing-home").removeClass("fp-viewing-home");
+        $("#section1").addClass("active");
+        $("#section0").hide();
+      }
+      window.onscroll = function (e) {
+        if (window.screen.availWidth <= 767) {
+          $(".fp-viewing-home").addClass("fp-viewing-consumers-2");
+          $(".fp-viewing-home").removeClass("fp-viewing-home");
+          $("#section1").addClass("active");
+        }
+      }
+
+      var page=document.URL.substring(document.URL.lastIndexOf("/")+1,document.URL.lastIndexOf("."));
+		$("#"+page).attr("class","active");
+		$("#"+page).find("a").css("color","#fff");
+		$(".login").click(function(){
+			$("#panel4").toggle("slow");
+			$('html,body').animate({
+                        scrollTop: 0
+            }, 10);
+			document.getElementById("email").focus();
+			return false;
+		});
+
+		$(document).click(function(e){
+			if ($(e.target).parents("#panel4").length == 0) 
+				$("#panel4").hide("slow");
+		});
+
+      $("#menuExpand").click(function(e) {
+        if($(".logoWrapper a").hasClass("expand-logo")){
+          $(".logoWrapper a").removeClass("expand-logo");
+        }else{
+          $(".logoWrapper a").addClass("expand-logo");
+        }
+      });
+
+      var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+		if(is_chrome)
+		{
+			if(document.getElementById('chromeabsent') != null)
+				document.getElementById('chromeabsent').innerHTML = "";
+		}
+		else
+		{
+			if(document.getElementById('chromeabsent') != null)
+				document.getElementById('chromeabsent').visible = true;
+		}
+	});
+var $= jQuery.noConflict();
+function openDialog(url, width, height){
+				 $.fancybox({
+                    'width': width,
+                    'height': height,
+                    'autoScale': false,
+                    'transitionIn': 'fade',
+                    'transitionOut': 'fade',
+                    'type': 'iframe',
+                    'href': url,
+                    'showCloseButton': true,
+                    'afterClose' : function(){
+					}
+            	});
+			}
+      
+function doc(){
+	$("#doc").show();
+	$("#con").hide();
+	$("#cop").hide();
+}
+function con(){
+	$("#doc").hide();
+	$("#con").show();
+	$("#cop").hide();
+}
+function cop(){
+	$("#doc").hide();
+	$("#con").hide();
+	$("#cop").show();
+}
+</script>
+     <!--[if lt IE 9]>
+
+    <![endif]-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</head>
+<body > <!--ng-app="landingPage">-->
+<!--<div ng-controller="landingPageController">-->
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="<php echo 'http://www.google.com/chromeframe/?redirect=true'; ?>">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>  
+	<!--#include file="TopMenu.shtml"-->
+<div class="home-slider clearfix">
+<div class="flexslider">
+<ul class="slides" >
+    <!--slide start-->
+<li class="flex-active-slide" style="height:100%">
+    <img src="webapp/img/landing-page/sliderbg1.png" style="height:100%"class="left-image" alt="Medical Services That You Can Trust" draggable="false">
+	
+<div style="padding-left:2%;padding-right:2%;" class="col-lg-12" >
+	<div id="term" style="width:100%;padding-top:50px;" class="col-lg-12">
+		<h3>Terms of Use</h3>
+	    <p class="bodytext"><em><strong>IndiaOnlineHealth</strong></em> is a Platform, developed and hosted by Ayushman, for all registered Doctors, and Pathologists, Radiologists & Diagnostic labs referred to as Support Service Providers (SSP) to offer their Services and all registered suppliers of medicine, instruments and consumables referred to as Medicine & Equipment Suppliers (MES) to supply their products to all registered Consumers. Ayushman has taken a declaration from Doctors, SSP and MES that they are authorized to offer their Services and products by the competent authorities like Medical Council of India, FDA and others, as the case may be. Ayushman has NOT validated their claims and has solely depended on their declarations. Ayushman also does not have ability to evaluate competence and efficiency of these Doctors, SSP and MES. Consumers are strongly advised to undertake their own diligence process to ascertain competence of Doctors, SSP and MES, before availing their Services. Ayushman will not be responsible for any consequences or damages resulting from availing Services from Doctors and SSP and products from MES registered on <em><strong>IndiaOnlineHealth</strong></em> Platform.</p>
+	</div>
+	<div class="row">
+		<div class="col-lg-12" style="padding-top:20px;padding-left:3%">
+                  <p class="bodytext"><strong>1. Usage by Consumer:</strong><br/><br/></p>
+                  <p class="bodytext">Usage of the Platform by Consumer is subject to acceptance of all Terms & Conditions described below and after signing an agreement by Clicking Terms & Conditions in the Registration Process.</p>			
+				  </br>
+                  <p class="bodytext"><strong>1.1 Rights to  Subscribe and Responsibilities thereof</strong><br/></p>
+				  </br>
+				  <p class="bodytext" style="padding-left:15px;">
+                    &bull; Any  Indian citizen can register and subscribe to <strong><em>IndiaOnlineHealth</em></strong> as  a Consumer, unless disqualified or barred by a government authority or any  constitutional body. Consumer will have to register at site giving their actual  identity and not by any fake or assumed name.<br/><br/>
+					
+                    &bull; Every  Consumer irrespective of age, gender, or handicap status needs to have his /  her own account in his / her own name.<br/><br/>
+					
+					&bull; For children below the age of 18  years, registration has to be done by their parents / guardian and avail any  Services offered on this Platform under the supervision of a parent / guardian.<br/><br/>
+					
+					&bull; For  senior citizens, handicapped persons and other adults, who are not comfortable  with use of Computer / Internet technologies, registration may be done on their  behalf by a relative / friend. In such cases, he will have to declare that he  is authorized by the Subscriber and act as guardian, while using the Services.<br/><br/>
+				
+					&bull; The  Consumer is permitted to make use of <strong><em>IndiaOnlineHealth </em></strong>Platform  and / or all the facilities available for genuine purposes only. The Consumer  is not permitted to misuse <strong><em>IndiaOnlineHealth </em></strong>Platform and / or  any facility available thereon, for any commercial, illegal, immoral, or  unethical purpose. <br/><br/>
+					
+					&bull; Since  many of the Services provided by Doctor / SSP / MES depend on past medical  history, it is the responsibility of the Consumer to ensure that his Electronic  Medical Records (EMR), (including his allergies, immunization, past medical  treatment, hereditary related family history, reports of medical check-ups,  prescription and consultation summary with Doctors) are kept current and  complete at all times. He should take assistance of his panel of Doctors in creating  and updating his EMR at various stages.<br/><br/>
+					
+					&bull; EMR is owned by the patient but he needs to give  access to the Doctor, whom he is consulting. During Consultation, he will deem  to have given access rights to the Consulting Doctor. At other times, Consumer  will have to give explicit rights (such as before an upcoming appointment or to  a family Doctor at all times), if he wishes to allow specific Doctors to have  access these records. <br/>
+				  </p>
+				  </br>
+                  <p class="bodytext"><strong>1.2. Various  Applicable Charges: </strong><br/></p>
+				  </br>
+				  <p class="bodytext" style="padding-left:15px;">
+					  &bull; <strong>Registration and Annual Subscription</strong>: Every subscriber needs to pay the registration  charges as applicable for his category of registration. In addition, he will  have to pay Annual Subscription to continue to access his records and avail  services offered by registered Doctors, SSP and MES as well as by Ayushman. If Consumer  fails to renew the subscription before expiry of current period, Ayushman  reserves the right to disable his access to his EMR and all other services  available to him by way of his subscription.<br/><br/>
+					  
+					  &bull; <strong>Usage</strong>: Certain services offered by Ayushman may attract  usage charges on per transaction basis based on package subscribed. Consumer  will be required to pay these transaction charges as applicable. <br/><br/>
+					  
+					  &bull; <strong>Doctor&rsquo;s and &lsquo;SSP&rsquo; Charges</strong>: Ayushman does not control Doctors, SSP and MESs  charges for their Services and the same are solely decided by respective  Service Providers. However, Aysuhman has been authorized by them to collect  their charges on their behalf and pass them through to respective Doctors, SSP  and MES. Therefore, while booking a slot for consultation or availing their  Services, Ayushman may block money as advance from Consumer equivalent to  charges of their Services. <br><br/>
+					  
+					  &bull; Consumer can pay for applicable charges by  different modes of payment, made available from time to time. These may include  On-line payment through Credit Card, Internet banking, transfer of funds  through banking channels or Cash collection mechanisms at the discretion of  Ayushman. <br/><br/>
+					  
+					  &bull; It is advised that Consumer keeps sufficient  positive balance in his account at all times to ensure, he is able to fix  appointment quickly. Consumer can view his transaction details and balance at  any time by accessing his account under his log-in to the site.<br/>
+					  
+				  </p>
+				  </br>
+                  <p class="bodytext"><strong>1.3</strong>. <strong>Confidentiality:</strong> <br/></p>
+				  </br>
+				  <p class="bodytext" style="padding-left:15px;">
+					&bull; The information provided by the Consumer and the  proceedings of the meeting of the Consumer with the Doctor, as also with  
+					the SSP  and MES; advice given by the Doctor, details of services provided by the SSP  and MES, will be stored on the <strong><em>IndiaOnlineHealth </em></strong>Platform; said information and the proceedings stored on  the <strong><em>IndiaOnlineHealth </em></strong> Platform will be accessible to Ayushman at  all times; to which the Consumer will have no objection at any time.<br/><br/>
+					  
+					&bull; Ayushman  is at liberty to use the data for all legal purposes including medical research  and statistics. When used for such purposes, Ayushman will take utmost care to  keep the identity of the Consumer anonymous and confidential adhering to HIPPA  guidelines. <br/><br/>
+				
+					&bull; The Consumer is solely responsible to keep his Access related information such as user name, password and answers to challenge questions etc, as well as access to his mail Id completely confidential. <br/><br/>
+				  </p>	
+				  <p class="bodytext"><strong>1.4. Limitations of Liabilities </strong> <br/></p>
+				  </br>
+				  <p class="bodytext" style="padding-left:15px;">
+					  &bull; Consumer needs to be aware and understand that availing an On-line Video / Audio / Phone consultation with a Doctor using <em><strong>IndiaOnlineHealth</strong></em> Platform poses certain limitations in providing advice as there is no physical examination of the Consumer by the Doctor. It is not equivalent to an In-clinic consultation. On-line Consultation is best suited for Follow-up consultation and for consultation for routine ailments, not requiring physical examination. <br/><br/>
+					  
+					  &bull; Ayushman is not responsible or liable for any advice provided by Doctor and for any services provided by SSP and MES or for any consequences of the advice provided by Doctor and for any consequences of any services provided by SSP and MES. <br/><br/>
+					  
+					  &bull; All the services provided by Ayushman are technology based and using various Information Technology services, which mainly depend upon availability of power and network connectivity, which are sometimes beyond the control of Ayushman. The Consumer avails of the service provided by <em><strong>IndiaOnlineHealth</strong></em> on an as-is basis and assumes all the risks involved for the causes beyond Ayushman control, with respect to any consequential damages arising out of nature of service, non-availability of service like power, network connectivity, any shortfall in completeness or loss of information stored, or loss of accuracy. <br/><br/>
+					  
+					  &bull; Doctors, Consulting specialists, SSP and MES are independent agents who give services in their own individual capacity. Ayushman is not in any way, responsible for individual acts of improper or incompetent advice or service provided by Doctors, Consulting specialists, or SSP. If it is proven beyond doubt that the promised services provided by the Doctor or SSP were not delivered, Ayushman can withhold payments to such service providers in specific instances and money collected for that transaction can be credited back to the customer account. If a Doctor fails to keep an appointment due to any reason, he is obliged to refund the money collected for such transaction and give a free consultation slot at a subsequent time mutually suitable. Under such situations Ayushman will credit the customer account with the refund amount. <br/><br>
+					</p>  
+					<p class="bodytext"><strong>1.5. Refunds:</strong></p>
+					</br>
+					
+					<p class="bodytext" style="padding-left:15px;">  
+					  &bull; The registration and subscription amount as well as amount paid towards already availed services by the Consumer to Ayushman, is not refundable.<br/><br/>
+					  
+					  &bull; <strong>Shortcoming in Service by &lsquo;Doctor&rsquo;, &lsquo;SSP&rsquo; and &lsquo;MESP&rsquo;</strong>: If Consumer informs Ayushman in writing about shortcoming in services provided by Doctor or SSP, Ayushman will investigate the claim and at its sole discretion, may refund a part or full amount paid / deposited by the Consumer to Ayushman, in case the designated service provider has failed to deliver service in part or full. Any such complaint must be reported within 72 hours of such an act happening. In any case, the claim and refund will never exceed the amount paid towards services provided for this specific act.<br/><br/>
+					</p>
+					  
+					<p class="bodytext"><strong>1.6. Termination of  Subscription:</strong></p>
+					</br>
+					<p class="bodytext" style="padding-left:15px;">  
+						&bull; The Subscription provided to the Consumer can be terminated by Ayushman at any time, if in the opinion of Ayushman,  <br />
+							i  	&nbsp;&nbsp;the Consumer is misusing <em><strong>IndiaOnlineHealth</strong></em> Platform,  <br />
+							ii&nbsp;	the Consumer is not using IndiaOnlineHealth Platform for genuine purpose,  <br />
+							iii&nbsp; the  Consumer is using <strong><em>IndiaOnlineHealth</em></strong> Platform for commercial,  illegal, immoral, or unethical purpose.<br/><br/>
+							
+						&bull; The services will be terminated in case Consumer fails to pay the annual subscription charges within 15 days of his subscription becoming due.  EMR will not be accessible to the Consumer once the account is closed. However, if the Consumer reactivates his account upon payment of outstanding dues, within 90 days, access to his EMR can be reactivated. <br/><br/>
+						
+						&bull; If the Consumer decides to close his account and inform Ayushman in writing accordingly, any amount available to his credit balance will be refunded to him by 15th day of the following calendar month.<br/><br/>					
+					</p>
+				</div>
+			</div>
+		<div class="col-lg-12" style="padding-top:20px;padding-left:3%">
+			<p class="bodytext"><strong>2. Usage by Doctor:</strong><br/><br/></p>
+            <p class="bodytext">Usage of the Platform by Doctor is subject to acceptance of all Terms & Conditions described below and after signing an agreement by Clicking 'Terms & Conditions' in the Registration Process. Separately, Doctors will have to send a duly signed agreement along with self-attested copies of their ID proof, Address proof, Last Medical degree, and Registration Certificate with appropriate Medical Council. Ayushman largely depends on self-declaration but reserves the Right to conduct independent validation process.</p>
+		</div>
+		<div class="row">
+			<div class="col-lg-12" style="padding-top:20px;padding-left:3%">
+					<p class="bodytext"><strong>2.1. Rights to  Subscribe and Responsibilities thereof :</strong></p>
+					</br>
+					<p class="bodytext" style="padding-left:15px;">
+					&bull; Any Doctor with Indian citizenship and holding a medical degree recognized by Government of India can register and subscribe to <em><strong>IndiaOnlineHealth</strong></em> as a Doctor, unless he is disqualified or barred by a government authority, any constitutional body or medical council of India or its subsidiaries. <br/><br/> 
+					
+					&bull; The Doctor is permitted to make use of <strong><em>IndiaOnlineHealth</em></strong> Platform and / or all the facilities available for genuine purposes only. The Doctor is not permitted to misuse <em><strong>IndiaOnlineHealth</strong></em> Platform and / or any facility available thereon, for any commercial, illegal, immoral, or unethical purpose. <br/><br/> 
+					
+					&bull; EMR is owned by the Consumer but he needs to give access to the Doctor, whom he is consulting. Accordingly, during Consultation, Doctor will have Rights to view EMR records of the Consumer. At other times, Doctor may ask Consumer and Consumer will have to give explicit access rights (such as before an upcoming appointment or to a family Doctor at all times) to his EMR.<br/><br/> 
+					
+					&bull; Doctor is solely responsible to decide if he needs to provide consultation on-line using Video / Audio / phone with the help of Consumer's EMR and reports. If in his opinion, he needs to do a physical examination, he should ask the patient to come for the same at his Clinic / hospital.<br/><br/> &bull; Doctor can publish his Profile with Clinic address and contact details. Doctor can also publish his 'In-Clinic' and 'On-line' Video / Audio / Phone Consultation calendar to enable Consumers to take appointment as appropriate. Doctor may make use of several scheduling related features to ensure that he maximizes his availability for Consumers, keeping waiting time to bare minimum.<br/><br/> 
+					
+					
+					&bull; Under normal circumstances, Doctor is expected to meet with his patients at appointed time. However, if due to unavoidable circumstances, he needs to cancel an appointment, he must inform the patient well in advance (at least 24 hours in advance) or compensate by way of providing free consultation for a missed appointment.<br/>
+					</p>
+					</br>
+					<p class="bodytext"> <strong>2.2  Various Applicable Charges and Consultation Fees:</strong></p> 
+					</br>
+					
+					<p class="bodytext" style="padding-left:15px;">
+					&bull; <strong>Registration</strong>: Registration is completely free for the Doctors.<br/><br/> 
+					
+					&bull; <strong>Annual Subscription:</strong> At this time, there are no Annual Subscription charges for Doctor to subscribe on <em><strong>IndiaOnlineHealth</strong></em>. However, Ayushman reserves the right to charge an annual subscription fee for enabling Doctor to publish his profile and calendar and offering their services through the Platform.<br/><br/> 
+					
+					&bull; <strong>Consultation Fees: </strong>				
+					I &nbsp;Ayushman does not influence or control Consultation charges for their Services and the same are solely decided by individual Doctors.<br/><br/>
+					
+					II &nbsp;For 'In-Clinic' Consultation, Doctor may opt to ask Ayushman to block some amount from Consumer's account at the time of booking an appointment or allow booking of appointment with complete payment at the clinic. If he chooses to allow booking an appointment with full payment at the clinic, he needs to ensure that he collects all his charges. Ayushman will not be responsible for collection of his fees for such incidences.<br/><br/>
+					
+					III &nbsp; For 'On-line' consultation, Doctor will authorize Ayushman to block Consumers account with his full consultation fees at the time of booking. Once the Consultation is completed gracefully, the same amount will be credited to the Doctors account. If the Consultation is cancelled by the Consumer, his account will be credited back with the amount due to him as per cancellation policy. If cancellation is done by the Doctor, Consumer's account will be credited back with entire amount blocked for Doctors consultation.<br/>
+					</p>
+					</br>
+					<p class="bodytext"><strong>2.3</strong> <strong>Confidentiality:</strong></p>
+					</br>
+					<p class="bodytext" style="padding-left:15px;">
+						&bull; EMR of the Consumer is private information of the Consumer and its access to the Doctor is given solely for the purpose of enabling Doctor to provide highest quality of professional Service. Doctor needs to treat EMR and related information confidential. If any information needs to be shared with other authorized personnel (Doctor's Staff member, another Doctor, SSP, patient's close relative etc), it should strictly be on 'need-to-know basis' and in the interest of providing full and better advice. In such cases, Doctor is expected to take permission of the Consumer before sharing such information.<br/><br/>
+					
+						&bull; Doctor will ensure that his staff is made aware of the privacy involved in medical consultation and will not provide access to EMR of the Consumer and Consultation proceedings to staff except for 'need-to-know' basis. 
+					     
+					   &bull; For On-line consultation, Doctor will ensure complete privacy from where he is providing consultation. <br/><br/>
+					   
+					   &bull; The information provided by the Doctor and the consultation records (examination details, diagnosis, prescription, investigations, medical or surgical procedures carried out or reports of such investigations etc) provided to the Consumer will be stored on the <em><strong>IndiaOnlineHealth</strong></em> Platform; said information and the proceedings stored on the <em><strong>IndiaOnlineHealth</strong></em> Platform will be accessible to Ayushman at all times; to which the Doctor will have no objection at any time. <br/><br/>
+					   
+					   &bull; Ayushman is at liberty to use the data for all legal purposes including medical research and statistics. When used for such purposes Ayushman will take utmost care to keep the identity of the Consumer and Doctor anonymous and confidential adhering to HIPPA guidelines. <br/><br/>
+					   
+					   &bull; The Doctor is solely responsible to keep his 'Access' related information such as user name, password and answers to challenge questions etc, as well as access to his email completely confidential.<br/>
+					 </p>
+					 </br>
+					 <p class="bodytext"><strong>2.4 Limitations of  Liabilities</strong></p>
+					 </br>					 
+					 <p class="bodytext" style="padding-left:15px;">					 
+					  &bull; Doctor needs to be aware and understand that providing an On-line Video / Audio / Phone consultation to a Consumer using <em><strong>IndiaOnlineHealth</strong></em> Platform poses certain limitations in providing advice as there is no physical examination of the Consumer by the Doctor. It is not equivalent to an In-clinic consultation. On-line Consultation is best suited for 'Follow-up' consultation and for consultation for routine ailments, not requiring physical examination. Under all circumstances, Doctor is solely responsible for deciding if 'On-line' Consulting is suitable for each specific situation.<br/><br/>
+					  
+					  &bull; All the services provided by Ayushman are technology based and using various Information Technology services, which mainly depend upon availability of power and network connectivity, and which are sometimes beyond the control of Ayushman. The Doctor avails of the service provided by <em><strong>IndiaOnlineHealth</strong></em> on an 'as-is' basis and assumes all the risks involved for the causes beyond Ayushman's control, with respect to any consequential damages arising out of nature of service, non-availability of service like power, network connectivity, any shortfall in completeness or loss of information stored, or loss of accuracy. <br/><br/>
+					  
+					  &bull; Each Doctor is an independent agent who provides services in his own individual capacity. If it is proven beyond doubt that the Doctor did not provide promised services, Ayushman can withhold payments of such deficient service in specific instances and money collected for that transaction can be credited back to the customer account. If a Doctor fails to keep an appointment due to any reason, he is obliged to refund the money collected for such transaction and give a free consultation slot at a subsequent time mutually suitable. Under such situations Ayushman will credit the customer account with the refund amount. <br/><br/>&bull; While Ayushman will take every care to safeguard customer data, Ayushman is not responsible for any accidental loss of data or service discontinuity and Doctor agrees to indemnify Ayushman against any and all consequential damages.					 
+					</p>
+					</br>
+					 <p class="bodytext"> <strong>2.5 Settlement of  Accounts:</strong></p>
+					 </br>					 
+					 <p class="bodytext" style="padding-left:15px;">				 
+					  
+					  &bull; Ayushman follows a monthly cycle of accounts reconciliation. By 15th of the following month, Ayushman will credit all amounts due to individual Doctors in their bank accounts provided by them at the time of registration or updated in their profile subsequently. A monthly statement will also be mailed to their email Id. Any disputes must be raised within 15 days from providing the monthly reconciliation statement.<br/><br/>
+					  
+					  &bull; Daily statements will be available in their account section updated on daily basis.
+					  </p>
+					  </br>
+					  <p class="bodytext"><strong>2.6 Termination of  Subscription:</strong><br/><br/></p>
+					  </br>
+					  <p class="bodytext" style="padding-left:15px;">
+					  &bull; The Subscription provided to the Doctors can be terminated by Ayushman at any time, if in the opinion of Ayushman, <br/><br/>
+					  
+					  &nbsp; 
+						i. the Doctor is  misusing <strong><em>IndiaOnlineHealth</em></strong> Platform, <br /> 
+						ii. the Doctor is  not using <strong><em>IndiaOnlineHealth</em></strong> Platform for genuine purpose,<br />
+						iii. the Doctor is  using <strong><em>IndiaOnlineHealth</em></strong> Platform for commercial, illegal, immoral, or unethical purpose.<br/><br/>&bull; Doctor can decide to discontinue his license by informing Ayushman in writing accordingly. Any amount available in his account will be credited to his bank account at the end of the following reconciliation cycle.
+					</p>
+				</div>
+			</div>	
+		<div class="col-lg-12" style="padding-top:20px;padding-left:3%">
+			<p class="bodytext" ><strong>3. Usage by Support Service Providers (SSP) &amp;&nbsp;Medicine &amp; Equipment Suppliers (MES)&nbsp;:</strong><br/><br/></p>
+            <p class="bodytext">Usage of the Platform by SSP / MES is subject to acceptance of all Terms & Conditions described below and after signing an agreement by Clicking Terms & Conditions in the Registration Process. Separately, SSP / MES will have to send a duly signed agreement along with self-attested copies of their ID proof, Address proof and applicable Registration Certificate with appropriate authorities. Ayushman largely depends on self-declaration but reserves the Right to conduct independent validation process.</p>
+		</div>
+		<div class="row">
+			<div class="col-lg-12" style="padding-top:20px;padding-left:3%">
+				<p class="bodytext"><strong>3.1. Rights to  Subscribe and Responsibilities thereof:</strong></p></br>
+				<p class="bodytext" style="padding-left:15px;">
+					&bull; Any SSP / MES registered as a commercial organization in India and managed by authorized personnel as required by statutory bodies and organizations recognized by Government of India can register and subscribe to <em><strong>IndiaOnlineHealth</strong></em> as a SSP / MES, unless he is disqualified or barred by a government authority or any constitutional body. <br/></br/>
+					
+					&bull; The SSP / MES is permitted to make use of <em><strong>IndiaOnlineHealth</strong></em> Platform and / or all the facilities available for genuine purposes only. The SSP / MES is not permitted to misuse <em><strong>IndiaOnlineHealth</strong></em> Platform and / or any facility available thereon, for any commercial, illegal, immoral, or unethical purpose.<br/><br/>
+					
+					&bull; SSPs can publish their Profile with address and  contact details of their establishment. SSP also needs to publish their Catalog  of Service (for all the tests for which facilities are available) along with  their prices. <br/><br/>
+					
+					&bull; Similarly MESs can publish their Profile with address and contact details of their establishment. They should also publish if they provide home delivery of their supplies and charges thereof. <br/><br/>
+					
+					&bull; Doctor may prescribe certain diagnostic tests (from a Pathology or Radiology Lab) and medication to the Consumer based on consultation provided by him either In-person or On-line by using <em><strong>IndiaOnlineHealth</strong></em> Platform. A prescription so generated under the log-in by the Doctor, is deemed to bear his signature. <br/><br/>
+					
+					&bull; Consumer may place a requisition for certain diagnostic test as a result of prescription issued by the Doctor after the consultation or on his own accord (generally in case of chronic cases). At this time, Consumers account will be blocked by an amount equivalent to the test charges. SSP will get an alert on his dashboard and he needs to get in touch with the Consumer to fix an appointment for conducting the tests before accepting the order. Once the reports are available, the same need to be uploaded into Patient's EMR through the mechanism provided by <em><strong>IndiaOnlineHealth</strong></em> Platform. Once the reports are uploaded successfully, SSP's account will be credited. <br/><br/>
+					
+					&bull; Consumer may also place a requisition for certain medicines as a result of prescription issued by the Doctor after the consultation or on Consumer may ask for a refill of a previously issues Prescription by the Doctor (generally in case of chronic cases). MES will get an alert on his dashboard and he needs to get in touch with the Consumer to confirm availability and delivery /pick up mechanism. However, no money will be blocked /collected from Consumers account for supply of medicines. SSP needs to ensure that he collects the money against the supplies directly from the Consumer. <br/><br/>
+					</p>
+					</br>
+					<p class="bodytext"> <strong>3.2 Various  Applicable</strong> <strong>Charges:</strong></p>
+					</br>
+					<p class="bodytext" style="padding-left:15px;">
+					
+					&bull; <strong>Registration and Subscription</strong>: Every SSP and MES needs to pay a One-time  Registration and an Annual Subscription Charges as applicable at the time of  registration. Ayushman reserves the right to charge<strong> </strong>annual subscription,  which will become applicable after the expiry of on-going subscription period. <br/><br/>
+					
+					&bull; <strong>Service Charges of &lsquo;SSP&rsquo; / &lsquo;MESP&rsquo;: </strong>Ayushman does not influence or control charges  for the Services offered by and SSP / MES and the same are solely decided by  individual Service providers or Product suppliers.
+					</p>
+					</br>
+					<p class="bodytext"><strong>3.3</strong> <strong>Confidentiality:</strong></p>
+					</br>
+					<p class="bodytext" style="padding-left:15px;">
+					
+					&bull; Medical records of the Consumer are private  information of the Consumer. Any requisition for investigation or medical  prescription placed by the Consumer is strictly private and SSP  / MES is given solely for the purpose of enabling him to provide highest  quality of professional Service. SSP / MES needs to treat requisitions and  reports strictly confidential at all times. If any information needs to be  shared with any authorized personnel, it should strictly be on &lsquo;need-to-know  basis&rsquo; and in the interest of providing full and better service to the Consumer. <br/><br/>
+					
+					&bull; SSP / MES will ensure that his staff is made  aware of the privacy involved in medical practice and will not share the  information with anyone not connected with providing service to the Consumer.
+					</p>
+					</br>
+					<p class="bodytext"><strong>3.4 Limitations of  Liabilities</strong></p>
+					</br>
+					<p class="bodytext" style="padding-left:15px;">
+					
+					&bull; All the services provided by Ayushaman are  technology based and using various Information Technology services, which  mainly depend upon availability of power and network connectivity, and which  are sometimes beyond the control of Ayushman. The SSP / MES avails of the  service provided by <strong><em>IndiaOnlineHealth</em></strong> on an &lsquo;as-is&rsquo; basis and  assumes all the risks involved for the causes beyond Ayushman&rsquo;s control, with  respect to any consequential damages arising out of nature of service,  non-availability of service like power, network connectivity, any shortfall in  completeness or loss of information stored, or loss of accuracy.<br/><br/>
+					
+					&bull; SSP  / MES, is an independent agent who provides services in his own individual  capacity. If it is proven beyond doubt that the SSP / MES did not provide  promised services, Ayushman can withhold payments of such deficient service in  specific instances and money collected for that transaction can be credited  back to the customer account. <br/><br/>
+					
+					&bull; While Ayushman will take every care to safeguard  customer data, Ayushman is not responsible for any accidental loss of data or  service discontinuity and SSP / MES agrees to indemnify Ayushman against any and  all consequential damages.
+					</p>
+					</br>
+					<p class="bodytext"><strong>3.5 Settlement of  Accounts:</strong></p>
+					</br>
+					<p class="bodytext" style="padding-left:15px;">
+					&bull; Ayushman  follows a monthly cycle of accounts reconciliation. By 15th of the  following month, Ayushman will credit all amounts due to individual SSP in his  bank account provided by him at the time of registration or updated in his  profile subsequently. A monthly statement will also be mailed to his email Id. Any  disputes must be raised within 15 days from providing the monthly  reconciliation statement.<br/><br/>
+					
+					&bull; Daily  statements will be available in their account section updated on daily basis.
+					</p>
+					</br>
+					<p class="bodytext"><strong>3.6 Termination of  Subscription:</strong></p>
+					</br>
+					<p class="bodytext" style="padding-left:15px;">
+					&bull; The Subscription provided to the SSP / MES can  be terminated by Ayushman at any time, if in the opinion of Ayushman, <br/>
+					
+					(a)  the SSP / MES is misusing <strong><em>IndiaOnlineHealth</em></strong> Platform,<br />
+					(b)  the SSP / MES is not using <strong><em>IndiaOnlineHealth</em></strong> Platform for genuine purpose, <br />
+					(c)  the SSP / MES is using <strong><em>IndiaOnlineHealth</em></strong> Platform for commercial, illegal, immoral, or unethical purpose.<br/>
+					
+					SSP / MES can decide to discontinue his  subscription by informing Ayushman in writing accordingly, any amount available  in his account will be credited to his bank account at the end of the next reconciliation cycle.
+					</p>
+				</div>
+			</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div style="height:90px">
+	</br>
+</div>
+<!--page footer-->
+	<!--#include file="BottomBar.shtml"-->
+<a href="#top" id="scroll-top"></a>
+<script type='text/javascript' id='quick-js'></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>-->
+<!--<script type='text/javascript' src='webapp/app/js/angular-route.js'></script>-->
+<!--<script type='text/javascript' src='app/controllers/landingPageController.js'></script>-->
+<!--<script type='text/javascript' src='webapp/app/app.js'></script>
+<script type='text/javascript' src='webapp/app/controllers/landingPageController.js'></script>-->
+<script type='text/javascript' id='quick-js'></script>
+<script type='text/javascript' src='webapp/js/jquery.flexslider-min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.swipebox.min.js'></script>
+<script type='text/javascript' src='webapp/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.isotope.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.appear.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.ui.core.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.ui.datepicker.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.validate.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.form.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.autosize.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.meanmenu.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.velocity.min.js'></script>
+<script type='text/javascript' src='webapp/js/respond.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery-migrate-1.2.1.min.js'></script>
+<script type='text/javascript' src="webapp/js/jquery.easing.min.js"></script>
+<script type='text/javascript' src='webapp/js/custom.js'></script>
+<script>
+jQuery(document).ready(function () {
+    // scroll-to-top animate
+    jQuery('#scroll-top').click(function () {
+        jQuery("html, body").animate({
+            scrollTop: 0
+        }, 900);
+        return false;
+    });
+	
+});
+</script>
+</div>
+<div id="panel4" class="panel panel-default login-panal" style="z-index: 50000;margin-right:3%;" >
+	<div class="panel-body">
+	<div class="formheader">Secure Log In <!--<a class="formclose" href="#" onclick="closelogin()"></a>--></div>
+	<form id="loginformid" action="/ayushman/cuser/login"  role="form" method="post" accept-charset="utf-8">
+		<div class="form-group" >
+			<input type="text" class="form-control" id="email" name="email" required="required" placeholder="Username" autocomplete="on">
+		</div>
+		<div class="form-group" >
+			<input type="password" class="form-control" id="password" name="password" required="required" placeholder="Password">
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-info">LOG IN </button>
+            <a href="/ayushman/cpasswordmanager/view" style="color:#04706d; margin-top:10px;">Forgot Password?</a>
+        </div>
+	</form>
+	</div>	
+</div> 
+</body>
+</html>

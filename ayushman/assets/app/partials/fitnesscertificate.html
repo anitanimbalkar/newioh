@@ -1,0 +1,216 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.action').hide();
+
+	});
+	function convertAndsavePDf(){
+	var userid=$('#patientuserid').val();
+		elm = $( "#fitnessCertificate" ).clone();
+		var htmlfile={htmlfile:elm.html(),type:'fitness',userid:userid};
+		$.ajax({
+				type: 'post',
+				data:htmlfile,
+				url: "/ayushman/cconsultation/saveCertificate",
+				datatype: 'html', 
+				success: function (data) {
+					
+				},
+			error: function (req, status, error) {
+			}
+		});
+	}
+
+	function days_between(date1, date2) {
+
+    // The number of milliseconds in one day
+    var ONE_DAY = 1000 * 60 * 60 * 24
+
+    // Convert both dates to milliseconds
+    var date1_ms = date1.getTime()
+    var date2_ms = date2.getTime()
+
+    // Calculate the difference in milliseconds
+    var difference_ms = Math.abs(date1_ms - date2_ms)
+
+    // Convert back to days and return
+    return Math.round(difference_ms/ONE_DAY)
+
+	}
+	$('#toDate').bind('input', function() { 
+    	var tdate=$(this).val() // get the current value of the input field.
+    	alert(tdate);
+	});
+	function change(){
+		var fdate=$('#fromDate').val();
+		var tdate=$('#toDate').val();
+		var datediff=days_between(tdate,fdate);
+		console.log(fdate);
+		console.log(tdate);
+		console.log(datediff);
+		if(fdate>=tdate){
+			alert('From date should be less than To date');
+		}
+	}
+	function PrintElem(elem)
+    {	
+	if(document.getElementById("withoutheaderChk").checked==true)
+			{
+				$('#previewHeader').hide();
+				
+			}
+			else{
+			
+				if(document.getElementById("previewHeader").value==1)
+			{
+				$('#uploadedheader').hide();
+				$('#systemheader').show();
+				
+			}
+			else{
+				$('#uploadedheader').show();
+				$('#systemheader').hide();
+			
+			}
+			
+			}
+        Popup($(elem).html());
+        convertAndsavePDf();
+    }
+
+    function Popup(data) 
+    {
+       var mywindow = window.open('', 'print', 'height=400,width=600');
+    //    mywindow.document.write('<html><head><title>my div</title>');
+        /*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+</script>
+
+<div style="width:100%;">
+<input type="hidden" value="2" id="autocompletevalue" />
+<table >
+	<tr>
+		<td width="100%">
+			<div id="printprescriptionbill"  style="box-shadow:2px 7px 19px #888888;">
+			<style type="text/css">
+				@media only print
+				{	
+				
+				}
+				@page {
+					/* dimensions for the whole page */
+					size: A5;
+					margin: 10;
+				}
+				body {
+					/* A5 dimensions */
+					height: 210mm;
+					width: 158.5mm;
+					margin: 10;
+				}
+			</style>
+			<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+			<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+			<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+			<div id="fitnessCertificate" class="prescription">
+				<h3 style="text-align:center;margin-bottom:20px;">Fitness Certificate</h3>
+				<link rel="stylesheet" href="/ayushman/assets/app/css/prescription.css">
+				<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+				<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+				
+				<div class="previewHeader" id="previewHeader" value="myprofile['userinfo'].systemGenflag">
+				
+				<div  class= "uploadedheader" id="uploadedheader"  ng-show="myprofile['userinfo'].systemGenflag ==0" >
+																	<img  ng-if="myprofile['userinfo'].header" src="{{myprofile['userinfo'].header}}" width=100%>
+																
+																</div>
+																
+																<div  class="systemheader" id="systemheader" ng-show="myprofile['userinfo'].systemGenflag ==1">
+				
+					<div class="doctorinfo">
+						<div class="doctorname">Dr.{{myprofile['userinfo'].name}}</div>
+						<div class="doctoreducation">{{myprofile['usereducation'].doctoreducation}}</div>
+						<div class="otherinfo">Regd No:{{myprofile['userinfo'].regno}}</div>
+					</div>
+					<div class="doctorinfo">
+						<div class="doctoraddress">
+							<div class="doctorname">{{myclinics['clinicinfo'][0].clinicname}}</div>
+							<div class="otherinfo">
+								{{myclinics['clinicinfo'][0].line1}},
+								{{myclinics['clinicinfo'][0].nearmark}},
+								{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+								{{myclinics['clinicinfo'][0].state}}
+								</br>
+								Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}
+							</div>
+						</div>						
+					</div>
+					</div>
+				</div>
+				<div class="separator" />
+				<div class="patientinfo">
+					<div class="patientname">
+						{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}})
+					</div>
+					<div class="appointmentdate">
+						{{appointment_info.DateAndTime}}
+					</div>
+				</div>
+				<div class="separator" />
+				<div id="quickprescription" style="margin-top:40px;text-align:justify;" class="body" >
+			This is to certify that I, Dr.{{myprofile['userinfo'].name}} have personally examined 
+			<span ng-if="appointment_info.PatientGender=='Male'">Mr. </span><span ng-if="appointment_info.PatientGender=='Female'">Mrs./Ms. </span>
+			{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}}), r/o :<br/>
+			<input  ng-model="appointment_info.Patientaddress" type= "text" style="border:none;width:100%;border-bottom:1px solid;" class="textareapopup" value = {{appointment_info.Patientaddress}} />
+			 whose signature / left thumb impression is verified as under and found <span ng-if="appointment_info.PatientGender=='Male'">he</span><span ng-if="appointment_info.PatientGender=='Female'">she</span><span ng-if="appointment_info.PatientGender==''">he/ she</span> has completely recovered from <span ng-if="appointment_info.PatientGender=='Male'">his</span> <span ng-if="appointment_info.PatientGender=='Female'">her</span> <span ng-if="appointment_info.PatientGender==''">his / her</span> illness 
+			 <br/><input id="illness" value="{{illness}}" ng-model="illness" name="illness" type="text" style="border:none;width:100%;border-bottom:1px solid;" class="textareapopup"/> and is / will be now fit to resume duties with effect from    <input  ng-model="startDate" value="{{startDate}}" id="startDate" name="startDate" class="textareapopup" style="border:none;border-bottom:1px solid;" />.
+		</br></br>I also certify that before arriving at this decision, I have examined the original medical certificate and statement of the case on which leave was granted or extended and have taken them into consideration in arriving at my decision.
+	
+					</div>
+				<div style="margin-top:30px;">
+				<div style="margin-top:100px;float:left;">
+					<label>Signature / Thumb Impression</label>
+				</div>	
+				<div style="margin-top:80px;float:right;">
+					<img ng-if="myprofile['userinfo'].signature" src="{{myprofile['userinfo'].signature}}"></br>
+					<div>
+					<label>Signature of Doctor</label></br>
+					Date : {{appointment_info.DateAndTime}}
+					</div>
+				</div>
+				</div>
+				</div>
+			</div>
+		</td>
+		<td width="50px;" valign="top">
+			<!--<div ng-if="examination_data.display_Rx!=false">
+			<input type="button" value="Rx" style="margin:5px;width:50px;" ng-click="$modalSuccess();" class="button" />
+			</div>-->
+			<input id="patientuserid" type="hidden" value="{{appointment_info.refappfromid_c}}" style="margin:5px;width:50px;display:none"/>
+			<div id="dialog"  class="sectionBox" style="display:block;position:absolute;margin-right:68px;margin-top:0.5cm;">
+				
+				<table width="100%"  style="max-height:95px;width:266px; margin-right:13px;" >
+					
+					<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" >
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;margin:1px;width:60px;">
+							<input style="margin:5px;width:50px;"type="checkbox" id="withoutheaderChk" />Print Without Header 
+						</td>
+					</tr>
+					<!--<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" onclick="PrintElem('#print',appointmentid);">-->
+						<td width="100%"  class="bodytext_bold" align="center" style="padding:5px;">
+						<input type="button" value="Print" style="margin:5px;width:50px;" ng-click="savebill();$modalCancel();" onclick="PrintElem('#fitnessCertificate');" class="button" />
+						</td>
+					</tr>
+				</table>
+			</div>	
+			
+		</td>
+	</table>
+</div>

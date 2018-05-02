@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1</questions>
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>8,12</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>Chest Pain</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>2,3,4,5,6,7,11</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Location</label>
+		<type>DD</type>
+		<answer>
+			<label>Left</label>
+		</answer>
+		<answer>
+			<label>Right</label>
+		</answer>
+		<answer>
+			<label>All Over</label>
+		</answer>
+	</question>
+
+	<question>
+		<id>3</id>
+		<label>Severity</label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+
+	<question>
+		<id>4</id>
+		<label>Duration</label>
+		<type>Text</type>
+	</question>
+
+	<question>
+		<id>5</id>
+		<label>Vomiting</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+
+	<question>
+		<id>6</id>
+		<label>Heart Burn</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+
+	<question>
+		<id>7</id>
+		<label>Increased Tenderness</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+
+	<question>
+		<id>8</id>
+		<label>Palpitation</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>3,4,9,10</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		
+	</question>
+
+	<question>
+		<id>9</id>
+		<label>After Meal</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+
+	<question>
+		<id>10</id>
+		<label>Missed Beats</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>11</id>
+		<label>Radiation</label>
+		<type>DD</type>
+		<answer>
+			<label>Upper</label>
+		</answer>
+		<answer>
+			<label>Lower</label>
+		</answer>
+		<answer>
+			<label>Right</label>
+		</answer>
+		<answer>
+			<label>Left</label>
+		</answer>
+		<answer>
+			<label>Middle</label>
+		</answer>
+		<answer>
+			<label>All over</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+</form>

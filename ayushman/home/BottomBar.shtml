@@ -1,0 +1,65 @@
+<!-- Footer file --> 
+	<link href="/ayushman/assets/css/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+ <style>
+		
+ p {
+    margin-top: 0;
+    margin-bottom: 1rem;	
+	font-family: "Open Sans",sans-serif;
+}
+
+compiled.min.css?ver=4.4.0:1
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+i{
+    margin-right: 10px;
+}
+
+.listfooter{
+	font-family:"Open Sans",sans-serif;
+	font-size:15px;
+	
+	}
+	
+.liststyle{
+	list-style: none;
+}
+	
+ </style>
+ <footer id="main-footer" class="hidden-xs site-footer clearfix">
+    <div class="container">
+        <div class="row" style="margin-top:20px;" >
+			<div class="col-md-3 col-lg-3 col-xl-3">
+				<ul id="menulink">
+					<li class="liststyle"><a href="/ayushman/home/About.shtml"><strong class="listfooter" ><img src="images/about-us.png" /> &nbsp; About</strong></a></li>
+					<li class="liststyle"><a href="/ayushman/home/Mission.shtml"><strong class="listfooter" ><img src="images/leadership.png" /> &nbsp; Our experts </strong></a></li>
+					<li class="liststyle"><a href="/ayushman/home/TermsofUse.shtml"><strong class="listfooter" ><img src="images/about-us.png" /> &nbsp; Terms of use</strong></a></li>
+					<li class="liststyle"><a href="/ayushman/home/Disclaimer.shtml"><strong class="listfooter" ><img src="images/about-us.png" /> &nbsp; Disclaimer</strong></a></li>
+					<li class="liststyle"><a href="/ayushman/home/PrivacyPolicy.shtml"><strong class="listfooter" ><img src="images/privacy.png" /> &nbsp; Privacy Policy</strong></a></li>
+					<li class="liststyle"><a href="/ayushman/home/ReturnPolicy.shtml"><strong class="listfooter" ><img src="images/return.png" /> &nbsp; Return Policy</strong></a></li>
+					<li class="liststyle"><a href="/ayushman/home/Contactus.shtml"><strong class="listfooter" ><img src="images/enquiry.png" /> &nbsp; Enquiry</strong></a></li>
+				</ul>
+		    </div>
+			<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3" >
+                <h6 class="font-bold"></h6>
+                <p style="color:white;"><i class="fa fa-home mr-3"></i>Ayushman Pvt. Ltd. <br/>
+					<p style="margin-left:25px;color:white;">A-5,Ramyanagari, Bibwewadi, Pune - 411037 </p></p>
+                <p style="color:white;"><i class="fa fa-envelope mr-3"></i> info@indiaonlinehealth.com</p>
+                <p style="color:white;"><i class="fa fa-phone mr-3"></i> <span style="font-size: 12px;">+</span>91 - 7263924405 </p>
+                <p style="color:white;"><i class="fa fa-phone mr-3"></i> <span style="font-size: 12px;">+</span>91 - 20-2422 5288</p>
+            </div>
+			<div class="thumbnail col-md-6 col-lg-6 col-xl-6">
+				<iframe width=560px; height=140px; src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.133499816361!2d73.86011221445729!3d18.477611187434007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2eaa3cda9f23f%3A0x74366251502902ac!2sAyushman+Pvt.+Ltd.!5e0!3m2!1sen!2sin!4v1511344286845"  frameborder="0" style="border:0" allowfullscreen></iframe>
+			</div>		
+        </div>     
+    </div>
+</footer>

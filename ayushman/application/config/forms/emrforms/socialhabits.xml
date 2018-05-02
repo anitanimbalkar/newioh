@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>1</columns>
+		<column>1</column>
+
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1,2,3,4,5,6</questions>
+		<layout>Vertical</layout>
+	</container>
+
+<question>
+		<id>1</id>
+		<label>Diet</label>
+		<type>DD</type>
+		<answer>
+			<label>Vegan</label>
+		</answer>
+		<answer>
+			<label>Pure Vegetarian</label>
+		</answer>
+		<answer>
+			<label>Primarily Vegetarian</label>
+		</answer>
+		<answer>
+			<label>Primarily Non-Vegetarian</label>
+		</answer>
+	</question>
+
+<question>
+		<id>2</id>
+		<label>Smoking</label>
+		<type>DD</type>
+		<answer>
+			<label>Never</label>
+		</answer>
+		<answer>
+			<label>Chain smoker</label>
+		</answer>
+		<answer>
+			<label>Rarely</label>
+		</answer>
+		<answer>
+			<label>Regularly</label>
+		</answer>
+	</question>
+
+<question>
+		<id>3</id>
+		<label>Alcohol</label>
+		<type>DD</type>
+		<answer>
+			<label>1-2 Pegs a day</label>
+		</answer>
+		<answer>
+			<label>More than 2 pegs daily</label>
+		</answer>
+		<answer>
+			<label>Never</label>
+		</answer>
+		<answer>
+			<label>Rarely</label>
+		</answer>
+	</question>
+
+<question>
+		<id>4</id>
+		<label>Tobacco</label>
+		<type>DD</type>
+		<answer>
+			<label>Never</label>
+		</answer>
+		<answer>
+			<label>Occasionally</label>
+		</answer>
+		<answer>
+			<label>Rarely</label>
+		</answer>
+	</question>
+
+<question>
+		<id>5</id>
+		<label>Exercise</label>
+		<type>DD</type>
+		<answer>
+			<label>Rarely</label>
+		</answer>
+		<answer>
+			<label>Never</label>
+		</answer>
+		<answer>
+			<label>Regularly</label>
+		</answer>
+	</question>
+
+
+	<question>
+		<id>6</id>
+		<label>Outdoor sports</label>
+		<type>DD</type>
+		<answer>
+			<label>Rarely</label>
+		</answer>
+		<answer>
+			<label>Never</label>
+		</answer>
+		<answer>
+			<label>Regularly</label>
+		</answer>
+	</question>
+</form>

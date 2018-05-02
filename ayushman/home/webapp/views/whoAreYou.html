@@ -1,0 +1,369 @@
+<div class="home-doctors  clearfix" id="whoareyou">
+    <div class="container">
+        <div class="slogan-section clearfix"><br>
+            <h2><span>Who are you ?</span></h2>
+			<p>We wont let you down,we are here to make you feel good and recover quickly from any desease you are facing.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6 text-left">
+                <div class="common-doctor clearfix">
+                    <figure>
+                            <img src="webapp/img/landing-page/patients.jpeg" alt="doctor-2">
+                    </figure>
+                    <div class="text-content">
+                        <h5 class="text-center"><a>Consumers</a></h5>
+                        <div class="for-border"></div>
+                        <ul>
+                            <li>Access Doctors</li>
+                            <li>Family Health EMR</li>
+                            <li>Track Wellness</li>
+                            <li>Medical Resources</li>
+                            <li>“My Network” Features</li>
+                        </ul>
+						<!--<p class="box-paragraph">
+                            This text represents a brief introduction of doctor and this text will be displayed on homepage and all the places where multiple doctors are listed.
+                        </p>-->
+                    </div>
+                </div>
+                <a class="read-more orange col-xs-offset-3 linked" href="#/home" ng-click="patientServices()">Read More</a> 
+            </div>
+
+            <div class="col-md-3 col-sm-6 text-left" >
+                <div class="common-doctor clearfix">
+                    <figure>
+                            <img src="webapp/img/landing-page/doctors.jpeg" alt="doctor-1">
+                    </figure>
+                    <div class="text-content" >
+                        <h5 class="text-center"><a>Doctors</a></h5>
+                        <div class="for-border"></div>
+                        <ul>
+                            <li>Practice Management</li>
+                            <li>E-Prescription</li>
+                            <li>World Wide Consultations</li>
+                            <li>Chronic Disease Management</li>
+                            <li>Predictive Analysis</li>
+                        </ul>
+						<!--<p class="box-paragraph">
+                            This text represents a brief introduction of doctor and this text will be displayed on homepage and all the places where multiple doctors are listed.
+                        </p>-->
+                    </div>
+                </div>
+                    <a class="read-more orange col-xs-offset-3 linked" href="#/home" ng-click="doctorServices()">Read More</a>
+              </div>
+
+              <div class="visible-sm clearfix margin-gap"></div>
+
+              <div class="col-md-3 col-sm-6 text-left">
+                  <div class="common-doctor clearfix">
+                      <figure>
+                              <img src="webapp/img/landing-page/corporates.jpeg" alt="doctor-4">
+                      </figure>
+                      <div class="text-content">
+                          <h5 class="text-center"><a>Corporates</a></h5>
+                          <div class="for-border"></div>
+                          <ul>
+                              <li>Employee Wellness</li>
+                              <li>Health Index</li>
+                              <li>Co-branded Portal</li>
+                              <li>Health Challenges</li>
+                              <li>Employee Safety</li>
+                          </ul>
+  						<!--<p class="box-paragraph">
+                            This text represents a brief introduction of doctor and this text will be displayed on homepage and all the places where multiple doctors are listed.
+                        </p>-->
+                      </div>
+                  </div>
+                 <a class="read-more orange col-xs-offset-3 linked" href="#/home" ng-click="corporateServices()">Read More</a> 
+              </div>
+
+              <div class="col-md-3 col-sm-6 text-left">
+                  <div class="common-doctor clearfix">
+                      <figure>
+                              <img src="webapp/img/landing-page/diagnostic.jpeg" alt="doctor-3">
+                      </figure>
+                      <div class="text-content">
+                          <h5 class="text-center"><a>Service Providers </a></h5>
+                          <div class="for-border"></div>
+                          <ul>
+                              <li>Integrated Orders</li>
+                              <li>Health Index</li>
+                              <li>Patient Verification</li>
+                              <li>DICOM Compatible</li>
+                              <li>Electronic Test Results</li>
+                          </ul>
+						 <!-- <p class="box-paragraph">
+                            This text represents a brief introduction of doctor and this text will be displayed on homepage and all the places where multiple doctors are listed.
+                        </p>-->
+                      </div>
+                  </div>
+                  <a class="read-more orange col-xs-offset-3 linked" href="#/home" ng-click="dignosticCenterServices();">Read More</a> 
+              </div>
+              <div class="visible-sm clearfix margin-gap"></div>
+          </div>
+      </div>
+  </div>
+
+  <div class="home-features clearfix" ng-show='patient'>
+      <div class="container">
+          <div id="patient-active"></div>
+          <div class="row services-block">
+              <div class="col-md-4">
+                  <div class="features-intro clearfix">
+                      <h2>India Online Health Consumer Services</h2>
+					  <a class="read-more orange" href="#/home" data-toggle="modal" ng-click="register_modal();" data-target="#myLogin">signup now</a>
+                  </div>
+              </div>
+
+              <div class="col-md-8">
+                  <div class="row">
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-plus-square fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Find Doctors</h3>
+                                  <p>Get access to hundreds of doctors within your vicinity based on their specializations.</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-medkit fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Manage Health Records</h3>
+                                  <p>Add your favorite diagnostic centers and place orders online.</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-user-md fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Diagnostics Centers</h3>
+                                  <p>Add your favorite diagnostic centers and place orders online.</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-ambulance fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Emergency Services</h3>
+                                  <p>Access emergency services in your area and Medical resources.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="home-features clearfix" ng-show='doctor'>
+      <div class="container">
+          <div id="doctor-active"></div>
+          <div class="row services-block">
+              <div class="col-md-4">
+                  <div class="features-intro clearfix">
+                      <h2>India Online Health Doctor Services</h2>
+                      <a class="read-more orange" href="#/home" data-toggle="modal" ng-click="register_modal();" data-target="#myLogin">signup now</a>
+                  </div>
+              </div>
+
+              <div class="col-md-8">
+                  <div class="row">
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-plus-square fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Practice Management</h3>
+                                  <p>Create and maintain patient records, consultation sessions and write easy prescriptions.</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-medkit fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Patient Network</h3>
+                                  <p>Create your own patient network for useful insights into their wellness and heath trends.</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-user-md fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Automated Orders</h3>
+                                  <p>Place Lab tests and medicines orders online and receive  automatic confirmations.</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-ambulance fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Online Presence</h3>
+                                  <p>Increase your practice’s visibility online and receive real time Patient reviews.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="home-features clearfix" ng-show='corporate'>
+      <div class="container">
+          <div id="corporate-active"></div>
+          <div class="row services-block">
+              <div class="col-md-4">
+                  <div class="features-intro clearfix">
+                      <h2>India Online Health Corporate Services</h2>
+                      <a class="read-more orange" href="#/home" data-toggle="modal" ng-click="register_modal();" data-target="#myLogin">signup now</a>
+                  </div>
+              </div>
+
+              <div class="col-md-8">
+                  <div class="row">
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-plus-square fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Employee Health Records</h3>
+                                  <p>Create/upload employee health records for ease of maintenance and emergency reasons.</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-medkit fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Employee wellness programs</h3>
+                                  <p>Conduct periodic health check ups for employees for tracking employee wellness.</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-user-md fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Healthy lifestyle Challenges</h3>
+                                  <p>Create and execute health challenges for employees to encourage healthy lifestyle .</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-ambulance fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Health Index</h3>
+                                  <p>Maintain the overall wellness trackers of the organization and help increase productivity.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="home-features clearfix" ng-show='dignosticCenter'>
+      <div class="container">
+          <div id="dignosticcenter-active"></div>
+          <div class="row services-block">
+              <div class="col-md-4">
+                  <div class="features-intro clearfix">
+                      <h2>India Online Health Service Providers Services</h2>
+                      <a class="read-more orange" href="#/home" data-toggle="modal" ng-click="register_modal();" data-target="#myLogin">signup now</a>
+                  </div>
+              </div>
+
+              <div class="col-md-8">
+                  <div class="row">
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-plus-square fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Online Integration </h3>
+                                  <p>Receive and fulfill orders online through services oriented integration.</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-medkit fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Patient Access & Services </h3>
+                                  <p>Get access to potential new customers for personalized care and services.</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-user-md fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Bulk Orders </h3>
+                                  <p>Fulfill bulk corporate and institutional orders electronically.</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6 single-feature">
+                          <div class="row">
+                              <div class="col-sm-3 icon-wrapper">
+                                  <i class="fa fa-ambulance fa-custom"></i>
+                              </div>
+                              <div class="col-sm-9">
+                                  <h3>Online presence </h3>
+                                  <p>Increase you business online presence and a platform to promote special offers.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>

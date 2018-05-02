@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+        <meta charset="UTF-8">
+
+        <script src="../dist/ag-grid.js"></script>
+
+
+        <script type="text/javascript">
+
+(function() {
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        var gridDiv = document.querySelector('#myGrid');
+
+        var gridOptions = {
+            columnDefs: [
+                {headerName: 'Name', field: 'name',editable:true},
+                {headerName: 'Role', field: 'role',editable:true},
+                {headerName: 'Mobile', field: 'mobile',editable:true}
+
+            ],
+            rowData: [
+                {name: 'Niall', role: 'Developer',mobile:'933333245',editable:true},
+                {name: 'Eamon', role: 'Manager',mobile:'931243245'},
+                {name: 'Brian', role: 'Musician',mobile:'945433245'},
+                {name: 'Kevin', role: 'Manager',mobile:'939876245'}
+             ],
+             editable:true,
+             pinnedColumnCount: 2,
+            pinnedRightColumnCount: 2,
+             rowSelection: 'single',
+              enableFilter: true,
+    enableSorting: true,
+    enableColResize: true,
+    suppressMenuHide: true,
+    headerCellTemplate:
+        '<div style="text-align: left;">' +
+        '  <div id="agResizeBar" style="width: 4px; height: 100%; float: right; cursor: col-resize;"></div>' +
+        '  <div id="agHeaderCellLabel" style="padding: 4px; overflow: hidden; text-overflow: ellipsis;">' +
+        '    <span id="agMenu"><i class="fa fa-bars"></i></span>' +
+        '    <span id="agText"></span>' +
+        '    <span id="agSortAsc"><i class="fa fa-long-arrow-down"></i></span>' +
+        '    <span id="agSortDesc"><i class="fa fa-long-arrow-up"></i></span>' +
+        '    <span id="agNoSort"></span>' +
+        '    <span id="agFilter"><i class="fa fa-filter"></i></span>' +
+        '  </div>' +
+        '</div>'
+
+            
+        };
+
+        new agGrid.Grid(gridDiv, gridOptions);
+    });
+   
+    var newCount = 1;
+
+function createNewRowData() {
+    var newData = {
+        name: " " + newCount,
+        role: " " + newCount,
+        mobile:  + (newCount * 17)
+       
+    };
+    newCount++;
+    return newData;
+}
+
+function getRowData() {
+    var rowData = [];
+    gridOptions.api.forEachNode( function(node) {
+        rowData.push(node.data);
+    });
+    console.log('Row Data:');
+    console.log(rowData);
+}
+
+function onAddRow() {
+    var newItem = createNewRowData();
+    gridOptions.api.addItems([newItem]);
+}
+
+function onInsertRowAt2() {
+    var newItem = createNewRowData();
+    gridOptions.api.insertItemsAtIndex(2, [newItem]);
+}
+
+function onRemoveSelected() {
+    var selectedNodes = gridOptions.api.getSelectedNodes();
+    gridOptions.api.removeItems(selectedNodes);
+}
+ })();
+        </script>
+
+    </head>
+
+    <body>
+
+        <div id="myGrid" style="width: 500px; height: 200px;" class="ag-blue"></div>
+ <div style="position: bottom; margin-top: 6px; left: 0px;">
+        <button onclick="onAddRow()">Add Row</button>
+        <button onclick="onInsertRowAt2()">Insert Row @ 2</button>
+        <button onclick="onRemoveSelected()">Remove Selected</button>
+        <button onclick="getRowData()">Get Row Data</button>
+    </div>
+
+    </body>
+
+</html>
+
+
+
+
+<!--
+
+<script src="../dist/ag-grid.js"></script>
+<link rel="stylesheet" type="text/css" href="../dist/ag-grid.css">
+<link rel="stylesheet" type="text/css" href="../dist/theme-fresh.css">
+
+<script src="tutorialStart.js"></script>
+-->

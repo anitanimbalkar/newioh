@@ -1,0 +1,502 @@
+body {
+	font-family: Arial, sans-serif;
+	font-size: 3.2vw;
+	background-color: #fcfcfc;
+}
+html, body {
+	height:auto;
+	width:100%;
+}
+:focus, a:focus {
+	outline: none;
+}
+.articlecontainer {
+	width: 50%;
+	max-width: 50%;
+}
+.container {
+	width: 100%;
+	max-width: 100%;
+}
+
+.LV_validation_message{
+    font-weight:normal;
+	font-family:tahoma,Helvetica,sans-serif;
+	font-size:11px;
+    margin:0 0 0 5px;
+}
+
+.LV_valid {
+    color:#00CC00;
+}
+	
+.LV_invalid {
+    color:#CC0000;
+}
+    
+.LV_valid_field,
+	input.LV_valid_field:hover, 
+	input.LV_valid_field:active,
+	textarea.LV_valid_field:hover, 
+	textarea.LV_valid_field:active {
+    border: 1px solid #00CC00;
+}
+    
+.LV_invalid_field, 
+	input.LV_invalid_field:hover, 
+	input.LV_invalid_field:active,
+	textarea.LV_invalid_field:hover, 
+	textarea.LV_invalid_field:active {
+    border: 1px solid #CC0000;
+}
+#topHeader.container {
+	padding: 0;
+	margin: 0;
+	max-width: 100%;
+}
+.navbar-inverse {
+	/*height: 67px;*/
+	background-color: #fff;
+	border-bottom: 1px solid #eee;
+}
+.navbar-header {
+	text-align: center;
+	width: 100%;
+}
+.navbar-toggle {
+	z-index: 9999;
+}
+.logoWrapper {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	text-align: center;
+}
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+	float: none;
+	margin: 8px auto;
+	width: 280px;
+	background: url(/ayushman/assets/images/Logo.png) 0 0 no-repeat;
+	overflow: hidden;
+	height: 46px;
+	text-indent: -9999px;
+	display: inline-block;
+    background-size: 230px;
+    margin-left: 13px;
+    margin-top: 13px;
+}
+.navbar-nav > li > a {
+	font-size: 13px;
+	text-transform: uppercase;
+	color: #777;
+	padding: 8px 14px 6px;
+	text-align: center;
+	background: white;
+	border-left:none;
+	border-right: none;
+	font-weight: 700;
+}
+.navbar {
+	min-height: inherit;
+}
+@media screen and (max-width:1024px){
+	#imgLogo{
+		width: 164px;float:left;margin-left:10%;  padding-top: 15px;
+	}
+	.logoWrapper {
+		position: absolute;
+	}
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-nav > li > a:hover {
+	background: #60b3b3;
+	border-right: none;
+	border-left: none;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+	background: #60b3b3;
+}
+.navbar-nav > li > a.signup {
+	background: #fcfcfc;
+	border-left: 1px solid #f0efef;
+	border-right: 1px solid #fcfcfc;
+	color:#777;
+}
+.navbar-nav > li > a.signup:hover {
+	background: #f0efef;
+	border-right: 1px solid #f0efef;
+	border-left: 1px solid #eeeeee;
+	color: black;
+}
+.navbar-nav > li > a.login, .navbar-nav > li > a.login:hover {
+	background: white;
+	border-left: none;
+	border-right: none;
+	color:black;
+}
+.navbar-nav > li > a.login:hover,.navbar-nav > li > a.login:focus{
+	background:white;
+	border-left: none;
+	border-right: none;
+}
+.navbar-nav > li > a.close, .navbar-nav > li > a.close:hover, .navbar-nav > li > a.close:focus{
+	background:#f0efef;
+	color:#747273;
+	opacity:1;
+}
+.navbar-nav > li > a.close:hover{
+	background: #60b3b3;
+	color:#fff;	
+}
+
+/*LEFT NAVIGATION*/
+#subNavigation {
+	position: fixed;
+	width: 250px;
+	top: 0;
+	height: 100%;
+	z-index: 9999;
+	background: #04716e;
+	left: -250px;
+}
+#subNavigation ul {
+	margin:60px 0 0 0;
+	padding: 0;
+}
+#subNavigation ul li {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	display:inline;
+}
+#subNavigation ul li a {
+	font-size: 17px;
+	color: #fff;
+	padding: 6px 0 6px 21px;
+	text-align: left;
+	display:block;
+	border-bottom: 1px solid #014946;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	width: 100%;
+	text-decoration: none;
+}
+#subNavigation ul li a:hover, #subNavigation ul li a:focus {
+	background: #014946;
+}
+#subNavigation a.closeMe {
+	background: url(/ayushman/assets/images/btn-close.png) 0 0 no-repeat;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	text-indent: -999px;
+	overflow: hidden;
+	position: absolute;
+	top: 24px;
+	left: 17px;
+}
+#subNavigation p {
+	position: absolute;
+	left: 0;
+	bottom: 5px;
+	width: 100%;
+	text-align: center;
+	font-size: 11px;
+	color: #fff;
+}
+#subNavigation p a {
+	color: #9cf2f2;
+}
+
+.BlueBandFooterHeading {
+	font-family:tahoma;
+	background-color:#04706d;
+	font-size:11px;
+	font-weight:bold;
+	line-height:14pt;
+	color:#ffffff;
+	text-align:left;
+	margin-right: 5px;
+	margin-left: 12px;
+}
+			
+#faq a:hover, a:focus {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#feedback a:hover, a:focus {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.bodytext_normal{
+	font-family: tahoma, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+	color: #60b3b3;
+}
+input.error { border-bottom: 1px solid red; }
+.bodytext_error{
+	font-family: tahoma, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 11px;
+	color: red;
+}
+.bodytext_bold{
+	font-family: tahoma, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	color: #60b3b3;
+}
+.formHeader{
+	font-size: 15px;
+	color: black;
+	background: rgba(30, 190, 240, 0.4);
+	padding:5px 10px;
+	font-weight:bold;
+}
+.formRow{
+	padding-top:25px;
+	padding-bottom:5px;
+	position: relative;
+	font-size: 12px;
+	font-family: Arial, sans-serif;
+	border:1px solid #eee;
+}
+.loginfailformdiv{
+	 margin:100px auto;
+	 text-align=center;
+	 width:100%;
+	 height:300px;
+	 max-width:500px;
+}
+.regnformdiv{
+	 margin:80px auto;
+	 text-align:center;
+	 max-width:800px;
+}
+.activateformdiv{
+	 margin:70px auto;
+	 text-align:-webkit-left;
+	 max-width:600px;
+}
+.regnformcontrol{
+	border: 1px solid #5cb1b6;
+	width:250px;
+	border-radius: 4px;
+}
+.regformcontactno{
+	max-width:250px;
+	float:left;
+	margin-top:37px;
+	margin-left:-60px;
+}
+.regformusername{
+	border: 1px solid #2D7A9E;
+	padding:10px;
+	width:250px;
+	background-color:#ffffff;
+	height:65px;
+	overflow-y:scroll;
+}
+label{
+	/*color:#5cb1b6;*/
+	font-size:13px;
+}
+.labeltext{	
+	font-size:8pt;
+	line-height:14pt;
+	color:#333333;
+	text-align:justify;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+.regnbutton{
+	font-family: Arial, sans-serif;
+	font-weight:bold;
+	border-radius: 0px;
+	background: rgba(30, 190, 240,.4);
+	color: black;
+	text-align: center;
+	font-size:13px;
+	padding: 6px 11px;
+	text-decoration: none;
+	border-radius: 6px;
+	border: 0;
+}
+
+.termsncondnsdiv{
+	border: 1px solid #2D7A9E;
+	background: #efefef;
+	overflow:auto;
+}
+.editformdiv{
+	 text-align:center;
+	 max-width:1000px;
+}
+
+.connectformcontrol{
+	border: 1px solid #5cb1b6;
+	width:120px;
+	border-radius: 4px;
+}
+.connectformdiv{
+	 text-align:center;
+	 max-width:800px;
+}
+.table_roundBorder{
+	border:1px solid #a8c8d9;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	-opera-border-radius:4px;
+	-khtml-border-radius:4px;
+	border-radius:4px;
+}
+.bodytext_bold{
+	font-family: tahoma, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 13px;
+	color: black;
+}
+
+.activateformdiv .formHeader {
+	background: #1c75bc;
+}
+
+.activateformdiv .form-group {
+	margin: 5px 0;
+}
+
+.activateformdiv .bodytext_bold {
+	margin-bottom: 10px;
+	display: inline-block;
+	font-size: 12px;
+}
+
+.activateformdiv .form-group label {
+	width: 115px;
+	color: black;
+	font-size: 12px;
+}
+
+.activateformdiv .form-group  input.activateaccount {
+	background: rgba(30, 190, 240,.4);;
+	color: black;
+	text-align: center;
+	font-size: 12px;
+	padding: 10px 15px;
+	text-decoration: none;
+	border: 0;
+}
+
+.activateformdiv .form-group .labeltext {
+	font-size: 12px;
+}
+
+.account-activated-terms {
+	width:auto;
+	height:auto;
+}
+
+.account-activated-div {
+	max-width: 1000px;
+	border: 0;
+	box-shadow: 0 0 0;
+}
+
+.account-activated-div table {
+	border: 0px solid #fff;
+}
+
+.account-activated-div-list-margin {
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+.getting-started-desc {
+	padding-left: 0px;
+	color: #11587E;
+}
+
+.panel a.support-link {
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+.panel a.support-link:hover {
+	color: #9FC54E;
+}
+
+.account-activated-table {
+	margin-bottom: 10px;
+	display: inline-block;
+}
+
+.account-area {
+	line-height:16px;
+	border: 1px solid #eaeaea;
+	padding: 5px 10px 0;
+}
+
+@media screen and (max-width: 767px) {
+	.activateformdiv {
+		margin: 66px auto;
+	}
+	.activateformdiv .form-group label {
+		width: 100%;
+		color: #1c75bc;
+		font-size: 12px;
+		padding: 0px 0px 0px;
+		margin: 0 0 3px;
+	}
+	.activateformdiv .form-group .labeltext {
+		font-size: 12px;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		width: 98%;
+		display: inline-block;
+		padding-left: 0px;
+		margin: 0;
+	}
+	.activateformdiv .form-group input.labeltext {
+		padding-left: 0px;
+		margin-left: 0px;
+	}
+	.inner-footer {
+		display: none;
+	}
+	.account-activated-div-list-margin {
+		text-align: justify;
+	}
+	.account-activated-table{
+		height: 84vh;
+		margin-bottom: 10px;
+		overflow-x: hidden;
+		overflow-y: scroll;
+	}
+	.top-header {
+		display: none;
+	}
+	.regnformdiv,
+	.activateformdiv {
+		margin: 30px auto 0;
+	}
+
+	#registrationform .LV_invalid,#registrationform .LV_valid {
+		float: left;
+		width: 100%;
+	}
+
+	#registrationform .terms-conditions .LV_invalid,#registrationform .terms-conditions .LV_valid {
+		float: none;
+		width: auto;
+	}
+	.account-area {
+		padding: 10px;
+	}
+}
+
+
+

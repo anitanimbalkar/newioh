@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>1</columns>
+		<column>1</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,11,12,17</questions>
+		<layout>Vertical</layout>
+	</container>
+	<question>
+		<id>1</id>
+		<label>Left Eye</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>21,7,10</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>11</id>
+		<label>Right Eye</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>21,7,10</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+		<question>
+		<id>12</id>
+		<label>Both Eye</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>21,7,10</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>21</id>
+		<label>Redness </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>3,18,5</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+
+	<question>
+		<id>18</id>
+		<label>Duration</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Location </label>
+		<type>DD</type>
+		<answer>
+			<label>Inner</label>
+		</answer>
+		<answer>
+			<label>Outer</label>
+		</answer>
+		<answer>
+			<label>Upper</label>
+		</answer>
+		<answer>
+			<label>Lower</label>
+		</answer>
+		<answer>
+			<label>Middle</label>
+		</answer>
+		<answer>
+			<label>Overall</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>5</id>
+		<label>Due to</label>
+		<type>multiDD</type>
+		<answer>
+			<label>Injury</label>
+		</answer>
+		<answer>
+			<label>Drug Intake</label>
+		</answer>
+		<answer>
+			<label>High BP</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>7</id>
+		<label>Itching in eye</label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+			<follow>18,9</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+
+	
+	<question>
+		<id>9</id>
+		<label>Severity </label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Vision Problem</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+			
+		</answer>
+		<answer>
+			<label>Reduced</label>
+			<follow>15,16</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Sightedness type</label>
+		<type>DD</type>
+		<answer>
+			<label>Short sightedness</label>
+		</answer>
+		<answer>
+			<label>Long sightedness</label>
+		</answer>
+		<answer>
+			<label>Both Short and Long sighted</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>Spectacle power</label>
+		<type>Text</type>
+		<validation>numeric</validation>
+	</question>
+		
+	<question>
+		<id>17</id>
+		<label>Other</label>
+		<type>Text</type>
+	</question>
+
+</form>

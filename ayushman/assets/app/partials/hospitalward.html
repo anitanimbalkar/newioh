@@ -1,0 +1,105 @@
+<html class="no-js">
+	<head>
+		<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Personalization | India Online Health</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		<script src="/ayushman/assets/app/js/extra/prescription.js"></script> 
+		<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+		 <meta name="viewport"
+          content="width = device-width, initial-scale = 1.0, minimum-scale = 1.0, maximum-scale = 1.0, user-scalable = no"/>
+		<link href="../assets/app/css/table.css" rel="stylesheet" type="text/css"/>
+		<link href="../assets/app/css/footable.core.css?v=2-0-1" rel="stylesheet" type="text/css"/>
+		<link href="../assets/app/css/footable-demos.css" rel="stylesheet" type="text/css"/>
+	   <script src="/ayushman/assets/app/js/controllers/hospitaladmindashboardctrl.js"></script>
+
+		<script src="../assets/app/js/extra/footable.js?v=2-0-1" type="text/javascript"></script>
+		<script src="../assets/app/js/extra/footable.sort.js?v=2-0-1" type="text/javascript"></script>
+		<script src="../assets/app/js/extra/footable.filter.js?v=2-0-1" type="text/javascript"></script>
+		<script src="../assets/app/js/extra/footable.paginate.js?v=2-0-1" type="text/javascript"></script>
+		<script src="../assets/app/js/extra/bootstrap-tab.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+	</head>
+	<script type="text/javascript">
+			$(document).ready(function(){
+				//$('#exists').hide();
+				$(function () {
+					   $('table').footable({ bookmarkable: { enabled: true }}).bind({
+						'footable_filtering': function (e) {
+							var selected = $('.filter-status').find(':selected').text();
+							if (selected && selected.length > 0) {
+								e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
+								e.clear = !e.filter;
+							}
+						},
+						'footable_filtered': function() {
+							var count = $('table.demo tbody tr:not(.footable-filtered)').length;
+							$('.row-count').html(count + ' rows found');
+						}
+					});
+
+					$('.clear-filter').click(function (e) {
+						e.preventDefault();
+						$('.filter-status').val('');
+						$('table.demo').trigger('footable_clear_filter');
+						$('.row-count').html('');
+					});
+
+					$('.filter-status').change(function (e) {
+						e.preventDefault();
+						$('table.demo').data('footable-filter').filter( $('#medicinesearch').val() );
+					});
+					
+					
+				});
+				$('table').trigger('footable_clear_filter');
+			});
+			
+	</script>	
+	<body>
+		<div class="container dashboard clearfix">
+			<div class="panel-group" id="accordionDashboard">		
+				<div style="margin:auto;width:100%;max-width:1030px;background-color: white;padding:10px;" class="row">
+					<div class="col-lg-12" style="margin-top: 83px;">
+						<div class="panel" style="margin-top: -10%;">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<b>Wards</b>	
+								</h4>
+							</div>
+						</div>
+						<div style="height:120px;width:100%;background:white;margin-top:5px;min-height:120px;">
+					<div style="float:right;width:100%;" id ="addMedicineform" ></div>
+					<table width="80%" class = "table_roundBorder" id="wardaddform" style="width:97%;margin-top:5px;margin-left:10px;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+						<tr>
+							<td height="25" colspan="12" align="left" valign="middle" bgcolor="#ecf8fb" style="border-bottom:1px solid #a8c8d9;padding-left:1px;" class="medbodytext_bold" >This allows you to add beds in respective ward room. </td>
+						</tr>
+						<tr>
+
+						  <td>
+							
+							<select class="form-control regnformcontrol" style="width:100%;"  id="accounttype" name="accounttype" ng-model="wardNames" ng-options="w.id as w.name for w in ward" > 
+									<option value="" >* Select ward...</option></select>
+						  </td>
+						  
+						  <td><input id="room" name="room" type="text"  style="width:85%" class="form-control regnformcontrol"  placeholder="* Room Name/No..."  autocomplete="off" tabindex="2" /></td>
+						  
+						  <td ><input id="bed" name="bed" type="text"  style="width:85%;margin-left: -15%;" class="form-control regnformcontrol"  placeholder="* Bed Name/No..."  autocomplete="off" tabindex="3" /></td>
+						 
+						  			     
+						
+						</tr>
+						<tr>
+							<td height="30" colspan="10" align="right" valign="middle" bgcolor="#ecf8fb" style="border-top:1px solid #a8c8d9; padding-right:10px;">
+							<button class="regnbutton" id = "addButton" >Add</button></td>
+						</tr>
+					</table>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

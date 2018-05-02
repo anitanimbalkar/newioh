@@ -1,0 +1,113 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.action').hide();
+	});
+	function PrintElem(elem)
+    {
+        Popup($(elem).html());
+    }
+
+    function Popup(data) 
+    {
+        var mywindow = window.open('', 'print', 'height=400,width=600');
+        mywindow.document.write('<html><head><title>my div</title>');
+        /*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+</script>
+
+<div style="width:100%;">
+<input type="hidden" value="2" id="autocompletevalue" />
+<table >
+	<tr>
+		<td width="100%">
+			<div id="printprescription"  style="box-shadow:2px 7px 19px #888888;">
+			<style type="text/css">
+				@media only print
+				{	
+				
+				}
+				@page {
+					/* dimensions for the whole page */
+					size: A5;
+					margin: 0;
+				}
+				body {
+					/* A5 dimensions */
+					height: 210mm;
+					width: 148.5mm;
+					margin: 0;
+				}
+			</style>
+			<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+			<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+			<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+			<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+			<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+			<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+			<table width="100%" class="table_roundborder" padding="10px">
+					<tr>
+						<td style="padding:10px">
+							<div id="name" style="height:auto;width:100%;line-height:200%">
+								<font color="1e90ff">Dr. {{myprofile['userinfo'].name}}</font>&nbsp;<span class="bodytext_normal" style="font-size:7px;" >({{myprofile['usereducation'].doctoreducation}})</span></br>
+								<table style="height:auto;width:100%;" >  
+									<tr>
+										<td style="font-size:9pt;font-family:arial;font-style:italic;border-collapse: collapse;padding-top: 0.0em;padding-bottom: 1.5em;">
+											<div style="float:left;width:150px;margin-left:1px;">
+												<span >{{myclinics['clinicinfo'][0].clinicname}}</br>
+													{{myclinics['clinicinfo'][0].line1}},
+													{{myclinics['clinicinfo'][0].nearmark}},
+													{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+													{{myclinics['clinicinfo'][0].state}}
+													</br>
+													Ph.+{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}</span>
+											</div>
+										</td>										
+										<td style="height:auto;width:30%;vertical-align:top">
+											No:&nbsp &nbsp;<input id="billid"  name="billid" style=" width:50px;border:none;text-align:right; border-bottom:1px solid;font-weight:bold" ng-model="appointment_info.billid" value=""/>
+											</br>
+											{{appointment_info.DateAndTime}}
+										</td>
+									</tr>
+								</table>
+								RECEIVED with thanks from &nbsp &nbsp; <input id="name" name="name" style=" width:57.8%;border:none; border-bottom:1px solid;font-weight:bold" readonly ng-model="appointment_info.Patientname"/>
+								</br>
+								Diagnosis.<input id="diagnosis"  name="diagnosis" style=" width:80.5%;border:none; border-bottom:1px solid;font-weight:bold" ng-model="examination_data.text_diagnosis"/>
+								</br>
+								the sum of Rupees.<input id="totalamt"  name="totalamt" style=" width:70.7%;border:none; border-bottom:1px solid;font-weight:bold" ng-model="appointment_info.amount" />
+								</br>
+								by cash/cheque, in part/full payment for consultation / operation.
+								</br>
+								Rs. <input id="sum" name="sum" style=" width:200px;border:none; border-bottom:1px solid;" readonly ng-model="appointment_info.amount"/>
+								<input type="hidden" id="appid" name="appid" value="{{appointment_info.appointment_id}}" >
+								</br>
+								Cheque subject to realisation.
+								</br>
+								<div style="float:right;padding-right:50px;padding-bottom:10px;">
+									Signature
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</td>
+		<td width="50px;" valign="top">
+			<form id="billform" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="billid" value="{{appointment_info.billid}}" >
+					<input type="hidden" name="totalamt" value="{{appointment_info.amount}}" >
+					<input type="hidden" name="diagnosis" value="{{examination_data.text_diagnosis}}" >
+					<input type="hidden" name="appid" value="{{appointment_info.appointment_id}}" >
+			</form>
+			<input type="button" value="Print" style="margin:5px;width:50px;" onclick="PrintElem('#printprescription');" class="button" />
+			<input type="button" value="Finish" ng-click="savebill();$modalSuccess();" style="margin:5px;width:50px;" class="button" />
+		</td>
+	</table>
+</div>

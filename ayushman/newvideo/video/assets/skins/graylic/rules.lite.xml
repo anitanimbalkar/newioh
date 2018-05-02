@@ -1,0 +1,45 @@
+<!-- Required: Aspire UI Version 1.1+ -->
+<rules theme="xp" css="text.css">
+	<BTabViewBar edge="2,0,0" prefs="spacing|2" />
+	<BTabViewBarItem edge="3" slices="over,up,selected" prefs="focusPadding|1,3,3|padding|3,6,2|textStyle|tabitem" />
+	<BTabViewBarStepperDown clone="StepperDown" />
+	<BTabViewBarStepperUp clone="StepperUp" />
+	<BTabViewContent edge="3,0,1" prefs="padding|12" />
+	<Button slices="up,over,emphasized,down,emphasized_down,selected,disabled,selected_disabled,emphasized_over" prefs="padding|3,6|focusPadding|3|displaceX|1|displaceY|1" />
+	<CheckBox slices="over,up,down,selected_over,selected,selected_down,disabled,selected_disabled" />
+	<ComboBox clone="TextInput" />
+	<ComboBoxButton slices="up,over,disabled" />
+	<ComboBoxList edge="1" prefs="padding|1" />
+	<ComboBoxListItem clone="ListBoxItem" />
+	<FocusRect edge="1" repeat="xy" />
+	<Frame prefs="padding|12" />
+	<ImageButton clone="Button" />
+	<Link clone="" prefs="textStyle|link" />
+	<ListBox clone="TextInput" />
+	<ListBoxItem edge="0" slices="up,selected" prefs="textStyle|listitem" />
+	<LabelButton clone="Button" />
+	<PushButton clone="Button" />
+	<RadioButton slices="over,up,down,selected_over,selected,selected_down,disabled,selected_disabled" />
+	<ScrollBarStepper assets="ScrollBarDown,ScrollBarUp" edge="3" slices="up,over,down,disabled" />
+	<ScrollBarTrack edge="" slices="up,down,disabled" />
+	<ScrollBarTrackThumb edge="2,4" midX="5" midY="7" slices="up,disabled" />
+	<Slider edge="0,2" midY="5" slices="up,disabled,down" />
+	<SliderThumb edge="2,2,5,2" slices="up,over,down,disabled" />
+	<Stepper assets="StepperDown,StepperUp" edge="2" midX="4" midY="7" slices="up,over,down,disabled" />
+	<StepperInput clone="TextInput" />
+	<StepperInputStepDown clone="VStepperDown" />
+	<StepperInputStepUp clone="VStepperUp" />
+	<TabViewBar edge="0,0,2" prefs="spacing|2" />
+	<TabViewBarItem edge="3" slices="over,up,selected" prefs="focusPadding|3,3,1|padding|3,6,2|textStyle|tabitem" />
+	<TabViewBarStepperDown clone="StepperDown" />
+	<TabViewBarStepperUp clone="StepperUp" />
+	<TabViewContent edge="1,0,3" prefs="padding|8,12" />
+	<TextArea clone="TextInput" />
+	<TextInput edge="3,2,2,3" slices="up,disabled" prefs="focusPadding|2|padding|2" />
+	<VScrollBarTrack edge="" slices="up,down,disabled" />
+	<VScrollBarStepper assets="VScrollBarDown,VScrollBarUp" edge="3" slices="up,over,down,disabled" />
+	<VScrollBarTrackThumb edge="4,2" midX="7" midY="5" slices="up,disabled" />
+	<VSlider edge="2,0" midX="5" slices="up,disabled,down" />
+	<VSliderThumb edge="6,4,5,7" slices="up,over,down,disabled" />
+	<VStepper assets="VStepperDown,VStepperUp" edge="2" midX="7" midY="4" slices="up,over,down,disabled" />
+</rules>

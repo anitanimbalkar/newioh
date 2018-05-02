@@ -1,0 +1,28 @@
+
+<div style="float:left; width:79%; margin-left:0%;">
+<div class="header" style="padding-top: 9px;background: #5cb1b6;">
+    <i class="fa fa-angle-left" ng-click="previous()"></i>
+    <span>{{month.format("MMM, YYYY")}}</span>
+    <i class="fa fa-angle-right" ng-click="next()"></i>
+</div>
+<div class="week names">
+    <span class="day">Sun</span>
+    <span class="day">Mon</span>
+    <span class="day">Tue</span>
+    <span class="day">Wed</span>
+    <span class="day">Thu</span>
+    <span class="day">Fri</span>
+    <span class="day">Sat</span>
+</div>
+<div class="week" ng-repeat="week in weeks">
+    <span class="day" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected) }" ng-click="select(day)" ng-repeat="day in week.days">{{day.number}}</span>
+</div>
+</div>
+<div class="scrollbar style-5" style="width:13%;min-width:51px;overflow-y:auto;height:260px;">
+<div class="week" ng-repeat="timeslot in timeslots">
+<span class="slot" style="  padding-left: 2px;" ng-class="{selected: seltime == timeslot}" ng-click="gettimeslot(timeslot)">{{timeslot.timeslot}}<span>
+
+
+</div>
+
+</div>

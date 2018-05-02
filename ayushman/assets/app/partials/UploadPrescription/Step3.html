@@ -1,0 +1,132 @@
+<head>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+$('#Prescription-Tags_a_6').change(function()
+					{
+						str=$(this).val();
+						var medarray = str.split(",");
+						console.log(medarray);
+						var temp;
+						var temphtml='<div>';
+						for (temp in medarray)
+						{
+						temphtml+='<div>'+medarray[temp]+'</div>';
+						}
+						temphtml+='</div>';
+						console.log(temphtml);
+						console.log($("#medicine2div"));
+						
+						$("#medicine2div").html(temphtml);
+					}).change();
+					$('#Prescription-Tags_a_7').change(function()
+					{
+						str=$(this).val();
+						var medarray = str.split(",");
+						console.log(medarray);
+						var temp;
+						var temphtml='<div>';
+						for (temp in medarray)
+						{
+						temphtml+='<div>'+medarray[temp]+'</div>';
+						}
+						temphtml+='</div>';
+						console.log(temphtml);
+						console.log($("#test2div"));
+						$("#test2div").html(temphtml);
+					}).change();
+
+
+});
+
+</script>
+<style>
+h2, .h2
+{
+font-family: tahoma, Helvetica, sans-serif;
+color: #5cb1b6;
+font-size: 18px !important;
+font-weight: bold;
+
+}
+.formbodytext_normal
+{
+	font-size: 0.9em ! important;
+}
+</style>
+<link href="/ayushman/assets/css/newformstyle.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div>
+		<table class="table textcolor" style="margin-left: 16px;width: 96%;">
+				<thead>
+					<tr ng-if="uploader.getNotUploadedItems().length">
+						<th width="30%">Name</th>
+						<th >Size</th>
+						<th ng-show="uploader.isHTML5" >Progress</th>
+						<th ng-show="uploader.isHTML5">Status</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="item in uploader.queue">
+						<td><strong>{{ item.file.name }}</strong></td>
+						<td  ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+						<td ng-show="uploader.isHTML5">
+											<div class="progress" style="margin-bottom: 0;">
+												<div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+											</div>
+										</td>
+										<td class="text-center">
+											<span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+											<span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+											<span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+										</td>
+						<td nowrap>
+								<button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+								<span class="glyphicon glyphicon-trash"></span> Remove
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<hr>
+		<div style="width:100%; margin-left: 16px;" id="Tags_place_holder" class=" textcolor" ></div>
+		
+		<table>
+				<td style="width: 59%;">
+				<div id="medicine2div" style="margin-left: 13%;width:100%"  class="formbodytext_normal"></div>
+				</td>
+				<td>
+				<div id="test2div" style=""  class="formbodytext_normal"></div>
+				</td>
+		</table>
+		
+		<hr>
+			<div style="float: right;margin-right: 9px;">
+			<button class="btn button-style btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length" style="padding: 2px;">
+				Upload&nbsp <span class="glyphicon glyphicon-upload"></span> 
+			</button>
+			
+			</div>
+			<div style="float: left;margin-left: 9px;">
+			<button class="btn button-style btn-s"ng-click="setStep(1)" style="padding: 2px;">
+				<span class="glyphicon glyphicon-arrow-left"></span>&nbsp Back 
+			</button>
+			</div>
+	</div>	
+		<form id="emrform" method="post" enctype="multipart/form-data">
+					
+					<input type="hidden" id="appointmentdate" name="appointmentdate" value=""/>
+					<input type="hidden" id="maincomplaint" name='maincomplaint' value="{{$scope.maincomplaint}}"/>
+					<input type="hidden" id="Drname" name="Drname" value="{{$scope.Drname}}"/>
+					<input type="hidden" id = "diagnosis" name = "diagnosis" value="{{$scope.diagnosis}}" />
+					<input type="hidden" id = "incident" name = "incident" value = "{{$scope.incident}}" />
+					<input type='hidden' id='followup' name="followup" value="{{$scope.followup}}"/>
+					<input type='hidden' id='medicines' name="medicines" value="{{$scope.medicines}}"/>
+					<input type='hidden' id='tests' name="tests" value="{{$scope.tests}}"/>
+					
+				</form>
+</body>

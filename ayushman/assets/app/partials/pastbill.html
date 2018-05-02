@@ -1,0 +1,5 @@
+<!doctype html> 
+<div>
+<a ng-show="data.billGenerated=='no'" ng-controller="pastbillCtrl" href="" ng-click="launchPrintableBill(data.id,data.diagnosis,'generate',data);" style="padding-left:5px;color:blue;">/&nbsp;Generate Bill</a> 
+<a ng-show="data.billGenerated=='yes'" ng-controller="pastbillCtrl" href="" ng-click="printoldbill(data.id,data.diagnosis,'print',data);" style="padding-left:5px;color:blue;">/&nbsp;Print Bill</a> 
+</div>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+
+	<container>
+		<id>1</id>
+		<questions>1,3</questions>
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>6,10</questions>
+		<layout>Vertical</layout>
+	</container>
+
+	<question>
+		<id>1</id>
+		<label>Lesions and Eruptions</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>2</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Details</label>
+		<type>Text</type>
+	</question>
+
+	<question>
+		<id>3</id>
+		<label>Pigment Changes</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>9,4,5</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Severity</label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Duration</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Itching</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>4,5</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	<question>
+		<id>7</id>
+		<label>Severity</label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Duration</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>9</id>
+		<label>Type</label>
+		<type>DD</type>
+		<answer>
+			<label>Hyper Pigmented</label>
+		</answer>
+		<answer>
+			<label>Depigmented</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Others</label>
+		<type>text</type>
+	</question>
+
+</form>

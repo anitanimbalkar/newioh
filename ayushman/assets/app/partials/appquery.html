@@ -1,0 +1,134 @@
+<script src="/ayushman/assets/app/js/extra/agecalculator.js"></script>
+<link href="/ayushman/assets/app/css/visits.css" rel="stylesheet" type="text/css">
+<div class="sectionVisitBox" style="border:1px solid #9cd4f9" id="newdivprescription" >
+	<div class="visit" ng-repeat="data in appdata['data'] track by $index">
+		<div class="section sec_gen clear">
+			<h5> Visit Info</h5>
+			<p>{{data.date}}</p>
+			<p>{{data.drname}}</p>
+			<p>Incidence : {{data.incidentname}}</p>
+			<p>Symptoms : {{data.maincomplaint}}</p>
+			<p>Diagnosis : {{data.diagnosis}}</p>
+		</div>
+		<div class="section sec_inv">
+			<h5> Investigations</h5>
+			<p>{{data.investigation}}</p>
+		</div>
+		<div class="section sec_med">
+			<h5>Medicines</h5>
+			<p>{{data.medicine}}</p>
+		</div>
+		<div class="section sec_fol">
+			<h5>Other instructions <br/>/ Follow up advice</h5>
+			<p>{{data.followup}}</p><br/>
+		</div>
+		<div class="links clear">
+			<div ng-if="data.report != 'Informationnotyetfilled'" class="actions">
+				<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id);">View Report</a> 
+			</div>
+			<div ng-if="data.examination || data.examinationsummary " class="actions">
+				<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id);" >more info ...</a>
+			</div>
+			<div ng-if="data.messages.length == 0" class="actions" style="float:right">
+				<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id+'message');" >Seek Clarification</a>
+			</div>
+			<div ng-if="data.messages.length > 0" class="actions" style="float:right">
+				<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id+'messagelist');" >Show/Hide Messages</a>
+			</div>
+		</div>
+		<div id="{{data.id}}" class="moreinfo">
+			<table style="width:100%">
+				<tr>
+					<td>
+						<tr class="empDetailsEMR" ng-show="true">
+							<td colspan="5" class="pad0" ng-if="data.report != 'Informationnotyetfilled'">
+								 <div class="emrPatientDetails">
+									<table class="emrPatientDetailsTbl" border="1" style="border:1px solid #11587E">
+										<tr>
+											<td style="width:30%">
+												Report Link
+											</td>
+											<td style="width:70%">
+												Tags
+											</td>
+										</tr>
+										<tr ng-repeat="reportvalue in data.report track by $index">
+											<td>
+												<a href="javascript:void(0);" ng-click="openDialog('/ayushman/'+reportvalue['path'], 800,1400);" style="color:blue;"><i class="fa fa-file-pdf-o" style="font-size:20px;"></i> View Report {{$index + 1}}</a>
+											</td>
+											<td>
+												<table style="padding-left:50px;border:1px solid #11587E" border="1" cellpadding="5">
+													<tr>	
+														<td  style="width:70%">
+															Parameter Name
+														</td>
+														<td  style="width:30%">
+															Parameter Value
+														</td>
+													</tr>	
+													<tr ng-repeat="para in reportvalue['Parameters']">
+														<td  style="width:70%">
+															{{para.parametername}}
+														</td>
+														<td  style="width:30%">
+															{{para.parametervalue}}
+															</br>	
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</td>
+						</tr>      
+					</td>
+					<td ng-if="data.examinationsummary" style="vertical-align:top;padding-left:10px;">
+						EXAMINATION SUMMARY
+						</br>
+						{{data.examinationsummary}}
+					</td>
+					<td ng-repeat="(keyExam,valExam) in data.examination track by $index" style="vertical-align:top;padding-left:10px;">
+						<table>
+							<tr ng-repeat="(itemKey, itemVal) in keys(valExam) track by $index" >
+								<td>
+									<p style="white-space: pre-line;">{{valExam[itemVal].q}} - {{valExam[itemVal].a}}</p>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="{{data.id}}messagelist"  class="messagelist" ng-if="data.messages.length > 0">
+			<div class="in_message" ng-repeat="message in data.messages track by $index" ng-if="$first && !$last">
+				<div class="messageHeader"><i class="fa fa-envelope-o"></i>&nbsp;{{message.datetime}}<br/><span style="width:50px">From :</span> <span style="padding-left:1em">{{message.name}}</span> <br/> <span style="width:50px">To&nbsp;&nbsp;&nbsp;:</span><span style="padding-left:2em">{{message.to}}</span>
+				</div>
+				<div class="messageBody">{{message.query}}</div>
+			</div>
+			<div class="in_message" ng-repeat="message in data.messages track by $index" ng-if="$middle">
+				<div class="messageHeader"><i class="fa fa-envelope-o"></i>&nbsp;{{message.datetime}}<br/><span style="width:50px">From :</span> <span style="padding-left:1em">{{message.name}}</span> <br/> <span style="width:50px">To&nbsp;&nbsp;&nbsp;:</span><span style="padding-left:2em">{{message.to}}</span>
+				</div>
+				<div class="messageBody">{{message.query}}</div>
+			</div>
+			<div class="in_message" ng-repeat="message in data.messages track by $index" ng-if="$last ">
+				<div class="messageHeader"><i class="fa fa-envelope-o"></i>&nbsp;{{message.datetime}}<br/><span style="width:50px">From :</span> <span style="padding-left:1em">{{message.name}}</span> <br/> <span style="width:50px">To&nbsp;&nbsp;&nbsp;:</span><span style="padding-left:2em">{{message.to}}</span>
+				</div>
+				<div class="messageBody">{{message.query}}</div>
+				<div class="actions" style="float:right">
+					<a class="actionlinks" style="color:blue" href="javascript:void(0);" ng-click="toggle(data.id+'_message',$index,message);" ><i class="fa fa-reply"></i>Reply</a>
+				</div>
+			</div>
+		</div>
+		<div id="{{data.id}}_message" class="message">
+			<div class="in_message">
+				<div class="messageHeader"><span style="width:50px">To&nbsp;&nbsp;&nbsp;:</span><span style="padding-left:2em">{{data.replyto}}</span>
+				</div>
+				<div class="messageBody"><textarea rows="7" id="{{data.id}}messagetext" style="width: 100%;"/></div>
+				<div class="sendto"><button class="button" style="float: right;width: 99px;" ng-click="sendMessage(data.id,data.replytoid)">Send</button></div>
+			</div>
+		</div>
+	
+	</div>
+</div>

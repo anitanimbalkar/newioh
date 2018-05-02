@@ -1,0 +1,264 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,2,3,4,5,6,7,8,9,10,11,12,13,14</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>15,16,17,18,19,20,21,22,23,500,24,25,26,27,28,29,30</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label> First Investigation </label>
+		<type>Label</type>		
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Date of First Investigation </label>
+		<type>Text</type>
+	</question>
+		<question>
+		<id>3</id>
+		<label>Haemoglobin</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>4</id>
+		<label>Blood Group </label>
+		<type>DD</type>
+		<answer>
+			<label>A</label>
+		</answer>
+		<answer>
+			<label>A+</label>
+		</answer>
+		<answer>
+			<label>B</label>
+		</answer>
+		<answer>
+			<label>B+</label>
+		</answer>
+		<answer>
+			<label>O</label>
+		</answer>
+		<answer>
+			<label>O+</label>
+		</answer>
+		<answer>
+			<label>AB+</label>
+		</answer>
+		<answer>
+			<label>AB-</label>
+		</answer>
+	</question>
+	<question>
+		<id>5</id>
+		<label>Husband's Blood Group </label>
+		<type>DD</type>
+		<answer>
+			<label>A</label>
+		</answer>
+		<answer>
+			<label>A+</label>
+		</answer>
+		<answer>
+			<label>B</label>
+		</answer>
+		<answer>
+			<label>B+</label>
+		</answer>
+		<answer>
+			<label>O</label>
+		</answer>
+		<answer>
+			<label>O+</label>
+		</answer>
+		<answer>
+			<label>AB+</label>
+		</answer>
+		<answer>
+			<label>AB-</label>
+		</answer>
+	</question>
+	<question>
+		<id>6</id>
+		<label>BSL F </label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>BSL PP</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>BL Urea</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>VDRL </label>
+		<type>DD</type>
+		<answer>
+			<label>Test not done</label>
+		</answer>
+		<answer>
+			<label>Negative</label>
+		</answer>
+		<answer>
+			<label>Positive</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>HIV</label>
+		<type>DD</type>
+		<answer>
+			<label>Test not done</label>
+		</answer>
+		<answer>
+			<label>Negative</label>
+		</answer>
+		<answer>
+			<label>Positive</label>
+		</answer>
+	</question>
+	<question>
+		<id>11</id>
+		<label>HbSAg</label>
+		<type>DD</type>
+		<answer>
+			<label>Test not done</label>
+		</answer>
+		<answer>
+			<label>Negative</label>
+		</answer>
+		<answer>
+			<label>Positive</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Urine</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Stool</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Other</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Examination Details</label>
+		<type>Label</type>
+		
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>Date of Examination</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>17</id>
+		<label>Contraceptives</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>18</id>
+		<label>CVS</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>19</id>
+		<label>RS</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>20</id>
+		<label>Breast</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>21</id>
+		<label>Height</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>22</id>
+		<label>Pelvic Assesment</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>23</id>
+		<label>Other</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>24</id>
+		<label>Antenatal Record</label>
+		<type>label</type>
+	</question>
+	
+	<question>
+		<id>25</id>
+		<label>LML</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>26</id>
+		<label>EDD</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>27</id>
+		<label>EDD/USG</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>28</id>
+		<label>Menstual Date</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>29</id>
+		<label>1st TT</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>30</id>
+		<label>2nd TT</label>
+		<type>Text</type>
+	</question>
+	
+	
+	<question>
+		<id>500</id>
+		<type>Separator</type>
+	</question>
+</form>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="/ayushman/assets/app/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="" ng-controller="mycertificateCtrl" id="divprescription" style="">			
+				<div style="" ng-if="emr_snapshot.user_role=='doctor'">
+					<a  style="color:blue;" href="javascript:void(0);" ng-click="show_medical_certificate();">Print new medical certificate</a> 
+					<a  style="color:blue;margin-left:100px;" href="javascript:void(0);" ng-click="show_fitness_certificate();">Print new Fitness certificate</a> 
+				</div>
+				<div style="width:100%;background-color:white; border-bottom:1px solid #9cd4f9;position:relative;padding-top:10px;">	
+					<div class="container">						
+						<div class="row">													
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" align="left">	
+								<div style="">
+									<strong> DATE </strong>
+								</div>
+							</div>	
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" align="left">
+								<div style="">
+									<strong> CERTIFICATE TYPE </strong>
+								</div>
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" align="center">
+								<div style="">
+									<strong> ACTIONS </strong>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			
+					
+				<div class="bodytext_bold" custom-autofocus style="width:100%; border-bottom:1px solid #9cd4f9;position:relative;padding-top:10px;" ng-repeat="(metric, metricData) in certificates['page']">
+					<div class="container">		
+						<div  title="Click here to toggle more information" style="width:100%;position:relative;text-align:top;min-height:40px;vertical-align:top;">
+							<div class="row">
+								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									<div style="height:inherit;" class="bodytext_bold">
+										{{metricData['date']}}
+										&nbsp;&nbsp;
+									</div>
+								</div>	
+								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									<div style="padding-left:5px;height:inherit;width:;" class="bodytext_bold">
+										&nbsp;{{metricData['type']}}
+									</div>
+								</div>	
+								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">		
+									<div ng-show="metricData['filepath'] == ''"  align="center">
+										<a href="javascript:void(0);" style="color:red;">File not found</a>
+									</div>
+									<div ng-show="metricData['filepath'] != ''"  align="center">
+										<a href="javascript:void(0);" ng-click="openDialog(metricData['filepath'],800,600)" style="color:blue;">View Certificate </a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">	
+					<div class="row">							
+						<div class="col-sm-12 col-md-12 col-lg-12">
+							<div class="bodytext_bold" style="" ng-show="certificates['data'].length == 0">
+								No Certificate Printed
+							</div>
+						</div>	
+					</div>		
+				</div>
+				<div class="container">	
+					<div class="row">							
+						<div class="col-sm-12 col-md-12 col-lg-12">
+							<div class="bodytext_bold" style="position:relative;padding-top:5px;" align="center" >
+								<a href="javascript:void(0);" ng-click="showMoreVisits();" ng-show="certificates['data'].length != certificates['page'].length" style="color:blue;align:center;">Show Next 5 Certificates</a>
+								<a href="javascript:void(0);" ng-click="showAllVisits();" ng-show="certificates['data'].length != certificates['page'].length" style="color:blue;align:center;">/ Show All Certificates</a>
+								<a href="javascript:void(0);" ng-click="showLessVisits();" ng-show="certificates['page'].length > 5" style="color:blue;align:center;">/ Show Only Latest 5 Certificates</a>
+								<label class="bodytext_bold" ng-show="certificates['data'].length != 0" style="">Showing 1 - {{certificates['page'].length}} of {{certificates['data'].length}} records </label>
+							</div>
+						</div>
+					</div>
+				</div>	
+		</div>
+	</body>
+</html>

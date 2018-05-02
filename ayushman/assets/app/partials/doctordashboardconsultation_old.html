@@ -1,0 +1,1501 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+	<link href="/ayushman/assets/css/history.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+	<link href="/ayushman/assets/app/css/visits.css" rel="stylesheet" type="text/css">
+	<link href="/ayushman/assets/css/rcstyle.css" rel="stylesheet" type="text/css" />
+	<link href="/ayushman/assets/css/style.css" rel="stylesheet"/>	
+	<script src="/ayushman/assets/app/js/extra/prescription.js">					</script>
+	<link href="/ayushman/assets/app/lib/angular-ui-ng-grid/ng-grid.css" rel="stylesheet"/>
+	<script src="/ayushman/assets/app/js/extra/exam.js"></script>	
+<link href="/ayushman/assets/app/css/jquery-ui-multiselect.css" type="stylesheet">
+<link href="/ayushman/assets/app/lib/jquery/jquery-ui.css" rel="stylesheet"/>
+
+</head>
+	 <style>
+            #employee-info-div{
+                width:40%; 
+                float:right; 
+                padding:5px; 
+                background:wheat; 
+                color:blue;
+            }
+#parent #popup {
+  display: none;
+}
+
+#parent:hover #popup {
+  display: block;
+}
+
+.ui-autocomplete1 { max-height: 30%; overflow-y: auto; overflow-x: hidden;
+			-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);
+			-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);
+			box-shadow: 0 4px 15px rgba(0,0,0,1);
+			width:200px !important;
+		}
+.ui-autocomplete { max-height: 30%; overflow-y: auto; overflow-x: hidden;
+			-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);
+			-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);
+			box-shadow: 0 4px 15px rgba(0,0,0,1);
+			width:200px !important;
+		}
+		.ui-dialog { z-index: 3000 !important ;}
+        .notes
+        {
+            background-image: -webkit-linear-gradient(left, white 10px, transparent 10px), -webkit-linear-gradient(right, white 10px, transparent 10px), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -moz-linear-gradient(left, white 10px, transparent 10px), -moz-linear-gradient(right, white 10px, transparent 10px), -moz-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -ms-linear-gradient(left, white 10px, transparent 10px), -ms-linear-gradient(right, white 10px, transparent 10px), -ms-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -o-linear-gradient(left, white 10px, transparent 10px), -o-linear-gradient(right, white 10px, transparent 10px), -o-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: linear-gradient(left, white 10px, transparent 10px), linear-gradient(right, white 10px, transparent 10px), linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-size: 100% 100%, 100% 100%, 100%;
+            line-height: 31px;
+            padding: 8px;
+			border:none;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+			font-size:14px;
+        }
+        .notes:focus
+        {
+            outline: none;
+        }
+		.fragment {
+			height: 2px;
+			border: none;
+			display: block;
+			padding: 3px;
+			box-sizing: border-box;
+		}
+
+		#close {
+			float:right;
+			display:inline-block;
+			padding:2px 5px;
+			background:#ccc;
+		}
+.dropbtn {
+    background-color: #00aca9;
+	color: #fff;
+    padding: 16px;
+    cursor: pointer;
+	text-align: center;
+    font-size: 12px;
+    padding: 3px 5px;
+    text-decoration: none;
+    font-weight: normal;
+    width: 180px;
+	margin: 2px;
+}
+.dropbtn1 {
+    background-color: #00aca9;
+	color: #fff;
+    padding: 16px;
+    cursor: pointer;
+	text-align: center;
+    font-size: 12px;
+    padding: 3px 5px;
+    text-decoration: none;
+    font-weight: normal;
+    width: 180px;
+	margin: 2px;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: 00aca9;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: 00aca9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content1 {
+    display: none;
+    position: absolute;
+    background-color: 00aca9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+#option:hover{
+			background-color:rgba(216, 216, 216, 0.55);
+		}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+.element { overflow: hidden; }
+
+#blanket {
+background-color:#111;
+opacity: 0.65;
+*background:none;
+position:absolute;
+z-index: 9001;
+top:0px;
+left:0px;
+width:100%;
+}
+
+#popUpDiv {
+position:absolute;
+background:url(pop-back.jpg) no-repeat;
+width:400px;
+height:400px;
+border:5px solid #000;
+z-index: 9002;
+}
+
+
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Consultation</title>
+
+  <body > 
+  <br> <br> <br> <br>
+						
+
+  
+<div class="wrapper bodytext_normal" style = "font-family:verdana;font-size:12px">
+<div class="main bodytext_normal" id="patientemr">
+	<div class="row bodytext_normal">
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 bodytext_normal">
+			
+							<div id="dialog16" class="sectionBox1" style="box-shadow:2px 7px 19px #888888; width:700px;display:none;position:absolute;margin-left:30px;margin-top:48px;background-color:white;z-index:1;">
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:3px;height:23px;cursor:pointer;" onclick="closeImmuniza(6);">
+									<input type="button" class="button" style="width:6%;height:28px;margin-top:30px;margin-right:-6px;float:right;" onclick="saveAndclose_immunization();" value="save"/>
+									<div id="immunization_form_place_holderdialog16" class="sectionBox" ng-show="isForm == 1"></div>
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;"><input type="button" class="button" onclick="saveAndclose_immunization();" style="float:right;" value="save"/></div>
+							</div>
+							<div id="dialog15" class="sectionBox1" style="box-shadow:2px 7px 19px #888888; width:420px;display:none;position:absolute;margin-left:100px;margin-top:48px;background-color:white;z-index:1;">
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:3px;height:23px;cursor:pointer;" onclick="closeMedicalHistory(5);">
+									<input type="button" class="button" style="width:9%;height:30px;margin-top:30px;margin-right:-14px;float:right;" onclick="saveAndclose_pastdisease();" value="save"/>
+									<div style="width:100%;" id="pastdiseases_form_place_holderdialog15" class="sectionBox" ng-show="isForm == 1"></div>
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;"><input type="button" class="button" onclick="saveAndclose_pastdisease();" style="float:right;" value="save"/></div>
+							</div>
+			
+			<div class="waiting1 bodytext_normal">
+
+				<button type="button" onclick="closeRiskFact(8); " class="consultation_bluebtna1">Risk Factors </button></br> 
+				<button type="button" onclick="closealler(4);" class="consultation_bluebtna1" ng-click="showForm('allergies','emrforms','false', 'vitals_target','','form_place_holderdialog14');">Allergies</button></br>
+				
+			</div>
+			<div div class="waiting1">
+				<!--<button type="button" class="consultation_bluebtna1" ng-click="launchTracker();">Tracker</button></br>-->
+				<button type="button" class="consultation_bluebtna1" onclick="displayTracker();" >Tracker</button>
+				<button type="button" class="consultation_bluebtna1" onclick="notes(19);">Note</button></br>
+			</div>
+		
+		<div  class="waiting1 bodytext_normal" >
+			<div class="panel-group bodytext_normal">
+				<div class="panel bodytext_normal">
+					<h4 >
+						<button type="button" class="consultation_bluebtna1"  ng-click="launemr();">Full EMR</button>
+							<a data-toggle="collapse"><button onclick="myFunction()" class="consultation_bluebtna1">EMR Component</button></a>
+					</h4>
+					<div id="collapse1" class="panel-collapse collapse">
+						<ul class="list-group">
+							<li><button type="button" class="consultation_bluebtna1" ng-click="launchVisits();">Past Visits</button></li>
+							<li><button type="button" class="consultation_bluebtna1" ng-click="launchReports();">Past Reports</button></li>
+							<li><button type="button" class="consultation_bluebtna1" onclick="closeMedicalHistory(5);" ng-click="showForm('pastdiseases','emrforms','false', 'vitals_target','','pastdiseases_form_place_holderdialog15');" >Medical History</button></li>
+							<li><button type="button" class="consultation_bluebtna1" onclick="closeSocialHab(7) " ng-click="showForm('socialhabits','emrforms','false', 'vitals_target','','social_habits_form_placedialog17');">Social Habits</button></li>
+							<li><button ng-if="!showimmu"  type="button" class="consultation_bluebtna1" onclick="closeImmuniza(6);" ng-click="showForm('immunization','emrforms','false', 'vitals_target','','immunization_form_place_holderdialog16');">Vaccination</button></li>
+							<!--<li><a href="#/patientemr/3080"><button type="button" class="consultation_bluebtna1" >Full EMR</button></a></li>-->
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+</div>	
+<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 waiting3" id="print" width="100%;" height="750px" style="border-radius:1%; vertical-align:top;box-shadow:2px 7px 19px #888888;padding:5px;border:1px solid black;">
+						
+			<div class="row">
+			<div class="gray2">
+			<div class="formb4">
+			<div class="row">
+			<table width="100%" align="center">
+			<tr>
+		
+				<th scope="col" width="22%"><label for="exampleInputName2">  Name:- </label><input type="text" class="area4b" value="{{appointment_info.Patientname}}" readonly></th>			
+				<th scope="col" width="13%"><label for="exampleInputName2" > Gender:- </label><input type="text" class="area4cc" value="{{appointment_info.PatientGender}}" readonly></th>						
+				<th scope="col" width="14%"><label for="exampleInputName2" > IOH ID:- </label><input type="text" class="area4d" id="patid"  value="{{appointment_info.Patientid}}" readonly></th>				
+				<!--<th scope="col" width="15%"><label for="exampleInputName2">  DOB:- </label><input type="text" class="area4e"  value="{{appointment_info.DOB | date : 'dd MMM yyyy'}}" readonly></th>-->
+				<th scope="col" width="18%"><label for="exampleInputName2">  Age:- </label><input type="text" class="area4e"  value="{{appointment_info.age}}" readonly></th>
+				<th scope="col" width="20%"><label for="exampleInputName2" > Mob:-</label><input type="telephone" maxlength="10" class="area4f"  value="{{appointment_info.PatientContactNumber}}" readonly></th>
+				<th width="17%"> <button type="button" id="btnedit" onclick="edit();" class="consultation_bluebtna1">Edit Profile</button> </th>
+			</tr>
+			<tr>
+				<th scope="col" width="77%" colspan="3" ><label for="exampleInputName2">Add :- </label><input type="text" class="area6-add" value="{{appointment_info.Patientaddress}}" readonly> </th>
+				<th scope="col" width="30%" colspan="3"><label for="exampleInputName2">  Email:- </label><input type="email" class="area4bb"  value="{{appointment_info.PatientEmail}}" readonly></th>
+			
+			</tr>
+</table>
+		</div>
+	  </div>
+	</div>
+</div>
+
+				<!--1st form close-->
+					<div class="row bodytext_normal"  >
+					<div class="gray2 bodytext_normal">
+					<div class="formb4 bodytext_normal">
+					<div class="row bodytext_normal" id="">			
+					<table width="100%" align="left" >
+				<tr>
+				<td width="13%"> <label> Ht: &nbsp   </label>
+					 <input type="text" id='vitals_q_2' autofocus="autofocus" class="textarea" onkeyup="setVitals(this);"  style="width:50%";  >cm</td>
+					 <input type="hidden" id="h" value="" class="textarea" />
+					 <input type="hidden" id="w" value="" />
+			   
+				<td width="13%"> <label> Wt: </label>
+					<input type="text" ng-if="showimmu" class="textarea" id="vitals_q_1" onkeyup="setVitals(this);" style="width:50px" />		
+					<input  type="text" ng-if="!showimmu" onblur= "suggestDosage($('#drugStrength').val(),$('#dosageMG').val(),$('#vitals_q_1').val(),$('#drugForm').val(),$('#adultDosage').val())"  onchange='bmiCalculation(),setVitals("vitals_q_3"); suggestDosage($('#drugStrength').val(),$('#dosageMG').val(),$('#vitals_q_1').val(),$('#drugForm').val(),$('#adultDosage').val())" class="textarea" id="vitals_q_1" onkeyup="setVitals(this);" style="width:50px" />
+						Kg.</td>
+										
+				<td width="13%"> <label> BMI:    &nbsp   </label> <input type="text" id="vitals_q_3"  onclick=" bmiCalculation(); setVitals(this);" class="textarea" style="width:60px" readOnly="true"></td>
+				<td width="13%"> <label> Wst:    &nbsp   </label> <input type="text" id="vitals_q_41"  onkeyup="setVitals(this);" class="textarea" style="width:50px">cm</td>
+				<td width="13%"> <label> Hip:    &nbsp   </label> <input type="text" id="vitals_q_42"  onkeyup="setVitals(this);" class="textarea" style="width:50px">cm</td>  
+				<td width="13%"> <label> WHR:    &nbsp   </label> <input type="text" id="vitals_q_43" onclick=" whrCalculation(); setVitals(this);" class="textarea" style="width:50px" readOnly="true" ></td>  
+				<td width="18%"> <label> BP 	 </label> <input type="text" id="vitals_q_8" onkeyup="setVitals(this);" class="textarea" placeholder="       /     " style="width:60px">mm / Hg</td>
+			</tr>
+			<tr>
+				<td scope="col"><label>Pulse: </label><input type="textarea" class="textarea" id="vitals_q_21" onkeyup="setVitals(this);"  style="width:50px">pm</td>
+				<td scope="col"><label> Temp: </label><input type="textarea" class="textarea" id="vitals_q_11" onkeyup="setVitals(this);" style="width:50px">&#x2109;</td>
+			   <!-- <td scope="col"  colspan="3"><label> &nbsp Other: </label>
+						<input type="text" class="area_bp"></td>-->
+			</tr>											
+</table>
+			
+			</div>
+			</div>
+			</div>
+			</div>
+			
+							<div id="dialog12" class="sectionBox1" style="box-shadow:2px 7px 19px #888888; width:35%;display:none;position:absolute;margin-left:50px;margin-top:48px;background-color:white;z-index:1;">
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:3px;height:23px;cursor:pointer;" onclick="closeexam(2);">
+									<input type="button" class="button" style="margin-top:30px;margin-right:-14px; float:right;" onclick="saveAndclose_history();" value="save"/>
+									<div style="width:100%;" id="history_form_place_holderdialog12" class="sectionBox" ng-show="isForm == 1"></div>
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;">
+									<input type="button" class="button" onclick="saveAndclose_history();" style="float:right;" value="save"/></div>
+							</div>
+							<div id="dialog11" class="sectionBox1" style="box-shadow:2px 7px 19px #888888; width:40%;display:none;position:absolute;margin-left:50px;margin-top:48px;background-color:white;z-index:1;">
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:3px;height:23px;cursor:pointer;" onclick="closeexam(1);">
+									<input type="button" class="button" style="margin-top:30px;margin-right:-14px; float:right;" onclick="saveAndclose_history();" value="save"/>
+									<div style="width:100%;" id="examinationdialog11" class="sectionBox" ng-show="isForm == 1"></div>
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;">
+									<input type="button" class="button" onclick="saveAndclose_history();" style="float:right;" value="save"/></div>
+							</div>
+							<div id="dialog14" class="sectionBox1" style="box-shadow:2px 7px 19px #888888; width:420px;display:none;position:absolute;margin-left:50px;margin-top:48px;background-color:white;z-index:1;">
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:3px;height:23px;cursor:pointer;" onclick="closealler(4);">
+									<div style="width:100%;" id="form_place_holderdialog14" class="sectionBox" ng-show="isForm == 1"></div>
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;">
+									<input type="button" class="button" onclick="saveAndclose_allergy();" style="float:right;" value="save"></div>
+							</div>
+							
+														<div id="dialog17" class="sectionBox1" style="box-shadow:2px 7px 19px #888888; width:420px;display:none;position:absolute;margin-left:50px;margin-top:48px;background-color:white;z-index:1;">
+									<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:3px;height:23px;cursor:pointer;" onclick="closeSocialHab(7);">
+									<div style="width:100%;" id="social_habits_form_placedialog17" class="sectionBox" ng-show="isForm == 1"></div>
+									<div style="width:97%;height:45px;border-top:1px solid #9cd4f9;margin:10px;padding:10px;"><input type="button" class="button" onclick="saveAndclose_socialhabits();" style="float:right;" value="save"/></div>
+							</div>	
+					
+								
+							
+							<div id="dialog18"  class="sectionBox1" style="float:left;width:73%;display:none;position:absolute;margin-left:141px;margin-top:-46px; z-index:1;">
+								<div risk-factor ></div>
+							</div>	
+							
+							<div id="dialog19"  class="sectionBox1" style="float:left;width:73%;display:none;position:absolute;margin-left:141px;margin-top:-46px; z-index:1;">
+								<div notedata></div>
+							</div>	
+							
+	<div id="scrollbar" style="overflow:scroll; height:435px;">
+			<!--2nd form close-->
+			<div class="row" id="quickprescription">
+				<div class="gray2">
+					<div class="forma4" >
+						<div class="row">							
+							<div class="col-md-13">
+							<table width="98%">
+								<tr>
+									<td ><input type="checkbox" id="checkboxRisk" checked="true" class="consultation_checkbox">  <label>	Risk Factors: </label></th>
+									<td ><input style="width:100%;height:40px; resize: none;" type = "label" class = "notes" value ="{{riskText}}" readonly></input>	</td>
+									<td align="right"><input type="checkbox" id="checkboxAllergies"checked="true" class="consultation_checkbox">  <label>Allergies: </label></th>
+									<td	><input style="width:100%;height:40px; resize: none;" type = "label" class = "notes" value = "{{allergy.allergies}}" readonly></input></td>
+								
+							   </tr></table><table width="98%" >
+								<!-- <tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								</tr>		-->		
+								
+							    <tr>										
+									<td width="20%"><input type="checkbox" id="checkboxSymptom" checked="true" class="consultation_checkbox">  <label>Symptom: </label></td>
+									<td width="58%"><div style="display:inline-block;width:100%;font-size:14px;" id="vsymptoms" onclick="$('#symptoms').show();$('#symptoms').focus();$('#vsymptoms').hide();" class="bodytext_normal"><span class="bodytext_bold">
+											</span>&nbsp;{{examination_data.text_complaint}}&nbsp;&nbsp;<a href="javascript:void(0);" ng-if="examination_data.text_complaint != '' " title="Click To Edit" ><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a>
+											</br>&nbsp;</div>
+											<div style="float:right;width:100%;" > <input style="display:none;width:100%;height:40px; resize: none;"  onblur="if($(this).val() != ''){$('#symptoms').hide();$('#vsymptoms').show();}else{$('#symptoms').show();}" id="symptoms" onclick="();" placeholder="Type symptoms..." ng-model="examination_data.text_complaint" name="symptoms"  class="notes"/></div>
+									</td>
+									<td width="22%" align="right"><select  style="width:100%;" class="form-control1 regnformcontrol"  id="examid" name="examid" ng-model="examform" ng-options="examform.id as examform.name for examform in exams" > 
+											<option value=""  >Select Form</option></select>	
+									</td>
+									<td> 
+											<a href="javascript:void(0);" ng-if="exams != '' " style="float:right;"  title="Click To Edit" onclick="showexamforms();closesymtom(1);" ><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Open</i></a>
+									</td>
+								</tr>
+							 <tr>	<td width="20%"><input type="checkbox" id="checkboxTest" checked="true" class="consultation_checkbox">  <label> Test parameters: </label></td>
+									<td width="58%"><div style="display:inline-block;width:100%;padding-top:10px;" id="vreport" onclick="$('#report').show();$('#report').focus();$('#vreport').hide();" class="bodytext_normal" ><span class="bodytext_bold">
+													</span>&nbsp;<span>{{examination_data.text_reportparameter}} </span>&nbsp;&nbsp;
+												</br>&nbsp;
+												</br>
+									</div>	
+									<div style="float:right;width:100%;" > <input style="display:none;width:100%;height:48px;; resize: none;" id="report" readonly placeholder="Test report..." onblur="if($(this).val() != ''){$('#report').hide();$('#vreport').show();}else{$('#report').show();}"ng-model="examination_data.text_reportparameter"  name="Report" class="notes"/></div>
+
+									</td>
+									<td width="22%" align="right"><button type="button" id="btnreport" class="consultation_bluebtna1" onclick="displayReports();">Enter from reports</button></td>
+									<td></td>
+							</tr>
+							    <tr >	
+										<td width="20%"><input type="checkbox" id="checkboxExamination" checked="true" class="consultation_checkbox"> <label>Examination Summary:</label></td>
+										<td width="58%">										
+											<div id="parent">
+													<textarea class="notes" id="textexaminationsummary" cols="auto" style="width:100%; resize: none;" >{{ examination_data.text_examinationsummary }}</textarea>
+											</div>	
+										</td>									
+								
+										<td width="22%" align="right" ><select class="form-control1 regnformcontrol" style="width:100%;"  id="historyid" name="historyid" ng-model="selectedexamform" ng-options="selectedexamform.id as selectedexamform.name for selectedexamform in spe" > 
+												<option value="" >Select Form</option></select>
+												<button type="button" id="btnsummary" class="consultation_bluebtna1" onclick="show(this);">Examination </button>	
+														
+													<div id="messageBox"  onmouseleave="hideshow();">	
+														<div id="contents"> <u></u> {{examsummary}} </div>
+													</div>
+													
+										</td>
+													
+										<td>
+												<a href="javascript:void(0);" style="float:right;"  title="Click To Edit" onclick="showmedicalforms();closeexam(2);" ><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Open</i></a>
+										</td>
+								</tr>
+								
+							   <tr>	<td width="20%"><input type="checkbox" id="checkboxDiagnosis" checked="true" class="consultation_checkbox">  <label>	Diagnosis: </label></th>
+									<td width="58%"><div style="display:inline-block;width:100%;padding-top:10px;" id="vdiagnosis" onclick="$('#diagnosis').show();$('#diagnosis').focus();$('#vdiagnosis').hide();" class="bodytext_normal" ><span class="bodytext_bold">
+											-</span>&nbsp;<span>{{examination_data.text_diagnosis}} </span>&nbsp;&nbsp;<a href="javascript:void(0);" title="Click To Edit" ><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a>
+											</br>&nbsp;	</br></div>
+											<div style="float:right;width:100%;" > <input style="display:none;width:100%;height:40px;; resize: none;" id="diagnosis" placeholder="Type diagnosis..." onblur="if($(this).val() != ''){$('#diagnosis').hide();$('#vdiagnosis').show();}else{$('#diagnosis').show();}" ng-model="examination_data.text_diagnosis" name="Diagnosis" class="notes"/></div>
+									</td>
+									<td></td>
+									<td></td>
+							   </tr>								
+							</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+											<div id="reports" readonly title="Reports" ng-controller="reportsparameter" class="sectionBox" style="display:none;position:absolute;margin-left:43px;margin-top:-250px;background:#E5E7E9; border:1">
+												<h2 class="darkblue" >Reports</h2>
+												<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:-25px;height:23px;cursor:pointer;" onclick="displayReports();">
+												<div report ng-controller="reportsparameter"></div>
+											</div>
+											<div id="dialog" title="Examination Summary" class="sectionBox" style="display:none;position:absolute;margin-left:43px;margin-top:-150px;background:white;">
+												<h2 class="darkblue" >Examination Summary</h2>
+												<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:-25px;height:23px;cursor:pointer;" onclick="displayExaminationSummary();">
+												<p><input type="checkbox" name="check[text_examinationsummary]" id="check_examinationsummary" ng-model="examination_data.check_examinationsummary" ><label for="check_examination">Show to patient (Print on prescription)</label></input></p>
+												<textarea id="textexaminationsummary" ng-model="examination_data.text_examinationsummary"  class="notes" style="height:100px;width:290px;"> </textarea>
+											</div>
+															
+		<!--3rd close-->
+		<div class="row">
+			<div class="gray2">
+				<div class="forma4" style="height:auto; padding-left:15px;padding-right:15px;"  ><!--class="forma4">-->
+					<div>
+						<h5><b>Rx</b></h5>
+						<div style="float:right;width:100%;" id ="prescription" ></div>
+						<div style="float:right;width:100%;" > <input title="Press 'Tab' key to skip options" style="width:100%;height:48px;; resize: none;" id="medicines" placeholder="Type medicine name..." name="medicines" onclick="if (this.value == 'Medicines :') this.value = ''; getuserrole();" class="notes" />
+							<table id="medicinetemplatediv" style="width:100%;position:relative;display:none;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+								<tr >
+									<td colspa="2" style="width:25%;">
+										<input id="medicinename" class="notes" style="font-size:12px;width:100%;font-weight:bold;" placeholder="Medicine name..."  />
+									</td>
+									
+									<td ng-if="showimmu" style="width:10%;">
+										<input id="dosageMG" class="notes" onchange="suggestDosage($('#drugStrength').val(),$('#dosageMG').val(),$('#vitals_q_1').val(),$('#drugForm').val(),$('#adultDosage').val())" onblur="suggestDosage($('#drugStrength').val(),$('#dosageMG').val(),$('#vitals_q_1').val(),$('#drugForm').val(),$('#adultDosage').val())"style="font-size:10px;width:100%;font-weight:bold;" placeholder="mg/day/kg"  />
+									</td>
+									<td ng-if="showimmu" style="width:1%;">
+										<input id="drugStrength" name ="drugStrength" type="hidden" readonly class="bodytext_error notes" style="font-size:10px;width:100%;" />									
+									</td>
+									<td ng-if="!showimmu" style="width:1%;">
+										<input id="drugStrength" name ="drugStrength" type="hidden" readonly class="bodytext_error notes" style="font-size:10px;width:50px;" />									
+									</td>
+									<td style="width:20%;">
+										<input id="quantity"  class="notes" style="font-size:12px;width: 100%;font-weight:bold;" placeholder="Qty X Freq..."  />
+									</td>
+									<td style="width:15%;">
+										<input id="frequency"  class="notes" style="font-size:12px;width: 100%;font-weight:bold;" placeholder="Duration..." />
+									</td>													
+									<td style="width:25%;">
+										<input id="instructions"  class="notes" style="font-size:12px;width: 100%;font-weight:bold;" placeholder="Instructions..."  />
+									</td>
+									
+										<input type="hidden" id="agelessthan14" value="{{showimmu}}"class="textarea" style="width:50px" />
+										<input id="medId" type="hidden" class="notes" style="font-size:12px;width: 110px;" placeholder="medId"  />
+										<input id="drugForm" type="hidden" class="notes" style="font-size:12px;width: 110px;" placeholder="Drug Form"  />
+										<input id="adultDosage" type="hidden" class="notes" style="font-size:12px;width: 110px;" placeholder="Adult Dosage"  />
+									
+								</tr>
+								<tr>
+									<td colspan="7">
+										<a href="javascript:void(0);" id="okBtn" class="action" style="float:right;" onclick="createFragment(),autocompletetboxes();$('#medicinetemplatediv').hide();$('#medicines').show(); $('#medicines').focus();"><i class="fa fa-check" style="float:right;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Ok</i></a>
+										<a href="javascript:void(0);" id="clearBtn" class="action" style="float:right;" onclick="clearBoxes(),autocompletetboxes();$('#medicinetemplatediv').hide();$('#medicines').show();"><i class="fa fa-times" style="float:right;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Clear</i></a>
+										<a href="javascript:void(0);" id="addBtn" class="action" style="float:left;" onclick="savepersonalmed()"><i class="fa fa-plus" style="float:left;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Add to List</i></a>
+										<a href="javascript:void(0);" id="findBtn" class="action" style="float:left;" onclick="findinMaster($('#medicinename').val())"><i class="fa fa-plus" style="float:left;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Double click here to search from full list</i></a>
+										<!--<a href="javascript:void(0);" id="suggestBtn" ng-if="showimmu" class="action" style="float:right;" onclick="suggestDosage($('#drugStrength').val(),$('#dosageMG').val(),$('#vitals_q_1').val(),$('#drugForm').val())"><i class="fa" style="float:right;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Suggest Dosage</i></a>-->
+										<!--<span ng-if="showimmu" style="display:Block;float:centre;" class="bodytext_error">Conc. /ml-/TAB-/CAP</span>-->
+									</td>	
+										<span id="noConcentration" name="noConcentration"style="display:none;" class="bodytext_error">Drug concentration absent - Cannot compute dosage</span>
+										<span id="computedDosage" name="computedDosage"style="display:none;" class="bodytext_error">Dosage quantity are computed values based on mg/kg/day</span>
+								</tr>
+							</table>									
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+			<!--4th close-->
+			<div class="row">
+			<div class="gray2">
+			<div class="forma4" style="height:auto;padding-left:15px;padding-right:15px;font-size:14px;">
+			
+		<div > 
+							<div style="float:right;width:100%;margin-top:10px;" id ="investigation" ></div>
+							<input style="width:100%;height:48px;font-size:14px; resize: none;" id="investigations" placeholder="Type investigations..." ng-model="examination_data.text_investigations" name="investigations" class="notes"/>
+							<table id="investigationtemplatediv" style="width:100%;position:relative;display:none;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+								<tr>
+									<td>
+										<input id="investigationname" class="notes" style="font-size:14px;width:100%" placeholder="Investigation..."  />
+									</td>
+								</tr>
+								<tr>
+									<td >
+										<a href="javascript:void(0);" id="investigationOkBtn" class="action" style="float:right;" onclick="createInvestigationFragment();$('#investigationtemplatediv').hide();$('#investigations').show(); $('#investigations').focus();"><i class="fa fa-check" style="float:right;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Ok</i></a>
+										<a href="javascript:void(0);" id="investigationClearBtn" class="action" style="float:right;" onclick="clearInvestigationBoxes();$('#investigationtemplatediv').hide();$('#investigations').show();"><i class="fa fa-times" style="float:right;position:relative;font-size:15px;color:blue;padding-right:10px;">&nbsp;Clear</i></a>
+									</td>												
+								</tr>
+							</table>	
+					</div>			
+			</div>
+			</div>
+			</div>
+			<!--5th close-->
+						<div id="immunizations" title="Reports" class="sectionBox1" style="display:none;position:absolute;margin-left:43px;margin-top:-500px;background:white;  width: 67%;">
+								<h2 class="darkblue" >Immunizations <a href="javascript:void(0);" id="immunizationchart" style="color: white !important;"><i style="margin-right: 34px;float:right" class="fa fa-print" onclick="Popup($('#immunizationtable').html());">Print</i></a></h2>
+								<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:-25px;height:23px;cursor:pointer;" onclick="displayImmunization()">
+								<div immunizat ng-controller="immuCtrl"></div>
+					</div>
+								<div ng-controller="immuCtrl" immunization-print ></div>				
+			<div class="row" >
+				<div class="gray2" id ="quickpre">
+					<div class="forma4" style="height:auto;padding-left:15px;padding-right:15px;">
+						<div style="display:inline-block;width:100%;padding-top:10px;font-size:14px;" id="vfollowup" onclick="$('#followup').show();$('#followup').focus();$('#vfollowup').hide();" class="bodytext_normal"><span class="bodytext_bold">
+							Other Instructions / Follow Up advice -</span>&nbsp;<span>{{examination_data.text_followup}} </span>&nbsp;&nbsp;<a href="javascript:void(0);" title="Click To Edit" ><i class="fa fa-pencil-square-o" style="font-size:14px;color:blue;">&nbsp;Edit</i></a>
+								</br>&nbsp;
+							</br>
+						</div>
+						<div style="float:right;width:100%;" > <input style="width:100%;height:48px;; resize: none;" id="followup" placeholder="Type follow up advice..." ng-model="examination_data.text_followup" onblur="if($(this).val() != ''){$('#followup').hide();$('#vfollowup').show();}else{$('#followup').show();}"  name="followup"  class="notes"/></div>
+					</div>
+				</div>
+			</div>
+		</div>	
+						
+		
+	</div>	
+			<!--6th close-->			
+			<form id="emrform" method="post" enctype="multipart/form-data">
+					<input type="hidden" value="" id="transferto" name="transferto"/>
+					<input type="hidden" id="symptomatic_text_target" name="textsymptom" value=""/>
+					<input type="hidden" id="examinations_text_target" name='textexamination' value=""/>
+					<input type="hidden" id="diagnosis_text" name="textdiagnosisnote" value="{{examination_data.text_diagnosis}}"/>
+					<input type="hidden" id = "test_ids" name = "testIds" value="" />
+					<input type="hidden" id = "medicine_ids" name = "medicineIds" value = "" />
+					<input type="hidden" id='text_complaint' name="textcomplaint" value="{{examination_data.text_complaint}}"/>
+					<input type="hidden" id='text_followup_note' name="textfollowupnote" value="{{examination_data.text_followup}}"/>
+					<input type="hidden" id='text_examinationsummary' name="textexaminationsummary" value="{{examination_data.text_examinationsummary}}"/>
+					<input type="hidden" name="appid" value="{{appointment_info.appointment_id}}" />
+					<input type="hidden" id="jsontextexamination" name="jsontextexamination" value="" />				
+					<input type="hidden" id="check_symptoms" name="check_symptoms" value="true" />
+					<input type="hidden" id="check_examinations" name="check_examinations" value="true" />
+					<input type="hidden" id="check_diagnosis" name="check_diagnosis" value="true" />
+					<input type="hidden" id="check_examinationsummary" name="check_examinationsummary" value="true" />
+					<input type="hidden" id="check_vitals" name="check_vitals" value="true" />
+					<input type="hidden" id="check_symptomaticreview" name="check_symptomaticreview" value="true" />
+					<input type="hidden" id="check_appointmentstatus" name="check_appointmentstatus" value="{{appointment_info.Appointmentstatus}}" />					
+					<input type="hidden" id="vitalsTextTarget" name="textvital" value=""/>
+					<input type='hidden' id='text_reportparameter' name="textreportparameter" value="{{examination_data.text_reportparameter}}"/>
+					<input type='hidden' id='parameterids' name="parameterids" value="{{examination_data.parameterids}}"/>
+			
+			</form>
+			
+					<input type="hidden" id="userro" name="userro" value="{{userrole}}" />
+					<input type="hidden" id="presstat" value="{{appointment_info.Appointmentstatus}}"/>
+			
+	</div>
+	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> 
+	<div class="waiting2">
+	
+		<a href="#/doctordashboardlanding"><button type="button" id="btndashboard"  class="consultation_bluebtna1"  >Dashboard</button></a></br>
+		<button type="button" id="btnend" class="consultation_bluebtna1" ng-click = "endConsultation(); " onclick="onprintbill();" >End Consultation</button>
+		<button type="button" id="btnsave"class="consultation_bluebtna1" ng-click = "AutosaveConsultationData();" onclick="onprintbill();">Save Prescription</button>
+	</div>
+	
+	<div class="waiting2" id="saveprescription">
+	<a href="javascript:void(0);" id="save" ><button type="button" class="consultation_bluebtna1">Save Template</button></i></a><br/>
+		<div id="rightMenusave" style="width:200px;box-shadow:2px 7px 19px #888888;position:absolute;padding:10px;background:white;">
+			Save prescription as template
+			<input type="text" id="templatename" ng-model="appointment_info.templatename" class="textarea" value="" placeholder="Type template name..." />
+			<input type="button" id="savetemplatename" ng-click="savePrescriptiontemplate();" class="button" value="Save" />
+			</div>
+			<!--<div ng-repeat="template in prescriptiontemplates['templates']" style="border-bottom:1px solid #9cd4f9;cursor:pointer;" ng-click="loadPrescriptiontemplate(template['id']);">
+									<div width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+										<span >{{template['name_c']}}</span>
+									</div>
+			</div>-->
+			<td align="right" style="padding-top:10px;">
+					<a href="javascript:void(0);" ng-show="prescriptiontemplates['templates'].length != 0 " id="load" ><button id="btntemplates" type="button" class="consultation_bluebtna1" valut="">Templates</button></a>
+						<div id="rightMenuload" style="overflow-y:auto !important;width:80%;box-shadow:2px 7px 19px #888888;position:absolute;background:white;">
+								<div ng-repeat="template in prescriptiontemplates['templates']" style="border-bottom:1px solid #9cd4f9;cursor:pointer;" >
+									<div width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+									<table width="100%"> <tr> <td width="70%"ng-click="loadPrescriptiontemplate(template['id']);" ><span > {{template['name_c']}}</span> </td> <td align="right" width="30%" ng-click="deletePrescriptiontemplate(template['name_c']);"> <span  class="iconDelete" id="deletetemplatename" > </span> </td></tr></table>
+									</div>
+									<div>
+										
+									</div>
+								</div>
+						</div>
+			</td>
+						
+			</div>
+		
+	<div div class="waiting2">
+			<button type="button" id="btnpull" class="consultation_bluebtna1" ng-click="getPastprescription(appointment_info.Patientid);">Pull Last Prescription</button>
+			<button ng-if="showimmu" type="button" class="consultation_bluebtna1" onclick="displayImmunization();">Immunization<img src="/ayushman/assets/images/immunization.svg" style="float:right;margin-right:4px;height:25px;cursor:pointer;"></button>
+			
+		<!--<button type="button" class="consultation_bluebtna1" ng-click="toggle(data.id+'message');">Refer to Specialist</button>
+		-->
+	</div>		
+	
+	<!--<div class="waiting2">
+		<div class="dropdown">
+			<button onclick="myFunction1()" class="dropbtn1">Print</button>
+			<div id="myDropdownprint" class="dropdown-content1">
+		<button type="button" class="consultation_bluebtna1">Prescription</button>
+		<button type="button" class="consultation_bluebtna1">Only Medical</button>
+		<button type="button" class="consultation_bluebtna1">Only Tests</button>
+		<button type="button" class="consultation_bluebtna1">Bill</button>
+		<button type="button" class="consultation_bluebtna1">Medical certificate</button>
+		<button type="button" class="consultation_bluebtna1">Fitness certificate</button>
+		</div>
+		</div>
+	</div>-->
+	
+	<div class="waiting2" id = "">
+	<div class="panel-group">
+		<div class="panel">
+				<h4 >
+				<a data-toggle="collapse"><button onclick="myFunction1()" " class="consultation_bluebtna1">Print</button></a>
+					<!--<button onclick="myFunction1()" class="consultation_bluebtna1">Book Appointment</button>-->
+				</h4>
+			<div id="collapse2" class="panel-collapse collapse">
+				<ul class="list-group">
+					<div id="prebill">
+					<li ><button id="btnprescription" type="button" class="consultation_bluebtna1" onclick="checkboxcheck();">Prescription</button></li>
+					<li ><button id="btnbill" type="button" class="consultation_bluebtna1" onclick="generatbill();">Bill</button></li>
+					</div><li ><button id="btnmedcert" type="button" class="consultation_bluebtna1" ng-click="launchMedicalCertificate();">Medical certificate</button></li>					
+					<li ><button id="btnfircert" type="button" class="consultation_bluebtna1" ng-click="launchFitnessCertificate();">Fitness certificate</button></li>
+				<input type="hidden" id="pat" value="{{patappid}}"/>
+				<input type="hidden" id="pat1" value="{{patdia}}"/>
+				<input type="hidden" id="pat2" value="{{patinfo}}"/>
+				</ul>
+			</div>
+  </div>
+</div>
+
+</div>
+
+
+	<!--
+	<div class="waiting2">	
+		
+		<h6 class="consultation_printtitle"><b>Print option</b></h6>		
+		<h5 onclick="checkstandard(); savePrescriptionStatus();">	<input type="checkbox" id="standard"><b>IOH Default</b><br></h5>
+		<h6 onclick="checksignature(); savePrescriptionStatus();">    <input type="checkbox" id="signature" ><b>Custom</b><br></h6>
+		<h6 onclick="checkstationary(); savePrescriptionStatus();">   <input type="checkbox" id="stationary" ><b>Preprinted Stationary</b><br></h6>
+	</div>-->
+	
+				
+</div>
+</div>
+				<div class=" col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-lg-10 col-md-10 col-sm-10 col-xs-10" id="trackerpopup" title="Reports" class="sectionBox1" style="display:none;position:absolute;margin-left:;margin-top:-600px;background:white;  width: 80%;">
+								<img src="/ayushman/assets/images/Close_Icon.png" style="float:right;margin-right:3px;margin-top:40px;height:23px;cursor:pointer;" onclick="displayTracker()">
+								<div trackerinfo ng-controller="patienttrackerCtrl"></div>
+				</div>
+
+</div>
+
+		
+
+			<style>
+#messageBox{
+    border-right: 1px solid #000000;
+    position: absolute;
+    width: 217px;
+    height: 100px;
+    z-index: 1;
+    background-color: #C0C0C0;
+    border-style: solid;
+    border-width: 1px;
+    display:none;
+}
+
+#closeButt{
+     width: 100%;
+     height: 10px;
+     z-index: 1;
+     cursor: pointer;
+     left: 0px;
+     top: 0px;
+     background-color: #808080;
+}
+#contents{
+    width: 100%;
+    height: auto;
+    z-index: 2;
+}
+</style>
+			
+	<script>
+	
+function checkstatusprescription(){
+	var stat = document.getElementById("presstat").value;
+		if(stat == 'saved'){		
+		alert("Please End your consultation");	
+		}
+		if(stat == 'schedule'){
+			alert("Please Save your prescription");
+		}
+	}
+	
+	
+	function doallreadonly(){		
+		var statusconsultation = document.getElementById("presstat").value;
+		console.log(statusconsultation);
+			if(statusconsultation == 'completed')
+			{
+				showNotification('300','20','Not Allowed','Not Allowed to Write','notification','timernotification',2000);
+				document.getElementById("vitals_q_2").readOnly = true;
+				document.getElementById("vitals_q_1").readOnly = true;
+				document.getElementById("vitals_q_3").readOnly = true;
+				document.getElementById("vitals_q_41").readOnly = true;
+				document.getElementById("vitals_q_42").readOnly = true;
+				document.getElementById("vitals_q_43").readOnly = true;
+				document.getElementById("vitals_q_21").readOnly = true;
+				document.getElementById("vitals_q_11").readOnly = true;
+				document.getElementById("vitals_q_8").readOnly = true;
+				document.getElementById("symptoms").readOnly = true;
+				document.getElementById("textexaminationsummary").readOnly = true;
+				document.getElementById("diagnosis").readOnly = true;
+				document.getElementById("medicines").readOnly = true;
+				document.getElementById("investigations").readOnly = true;
+				document.getElementById("followup").readOnly = true;
+				document.getElementById("btnreport").disabled = true;
+				document.getElementById("btnsummary").disabled = true;		
+				document.getElementById("btnsave").disabled = true;
+				document.getElementById("btnend").disabled = true;	
+				document.getElementById("btntemplates").disabled = true;
+				document.getElementById("btnpull").disabled = true;
+				
+				    document.getElementById("btnreport").style.background='#D3D3D3';
+				    document.getElementById("btnsummary").style.background='#D3D3D3';
+					document.getElementById("btnsave").style.background='#D3D3D3';
+					document.getElementById("btnend").style.background='#D3D3D3';
+					document.getElementById("btntemplates").style.background='#D3D3D3';
+					document.getElementById("btnpull").style.background='#D3D3D3';
+				
+			}else{
+					document.getElementById("btnreport").style.background='rgba(100,149,237,0.35)';
+				    document.getElementById("btnsummary").style.background='rgba(100,149,237,0.35)';
+					document.getElementById("btnsave").style.background='rgba(100,149,237,0.35)';
+					document.getElementById("btnend").style.background='rgba(100,149,237,0.35)';
+					document.getElementById("btntemplates").style.background='rgba(100,149,237,0.35)';
+					document.getElementById("btnpull").style.background='rgba(100,149,237,0.35)';
+		
+			}
+	}	
+	
+	
+	function getuserrole(){		
+		var use = document.getElementById("userro").value;
+		console.log(use);
+			if(use == 'doctor')
+			{
+				document.getElementById("medicines").readOnly = false;
+			}else{
+				document.getElementById("medicines").readOnly = true;
+				showNotification('300','20','Not Allowed','Not Allowed to Write Medicine','notification','timernotification',2000);
+				//$("#a").hide();
+			}
+	}	
+	
+	function show(obj){
+			messageBox.style.top=obj.offsetTop
+			messageBox.style.left=obj.offsetLeft+obj.offsetWidth+6
+			messageBox.style.display="block"
+		}
+	function hideshow(){
+			$("#messageBox").hide();
+		}
+		
+		function generatbill(){
+				var selecetdid = document.getElementById("pat").value;
+				var selecetddia = document.getElementById("pat1").value;
+				var selecetdpatdata = document.getElementById("pat2").value;
+							
+				angular.element($('#contentDiv')).scope().launchPrintableBill(selecetdid,selecetddia,'generate',selecetdpatdata);
+			}
+	
+			function checkboxcheck(){
+					var checkstatusRisk = document.getElementById("checkboxRisk").checked;
+					var checkstatusAllergies = document.getElementById("checkboxAllergies").checked;		
+					var checkstatusSymtom = document.getElementById("checkboxSymptom").checked;
+					var checkstatusTest = document.getElementById("checkboxTest").checked;
+					var checkstatusExamination = document.getElementById("checkboxExamination").checked;
+					var checkstatusDiagnosis = document.getElementById("checkboxDiagnosis").checked;
+				
+				  var scope = angular.element($('#patientemr')).scope();
+						if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.callToAddToProductList(checkstatusRisk,checkstatusAllergies,checkstatusSymtom,checkstatusTest,checkstatusExamination,checkstatusDiagnosis);
+									scope.launchPrintablePrescription();
+								});
+						}
+			}
+			function onprintbill(){
+			console.log("in");
+					document.getElementById("btnprescription").disabled= false;
+					document.getElementById("btnbill").disabled = false;
+						console.log("out");
+			}
+	$(document).ready(function() {
+	
+		//loadScripts();
+		doallreadonly();
+		document.getElementById("btnprescription").disabled = true;
+		document.getElementById("btnbill").disabled = true;
+		
+		//savePrescriptionStatus();
+		var checkstatus = document.getElementById("check_appointmentstatus").value;
+		console.log(checkstatus);
+		if(checkstatus == 'saved' || checkstatus == 'completed'){
+		
+		}else{
+				$("#printall").hide();
+			}
+		check_appointmentstatus
+		$(function(){
+			$( "#txtage" ).datepicker({yearRange: "-120:+0",maxDate: '0',changeMonth: true,changeYear: true,  dateFormat: 'dd M yy'});
+			});
+		//document.getElementById("standard").checked = true;
+		//document.getElementById("signature").checked = false;
+		//document.getElementById("stationary").checked = false;
+		
+		$("#addBtn").hide();
+		$('#load').click(
+			function () {
+				//show its submenu
+				$("#rightMenuload").stop().slideToggle(500);    
+			}
+		);
+		$('#rightMenuload').click(
+			function () {
+				//show its submenu
+				$("#rightMenuload").stop().slideToggle(500);    
+			}
+		);
+		$("#rightMenuload").stop().slideToggle(500);  
+		$('#save').click(
+			function () {
+				//show its submenu
+				$("#rightMenusave").stop().slideToggle(500);    
+			}
+		);
+		$('#savetemplatename').click(
+			function () {
+				//show its submenu
+				   
+			}
+		);
+		$("#rightMenusave").stop().slideToggle(500);  
+		
+		// For delete prescription template
+		$('#delete').click(
+			function () {
+				//show its submenu
+				$("#rightMenudelete").stop().slideToggle(500);    
+			}
+		);
+		$('#deletetemplatename').click(
+			function () {
+				//show its submenu
+				   
+			}
+		);
+		$("#rightMenudelete").stop().slideToggle(500);  
+		
+		//----------
+		
+			$('#report').show();$('#vreport').hide();
+			$('#symptoms').show();$('#vsymptoms').hide();
+			$('#diagnosis').show();$('#vdiagnosis').hide();
+			$('#followup').show();$('#vfollowup').hide();
+			
+			$("#date").val( moment().format('D MMM, YYYY') );			
+});
+function openDialog(url, width, height,obj){
+				 $.fancybox({
+                    'width': width,
+                    'height': height,
+                    'autoScale': false,
+                    'transitionIn': 'fade',
+                    'transitionOut': 'fade',
+                    'type': 'iframe',
+                    'href': url,
+                    'showCloseButton': true,
+                    'afterClose' : function(){
+						if(obj != undefined){
+							if(obj.fancyboxclosed != undefined){
+								obj.fancyboxclosed(obj);
+							}
+						}
+					}
+                });
+			}
+
+function fancyboxclosed(){
+		angular.element($('#contentDiv')).scope().reloadRoute();
+	}
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("collapse1").classList.toggle("show");
+}
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+/*function check1(){
+  var scope = angular.element($('#patientemr')).scope();
+ if(!scope.$$phase) {
+						scope.$apply(function(){
+						scope.launchPrintablePrescription();
+						});
+					}
+ }*/
+
+function myFunction1() {
+    document.getElementById("collapse2").classList.toggle("show");
+}
+
+
+/*Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn1')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content1");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown1 = dropdowns[i];
+      if (openDropdown1.classList.contains('show')) {
+        openDropdown1.classList.remove('show');
+      }
+    }
+  }
+}*/
+
+function saveAndclose_allergy()
+						{
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.save_allergies();
+								});
+							}
+							setTimeout(function() {closealler(4);},2250);
+							
+						}
+/*function savePrescriptionStatus()
+						{
+							var scope = angular.element($('#patientemr')).scope();
+							var stan = document.getElementById("standard").checked;
+							var sign = document.getElementById("signature").checked;
+							var dict = document.getElementById("stationary").checked;
+							var status = 1;
+							if( stan == true)
+							{
+								status = 1;
+							}
+							if(sign == true)
+							{
+								status = 2;
+							}
+							if(dict == true)
+							{
+								status = 3;
+							}
+							var id = document.getElementById("patid").value;
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.saveprescriptionstatus(id,status);
+								});
+							}
+							
+						}
+						*/
+function saveAndclose_pastdisease()
+						{
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.save_pastDiseases();
+								});
+							}
+							setTimeout(function() {closeMedicalHistory(5);},2250);
+							
+						}
+		function edit(){
+			var id = document.getElementById("patid").value;
+			editProfile( id );
+			
+		}
+		function editProfile(patId){
+			parent.openDialog("/ayushman/cpatientprofile/displayProfile?patId="+patId, '830px','770px');
+		}
+						
+function saveAndclose_history()
+						{
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.save_history();
+								});
+							}
+							setTimeout(function() {closePastDiseases(5);},2250);
+							
+						}
+						
+function saveAndclose_immunization()
+						{
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+								console.log("i am in immu1");
+									scope.save_immunization();
+									console.log("i am in immu2");
+								});
+							}
+							setTimeout(function() {closeImmuniza(6);},2250);
+							
+						}
+function saveAndclose_socialhabits()
+						{
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+								scope.$apply(function(){
+									scope.save_socialHabits();
+								});
+							}
+							setTimeout(function() {closeSocialHab(7);},2250);							
+						}						
+
+						
+					  var window_array=new Array();
+							var win;
+							for(i=1;i<10;i++){
+								window_array[i]=0;
+							}
+							
+
+
+ function close_allwindow()
+					  {
+						var flag=0;
+					  	if(window_array[1]==1){
+							$("#dialog11").stop().slideToggle(500);
+							flag=1;
+							window_array[1]=0;
+					  	}
+					   if(window_array[2]==1){
+							$("#dialog12").stop().slideToggle(500);
+							flag=2;
+							window_array[2]=0;
+					  	}
+						 if(window_array[3]==1){
+							$("#dialog3").stop().slideToggle(500);
+							flag=3;
+							window_array[3]=0;
+					  	}
+						 if(window_array[4]==1){
+							$("#dialog14").stop().slideToggle(500);
+							flag=4;
+							window_array[4]=0;
+					  	}
+						 if(window_array[5]==1){
+							$("#dialog15").stop().slideToggle(500);
+							flag=5;
+							window_array[5]=0;
+					  	}
+						 if(window_array[6]==1){
+							$("#dialog16").stop().slideToggle(500);
+							flag=6;
+							window_array[6]=0;
+					  	}
+						 if(window_array[7]==1){
+							$("#dialog17").stop().slideToggle(500);
+							flag=7;
+							window_array[7]=0;
+					  	}
+						 if(window_array[8]==1){
+							$("#dialog18").stop().slideToggle(500);
+							flag=8;
+							window_array[8]=0;
+					  	}
+						 if(window_array[9]==1){
+							$("#dialog19").stop().slideToggle(500);
+							flag=9;
+							window_array[9]=0;
+					  	}
+						return flag;
+					  }
+					  
+				
+				function closesymtom(windownum)
+					  {
+					  	var check;
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog11").stop().slideToggle(500);
+							window_array[1]=1
+					  	}
+					  }
+				function closeexam(windownum)
+					  {
+					  	var check;
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog12").stop().slideToggle(500);
+							window_array[2]=1;
+					  	}
+					  }
+					  
+				 function closenot(windownum)
+					  {
+					  	var check;
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog3").stop().slideToggle(500);
+							window_array[3]=1;
+					  	}
+					  }
+									  
+				function closealler(windownum)
+					  {
+					  	var check;
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog14").stop().slideToggle(500);
+							window_array[4]=1;
+					  	}
+					  }
+					  
+				function closeMedicalHistory(windownum)
+					  {
+					  	var check;
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog15").stop().slideToggle(500);
+							window_array[5]=1;
+					  	}
+					  }
+					  
+				function closeImmuniza(windownum)
+					  {
+					  	var check;
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog16").stop().slideToggle(500);
+							window_array[6]=1;
+					  	}
+					  }
+					  
+				function closeSocialHab(windownum)
+					  {
+					  	var check;
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog17").stop().slideToggle(500);
+							window_array[7]=1;
+					  	}
+					  }
+				 function closeRiskFact(windownum)
+					  {
+					  	var check;
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog18").stop().slideToggle(500);
+							window_array[8]=1
+					  	}
+						var scope = angular.element($('#patientemr')).scope();
+						if(!scope.$$phase) {
+							scope.$apply(function(){
+								
+								scope.refreshrisk();
+							});
+						}						
+					  }
+						 function notes(windownum)
+					  {
+					  	var check;
+					  	check=close_allwindow();
+					  	if(check!=windownum){
+							$("#dialog19").stop().slideToggle(500);
+							window_array[9]=1
+					  	}											
+					  }												  
+					  	function showtemplate(id)
+					  {
+					 
+							var scope = angular.element($('#saveprescription')).scope();
+							if(!scope.$$phase) {
+									
+									scope.$apply(function(){
+									scope.loadPrescriptiontemplate(id);
+								});
+							}				  
+					  }
+					  	 					  
+	function showexamforms()
+					  {
+					  var formname =$('#examid').find(":selected").text();
+					  if(formname == 'Select Form')
+					  {
+					  		showNotification('300','20','Please Select Form','Please Select Form','notification','timernotification',2000);
+					  }else{
+					  	  console.log(formname);
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+									 console.log(formname);
+									scope.$apply(function(){
+									scope.showForma(formname,'examinations','false', 'vitals_target','','examinationdialog11');
+								});
+							}	
+						}							
+					  }	
+					  
+ function showmedicalforms()
+					  {
+					  
+					  var formname =$('#historyid').find(":selected").text();
+					  console.log(formname);
+					    if(formname == 'Select Form')
+					  {
+					  		showNotification('300','20','Please Select Form','Please Select Form','notification','timernotification',2000);
+					  }else{
+					  	  console.log(formname);
+							var scope = angular.element($('#patientemr')).scope();
+							if(!scope.$$phase) {
+									 console.log(formname);
+									scope.$apply(function(){
+									scope.showForm(formname,'examinations','false', 'vitals_target','','history_form_place_holderdialog12');
+								});
+							}
+						}
+					  }
+	 /*function Confirmation_Event(id,confirmation){
+		if(id == 'confirmEndConsultation'){
+			if(confirmation == 'yes'){
+				if(consultationMode == 'in-clinic')
+					transaction();
+				else
+					finalizeConsultationEndFromPatient();
+			}
+		}
+		if(id == 'fundTransfer'){
+			if(confirmation == 'yes'){
+				if($("#todoctor").attr(checked='checked')){
+					transferto="doctor";
+				}
+				else{
+					transferto="patient";
+				}
+				endConsultationWithTransfer(transferto);
+			}
+		}
+		if(id == 'continueConsult'){
+			if(confirmation == 'yes'){
+				if($("#endanyway").attr(checked='checked')){
+					transaction();
+				}
+			}
+		}
+	}*/
+	
+				function bmiCalculation(){
+							var hgt = parseInt(document.getElementById("vitals_q_2").value);
+							console.log(hgt);
+							var wgt = parseInt(document.getElementById("vitals_q_1").value);
+							console.log(wgt);
+							var hgtm = parseFloat(hgt/100);
+							var hgtm2 = parseFloat(hgtm*hgtm);
+							var Bmi1 = parseFloat(wgt/hgtm2);
+							var Bmi = Bmi1.toFixed(2);
+							console.log(Bmi);
+							document.getElementById("vitals_q_3").setAttribute("value",Bmi);
+							//document.getElementById("vitals_q_3").setAttribute("text",Bmi);
+						}
+						
+				function whrCalculation(){
+							var ws = parseInt(document.getElementById("vitals_q_41").value);
+							var hi = parseInt(document.getElementById("vitals_q_42").value);
+							var wh1 = parseFloat(ws/hi);
+							var wh	=wh1.toFixed(2);
+							
+							document.getElementById("vitals_q_43").value = wh;
+	
+						}
+							  
+function showselected(id){
+			$(".selectmainoption").css('background-color', '#F2F2F2').css("border-top", "1px solid #ccc");
+			$('#'+id).css('background-color', '#3294d6').css("border-top", "1px solid #ccc");
+		}
+function Popup(data) 
+		{
+			var mywindow = window.open('', 'print','height=768,width=1024');
+			mywindow.document.write('<html><head>');
+			
+			mywindow.document.write('</head><body style="font-size:14px;">');
+			mywindow.document.write(data);
+			mywindow.document.write('</body></html>');
+			
+			mywindow.print();
+			mywindow.close();
+			return true;
+		}		
+		
+		/*function checksignature()
+		{
+				 var sign = document.getElementById("signature").checked;
+				  var dict = document.getElementById("stationary").checked;
+				if( sign == true)
+					{
+					document.getElementById("standard").checked = false;
+					document.getElementById("stationary").checked = false;
+					}	
+				if( sign == false && dict == false)
+					{
+					document.getElementById("standard").checked = true;
+					}						
+		}
+		function checkstationary()
+		{
+				 var sign = document.getElementById("signature").checked;
+				 var dict = document.getElementById("stationary").checked;				 
+				if( dict == true)
+					{
+					document.getElementById("standard").checked = false;
+					document.getElementById("signature").checked = false;
+					}						
+				if(  sign == false && dict == false)
+					{
+					document.getElementById("standard").checked = true;
+					}
+		}
+		
+		function checkstandard()
+		{
+				 var dict = document.getElementById("standard").checked;
+				 console.log(dict);
+				if( dict == true)
+					{
+					document.getElementById("stationary").checked = false;
+					document.getElementById("signature").checked = false;
+					}
+					
+						if( dict == false)
+					{
+					document.getElementById("standard").checked = true;
+					document.getElementById("stationary").checked = false;
+					document.getElementById("signature").checked = false;
+					}
+		}*/
+
+	
+
+
+		 function displayExaminationSummary()
+	  {
+			$("#dialog").stop().slideToggle(500);
+	  }
+	   
+	  function displayReports()
+	  {
+			$("#reports").stop().slideToggle(500);
+	  }
+	  function displayImmunization()
+	  {
+			$("#immunizations").stop().slideToggle(500);
+	  }
+	  function displayRiskFactors()
+	  {
+			$("#riskfactors").stop().slideToggle(500);
+	  }
+	  function displayTracker()
+	  {
+			$("#trackerpopup").stop().slideToggle(500);
+	  }
+		
+	  function savepersonalmed(){ 
+		 var  medicinename=document.getElementById("medicinename").value;
+		 var  medId=document.getElementById("medId").value;
+		 var  frequenci=document.getElementById("frequency").value;
+		 var  quantity=document.getElementById("quantity").value;
+		 var  instructions=document.getElementById("instructions").value;
+		
+		 var splitFrequency= quantity.split("X ");
+		 var splitDays= frequenci.split("X");
+       
+		 for (var f = 0; f < splitFrequency.length; f++) {
+            var a=splitFrequency[0];
+			var b=splitFrequency[f];
+         }
+		for (var d = 0; d < splitDays.length; d++) {
+              var c=splitDays[d];
+         }
+					
+				if (medicinename == "") {
+					alert("Medicine Name must be filled out");
+					return false;
+				}
+				if (frequency == "") {
+					alert("Frequency must be filled out");
+					return false;
+				}
+				if (quantity == "") {
+					alert("Quantity must be filled out");
+					return false;
+				}
+				    $.ajax({
+								type: 'GET',
+								url: "/ayushman/cdoctordrug/saveconsultationmedicine?medId="+medId+"&days="+c+"&dosage="+a+"&frequency="+b+"&instructions="+instructions,
+						});
+					
+					/*document.getElementById("medId").value="";
+					document.getElementById("medicinename").value="";
+					document.getElementById("frequency").value="";
+					document.getElementById("quantity").value="";
+					document.getElementById("instructions").value="";*/
+					$('#addBtn').hide();
+		}
+		
+		
+		function PrintElem(elem,appointmentid)
+		{
+			var scope = angular.element($("#quickpre")).scope();
+			if(!scope.$$phase) {
+				scope.$apply(function(){
+					if(scope.examination_data.text_complaint.length == 0){
+						$(".complaint").hide();
+					}
+					if(scope.examination_data.text_examinationsummary.length == 0 || scope.examination_data.check_examinationsummary == false){
+						$(".examinationsummary").hide();
+					}
+					if(scope.examination_data.text_diagnosis == undefined || scope.examination_data.text_diagnosis.length == 0){
+						$(".diagnosis").hide();
+					}
+					if(scope.examination_data.text_followup == undefined || scope.examination_data.text_followup.length == 0){
+						$(".followup").hide();
+					}
+					if(scope.previousexamination_data.isexaminationavailable == true){
+						$(".vitals").show();
+					}else{
+						//$(".vitals").hide();
+						$(".vitals").show();
+					}
+				});
+			}
+			savePDf(appointmentid);
+			setPrint();
+			$('#printpre').html();
+			setTimeout(function(){
+				$("#print").show();
+				Popup($(elem).html());
+				$("#print").hide();
+			},1000);			
+						
+			
+		}
+	
+  </script>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      </div>
+    </div>
+</body>
+</html>
+ 

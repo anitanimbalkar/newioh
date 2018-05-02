@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1,3,2,1000,6</questions>
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>4,5,8,1000,7</questions>
+		<layout>Vertical</layout>
+	</container>
+	<question>
+		<id>1</id>
+		<label>Appointment Date</label>
+		<type>date</type>
+		
+	</question>
+	<question>
+		<id>2</id>
+		<label>Incidence</label>
+		<type>autocomplete</type>
+		<action>/ayushman/cpatienthistory/appointments</action>
+	</question>
+	<question>
+		<id>3</id>
+		<label>Dr. Name</label>
+		<type>autocomplete</type>
+		<action>/ayushman/ctags/doctorname</action>
+	</question>
+	<question>
+		<id>1000</id>
+		<type>separator</type>
+	</question>	
+	<question>
+		<id>4</id>
+		<label>Main Complaint</label>
+		<type>text</type>
+		
+	</question>
+	<question>
+		<id>5</id>
+		<label>Diagnosis</label>
+		<type>autocomplete</type>
+		<action>/ayushman/ctags/diagnosis</action>
+	</question>
+	<question>
+		<id>6</id>
+		<label>Medicines</label>
+		<type>autocomplete</type>
+		<action>/ayushman/cdrug/drugnames</action>
+	</question>
+	<question>
+		<id>7</id>
+		<label>Investigations</label>
+		<type>autocomplete</type>
+		<action>/ayushman/ctags/testnames</action>
+	</question>
+	<question>
+		<id>8</id>
+		<label>Follow-up Note / Instructions</label>
+		<type>text</type>
+		
+	</question>
+</form>

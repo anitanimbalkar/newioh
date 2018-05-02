@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en-US"><!--<![endif]-->
+<head>
+    <!-- META TAGS -->
+    <meta charset="UTF-8">
+
+    <!-- Title -->
+    <title>India Online Health</title>
+	<script type='text/javascript' src='webapp/js/jquery-1.11.1.min.js'></script>
+    <!-- Define a view port to mobile devices to use - telling the browser to assume that
+    the page is as wide as the device (width=device-width)
+     and setting the initial page zoom level to be 1 (initial-scale=1.0) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE"/>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="images/favicon-new.png">
+
+    <!-- Google Web Font -->
+<!-- Removed   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>-->
+    <!-- bootstrap Style Sheet (caution ! - Do not edit this stylesheet) -->
+
+    <!-- Flexslider stylesheet -->
+    <link rel="stylesheet" href="webapp/css/flexslider.css" type="text/css" media="all">
+
+    <!-- Animations stylesheet -->
+    <link rel="stylesheet" href="webapp/css/animations.css" type="text/css" media="all">
+    
+	<!-- Awesome Font stylesheet -->
+<!-- Removed   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+    <!-- Datepciker stylesheet -->
+    <link rel="stylesheet" href="webapp/css/datepicker.css" type="text/css" media="all">
+    <!-- Swipebox stylesheet -->
+    <link rel="stylesheet" href="webapp/css/swipebox.css" type="text/css" media="all">
+    <!-- meanmenu stylesheet -->
+    <link rel="stylesheet" href="webapp/css/meanmenu.css" type="text/css" media="all">
+    <!-- Include the site main stylesheet -->
+    <link rel="stylesheet" href="webapp/css/main.css" type="text/css" media="all">
+	<link rel="stylesheet" href="webapp/css/signup.css" type="text/css" media="all">
+	<link rel="stylesheet" href="webapp/css/login.css" type="text/css" media="all">
+    <link rel="stylesheet" href="webapp/css/ioh.css" type="text/css" media="all">
+	<!-- CUSTOM CSS-->
+	<link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <!-- Include the site responsive  stylesheet -->
+    <link rel="stylesheet" href="webapp/css/custom-responsive.css" type="text/css" media="all">
+	<script type="text/javascript" src="/ayushman/assets/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <link href="/ayushman/assets/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" type="text/css">
+    <!--<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>-->
+    <script type="text/javascript" src="/ayushman/assets/js/fancybox/source/jquery.fancybox.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="/ayushman/assets/js/fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <style>
+	#panel4.panel {
+	position: absolute;
+	color:#ccc;
+	top: 100px;
+	right: -1%;
+	display: none;
+	background: #fcfcfc;
+	
+	border:1px solid #04716e;
+	-moz-border-radius-topleft: 20px;
+	/*-webkit-border-top-left-radius: 20px;*/
+	-moz-border-radius-bottomleft: 20px;
+	/*-webkit-border-bottom-left-radius: 20px;*/
+
+	-moz-border-radius-topright: 20px;
+	/*-webkit-border-top-right-radius: 20px;*/
+	-moz-border-radius-bottomright: 20px;
+	/*-webkit-border-bottom-right-radius: 20px;*/
+
+	width: 300px;
+	height: 225px;
+	padding: 10px 10px 10px 10px;
+	filter: alpha(opacity=90);
+	opacity: 1;
+
+	font-family:tahoma, Helvetica, sans-serif;
+	font-size:13px;
+	
+}
+	 .danger{
+	   color:red;
+	 }
+	 .success{
+	  color:#00b100;
+	 }
+	 .dropbtn {
+			background-color: #fff;
+			color: black;
+			padding: 16px;
+			font-family: open sans;
+			font-size: 16px;
+			border: none;
+			cursor: pointer;
+			margin-top: -8px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 10px;
+}
+
+.sidenav a {
+    padding: 10px 10px 10px 0px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: -10px;
+    right: 2px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {color: red;}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+   color:red ;
+}
+.formheader{
+	color:#04706d;
+	font-size:18px;
+	height:20px;
+	text-align:center;
+}
+.form-group{
+	margin-top:15px;
+}
+	
+</style>
+	
+	
+<script type="text/javascript">
+	function closelogin(){
+		$("#panel4").toggle("slow");
+	}
+	
+	$(document).ready(function(){ 
+	closeNav();
+		//Stop carousels auto slide while scrolling 
+      if(window.screen.availWidth<=767){
+        $(".fp-viewing-home").addClass("fp-viewing-consumers-2");
+        $(".fp-viewing-home").removeClass("fp-viewing-home");
+        $("#section1").addClass("active");
+        $("#section0").hide();
+      }
+      window.onscroll = function (e) {
+        if (window.screen.availWidth <= 767) {
+          $(".fp-viewing-home").addClass("fp-viewing-consumers-2");
+          $(".fp-viewing-home").removeClass("fp-viewing-home");
+          $("#section1").addClass("active");
+        }
+      }
+
+      var page=document.URL.substring(document.URL.lastIndexOf("/")+1,document.URL.lastIndexOf("."));
+		$("#"+page).attr("class","active");
+		$("#"+page).find("a").css("color","#fff");
+		$(".login").click(function(){
+			$("#panel4").toggle("slow");
+			$('html,body').animate({
+                        scrollTop: 0
+            }, 10);
+			document.getElementById("email").focus();
+			return false;
+		});
+
+		$(document).click(function(e){
+			if ($(e.target).parents("#panel4").length == 0) 
+				$("#panel4").hide("slow");
+		});
+
+      $("#menuExpand").click(function(e) {
+        if($(".logoWrapper a").hasClass("expand-logo")){
+          $(".logoWrapper a").removeClass("expand-logo");
+        }else{
+          $(".logoWrapper a").addClass("expand-logo");
+        }
+      });
+
+      var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+		if(is_chrome)
+		{
+			if(document.getElementById('chromeabsent') != null)
+				document.getElementById('chromeabsent').innerHTML = "";
+		}
+		else
+		{
+			if(document.getElementById('chromeabsent') != null)
+				document.getElementById('chromeabsent').visible = true;
+		}
+	});
+var $= jQuery.noConflict();
+function openDialog(url, width, height){
+				 $.fancybox({
+                    'width': width,
+                    'height': height,
+                    'autoScale': false,
+                    'transitionIn': 'fade',
+                    'transitionOut': 'fade',
+                    'type': 'iframe',
+                    'href': url,
+                    'showCloseButton': true,
+                    'afterClose' : function(){
+					}
+            	});
+			}
+      
+function doc(){
+	$("#doc").show();
+	$("#con").hide();
+	$("#cop").hide();
+}
+function con(){
+	$("#doc").hide();
+	$("#con").show();
+	$("#cop").hide();
+}
+function cop(){
+	$("#doc").hide();
+	$("#con").hide();
+	$("#cop").show();
+}
+</script>
+     <!--[if lt IE 9]>
+
+    <![endif]-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</head>
+<body > <!--ng-app="landingPage">-->
+<!--<div ng-controller="landingPageController">-->
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="<php echo 'http://www.google.com/chromeframe/?redirect=true'; ?>">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>  
+	<!--#include file="TopMenu.shtml"-->
+<div class="home-slider clearfix" style="height:100%">
+<div class="flexslider" style="height:100%">
+<ul class="slides" style="height:100%">
+    <!--slide start-->
+<li class="flex-active-slide" style="height:100%">
+    <img src="webapp/img/landing-page/sliderbg1.png" style="height:100%"class="left-image" alt="Medical Services That You Can Trust" draggable="false">	
+<div style="padding-left:4%;padding-right:4%;" class="col-lg-12" >
+	<div id="term" style="width:100%;padding-top:50px;">
+		<h3>Disclaimer</h3>
+		<p class="bodytext"><strong><em>IndiaOnlineHealth</em></strong> is a platform provided by Ayushman for enabling Consumers  to take appointment and consult with doctors, who are registered on the  Platform; as well as to connect with Support Service Providers (SSP) such as pathologist  and radiologist for taking appointment and availing their services; as well as  Medicine &amp; Equipment Suppliers (MES) such as medical store and surgical  equipment providers for placing order for their products.  Ayushman has taken declaration from Doctors,  SSPs and MESs regarding holding appropriate degree and validity of licenses  from appropriate authorities and has solely depended on their declaration but  has not verified their validity or regarding any action pending against them  under penal laws. While availing their services, Consumer has to do his own  due-diligence.<br />
+          <br />
+          Diagnostic capability and treatment  skills vary from doctor to doctor. Ayushman does not warrant capability of  individual Medical Doctors for making diagnosis of all ailments and their  treatment skills for cure of all ailments. Ayushman also does not warrant cure  of customer patient by treatment given by Medical Doctor. <br />
+          Ayushman has taken declaration from Diagnostic  labs for the quality of material used by them for performing the tests or for  analyzing the samples. Ayushman physically does not check the quality of  material. It is up to the Consumer, to be alert and vigilant while accepting  the services and material. Ayushman is not responsible for the quality of  material used by labs for individual tests, accuracy of test results, and format,  media or quality of reports provided by them to Consumer.<br />
+          <br />
+          Ayushman has not accepted any liability  towards Medical Doctors and SSPs. All Medical Doctors as well as SSPs have  agreed to offer and provide their services on the Ayushman platform exclusively  at their own responsibility, risk, and cost. Ayushman will never be responsible  for any action taken against them by any person and authority.<br />
+          <br />
+          The  information contained in this website is for general information purposes only.  Ayushman  endeavoured to keep the  information up to date and correct, No representations or warranties of any  kind, express or implied, are given about the completeness, accuracy,  reliability, suitability or availability with respect to the website or the  information, products, services, or related graphics contained on the website  for any purpose. Any reliance placed on such information shall be strictly  always at User’s own risk.<br />
+          <br />
+          In no  event Ayushman will be liable for any loss or damage including without  limitation, indirect or consequential loss or damage, or any loss or damage  whatsoever arising from loss of data or profits arising out of, or in  connection with, the use of this website.<br />
+          <br />
+          Through  this website, it is possible to link to other websites, which are not under the  control of Ayushman. No control is established over the nature, content and  availability of those sites. The inclusion of any links does not necessarily  imply a recommendation or endorse the views expressed within them.<br />
+          <br />
+          Every  effort is made to keep the website up and running smoothly. However, there may  be occasions due technical glitches, planned maintenance shut-down or business  reasons. Ayushman takes no responsibility for, and will not be liable for, the  website being temporarily unavailable due to any reason whatsoever. </p>
+		  
+	</div>
+</div>
+</li>
+</ul>
+</div>
+</div>	
+<div class="col-lg-12" style="height:90px">
+	</br>
+</div>
+<!--page footer-->
+	<!--#include file="BottomBar.shtml"-->
+<a href="#top" id="scroll-top"></a>
+<script type='text/javascript' id='quick-js'></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>-->
+<!--<script type='text/javascript' src='webapp/app/js/angular-route.js'></script>-->
+<!--<script type='text/javascript' src='app/controllers/landingPageController.js'></script>-->
+<!--<script type='text/javascript' src='webapp/app/app.js'></script>
+<script type='text/javascript' src='webapp/app/controllers/landingPageController.js'></script>-->
+<script type='text/javascript' id='quick-js'></script>
+<script type='text/javascript' src='webapp/js/jquery.flexslider-min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.swipebox.min.js'></script>
+<script type='text/javascript' src='webapp/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.isotope.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.appear.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.ui.core.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.ui.datepicker.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.validate.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.form.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.autosize.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.meanmenu.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery.velocity.min.js'></script>
+<script type='text/javascript' src='webapp/js/respond.min.js'></script>
+<script type='text/javascript' src='webapp/js/jquery-migrate-1.2.1.min.js'></script>
+<script type='text/javascript' src="webapp/js/jquery.easing.min.js"></script>
+<script type='text/javascript' src='webapp/js/custom.js'></script>
+<script>
+jQuery(document).ready(function () {
+    // scroll-to-top animate
+    jQuery('#scroll-top').click(function () {
+        jQuery("html, body").animate({
+            scrollTop: 0
+        }, 900);
+        return false;
+    });
+	
+});
+</script>
+</div>
+<div id="panel4" class="panel panel-default login-panal" style="z-index: 50000;margin-right:3%;" >
+	<div class="panel-body">
+	<div class="formheader">Secure Log In <!--<a class="formclose" href="#" onclick="closelogin()"></a>--></div>
+	<form id="loginformid" action="/ayushman/cuser/login"  role="form" method="post" accept-charset="utf-8">
+		<div class="form-group" >
+			<input type="text" class="form-control" id="email" name="email" required="required" placeholder="Username" autocomplete="on">
+		</div>
+		<div class="form-group" >
+			<input type="password" class="form-control" id="password" name="password" required="required" placeholder="Password">
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-info">LOG IN </button>
+            <a href="/ayushman/cpasswordmanager/view" style="color:#04706d; margin-top:10px;">Forgot Password?</a>
+        </div>
+	</form>
+	</div>	
+</div> 
+</body>
+</html>

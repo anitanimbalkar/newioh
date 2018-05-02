@@ -1,0 +1,165 @@
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+@media only screen and (min-width : 1824px) {
+	#contentarea:after {
+		max-width: 1200px;
+	}
+}
+
+@media (max-width: 768px) {
+
+	.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+		background: #60b3b3;
+		width:100px;
+	}
+	.navbar-toggle{
+		background-color: #60b3b3;
+	}
+	.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+		background-color: #60b3b3;
+	}
+	.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {	
+		height: 46px;		
+		float : left;
+		width : 76%;
+	}
+	#subNavigation {
+		width: 200px;
+	}
+	#subNavigation ul li a {
+		font-size: 14px;
+		padding: 5px 0 5px 10px;
+	}
+	.profileDoctor{
+			width : 5%;
+		}
+	.doctorInformation {
+		float: right;
+		padding-top: 50px;
+	}
+	.doctorDetailsUser{
+		float:right;				
+		width:70%;
+	}
+	.editprofileformHeader{
+		font-size: 11px;
+	}
+	.editprofileformHeader .rightheader{
+		text-align:left;	
+	}
+    /* reduce size of carousel content */
+     .carousel-caption{
+		width:70%;
+    } 
+	 .carousel-caption h2,  .carousel-caption h3{
+		#font:300 48px/55px Arial, Helvetica, sans-serif;
+		font:300 24px/26px Arial, Helvetica, sans-serif;
+	}	
+	 .carousel-caption p strong{
+		font:300 16px/18px Arial, Helvetica, sans-serif;
+	}
+	 .carousel-caption p{
+		font:300 12px/14px Arial, Helvetica, sans-serif;
+		padding:10px 0 0;
+	}
+	.carousel-caption li {
+		font:300 16px/18px  Arial, Helvetica, sans-serif;
+		color:#5bb1b1;
+		padding:10px 0 0;
+	}
+	 .carousel-inner > .item > img{
+		height:700px;
+	}
+	
+	.searchResultRow > div p{
+		font-size:10px;
+	}
+	.thumbnailPatient img {
+		height: 120px;	
+		width; 75px;
+	}
+	#accordionDashboard .panel-title,.pastAppointments,.patientsRow{
+		font-size:12px;
+	}
+	.pastAppointments, .pastAppointments:hover, .pastAppointments:focus{
+		padding:5px 5px 5px;
+		top:-5px;
+	}
+	.addPatientBtn a{
+		font-size: 15px;
+		height: 40px;
+		padding: 10px 0 12px;
+		width:90px;
+		margin-top:10px;
+		margin-right:8px;
+	}
+	.searchSection input{
+		font-size:12px;	
+	}
+	.pastapptsearchSection input{
+		font-size: 8px;
+	}
+	.pastapptsearchSection input[type="submit"]{
+		width:12%;
+	}
+	.subheader, .bodytext_normal,.bodytext_error,.textarea{
+		font-size:10px;	
+	}
+	.bodytext_bold{
+		font-size:8px;	
+	}
+	.clinicimage{
+		border: none;
+		width: 15px;
+		height: 15px;
+	}
+	.loginfailformdiv{
+		 max-width:100%;
+	}
+	.BlueBandFooterHeading{
+		font-size:11px;
+	}
+	.patientsRow, .appointDetailsCol, .appointmentsEditCol, .quickPrescription, .quickConsulation{
+		font-size:10px;
+	}
+	a.btnDefaultCols{
+		font-size:10px;
+	}
+	.quickConsultation {
+		padding-top: 20px; 
+		padding-right:0px;
+	}
+	.regformcontactno{
+		margin-left:-20px;
+	}
+	.regformusername{
+		height:50px;
+	}
+}
+@media (min-width: 768px) {
+	.addPatientBtn a{	
+		margin-top:1px;
+		margin-right:10px;
+	}
+}
+	#pushobj {
+		position: fixed;
+		top: 0px;
+		left: 42px;
+		z-index: 1;
+		height:99%;
+		width:97%;
+		overflow-y:auto;
+	}
+	#lazy {
+		position: fixed;
+		top: 0px;
+		margin-left: auto;
+		margin-right: auto;
+		z-index: 0;
+		height:99%;
+		width:100%;
+		overflow-y:auto;
+	}

@@ -1,0 +1,55 @@
+<?php defined('SYSPATH') or die('No direct script access.');
+class Controller_Cdoctorearliestappointment extends Controller{
+  public function action_view(){
+    try{
+		$key = 0;
+      $user_object = Auth::instance()->get_user();
+      if (!$user_object){
+        Request::current()->redirect('cuser/login');
+      }
+	  $doctors = ORM::factory('doctor')->where('refdoctorsid_c','=',$user_object->id)->find_all();
+		if(count($doctors) > 0){
+			 $object_doctor = ORM::factory('doctor')->where('refdoctorsid_c','=',$user_object->id)->find();
+			  $search_doctor_object = ORM::factory('searchdoctors')->where('doctorid', '=', $object_doctor)->find();
+			  $schedule_helper = new helper_schedulehelper();
+			  $clinics_details = $schedule_helper->get_doctor_clinic_details($object_doctor->id);
+			  if($user_object->has('roles', ORM::factory('role', array('name' => 'staff')))){
+				foreach($clinics_details as $clinic_details){
+				  if($clinic_details['address_id'] == -1){
+					$key = array_search($clinic_details, $clinics_details);
+				  }
+				}
+				if($key > 0){unset($clinics_details[$key]);}
+			  }
+			$content = View::factory('/vuser/vdoctor/vmyclinicschedule');
+			$content->bind('object_doctor', $object_doctor);
+			$content->bind('search_doctor_object', $search_doctor_object);
+			$content->bind('clinics_details', $clinics_details);
+			$this->response->body($content);
+		}else{
+			  $object_doctor = $this->request->post('object_doctor');
+			  $search_doctor_object = ORM::factory('searchdoctors')->where('doctorid', '=', $object_doctor)->find();
+			  $schedule_helper = new helper_schedulehelper();
+			  $clinics_details = $schedule_helper->get_doctor_clinic_details($object_doctor->id);
+			  
+			  
+			  if($user_object->has('roles', ORM::factory('role', array('name' => 'staff')))){
+				foreach($clinics_details as $clinic_details){
+				  if($clinic_details['address_id'] == -1){
+					$key = array_search($clinic_details, $clinics_details);
+				  }
+				}
+				if ($key > 0){unset($clinics_details[$key]);}
+			  }
+			  $content = View::factory('/vuser/vpatient/vdoctorearliestappointment');
+			  
+			  $content->bind('object_doctor', $object_doctor);
+			  $content->bind('search_doctor_object', $search_doctor_object);
+			  $content->bind('clinics_details', $clinics_details);
+			  $this->response->body($content);
+			  
+	  }
+    }
+    catch(Exception $e) { throw new Exception($e); }
+  }
+}

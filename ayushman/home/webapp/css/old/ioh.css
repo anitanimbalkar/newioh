@@ -1,0 +1,352 @@
+/* line 4, ../sass/ioh.scss */
+.left-image {
+  position: absolute;
+  left: 0px;
+}
+
+/* line 8, ../sass/ioh.scss */
+.right-image {
+  position: absolute;
+  top: 20px;
+  left: 630px;
+  width: 700px !important;
+  height: 500px;
+  z-index: 5;
+}
+
+/* line 16, ../sass/ioh.scss */
+#patient-active {
+  width: 0;
+  height: 0;
+  position: relative;
+  top: 0%;
+  left: 8%;
+  margin-top: -70px;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid white;
+}
+
+/* line 28, ../sass/ioh.scss */
+#doctor-active {
+  width: 0;
+  height: 0;
+  position: relative;
+  top: 0%;
+  left: 34%;
+  margin-top: -70px;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid white;
+}
+
+/* line 40, ../sass/ioh.scss */
+#corporate-active {
+  width: 0;
+  height: 0;
+  position: relative;
+  top: 0%;
+  left: 60%;
+  margin-top: -70px;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid white;
+}
+
+/* line 52, ../sass/ioh.scss */
+#dignosticcenter-active {
+  width: 0;
+  height: 0;
+  position: relative;
+  top: 0%;
+  left: 85%;
+  margin-top: -70px;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 30px solid white;
+}
+
+/* line 64, ../sass/ioh.scss */
+.home-doctors {
+  text-align: center;
+  padding: 70px 0 80px;
+  background: #fff;
+}
+
+/* line 69, ../sass/ioh.scss */
+.home-features {
+  text-align: center;
+  padding: 70px 0 80px;
+  background: #F0F5F7;
+}
+
+/* line 75, ../sass/ioh.scss */
+#main-footer .widget input[type="text"] {
+  background-color: #515359;
+  border: none;
+  padding: 1px 2px;
+  margin-bottom: 13px;
+  width: 75%;
+  color: #fff;
+  outline: none;
+  overflow: hidden;
+}
+
+/* line 86, ../sass/ioh.scss */
+#main-footer .widget input[type="submit"] {
+  border: none;
+  background-color: #e5901a;
+  color: #fff;
+}
+
+/* line 91, ../sass/ioh.scss */
+.form-group {
+  margin-bottom: 0px;
+}
+
+/* line 95, ../sass/ioh.scss */
+.btn.orange {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  padding: 9px 20px;
+  background: #ffa13c;
+  border-radius: 0;
+}
+
+/* line 104, ../sass/ioh.scss */
+.btn.orange:hover {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  padding: 9px 20px;
+  background: #ffa13c;
+  border-radius: 0;
+}
+
+/* line 113, ../sass/ioh.scss */
+.btn-xs.blue {
+  font-size: 14px;
+  font-weight: 300;
+  color: #fff;
+  padding: 5px 11px;
+  background: #67c9e0;
+  border-radius: 0;
+  border: none;
+}
+
+/* line 123, ../sass/ioh.scss */
+.btn-xs.blue:hover {
+  font-size: 14px;
+  font-weight: 300;
+  color: #fff;
+  padding: 5px 11px;
+  background: #67c9e0;
+  border-radius: 0;
+  border: none;
+}
+
+/* line 133, ../sass/ioh.scss */
+.read-more.orange {
+  margin-bottom: 12px;
+}
+
+/* line 137, ../sass/ioh.scss */
+a:focus {
+  outline: none;
+  /*outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;*/
+}
+
+/* line 143, ../sass/ioh.scss */
+.navbar-brand {
+  float: left;
+  padding: 13px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 20px;
+}
+
+/* line 151, ../sass/ioh.scss */
+.nav {
+  padding-top: 1%;
+  padding-left: 25%;
+  list-style: none;
+}
+
+/* line 157, ../sass/ioh.scss */
+.home-slider {
+  position: relative;
+  top: 50px;
+}
+
+/* line 162, ../sass/ioh.scss */
+.nav > li > a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 13px;
+}
+
+/* line 168, ../sass/ioh.scss */
+.navbar {
+  min-height: 60px;
+}
+
+/* line 172, ../sass/ioh.scss */
+label {
+  color: #3a3c41;
+  font-weight: 100;
+  font-size: 13px;
+}
+
+/* line 178, ../sass/ioh.scss */
+p {
+  font-size: 12px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 17px;
+}
+
+/* line 186, ../sass/ioh.scss */
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: none;
+}
+
+/* line 190, ../sass/ioh.scss */
+a {
+  color: #637bb5;
+  text-decoration: none;
+}
+
+/* line 195, ../sass/ioh.scss */
+a:hover {
+  color: #637bb5;
+  text-decoration: none;
+}
+
+/* line 200, ../sass/ioh.scss */
+.mandatory {
+  color: #990000;
+}
+
+/* line 203, ../sass/ioh.scss */
+.input-field {
+  padding: 4px 2px !important;
+  width: 75% !important;
+}
+
+/* line 207, ../sass/ioh.scss */
+.ocolor {
+  background: #ffa13c;
+}
+
+/* Forms */
+/* line 211, ../sass/ioh.scss */
+.ng-invalid.ng-dirty {
+  border-color: red;
+  outline-color: red;
+}
+
+/* line 215, ../sass/ioh.scss */
+.ng-valid.ng-dirty {
+  border-color: #3c763d;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  /* line 222, ../sass/ioh.scss */
+  .logo {
+    width: 80%;
+    margin-top: -90px;
+  }
+
+  /* line 227, ../sass/ioh.scss */
+  .right-image {
+    height: 210px;
+    left: 2px;
+    position: absolute;
+    top: 30px;
+    width: 700px !important;
+    z-index: 5;
+  }
+
+  /* line 236, ../sass/ioh.scss */
+  .left-image {
+    height: 212px;
+    left: 0;
+    position: absolute;
+  }
+
+  /* line 242, ../sass/ioh.scss */
+  .home-slider .flexslider {
+    margin-bottom: -180px;
+    min-height: inherit;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  /* line 249, ../sass/ioh.scss */
+  .logo {
+    width: 60%;
+    margin-top: 25px;
+  }
+
+  /* line 254, ../sass/ioh.scss */
+  .right-image {
+    height: 370px;
+    left: 100px;
+    position: absolute;
+    top: 30px;
+    width: 700px !important;
+    z-index: 5;
+  }
+
+  /* line 263, ../sass/ioh.scss */
+  .left-image {
+    height: 360px;
+    left: 0;
+    position: absolute;
+  }
+
+  /* line 269, ../sass/ioh.scss */
+  .home-slider .flexslider {
+    margin-bottom: -90px;
+    min-height: inherit;
+  }
+}
+@media only screen and (min-width: 980px) and (max-width: 1280px) {
+  /* line 277, ../sass/ioh.scss */
+  .home-slider .slide-content {
+    padding: 20px;
+    width: 30%;
+    margin-left: -150px;
+    margin-top: -70px;
+  }
+
+  /* line 284, ../sass/ioh.scss */
+  .right-image {
+    height: 370px;
+    left: 370px;
+    position: absolute;
+    top: 30px;
+    width: 600px !important;
+    z-index: 5;
+  }
+}
+@media only screen and (min-width: 900px) and (max-width: 1920px) {
+	.right-image {
+    position: absolute;
+    top: 20px;
+    left: 800px !important;
+    width: 700px !important;
+    height: 500px;
+    z-index: 5;
+}
+}
+
+
+
+	
+

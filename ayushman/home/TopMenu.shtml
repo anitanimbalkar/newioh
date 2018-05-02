@@ -1,0 +1,61 @@
+<!-- Top Menu bar -->
+
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar-header page-scroll">
+			<span   class="visible-xs" style="font-size:24px;cursor:pointer; margin-top: -10px;  float:left; background: none !important;width: 50px;padding: 16px 12px 9px;border: 0;" onclick="openNav()">&#9776; </span>
+				<div id="mySidenav" class="sidenav visible-xs" style="    position: fixed;top: 0;height: 100%;z-index: 9999; background: rgba(30, 190, 240,1)">
+				  <!--<a href="javascript:void(0)" class="closebtn" style="color:white;padding-bottom:20px" onclick="closeNav();">&times;</a>-->
+				  <ul style="color:white;list-style-type:none ">
+						  <li class="visible-xs"><a href="/ayushman/home/index.shtml" style="color: black; font-size: 14px;"> <img src="images/home.png" width="25px"/> <span style="color: black;"> <strong>Home</strong></span></a>
+						<a href="javascript:void(0)" class="closebtn" style="color:black;padding-bottom:20px" onclick="closeNav();">&times;</a>
+						  </li>
+						  <li class="visible-xs"><a href="/ayushman/home/programsmenu.html"  style="color: black;font-size: 14px;"><img src="images/consumer.png" width="25px" /> <span><strong>Consumers</strong></span></a></li>
+						  <li class="visible-xs"><a href="/ayushman/home/serviceproviders.html" style="color: black;font-size: 14px;"><img src="images/news1.png"  width="25px"/> <span><strong>Service Providers</strong></span></a></li>
+						  <li class="visible-xs"><a href="/ayushman/home/Contactus.shtml" style="color: black;font-size: 14px;"><img src="images/contact.png" /> <span><strong>Contact Us</strong></span></a>
+							  <ul>
+								  <li><a href="/ayushman/home/About.shtml"  style="color: black;font-size: 14px;"><div class="sub-links"></div><strong>About</strong></a></li>
+								  <li><a href="/ayushman/home/Mission.shtml"  style="color: black; font-size: 14px;"><div class="sub-links"></div><strong>Our experts</strong></a></li>
+								  <li><a href="/ayushman/home/TermsofUse.shtml"  style="color: black; font-size: 14px;"><div class="sub-links"></div><strong>Terms of Use</strong></a></li>
+								  <li><a href="/ayushman/home/Disclaimer.shtml" style="color: black; font-size: 14px;"><div class="sub-links"></div><strong>Disclaimer</strong></a></li>
+								  <li><a href="/ayushman/home/PrivacyPolicy.shtml"  style="color: black; font-size: 14px;"><div class="sub-links"></div><strong>Privacy Policy</strong></a></li>
+								  <li><a href="/ayushman/home/ReturnPolicy.shtml"  style="color: black; font-size: 14px;"><div class="sub-links"></div><strong>Return Policy</strong></a></li>
+							  </ul>
+						  </li>
+					</ul>
+				</div>	
+		
+			  <a class="navbar-brand" href="/ayushman/home/index.shtml">
+                    <img  class="img-responsive hidden-xs"src="webapp/img/LOGO.png" class="logo" style="margin-left:50px; height: 40px; " alt="India Online Health">
+					<img  class="img-responsive visible-xs"src="webapp/img/LOGO.png" class="logo" style="margin-top: -10px; height: 40px;" alt="India Online Health">
+               
+			   </a>
+				<div style="float:right; margin-right: -15px;" class="visible-xs">
+						<a href="/ayushman/cregistrar/view" title="Signup" class="signup">
+						  <span>
+							<i class="fa fa-user"></i>
+							<img src="images/signup-green.png">
+						  </span>
+						</a>
+					
+					<a href="javascript:void(0);" title="Login" class="login">
+					  <span>
+						<img src="images/login-green.png">
+						<i class="fa fa-sign-in"></i>
+					  </span></a>
+				  </div>
+		</div> 
+			<div class="collapse navbar-collapse navbar-ex1-collapse main-nav">              
+				<ul  class="nav navbar-nav" >	
+                    <li class="hidden"> <a href="#page-top"></a> </li>
+					<li ><a  href="/ayushman/home/index.shtml" style=""><b>Home</b></a></li>
+                    <li ><a class="activenav" href="programsmenu.html"  style=""><b>Consumers</b></a></li>
+                    <li ><a href="serviceproviders.html"  style=""><b>Service Providers</b></a></li>
+         		</ul>
+				<ul  class="nav navbar-nav" style="float:right;">	
+                   <li class=" hidden-xs"><a href="/ayushman/cregistrar/view"  style= 'font-family:"Open Sans",sans-serif; font-size:16px;background-color:transparent;'><button class="btnsign" type="button"><b>SIGN UP</b></button></a></li>
+		  			<li class=" hidden-xs"><a href="javascript:void(0);" title="Login" class="login"  style= 'font-family:"Open Sans",sans-serif; font-size:16px; background-color:transparent;'><button class="btnsign " type="button"><b>LOG IN</b></button></a></li>
+		  		</ul>
+			</div>           
+    </nav>
+</div>

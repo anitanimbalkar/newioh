@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<container>
+		<id>1</id>
+		<questions>1,2,3,4</questions>
+		<layout>Horizontal</layout>
+	</container>
+	<container>
+		<id>1</id>
+		<questions>5,6</questions>
+		<layout>Horizontal </layout>
+	</container>
+	<container>
+		<id>1</id>
+		<questions>7,8,9,10,11,12,13,14,15,16,17</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	
+	<question>
+		<id>1</id>
+		<label>Height(cms)</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Weight(kg)</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Pulse(bpm)</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>BP(mm/Hg)</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Menstural History(for females)</label>
+		<type>MultiDD</type>
+		<answer>
+			<label>Regular</label>
+		</answer>
+		<answer>
+			<label>Excessive</label>
+		</answer>
+		<answer>
+			<label>Scanty</label>
+		</answer>
+		<answer>
+			<label>Painful</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Sexual Problems(for males)</label>
+		<type>MultiDD</type>
+		<answer>
+			<label>Phimosis</label>
+		</answer>
+		<answer>
+			<label>Tests</label>
+		</answer>
+		<answer>
+			<label>Ejaculation</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Ears</label>
+		<type>Text</type>
+		<size>100</size>
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Nose</label>
+		<type>Text</type>
+		<size>100</size>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>Eyes</label>
+		<type>Text</type>
+		<size>100</size>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Teeth and Gums</label>
+		<type>Text</type>
+		<size>100</size>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Throat</label>
+		<type>Text</type>
+		<size>100</size>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Skin</label>
+		<type>Text</type>
+		<size>100</size>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Bones and Joints</label>
+		<type>Text</type>
+		<size>100</size>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Per Abdomen</label>
+		<type>Text</type>
+		<size>100</size>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Respiratory</label>
+		<type>Text</type>
+		<size>100</size>
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>CVS</label>
+		<type>Text</type>
+		<size>100</size>
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>CNS</label>
+		<type>Text</type>
+		<size>100</size>
+	</question>
+</form>

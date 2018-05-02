@@ -1,0 +1,143 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.action').hide();
+		$('#ui-datepicker-div').css("width","210px");
+
+	});
+	function convertAndsavePDf(){
+	var userid=$('#patientuserid').val();
+		elm = $( "#medicalCertificate" ).clone();
+		var htmlfile={htmlfile:elm.html(),type:'medical',userid:userid};
+		$.ajax({
+				type: 'post',
+				data:htmlfile,
+				url: "/ayushman/cconsultation/saveCertificate",
+				datatype: 'html', 
+				success: function (data) {
+					
+				},
+			error: function (req, status, error) {
+			}
+		});
+	}
+
+	function datepick(){
+		$('#ui-datepicker-div').css("width","210px");
+	}
+	function PrintElem(elem)
+    {
+        Popup($(elem).html());
+        convertAndsavePDf();
+    }
+
+    function Popup(data) 
+    {
+        var mywindow = window.open('', 'print', 'height=400,width=600');
+        mywindow.document.write('<html><head><title>my div</title>');
+        /*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+</script>
+
+<div style="width:100%;">
+<input type="hidden" value="2" id="autocompletevalue" />
+<table >
+	<tr>
+		<td width="100%">
+			<div id="printprescriptionbill"  style="box-shadow:2px 7px 19px #888888;">
+			<style type="text/css">
+				@media only print
+				{	
+				
+				}
+				@page {
+					/* dimensions for the whole page */
+					size: A5;
+					margin: 10;
+				}
+				body {
+					/* A5 dimensions */
+					height: 210mm;
+					width: 158.5mm;
+					margin: 10;
+				}
+			</style>
+			<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+			<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+			<link rel="stylesheet" href="/ayushman/assets/app/css/main.css" />
+			<div id="medicalCertificate" class="prescription">
+				<h3 style="text-align:center;margin-bottom:20px;">Medical Certificate</h3>
+				<link rel="stylesheet" href="/ayushman/assets/app/css/prescription.css">
+				<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+				<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+				<div class="previewHeader">
+				
+					<div class="doctorinfo">
+						<div class="doctorname">Dr.{{myprofile['userinfo'].name}}</div>
+						<div class="doctoreducation">{{myprofile['usereducation'].doctoreducation}}</div>
+						<div class="otherinfo">Regd No:{{myprofile['userinfo'].regno}}</div>
+					</div>
+					<div class="doctorinfo">
+						<div class="doctoraddress">
+							<div class="doctorname">{{myclinics['clinicinfo'][0].clinicname}}</div>
+							<div class="otherinfo">
+								{{myclinics['clinicinfo'][0].line1}},
+								{{myclinics['clinicinfo'][0].nearmark}},
+								{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+								{{myclinics['clinicinfo'][0].state}}
+								</br>
+								Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}
+							</div>
+						</div>						
+					</div>
+				</div>
+				<div class="separator" />
+				<div class="patientinfo">
+					<div class="patientname">
+						{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}})
+					</div>
+					<div class="appointmentdate">
+						{{appointment_info.DateAndTime}}
+					</div>
+				</div>
+				<div class="separator" />
+				<div id="quickprescription" style="margin-top:40px;text-align:justify;" class="body" >
+			This is to certify that I , Dr.{{myprofile['userinfo'].name}} have personally examined 
+			Mr./Mrs./Ms. {{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}}), r/o : {{appointment_info.Patientaddress}}
+			 ,whose signature/left thumb impression is verified as under.<span ng-if="appointment_info.PatientGender=='Male'">He</span> <span ng-if="appointment_info.PatientGender=='Female'">She</span><span ng-if="appointment_info.PatientGender==''">He / She</span> is suffering from {{examination_data.text_diagnosis}}<input ng-if="examination_data.text_diagnosis==''" id="diagnosis" value="{{examination_data.text_diagnosis}}" ng-model="examination_data.text_diagnosis" name="diagnosis" style="width:70px;"  class="textareapopup"/> and <span ng-if="appointment_info.PatientGender=='Male'">he</span> <span ng-if="appointment_info.PatientGender=='Female'">she</span> <span ng-if="appointment_info.PatientGender==''">he/she</span> is under my treatment.
+		</br></br>I do consider that <span ng-if="appointment_info.PatientGender=='Male'">his</span> <span ng-if="appointment_info.PatientGender=='Female'">her</span> <span ng-if="appointment_info.PatientGender==''">his/her</span> absence of <input id="days" value="{{days}}" ng-model="days" name="days" style="width:30px;"  class="textareapopup"/> days 
+		from <input readonly ng-model="startDate" value="{{startDate}}" id="startDate" name="startDate" class="textareapopup"  datepickercertificate /> i.e,with effect </br> from <input readonly value="{{fromDate}}" id="fromDate" name="fromDate" class="textareapopup" ng-model="fromDate"  datepickercertificate /> 
+		 to <input id="toDate" name="toDate" value="{{toDate}}" ng-change='checkErr(fromDate,toDate)' ng-model="toDate" class="textareapopup" datepickercertificate  />is absolutely necessary for restoration of <span ng-if="appointment_info.PatientGender=='Male'">his</span><span ng-if="appointment_info.PatientGender=='Female'">her</span><span ng-if="appointment_info.PatientGender==''">his / her</span> good health.
+	
+					</div>
+				<div style="margin-top:20px;">
+				<div style="margin-top:50px;float:left;">
+					<label>Signature / Thumb Impression</label>
+				</div>	
+				<div style="float:right;">
+					<img ng-if="myprofile['userinfo'].signature" src="{{myprofile['userinfo'].signature}}"></br>
+					<div>
+					<label>Signature of Doctor</label></br>
+					Date : {{appointment_info.DateAndTime}}
+					</div>
+				</div>
+				</div>
+				</div>
+			</div>
+		</td>
+		<td width="50px;" valign="top">
+			<div ng-if="examination_data.display_Rx!=false">
+			<input type="button" value="Rx" style="margin:5px;width:50px;" ng-click="$modalSuccess();" class="button" />
+			<input id="patientuserid" type="text" value="{{appointment_info.refappfromid_c}}" style="margin:5px;width:50px;display:none"/>
+			</div>
+			<input type="button" value="Print" style="margin:5px;width:50px;" ng-click="savebill();$modalCancel();" onclick="PrintElem('#medicalCertificate');" class="button" />
+		</td>
+	</table>
+</div>

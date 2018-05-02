@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>61</questions>
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>62</questions>
+		<layout>Vertical</layout>
+	</container>
+	<question>
+		<id>61</id>
+		<label>Left Joint</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>1,6,11,16,21,26,31,36,41,46</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>62</id>
+		<label>Right Joint</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>1,6,11,16,21,26,31,36,41,46</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>1</id>
+		<label>Knee Joint</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>51,2,3,4,5</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>51</id>
+		<label>Deformity </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Crepitus </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Range of movements </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Restricted</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>4</id>
+		<label>Tenderness </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Inflammation </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Shoulder Joint</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>52,7,8,9,10</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>52</id>
+		<label>Deformity </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Crepitus </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Range of movements </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Restricted</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>Tenderness </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Inflammation </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Elbow Joint</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>53,12,13,14,15</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>53</id>
+		<label>Deformity </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Crepitus </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Range of movements </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Restricted</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Tenderness </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Inflammation </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>Wrist Joint</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>54,17,18,19,20</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>54</id>
+		<label>Deformity </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Crepitus </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>18</id>
+		<label>Range of movements </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Restricted</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>19</id>
+		<label>Tenderness </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>20</id>
+		<label>Inflammation </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>21</id>
+		<label>Carpal Joints</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>55,22,23,24,25</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>55</id>
+		<label>Deformity </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>22</id>
+		<label>Crepitus </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>23</id>
+		<label>Range of movements</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Restricted</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>24</id>
+		<label>Tenderness </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>25</id>
+		<label>Inflammation </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>26</id>
+		<label>Metacarpal Joints</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>56,27,28,29,30</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>56</id>
+		<label>Deformity </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>27</id>
+		<label>Crepitus </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>28</id>
+		<label>Range of movements </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Restricted</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>29</id>
+		<label>Tenderness </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>30</id>
+		<label>Inflammation </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>31</id>
+		<label>Hip joint</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>57,32,33,34,35</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>57</id>
+		<label>Deformity </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>32</id>
+		<label>Crepitus </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>33</id>
+		<label>Range of movements </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Restricted</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>34</id>
+		<label>Tenderness </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>35</id>
+		<label>Inflammation </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>36</id>
+		<label>Ankle Joint</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>58,37,38,39,40</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>58</id>
+		<label>Deformity </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>37</id>
+		<label>Crepitus </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>38</id>
+		<label>Range of movements </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Restricted</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>39</id>
+		<label>Tenderness</label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>40</id>
+		<label>Inflammation </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>41</id>
+		<label>Tarsal joint</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>59,42,43,44,45</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>59</id>
+		<label>Deformity </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>42</id>
+		<label>Crepitus</label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>43</id>
+		<label>Range of movements</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Restricted</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>44</id>
+		<label>Tenderness </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>45</id>
+		<label>Inflammation </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>46</id>
+		<label>Metatarsal joint</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>60,47,48,49,50</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+		
+	<question>
+		<id>60</id>
+		<label>Deformity </label>
+		<type>DD</type>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		<answer>
+			<label>Present</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>47</id>
+		<label>Crepitus</label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>48</id>
+		<label>Range of movements </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Restricted</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>49</id>
+		<label>Tenderness </label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>50</id>
+		<label>Inflammation</label>
+		<type>DD</type>
+		
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>10</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>100</id>
+		<type>Separator</type>
+	</question>
+	
+</form>

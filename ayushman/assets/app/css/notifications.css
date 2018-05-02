@@ -1,0 +1,125 @@
+.sectionNotificationBox {
+	width:100%;
+	position:relative;
+	background-color:#fff;
+	padding: 0px;
+	  padding-left: 19px;
+	margin-top:5px;
+	display:block;
+	background-color: transparent;
+	font-family: Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 11px;
+	color: #1c75bc;
+}
+.notifications{
+	cursor:pointer;
+	position:relative;
+	float:right;
+	margin-top: -10px;
+	right:1;
+}
+.number{
+	font-size: 17px;
+	position: absolute;
+	color: Red;
+	position:absolute;
+	right: 18px;
+	top: -8px;
+}
+.notificationlist{
+	-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);
+	-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);
+	box-shadow: 0 4px 15px rgba(0,0,0,1);
+	position:left;
+	background-color:white;
+	width: 401px;
+	overflow:auto;
+	display:none;
+	top:32px;
+	z-index: 9;
+}
+.notification{
+	width:100%;
+	padding: 15px;
+	overflow:auto;
+		border-bottom: 1px solid rgb(92, 177, 182);
+}
+.notification:hover{
+	cursor:pointer;
+}
+.panel-heading{
+	background-color: rgb(92, 177, 182);
+	  border-top-right-radius: 0px;
+	    border-top-left-radius: 0px;
+	color:white;
+}
+.name{
+	float:left;
+	width:68%;
+}
+.date{
+	font-size:10px;
+	float:left;
+	width:32%;
+}
+.message{
+	float:left;
+	width:100%;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden;
+}
+.unread{
+	color:#f16060;
+}
+.read{
+	color:grey;
+	font-size: 15px !important;
+}
+
+.scrollbar
+{
+	background-color: #fff !important;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+.unreadbackground{
+	background-color: #E8F6F7 !important;
+}
+.readbackground{
+	background-color: #fff !important;
+}
+  .style-5:-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #ECECEC;
+}
+
+.style-5::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+.style-5::-webkit-scrollbar-thumb
+{
+	background-color: #04686E;
+	
+	background-image: -webkit-gradient(linear, 0 0, 0 100%,
+	                   color-stop(.5, rgba(255, 255, 255, .2)),
+					   color-stop(.5, transparent), to(transparent));
+}
+
+@media screen and (max-width: 767px) {
+	.sectionNotificationBox  .notifications {
+		cursor: pointer;
+		position: fixed;
+		float: right;
+		right: 40px;
+		top: 15px;
+	}
+	.read {
+		color: #fff ;
+	}
+					   }

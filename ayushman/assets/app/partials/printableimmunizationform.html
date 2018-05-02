@@ -1,0 +1,175 @@
+<head>
+	<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+	<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+	<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+	<script type="text/javascript">
+		$(document).ready(function() {
+		$("#immunizationtable").hide();		
+		});
+		
+	</script>
+
+</head>
+<body>
+<table id="immunizationtable">
+<style>
+.chartfrontdiv
+{
+	width: 45%;
+	float: left;
+	
+}
+.linecolor
+{
+	color:#04706d !important;
+}
+.aligncenter{
+	text-align: center;
+}
+.chartcenterdiv
+{
+	width: 27.5%;
+	float: left;
+	
+}
+.chartlastdiv
+{
+	width: 27.5%;
+	float: left;
+	
+}
+.containerdiv
+{
+display: block;
+min-width: 200px;
+width:100%;
+}
+.prescription {
+	margin:10px;
+	text-align:start;
+	color:black;
+	font-family:Arial, Helvetica, sans-serif;
+	min-height:768px;
+}
+.previewHeader{
+	position:relative;
+	height:auto;
+	min-height:78px;
+}
+.doctorinfo{
+	float:left;
+	width:50%;
+}
+.doctorname{
+	font-weight: 900;
+	font-size:10pt;
+}
+.doctoreducation{
+	font-size:14px;
+}
+.otherinfo{
+	font-size:14px;
+}
+.separator{
+	border:1px solid black;
+	display:block;width:100%;margin-top:10px;margin-bottom:10px;
+	float:left;
+}
+.patientinfo{
+	float:left;
+	width:100%;
+	min-height: 30px;
+	position:relative;
+}
+.patientname{
+	font-weight: 700;
+	font-size:14px;
+	float:left;
+	width:70%;
+}
+.appointmentdate{
+	float:left;
+	text-align:right;
+	width:30%;
+	font-weight: 700;
+	font-size:12px;
+}
+
+
+</style>
+	<tr>
+		<td style="width:613px;" class="preview" >
+			<div id="prescriptionPrintImmu" class="prescription">
+				
+				<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+				<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+				<div class="previewHeader">
+					<div class="doctorinfo">
+						<div class="doctorname">Dr. {{myprofile['userinfo'].name}}</div>
+						<div class="doctoreducation">{{myprofile['usereducation'].doctoreducation}}</div>
+						<div class="otherinfo">Regd No.:{{myprofile['userinfo'].regno}}</div>
+					</div>
+					<div class="doctorinfo">
+						<div class="doctoraddress">
+							<div class="doctorname">{{myclinics['clinicinfo'][0].clinicname}}</div>
+							<div class="otherinfo">
+								{{myclinics['clinicinfo'][0].line1}},
+								{{myclinics['clinicinfo'][0].nearmark}},
+								{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+								{{myclinics['clinicinfo'][0].state}}
+								</br>
+								Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}
+							</div>
+						</div>						
+					</div>
+				</div>
+				<div class="separator" />
+				<div class="patientinfo">
+					<div class="patientname">
+						{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}})
+					</div>
+					<div class="appointmentdate">
+						{{appointment_info.DateAndTime}}
+					</div>
+				</div>
+				<div>
+				<hr class="containerdiv linecolor">  	
+				<div class="containerdiv">
+		 <div class="chartfrontdiv ">Immunization</div> 
+		 
+				 <div class="chartlastdiv aligncenter">Actual Date</div>
+				 <div class="chartlastdiv aligncenter">Status</div>
+		</div>
+		<hr class="containerdiv linecolor">  
+       <div  ng-repeat="group in printgroups " >
+		<div >
+		{{group[0][2]}} Due On {{dates[group[0][3]]}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': group.content, 'glyphicon-chevron-right': !group.content}"></i>
+		</div>
+		
+	
+		<br/>
+	
+	
+	  	  <div ng-repeat="name in group" class="containerdiv">
+				 <div class="containerdiv">
+						 <div class="chartfrontdiv">{{name[1]}}</div> 
+						 
+						 <div class="chartlastdiv aligncenter">{{actualdates[name[0]]}}</div>
+						 <div class="chartlastdiv aligncenter" ng-if="actualdates[name[0]]">Done</div>
+						 <div class="chartlastdiv aligncenter" style="float:right !important;" ng-if="!actualdates[name[0]]">Pending</div>
+						 
+				 </div>
+				 <br/>
+				 
+	  
+		  </div>
+		<hr class="containerdiv linecolor">  
+    </div>
+    
+   
+  </div>
+				
+		</td>
+		</tr>
+	</table>
+</body>

@@ -1,0 +1,51 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,2,3</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>4,5,6</questions>
+		<layout>Vertical</layout>
+	</container>
+	<question>
+		<id>1</id>
+		<label>Special Investigation</label>
+		<type>Label</type>	
+		
+	</question>
+	<question>
+		<id>2</id>
+		<label>D and C </label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>3</id>
+		<label>Endo HP </label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>4</id>
+		<label>HSG </label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>5</id>
+		<label>Laparoscopy </label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>6</id>
+		<label>Others </label>
+		<type>Text</type>		
+	</question>
+</form>	

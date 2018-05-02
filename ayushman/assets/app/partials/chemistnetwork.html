@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Table</title>
+    <meta name="viewport"
+          content="width = device-width, initial-scale = 1.0, minimum-scale = 1.0, maximum-scale = 1.0, user-scalable = no"/>
+    <link href="../assets/app/css/table.css" rel="stylesheet" type="text/css"/>
+    <link href="../assets/app/css/footable.core.css?v=2-0-1" rel="stylesheet" type="text/css"/>
+    <link href="../assets/app/css/footable-demos.css" rel="stylesheet" type="text/css"/>
+   
+    <script src="../assets/app/js/extra/footable.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/footable.sort.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/footable.filter.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/footable.paginate.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/bootstrap-tab.js" type="text/javascript"></script>
+   
+<style>
+	.selecteditem{background:#a6c9e2;}	
+</style>
+
+<style type="text/css">.BreakWord {word-break: break-all; }
+	    h4 {line-height: 2.1};
+</style>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#loading').dialog({
+				autoOpen: false,
+				show: "fade",
+				hide: "fade",
+				modal: true,
+				height: "30",
+				resizable: false,
+				width: "100px"
+			});
+			$(".ui-dialog-titlebar").hide();
+		$(function () {
+			   $('table').footable({ bookmarkable: { enabled: true }}).bind({
+				'footable_filtering': function (e) {
+					var selected = $('.filter-status').find(':selected').text();
+					if (selected && selected.length > 0) {
+						e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
+						e.clear = !e.filter;
+					}
+				},
+				'footable_filtered': function() {
+					var count = $('table.demo tbody tr:not(.footable-filtered)').length;
+					$('.row-count').html(count + ' rows found');
+				}
+			});
+
+			$('.clear-filter').click(function (e) {
+				e.preventDefault();
+				$('.filter-status').val('');
+				$('table.demo').trigger('footable_clear_filter');
+				$('.row-count').html('');
+			});
+
+			$('.filter-status').change(function (e) {
+				e.preventDefault();
+				$('table.demo').data('footable-filter').filter( $('#chemistlist').val() );
+				$('table.demo').data('footable-filter').filter( $('#preferedchemistlist').val() );
+				$('table.demo').data('footable-filter').filter( $('#dclist').val() );
+				$('table.demo').data('footable-filter').filter( $('#prefereddclist').val() );
+				
+			});
+			
+			
+		});
+		$('table').trigger('footable_clear_filter');
+		
+		// Added for setting priority
+			selectedRow = "";
+	
+			//Added for priority setting
+			$('#move-up').click(moveUp);
+			$('#move-down').click(moveDown);
+			$(".lblchemist").each(function(index, element){
+			
+			$(this).text(index+1+". ");
+				});
+			// Add ends here
+
+	});
+    	// Functions added for priority setting
+	
+	function moveUp() {
+		if(selectedRow == ''){
+			alert('Please select Diagnostic center in the list');
+		}
+		if(!$(selectedRow).prev().hasClass('header')){
+			$(selectedRow).insertBefore($(selectedRow).prev());
+		}
+		//alert($(selectedRow).text());
+		changePriority();
+	}
+	function select(row){
+		selectedRow = row;
+		$(row).siblings().removeClass('selecteditem');
+		$(row).addClass('selecteditem');	
+	}
+	function moveDown() {
+		if(selectedRow == ''){
+			alert('Please select Diagnostic center in the list');
+		}
+		if(!$(selectedRow).next().hasClass('footer')){
+			$(selectedRow).insertAfter($(selectedRow).next());
+		}
+		
+		changePriority();
+	}
+	
+		function changePriority(){		
+		$(".lblchemist").each(function(index, element){
+			//alert("setting index values");
+			//alert($(this).text(index+1+". "));
+			$(this).text(index+1+". ");
+		});
+		$(".hfchemistid").each(function(index,element) {
+			$.ajax({
+				url:"/ayushman/csettings/setchemistpriority?index="+index+'&chemist='+this.value,
+				success: function( data ) {
+					
+				},
+				error : function(){alert("error while setting priority");}					
+			});	
+		});
+	}
+	
+	// functions addition ends here
+
+	
+</script>
+</head>
+<body>
+	<div style="align-items:center;justify-content:center;" class="demo-container">
+		<div style="margin:auto;width:85%;max-width:1030px;background-color: white;padding:10px;" class="tab-content">
+		<h4 class="headingcls">My Chemists Network</h4>
+			<div ng-if="chemistsinnetwork.length > 0">
+            <table class="table demo" data-filter="#preferedchemistlist" data-page-size="10"  >
+                <thead style="background: #60b3b3;color: white;">
+				<div class="bodytext_error" style="margin:5px;" id="Note">Select a chemist in the list and set priority using '^' or 'v' button</div>	
+                <tr>
+                    <th data-toggle="true">
+                        Pharmacy Name
+                    </th>
+                    <th >
+                        Location
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    <th >
+                        Home Delivery
+                    </th>
+					<th >
+                       Actions 
+                    </th>
+					<th >
+							<input  style="float:right" onclick="moveUp();" type="button" title="Move Up"   id="move-up" value=" ^ " />
+					</th>
+                </tr>
+                </thead>
+                <tbody>
+				<input class="lblchemist" type="hidden" ></input>				
+                <tr onclick="select(this);" ng-repeat= "record in chemists" ng-if="record.id == chemistsinnetwork[0][0] || record.id == chemistsinnetwork[1][0] || record.id == chemistsinnetwork[2][0] || record.id == chemistsinnetwork[3][0] || record.id == chemistsinnetwork[4][0] || record.id == chemistsinnetwork[5][0]" on-finish-render="ngRepeatFinished">
+                    <td><img src="/ayushman/assets/images/Success_Arrow.png"/>&nbsp;&nbsp;{{record.medicalname}}</td>
+                    <td>{{record.location}}</td>
+                    <td>{{record.city}}</td>
+                    <td>{{record.homedelivery}}</td>
+                    <td><a href="javascript:void(0);" ng-click="removeChemist(record.id);" style="color: #0000FF;font:bold;"> Remove From Network </a></td>
+					<td> <input type="hidden" class="hfchemistid" value={{record.id}}> </td>
+                </tr>                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			<div class="col-full footer">
+				<div style="float:right">
+						<input type="button" onclick="moveDown();" title="Move Down" style="width: 27px;"  id="move-down" value=" v " />
+				</div>
+			</div>
+			
+			<div style="width:100%;align:center;border:1px solid black" class="form" align="center" ng-if="show">
+				No Records Found
+			</div>
+		</div>
+		<div >
+            <p>
+                Search Chemist : <input id="chemistlist" type="text"/>
+                <a href="#clear" class="clear-filter" title="clear filter">[clear]</a>
+            </p>
+            <table class="table demo" data-filter="#chemistlist" data-page-size="10"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th data-toggle="true">
+                        Pharmacy Name
+                    </th>
+                    <th >
+                        Location
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    <th >
+                        Home Delivery
+                    </th>
+					<th >
+                        Actions
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "record in chemists" on-finish-render="ngRepeatFinished">
+                    <td>{{record.medicalname}}</td>
+                    <td>{{record.location}}</td>
+                    <td>{{record.city}}</td>
+                    <td>{{record.homedelivery}}</td>
+                    <td><a href="javascript:void(0);" ng-click="addChemist(record.userid,record.id);" style="color: #0000FF;font:bold;"> Attach Chemist </a></td>
+                </tr>                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			<div style="width:100%;align:center;border:1px solid black" class="form" align="center" ng-if="show">
+				No Records Found
+			</div>
+		</div>
+		</div>
+	</div>
+</body>
+</html>

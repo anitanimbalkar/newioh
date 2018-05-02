@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1</questions>
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>7,13</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>Right - lower - limb</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>14,15,13</follow>
+		</answer>
+		<answer>
+			<label>No</label>	
+		</answer>
+	</question>
+	<question>
+		<id>14</id>
+		<label>Oedema</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>2,3</follow>
+		</answer>
+		<answer>
+			<label>No</label>	
+		</answer>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Varicose veins</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>8,6</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>2</id>
+		<label>Type</label>
+		<type>DD</type>
+		<answer>
+			<label>Pitting</label>
+		</answer>
+		<answer>
+			<label>Non Pitting</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>3</id>
+		<label>Severity</label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	
+	
+	<question>
+		<id>5</id>
+		<label>Type </label>
+		<type>DD</type>
+		<answer>
+			<label>Pitting</label>
+		</answer>
+		<answer>
+			<label>Non Pitting</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Severity</label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Left - lower - limb</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>14,15,13</follow>
+		</answer>
+		<answer>
+			<label>No</label>	
+		</answer>
+	</question>
+	
+	
+	
+	<question>
+		<id>8</id>
+		<label>Upto </label>
+		<type>DD</type>
+		<answer>
+			<label> Ankle</label>
+		</answer>
+		<answer>
+			<label> Knee</label>
+		</answer>
+		<answer>
+			<label> Thigh</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>Severity </label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Severity </label>
+		<type>DD</type>
+		<answer>
+			<label>Mild</label>
+		</answer>
+		<answer>
+			<label>Moderate</label>
+		</answer>
+		<answer>
+			<label>Severe</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Others</label>
+		<type>Text</type>
+	</question>
+	
+</form>

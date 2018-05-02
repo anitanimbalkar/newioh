@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1</questions>
+		<layout>Vertical</layout>
+	</container>
+	<container>
+		<id>2</id>
+		<questions>9,17</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<question>
+		<id>1</id>
+		<label>Left Feet</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>20,2,4,7,18</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>20</id>
+		<label>Nodules</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+			
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>2</id>
+		<label>Temperature</label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Increased</label>
+		</answer>
+		<answer>
+			<label>Decreased</label>
+		</answer>
+	</question>
+	
+	
+	<question>
+		<id>4</id>
+		<label>Discolouration</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>5</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Color </label>
+		<type>DD</type>
+		<answer>
+			<label>Red</label>
+		</answer>
+		<answer>
+			<label>Blue</label>
+		</answer>
+		<answer>
+			<label>Other</label>
+			<follow>6</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>6</id>
+		<label>Other</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>7</id>
+		<label>Corns </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>8</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>8</id>
+		<label>Location</label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>18</id>
+		<label>Callosities</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>8</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>9</id>
+		<label>Right Feet</label>
+		<type>DD</type>
+		<answer>
+			<label>Yes</label>
+			<follow>21,10,12,15,19</follow>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+	</question>
+	<question>
+		<id>21</id>
+		<label>Nodules</label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>10</id>
+		<label>Temperature </label>
+		<type>DD</type>
+		<answer>
+			<label>Normal</label>
+		</answer>
+		<answer>
+			<label>Abnormal</label>
+			<follow>11</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>11</id>
+		<label>Status </label>
+		<type>DD</type>
+		<answer>
+			<label>Increased</label>
+		</answer>
+		<answer>
+			<label>Decreased</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Discolouration </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>13</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Color</label>
+		<type>DD</type>
+		<answer>
+			<label>Red</label>
+		</answer>
+		<answer>
+			<label>Blue</label>
+		</answer>
+		<answer>
+			<label>Other</label>
+			<follow>14</follow>
+		</answer>
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Other</label>
+		<type>Text</type>
+	</question>
+	
+	<question>
+		<id>15</id>
+		<label>Corns </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>16</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+		
+		
+	</question>
+	
+	<question>
+		<id>16</id>
+		<label>Location </label>
+		<type>Text</type>
+	</question>
+	<question>
+		<id>19</id>
+		<label>Callosities </label>
+		<type>DD</type>
+		<answer>
+			<label>Present</label>
+			<follow>8</follow>
+		</answer>
+		<answer>
+			<label>Absent</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>17</id>
+		<label>Other </label>
+		<type>Text</type>
+	</question>
+</form>

@@ -1,0 +1,161 @@
+.preview {
+	color:black;
+	box-shadow:2px 7px 19px #888888;
+	-moz-box-shadow: 2px 4px 15px #888888;
+	-webkit-box-shadow: 2 7px 19px #888888;
+	width:100%;
+	position:relative;
+}
+.prescription {
+	margin:10px;
+	text-align:start;
+	color:black;
+	font-family:Arial, Helvetica, sans-serif;
+	min-height:768px;
+}
+.previewHeader{
+	position:relative;
+	height:auto;
+	min-height:78px;
+}
+.doctorinfo{
+	float:left;
+	width:50%;
+}
+.doctorname{
+	font-weight: 900;
+	font-size:10pt;
+}
+.doctoreducation{
+	font-size:14px;
+}
+.otherinfo{
+	font-size:14px;
+}
+.separator{
+	border:1px solid black;
+	display:block;width:100%;margin-top:10px;margin-bottom:10px;
+	float:left;
+}
+.patientinfo{
+	float:left;
+	width:100%;
+	min-height: 30px;
+	position:relative;
+}
+.patientname{
+	font-weight: 700;
+	font-size:14px;
+	float:left;
+	width:70%;
+}
+.appointmentdate{
+	float:left;
+	text-align:right;
+	width:30%;
+	font-weight: 700;
+	font-size:12px;
+}
+.vitals{
+	width:100%;
+	position:relative;
+	float:left;
+	text-align: right;
+	font-size:14px;
+}
+.signs{
+	margin-left:2%;
+	float:right;
+}
+
+.body{
+	width:100%;
+	min-height: 40px;
+	position:relative;
+	float:left;
+	text-align: left;
+	font-size:14px;
+}
+.heading{
+	font-weight: 700;
+	font-size:14px;
+	float:left;
+
+}
+.details{
+	font-size:14px;
+	float:left;
+}
+.rows{
+	float:left;
+	width:100%;
+	padding-top: 15px;
+}
+.fragment{
+	font-size:14px !important;
+	color:black !important;
+}
+.signature{
+	float:left;
+	min-height:40px;
+	width:100%;
+	text-align:right;
+	font-size:14px;
+	padding-right:60px;
+	padding-top: 20px;
+}
+.note{
+	float:left;
+	width:100%;
+	text-align:center;
+	font-size:9px;
+	margin-top:10px;
+	color:gray;
+}
+@media print{
+	.signature{
+		padding-right:0px;
+	}
+	
+	.note{
+		position:fixed;
+		bottom: 0;
+		width: 100%;
+		text-align:center;
+	}
+}
+@media print and (max-width: 5.9in){
+	.fragment {
+		font-size :11px !important;
+	}
+	.doctorname{
+		font-size :13px !important;
+	} 
+	.doctoreducation {
+		font-size :11px !important;
+	}
+	.otherinfo {
+		font-size :11px !important;
+	}
+	.patientname {
+		font-size :11px !important;
+	}
+	.appointmentdate {
+		font-size :11px !important;
+	}
+	.vitals {
+		font-size :12px !important;
+	}
+	.body {
+		font-size :12px !important;
+	}
+	.heading {
+		font-size :11px !important;
+	}
+	.details {
+		font-size :12px !important;
+	}
+	.signature{
+		font-size :11px !important;
+	}
+}

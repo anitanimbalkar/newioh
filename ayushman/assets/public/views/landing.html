@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>India Online Health</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+  	<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="navbar header">
+      <div class="container">
+	<div class="logo">
+	  <img src='/ayushman/assets/images/Logo.png' />
+	  <div class="navbar-header pull-right">
+            <ul class="nav navbar-nav navbar-right">          
+              <li ng-click="alert_user();"><a href="#"><span class="endConsultation"></span><span class="menuText">End Consultation</span></a></li>
+            </ul>
+	  </div>
+	</div>
+      </div>
+
+    </div>
+    <div class="container body-content"> 
+      <!-- Example row of columns -->
+      <div class="row main-content">
+	<div class="col-lg-4 content-col">
+	  <div class="sectionBox">
+            <h2 class="blue"><span class="icons iconEMR">EMR</span></h2>
+            <div class="emrProfileContainer">
+	      <img ng-if='appointment_info.PatinetPhoto == ""' src="/ayushman/assets/public/img/Profile_Pic.png" alt="Profile_Pic.png">
+              <img ng-if='appointment_info.PatinetPhoto != ""' ng-src="{{appointment_info.PatientPhoto}}" alt="Profile_Pic.png">
+              <div class="emrProfile">
+		<p class="name">{{appointment_info.Patientname}}</p>
+		<p class="age">{{appointment_info.age}}</p>
+		<p class="descriptions">{{appointment_info.incidentsname_c}}</p>
+              </div>
+            </div>
+            <div class="emrDetails contentDetails">
+              <h3>Allergies</h3>
+              <p ng-if="emr_snapshot.allergies.join() != '' ">{{emr_snapshot.allergies.join()}}.</p>
+	      <p ng-if="emr_snapshot.allergies.join() == '' ">No information provided.</p>
+              <hr />
+              <h3>Past Diseases</h3>
+	      <p ng-if="emr_snapshot.past_diseases.join() != '' ">{{emr_snapshot.past_diseases.join()}}.</p>
+              <p ng-if="emr_snapshot.past_diseases.join() == '' ">No information provided.</p>
+              <hr />
+              <h3>Major Illness and Treatment History</h3>
+	      <p ng-if="emr_snapshot.past_illness.join() != '' ">{{emr_snapshot.past_illness.join()}}.</p>
+	      <p ng-if="emr_snapshot.past_illness.join() == '' ">No information provided.</p>
+	      <hr />
+	      <h3>Surgical Procedures</h3>
+	      <p ng-if="emr_snapshot.past_surgeries.join() != '' ">{{emr_snapshot.past_surgeries.join()}}.</p>
+	      <p ng-if="emr_snapshot.past_surgeries.join() == '' ">No information provided.</p>
+            </div>
+            <div class="detailsLink blue"> <a href="#!/emr/{{appointment_info.appointment_id}}">Veiw Full EMR</a> </div>
+	  </div>
+	</div>
+	<div class="col-lg-4 content-col">
+	  <div class="sectionBox">
+            <h2 class="orange"><span class="icons iconNotes">Notes</span></h2>
+            <textarea class="notesComments contentDetails smallContent" placeholder="Write notes here" ng-model="doctor_notes.notes" style='resize: none'></textarea>
+            <div class="detailsLink orange"> <a href="javascript:void(0);" ng-click="save_notes(appointment_info.appointment_id, appointment_info.refappfromid_c);">Save Notes</a> </div>
+	  </div>
+	  <div class="sectionBox">
+            <h2 class="red"><span class="icons iconWarning">Risk Factors</span></h2>
+            <div class="riskFactorDetails contentDetails smallContent">
+              <ul ng-repeat="risk in risks">
+		<li ng-show="!(risk.edit_mode)">
+		  {{risk.risk_text}} 
+		  <span ng-if='risk.writer_id == appointment_info.doctorid' class="iconDelete" ng-click="delete_risk($index,appointment_info.refappfromid_c)"></span>
+		  <span ng-if='risk.writer_id == appointment_info.doctorid' class="iconEdit" ng-click="risk.edit_mode = true"></span>
+		</li>
+		<li ng-show="(risk.edit_mode)">
+		  <input type="text" ng-model="risk.risk_text" />
+		  <div class="iconSave" ng-click="edit_risk($index,appointment_info.refappfromid_c);risk.edit_mode=false"></div>
+		</li>
+              </ul>
+            </div>
+            <div class="detailsLink red">
+              <input type="text" ng-model="new_risk.text"/>
+              <a href="javascript:void(0);" ng-click="add_risk();">Enter Risk</a> </div>
+	  </div>
+	</div>
+	<div class="col-lg-4 content-col">
+	  <div class="sectionBox">
+            <h2 class="green"><span class="icons iconTracker">Trackers</span></h2>
+            <div class="trackerContent contentDetails smallContent">
+	      <div class="tileGridStyle" ng-if='tracker_info["current_tracker_id"] != null' ng-grid="currentGrid;"></div>
+	      <h3 ng-if='tracker_info["current_tracker_id"] == null' >No trackers available for this consultation.</h3>
+            </div>
+            <div class="detailsLink green">
+	      <a href="#!/tracker/{{appointment_info.appointment_id}}">View all Trackers</a>
+	    </div>
+	  </div>
+	  <div class="sectionBox">
+            <h2 class="darkblue"><span class="icons iconExamination">Examination</span></h2>
+            <div class="examinationContent contentDetails smallContent">
+	      <h3 ng-if="pastAppData.maincomplaint">Main Complaint</h3>
+	      <p ng-if="pastAppData.maincomplaint">{{pastAppData.maincomplaint}}.</p>
+	      <h3 ng-if="pastAppData.diagnosis">Diagnosis</h3>
+	      <p ng-if="pastAppData.diagnosis">{{pastAppData.diagnosis}}.</p>
+	      <h3 ng-if="pastAppData.investigation">Investigation</h3>
+	      <p ng-if="pastAppData.investigation">{{pastAppData.investigation}}.</p>
+	      <h3 ng-if="pastAppData.medicine">Medicine</h3>
+	      <p ng-if="pastAppData.medicine">{{pastAppData.medicine}}.</p>
+	      <h3 ng-if="!pastAppData.maincomplaint && !pastAppData.diagnosis && !pastAppData.investigation && !pastAppData.medicine">No Past Data</h3>
+            </div>
+            <div class="detailsLink darkblue"> <a href="#!/examination/{{appointment_info.appointment_id}}">Launch Examination</a> </div>
+	  </div>
+	</div>
+      </div>
+    </div>
+    <!-- /container --> 
+  </body>
+</html>

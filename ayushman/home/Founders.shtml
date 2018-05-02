@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>India Online Health......</title>
+<meta name="Description" content="India Online Health, online health, India online, health online, India Health, ">
+<META name="keywords" content="India Online Health, online health, India online, health online, India Health, ">
+<link href="/ayushman/assets/css/web2.css" rel="stylesheet" type="text/css" />
+<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="icon" type="image/jpg" href="/ayushman/assets/images/smallLogo.jpg">
+<link rel="shortcut icon" href="/ayushman/assets/images/smallLogo"/>
+<script src="/ayushman/assets/js/jquery-1.6.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/ayushman/assets/js/fx.js"></script>
+<link rel="stylesheet" href="/ayushman/assets/css/login/style.css" type="text/css" media="screen" />
+
+<script language="Javascript">
+function closelogin(){
+					$("#panel4").toggle("fast");
+					
+
+		}
+</script>
+<script type="text/JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<style type="text/css">
+<!--
+.style1 {color: #FFFFFF}
+body {
+	background-image: url(/ayushman/assets/images/2nd_bg.png);
+}
+.style2 {
+	color: #083F72;
+	font-weight: bold;
+}
+-->
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /></head>
+
+<body onload="MM_preloadImages('/ayushman/assets/images/Btn_HowitWorksR.png','/ayushman/assets/images/Btn_ConsumersR.png','/ayushman/assets/images/Btn_doctorsR.png','/ayushman/assets/images/Btn_serviceProvidersR.png','/ayushman/assets/images/Btn_CompanyR.png','/ayushman/assets/images/Btn_homeR.png')">
+<table width="989" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="4613" colspan="8"><!--#include file="header.html"--></td>
+  </tr>
+  <tr>
+    <td height="316" colspan="8" valign="top"><!--#include file="headerImages.html"--></td>
+  </tr>
+  <tr>
+    <td height="46" colspan="8" valign="middle" class="bodytext"><!--#include file="MarqueeMsg.html"--></td>
+  </tr>
+  <tr>
+    <td colspan="8" align="left" valign="top"><table width="989" height="613" border="0" cellpadding="0" cellspacing="0">
+      
+      <tr>
+        <td height="34">&nbsp;</td>
+        <td colspan="6" class="style1 bodytext"><strong>Founders</strong></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td width="14" height="541">&nbsp;</td>
+        <td colspan="6" align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" style="padding-top:10px;">
+          <tr>
+            <td width="11%"><span class="bodytext"><img width="97" height="99" src="/ayushman/assets/images/Dr. Sundarararajan.jpg" /></span></td>
+            <td width="38%" valign="bottom" class="bodytext"><strong>Dr. S S  Sundarararajan</strong>:<br />
+              Dr. Sundararajan,  is a co-founder of the company, responsible for strategy and business  development&nbsp; care Services as Co-Founder  with focus on Health care delivery at work place and at&nbsp; home.<br />
+            </span></td>
+            <td width="2%" align="right">&nbsp;</td>
+            <td width="11%" align="left"><img src="/ayushman/assets/images/Pankaj Saxena.jpg" width="101" height="106" /></td>
+            <td width="38%" colspan="2" align="left" valign="bottom"><p class="bodytext"><strong>Pankaj Saxena</strong><br />Pankaj Saxena is a co-founder of the company, responsible for setting up and managing operations of the company.</p>              </td>
+            </tr>
+          <tr>
+            <td colspan="2" class="bodytext">Sundararajan has a M.S., and Ph.D., in Electrical Engineering with  specialization in Computer Applications in &ldquo;Real Time Enterprise&rdquo; from The Ohio  State University.<br />In a career spanning over three decades,  he has major contributions to his credit in successfully launching  several&nbsp; products in the market place covering diverse application&nbsp; such as Industrial and Electro-Medical  Instrumentation, Messaging, and IT based Customer facing Enterprise solutions,  Manufacturing focused ERP implementation etc.<br />
+  &nbsp;His original contributions&nbsp;to  the&nbsp;IT based Control &amp; Instrumentation solution space have resulted in  several recognitions from corporate bodies and academic community. He has held  senior positions in several companies including DCM Dataproducts, and  Selectica, San Jose. <br />
+              He is on the Board of Directors of  AccelTree Technologies which is into Mobile Enterprise Solutions. As a Lead  Mentor with Mentor  square he assists start-ups with&nbsp; Product  formulations and &lsquo;go-to-market&rsquo; strategies.<br />
+              He has been involved in Pune academic  circle activities for over two decades. He is also Adjunct Professor, College of Engineering, Pune and a Senate member.  Dr. Sundararajan has presented several papers in National and International  seminars.<br />
+              He was recognized by Department of Small  Scale Industries, Government of India in the year 1993 for design of a Tamper  proof, 3-phase energy meter.</span></td>
+            <td>&nbsp;</td>
+            <td colspan="3" align="left" valign="top" class="bodytext" style="padding-top:13px;">Pankaj Saxena, is an Electrical Engineer from Indian Institute of Science, Bangalore and has over three decades
+              of industry experience in product development, application development and profit center management. His industry
+              experience spans from Industrial Control systems to Messaging technology, Storage Software to Interactive Selling
+              Solutions for large enterprises.
+              <p class="bodytext">Since mid nineties, Pankaj has assumed leadership roles in Indian as well as large multinational companies.
+                In early nineties, he set up and managed complete operations of one of country&rsquo;s first X-400 based Messaging
+                service for Datapro. In early 2000, he joined Selectica Inc, responsible for building Enterprise Applications
+                for selling complex configurable products and services for large clients in Asia pacific region. In 2004, he
+                joined IBM to build Storage Software lab in India for developing Storage Virtualization solutions. </p>
+              <p class="bodytext">Pankaj co-founded Ayushman Pvt. Ltd., a company committed to bring telemedicine practice at grass root level
+                in India. He is currently engaged in developing a Platform for Healthcare Service Providers to bring benefits
+                of advancements in IT and Communication technologies to Consumers. The Platform is expected to improve medical
+                record keeping for the patients and enable Video consultation with their Doctors without constraints of time,
+                distance or location.</p></td>
+          </tr>
+          </table>        </td>
+        <td width="13">&nbsp;</td>
+      </tr>
+      
+      <tr>
+        <td height="19">&nbsp;</td>
+        <td width="273">&nbsp;</td>
+        <td width="18">&nbsp;</td>
+        <td width="273">&nbsp;</td>
+        <td width="18">&nbsp;</td>
+        <td width="237">&nbsp;</td>
+        <td width="143" align="center" valign="top" class="bodytext">&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+ </table></td>
+  </tr>
+</table>
+<!--#include file="footer.html"-->             
+<div id="panel4" width="230" class="panel" style="z-index: 50000;;background:#E8E8E8;border:3px solid #909090;" >
+					<form id="loginformid" action="/ayushman/cuser/login"  method="post" accept-charset="utf-8">
+									<table border="0">
+									<tr>
+											<td >&nbsp;</td>
+											<td align="right"><a href="#" name="xy" style="color:white;"  onclick="closelogin()"><img src="/ayushman/assets/images/closed.png" width="27" height="25" border="0" /></a></td>
+										</tr>
+										<tr>
+											<td  colspan="2"  style="color: #00467F;font-family:Arial,Helvetica,sans-serif;font-size:19px;">Secure Sign In</td>
+										</tr>
+										<tr>
+											<td  colspan="2" >&nbsp;</td>
+										</tr>
+										<tr>
+											<td colspan="2" class="bodytext" id="Username">Username</td>
+										</tr>
+										<tr style="height:2px;">
+											<td colspan="2"><input id="email" name="email" tabindex="100" type="text"  style="width:200px;" autocomplete="off"/></td>
+										</tr>
+										<tr>
+											<td  colspan="2" >&nbsp;</td>
+										</tr>
+										<tr style="height:2px;">
+											<td class="bodytext" >Password  </td>
+											<td  class="bodytext" ><div align="right"><a href="/ayushman/cpasswordmanager/view" style="color:#00467F;">Forgot Password?</a></div> </td>
+										</tr>
+										<tr style="height:2px;">
+											<td colspan="2"> <input type="password" id="password" tabindex="101" name="password"  style="width:200px;"  /> </td>
+										</tr>
+										<tr>
+											<td>&nbsp;</td>
+										</tr>
+										<tr style="height:2px;">
+										
+                    					<td width="70"><input type="submit" style="border:1px solid #003058;border-radius:5px 5px 5px 5px;background:#003058;color:white;font-size:13px;padding;3px;text-transform:uppercase;height:25px;font-family:Arial,Helvetica,sans-serif;" value="Sign IN" name="name"   /></td>
+										<td width="130">&nbsp;</td>
+
+										</tr>
+										<tr>
+											<td>&nbsp;</td>
+										</tr>
+								</table>
+								</form>
+					</div>
+			
+</body>
+</html>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Table</title>
+    <meta name="viewport"
+          content="width = device-width, initial-scale = 1.0, minimum-scale = 1.0, maximum-scale = 1.0, user-scalable = no"/>
+    <link href="../assets/app/css/table.css" rel="stylesheet" type="text/css"/>
+    <link href="../assets/app/css/footable.core.css?v=2-0-1" rel="stylesheet" type="text/css"/>
+    <link href="../assets/app/css/footable-demos.css" rel="stylesheet" type="text/css"/>
+   
+    <script src="../assets/app/js/extra/footable.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/footable.sort.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/footable.filter.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/footable.paginate.js?v=2-0-1" type="text/javascript"></script>
+    <script src="../assets/app/js/extra/bootstrap-tab.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	$(document).ready(function() {
+		$(function(){
+			$( "input[name=dob]" ).datepicker({yearRange: "-120:+0",maxDate: '0',changeMonth: true,changeYear: true,  dateFormat: 'dd M yy'});
+		});
+		$('#nonregisteredUser').dialog({
+			autoOpen: false,			
+			show: "fade",
+			hide: "fade",
+			width: "auto",
+			modal: true,
+			height: "auto",
+			resize: "auto",
+			resizable: false,
+			fluid:true,
+			maxWidth:'800',			
+			maxHeight:'600',
+			open: function(){
+				jQuery('.ui-widget-overlay').bind('click',function(){
+					jQuery('#nonregisteredUser').dialog('close');
+					$('#topNav').show();
+				})
+			}
+		});
+		$('#connectnow').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			width: "auto",
+			modal: true,
+			height: "auto",
+			resize: "auto",
+			resizable: false,
+			fluid:true,
+			maxWidth:'800'
+		});
+		$('#addtonetwork').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			width: "auto",
+			modal: true,
+			height: "auto",
+			resize: "auto",
+			resizable: false,
+			fluid:true,
+			maxWidth:'500'
+		});
+		$('#patloading').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			modal: true,
+			height: "30",
+			resizable: false,
+			width: "100px",
+			fluid:true,
+			maxWidth:'500'
+		});
+		$('#addNewPatient').dialog({
+			autoOpen: false,
+			show: "fade",
+			hide: "fade",
+			width: "421px",
+			modal: true,
+			height: "auto",
+			resize: "auto",
+			resizable: false,
+			fluid:true,
+			maxWidth:'500',
+			open: function(){
+				jQuery('.ui-widget-overlay').bind('click',function(){
+					jQuery('#addNewPatient').dialog('close');
+				})
+			}
+		});
+		jQuery("#connectnow").dialog('option', 'position', 'center');
+		$(".ui-dialog-titlebar").hide();
+		$("#connectInclinicAdhoc").onclick=function(){
+			document.getElementById('lblerror').style.display = false;
+		};
+		
+	});
+	
+    $(function () {
+		   $('table').footable({ bookmarkable: { enabled: true }}).bind({
+            'footable_filtering': function (e) {
+                var selected = $('.filter-status').find(':selected').text();
+                if (selected && selected.length > 0) {
+                    e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
+                    e.clear = !e.filter;
+                }
+            },
+            'footable_filtered': function() {
+                var count = $('table.demo tbody tr:not(.footable-filtered)').length;
+                $('.row-count').html(count + ' rows found');
+            }
+        });
+
+        $('.clear-filter').click(function (e) {
+            e.preventDefault();
+            $('.filter-status').val('');
+            $('table.demo').trigger('footable_clear_filter');
+            $('.row-count').html('');
+        });
+
+        $('.filter-status').change(function (e) {
+            e.preventDefault();
+            $('table.demo').data('footable-filter').filter( $('#patientlist').val() );
+        });
+    });
+	// on window resize run function
+	$(window).resize(function () {
+		fluidDialog();
+	});
+
+	// catch dialog if opened within a viewport smaller than the dialog width
+	$(document).on("dialogopen", ".ui-dialog", function (event, ui) {
+		fluidDialog();
+	});
+
+	function fluidDialog() {
+		var $visible = $(".ui-dialog:visible");
+		// each open dialog
+		$visible.each(function () {
+			var $this = $(this);
+			var dialog = $this.find(".ui-dialog-content").data("dialog");
+			// if fluid option == true
+			if (dialog.options.fluid) {
+				var wWidth = $(window).width();
+				// check window width against dialog width
+				if (wWidth < (parseInt(dialog.options.maxWidth) + 50))  {
+					// keep dialog from filling entire screen
+					$this.css("max-width", "90%");
+				} else {
+					// fix maxWidth bug
+					$this.css("max-width", dialog.options.maxWidth + "px");
+				}
+				
+				//reposition dialog
+				dialog.option("position", dialog.options.position);
+			}			
+		});
+	}
+	function closepopup(thisclose)
+	{
+		$("#"+thisclose).dialog("close");
+		$('#topNav').show();
+	}
+	//Search results cached
+	$(window).resize(function() {
+		$(".ui-autocomplete").css('display', 'none');
+		$("input#search").autocomplete("search");
+	});
+	
+	
+	
+	function connetonclick(quick)
+	{
+		$("#lblerror").text("");
+		var incidence= "";
+		var newIncidence= "";
+		if(document.getElementById('newincidentbutton').checked == true)
+		{
+			if(document.getElementById('incidenttxt').value == "")
+			{ 
+				$("#lblerror").text("Please enter Incidence Name");
+				document.getElementById('lblerror').style.disabled = true;
+			}
+			else{
+				incidence= document.getElementById('incidenttxt').value;
+				newIncidence ="true";
+			}
+		}
+		else
+		{
+			var s = document.getElementById('incidentcombo');
+			var selectedValue = s.options[s.selectedIndex].value;
+			if(selectedValue == "")
+			{ 
+				$("#lblerror").text("Please select Incidence Name");
+				document.getElementById('lblerror').style.disabled = true;
+			}
+			else{
+				incidence= selectedValue;
+				newIncidence ="false";
+			}
+		}
+		if(quick == 1){
+			parent.location="/ayushman/cadhocappointmentmanger/connectinclinc?patientuserid="+document.getElementById("patientuserid").value+"&newIncidence="+'true'+"&incidence="+''+"&quick="+quick;
+		}
+		if(document.getElementById("lblerror").innerHTML == "")
+		{
+			profileValue= '';
+			if(document.getElementById("profileList") != undefined){
+				profileValue = document.getElementById("profileList").value;
+			}
+			parent.location="/ayushman/cadhocappointmentmanger/connectinclinc?patientuserid="+document.getElementById("patientuserid").value+"&newIncidence="+newIncidence+"&incidence="+incidence+"&quick="+0+"&p="+profileValue;
+			//$("#connectInclinicAdhoc").submit();
+		}
+	}
+	
+	function oldincidentbuttonclick()
+	{
+		$("#lblerror").text("");
+		document.getElementById('incidentcombo').disabled = false;
+		document.getElementById('incidenttxt').disabled = true;
+		document.getElementById('incidenttxt').value ="";
+	}
+	function newincidentbuttonclick()
+	{
+		$("#lblerror").text("");
+		document.getElementById('incidentcombo').disabled = true;
+		document.getElementById('incidenttxt').value ="";
+		document.getElementById('incidenttxt').disabled = false;
+	}
+	function removeItemInList(i)
+	{
+		var list  = document.getElementById('incidentcombo');
+		list.remove(i);
+	}
+	function additemtolocation (locationvalue,id)
+	{
+		var opt = document.createElement("option");
+		opt.text =locationvalue
+		opt.value = id;
+		document.getElementById("incidentcombo").options.add(opt);       
+	}
+	function addNewPatient(forceadd)
+	{ 
+
+		if($("#firstname").val() != '' && $("#lastname").val() != '' && $("#DOB_c").val() != ''){
+				
+		}else{
+			alert('Please, Fill all mandatory fields.');
+			return false;
+		}
+		if(forceadd == undefined){
+			forceadd = false;
+		}else{
+			forceadd = true;
+		}
+		$('#exists').hide();
+		var firstname = new LiveValidation('firstname');
+		firstname.add( Validate.Presence );
+		firstname.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed"} );
+		
+		var lastname = new LiveValidation('lastname');
+		lastname.add( Validate.Presence );
+		lastname.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed"} );
+
+		$('#loading').dialog("open");
+		$.ajax({
+			url: "/ayushman/cregistrar/patientregistrationbystaff?firstname="+$("#firstname").val()+"&lastname="+$("#lastname").val()+"&email="+$("#email").val()+"&mobilenumber="+$('#mobilenumber').val()+"&doctorname=doctor &middlename="+$("#middlename").val()+"&dob="+$("#DOB_c").val()+"&forceadd="+forceadd,
+			success:function( data ){
+				var returnArray= JSON.parse(data);
+				if(returnArray['found'] == 'yes'){
+					patName = $("#firstname").val();
+					patLastName = $("#lastname").val();
+					patContact = $('#mobilenumber').val();
+					patEmail = '';
+					patId='';
+					patDOB = $('#DOB_c').val();
+					searchandshow(patName,patLastName,patContact,patEmail,patId,patDOB);
+					$('#exists').show();
+				}else{
+					var displayString= "<img src='/ayushman/assets/images/Success_Arrow.png' width='20' height='20' />&nbsp;&nbsp;&nbsp;&nbsp;We have created account for  "+returnArray['name']+". <strong>Ioh id "+returnArray['patientuserid']+"</strong><br/><br/>";
+					if((returnArray['mobilenumberPresent']== "true") || (returnArray['emailPresent']== "true" ) )
+						displayString = displayString+"<img src='/ayushman/assets/images/Success_Arrow.png' width='20' height='20' />&nbsp;Patient has been notified.<br/><br/>";
+					else
+						displayString = displayString+"<img src='/ayushman/assets/images/error_icon.png' width='20' height='20' />&nbsp;&nbsp;&nbsp;&nbsp;Patient has not been notified. Please inform IOH id to patient.<br/><br/>";
+					$('#addNewPatientInformationBody').html(""+displayString+"");
+					
+					$('#tdTakeappointment').html('<button class="button" style="height:25px; line-height:23px; text-align:center; float:right; text-decoration:none;" onclick="editProfile('+returnArray['patientuserid']+');">Edit Profile</button><button class="button" style="height:25px; line-height:23px; text-align:center; float:right; text-decoration:none;" onclick="takeAppointment('+returnArray['patientuserid']+');">Take appointment</button>');
+					$('#addNewPatient').dialog('open');
+				}
+				$('#loading').dialog("close");
+				var form = document.getElementById("registrationform");
+				form.reset();
+			},
+			error:function(){
+				$('#loading').dialog("close");
+				showMessage('250','50','Send Data to patient','Error occured while saving data. Please try again.','error','id');
+			},
+		});
+	}
+	function addNewPatient(forceadd)
+	{ 
+
+		if($("#firstname").val() != '' && $("#lastname").val() != '' && $("#DOB_c").val() != ''){
+				
+		}else{
+			alert('Please, Fill all mandatory fields.');
+			return false;
+		}
+		if(forceadd == undefined){
+			forceadd = false;
+		}else{
+			forceadd = true;
+		}
+		$('#exists').hide();
+		var firstname = new LiveValidation('firstname');
+		firstname.add( Validate.Presence );
+		firstname.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed"} );
+		
+		var lastname = new LiveValidation('lastname');
+		lastname.add( Validate.Presence );
+		lastname.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed"} );
+
+		$('#loading').dialog("open");
+		$.ajax({
+			url: "/ayushman/cregistrar/patientregistrationbystaff?firstname="+$("#firstname").val()+"&lastname="+$("#lastname").val()+"&email="+$("#email").val()+"&contactnumber="+$('#contactnumber').val()+"&mobilenumber="+$('#mobilenumber').val()+"&doctorname=doctor &middlename="+$("#middlename").val()+"&dob="+$("#DOB_c").val()+"&forceadd="+forceadd,
+			success:function( data ){
+				var returnArray= JSON.parse(data);
+				if(returnArray['found'] == 'yes'){
+					patName = $("#firstname").val();
+					patLastName = $("#lastname").val();
+					patContact = $('#mobilenumber').val();
+					patEmail = '';
+					patId='';
+					patDOB = $('#DOB_c').val();
+					searchandshow(patName,patLastName,patContact,patEmail,patId,patDOB);
+					$('#exists').show();
+				}else{
+					var displayString= "<img src='/ayushman/assets/images/Success_Arrow.png' width='20' height='20' />&nbsp;&nbsp;&nbsp;&nbsp;We have created account for  "+returnArray['name']+". <strong>Ioh id "+returnArray['patientuserid']+"</strong><br/><br/>";
+					if((returnArray['mobilenumberPresent']== "true") || (returnArray['emailPresent']== "true" ) )
+						displayString = displayString+"<img src='/ayushman/assets/images/Success_Arrow.png' width='20' height='20' />&nbsp;Patient has been notified.<br/><br/>";
+					else
+						displayString = displayString+"<img src='/ayushman/assets/images/error_icon.png' width='20' height='20' />&nbsp;&nbsp;&nbsp;&nbsp;Patient has not been notified. Please inform IOH id to patient.<br/><br/>";
+					$('#addNewPatientInformationBody').html(""+displayString+"");
+					
+					$('#tdTakeappointment').html('<button class="button" style="height:25px; line-height:23px; text-align:center; float:right; text-decoration:none;" onclick="editProfile('+returnArray['patientuserid']+');">Edit Profile</button><button class="button" style="height:25px; line-height:23px; text-align:center; float:right; text-decoration:none;" onclick="takeAppointment('+returnArray['patientuserid']+');">Take appointment</button>');
+					$('#addNewPatient').dialog('open');
+				}
+				$('#loading').dialog("close");
+				var form = document.getElementById("registrationform");
+				form.reset();
+			},
+			error:function(){
+				$('#loading').dialog("close");
+				showMessage('250','50','Send Data to patient','Error occured while saving data. Please try again.','error','id');
+			},
+		});
+	}
+	function searchandshow(patName,patLastName,patContact,patEmail,patId,patDOB){
+		$.ajax({
+				url: "/ayushman/ctakeappointment/searchForPatient/get?patName="+patName+"&patLastName="+patLastName+"&patContact="+patContact+"&patEmail="+patEmail+"&patId="+patId+"&dob="+patDOB,
+				success: function(jsonSearchResults) {
+					searchResults = eval("("+jsonSearchResults+")");
+					if(searchResults.length == 0){
+						$("<td class='bodytext_bold' colspan='2' align='middle'>No Results Found</td>").appendTo($("#searchresult"));
+						$("#searchresult").show();
+					}
+					else{
+						for(var i=0;i<searchResults.length;i++){
+							var result = $("<tr id=result style='height:25;'"+i+"></tr>");
+							if(searchResults[i].photo == null){
+								var imgsrc = '/ayushman/assets/images/pic02.png';
+							}
+							else{
+								var imgsrc = searchResults[i].photo;
+							}
+							$("<td width='3%' class='bodytext_normal' align='left' valign='top'><img src='"+imgsrc+"' width='90' height='90' </img></td>").appendTo(result);
+							var info = $("<td width='97%' name='patInfo' class='bodytext_normal' align='left'></td>");
+							$("<div class='bodytext_normal' valign='middle' style='height:20px;width:30%;padding-left:10px;' >Name: "+searchResults[i].name+"</div>").appendTo(info);
+							$("<div class='bodytext_normal' valign='middle' style='height:20px;width:30%;padding-left:10px;' >Contact: "+searchResults[i].contact+"</div>").appendTo(info);
+							$("<div class='bodytext_normal' valign='middle' style='height:20px;width:30%;padding-left:10px;' >DOB: "+searchResults[i].dob+"</div>").appendTo(info);
+							$("<div class='bodytext_normal' valign='middle' style='height:20px;width:30%;padding-left:10px;' >IOH ID: "+searchResults[i].id+"</div>").appendTo(info);
+							$(info).appendTo(result);
+							$(result).appendTo($("#searchresult"));
+							//$('<tr><td height="40" colspan="4" align="right" valign="middle" bgcolor="#ecf8fb" style="border-top:1px solid #a8c8d9; padding-right:10px;"><button class="button" style="height:25px; line-height:23px; text-align:center; float:right; text-decoration:none;" onclick="editProfile('+searchResults[i].id+');">Edit Profile</button><button class="button" style="height:25px; line-height:23px; text-align:center; float:right; text-decoration:none;" onclick="connectnowclick('+searchResults[i].id+',1)">Connect now</button></td></tr>').appendTo($("#searchresult"));
+							$('<tr><td height="40" colspan="4" align="right" valign="middle" bgcolor="#ecf8fb" style="border-top:1px solid #a8c8d9; padding-right:10px;"><button class="button" style="height:25px; line-height:23px; text-align:center; float:right; text-decoration:none;" onclick="editProfile('+searchResults[i].id+');">Edit Profile</button><button class="button" style="height:25px; line-height:23px; text-align:center; float:right; text-decoration:none;" onclick="connetonclick('+searchResults[i].id+',1)">Connect now</button></td></tr>').appendTo($("#searchresult"));
+						}
+						$("#searchresult").show();
+					}
+					parent.setIframeHeight(document.getElementById('icontent'));
+					$('#loading').dialog('close');
+				},
+				error : function(){
+					$("<td class='bodytext_bold' colspan='6' align='middle'>An Error Has Occured. Please Try Again</td>").appendTo($("#searchresult"));
+					$("#searchresult").show();
+				}
+			});
+	}
+
+	
+</script>
+
+	<style type="text/css">.BreakWord {word-break: break-all; }
+	    h4 {line-height: 2.1};
+</style>
+</head>
+<body>
+<div class="demo-container">
+        
+    <div style="margin:auto;width:85%;max-width:1030px;background-color: white;padding:10px;" class="tab-content">
+        <div class="tab-pane active" id="demo">
+		<h4 class="headingcls">My Patients</h4>
+            <p>
+                Search: <input id="patientlist" type="text"/>
+                
+                
+                <a href="#clear" class="clear-filter" title="clear filter">[clear]</a>
+                <span class="row-count"></span>
+				<a id="btnaddpatient" class="btnDefaultCols" value="" onclick="$('#addtonetwork').dialog('open');"  >Add To Network</a>&nbsp;<a class="btnDefaultCols" value="" onclick="$('#nonregisteredUser').dialog('open');" >Create New Patient </a>
+            </p>
+            <table class="table demo" data-filter="#patientlist" data-page-size="10"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th data-toggle="true">
+                        Patient Name (Age)	
+                    </th>
+                    <th data-hide="phone">
+                        City
+                    </th>
+                    <th data-hide="phone">
+                        Location
+                    </th>
+                    <th data-hide="phone">
+                        Last Appointment
+                    </th>
+					
+					<th>
+                        Emr
+                    </th>
+					<th>
+                        Connect
+                    </th>
+					
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "record in statements" on-finish-render="ngRepeatFinished">
+                    <td>{{record.patientname}} ({{record.age}})</td>
+                    <td>{{record.city_c}}</td>
+                    <td>{{record.location_c}}</td>
+                    <td>{{record.date}}</td>
+                    <td><a href="#/patientemrnewui/{{record.patientuserid}}"  class="btnDefaultCols" title="View/Edit Emr">View/Edit Emr</a></td>
+                    
+                    <td><a href="javascript:void(0);"  class="btnDefaultCols" title="Quick Prescription" ng-click="connetonclick(record.patientuserid,1)">Connect Now</a></td>
+                    
+                </tr>
+                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			<div style="width:100%;align:center;border:1px solid black" class="form" align="center" ng-if="show">
+                    No Records Found
+                </div>
+        </div>
+        
+    </div>
+	<div id="connectnow" class="connectformdiv">
+		<div style="border:1px solid #eee;">
+		<form id= "connectInclinicAdhoc" class="form-horizontal" autocomplete="off"  method="post" enctype="multipart/form-data" >
+			<div class="formHeader"><img src="/ayushman/assets/images/WhiteArrow_Icon.png" width="9" height="7"/>&nbsp;&nbsp;Connect Now</div>
+			<div class="col-lg-12 form-group">
+					Select incidence name for the appointment </br> e.g. <span class="bodytext"><b>Diabetes, Hypertension, Asthma, Glaucoma, </b><span>etc.				
+			</div>
+			<div class="row">
+				<div class="col-lg-5">				
+					<input name="radiobutton" type="radio" id="newincidentbutton" value="radiobutton" onclick="newincidentbuttonclick()" checked="checked"/>
+				
+					<label for="incidenttxt">New Incidence</label>
+				</div>
+				<div class="col-lg-7 form-group">	
+					<input id="incidenttxt" name="incidenttxt" type="text" class="form-group connectformcontrol" maxlength="40" onmouseover="$('#lblerror').text('');" />			  
+					<select ng-if="(myprofile['con_profile']).length>0" class="input" id="profileList" name="profileList"  class="form-group connectformcontrol"  align="left"  >
+						<option value="" selected="" >Select Profile</option>
+						<option ng-repeat="template in myprofile['con_profile']" value="{{template[1]}}" >{{template[0]}}</option>
+					</select>
+				</div>
+			</div>
+			<div id="oldIncidenceTr" class="row">
+				<div class="col-lg-5" >		
+					<input name="radiobutton" type="radio" id="oldincidentbutton" value="radiobutton" onclick="oldincidentbuttonclick()"/>
+								
+					<label for="incidentcombo">Old Incidence </label>
+				</div>
+				<div class="col-lg-7 form-group">		
+					<select id="incidentcombo" name="incidentcombo"  class="form-group connectformcontrol"  align="left" disabled="disabled" onmouseover="$('#lblerror').text('');" >
+						<option value="" selected="" >Previous Incident</option>
+					</select>	
+				</div>
+			</div>
+			<div class="row">
+				<div  class="col-lg-12 form-group bodytext_error" >
+					<label id="lblerror" disabled="false"></label>
+				</div>
+			</div>
+			<div class="row">
+				<div  class="col-lg-12 form-group" >
+					<input type="button" class="regnbutton" onClick="connetonclick()" value="Connect"/>				
+					<input type="button" class="regnbutton" onClick="closepopup('connectnow')" value="Cancel"/>									  
+				</div>
+			</div>		
+			<input type="hidden" id="patientuserid" name="patientuserid" value=""/>
+		</form>
+		</div>
+	</div>
+	<div class="connectformdiv">
+	<div id="nonregisteredUser" style="border:1px solid #eee;" >
+	<form class="form-horizontal" autocomplete="off" id="registrationform"   action="javascript:void(0);" method="post">
+		<div class="formHeader"><img src="/ayushman/assets/images/WhiteArrow_Icon.png" width="9" height="7"/>&nbsp;&nbsp;Patient Details</div>
+		<table class = "table_roundBorder" border="0"  style="width:97%;margin-top:5px;margin-left:10px">
+		
+		<tr>
+			<td width="15%" valign="middle"><label >First Name * :</label></td>
+			<td width="35%"><input id = "firstname" class="form-group connectformcontrol" maxlength="40" autocomplete="on" autofocus="autofocus"/></td>
+					<script type="text/javascript">
+					var firstname = new LiveValidation('firstname');
+					firstname.add( Validate.Presence );
+					firstname.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed"} );
+					</script>
+
+			<td width="15%" valign="middle"><label for="middlename">Middle Name :</label></td>
+			<td width="30%"><input id = "middlename" class="form-group connectformcontrol" maxlength="40" autocomplete="on"  /></td>
+					<script type="text/javascript">
+					var middlename = new LiveValidation('middlename');
+					middlename.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed"} );
+					</script>
+		</tr>
+		<tr>
+			<td width="15%" valign="middle"><label >Last Name * :</label></td>
+			<td width="35%"><input id = "lastname" class="form-group connectformcontrol" maxlength="40" autocomplete="on" autofocus="autofocus"/></td>
+					<script type="text/javascript">
+					var lastname = new LiveValidation('lastname');
+					lastname.add( Validate.Presence );
+					lastname.add( Validate.Format, { pattern: /^[a-zA-Z]+$/,failureMessage: "only characters allowed"} );
+					</script>
+			<td width="15%" valign="middle" ><label>Date Of Birth* :</label></td>
+			<td width="35%"><input id="DOB_c" name="dob" readonly="readonly"  value="" type="text" class="form-group connectformcontrol" maxlength="40"/></td>
+					<script type="text/javascript">
+					var DOB_c = new LiveValidation('DOB_c',{onlyOnSubmit: true });
+					DOB_c.add( Validate.Presence );
+					</script>
+		</tr>
+		<tr>
+			<td valign="middle" colspan="4"><hr/></td>
+		</tr>
+		<tr>
+			<td width="15%" valign="middle"><label >Mobile No :</label></td>
+			<td width="35%"><input id = "mobilenumber" autocomplete="on" class="form-group connectformcontrol" maxlength="40" /></td>
+					<script type="text/javascript">
+					var mobilenumber = new LiveValidation('mobilenumber');
+					mobilenumber.add( Validate.Numericality, {onlyInteger: true } );
+					mobilenumber.add( Validate.Length, { is: 10 });
+					mobilenumber.add( Validate.Format, { pattern: /^[0-9]+$/,failureMessage: "only numeric values allowed"} );
+					</script>
+			
+		</tr>
+		<tr>
+			<td width="15%" valign="top"><label >Email :</label></td>
+			<td width="35%" valign="top" ><input id = "email" autocomplete="on" class="form-group connectformcontrol" maxlength="40" /></td>
+					<script type="text/javascript">
+					var email = new LiveValidation('email', {onlyOnSubmit: true });
+					email.add( Validate.Email );
+					</script>
+			<td width="15%" valign="top">
+				&nbsp;
+			</td>
+			<td width="35%" >&nbsp;</span>
+			</td>
+		</tr>
+		<tr>
+			<td height="30" colspan="4" align="right" valign="middle"  style="border-top:1px solid #a8c8d9; padding-right:10px;">&nbsp;&nbsp;&nbsp;&nbsp;<input type="Submit" class="regnbutton" id = "proccedButton"  value="Proceed" onclick="addNewPatient();"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="regnbutton"  value="Cancel" onclick="$('#nonregisteredUser').dialog('close');"/></td>
+		</tr>
+	</table>
+		</form>
+		<div id="exists" style="display:none;background-color: rgb(255, 255, 165);border-top:1px solid #c6dbe4;border-bottom:1px solid #c6dbe4; width:94%;height:auto; vertical-align:middle;padding:10px;margin:10px; overflow-x:hidden;" class="bodytext_bold" >
+			Users listed below have the same registration information. Do you want to register another user ?
+			<input type="button" value="Yes" onclick="addNewPatient('true');" class="button" style="width:100px;height:23px;float:right;margin-right:10px;"/>
+		</div>
+
+		<div style="overflow:auto;margin-top:5px;">
+			<table id = "searchresult" class = "table_roundBorder" style="width:800;margin-top:5px;margin-left:10px;">
+			</table>
+		</div>
+	</div>
+	
+</div>
+<div id="addNewPatient" style="width:500px;overflow-x:hidden; background-color:#ffffff;" class="table_roundBorder" overflow-x="hidden">
+	<div style="width:100%; height:25px; background-color:#ecf8fb; border-bottom:1px solid #a8c8d9; text-align:left; ">
+			&nbsp;&nbsp;<img src="/ayushman/assets/images/bullet.png" width="7" height="7"/>&nbsp;
+			<label id="informationheading" class="bodytext_bold">Patient registered successfully </label>
+	</div>
+	<div id="addNewPatientInformationBody" style="width:96%;margin:10px;" class="bodytext_normal" ></div>
+	<div style="width:100%; height:35px; background-color:#ecf8fb; border-top:1px solid #a8c8d9;align:right;padding-right:10px;overflow:hidden;">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="80%" style="padding-top:5px;text-align:right;"><button class="button" style="height:25px;width:100px;" onclick="$('#addNewPatient').dialog('close');$('#nonregisteredUser').dialog('close');" >Okay</button>&nbsp;</td>
+				</tr>
+			</table>
+	</div>
+</div>
+<div id="addtonetwork" class="connectformdiv" style="min-width:265px;" > 
+<div style="border:1px solid #eee;">
+			<form class="form-horizontal" style="width:94%;"id="patientvalidationform" autocomplete="off" method="post" enctype="multipart/form-data"  action="/ayushman/cpatientdirectory/validate">
+			<div class="formHeader"style="margin-bottom: 7px;">Add to Network</div>
+			<div class="row">
+			<div class="col-lg-5">				
+			<label for="iohid">IOH ID*</label>
+			</div>
+			<div class="col-lg-7">				
+			<input type="text"  name="iohid" id="iohid" value="" class="form-group connectformcontrol" />
+			</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-5">				
+				<label for="emailid">Email ID*</label>
+				</div>
+				<div class="col-lg-7">				
+						<input type="text"  name="emailid" id="emailid"  value="" class="form-group connectformcontrol" />
+				</div>
+			</div>		
+					<div colspan="2" style="padding-top:1px;" >
+						<input type="button"   class="regnbutton" value="Close" onclick="$('#addtonetwork').dialog('close');"  />&nbsp;&nbsp;<input type="submit" class="regnbutton"  value="Validate"/>
+					</div>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+</div>
+
+
+
+</div>
+</body>
+</html>

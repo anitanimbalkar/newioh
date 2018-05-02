@@ -1,0 +1,996 @@
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+	<head>
+		<link href="/ayushman/assets/css/style.css" rel="stylesheet" type="text/css">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Personalization | India Online Health</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width"><!--
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
+		<script src="/ayushman/assets/app/js/extra/prescription.js"></script> 
+		<script src="/ayushman/assets/js/listboxcomponent.js"></script>
+		 <meta name="viewport"
+          content="width = device-width, initial-scale = 1.0, minimum-scale = 1.0, maximum-scale = 1.0, user-scalable = no"/>
+		<link href="../assets/app/css/table.css" rel="stylesheet" type="text/css"/>
+		<link href="../assets/app/css/footable.core.css?v=2-0-1" rel="stylesheet" type="text/css"/>
+		<link href="../assets/app/css/footable-demos.css" rel="stylesheet" type="text/css"/>
+	   
+		<script src="../assets/app/js/extra/footable.js?v=2-0-1" type="text/javascript"></script>
+		<script src="../assets/app/js/extra/footable.sort.js?v=2-0-1" type="text/javascript"></script>
+		<script src="../assets/app/js/extra/footable.filter.js?v=2-0-1" type="text/javascript"></script>
+		<script src="../assets/app/js/extra/footable.paginate.js?v=2-0-1" type="text/javascript"></script>
+		<script src="../assets/app/js/extra/bootstrap-tab.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+		
+<!--<script>
+$(document).ready(function(){
+    $("h4").click(function(){
+        $("#examform").toggle(1000);
+    });
+});
+</script>-->
+	<style type="text/css">
+<!--
+.textarea1 {			background-color:#ffffff;
+			border:none;
+			height:20px;	 
+			border-bottom:1px solid #11587E;
+			padding-left:5px;
+			font-family:tahoma,Helvetica,sans-serif;
+			font-size:11px;
+			font-color: #999999;
+			color:#333333;
+}
+.textarea2 {			background-color:#ffffff;
+			border:none;
+			height:20px;	 
+			border-bottom:1px solid #11587E;
+			padding-left:5px;
+			font-family:tahoma,Helvetica,sans-serif;
+			font-size:11px;
+			font-color: #999999;
+			color:#333333;
+}
+-->
+    </style>
+	</head>
+<script type="text/javascript">
+		$(document).ready(function(){
+			//$('#exists').hide();
+			$(function () {
+				   $('table').footable({ bookmarkable: { enabled: true }}).bind({
+					'footable_filtering': function (e) {
+						var selected = $('.filter-status').find(':selected').text();
+						if (selected && selected.length > 0) {
+							e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
+							e.clear = !e.filter;
+						}
+					},
+					'footable_filtered': function() {
+						var count = $('table.demo tbody tr:not(.footable-filtered)').length;
+						$('.row-count').html(count + ' rows found');
+					}
+				});
+
+				$('.clear-filter').click(function (e) {
+					e.preventDefault();
+					$('.filter-status').val('');
+					$('table.demo').trigger('footable_clear_filter');
+					$('.row-count').html('');
+				});
+
+				$('.filter-status').change(function (e) {
+					e.preventDefault();
+					$('table.demo').data('footable-filter').filter( $('#medicinesearch').val() );
+				});
+				
+				
+			});
+			$('table').trigger('footable_clear_filter');
+		});
+		
+</script>
+<!--By VIJAY-->
+<style type="text/css">
+		.ui-autocomplete { max-height: 10%; overflow-y: auto; overflow-x: auto;
+			-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);
+			-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);
+			box-shadow: 0 4px 15px rgba(0,0,0,1);
+			width:auto !important;
+		}
+		.ui-dialog { z-index: 3000 !important ;}
+		.BreakWord {word-break: break-all; }
+	    h4 {line-height: 2.1};
+		
+		
+		#navlist
+		.table_roundBorder{
+			border:1px solid #a8c8d9;
+			-moz-border-radius:4px;
+			-webkit-border-radius:4px;
+			-opera-border-radius:4px;
+			-khtml-border-radius:4px;
+			border-radius:4px;
+			display: table;
+			border-collapse: separate;
+			border-spacing: 2px;
+			border-color: #A8C8D9;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+	
+		}
+		.textarea{
+			background-color:#ffffff;
+			border:none;
+			height:20px;	 
+			border-bottom:1px solid #11587E;
+			padding-left:5px;
+			font-family:tahoma,Helvetica,sans-serif;
+			font-size:11px;
+			font-color: #999999;
+			color:#333333;
+		}
+		.bodytext_bold{
+			font-family: tahoma, Helvetica, sans-serif;
+			font-weight: bold;
+			font-size: 11px;
+			color: #11587E;
+		}
+		.regnbutton {
+		font-family: Arial, sans-serif;
+		border-radius: 5px;
+		background: #00aca9;
+		color: #fff;
+		text-align: center;
+		font-size: 12px;
+		padding: 5px 5px;
+		text-decoration: none;
+	}
+		
+        .notes
+        {
+            background-image: -webkit-linear-gradient(left, white 10px, transparent 10px), -webkit-linear-gradient(right, white 10px, transparent 10px), -webkit-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -moz-linear-gradient(left, white 10px, transparent 10px), -moz-linear-gradient(right, white 10px, transparent 10px), -moz-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -ms-linear-gradient(left, white 10px, transparent 10px), -ms-linear-gradient(right, white 10px, transparent 10px), -ms-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: -o-linear-gradient(left, white 10px, transparent 10px), -o-linear-gradient(right, white 10px, transparent 10px), -o-linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-image: linear-gradient(left, white 10px, transparent 10px), linear-gradient(right, white 10px, transparent 10px), linear-gradient(white 30px, #ccc 30px, #ccc 31px, white 31px);
+            background-size: 100% 100%, 100% 100%, 100% 31px;
+            line-height: 31px;
+            padding: 8px;
+			border:none;
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+			font-size:9pt
+        }
+        .notes:focus
+        {
+            outline: none;
+        }
+		.fragment {
+			height: 27px;
+			border: none;
+			display: block;
+			padding: 3px;
+			box-sizing: border-box;
+		}
+		.medbodytext_bold {
+		font-family: tahoma, Helvetica, sans-serif;
+		font-weight: bold;
+		font-size: 11px;
+		color: #60b3b3;
+	}
+
+		#close {
+			float:right;
+			display:inline-block;
+			padding:2px 5px;
+			background:#ccc;
+		}
+</style>
+
+	<body>
+
+		<!--[if lt IE 7]>
+			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+		
+		<div class="container dashboard clearfix"style="margin-top:0px">
+		 <div class="panel-group" id="accordionDashboard">		
+			<div style="margin:auto;width:100%;max-width:1030px;background-color: white;padding:10px;" class="row">
+				<div class="col-lg-12" style="margin-top:0px">
+					<div class="panel">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a  data-toggle="collapse" data-parent="#accordion" href="/doctodashboard/#demo" class="collapsed"><b>Examination Forms</b>	</a>
+							</h4>
+						</div>
+					<div id="demo" class="collapse">
+					<div style="height:400px;width:100%;background:white;margin-top:5px;min-height:160px;">
+					  <div style="width:100%;padding-left: 23px;" class="bodytext_bold">This section allows you to select forms for the consultaion. Seleted forms are shown in the Examination section during Consultation.</div>
+						<div style="position:relative;padding:10px;padding-top: 0;padding-left:14px;width:45%;float:right;right:0;" class="bodytext_bold">
+							<h5 style="padding-top: 20px;">Selected Forms :</h5>
+							
+							 <select class="bodytext_normal" multiple="multiple" id='lstBox2' ng-focus="btnAdd = 1;btnRemove = 0;" ng-change="show_form()" ng-model="selectedForm" ng-options="form.id as form.label for form in choosenForms['examination']" style="width:100%;height:231px;">
+							  
+							</select><label class="bodytext_error">(Hold 'Ctrl' key to select multiple forms)</label>
+						</div>
+						<div style="position:relative;padding-top: 134px;text-align:left;width:10%;float:right;right:0;" class="bodytext_bold">
+							<input type='button' id='btnRight'  style="width:100px;margin:5px;" ng-click="add()" value ='  Add >>  '/>
+							<input type='button' id='btnLeft'  style="width:100px;margin:5px;" ng-click="remove()" value ='  << Remove  '/>
+						</div>						
+						<div style="position:relative;padding: 10;padding-top: 0;padding-left:24px;width:45%;float:right;right:0;" class="bodytext_bold">
+							<h5 style="padding-top: 3px;">Available Forms for the Speciality	
+							<select style="margin-left: 13px;" class="bodytext_normal" ng-change="getSpecialityForms()" ng-model="selectedSpeciality" ng-options="speciality.id as speciality.name for speciality in specialities['speciality']" >
+										<option selected value="">Select Speciality</option>
+							  </select></h5>
+							
+							<select class="bodytext_normal" multiple="multiple" id='lstBox1' ng-focus="btnRemove = 1;btnAdd = 0;" ng-change="show_form()" ng-model="selectedForm" ng-options="form.id as form.label for form in forms['examination']" style="width:100%;height:231px;">
+							</select>
+							<label class="bodytext_error">(Hold 'Ctrl' key to select multiple forms)</label>
+						</div>
+					</div>
+					<div id="preview"  style="height:450px;width:100%;background:white;margin-top:-10px;min-height:160px;">
+						<div id="innerpreview" class="bodytext_normal" style="border-top:1px solid #60b3b3;padding-top:0;position:relative;padding-left:24px;width:100%;height:auto;" class="bodytext_bold">
+							<h5>Preview of the "{{selectedFormLabel}}" form</h5>
+							 <div id="form_place_holder" class="sectionBox" style="position:relative;  max-width: 818px;" ></div>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div></div></div>
+	</div>
+	
+	<div class="container dashboard clearfix" style="margin-top:-20px" id="personalization">
+		 <div class="panel-group" id="accordionDashboard">		
+			<div style="margin:auto;width:100%;max-width:1030px;background-color: white;padding:10px;" class="row">
+				<div class="col-lg-12" style="margin-top: 0px;">
+					<div class="panel">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="/doctodashboard/#demo1" class="collapsed"><b>History Forms</b>	</a>
+							</h4>
+						</div>
+						<div id="demo1" class="collapse">
+					<div style="height:400px;width:100%;background:white;margin-top:5px;min-height:160px;">
+					  <div style="width:100%;padding-left: 23px;" class="bodytext_bold">This section allows you to select forms for the consultaion. Seleted forms are shown in the Examination section during Consultation.</div>
+						<div style="position:relative;padding:10px;padding-top: 0;padding-left:14px;width:45%;float:right;right:0;" class="bodytext_bold">
+							<h5 style="padding-top: 20px;">Selected Forms :</h5>
+								
+								
+							<select class="bodytext_normal" multiple="multiple" id='lstBox22' ng-focus="btnAdda = 1;btnRemovea = 0;" onclick="showmedicalforms2();" ng-model="selectedForma" ng-options="historyselectedforms.id as historyselectedforms.name for historyselectedforms in choosenhistoryforms" style="width:100%;height:231px;">
+						  </select><label class="bodytext_error">(Hold 'Ctrl' key to select multiple forms)</label>
+						</div>
+						<div style="position:relative;padding-top: 134px;text-align:left;width:10%;float:right;right:0;" class="bodytext_bold">
+							<input type='button' id='btnRight'  style="width:100px;margin:5px;" ng-click="adda()" value ='  Add >>  '/>
+							<input type='button' id='btnLeft'  style="width:100px;margin:5px;" ng-click="removea()" value ='  << Remove  '/>
+						</div>						
+						<div style="position:relative;padding: 10;padding-top: 0;padding-left:24px;width:45%;float:right;right:0;" class="bodytext_bold">
+							<h5 style="padding-top: 3px;">Available Forms for the History
+							<br>Select Forms :</h5>
+							<select class="bodytext_normal" multiple="multiple" id='lstBox11' ng-focus="btnRemovea = 1;btnAdda = 0;" onclick="showmedicalforms1();" ng-model="selectedForma" ng-options="allform.id as allform.name for allform in historyallforms" style="width:100%;height:231px;">
+							</select>
+							<label class="bodytext_error">(Hold 'Ctrl' key to select multiple forms)</label>
+						</div>
+					</div>
+					<div id="preview"  style="height:650px;width:100%;background:white;margin-top:-10px;min-height:160px;">
+						<div id="innerpreview" class="bodytext_normal" style="border-top:1px solid #60b3b3; padding-top:0;position:relative;padding-left:24px;width:100%;height:auto;" class="bodytext_bold">
+							<h5>Preview of form</h5>
+							 <div id="form_place" class="sectionBox" style="position:relative;  max-width: 818px;" ></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div></div></div>
+	</div>
+	
+		<!-- ////////////////////////////////////////////////////////////
+		By VIJAY 
+		//////////////////////////////////////////////////////////////-->
+		<div class="container dashboard clearfix" style="margin-top:-20px">
+		 <div class="panel-group" id="accordionDashboard">		
+			<div style="margin:auto;width:100%;max-width:1030px;background-color: white;padding:10px;" class="row">
+				<div class="col-lg-12" style="margin-top:0px;">
+					<div class="panel">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="/doctodashboard/#Medicine" ng-click="med()" class="collapsed"><b>Medicines</b>	</a>
+							</h4>
+						</div>
+					<div id="Medicine" class="collapse">
+					<div style="height:120px;width:100%;background:white;margin-top:5px;min-height:120px;">
+					<div style="width:100%;padding-left: 15px;" class="medbodytext_bold">This section allows you to add personalized medicines which will be shown in the prescription during Consultation.</div>
+					<div style="float:right;width:100%;" id ="addMedicineform" data-ng-controller="SearchCtrl" ></div>
+					<table width="80%" class = "table_roundBorder" id="medicineaddform" style="width:97%;margin-top:5px;margin-left:10px;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+						<tr>
+							<td height="25" colspan="12" align="left" valign="middle" bgcolor="#ecf8fb" style="border-bottom:1px solid #a8c8d9;padding-left:1px;" class="medbodytext_bold" >Add Medicine</td>
+						</tr>
+						<tr>
+
+						  <td width="14%" height="5%"><input name="medName" class = "textarea1" id = "medName" autocomplete="off" ng-model="medName" onblur="setId()" placeholder="Medicine name..." size="30" onclick="if (this.value == 'Medicines :') this.value = '';" class="notes"></input></td>
+						
+						  <td width="15%" height="5%"><input id = "medDosage" name="medDosage" autocomplete="off" size="12" class = "textarea" ng-model="dosage" placeholder="Adult Dosage..." /></td>
+ 
+						  <td width="20%" height="5%"><input id = "dosageinmg" name="dosageinmg" autocomplete="off" size="16" class = "textarea" ng-model="dosageinmg" placeholder="Pediatric mg/kg/day" /></td>
+						 
+						  <td width="8%"><input id = "medFrequency" autocomplete="off" size="10" class = "textarea" ng-model="frequency" placeholder="Frequency..." /></td>
+						  
+						  <td width="7%"><input id = "medDays" autocomplete="off" size="15" class = "textarea"  placeholder="Days..." ng-model="days"/></td>
+						  					     
+						  <td width="30%"><input name="medInstructions" class = "textarea" id = "medInstructions" size="42" autocomplete="off" ng-model="instruction" placeholder="Instructions..." /></td>
+						
+						  <td width="2%" height="5%"><input type="hidden" name="medId" size="5" class = "textarea1" id = "medId" data-ng-model="medicineId" value="{{medicineId}}"></input></td>
+
+						</tr>
+						<tr>
+							<td height="30" colspan="10" align="right" valign="middle" bgcolor="#ecf8fb" style="border-top:1px solid #a8c8d9; padding-right:10px;">
+							<button class="regnbutton" id = "clearButton" onClick="allClear()">Clear</button></td>
+							<td height="30" colspan="10" align="right" valign="middle" bgcolor="#ecf8fb" style="border-top:1px solid #a8c8d9; padding-right:10px;">
+							<button class="regnbutton" id = "addButton" onClick="savedata(),showmedical()">Add</button></td>
+						</tr>
+					</table>
+					</div>
+					<!--<div id="exists" style="border-top-width: 1px;border-top-style: solid;border-top-color: rgb(198, 219, 228);border-bottom-width: 1px;border-bottom-style: solid;border-bottom-color: rgb(198, 219, 228);width: 98%;height: auto;vertical-align: middle;padding: 10px;margin: 10px;overflow-x: hidden;background-color: #60b3b3;"  >
+					<h4 class="headingcls" style="font-weight: bold;">Medicine already present...!	</h4>
+					<input type="button" value="Ok" class="regnbutton" onClick="present()"style="width:100px;height:30px;float:right;margin-right:10px;"></input>
+					</div>-->
+<div class="demo-container">
+        
+    <div id="myTable" style="width:100%;max-width:1030px;background-color:#ecf8fb;" class="tab-content">
+        <div class="tab-pane active" id="demo">
+			<h4 class="headingcls" style="font-weight: bold;">Medicine Chart</h4>
+		 
+            <table class="table demo" data-filter="#medicinesearch" data-page-size="100"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th  width="18%" >
+                        Medicine Name	
+                    </th>
+                    <th width="12%">
+                        Adult Dosage
+                    </th>
+                    <th >
+                        Pediatric - mg/kg/day
+                    </th>
+					<th >
+                        Frequency
+                    </th>
+                    <th  width="12%">
+                        Days
+                    </th>
+                    <th >
+                        Instructions
+                    </th>
+					 <th >
+                        Action
+                    </th>
+				</tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "medicine in medicines">
+                    <td>{{medicine.drugname}}</td>
+                    <td>{{medicine.dosage}}</td>
+                    <td>{{medicine.dosageinmg}}</td>
+                    <td>{{medicine.frequency}}</td>
+                    <td>{{medicine.days}}</td>
+					<td>{{medicine.instruction}}</td>
+					<td><img id ="{{medicine.doctordrugsid}}" src="\ayushman\assets\images\deleteimg.gif" alt="" height="30" width="30" onClick="deleteMedicine(this.id),showmedical()">
+                <!--  <td>	<img id ="{{medicine.doctordrugsid}}" src="\ayushman\assets\images\dashicon-edit.png" alt="" height="30" width="30" ng-click="editdocmedicines(medicine.doctordrugsid)"></td>
+
+				-->	
+                </tr>
+                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			
+        </div>
+        
+    </div>
+</div>
+				</div>
+			</div>
+		</div></div></div>
+		</div>	
+	<!--</div>-->
+	<!--DONE-->
+	<!-- ////////////////////////////////////////////////////////////
+		By PALLAVI 
+		//////////////////////////////////////////////////////////////-->
+		<div class="container dashboard clearfix"style="margin-top:-20px">
+		 <div class="panel-group" id="accordionDashboard">		
+			<div style="margin:auto;width:100%;max-width:1030px;background-color: white;padding:10px;" class="row">
+				<div class="col-lg-12" style="margin-top:0px;">
+					<div class="panel">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="/doctodashboard/#Instruction" ng-click="med()" class="collapsed"><b>Followup Instructions</b>	</a>
+							</h4>
+						</div>
+					<div id="Instruction" class="collapse">
+					<div style="height:120px;width:100%;background:white;margin-top:5px;min-height:120px;">
+					<div style="width:100%;padding-left: 15px;" class="medbodytext_bold">This section allows you to add personalized followup instructions which will be shown in the prescription during Consultation.</div>
+					<div style="float:right;width:100%;" id ="addinstructionform" ></div>
+					<table width="80%" class = "table_roundBorder" id="medicineaddform" style="width:97%;margin-top:5px;margin-left:10px;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+						<tr>
+							<td height="25" colspan="12" align="left" valign="middle" bgcolor="#ecf8fb" style="border-bottom:1px solid #a8c8d9;padding-left:1px;" class="medbodytext_bold" >Add Instruction</td>
+						</tr>
+						<tr>
+
+						  <td width="95%" height="5%"><input name="instruction" class = "textarea1" id = "instruction" autocomplete="off" ng-model="instruction" placeholder="Instruction..." size="90" class="notes"></input></td>
+						
+						  <td width="2%" height="5%"><input type="hidden" name="instructionId" size="5" class = "textarea1" id = "instructionId" data-ng-model="instructionId" value="{{instructionId}}"></input></td>
+
+						</tr>
+						<tr>
+							<td height="30" colspan="10" align="right" valign="middle" bgcolor="#ecf8fb" style="border-top:1px solid #a8c8d9; padding-right:10px;">
+							<button class="regnbutton" id = "clearButton" onClick="allClear()">Clear</button></td>
+							<td height="30" colspan="10" align="right" valign="middle" bgcolor="#ecf8fb" style="border-top:1px solid #a8c8d9; padding-right:10px;">
+							<button class="regnbutton" id = "addButton" onClick="saveinstruction(),showinstruction()">Add</button></td>
+						</tr>
+					</table>
+					</div>
+					
+<div class="demo-container">
+        
+    <div id="myTable" style="width:100%;max-width:1030px;background-color:#ecf8fb;" class="tab-content">
+        <div class="tab-pane active" id="demo">
+			<h4 class="headingcls" style="font-weight: bold;">Instruction Chart</h4>
+		 
+            <table class="table demo" data-filter="#medicinesearch" data-page-size="100"  >
+                <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th  width="18%" >
+                        Instruction	
+                    </th>
+                   
+					 <th >
+                        Action
+                    </th>
+				</tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat= "instruction in instructions">
+                    <td width="80%">{{instruction.followupinstr_c}}</td>
+                    <td width="20%"><img id ="{{instruction.id}}" src="\ayushman\assets\images\deleteimg.gif" alt="" height="30" width="30" onClick="deleteinstruction(this.id),showinstruction()">
+                <!--  <td>	<img id ="{{medicine.doctordrugsid}}" src="\ayushman\assets\images\dashicon-edit.png" alt="" height="30" width="30" ng-click="editdocmedicines(medicine.doctordrugsid)"></td>
+
+				-->	
+                </tr>
+                
+                </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+				</tfoot>
+            </table>
+			
+        </div>
+        
+    </div>
+</div>
+				</div>
+			</div>
+		</div></div></div>
+	</div>	
+	</div>	
+<!-- ////////////////////////////////////////////////////////////
+		By Anita 
+//////////////////////////////////////////////////////////////-->
+<div class="container dashboard clearfix" style="margin-top:-20px">
+<div class="panel-group" id="accordionDashboard">		
+<div style="margin:auto;width:100%;max-width:1030px;background-color: white;padding:10px;" class="row">
+<div class="col-lg-12" style="margin-top: 0px;">
+<div class="panel">
+	<div class="panel-heading">
+		<h4 class="panel-title">
+		<a data-toggle="collapse" data-parent="#accordion" href="/doctodashboard/#pathologytest" ng-click="med()" class="collapsed"><b>Pathology Test</b>	</a>
+		</h4>
+	</div>
+	<div id="pathologytest" class="collapse">
+		<div style="height:120px;width:100%;background:white;margin-top:5px;min-height:120px;">
+			<div style="width:100%;padding-left: 15px;" class="medbodytext_bold">This section allows you to add personalized pathology tests which will be shown in the prescription during Consultation.</div>
+			<div style="float:right;width:100%;" id ="addpathologyform"  data-ng-controller="TestSearchCtrl">		</div>
+			<table width="80%" class = "table_roundBorder" id="pathalogytestaddform" style="width:97%;margin-top:5px;margin-left:10px;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+			<tr>
+				<td height="25" colspan="12" align="left" valign="middle" bgcolor="#ecf8fb" style="border-bottom:1px solid #a8c8d9;padding-left:1px;" class="medbodytext_bold" >Add Pathology test</td>
+			</tr>
+			<tr>
+				<td width="95%" height="5%"><input name="testname" class = "textarea1" id = "testname" autocomplete="off" ng-model="testname" onblur="settestId()" placeholder="Testname..." size="90" class="notes"></input></td>						
+				<td width="2%" height="5%"><input type="hidden" name="testId" size="5" class = "textarea1" id = "testId" value=""></input></td>
+			</tr>
+			<tr>
+				<td height="30" colspan="10" align="right" valign="middle" bgcolor="#ecf8fb" style="border-top:1px solid #a8c8d9; padding-right:10px;">
+				<button class="regnbutton" id = "clearButton" onClick="allClear()">Clear</button></td>
+				<td height="30" colspan="10" align="right" valign="middle" bgcolor="#ecf8fb" style="border-top:1px solid #a8c8d9; padding-right:10px;">
+				<button class="regnbutton" id = "addButton" onClick="savetest();showtest()">Add</button></td>
+			</tr>
+			</table>
+		</div>					
+	
+		<div class="demo-container">        
+		<div id="myTable" style="margin:auto;width:100%;max-width:1030px;background-color:#ecf8fb;padding:25px;" class="tab-content">
+        <div class="tab-pane active" id="demo">
+			<h4 class="headingcls" style="font-weight: bold;">Tests Chart</h4>		 
+            <table class="table demo" data-filter="" data-page-size="100"  >
+            <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th  width="18%" >Testname</th>
+                    <th> Action</th>
+				</tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat= "pathtest in pathtests">
+                    <td width="80%">{{pathtest.testname}}</td>
+                    <td width="20%"><img id ="{{pathtest.testId}}" src="\ayushman\assets\images\deleteimg.gif" alt="" height="30" width="30" onClick="deletetest(this.id),showtest()">
+                </tr>                
+            </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+			</tfoot>
+			</table>			
+		</div>        
+		</div>
+		</div>
+	</div>
+</div></div></div></div></div>	
+	<!--DONE-->	
+
+<!-- ////////////////////////////////////////////////////////////
+		By Anita 
+//////////////////////////////////////////////////////////////-->
+<div class="container dashboard clearfix" style="margin-top:-20px">
+<div class="panel-group" id="accordionDashboard">		
+<div style="margin:auto;width:100%;max-width:1030px;background-color: white;padding:10px;" class="row">
+<div class="col-lg-12" style="margin-top: 0px;">
+<div class="panel">
+	<div class="panel-heading">
+		<h4 class="panel-title">
+		<a data-toggle="collapse" data-parent="#accordion" href="/doctodashboard/#reportparameters" ng-click="med()" class="collapsed"><b>Report Parameters</b>	</a>
+		</h4>
+	</div>
+	<div id="reportparameters" class="collapse">
+		<div style="width:100%;background:white;margin-top:5px;min-height:120px;">
+			<div style="width:100%;padding-left: 15px;" class="medbodytext_bold">This section allows you to add personalized report parameters which will be shown in the prescription during Consultation.</div>
+			<div style="float:right;width:100%;" id ="addparameterform"  data-ng-controller="ParameterSearchCtrl">		</div>
+			<table width="80%" class = "table_roundBorder" id="parameteraddform" style="width:97%;margin-top:5px;margin-left:10px;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+			<tr>
+				<td height="25" colspan="12" align="left" valign="middle" bgcolor="#ecf8fb" style="border-bottom:1px solid #a8c8d9;padding-left:1px;" class="medbodytext_bold" >Add Parameters</td>
+			</tr>
+			<tr>
+				<td width="95%" height="5%"><input name="parametername" class = "textarea1" id = "parametername" autocomplete="off" ng-model="parametername" onblur="setparameterId()" placeholder="Parameter Name..." size="90" class="notes"></input></td>						
+				<td width="2%" height="5%"><input type="hidden" name="parameterId" size="5" class = "textarea1" id = "parameterId" value=""></input></td>
+			</tr>
+			<tr>
+				<td height="30" colspan="10" align="right" valign="middle" bgcolor="#ecf8fb" style="border-top:1px solid #a8c8d9; padding-right:10px;">
+				<button class="regnbutton" id = "clearButton" onClick="allClear()">Clear</button></td>
+				<td height="30" colspan="10" align="right" valign="middle" bgcolor="#ecf8fb" style="border-top:1px solid #a8c8d9; padding-right:10px;">
+				<button class="regnbutton" id = "addButton" onClick="saveparameter();showparameter()">Add</button></td>
+			</tr>
+			</table>
+		</div>					
+	
+		<div class="demo-container">        
+		<div id="myTable" style="margin:auto;width:100%;max-width:1030px;background-color:#ecf8fb;padding:25px;" class="tab-content">
+        <div class="tab-pane active" id="demo">
+			<h4 class="headingcls" style="font-weight: bold;">Parameters Chart</h4>		 
+            <table class="table demo" data-filter="" data-page-size="100"  >
+            <thead style="background: #60b3b3;color: white;">
+                <tr>
+                    <th  width="18%" >Parameter name</th>
+                    <th> Action</th>
+				</tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat= "testparam in testparams">
+                    <td width="80%">{{testparam.parametername}}</td>
+                    <td width="20%"><img id ="{{testparam.parameterId}}" src="\ayushman\assets\images\deleteimg.gif" alt="" height="30" width="30" onClick="deleteparam(this.id),showparameter()">
+                </tr>                
+            </tbody>
+                <tfoot class="hide-if-no-paging">
+					<tr>
+						<td colspan="7" align="center">
+							<ul class="pagination"></ul>
+						</td>
+					</tr>
+			</tfoot>
+			</table>			
+		</div>        
+		</div>
+		</div>
+	</div>
+</div></div></div></div></div>	
+	<!--DONE-->	
+
+<!-- ////////////////////////////////////////////////////////////
+		By Anita 
+//////////////////////////////////////////////////////////////-->
+<div class="container dashboard clearfix" style="margin-top:-20px">
+<div class="panel-group" id="accordionDashboard">		
+<div style="margin:auto;width:100%;max-width:1030px;background-color: white;padding:10px;" class="row">
+<div class="col-lg-12" style="margin-top: 0px;">
+<div class="panel">
+	<div class="panel-heading">
+		<h4 class="panel-title">
+		<a data-toggle="collapse" data-parent="#accordion" href="/doctodashboard/#presclabels" ng-click="med()" class="collapsed"><b>Prescription Labels and Photograph Setting</b>	</a>
+		</h4>
+	</div>
+	<div id="presclabels" class="collapse">
+		<div style="height:120px;width:100%;background:white;margin-top:5px;min-height:120px;">
+			<div style="width:100%;padding-left: 15px;" class="medbodytext_bold">This section allows you to personalize Prescription Labels which will be shown in the prescription during Consultation.</div>
+			<div style="float:right;width:100%;" ></div>
+			<table width="80%" class = "table_roundBorder" style="width:97%;margin-top:20px;margin-left:10px;-moz-box-shadow: 0 4px 15px rgba(0,0,0,1);-webkit-box-shadow: 0 4px 15px rgba(0,0,0,1);box-shadow: 0 4px 15px rgba(0,0,0,1);">
+			<tr>
+			</tr>
+			<tr>
+				<td width="25%" height="40"><input name="mornlabel" class = "textarea1" id = "mornlabel" maxlength="15" autocomplete="off" placeholder="Morning..." size="30" class="notes" value= {{labels.mornlabel}}></input></td>						
+				<td width="25%" height="40"><input name="aftrlabel" class = "textarea1" id = "aftrlabel" maxlength="15" autocomplete="off" placeholder="Afternoon..." size="30" class="notes" value= {{labels.aftrlabel}}></input></td>						
+				<td width="25%" height="40"><input name="evenlabel" class = "textarea1" id = "evenlabel" maxlength="15" autocomplete="off" placeholder="Evening..." size="30" class="notes" value= {{labels.evenlabel}}></input></td>						
+				<td width="25%" height="40"><input name="nigtlabel" class = "textarea1" id = "nigtlabel" maxlength="15" autocomplete="off" placeholder="Night..." size="30" class="notes" value= {{labels.nigtlabel}}></input></td>						
+			</tr>
+			<tr>
+				
+				<td height="40" colspan="10" align="left" valign="middle" bgcolor="#ecf8fb" style="border-top:1px solid #a8c8d9; padding-left:10px;">
+				<input name="photocheck" type="checkbox" id = "photocheck" ng-model="labels.photocheck" value="{{labels.photocheck}}"  bgcolor="#ecf8fb" > </input>
+				<label bgcolor="#ecf8fb">Patients photo printed on prescription</label>	
+				</td>
+				<td height="40" colspan="10" align="right" valign="middle" bgcolor="#ecf8fb" style="border-top:1px solid #a8c8d9; padding-left:10px;">
+				<button class="regnbutton" id = "addButton"  onClick="savelabels();">Save</button>
+				</td>
+			</tr>
+			</table>
+		</div>						
+	</div>
+</div></div></div></div></div>	
+	<!--DONE-->	
+
+<script>		
+function savedata(){ 
+
+	 var  medName=document.getElementById("medName").value;
+	 var  medId=document.getElementById("medId").value;
+	 var  medDosage=document.getElementById("medDosage").value;
+	 var  medFrequency=document.getElementById("medFrequency").value;
+	 var  medDays=document.getElementById("medDays").value;
+	 var  medInstructions=document.getElementById("medInstructions").value;
+	 var  dosageinmg=document.getElementById("dosageinmg").value;
+	 
+	 //$('#exists').hide();
+	if (medName == "") {
+		//alert("Medicine Name must be filled out");
+		showNotification('300','20','Save data','Medicine Name must be filled out','notification','timernotification',2000);
+		return false;
+	}
+	if (medDosage == "") {
+		//alert("Dosage must be filled out");
+		showNotification('300','20','Save data','Dosage must be filled out','notification','timernotification',2000);
+		return false;
+	}
+	if (medFrequency == "") {
+		//alert("Frequency must be filled out");
+		showNotification('300','20','Save data','Frequency must be filled out','notification','timernotification',2000);
+		return false;
+	}
+	if (medDays == "") {
+		//alert("Days must be filled out");
+		showNotification('300','20','Save data','Days must be filled out','notification','timernotification',2000);
+		return false;
+	}
+	if (medId == "") {
+		//alert("Medicine Not available...!");
+		showNotification('300','20','Save data','Medicine Not available...!','notification','timernotification',2000);
+		return false;
+	}
+	   $.ajax({
+					type: 'GET',
+					url: "/ayushman/cdoctordrug/savemedicine?medId="+medId+"&medDosage="+medDosage+"&medFrequency="+medFrequency+"&medDays="+medDays+"&medInstruction="+medInstructions+"&dosageinmg="+dosageinmg,
+					datatype: 'json',
+					success:function( data ){
+					var returnArray= JSON.parse(data);
+					if(returnArray['found'] == 'yes'){
+					//alert("Medicine already present...!");
+					showNotification('300','20','Save data','Medicine already present...!','notification','timernotification',2000);
+					}
+					else{
+					showmedical();
+						//alert("Medicine Saved...!");
+						showNotification('300','20','Save data','Medicine Saved...!','notification','timernotification',2000);
+															
+					}	
+				}					
+			});
+		
+		document.getElementById("medId").value="";
+		document.getElementById("medName").value="";
+		document.getElementById("medDosage").value="";
+		document.getElementById("medFrequency").value="";
+		document.getElementById("medDays").value="";
+		document.getElementById("medInstructions").value="";
+		document.getElementById("dosageinmg").value="";
+	}
+	function allClear(){
+		//document.getElementById("medName").disabled='false';				
+		document.getElementById("medId").value="";
+		document.getElementById("medName").value="";
+		document.getElementById("medDosage").value="";
+		document.getElementById("medFrequency").value="";
+		document.getElementById("medDays").value="";
+		document.getElementById("medInstructions").value="";
+		document.getElementById("dosageinmg").value="";
+		document.getElementById("medName").focus();
+		// For instructions 
+		document.getElementById("instruction").value = "";
+		document.getElementById("instructionId").value = "";
+		// For Pathology tests
+		document.getElementById("testname").value = "";
+		document.getElementById("testId").value = "";
+		// For Report Parameters
+		document.getElementById("parametername").value = "";
+		document.getElementById("parameterId").value = "";
+	}
+	function saveinstruction(){ 
+
+	 var  instruction=document.getElementById("instruction").value;
+	 //var  instructionId=document.getElementById("instructionId").value;
+	 //$('#exists').hide();
+	if (instruction == "") {
+		//alert("Medicine Name must be filled out");
+		showNotification('300','20','Save data','Instruction Name must be filled out','notification','timernotification',2000);
+		return false;
+	}
+	
+	   $.ajax({
+					type: 'GET',
+					url: "/ayushman/cdoctorinstruction/saveinstruction?instruction="+instruction,
+					datatype: 'json',
+					success:function( data ){
+					var returnArray= JSON.parse(data);
+					if(returnArray['found'] == 'yes'){
+					//alert("Medicine already present...!");
+					showNotification('300','20','Save data','Instruction already present...!','notification','timernotification',2000);
+					}
+					else{
+					showmedical();
+						//alert("Medicine Saved...!");
+						showNotification('300','20','Save data','Instruction Saved...!','notification','timernotification',2000);
+															
+					}	
+				}					
+			});
+		
+		document.getElementById("instructionId").value="";
+		document.getElementById("instruction").value="";
+		}
+
+	/*function present()
+	{
+		//$('#exists').hide();
+	}*/
+ function showmedicalforms1()
+		  {
+		  var formname =$('#lstBox11').find(":selected").text();
+			  console.log(formname);
+				var scope = angular.element($('#personalization')).scope();
+				if(!scope.$$phase) {
+						// console.log(formname);
+						scope.$apply(function(){
+						scope.show_historyform(formname,'form_place');
+					});
+				}				  
+		  }
+		  
+		  function showmedicalforms2()
+		  {
+		  var formname =$('#lstBox22').find(":selected").text();
+			//  console.log(formname);
+				var scope = angular.element($('#personalization')).scope();
+				if(!scope.$$phase) {
+						 //console.log(formname);
+						scope.$apply(function(){
+						scope.show_historyform(formname,'form_place');
+					});
+				}				  
+		  }
+			
+ function showexaminationforms()
+		  {
+		  var formname =$('#lstBox11').find(":selected").text();
+			 // console.log(formname);
+				var scope = angular.element($('#personalization')).scope();
+				if(!scope.$$phase) {
+						// console.log(formname);
+						scope.$apply(function(){
+						scope.show_historyform(formname,'form_place');
+					});
+				}				  
+		  }			
+
+function showmedical(){
+	var scope = angular.element($('#myTable')).scope();
+	if(!scope.$$phase) {
+		scope.$apply(function(){
+		scope.showdocmedicines();
+		});
+	}				  
+}
+function showinstruction(){
+	var scope = angular.element($('#myTable')).scope();
+	if(!scope.$$phase) {
+		scope.$apply(function(){
+		scope.showdocinstructions();
+		});
+	}				  
+}
+function setId(){
+	var scope = angular.element($('#medId')).scope();
+	if(!scope.$$phase) {
+		scope.$apply(function(){
+		document.getElementById("medId").value= scope.medicineId;
+		//document.getElementById("medName").disabled='true';
+		scope.medicineId="";
+		});
+	}				  
+}
+
+function deleteMedicine(id){
+var medicineID = id;
+	//alert("Medicine Deleted.....!"+medicineID);
+	showNotification('300','20','Save data','Medicine Deleted.....!','notification','timernotification',2000);
+	$.ajax({
+							type: 'POST',
+							url: "/ayushman/cdoctordrug/deletemedicine?medicineID="+medicineID,
+					});
+}
+
+function deleteinstruction(id){
+var instructionID = id;
+	showNotification('300','20','Save data','Instruction Deleted.....!','notification','timernotification',2000);
+	$.ajax({
+				type: 'POST',
+				url: "/ayushman/cdoctorinstruction/deleteinstruction?instructionID="+instructionID,
+		  });
+}						
+
+function settestId(){
+	var scope = angular.element($('#testId')).scope();
+	console.log("set test id");
+	if(!scope.$$phase) {
+		scope.$apply(function(){
+		console.log(scope.testId);
+		document.getElementById("testId").value= scope.testId;
+		document.getElementById("testId").text= scope.testId;
+		//scope.testId="";
+		});
+	}				  
+}
+
+function savetest(){ 
+	 var  testId=document.getElementById("testId").value;
+	if (testId == "") {
+		showNotification('300','20','Save data','Test Name must be filled out','notification','timernotification',2000);
+		return false;
+	}
+	$.ajax({
+			type: 'GET',
+			url: "/ayushman/cdoctorpathtest/savetest?testId="+testId,
+			datatype: 'json',
+			success:function( data ){
+					var returnArray= JSON.parse(data);
+					if(returnArray['found'] == 'yes'){
+						showNotification('300','20','Save data','Test already present...!','notification','timernotification',2000);
+					}
+					else{
+						showNotification('300','20','Save data','Test Saved...!','notification','timernotification',2000);															
+					}	
+				}					
+			});
+		
+		document.getElementById("testname").value="";
+		document.getElementById("testId").value="";
+		}
+
+function savelabels(){ 
+	 var  mornlabel=document.getElementById("mornlabel").value;
+	 var  aftrlabel=document.getElementById("aftrlabel").value;
+	 var  evenlabel=document.getElementById("evenlabel").value;
+	 var  nigtlabel=document.getElementById("nigtlabel").value;
+	 var  photocheck=document.getElementById("photocheck").value;
+	 $.ajax({
+			type: 'GET',
+			url: "/ayushman/cdoctorpathtest/savelabels?mornlabel="+mornlabel+"&aftrlabel="+aftrlabel+"&evenlabel="+evenlabel+"&nigtlabel="+nigtlabel+"&photocheck="+photocheck,
+			datatype: 'json',
+			success:function( data ){
+					showNotification('300','20','Save data','Labels Saved...!','notification','timernotification',2000);															
+				}					
+			});
+		}
+function deletetest(id){
+var testId = id;
+	$.ajax({
+			type: 'POST',
+			url: "/ayushman/cdoctorpathtest/deletetest?testId="+testId,
+			success:function( data ){
+				showNotification('300','20','Save data','Test Deleted.....!','notification','timernotification',2000);			}					
+		  });
+}						
+function showtest(){
+	var scope = angular.element($('#myTable')).scope();
+	if(!scope.$$phase) {
+		scope.$apply(function(){
+		scope.showpathtest();
+		});
+	}				  
+}
+function setparameterId(){
+	var scope = angular.element($('#parameterId')).scope();
+	if(!scope.$$phase) {
+		scope.$apply(function(){
+		document.getElementById("parameterId").value= scope.parameterId;
+		document.getElementById("parameterId").text= scope.parameterId;
+		//scope.testId="";
+		});
+	}				  
+}
+function saveparameter(){ 
+	var  parameterId=document.getElementById("parameterId").value;
+	if (parameterId == "") {
+		showNotification('300','20','Save data','Parameter Name must be filled out','notification','timernotification',2000);
+		return false;
+	}
+	$.ajax({
+			type: 'GET',
+			url: "/ayushman/cdoctorpathtest/saveparameter?parameterId="+parameterId,
+			datatype: 'json',
+			success:function( data ){
+					var returnArray= JSON.parse(data);
+					if(returnArray['found'] == 'yes'){
+						showNotification('300','20','Save data','Parameter already present...!','notification','timernotification',2000);
+					}
+					else{
+						showNotification('300','20','Save data','Parameter Saved...!','notification','timernotification',2000);															
+					}	
+				}					
+			});
+		
+		document.getElementById("parametername").value="";
+		document.getElementById("parameterId").value="";
+}
+function deleteparam(id){
+var parameterId = id;
+	$.ajax({
+			type: 'POST',
+			url: "/ayushman/cdoctorpathtest/deleteparam?parameterId="+parameterId,
+			success:function( data ){
+				showNotification('300','20','Save data','Parameter Deleted.....!','notification','timernotification',2000);			}					
+		  });
+}						
+function showparameter(){
+	var scope = angular.element($('#myTable')).scope();
+	if(!scope.$$phase) {
+		scope.$apply(function(){
+		scope.showparameter();
+		});
+	}				  
+}
+
+</script>
+		
+</body>
+</html>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>1</columns>
+		<column>1</column>
+	</layout>
+	<container>
+		<id>1</id>
+		<questions>1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,100</questions>
+		<layout>columnContainer</layout>
+	</container>
+	
+<question>
+		<id>100</id>
+		<type>separator</type>
+</question>	
+<question>
+		<id>1</id>
+		<label>Blood Transfusion </label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+				<follow>21</follow>
+		</answer>
+</question>
+
+<question>
+		<id>21</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>22</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>23</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>24</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>25</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>26</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>27</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>28</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>29</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>30</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>31</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>32</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>33</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>34</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+<question>
+		<id>35</id>
+		<label>Remark</label>
+		<type>Text</type>
+</question>
+
+<question>
+		<id>2</id>
+		<label>Hypertension</label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+				<follow>22</follow>
+		</answer>
+	</question>
+
+<question>
+		<id>3</id>
+		<label>AmoebicDysentry</label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+				<follow>23</follow>
+		</answer>
+	</question>
+
+<question>
+		<id>4</id>
+		<label>Asthma</label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+				<follow>24</follow>
+		</answer>
+	</question>
+
+<question>
+		<id>5</id>
+		<label>Chickenpox</label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+					<follow>25</follow>
+		</answer>
+	</question>
+
+
+	<question>
+		<id>6</id>
+		<label>Cholera</label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+					<follow>26</follow>
+		</answer>
+	</question>
+	<question>
+		<id>7</id>
+		<label>Renal</label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+					<follow>27</follow>
+		</answer>
+	</question>
+	<question>
+		<id>8</id>
+		<label>Diabetes</label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+					<follow>28</follow>
+		</answer>
+	</question>
+	<question>
+		<id>9</id>
+		<label>Jaundice</label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+					<follow>29</follow>
+		</answer>
+	</question>
+	<question>
+		<id>10</id>
+		<label>Measles</label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+					<follow>30</follow>
+		</answer>
+	</question>
+	<question>
+		<id>11</id>
+		<label>Sickle Cell Anemia</label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+					<follow>31</follow>
+		</answer>
+	</question>
+	<question>
+		<id>12</id>
+		<label>Tetanus</label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+					<follow>32</follow>
+		</answer>
+	</question>
+	<question>
+		<id>13</id>
+		<label>Tuberculosis</label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+					<follow>33</follow>
+		</answer>
+	</question>
+	<question>
+		<id>14</id>
+		<label>Typhoid</label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+					<follow>34</follow>
+		</answer>
+	</question>
+	<question>
+		<id>15</id>
+		<label>Others</label>
+		<type>DD</type>
+		<answer>
+			<label>Don't know</label>
+		</answer>
+		<answer>
+			<label>No</label>
+		</answer>
+		<answer>
+			<label>Yes</label>
+					<follow>35</follow>
+		</answer>
+	</question>
+	
+</form>

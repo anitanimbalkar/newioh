@@ -1,0 +1,134 @@
+/** embedded font assets to load, if any **/
+/* uncomment for uiFonts.manager.load() to work
+@load
+{
+	fonts:Tahoma;
+}
+*/
+
+/** default style **/
+/** properties defined for default style are inherited by all styles that do not override these properties **/
+default
+{
+	fontFamily:Tahoma;
+	fontSize:11;
+	color:#000000;
+}
+
+default_disabled,
+default_selected_disabled
+{
+	color:#808080;
+	shadow:#ffffff;
+}
+
+/** this style is used by textinput hint text if the textinput is using default style **/
+default_hint
+{
+	fontStyle:italic;
+	color:#777777;
+}
+
+
+/** uiLink **/
+link
+{
+	color:#000000;
+	text-decoration:underline;
+}
+
+link_over
+{
+	color:#0000FF;
+}
+
+
+/** uiListBox **/
+listitem
+{
+	color:#000000;
+}
+
+listitem_selected
+{
+	color:#FFFFFF;
+}
+
+listitem_disabled
+{
+	color:#808080;
+	shadow:#FFFFFF;
+}
+
+
+/** uiMenu **/
+menuitem
+{
+	color:#000000;
+}
+
+menuitem_selected
+{
+	color:#FFFFFF;
+}
+
+menuitem_disabled
+{
+	color:#808080;
+	shadow:#FFFFFF;
+}
+
+menuitem_disabled_selected
+{
+	color:#808080;
+	shadow:-1;
+}
+
+
+/** uiMenuBar **/
+menubaritem
+{
+	color:#000000;
+}
+
+
+/** uiWindow **/
+windowstatus
+{
+	fontSize:11;
+}
+
+windowtitle
+{
+	color:#FFFFFF;
+	fontWeight:bold;
+}
+
+windowtitle_out
+{
+	color:#D4D0C8;
+	shadow:-1;
+}
+
+
+/** custom styles **/
+title
+{
+	fontSize:16;
+	color:#ffffff;
+	outline:#000000;
+	shadow:#333333;
+}
+
+header
+{
+	fontWeight:bold;
+	color:#445566;
+}
+
+footer
+{
+	color:#ffffff;
+	shadow:#333333;
+	textAlign:center;
+}

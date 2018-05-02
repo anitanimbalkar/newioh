@@ -1,0 +1,229 @@
+<form>
+	<layout>
+		<type>ContainerColumns</type>
+		<columns>2</columns>
+		<column>1</column>
+		<column>2</column>
+	</layout>
+
+	<container>
+		<id>1</id>
+		<questions>1,2,3,4,500,21,9,10,11,22,23,12,500,5,6,7,8</questions>
+		<layout>Vertical</layout>
+	</container>
+	
+	<container>
+		<id>2</id>
+		<questions>13,14,15,24,25,16,17,18,19,26,27,28,20</questions>
+		<layout>Vertical</layout>
+	</container>
+
+	<question>
+		<id>20</id>
+		<label>.</label>
+		<type>label</type>
+	</question>
+	<question>
+		<id>1</id>
+		<label>Delivery Record</label>
+		<type>label</type>
+	</question>
+	<question>
+		<id>2</id>
+		<label>Date of Admission</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>3</id>
+		<label>Time of Admission</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>4</id>
+		<label>Mode of Induction</label>
+		<type>DD</type>	
+		<answer>
+			<label>Spontaneous</label>
+		</answer>	
+		<answer>
+			<label>Cerviprime gel</label>
+		</answer>
+		<answer>
+			<label>Primiprost Oral</label>
+		</answer>
+		<answer>
+			<label>Primiprost Cervical</label>
+		</answer>
+		<answer>
+			<label>Syntocinon Drip</label>
+		</answer>
+		<answer>
+			<label>Other</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>5</id>
+		<label>Labour</label>
+		<type>label</type>		
+	</question>
+	<question>
+		<id>6</id>
+		<label>Stage_1</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>7</id>
+		<label>Stage_2</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>8</id>
+		<label>Stage_3</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>9</id>
+		<label>Date Delivery</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>10</id>
+		<label>Time of Delivery</label>
+		<type>Text</type>		
+	</question>
+	<question>
+		<id>11</id>
+		<label>Mode of Delivery</label>
+		<type>DD</type>		
+		<answer>
+			<label>Normally</label>
+		</answer>
+		<answer>
+			<label>Normally With Episiotomy</label>
+		</answer>
+		<answer>
+			<label>Forceps assisted</label>
+		</answer>
+		<answer>
+			<label>Ventouse assisted</label>
+		</answer>
+		<answer>
+			<label>By L.S.C.S</label>
+		</answer>
+	</question>
+	
+	<question>
+		<id>12</id>
+		<label>Discharge Date</label>
+		<type>Text</type>		
+	</question>
+	
+	<question>
+		<id>13</id>
+		<label>Baby Details</label>
+		<type>label</type>		
+	</question>
+	
+	<question>
+		<id>14</id>
+		<label>Sex</label>
+		<type>DD</type>	
+		<answer>
+			<label>Male</label>
+		</answer>
+		<answer>
+			<label>Female</label>
+		</answer>		
+	</question>
+	<question>
+		<id>15</id>
+		<label>Weight (kg)</label>
+		<type>text</type>		
+	</question>
+	<question>
+		<id>16</id>
+		<label>Maturity weeks</label>
+		<type>text</type>		
+	</question>
+	<question>
+		<id>17</id>
+		<label>Maturity Days</label>
+		<type>text</type>		
+	</question>
+		<question>
+		<id>18</id>
+		<label>Resuscitation</label>
+		<type>text</type>		
+	</question>
+		<question>
+		<id>19</id>
+		<label>Puerperium</label>
+		<type>text</type>		
+	</question>
+	
+	
+	<question>
+		<id>24</id>
+		<label>Length (CM)</label>
+		<type>text</type>		
+	</question>
+	
+	<question>
+		<id>25</id>
+		<label>Head Circumference (CM)</label>
+		<type>text</type>		
+	</question>
+	
+	<question>
+		<id>26</id>
+		<label>Anomalies</label>
+		<type>text</type>		
+	</question>
+	
+	<question>
+		<id>27</id>
+		<label>Immunization</label>
+		<type>text</type>		
+	</question>
+	
+	<question>
+		<id>28</id>
+		<label>Notes</label>
+		<type>text</type>		
+	</question>
+	
+	
+	
+	
+		<question>
+		<id>20</id>
+		<label>Other</label>
+		<type>text</type>		
+	</question>
+	<question>
+		<id>500</id>
+		<type>Separator</type>
+	</question>
+	
+	
+	
+	
+	<question>
+		<id>21</id>
+		<label>Delivery Details</label>
+		<type>label</type>		
+	</question>
+	
+	<question>
+		<id>22</id>
+		<label>Delivery Complication</label>
+		<type>Text</type>		
+	</question>
+	
+	<question>
+		<id>23</id>
+		<label>Notes</label>
+		<type>Text</type>		
+	</question>
+</form>	

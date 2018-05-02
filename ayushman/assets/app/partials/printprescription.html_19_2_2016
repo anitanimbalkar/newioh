@@ -1,0 +1,244 @@
+<head>
+	<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+	<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+	<link rel="stylesheet" href="/ayushman/assets/app/lib/font-awesome/css/font-awesome.min.css">
+	<style>
+		#option:hover{
+			background-color:rgba(216, 216, 216, 0.55);
+		}
+	</style>
+	<script type="text/javascript">
+	
+		$(document).ready(function() {
+			loadScripts();
+			$('.action').hide();
+			if(readCookie('medicine') == "[]"){
+				 var medicineid = document.getElementById("MedicinesChk");
+				 medicineid.setAttribute("disabled", "false");				 
+			}
+			else{
+				var medicinecheck=readCookie('medicinecheckbox');
+				if(medicinecheck == 'checked'){
+					$('#MedicinesChk').attr('checked','checked');
+				}
+				else{
+					$('#MedicinesChk').removeAttr('checked');
+				}
+			}
+			if(readCookie('investigation_text') == "[]"){
+				 var x = document.getElementById("InvestigationChk");
+				 x.setAttribute("disabled", "false");
+			}
+			else{
+				var investigationcheck=readCookie('investigationcheckbox');
+				if(investigationcheck == 'checked'){
+					$('#InvestigationChk').attr('checked','checked');
+				}
+				else{
+					$('#InvestigationChk').removeAttr('checked');
+				}
+			}
+		});
+		function PrintElem(elem,appointmentid)
+		{
+			var scope = angular.element($("#quickprescription")).scope();
+			if(!scope.$$phase) {
+				scope.$apply(function(){
+					if(scope.examination_data.text_complaint.length == 0){
+						$(".complaint").hide();
+					}
+					if(scope.examination_data.text_examinationsummary.length == 0 || scope.examination_data.check_examinationsummary == false){
+						$(".examinationsummary").hide();
+					}
+					if(scope.examination_data.text_diagnosis == undefined || scope.examination_data.text_diagnosis.length == 0){
+						$(".diagnosis").hide();
+					}
+					if(scope.examination_data.text_followup == undefined || scope.examination_data.text_followup.length == 0){
+						$(".followup").hide();
+					}
+					if(scope.previousexamination_data.isexaminationavailable == true){
+						$(".vitals").show();
+					}else{
+						//$(".vitals").hide();
+						$(".vitals").show();
+					}
+				});
+			}
+			savePDf(appointmentid);
+			setPrint();
+			console.log($('#prescriptionsPrint').html());
+			setTimeout(function(){
+				Popup($('#prescriptionsPrint').html());
+			},1000);			
+						
+			
+		}
+		function Popup(data) 
+		{
+			var mywindow = window.open('', 'print','height=768,width=1024');
+			mywindow.document.write('<html><head>');
+			mywindow.document.write('</head><body style="font-size:14px;">');
+			mywindow.document.write(data);
+			mywindow.document.write('</body></html>');
+			
+			mywindow.print();
+			mywindow.close();
+			return true;
+		}
+	</script>
+	
+</head>
+<body>
+<table>
+	<tr>
+		<td style="width:613px;" class="preview" >
+			<div id="prescriptionPrint" class="prescription">
+				<link rel="stylesheet" href="/ayushman/assets/app/css/prescription.css">
+				<script src="/ayushman/assets/app/js/extra/exam.js"></script>
+				<script src="/ayushman/assets/app/js/extra/prescription.js"></script>
+				<div class="previewHeader">
+					<div class="doctorinfo">
+						<div class="doctorname">Dr. {{myprofile['userinfo'].name}}</div>
+						<div class="doctoreducation">{{myprofile['usereducation'].doctoreducation}}</div>
+						<div class="otherinfo">Regd No.:{{myprofile['userinfo'].regno}}</div>
+					</div>
+					<div class="doctorinfo">
+						<div class="doctoraddress">
+							<div class="doctorname">{{myclinics['clinicinfo'][0].clinicname}}</div>
+							<div class="otherinfo">
+								{{myclinics['clinicinfo'][0].line1}},
+								{{myclinics['clinicinfo'][0].nearmark}},
+								{{myclinics['clinicinfo'][0].location}}, {{myclinics['clinicinfo'][0].city}}-{{myclinics['clinicinfo'][0].pin}},
+								{{myclinics['clinicinfo'][0].state}}
+								</br>
+								Ph.{{myclinics['clinicinfo'][0].isd}}-{{myclinics['clinicinfo'][0].phone}}
+							</div>
+						</div>						
+					</div>
+				</div>
+				<div class="separator" />
+				<div class="patientinfo">
+					<div class="patientname">
+						{{appointment_info.Patientname}} ({{appointment_info.PatientGender}}, {{appointment_info.age}})
+					</div>
+					<div class="appointmentdate">
+						{{appointment_info.DateAndTime}}
+					</div>
+				</div>
+				<div class="vitals">
+					<div class="signs">
+						Pulse : <label class="textarea" id="pvitals_q_21"></label>&nbsp;pm
+					</div>
+					<div class="signs">
+						BP : <label class="textarea" id="pvitals_q_8" ></label>&nbsp;mm/Hg
+					</div>
+					<div class="signs">
+						Height : <label id="pvitals_q_2"  class="textarea" ></label>&nbsp;cms
+					</div>					
+					<div class="signs">
+						Weight : <label class="textarea" id="pvitals_q_1" ></label>&nbsp;Kg
+					</div>					
+				</div>
+				<div class="separator" />
+				<div id="quickprescription" class="body" >
+					<div class="rows complaint" ng-show="examination_data.check_symptoms && examination_data.text_complaint.length > 0" >
+						<div class="heading">Symptoms -</div><div class="details">{{examination_data.text_complaint}}</div>
+					</div>
+					<div class="rows examinationsummary" ng-show="examination_data.check_examinationsummary && examination_data.text_examinationsummary.length > 0" >
+						<div class="heading">Examination Summary -</div><div class="details">{{examination_data.text_examinationsummary}}</div>
+					</div>
+					<div class="rows diagnosis" ng-show="examination_data.text_diagnosis.length > 0" >
+						<div class="heading">Diagnosis -</div><div class="details"> {{examination_data.text_diagnosis}}</div>
+					</div>
+					<div class="heading rows">Rx</div>
+					<div  class="rows" id ="pprescription" ></div>
+					<br/>
+					<div  class="rows" id ="pinvestigation" ></div>
+					<div class="rows followup" ng-show="examination_data.text_followup.length > 0" >
+						<div class="heading">Other Instructions / Follow Up advice -</div><div class="details"> {{examination_data.text_followup}}</div>
+					</div>
+				</div>
+				<div class="signature">
+					<img ng-if="myprofile['userinfo'].signature" src="{{myprofile['userinfo'].signature}}"></br>
+					<label>Signature</label>
+				</div>
+				<div class="note">
+					Note : Prescription available online at www.indiaonlinehealth.com
+				</div>
+			</div>
+			<div id="prescriptionsPrint" style="display:none;">
+					
+			</div>
+		</td>
+		<td width="50px;" id="actions" valign="top">
+			<input type="button" value="Bill" ng-click="$modalSuccess();" style="margin:5px;width:50px;" class="button" />
+			<input type="button" value="Finish" ng-click="$modalCancel();" style="margin:5px;width:50px;" class="button" />
+			<div onclick="displaypritableprescriptionoption()" style="">
+			<input type="button" style="margin:5px;color: #19070B; background-color: #585858; border: 1pt ridge lightgrey;width:50px;height:40px;background: url(/ayushman/assets/images/printoption.jpg)no-repeat center top;" class="button" />
+			<label style="font-size: larger;color: #585858;margin-top:-20px;margin-left:15px;">Print </label>
+			</div>
+			<div id="dialog"  class="sectionBox" style="display:block;position:absolute;margin-left:68px;margin-top:-156px;background:white;">
+				<table width="inherit" class='table_roundBorder' style="max-height:100%;width:266px; margin-right:13px" >
+					<tr style="border-bottom:1px solid #9cd4f9;">
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						<input type="checkbox" name="prescription"  id="combine" value="TRUE" checked disabled/>Combined copy of Medicine & Investigation<br>
+						</td>
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;">
+						
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						<input type="checkbox" name="prescription" id="MedicinesChk" />Separate copy for Medicines<br>
+						</td>
+					</tr>	
+					<tr style="border-bottom:1px solid #9cd4f9;">
+
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						<input type="checkbox" name="prescription" id="InvestigationChk" />Separate copy for Investigations 
+						</td>					
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" >
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+							<input type="checkbox" id="withoutheaderChk" />Print Without Header And Footer
+						</td>
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" >
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+							<input type="checkbox" id="withsignatureChk" name="signature" value="TRUE" checked>Print With Signature
+						</td>
+					</tr>
+					<tr style="border-bottom:1px solid #9cd4f9;cursor:pointer;" onclick="PrintElem('#print',appointmentid);">
+						<td width="100%"  class="bodytext_bold" align="center" style="padding:5px;">
+							<input type="button" value="Print Now" style="margin:5px;width:150px;height:20px;" class="button" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div style="position:absolute;margin-left:67px;background:white;margin:42px 13px 30px 69px">
+							
+				<table width="inherit" class='table_roundBorder' style="max-height:100%;width:266px;" >
+					<tr style="border-bottom:1px solid #9cd4f9;">
+						<td  width="100%"  class="bodytext_bold darkblue" align="left" style="padding:5px;text-align:center;color:white;font-size:15px">
+						 Print Certificate
+						</td>
+					</tr>
+					<tr  id="option" ng-click="$modalCallback('medical');dialogflag=0;" style="border-bottom:1px solid #9cd4f9;cursor:pointer;">
+						<td  width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						 Medical Certificate<br>
+						</td>
+					</tr>
+					<tr id="option" ng-click="$modalCallback('fitness');dialogflag=0;" style="border-bottom:1px solid #9cd4f9;cursor:pointer;">
+						
+						<td width="100%"  class="bodytext_bold" align="left" style="padding:5px;">
+						Fitness Certificate<br>
+						</td>
+					</tr>	
+				</table>		
+			</div>
+			<div id="followupappointment_workspace"  class="sectionBox" style="width:282px;display:block;position:absolute;margin-left:68px;margin-top:125px;background:white;">
+				<div bookingfollowup controller="bookingfollowupCtrl"></div>
+			</div>
+		</td>
+		</tr>
+	</table>
+			</div>
+</body>
